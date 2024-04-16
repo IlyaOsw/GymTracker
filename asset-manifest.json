@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/GymTracker/static/js/main.c6439534.js",
+    "index.html": "/GymTracker/index.html",
+    "static/media/getFetch.cjs": "/GymTracker/static/media/getFetch.40f37ddea2378391108f.cjs",
+    "main.c6439534.js.map": "/GymTracker/static/js/main.c6439534.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.c6439534.js"
+  ]
+}
