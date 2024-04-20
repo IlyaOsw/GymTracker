@@ -1,0 +1,99 @@
+.logo,
+.navbar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  img {
+    height: 50px;
+  }
+  .settings {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    > p {
+      cursor: default;
+    }
+    > div {
+      margin-right: 16px;
+      cursor: pointer;
+    }
+  }
+  .login {
+    .signIn {
+      color: #ffffff;
+      font-size: 1.2rem;
+    }
+    .btn {
+      background-color: #0097b2;
+      border-color: #0097b2;
+      color: #ffffff;
+    }
+  }
+  .verticalLine {
+    width: 1px;
+    height: 50%;
+    background-color: #b2b2b2;
+    cursor: default !important;
+  }
+  .settingsBtn {
+    color: #0097b2;
+    text-transform: uppercase;
+  }
+  .settingTitle {
+    padding-bottom: 5px;
+  }
+}
+
+.themeIcon {
+  margin-right: 10px !important;
+  font-size: 1rem;
+}
+
+.burgerColor {
+  background-color: #f3f3f3 !important;
+  .burgerItem {
+    margin-top: 10px;
+  }
+}
+
+.burgerBtn {
+  margin-left: auto;
+  background-color: #0097b2;
+  border: none;
+}
+
+.dropdownItem {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.burgerItem {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.menuButton {
+  padding: 0;
+  font-size: 16px;
+  color: #0097b2;
+}
+
+.burgerSettings {
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.settingsButton {
+  font-size: 16px;
+  color: #0097b2;
+}
+
+@media (max-width: 992px) {
+  .logo img,
+  .navigation img {
+    height: 40px;
+  }
+}

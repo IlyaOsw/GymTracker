@@ -1,0 +1,11 @@
+{
+    "theme": "Theme",
+    "language": "Language",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "menu": "Menu",
+    "eng": "English",
+    "rus": "Russian",
+    "dark": "Dark",
+    "light": "Light"
+}

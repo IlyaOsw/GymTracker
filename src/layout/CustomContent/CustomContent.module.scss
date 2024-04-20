@@ -1,0 +1,42 @@
+.mainImage {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.title {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  font-style: italic;
+  font-weight: 700;
+  cursor: default;
+  @media (max-width: 992px) {
+    font-size: 40px;
+    line-height: 1.2;
+  }
+}
+
+.downloadImage {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  height: 60px;
+  width: 200px;
+  @media (max-width: 992px) {
+    height: 40px;
+    width: 140px;
+  }
+}
+
+.joinBtn {
+  text-transform: uppercase;
+  background-color: #0097b2;
+  letter-spacing: 1px;
+  position: absolute;
+  top: calc(42% + 150px);
+  left: 50%;
+  transform: translateX(-50%);
+}

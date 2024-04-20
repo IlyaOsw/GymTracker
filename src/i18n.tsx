@@ -9,14 +9,14 @@ i18n
   .use(initReactI18next)
   .init({
     resources: {
-      en: {
-        translation: require("./locales/en/translation.json"),
+      Eng: {
+        translation: require("./locales/Eng/translation.json"),
       },
-      ru: {
-        translation: require("./locales/ru/translation.json"),
+      Rus: {
+        translation: require("./locales/Rus/translation.json"),
       },
     },
-    fallbackLng: "en",
+    fallbackLng: "eng",
     // debug: true,
     detection: {
       order: ["queryString", "cookie"],
