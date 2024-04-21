@@ -1,14 +1,13 @@
 {
   "files": {
     "main.css": "/GymTracker/static/css/main.3bf8b0b6.css",
-    "main.js": "/GymTracker/static/js/main.bc6497f1.js",
+    "main.js": "/GymTracker/static/js/main.e30906e4.js",
     "index.html": "/GymTracker/index.html",
-    "static/media/getFetch.cjs": "/GymTracker/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.3bf8b0b6.css.map": "/GymTracker/static/css/main.3bf8b0b6.css.map",
-    "main.bc6497f1.js.map": "/GymTracker/static/js/main.bc6497f1.js.map"
+    "main.e30906e4.js.map": "/GymTracker/static/js/main.e30906e4.js.map"
   },
   "entrypoints": [
     "static/css/main.3bf8b0b6.css",
-    "static/js/main.bc6497f1.js"
+    "static/js/main.e30906e4.js"
   ]
 }
