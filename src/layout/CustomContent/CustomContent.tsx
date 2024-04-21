@@ -27,14 +27,17 @@ export const CustomContent: React.FC = () => {
       <div className={styles.title}>
         YOUR FITNESS JOURNEY <br /> STARTS HERE
       </div>
-      <img
-        className={styles.downloadImage}
-        src={process.env.PUBLIC_URL + "/assets/Images/DownloadOnApp.png"}
-        alt="Download"
-      />
-      <CustomButton icon={<RightCircleOutlined />} className={styles.joinBtn}>
-        Join today
-      </CustomButton>
+
+      <div className={styles.buttons}>
+        <CustomButton icon={<RightCircleOutlined />} className={styles.joinBtn}>
+          Join today
+        </CustomButton>
+        <img
+          className={styles.downloadImage}
+          src={process.env.PUBLIC_URL + "/assets/Images/DownloadOnApp.png"}
+          alt="Download"
+        />
+      </div>
     </Content>
   );
 };

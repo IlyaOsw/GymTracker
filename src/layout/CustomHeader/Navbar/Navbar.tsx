@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Dropdown, Space } from "antd";
 import { Button, Menu } from "antd";
 import { DownOutlined, LoginOutlined } from "@ant-design/icons";
@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 
 import styles from "../CustomHeader.module.scss";
 import { HeaderPropsType } from "../../../types/types";
-import i18n from "../../../i18n";
 
 export const Navbar: React.FC<HeaderPropsType> = ({
   handleThemeClick,
@@ -17,7 +16,11 @@ export const Navbar: React.FC<HeaderPropsType> = ({
   languageItems,
   language,
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    i18n.changeLanguage("en");
+  }, [i18n]);
 
   const changeLanguage = (language: string): void => {
     i18n.changeLanguage(language);

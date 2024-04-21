@@ -47,8 +47,8 @@ const languageItems: MenuItem[] = [
 ];
 
 const mobileLogoSrc =
-  process.env.PUBLIC_URL + "/assets/logo/LogoMainMobile.png";
-const desktopLogoSrc = process.env.PUBLIC_URL + "/assets/logo/LogoMain.png";
+  process.env.PUBLIC_URL + "/assets/Logo/LogoMainMobile.svg";
+const desktopLogoSrc = process.env.PUBLIC_URL + "/assets/Logo/LogoMain.svg";
 
 export const CustomHeader: React.FC = () => {
   const [visible, setVisible] = useState(false);
@@ -77,7 +77,7 @@ export const CustomHeader: React.FC = () => {
     const handleResize = () => {
       const width = window.innerWidth;
       setIsMobile(width <= 992);
-      setLogoSrc(width <= 992 ? mobileLogoSrc : desktopLogoSrc);
+      setLogoSrc(width <= 768 ? mobileLogoSrc : desktopLogoSrc);
     };
     window.addEventListener("resize", handleResize);
 
@@ -97,7 +97,7 @@ export const CustomHeader: React.FC = () => {
       </div>
       {isMobile ? (
         <Button className={styles.burgerBtn} onClick={showDrawer}>
-          <MenuOutlined />
+          <MenuOutlined style={{ color: "white" }} />
         </Button>
       ) : (
         <Navbar

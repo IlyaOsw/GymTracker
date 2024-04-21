@@ -16,7 +16,7 @@ i18n
         translation: require("./locales/Rus/translation.json"),
       },
     },
-    fallbackLng: "eng",
+    fallbackLng: "Eng",
     // debug: true,
     detection: {
       order: ["queryString", "cookie"],

@@ -1,3 +1,7 @@
+$main-color: #0097b2;
+$secondary-color: #b2b2b2;
+$background-color: #f3f3f3;
+
 .logo,
 .navbar {
   height: 100%;
@@ -5,42 +9,51 @@
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
+
   img {
-    height: 50px;
+    height: 55px;
   }
+
   .settings {
     display: flex;
     align-items: center;
     height: 100%;
+
     > p {
       cursor: default;
     }
+
     > div {
       margin-right: 16px;
       cursor: pointer;
     }
   }
+
   .login {
     .signIn {
       color: #ffffff;
       font-size: 1.2rem;
     }
+
     .btn {
-      background-color: #0097b2;
-      border-color: #0097b2;
+      background-color: $main-color;
+      border-color: $main-color;
       color: #ffffff;
     }
   }
+
   .verticalLine {
     width: 1px;
     height: 50%;
-    background-color: #b2b2b2;
+    background-color: $secondary-color;
     cursor: default !important;
   }
+
   .settingsBtn {
-    color: #0097b2;
+    color: $main-color;
     text-transform: uppercase;
   }
+
   .settingTitle {
     padding-bottom: 5px;
   }
@@ -52,7 +65,8 @@
 }
 
 .burgerColor {
-  background-color: #f3f3f3 !important;
+  background-color: $background-color !important;
+
   .burgerItem {
     margin-top: 10px;
   }
@@ -60,7 +74,7 @@
 
 .burgerBtn {
   margin-left: auto;
-  background-color: #0097b2;
+  background-color: $main-color;
   border: none;
 }
 
@@ -78,7 +92,7 @@
 .menuButton {
   padding: 0;
   font-size: 16px;
-  color: #0097b2;
+  color: $main-color;
 }
 
 .burgerSettings {
@@ -88,7 +102,7 @@
 
 .settingsButton {
   font-size: 16px;
-  color: #0097b2;
+  color: $main-color;
 }
 
 @media (max-width: 992px) {

@@ -6,37 +6,49 @@
 
 .title {
   position: absolute;
-  top: 40%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 4rem;
   font-style: italic;
-  font-weight: 700;
+  font-weight: bold;
   cursor: default;
+  letter-spacing: 3px;
+  width: 100%;
+
   @media (max-width: 992px) {
     font-size: 40px;
     line-height: 1.2;
   }
 }
 
-.downloadImage {
+.buttons {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
-  height: 60px;
-  width: 200px;
-  @media (max-width: 992px) {
-    height: 40px;
-    width: 140px;
+  top: calc(50% + 75px);
+  left: 50%;
+  transform: translateX(-50%);
+
+  .joinBtn {
+    text-transform: uppercase;
+    background-color: #0097b2;
+    letter-spacing: 1px;
+  }
+
+  .downloadImage {
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
   }
 }
 
-.joinBtn {
-  text-transform: uppercase;
-  background-color: #0097b2;
-  letter-spacing: 1px;
-  position: absolute;
-  top: calc(42% + 150px);
-  left: 50%;
-  transform: translateX(-50%);
+@media (max-width: 992px) {
+  .title {
+    top: 40%;
+  }
+  .buttons {
+    top: 57%;
+  }
+  .downloadImage {
+    width: 100%;
+  }
 }

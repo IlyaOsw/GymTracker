@@ -1,6 +1,7 @@
 import { DownOutlined } from "@ant-design/icons";
 import { Drawer, Menu, Button, Dropdown, Space } from "antd";
 import React from "react";
+import { Divider } from "antd";
 
 import { useTranslation } from "react-i18next";
 
@@ -43,15 +44,12 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     >
       <Menu mode="vertical" className={styles.burgerColor}>
         <Menu.Item key="1" className={styles.burgerItem}>
-          <Button type="text" className={styles.menuButton}>
-            {t("signIn")}
-          </Button>
+          <span className={styles.menuButton}>{t("signIn")}</span>
         </Menu.Item>
         <Menu.Item key="2" className={styles.burgerItem}>
-          <Button type="text" className={styles.menuButton}>
-            {t("signUp")}
-          </Button>
+          <span className={styles.menuButton}>{t("signUp")}</span>
         </Menu.Item>
+        <Divider />
         <Menu.Item key="3" className={styles.burgerItem}>
           <span className={styles.burgerSettings}>{t("theme")}</span>
           <Dropdown
