@@ -1,0 +1,46 @@
+.description {
+  width: 100%;
+  max-width: 550px;
+
+  .descriptionTitle {
+    font-size: 3.2rem;
+    text-align: start;
+    color: #0097b2;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-style: italic;
+    cursor: default;
+    padding: 20px;
+  }
+
+  .descriptionText {
+    font-size: 1.6rem;
+    text-align: start;
+    margin-top: 100px;
+    letter-spacing: 1px;
+    cursor: default;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .descriptionTitle {
+    font-size: 2.6rem !important;
+  }
+
+  .descriptionText {
+    font-size: 1.4rem !important;
+    margin-top: 20px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .descriptionTitle {
+    font-size: 2rem !important;
+  }
+
+  .descriptionText {
+    font-size: 1.2rem !important;
+    margin-top: 20px !important;
+  }
+}

@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
+import { HashRouter } from "react-router-dom";
+
 import App from "./App";
 
 const firebaseConfig = {
@@ -23,6 +25,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <HashRouter>
+      <App />
+    </HashRouter>
   </React.StrictMode>
 );

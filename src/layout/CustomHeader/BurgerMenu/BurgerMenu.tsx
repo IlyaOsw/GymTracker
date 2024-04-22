@@ -5,31 +5,40 @@ import { Divider } from "antd";
 
 import { useTranslation } from "react-i18next";
 
+import { Link, useNavigate } from "react-router-dom";
+
 import { HeaderPropsType } from "../../../types/types";
 
 import styles from "../CustomHeader.module.scss";
-import i18n from "../../../i18n";
 
 export const BurgerMenu: React.FC<HeaderPropsType> = ({
-  setVisible,
-  visible,
+  open,
+  setOpen,
   theme,
   handleThemeClick,
   themeItems,
   language,
   handleLanguageClick,
   languageItems,
+  changeLanguage,
 }) => {
   const { t } = useTranslation();
-
-  const changeLanguage = (language: string): void => {
-    i18n.changeLanguage(language);
-  };
+  const navigate = useNavigate();
 
   const onClose = () => {
-    if (setVisible) {
-      setVisible(false);
+    if (setOpen) {
+      setOpen(false);
     }
+  };
+
+  const handleSignInClick = () => {
+    onClose();
+    navigate("/signin");
+  };
+
+  const handleSignUpClick = () => {
+    onClose();
+    navigate("/signup");
   };
 
   return (
@@ -38,19 +47,41 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
       placement="right"
       closable={true}
       onClose={onClose}
-      visible={visible}
+      open={open}
       width={300}
       className={styles.burgerColor}
     >
       <Menu mode="vertical" className={styles.burgerColor}>
         <Menu.Item key="1" className={styles.burgerItem}>
-          <span className={styles.menuButton}>{t("signIn")}</span>
-        </Menu.Item>
-        <Menu.Item key="2" className={styles.burgerItem}>
-          <span className={styles.menuButton}>{t("signUp")}</span>
+          <Link
+            to={"/main"}
+            onClick={handleSignInClick}
+            className={styles.menuButton}
+          >
+            {t("main")}
+          </Link>
         </Menu.Item>
         <Divider />
+        <Menu.Item key="2" className={styles.burgerItem}>
+          <Link
+            to={"/signin"}
+            onClick={handleSignInClick}
+            className={styles.menuButton}
+          >
+            {t("signIn")}
+          </Link>
+        </Menu.Item>
         <Menu.Item key="3" className={styles.burgerItem}>
+          <Link
+            to={"/signup"}
+            onClick={handleSignUpClick}
+            className={styles.menuButton}
+          >
+            {t("signUp")}
+          </Link>
+        </Menu.Item>
+        <Divider />
+        <Menu.Item key="4" className={styles.burgerItem}>
           <span className={styles.burgerSettings}>{t("theme")}</span>
           <Dropdown
             overlay={
@@ -73,7 +104,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
             </Space>
           </Dropdown>
         </Menu.Item>
-        <Menu.Item key="4" className={styles.burgerItem}>
+        <Menu.Item key="5" className={styles.burgerItem}>
           <span className={styles.burgerSettings}>{t("language")}</span>
           <Dropdown
             overlay={
@@ -101,6 +132,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
             </Space>
           </Dropdown>
         </Menu.Item>
+        <Divider />
       </Menu>
     </Drawer>
   );

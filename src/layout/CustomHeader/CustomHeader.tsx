@@ -4,6 +4,8 @@ import { MenuOutlined, MoonFilled, SunOutlined } from "@ant-design/icons";
 
 import { MenuItem } from "../../types/types";
 
+import i18n from "../../i18n";
+
 import styles from "./CustomHeader.module.scss";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
 import { Navbar } from "./Navbar/Navbar";
@@ -51,13 +53,13 @@ const mobileLogoSrc =
 const desktopLogoSrc = process.env.PUBLIC_URL + "/assets/Logo/LogoMain.svg";
 
 export const CustomHeader: React.FC = () => {
-  const [visible, setVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 992);
   const [logoSrc, setLogoSrc] = useState(
     isMobile ? mobileLogoSrc : desktopLogoSrc
   );
   const [theme, setTheme] = useState("Dark");
   const [language, setLanguage] = useState("Eng");
+  const [open, setOpen] = useState(false);
 
   const handleThemeClick = ({ key }: { key: string }) => {
     const selectedTheme = themeItems.find((item) => item.key === key);
@@ -73,11 +75,17 @@ export const CustomHeader: React.FC = () => {
     }
   };
 
+  const showDrawer = () => setOpen(true);
+
+  const changeLanguage = (language: string): void => {
+    i18n.changeLanguage(language);
+  };
+
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       setIsMobile(width <= 992);
-      setLogoSrc(width <= 768 ? mobileLogoSrc : desktopLogoSrc);
+      setLogoSrc(width <= 1200 ? mobileLogoSrc : desktopLogoSrc);
     };
     window.addEventListener("resize", handleResize);
 
@@ -86,9 +94,9 @@ export const CustomHeader: React.FC = () => {
     };
   }, []);
 
-  const showDrawer = () => {
-    setVisible(true);
-  };
+  useEffect(() => {
+    i18n.changeLanguage("en");
+  }, []);
 
   return (
     <Header style={headerStyle}>
@@ -107,17 +115,19 @@ export const CustomHeader: React.FC = () => {
           handleLanguageClick={handleLanguageClick}
           languageItems={languageItems}
           language={language}
+          changeLanguage={changeLanguage}
         />
       )}
       <BurgerMenu
-        setVisible={setVisible}
-        visible={visible}
+        open={open}
+        setOpen={setOpen}
         theme={theme}
         handleThemeClick={handleThemeClick}
         themeItems={themeItems}
         language={language}
         handleLanguageClick={handleLanguageClick}
         languageItems={languageItems}
+        changeLanguage={changeLanguage}
       />
     </Header>
   );

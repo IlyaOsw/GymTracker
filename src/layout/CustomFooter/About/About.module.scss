@@ -12,28 +12,27 @@ $transitionDuration: 0.4s;
   align-items: $alignCenter;
   justify-content: $justifySpaceAround;
   flex-wrap: $flexWrap;
-  margin-top: 30px;
 
   .contacts,
-  .logo,
-  .socialMedia {
+  .logo {
     display: flex;
     flex-direction: column;
     align-items: $alignCenter;
     justify-content: $alignCenter;
     align-self: flex-start;
     margin-top: $marginTop;
+    > img {
+      margin-top: $marginTop;
+    }
 
-    .contactsTitle,
-    .socialMediaTitle {
+    .contactsTitle {
       color: $colorPrimary;
       font-weight: $fontWeightBold;
       font-size: 1.4rem;
       cursor: default;
     }
 
-    .contactsItem,
-    .socialMediaItem {
+    .contactsItem {
       margin-top: 10px;
       font-size: $fontSizeMedium;
       cursor: pointer;
@@ -43,6 +42,7 @@ $transitionDuration: 0.4s;
       &:hover {
         filter: brightness(130%);
         color: $colorPrimary;
+        transform: translateY(0);
       }
 
       &::after {
@@ -67,9 +67,33 @@ $transitionDuration: 0.4s;
     .logoDescription {
       text-align: center;
       font-size: 1rem;
-      margin-top: 10px;
+      margin-top: $marginTop;
       font-weight: $fontWeightBold;
       cursor: default;
+    }
+  }
+
+  .socialMedia {
+    display: flex;
+    flex-direction: column;
+    align-items: $alignCenter;
+    justify-content: $alignCenter;
+    align-self: flex-start;
+    margin-top: $marginTop;
+    .socialMediaTitle {
+      color: $colorPrimary;
+      font-weight: $fontWeightBold;
+      font-size: 1.4rem;
+      cursor: default;
+    }
+    .socialMediaItems {
+      display: flex;
+      margin-top: 15px;
+      > a img:hover {
+        transition: 0.3s all;
+        filter: brightness(110%);
+        transform: scale(1.05);
+      }
     }
   }
 
@@ -79,8 +103,7 @@ $transitionDuration: 0.4s;
     }
 
     .contacts,
-    .logo,
-    .socialMedia {
+    .logo {
       width: 100%;
     }
 

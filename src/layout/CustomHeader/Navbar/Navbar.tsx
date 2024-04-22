@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Dropdown, Space } from "antd";
 import { Button, Menu } from "antd";
 import { DownOutlined, LoginOutlined } from "@ant-design/icons";
 
 import { useTranslation } from "react-i18next";
+
+import { Link } from "react-router-dom";
 
 import styles from "../CustomHeader.module.scss";
 import { HeaderPropsType } from "../../../types/types";
@@ -15,20 +17,19 @@ export const Navbar: React.FC<HeaderPropsType> = ({
   handleLanguageClick,
   languageItems,
   language,
+  changeLanguage,
 }) => {
-  const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-    i18n.changeLanguage("en");
-  }, [i18n]);
-
-  const changeLanguage = (language: string): void => {
-    i18n.changeLanguage(language);
-  };
+  const { t } = useTranslation();
 
   return (
     <div className={styles.navbar}>
+      <Link to={"/main"}>
+        <Button type="link" className={styles.backToMainBtn}>
+          {t("main")}
+        </Button>
+      </Link>
       <div className={styles.settings}>
+        <div className={styles.verticalLine}></div>
         <p className={styles.settingTitle}>{t("theme")}</p>
         <Dropdown
           overlay={
@@ -77,18 +78,22 @@ export const Navbar: React.FC<HeaderPropsType> = ({
         <div className={styles.verticalLine}></div>
       </div>
       <div className={styles.login}>
-        <Button type="link" className={styles.signIn}>
-          {t("signIn")}
-        </Button>
-        <Button
-          type="primary"
-          shape="round"
-          className={styles.btn}
-          size="large"
-          icon={<LoginOutlined />}
-        >
-          {t("signUp")}
-        </Button>
+        <Link to={"/signin"}>
+          <Button type="link" className={styles.signIn}>
+            {t("signIn")}
+          </Button>
+        </Link>
+        <Link to={"/signup"}>
+          <Button
+            type="primary"
+            shape="round"
+            className={styles.btn}
+            size="large"
+            icon={<LoginOutlined />}
+          >
+            {t("signUp")}
+          </Button>
+        </Link>
       </div>
     </div>
   );

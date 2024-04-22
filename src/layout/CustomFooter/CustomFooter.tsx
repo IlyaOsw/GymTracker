@@ -10,7 +10,7 @@ const footerStyle: React.CSSProperties = {
   textAlign: "center",
   color: "#fff",
   backgroundColor: "#141414",
-  padding: "25px 0px",
+  padding: "20px 0px",
 };
 
 export const CustomFooter: React.FC = React.memo(() => {

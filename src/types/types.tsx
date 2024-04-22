@@ -1,3 +1,10 @@
+export enum SocialLinks {
+  LINKEDIN = "Linkedin",
+  FACEBOOK = "Facebook",
+  INSTAGRAM = "Instagram",
+  TELEGRAM = "Telegram",
+}
+
 export interface MenuItem {
   key: string;
   label: string;
@@ -5,12 +12,13 @@ export interface MenuItem {
 }
 
 export type HeaderPropsType = {
-  setVisible?: (visible: boolean) => void;
-  visible?: boolean;
+  open?: boolean;
+  setOpen?: (open: boolean) => void;
   theme?: string;
   handleThemeClick?: ({ key }: { key: string }) => void;
   themeItems?: MenuItem[];
   language?: string;
   handleLanguageClick?: ({ key }: { key: string }) => void;
   languageItems?: MenuItem[];
+  changeLanguage: (language: string) => void;
 };
