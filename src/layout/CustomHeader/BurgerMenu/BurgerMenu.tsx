@@ -1,6 +1,6 @@
 import { DownOutlined } from "@ant-design/icons";
 import { Drawer, Menu, Button, Dropdown, Space } from "antd";
-import React, { useEffect } from "react";
+import React from "react";
 import { Divider } from "antd";
 
 import { useTranslation } from "react-i18next";
@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { HeaderPropsType } from "../../../types/types";
 
 import styles from "../CustomHeader.module.scss";
+import i18n from "../../../i18n";
 
 export const BurgerMenu: React.FC<HeaderPropsType> = ({
   setVisible,
@@ -19,11 +20,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   handleLanguageClick,
   languageItems,
 }) => {
-  const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-    i18n.changeLanguage("en");
-  }, [i18n]);
+  const { t } = useTranslation();
 
   const changeLanguage = (language: string): void => {
     i18n.changeLanguage(language);
