@@ -56,3 +56,18 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .title {
+    top: 40%;
+    font-size: 40px;
+    line-height: 1.2;
+  }
+  .buttons {
+    top: 65%;
+    .downloadImage {
+      height: 40px;
+      width: 140px;
+    }
+  }
+}

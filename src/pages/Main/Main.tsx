@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { Greeting } from "./Greeting/Greeting";
 import { Hexagon } from "./Hexagon/Hexagon";
 import { MainImage } from "./MainImage/MainImage";
+import { Offer } from "./Offer/Offer";
 
 const container: React.CSSProperties = {
   maxWidth: "1200px",
@@ -20,6 +21,7 @@ const Main: React.FC = () => {
       <div style={container}>
         <Greeting />
         <Hexagon />
+        <Offer />
       </div>
     </>
   );

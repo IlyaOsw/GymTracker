@@ -1,4 +1,3 @@
-import { RightCircleOutlined } from "@ant-design/icons";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -22,10 +21,7 @@ export const MainImage: React.FC = () => {
       </div>
       <div className={styles.buttons}>
         <Link to={"/signup"}>
-          <CustomButton
-            icon={<RightCircleOutlined />}
-            className={styles.joinBtn}
-          >
+          <CustomButton className={styles.joinBtn}>
             {t("joinToday")}
           </CustomButton>
         </Link>

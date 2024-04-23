@@ -6,7 +6,7 @@ import { Description } from "./Description/Description";
 
 export const Greeting: React.FC = () => {
   return (
-    <div className={styles.main}>
+    <div className={styles.wrapper}>
       <Description />
       <Images />
     </div>

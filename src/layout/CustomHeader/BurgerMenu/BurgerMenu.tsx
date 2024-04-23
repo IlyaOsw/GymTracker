@@ -41,23 +41,21 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     navigate("/signup");
   };
 
-  const themeMenuItems: MenuProps["items"] =
-    themeItems?.map((item) => ({
-      key: item.key,
-      label: (
-        <div>
-          <span className={styles.themeIcon}>{item.icon}</span>
-          <span className={styles.dropdownItem}>{item.label}</span>
-        </div>
-      ),
-    })) || [];
+  const themeMenuItems: MenuProps["items"] = themeItems?.map((item) => ({
+    key: item.key,
+    label: (
+      <div>
+        <span className={styles.themeIcon}>{item.icon}</span>
+        <span className={styles.dropdownItem}>{item.label}</span>
+      </div>
+    ),
+  }));
 
-  const languageMenuItems: MenuProps["items"] =
-    languageItems?.map((item) => ({
-      key: item.key,
-      label: <span className={styles.dropdownItem}>{item.label}</span>,
-      onClick: () => changeLanguage(item.label),
-    })) || [];
+  const languageMenuItems: MenuProps["items"] = languageItems?.map((item) => ({
+    key: item.key,
+    label: <span className={styles.dropdownItem}>{item.label}</span>,
+    onClick: () => changeLanguage(item.label),
+  }));
 
   return (
     <Drawer

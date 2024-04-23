@@ -22,3 +22,9 @@ export type HeaderPropsType = {
   languageItems?: MenuItem[];
   changeLanguage: (language: string) => void;
 };
+
+export interface ImageData {
+  src: string;
+  alt: string;
+  text: string;
+}

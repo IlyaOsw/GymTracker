@@ -22,13 +22,6 @@ $letterSpacing: 3px;
     top: 50%;
     left: 40%;
     transform: translate(-50%, -50%);
-    text-align: center;
-    width: 100%;
-    font-size: $fontSizeLarge;
-    font-style: italic;
-    cursor: default;
-    color: $colorPrimary;
-    letter-spacing: $letterSpacing;
 
     @media (max-width: 992px) {
       font-size: $fontSizeSmall;

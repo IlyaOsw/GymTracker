@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 import styles from "../CustomHeader.module.scss";
 import { HeaderPropsType } from "../../../types/types";
+import { CustomButton } from "../../../components/Button/CustomButton";
 
 export const Navbar: React.FC<HeaderPropsType> = ({
   handleThemeClick,
@@ -21,23 +22,21 @@ export const Navbar: React.FC<HeaderPropsType> = ({
 }) => {
   const { t } = useTranslation();
 
-  const themeMenuItems: MenuProps["items"] =
-    themeItems?.map((item) => ({
-      key: item.key,
-      label: (
-        <div>
-          <span className={styles.themeIcon}>{item.icon}</span>
-          <span className={styles.dropdownItem}>{item.label}</span>
-        </div>
-      ),
-    })) || [];
+  const themeMenuItems: MenuProps["items"] = themeItems?.map((item) => ({
+    key: item.key,
+    label: (
+      <div>
+        <span className={styles.themeIcon}>{item.icon}</span>
+        <span className={styles.dropdownItem}>{item.label}</span>
+      </div>
+    ),
+  }));
 
-  const languageMenuItems: MenuProps["items"] =
-    languageItems?.map((item) => ({
-      key: item.key,
-      label: <span className={styles.dropdownItem}>{item.label}</span>,
-      onClick: () => changeLanguage(item.label),
-    })) || [];
+  const languageMenuItems: MenuProps["items"] = languageItems?.map((item) => ({
+    key: item.key,
+    label: <span className={styles.dropdownItem}>{item.label}</span>,
+    onClick: () => changeLanguage(item.label),
+  }));
 
   return (
     <div className={styles.navbar}>
@@ -76,15 +75,9 @@ export const Navbar: React.FC<HeaderPropsType> = ({
           </Button>
         </Link>
         <Link to={"/signup"}>
-          <Button
-            type="primary"
-            shape="round"
-            className={styles.btn}
-            size="large"
-            icon={<LoginOutlined />}
-          >
+          <CustomButton className={styles.btn} icon={<LoginOutlined />}>
             {t("signUp")}
-          </Button>
+          </CustomButton>
         </Link>
       </div>
     </div>

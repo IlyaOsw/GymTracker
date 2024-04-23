@@ -1,84 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
+
+import { ImageData } from "../../../types/types";
 
 import styles from "./Hexagon.module.scss";
 
+const imagesData: ImageData[] = [
+  {
+    src: "/assets/Icons/Hexagon/Hexagon.svg",
+    alt: "Hexagon",
+    text: "register",
+  },
+  { src: "/assets/Icons/Hexagon/Hexagon.svg", alt: "Hexagon", text: "track" },
+  { src: "/assets/Icons/Hexagon/Hexagon.svg", alt: "Hexagon", text: "result" },
+];
+
 export const Hexagon: React.FC = () => {
   const { t } = useTranslation();
-  const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <div className={styles.block}>
-      <div className={styles.imageContainer}>
-        <img
-          src={process.env.PUBLIC_URL + "/assets/Icons/Hexagon/Hexagon.svg"}
-          alt="Hexagon"
-          className={styles.hexagon}
-        />
-        <div className={styles.imageText}>{t("register")}</div>
-      </div>
-      {screenWidth > 992 ? (
-        <img
-          src={
-            process.env.PUBLIC_URL + "/assets/Icons/Hexagon/LineHorizontal.svg"
-          }
-          alt="Line"
-          className={styles.lineHorizontal}
-        />
-      ) : (
-        <img
-          src={
-            process.env.PUBLIC_URL + "/assets/Icons/Hexagon/LineVertical.svg"
-          }
-          alt="Line"
-          className={styles.lineVertical}
-        />
-      )}
-      <div className={styles.imageContainer}>
-        <img
-          src={process.env.PUBLIC_URL + "/assets/Icons/Hexagon/Hexagon.svg"}
-          alt="Hexagon"
-          className={styles.hexagon}
-        />
-        <div className={styles.imageText}>{t("track")}</div>
-      </div>
-      {screenWidth > 992 ? (
-        <img
-          src={
-            process.env.PUBLIC_URL + "/assets/Icons/Hexagon/LineHorizontal.svg"
-          }
-          alt="Line"
-          className={styles.lineHorizontal}
-        />
-      ) : (
-        <img
-          src={
-            process.env.PUBLIC_URL + "/assets/Icons/Hexagon/LineVertical.svg"
-          }
-          alt="Line"
-          className={styles.lineVertical}
-        />
-      )}
-      <div className={styles.imageContainer}>
-        <img
-          src={process.env.PUBLIC_URL + "/assets/Icons/Hexagon/Hexagon.svg"}
-          alt="Hexagon"
-          className={styles.hexagon}
-        />
-        <div className={styles.imageText}>{t("result")}</div>
-      </div>
+      {imagesData.map((data, index) => (
+        <React.Fragment key={index}>
+          <div className={styles.imageContainer}>
+            <img
+              src={process.env.PUBLIC_URL + data.src}
+              alt={data.alt}
+              className={styles.hexagon}
+            />
+            <div className={styles.imageText}>{t(data.text)}</div>
+          </div>
+          {index < imagesData.length - 1 && (
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                "/assets/Icons/Hexagon/LineHorizontal.svg"
+              }
+              alt="Line"
+              className={styles.lineHorizontal}
+            />
+          )}
+        </React.Fragment>
+      ))}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-.main {
+.wrapper {
   margin: 100px 0px;
   height: 100%;
   display: flex;
@@ -7,7 +7,7 @@
 }
 
 @media (max-width: 1200px) {
-  .main {
+  .wrapper {
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@
 }
 
 @media (max-width: 768px) {
-  .main {
+  .wrapper {
     margin: 50px 0;
   }
 }
