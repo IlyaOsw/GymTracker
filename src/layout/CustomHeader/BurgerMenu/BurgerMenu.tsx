@@ -1,5 +1,5 @@
 import { DownOutlined } from "@ant-design/icons";
-import { Drawer, Menu, Button, Dropdown, Space } from "antd";
+import { Drawer, Menu, Button, Dropdown, Space, MenuProps } from "antd";
 import React from "react";
 import { Divider } from "antd";
 
@@ -40,6 +40,24 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     onClose();
     navigate("/signup");
   };
+
+  const themeMenuItems: MenuProps["items"] =
+    themeItems?.map((item) => ({
+      key: item.key,
+      label: (
+        <div>
+          <span className={styles.themeIcon}>{item.icon}</span>
+          <span className={styles.dropdownItem}>{item.label}</span>
+        </div>
+      ),
+    })) || [];
+
+  const languageMenuItems: MenuProps["items"] =
+    languageItems?.map((item) => ({
+      key: item.key,
+      label: <span className={styles.dropdownItem}>{item.label}</span>,
+      onClick: () => changeLanguage(item.label),
+    })) || [];
 
   return (
     <Drawer
@@ -83,19 +101,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
         <Divider />
         <Menu.Item key="4" className={styles.burgerItem}>
           <span className={styles.burgerSettings}>{t("theme")}</span>
-          <Dropdown
-            overlay={
-              <Menu onClick={handleThemeClick}>
-                {themeItems &&
-                  themeItems.map((item) => (
-                    <Menu.Item key={item.key}>
-                      <span className={styles.themeIcon}>{item.icon}</span>
-                      <span>{item.label}</span>
-                    </Menu.Item>
-                  ))}
-              </Menu>
-            }
-          >
+          <Dropdown menu={{ items: themeMenuItems }}>
             <Space>
               <Button type="text" className={styles.settingsButton}>
                 {theme}
@@ -106,24 +112,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
         </Menu.Item>
         <Menu.Item key="5" className={styles.burgerItem}>
           <span className={styles.burgerSettings}>{t("language")}</span>
-          <Dropdown
-            overlay={
-              <Menu
-                onClick={handleLanguageClick}
-                className={styles.settingsBtn}
-              >
-                {languageItems &&
-                  languageItems.map((item) => (
-                    <Menu.Item
-                      key={item.key}
-                      onClick={() => changeLanguage(item.label)}
-                    >
-                      {item.label}
-                    </Menu.Item>
-                  ))}
-              </Menu>
-            }
-          >
+          <Dropdown menu={{ items: languageMenuItems }}>
             <Space>
               <Button type="text" className={styles.settingsButton}>
                 {language}
