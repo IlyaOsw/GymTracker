@@ -38,6 +38,9 @@ $transitionDuration: 0.4s;
       cursor: pointer;
       position: relative;
       transition: all $transitionDuration;
+      > a {
+        color: #ffffff !important;
+      }
 
       &:hover {
         filter: brightness(130%);

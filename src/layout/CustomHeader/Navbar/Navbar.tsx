@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown, MenuProps, Space } from "antd";
 import { Button } from "antd";
-import { DownOutlined, LoginOutlined } from "@ant-design/icons";
+import { DownOutlined, HomeOutlined, LoginOutlined } from "@ant-design/icons";
 
 import { useTranslation } from "react-i18next";
 
@@ -41,7 +41,11 @@ export const Navbar: React.FC<HeaderPropsType> = ({
   return (
     <div className={styles.navbar}>
       <Link to={"/main"}>
-        <Button type="link" className={styles.backToMainBtn}>
+        <Button
+          type="link"
+          className={styles.backToMainBtn}
+          icon={<HomeOutlined />}
+        >
           {t("main")}
         </Button>
       </Link>

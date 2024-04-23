@@ -21,5 +21,15 @@
     "descriptionText": "Would you like to achieve your fitness goals faster and more efficiently than ever before? Introducing GYM TRACKER - your newcompanion in the world of healthy living!",
     "register": "Register",
     "track": "Track",
-    "result": "Result"
+    "result": "Result",
+    "offerTitle": "What we offer",
+    "offerDescription": "We're committed to bringing you the best workout experience.",
+    "cardTitle1": "Convenient workout tracking",
+    "cardText1": "Never forget your workouts with our intuitive interface. Simply input your exercises, duration, and intensity, and GYM TRACKERwill take care of the rest.",
+    "cardTitle2": "Motivation at every step ",
+    "cardText2": "Receive daily reminders, motivational messages, and achievements for your successes. Our motivation system supports you on the path to your goals.",
+    "cardTitle3": "Tracking performance",
+    "cardText3": "Track your workout metrics, including time, distance, repetitions, and much more. Analyze your progress and optimize your training plans.",
+    "cardTitle4": "Goal setting and achievement",
+    "cardText4": "Set clear and measurable goals for yourself and track your progress towards achieving them. GYP TRACKER will assist you every step of the way on your path to success."
 }

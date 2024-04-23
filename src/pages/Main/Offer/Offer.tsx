@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { DescriptionTitle } from "../../../components/DescriptionTitle/DescriptionTitle";
 import { DescriptionText } from "../../../components/DescriptionText/DescriptionText";
@@ -6,13 +7,11 @@ import { DescriptionText } from "../../../components/DescriptionText/Description
 import { CustomCard } from "./CustomCard/CustomCard";
 
 export const Offer: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div>
-      <DescriptionTitle text={"What we offer"} textAlign="center" />
-      <DescriptionText
-        text={"We're committed to bringing you the best workout experience."}
-        textAlign="center"
-      />
+      <DescriptionTitle text={t("offerTitle")} textAlign="center" />
+      <DescriptionText text={t("offerDescription")} textAlign="center" />
       <CustomCard />
     </div>
   );

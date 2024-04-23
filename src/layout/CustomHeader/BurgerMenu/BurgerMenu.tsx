@@ -1,6 +1,6 @@
 import { DownOutlined } from "@ant-design/icons";
 import { Drawer, Menu, Button, Dropdown, Space, MenuProps } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { Divider } from "antd";
 
 import { useTranslation } from "react-i18next";
@@ -40,6 +40,22 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     onClose();
     navigate("/signup");
   };
+
+  useEffect(() => {
+    const handleScroll = (event: TouchEvent | WheelEvent) => {
+      if (open) {
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener("touchmove", handleScroll, { passive: false });
+    document.addEventListener("wheel", handleScroll, { passive: false });
+
+    return () => {
+      document.removeEventListener("touchmove", handleScroll);
+      document.removeEventListener("wheel", handleScroll);
+    };
+  }, [open]);
 
   const themeMenuItems: MenuProps["items"] = themeItems?.map((item) => ({
     key: item.key,
@@ -119,7 +135,6 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
             </Space>
           </Dropdown>
         </Menu.Item>
-        <Divider />
       </Menu>
     </Drawer>
   );

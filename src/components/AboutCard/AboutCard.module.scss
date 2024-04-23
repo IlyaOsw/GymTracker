@@ -1,0 +1,22 @@
+.card {
+  width: 400px;
+  height: 425px;
+  background-color: #141414;
+  border: none;
+  aspect-ratio: 4 / 3;
+  cursor: default;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px !important;
+    box-shadow: 0px 0px 10px rgba(0, 151, 178, 0.3);
+  }
+
+  .cardText {
+    color: #ffffff;
+    font-size: 1rem;
+    text-align: center;
+  }
+}

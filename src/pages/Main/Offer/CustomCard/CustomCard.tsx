@@ -1,94 +1,56 @@
 import React from "react";
-import { Card, Typography } from "antd";
+import { useTranslation } from "react-i18next";
+
+import { AboutCard } from "../../../../components/AboutCard/AboutCard";
 
 import styles from "./CustomCard.module.scss";
 
 export const CustomCard: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className={styles.wrapper}>
-      <Card
-        className={styles.card}
-        styles={{ header: { border: "none" } }}
-        title={
-          <Typography.Title level={4} style={{ color: "#ffffff" }}>
-            Convenient workout tracking
-          </Typography.Title>
-        }
-        cover={
-          <img
-            alt="Card"
-            src={process.env.PUBLIC_URL + "/assets/Images/MainCards/Card1.jpg"}
+      <div className={styles.upperBlock}>
+        <div className={`${styles.horizontalLine} ${styles.top}`} />
+        <div className={styles.firstCard}>
+          <AboutCard
+            title={t("cardTitle1")}
+            text={t("cardText1")}
+            image={
+              process.env.PUBLIC_URL + "/assets/Images/MainCards/Card1.jpg"
+            }
           />
-        }
-      >
-        <p className={styles.cardText}>
-          Never forget your workouts with our intuitive interface. Simply input
-          your exercises, duration, and intensity, and GYM TRACKER will take
-          care of the rest.
-        </p>
-      </Card>
-      <Card
-        className={styles.card}
-        styles={{ header: { border: "none" } }}
-        title={
-          <Typography.Title level={4} style={{ color: "#ffffff" }}>
-            Motivation at every step
-          </Typography.Title>
-        }
-        cover={
-          <img
-            alt="Card"
-            src={process.env.PUBLIC_URL + "/assets/Images/MainCards/Card2.jpg"}
+        </div>
+        <div className={styles.secondCard}>
+          <AboutCard
+            title={t("cardTitle2")}
+            text={t("cardText2")}
+            image={
+              process.env.PUBLIC_URL + "/assets/Images/MainCards/Card2.jpg"
+            }
           />
-        }
-      >
-        <p className={styles.cardText}>
-          Receive daily reminders, motivational messages, and achievements for
-          your successes. Our motivation system supports you on the path to your
-          goals.
-        </p>
-      </Card>
-      <Card
-        className={styles.card}
-        styles={{ header: { border: "none" } }}
-        title={
-          <Typography.Title level={4} style={{ color: "#ffffff" }}>
-            Tracking performance
-          </Typography.Title>
-        }
-        cover={
-          <img
-            alt="Card"
-            src={process.env.PUBLIC_URL + "/assets/Images/MainCards/Card3.jpg"}
+        </div>
+      </div>
+      <div className={styles.bottomBlock}>
+        <div className={`${styles.horizontalLine} ${styles.bottom}`} />
+        <div className={styles.thirdCard}>
+          <AboutCard
+            title={t("cardTitle3")}
+            text={t("cardText3")}
+            image={
+              process.env.PUBLIC_URL + "/assets/Images/MainCards/Card3.jpg"
+            }
           />
-        }
-      >
-        <p className={styles.cardText}>
-          Track your workout metrics, including time, distance, repetitions, and
-          much more. Analyze your progress and optimize your training plans.
-        </p>
-      </Card>
-      <Card
-        className={styles.card}
-        styles={{ header: { border: "none" } }}
-        title={
-          <Typography.Title level={4} style={{ color: "#ffffff" }}>
-            Goal setting and achievement
-          </Typography.Title>
-        }
-        cover={
-          <img
-            alt="Card"
-            src={process.env.PUBLIC_URL + "/assets/Images/MainCards/Card4.jpg"}
+        </div>
+        <div className={styles.fourthCard}>
+          <AboutCard
+            title={t("cardTitle4")}
+            text={t("cardText4")}
+            image={
+              process.env.PUBLIC_URL + "/assets/Images/MainCards/Card4.jpg"
+            }
           />
-        }
-      >
-        <p className={styles.cardText}>
-          Set clear and measurable goals for yourself and track your progress
-          towards achieving them. GYP TRACKER will assist you every step of the
-          way on your path to success.
-        </p>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };

@@ -2,23 +2,78 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  min-height: 1000px;
+  margin-bottom: 75px;
+  position: relative;
+
+  .horizontalLine {
+    height: 15px;
+    background-image: linear-gradient(
+      to right,
+      #0097b2,
+      #006a7c,
+      #0097b2,
+      #006a7c,
+      #0097b2,
+      #006a7c,
+      #0097b2
+    );
+    box-shadow: 0px 0px 10px rgba(0, 151, 178, 0.3);
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-radius: 15px;
+    transform: translateX(-50%);
+    width: 5000px;
+  }
+
+  .horizontalLine.top {
+    top: 20%;
+  }
+
+  .horizontalLine.bottom {
+    bottom: 28%;
+  }
 }
 
-.card {
-  width: 300px;
-  background-color: #141414;
-  border: none;
+.upperBlock,
+.bottomBlock {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.card img {
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px !important;
-  box-shadow: 0px 0px 10px rgba(0, 151, 178, 0.3);
+.firstCard,
+.secondCard,
+.thirdCard,
+.fourthCard {
+  width: 50%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.cardText {
-  color: #ffffff;
-  font-size: 1rem;
-  text-align: start;
+.secondCard,
+.fourthCard {
+  align-items: flex-end;
+}
+
+@media (max-width: 992px) {
+  .upperBlock,
+  .bottomBlock {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .firstCard,
+    .secondCard,
+    .thirdCard,
+    .fourthCard {
+      margin: 30px 0px;
+    }
+  }
+  .horizontalLine {
+    display: none;
+  }
 }
