@@ -13,6 +13,7 @@ export const AboutCard: React.FC<AboutCardProps> = ({ title, text, image }) => {
   return (
     <Card
       className={styles.card}
+      styles={{ header: { border: "none" } }}
       title={
         <Typography.Title level={4} style={{ color: "#ffffff" }}>
           {title}
