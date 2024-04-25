@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkgymtracker=self.webpackChunkgymtracker||[]).push([[572],{7572:(e,r,c)=>{c.r(r),c.d(r,{default:()=>l});var s=c(5043),h=c(579);const l=()=>((0,s.useEffect)((()=>{window.scroll(0,0)}),[]),(0,h.jsx)("div",{style:{height:"80vh",backgroundColor:"#141414"},children:(0,h.jsx)("h1",{children:"SIGN IN PAGE"})}))}}]);
-//# sourceMappingURL=572.b32c199b.chunk.js.map
