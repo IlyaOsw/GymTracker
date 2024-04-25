@@ -1,0 +1,60 @@
+$marginTop: 20px;
+$transitionDuration: 0.4s;
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  margin-top: $marginTop;
+  align-items: start;
+
+  > img {
+    margin-top: $marginTop;
+  }
+
+  .contactsTitle {
+    color: #0097b2;
+    font-weight: bold;
+    font-size: 1.4rem;
+    cursor: default;
+  }
+
+  .contactsItem {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    position: relative;
+    transition: all $transitionDuration;
+
+    > a {
+      color: #ffffff !important;
+    }
+
+    &:hover {
+      filter: brightness(130%);
+      transform: translateY(0);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 1px;
+      background-color: #ffffff;
+      transition: width $transitionDuration;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    &:hover::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    align-items: center;
+  }
+}

@@ -5,35 +5,6 @@
   min-height: 1000px;
   margin-bottom: 75px;
   position: relative;
-
-  .horizontalLine {
-    height: 15px;
-    background-image: linear-gradient(
-      to right,
-      #0097b2,
-      #006a7c,
-      #0097b2,
-      #006a7c,
-      #0097b2,
-      #006a7c,
-      #0097b2
-    );
-    box-shadow: 0px 0px 10px rgba(0, 151, 178, 0.3);
-    position: absolute;
-    left: 0;
-    right: 0;
-    border-radius: 15px;
-    transform: translateX(-50%);
-    width: 5000px;
-  }
-
-  .horizontalLine.top {
-    top: 20%;
-  }
-
-  .horizontalLine.bottom {
-    bottom: 28%;
-  }
 }
 
 .upperBlock,

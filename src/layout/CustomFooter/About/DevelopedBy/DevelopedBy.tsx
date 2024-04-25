@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import styles from "../About.module.scss";
 
-export const Logo: React.FC = () => {
+export const DevelopedBy: React.FC = () => {
   const { t } = useTranslation();
 
   return (

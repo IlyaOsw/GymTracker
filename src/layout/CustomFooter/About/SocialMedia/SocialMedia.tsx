@@ -1,10 +1,11 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import styles from "../About.module.scss";
 import { SocialLinks } from "../../../../types/types";
 
-export const Media: React.FC = () => {
+import styles from "./SocialMedia.module.scss";
+
+export const SocialMedia: React.FC = () => {
   const { t } = useTranslation();
 
   const links: { id: number; url: string; label: SocialLinks }[] = [

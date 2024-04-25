@@ -1,102 +1,28 @@
-$alignCenter: center;
-$justifySpaceAround: space-around;
-$flexWrap: wrap;
-$colorPrimary: #0097b2;
-$fontWeightBold: bold;
-$fontSizeMedium: 1.2rem;
 $marginTop: 20px;
-$transitionDuration: 0.4s;
 
-.main {
+.wrapper {
   display: flex;
-  align-items: $alignCenter;
-  justify-content: $justifySpaceAround;
-  flex-wrap: $flexWrap;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 
-  .contacts,
   .logo {
     display: flex;
     flex-direction: column;
-    align-items: $alignCenter;
-    justify-content: $alignCenter;
-    align-self: flex-start;
     margin-top: $marginTop;
+    align-items: center;
+    justify-content: center;
+
     > img {
       margin-top: $marginTop;
-    }
-
-    .contactsTitle {
-      color: $colorPrimary;
-      font-weight: $fontWeightBold;
-      font-size: 1.4rem;
-      cursor: default;
-    }
-
-    .contactsItem {
-      margin-top: 10px;
-      font-size: $fontSizeMedium;
-      cursor: pointer;
-      position: relative;
-      transition: all $transitionDuration;
-      > a {
-        color: #ffffff !important;
-      }
-
-      &:hover {
-        filter: brightness(130%);
-        color: $colorPrimary;
-        transform: translateY(0);
-      }
-
-      &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 0;
-        height: 1px;
-        background-color: $colorPrimary;
-        transition: width $transitionDuration;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-      }
-
-      &:hover::after {
-        width: 100%;
-        left: 0;
-      }
     }
 
     .logoDescription {
       text-align: center;
       font-size: 1rem;
       margin-top: $marginTop;
-      font-weight: $fontWeightBold;
+      font-weight: bold;
       cursor: default;
-    }
-  }
-
-  .socialMedia {
-    display: flex;
-    flex-direction: column;
-    align-items: $alignCenter;
-    justify-content: $alignCenter;
-    align-self: flex-start;
-    margin-top: $marginTop;
-    .socialMediaTitle {
-      color: $colorPrimary;
-      font-weight: $fontWeightBold;
-      font-size: 1.4rem;
-      cursor: default;
-    }
-    .socialMediaItems {
-      display: flex;
-      margin-top: 15px;
-      > a img:hover {
-        transition: 0.3s all;
-        filter: brightness(110%);
-        transform: scale(1.05);
-      }
     }
   }
 
@@ -105,13 +31,9 @@ $transitionDuration: 0.4s;
       flex-direction: column;
     }
 
-    .contacts,
     .logo {
       width: 100%;
-    }
-
-    .logo {
-      align-self: center;
+      align-items: center;
       order: 3;
     }
   }

@@ -1,7 +1,6 @@
 import React from "react";
 import { Layout } from "antd";
 
-import { Img } from "./Img/Img";
 import { About } from "./About/About";
 
 const { Footer } = Layout;
@@ -16,7 +15,6 @@ const footerStyle: React.CSSProperties = {
 export const CustomFooter: React.FC = React.memo(() => {
   return (
     <Footer style={footerStyle}>
-      <Img />
       <About />
     </Footer>
   );

@@ -1,0 +1,25 @@
+.socialMedia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  margin-top: 20px;
+
+  .socialMediaTitle {
+    color: #0097b2;
+    font-weight: bold;
+    font-size: 1.4rem;
+    cursor: default;
+  }
+
+  .socialMediaItems {
+    display: flex;
+    margin-top: 15px;
+    > a img:hover {
+      transition: 0.3s all;
+      filter: brightness(110%);
+      transform: scale(1.05);
+    }
+  }
+}

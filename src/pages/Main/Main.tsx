@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 
+import { Hexagon } from "../../components/Hexagon/Hexagon";
+
 import { Greeting } from "./Greeting/Greeting";
-import { Hexagon } from "./Hexagon/Hexagon";
+
 import { MainImage } from "./MainImage/MainImage";
 import { Offer } from "./Offer/Offer";
 

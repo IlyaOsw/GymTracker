@@ -1,14 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { animated, useSpring } from "@react-spring/web";
 
 import { useTranslation } from "react-i18next";
 
 import { CustomButton } from "../../../components/Button/CustomButton";
 
+import { useAnimationObserver } from "../../../hooks/useAnimationObserver";
+
 import styles from "./MainImage.module.scss";
 
 export const MainImage: React.FC = () => {
   const { t } = useTranslation();
+  const { isVisible, ref } = useAnimationObserver();
+
+  const animationProps = useSpring({
+    opacity: isVisible ? 1 : 0,
+    marginTop: isVisible ? "0px" : "margitTop100px",
+    from: { opacity: 0, marginTop: "100px" },
+    delay: 750,
+  });
+
   return (
     <div className={styles.wrapper}>
       <img
@@ -16,10 +28,10 @@ export const MainImage: React.FC = () => {
         src={process.env.PUBLIC_URL + "/assets/Images/MainImage.jpg"}
         alt="Logo"
       />
-      <div className={styles.title}>
+      <animated.div ref={ref} style={animationProps} className={styles.title}>
         {t("title1")} <br /> {t("title2")}
-      </div>
-      <div className={styles.buttons}>
+      </animated.div>
+      <animated.div ref={ref} style={animationProps} className={styles.buttons}>
         <Link to={"/signup"}>
           <CustomButton className={styles.joinBtn}>
             {t("joinToday")}
@@ -30,7 +42,7 @@ export const MainImage: React.FC = () => {
           src={process.env.PUBLIC_URL + "/assets/Images/DownloadOnApp.png"}
           alt="Download"
         />
-      </div>
+      </animated.div>
     </div>
   );
 };
