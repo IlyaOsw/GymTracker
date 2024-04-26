@@ -31,5 +31,11 @@
     "cardTitle3": "Tracking performance",
     "cardText3": "Track your workout metrics, including time, distance, repetitions, and much more. Analyze your progress and optimize your training plans.",
     "cardTitle4": "Goal setting and achievement",
-    "cardText4": "Set clear and measurable goals for yourself and track your progress towards achieving them. GYP TRACKER will assist you every step of the way on your path to success."
+    "cardText4": "Set clear and measurable goals for yourself and track your progress towards achieving them. GYP TRACKER will assist you every step of the way on your path to success.",
+    "email": "E-Mail",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "notRegistered": "Not registered?",
+    "createAnAccount": "Create an account"
 }

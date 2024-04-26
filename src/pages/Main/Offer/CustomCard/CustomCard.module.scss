@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  min-height: 1000px;
+  min-height: 1050px;
   margin-bottom: 75px;
   position: relative;
 }
@@ -41,14 +41,5 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    .firstCard,
-    .secondCard,
-    .thirdCard,
-    .fourthCard {
-      margin: 30px 0px;
-    }
-  }
-  .horizontalLine {
-    display: none;
   }
 }

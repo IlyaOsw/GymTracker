@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 
 import { Hexagon } from "../../components/Hexagon/Hexagon";
 
+import { FooterImage } from "../../components/FooterImage/FooterImage";
+
 import { Greeting } from "./Greeting/Greeting";
 
 import { MainImage } from "./MainImage/MainImage";
@@ -25,6 +27,7 @@ const Main: React.FC = () => {
         <Hexagon />
         <Offer />
       </div>
+      <FooterImage />
     </>
   );
 };

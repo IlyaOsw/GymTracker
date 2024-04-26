@@ -25,6 +25,11 @@ export const CustomButton = ({
       icon={icon}
       size={size}
       className={className}
+      style={{
+        backgroundColor: "#0097b2",
+        borderColor: "#0097b2",
+        color: "#ffffff",
+      }}
     >
       {children}
     </Button>

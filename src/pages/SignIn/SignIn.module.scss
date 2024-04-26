@@ -1,0 +1,32 @@
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 75px 0px;
+
+  .signInBtn {
+    margin: 50px 0px;
+    letter-spacing: 3px;
+  }
+}
+
+.options {
+  display: flex;
+  gap: 20px;
+
+  > div {
+    font-size: 1.2rem;
+  }
+}
+
+.checkboxRemember {
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.importantOption {
+  font-size: 1.2rem;
+  color: #0097b2;
+  cursor: pointer;
+}

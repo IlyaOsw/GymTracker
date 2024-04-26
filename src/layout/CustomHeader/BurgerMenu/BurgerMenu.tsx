@@ -1,14 +1,11 @@
 import { DownOutlined } from "@ant-design/icons";
-import { Drawer, Menu, Button, Dropdown, Space, MenuProps } from "antd";
+import { Drawer, Menu, Button, Dropdown, Space } from "antd";
 import React, { useEffect } from "react";
 import { Divider } from "antd";
-
 import { useTranslation } from "react-i18next";
-
 import { Link, useNavigate } from "react-router-dom";
 
 import { HeaderPropsType } from "../../../types/types";
-
 import styles from "../CustomHeader.module.scss";
 
 export const BurgerMenu: React.FC<HeaderPropsType> = ({
@@ -57,22 +54,6 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     };
   }, [open]);
 
-  const themeMenuItems: MenuProps["items"] = themeItems?.map((item) => ({
-    key: item.key,
-    label: (
-      <div>
-        <span className={styles.themeIcon}>{item.icon}</span>
-        <span className={styles.dropdownItem}>{item.label}</span>
-      </div>
-    ),
-  }));
-
-  const languageMenuItems: MenuProps["items"] = languageItems?.map((item) => ({
-    key: item.key,
-    label: <span className={styles.dropdownItem}>{item.label}</span>,
-    onClick: () => changeLanguage(item.label),
-  }));
-
   return (
     <Drawer
       title={t("menu")}
@@ -93,8 +74,10 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
             {t("main")}
           </Link>
         </Menu.Item>
-        <Divider />
-        <Menu.Item key="2" className={styles.burgerItem}>
+        <Menu.Item key="2">
+          <Divider />
+        </Menu.Item>
+        <Menu.Item key="3" className={styles.burgerItem}>
           <Link
             to={"/signin"}
             onClick={handleSignInClick}
@@ -103,7 +86,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
             {t("signIn")}
           </Link>
         </Menu.Item>
-        <Menu.Item key="3" className={styles.burgerItem}>
+        <Menu.Item key="4" className={styles.burgerItem}>
           <Link
             to={"/signup"}
             onClick={handleSignUpClick}
@@ -112,10 +95,24 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
             {t("signUp")}
           </Link>
         </Menu.Item>
-        <Divider />
-        <Menu.Item key="4" className={styles.burgerItem}>
+        <Menu.Item key="5">
+          <Divider />
+        </Menu.Item>
+        <Menu.Item key="6" className={styles.burgerItem}>
           <span className={styles.burgerSettings}>{t("theme")}</span>
-          <Dropdown menu={{ items: themeMenuItems }}>
+          <Dropdown
+            overlay={
+              <Menu onClick={handleThemeClick}>
+                {themeItems &&
+                  themeItems.map((item) => (
+                    <Menu.Item key={item.key}>
+                      <span className={styles.themeIcon}>{item.icon}</span>
+                      <span>{item.label}</span>
+                    </Menu.Item>
+                  ))}
+              </Menu>
+            }
+          >
             <Space>
               <Button type="text" className={styles.settingsButton}>
                 {theme}
@@ -124,9 +121,26 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
             </Space>
           </Dropdown>
         </Menu.Item>
-        <Menu.Item key="5" className={styles.burgerItem}>
+        <Menu.Item key="7" className={styles.burgerItem}>
           <span className={styles.burgerSettings}>{t("language")}</span>
-          <Dropdown menu={{ items: languageMenuItems }}>
+          <Dropdown
+            overlay={
+              <Menu
+                onClick={handleLanguageClick}
+                className={styles.settingsBtn}
+              >
+                {languageItems &&
+                  languageItems.map((item) => (
+                    <Menu.Item
+                      key={item.key}
+                      onClick={() => changeLanguage(item.label)}
+                    >
+                      {item.label}
+                    </Menu.Item>
+                  ))}
+              </Menu>
+            }
+          >
             <Space>
               <Button type="text" className={styles.settingsButton}>
                 {language}
