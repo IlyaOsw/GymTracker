@@ -1,0 +1,75 @@
+.subTitle {
+  font-size: 1.6rem;
+  color: #0097b2;
+  letter-spacing: 1px;
+  cursor: default;
+  font-weight: 600;
+  margin: 50px 0px;
+}
+
+.registrationFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 300px;
+  width: 300px;
+  margin: 75px 0px;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.uploadContainer {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .upload {
+    margin: 50px 0px;
+    &:hover {
+      filter: brightness(110%);
+    }
+  }
+}
+
+.personalInfo {
+  margin: 50px 0px;
+  .personalInfoOptions {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}
+
+.address {
+  .addressOptions {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}
+
+.signUpBtn {
+  margin: 75px 0px;
+  letter-spacing: 2px;
+
+  &:hover {
+    filter: brightness(110%);
+  }
+}

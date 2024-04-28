@@ -37,5 +37,16 @@
     "rememberMe": "Remember me",
     "forgotPassword": "Forgot password?",
     "notRegistered": "Not registered?",
-    "createAnAccount": "Create an account"
+    "createAnAccount": "Create an account",
+    "uploadProfilePhoto": "Upload profile photo",
+    "registration": "Registration",
+    "confrimPassword": "Confrim password",
+    "personalInfo": "Personal information",
+    "firstName": "Frist name",
+    "phone": "Phone number",
+    "lastName": "Last name",
+    "age": "Age",
+    "address": "Address",
+    "country": "Country",
+    "city": "City"
 }

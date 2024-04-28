@@ -8,12 +8,16 @@
   .signInBtn {
     margin: 50px 0px;
     letter-spacing: 2px;
+
+    &:hover {
+      filter: brightness(110%);
+    }
   }
 }
 
 .options {
   display: flex;
-  gap: 15px;
+  gap: 10px;
 
   .notRegistered {
     font-size: 1.1rem;

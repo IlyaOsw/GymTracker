@@ -15,7 +15,7 @@ export const useAnimationObserver = () => {
       },
       {
         root: null,
-        rootMargin: "100px",
+        rootMargin: "0px",
         threshold: 0.3,
       }
     );

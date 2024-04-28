@@ -37,5 +37,16 @@
     "rememberMe": "Запомнить меня",
     "forgotPassword": "Забыли пароль?",
     "notRegistered": "Еще не зарегистрированы?",
-    "createAnAccount": "Создать аккаунт"
+    "createAnAccount": "Создать аккаунт",
+    "uploadProfilePhoto": "Загрузить фото профиля",
+    "registration": "Регистрация",
+    "confrimPassword": "Подтвердите пароль",
+    "personalInfo": "Персональная информация",
+    "firstName": "Имя",
+    "phone": "Номер телефона",
+    "lastName": "Фамилия",
+    "age": "Возраст",
+    "address": "Адрес",
+    "country": "Страна",
+    "city": "Город"
 }
