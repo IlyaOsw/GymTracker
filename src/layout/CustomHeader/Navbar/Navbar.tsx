@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import styles from "../CustomHeader.module.scss";
 import { HeaderPropsType } from "../../../types/types";
-import { CustomButton } from "../../../components/Button/CustomButton";
+import { CustomButton } from "../../../components/CustomButton/CustomButton";
 
 export const Navbar: React.FC<HeaderPropsType> = ({
   handleThemeClick,
@@ -87,7 +87,9 @@ export const Navbar: React.FC<HeaderPropsType> = ({
           </Button>
         </Link>
         <Link to={"/signup"}>
-          <CustomButton icon={<LoginOutlined />}>{t("signUp")}</CustomButton>
+          <CustomButton icon={<LoginOutlined />} className={styles.signUp}>
+            {t("signUp")}
+          </CustomButton>
         </Link>
       </div>
     </div>

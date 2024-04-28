@@ -1,36 +1,24 @@
-$bgColor: #141414;
-$border: 1px solid #0097b2;
-
 .inputWrapper {
-  width: 335px;
+  width: 300px;
   margin-bottom: 25px;
 
   .inputLabel {
     text-align: start;
-    font-size: 1.4rem;
-    padding: 0px 5px;
+    font-size: 1.2rem;
+    padding: 0px 10px;
     cursor: default;
-    letter-spacing: 2px;
   }
 
   .inputField {
     margin: 5px 0px;
-    background-color: $bgColor;
-    border: $border;
+    background-color: #141414;
+    border: 1px solid #0097b2;
     color: #ffffff;
     height: 40px;
     border-radius: 10px;
 
-    &:hover {
-      background-color: $bgColor;
-      border: $border;
-    }
-
     &:focus {
-      outline: none;
-      box-shadow: 0 0 15px #0097b2;
-      background-color: $bgColor;
-      border: $border;
+      box-shadow: 0 0 10px #0097b2;
     }
   }
 }

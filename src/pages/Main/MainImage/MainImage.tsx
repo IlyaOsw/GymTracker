@@ -4,7 +4,7 @@ import { animated, useSpring } from "@react-spring/web";
 
 import { useTranslation } from "react-i18next";
 
-import { CustomButton } from "../../../components/Button/CustomButton";
+import { CustomButton } from "../../../components/CustomButton/CustomButton";
 
 import { useAnimationObserver } from "../../../hooks/useAnimationObserver";
 
@@ -18,7 +18,7 @@ export const MainImage: React.FC = () => {
     opacity: isVisible ? 1 : 0,
     marginTop: isVisible ? "0px" : "margitTop100px",
     from: { opacity: 0, marginTop: "100px" },
-    delay: 750,
+    delay: 1000,
   });
 
   return (

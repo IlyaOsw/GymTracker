@@ -15,7 +15,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({ text, type }) => {
   return (
     <div className={styles.inputWrapper}>
       <p className={styles.inputLabel}>{t(text)}</p>
-      <Input type={type} placeholder="Outlined" className={styles.inputField} />
+      <Input type={type} placeholder={text} className={styles.inputField} />
     </div>
   );
 };

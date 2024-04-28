@@ -21,9 +21,9 @@ export const DescriptionTitle: React.FC<CustomButtonProps> = ({
 
   const animationProps = useSpring({
     opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translateY(0rem)" : "translateY(8rem)",
-    from: { opacity: 0, transform: "translateY(8rem)" },
-    delay: 750,
+    transform: isVisible ? "translateY(0rem)" : "translateY(10rem)",
+    from: { opacity: 0, transform: "translateY(10rem)" },
+    delay: 1000,
   });
 
   return (

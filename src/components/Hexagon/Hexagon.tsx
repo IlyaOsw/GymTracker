@@ -24,9 +24,9 @@ export const Hexagon: React.FC = () => {
 
   const animationProps = useSpring({
     opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translateY(0rem)" : "translateY(4rem)",
-    from: { opacity: 0, transform: "translateY(4rem)" },
-    delay: 750,
+    transform: isVisible ? "translateY(0rem)" : "translateY(10rem)",
+    from: { opacity: 0, transform: "translateY(10rem)" },
+    delay: 1000,
   });
 
   return (

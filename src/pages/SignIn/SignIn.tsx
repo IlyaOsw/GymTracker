@@ -7,7 +7,7 @@ import { animated, useSpring } from "@react-spring/web";
 import { FooterImage } from "../../components/FooterImage/FooterImage";
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
-import { CustomButton } from "../../components/Button/CustomButton";
+import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { useAnimationObserver } from "../../hooks/useAnimationObserver";
 
 import styles from "./SignIn.module.scss";
@@ -23,9 +23,9 @@ const SignIn: React.FC = () => {
 
   const animationProps = useSpring({
     opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translateY(0rem)" : "translateY(8rem)",
-    from: { opacity: 0, transform: "translateY(8rem)" },
-    delay: 750,
+    transform: isVisible ? "translateY(0rem)" : "translateY(10rem)",
+    from: { opacity: 0, transform: "translateY(10rem)" },
+    delay: 500,
   });
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const SignIn: React.FC = () => {
             </CustomButton>
           </Link>
           <div className={styles.options}>
-            <div>{t("notRegistered")}</div>
+            <div className={styles.notRegistered}>{t("notRegistered")}</div>
             <Link to="/signup">
               <div className={styles.importantOption}>
                 {t("createAnAccount")}
