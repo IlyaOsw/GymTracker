@@ -11,13 +11,13 @@ export const Images: React.FC = () => {
   const topImgAnimation = useSpring({
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? "translateY(0rem)" : "translateY(10rem)",
-    config: { duration: 1000 },
+    config: { duration: 500 },
   });
 
   const bottomImgAnimation = useSpring({
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? "translateY(0rem)" : "translateY(-10rem)",
-    config: { duration: 1000 },
+    config: { duration: 500 },
   });
 
   return (

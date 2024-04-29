@@ -3,11 +3,13 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Upload, Avatar } from "antd";
 import { UploadOutlined, UserOutlined } from "@ant-design/icons";
+import { animated, useSpring } from "@react-spring/web";
 
 import { FooterImage } from "../../components/FooterImage/FooterImage";
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
+import { useAnimationObserver } from "../../hooks/useAnimationObserver";
 
 import styles from "./SignUp.module.scss";
 
@@ -19,6 +21,14 @@ const container: React.CSSProperties = {
 const SignUp: React.FC = () => {
   const { t } = useTranslation();
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const { isVisible, ref } = useAnimationObserver();
+
+  const animationProps = useSpring({
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? "translateY(0rem)" : "translateY(-10rem)",
+    from: { opacity: 0, transform: "translateY(-10rem)" },
+    delay: 500,
+  });
 
   const props = {
     name: "file",
@@ -54,23 +64,22 @@ const SignUp: React.FC = () => {
                 className={styles.profileImage}
               />
             ) : (
-              <div className={styles.profilePlaceholder}>
-                <Avatar size={300} icon={<UserOutlined />} />
-              </div>
+              <Avatar size={250} icon={<UserOutlined />} />
             )}
-            <div className={styles.uploadContainer}>
-              <Upload {...props} showUploadList={false}>
-                <CustomButton
-                  icon={<UploadOutlined />}
-                  className={styles.upload}
-                >
-                  {t("uploadProfilePhoto")}
-                </CustomButton>
-              </Upload>
-            </div>
+            <Upload {...props} showUploadList={false}>
+              <CustomButton icon={<UploadOutlined />} className={styles.upload}>
+                {t("uploadProfilePhoto")}
+              </CustomButton>
+            </Upload>
           </div>
           <div>
-            <p className={styles.subTitle}>{t("registration")} </p>
+            <animated.p
+              ref={ref}
+              style={animationProps}
+              className={styles.subTitle}
+            >
+              {t("registration")}
+            </animated.p>
             <CustomInput text={t("email")}></CustomInput>
             <CustomInput text={t("password")} type="password"></CustomInput>
             <CustomInput
@@ -80,20 +89,32 @@ const SignUp: React.FC = () => {
           </div>
         </div>
         <div className={styles.personalInfo}>
-          <p className={styles.subTitle}>{t("personalInfo")}</p>
+          <animated.p
+            ref={ref}
+            style={animationProps}
+            className={styles.subTitle}
+          >
+            {t("personalInfo")}
+          </animated.p>
           <div className={styles.personalInfoOptions}>
             <div>
               <CustomInput text={t("firstName")}></CustomInput>
-              <CustomInput text={t("phone")}></CustomInput>
+              <CustomInput text={t("lastName")}></CustomInput>
             </div>
             <div>
-              <CustomInput text={t("lastName")}></CustomInput>
+              <CustomInput text={t("phone")}></CustomInput>
               <CustomInput text={t("age")}></CustomInput>
             </div>
           </div>
         </div>
         <div className={styles.address}>
-          <p className={styles.subTitle}>{t("address")} </p>
+          <animated.p
+            ref={ref}
+            style={animationProps}
+            className={styles.subTitle}
+          >
+            {t("address")}
+          </animated.p>
           <div className={styles.addressOptions}>
             <CustomInput text={t("country")}></CustomInput>
             <CustomInput text={t("city")}></CustomInput>

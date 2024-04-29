@@ -1,6 +1,8 @@
 import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
+import { Loader } from "../components/Loader/Loader";
+
 const Main = React.lazy(() => import("../pages/Main/Main"));
 const SignIn = React.lazy(() => import("../pages/SignIn/SignIn"));
 const SignUp = React.lazy(() => import("../pages/SignUp/SignUp"));
@@ -9,7 +11,7 @@ const Workout = React.lazy(() => import("../pages/Workout/Workout"));
 
 export const Routing: React.FC = () => {
   return (
-    <Suspense fallback="Loading...">
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/main" element={<Main />} />

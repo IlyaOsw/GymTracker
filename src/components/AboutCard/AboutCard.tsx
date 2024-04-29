@@ -18,7 +18,7 @@ export const AboutCard: React.FC<AboutCardProps> = ({ title, text, image }) => {
   const topImgAnimation = useSpring({
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? "translateY(0rem)" : "translateY(10rem)",
-    config: { duration: 1000 },
+    delay: 500,
   });
 
   return (

@@ -19,9 +19,11 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  height: 300px;
-  width: 300px;
-  margin: 75px 0px;
+  height: 250px;
+  width: 250px;
+  margin: 50px 0px;
+  box-shadow: 0px 0px 10px rgba(0, 151, 178, 0.3);
+  border-radius: 50%;
 
   > img {
     width: 100%;
@@ -31,18 +33,10 @@
   }
 }
 
-.uploadContainer {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-
-  .upload {
-    margin: 50px 0px;
-    &:hover {
-      filter: brightness(110%);
-    }
+.upload {
+  margin: 25px 0px;
+  &:hover {
+    filter: brightness(110%);
   }
 }
 

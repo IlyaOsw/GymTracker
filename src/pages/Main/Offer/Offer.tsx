@@ -8,11 +8,12 @@ import { CustomCard } from "./CustomCard/CustomCard";
 
 export const Offer: React.FC = () => {
   const { t } = useTranslation();
+
   return (
-    <div>
+    <>
       <DescriptionTitle text={t("offerTitle")} textAlign="center" />
       <DescriptionText text={t("offerDescription")} textAlign="center" />
       <CustomCard />
-    </div>
+    </>
   );
 };

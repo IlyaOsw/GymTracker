@@ -23,7 +23,7 @@ export const DescriptionTitle: React.FC<CustomButtonProps> = ({
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? "translateY(0rem)" : "translateY(10rem)",
     from: { opacity: 0, transform: "translateY(10rem)" },
-    delay: 1000,
+    delay: 500,
   });
 
   return (

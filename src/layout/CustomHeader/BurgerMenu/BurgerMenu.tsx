@@ -63,6 +63,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
       open={open}
       width={300}
       className={styles.burgerColor}
+      destroyOnClose={true}
     >
       <Menu mode="vertical" className={styles.burgerColor}>
         <Menu.Item key="1" className={styles.burgerItem}>

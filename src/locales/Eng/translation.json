@@ -48,5 +48,6 @@
     "age": "Age",
     "address": "Address",
     "country": "Country",
-    "city": "City"
+    "city": "City",
+    "loading": "Loading..."
 }
