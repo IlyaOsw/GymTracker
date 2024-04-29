@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgymtracker=self.webpackChunkgymtracker||[]).push([[342],{2342:(e,s,c)=>{c.r(s),c.d(s,{default:()=>t});var r=c(5043),a=c(3426),l=c(579);const t=()=>((0,r.useEffect)((()=>{window.scroll(0,0)}),[]),(0,l.jsxs)("div",{children:[(0,l.jsx)("h1",{children:"PROFILE PAGE"}),(0,l.jsx)(a.a,{})]}))}}]);
+//# sourceMappingURL=342.f3a5e241.chunk.js.map
