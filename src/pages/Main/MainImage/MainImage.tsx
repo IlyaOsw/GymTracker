@@ -18,7 +18,7 @@ export const MainImage: React.FC = () => {
     opacity: isVisible ? 1 : 0,
     marginTop: isVisible ? "0px" : "margitTop100px",
     from: { opacity: 0, marginTop: "100px" },
-    delay: 500,
+    delay: 1000,
   });
 
   return (

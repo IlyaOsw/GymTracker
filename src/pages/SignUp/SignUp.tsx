@@ -20,28 +20,23 @@ const container: React.CSSProperties = {
 
 const SignUp: React.FC = () => {
   const { t } = useTranslation();
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [image, setImage] = useState<string | null>(null);
   const { isVisible, ref } = useAnimationObserver();
 
   const animationProps = useSpring({
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? "translateY(0rem)" : "translateY(-10rem)",
     from: { opacity: 0, transform: "translateY(-10rem)" },
-    delay: 500,
+    delay: 0,
   });
 
   const props = {
-    name: "file",
-    action: "https://www.example.com/upload",
-    headers: {
-      authorization: "authorization-token",
-    },
     beforeUpload(file: any) {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
         const result = reader.result as string;
-        setImageUrl(result);
+        setImage(result);
       };
       return false;
     },
@@ -57,12 +52,8 @@ const SignUp: React.FC = () => {
         <DescriptionTitle text={t("signUp")} textAlign="center" />
         <div className={styles.registrationFlex}>
           <div className={styles.avatar}>
-            {imageUrl ? (
-              <img
-                src={imageUrl}
-                alt="Profile"
-                className={styles.profileImage}
-              />
+            {image ? (
+              <img src={image} alt="Profile" className={styles.profileImage} />
             ) : (
               <Avatar size={250} icon={<UserOutlined />} />
             )}
@@ -73,15 +64,9 @@ const SignUp: React.FC = () => {
             </Upload>
           </div>
           <div>
-            <animated.p
-              ref={ref}
-              style={animationProps}
-              className={styles.subTitle}
-            >
-              {t("registration")}
-            </animated.p>
-            <CustomInput text={t("email")}></CustomInput>
-            <CustomInput text={t("password")} type="password"></CustomInput>
+            <p className={styles.subTitle}>{t("registration")}</p>
+            <CustomInput text={t("email")} />
+            <CustomInput text={t("password")} type="password" />
             <CustomInput
               text={t("confrimPassword")}
               type="password"
@@ -89,35 +74,23 @@ const SignUp: React.FC = () => {
           </div>
         </div>
         <div className={styles.personalInfo}>
-          <animated.p
-            ref={ref}
-            style={animationProps}
-            className={styles.subTitle}
-          >
-            {t("personalInfo")}
-          </animated.p>
+          <p className={styles.subTitle}>{t("personalInfo")}</p>
           <div className={styles.personalInfoOptions}>
             <div>
-              <CustomInput text={t("firstName")}></CustomInput>
-              <CustomInput text={t("lastName")}></CustomInput>
+              <CustomInput text={t("firstName")} />
+              <CustomInput text={t("lastName")} />
             </div>
             <div>
-              <CustomInput text={t("phone")}></CustomInput>
-              <CustomInput text={t("age")}></CustomInput>
+              <CustomInput text={t("phone")} />
+              <CustomInput text={t("age")} />
             </div>
           </div>
         </div>
         <div className={styles.address}>
-          <animated.p
-            ref={ref}
-            style={animationProps}
-            className={styles.subTitle}
-          >
-            {t("address")}
-          </animated.p>
+          <p className={styles.subTitle}>{t("address")}</p>
           <div className={styles.addressOptions}>
-            <CustomInput text={t("country")}></CustomInput>
-            <CustomInput text={t("city")}></CustomInput>
+            <CustomInput text={t("country")} />
+            <CustomInput text={t("city")} />
           </div>
         </div>
       </div>
