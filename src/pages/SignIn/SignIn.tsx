@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 import { Checkbox } from "antd";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { animated, useSpring } from "@react-spring/web";
 
 import { FooterImage } from "../../components/FooterImage/FooterImage";
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
-import { useAnimationObserver } from "../../hooks/useAnimationObserver";
+import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
 
 import styles from "./SignIn.module.scss";
 
@@ -19,14 +18,6 @@ const container: React.CSSProperties = {
 
 const SignIn: React.FC = () => {
   const { t } = useTranslation();
-  const { isVisible, ref } = useAnimationObserver();
-
-  const animationProps = useSpring({
-    opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translateY(0rem)" : "translateY(10rem)",
-    from: { opacity: 0, transform: "translateY(10rem)" },
-    delay: 500,
-  });
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -36,9 +27,17 @@ const SignIn: React.FC = () => {
     <>
       <div style={container}>
         <DescriptionTitle text={t("signIn")} textAlign="center" />
-        <animated.div ref={ref} style={animationProps} className={styles.form}>
-          <CustomInput text={t("email")} />
-          <CustomInput text={t("password")} type="password" />
+        <div className={styles.form}>
+          <CustomInput
+            name={t("email")}
+            text={t("email")}
+            placeholder={t("enterMail")}
+          />
+          <PasswordInput
+            name={t("password")}
+            text={t("password")}
+            placeholder={t("enterPassword")}
+          />
           <div className={styles.options}>
             <Checkbox className={styles.checkboxRemember}>
               {t("rememberMe")}
@@ -58,7 +57,7 @@ const SignIn: React.FC = () => {
               </div>
             </Link>
           </div>
-        </animated.div>
+        </div>
       </div>
       <FooterImage />
     </>

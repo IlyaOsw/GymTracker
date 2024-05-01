@@ -3,13 +3,13 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Upload, Avatar } from "antd";
 import { UploadOutlined, UserOutlined } from "@ant-design/icons";
-import { animated, useSpring } from "@react-spring/web";
 
 import { FooterImage } from "../../components/FooterImage/FooterImage";
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
-import { useAnimationObserver } from "../../hooks/useAnimationObserver";
+
+import { ConfrimPasswordInput } from "../../components/PasswordInput/ConfrimPasswordInput";
 
 import styles from "./SignUp.module.scss";
 
@@ -21,14 +21,6 @@ const container: React.CSSProperties = {
 const SignUp: React.FC = () => {
   const { t } = useTranslation();
   const [image, setImage] = useState<string | null>(null);
-  const { isVisible, ref } = useAnimationObserver();
-
-  const animationProps = useSpring({
-    opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translateY(0rem)" : "translateY(-10rem)",
-    from: { opacity: 0, transform: "translateY(-10rem)" },
-    delay: 0,
-  });
 
   const props = {
     beforeUpload(file: any) {
@@ -65,32 +57,60 @@ const SignUp: React.FC = () => {
           </div>
           <div>
             <p className={styles.subTitle}>{t("registration")}</p>
-            <CustomInput text={t("email")} />
-            <CustomInput text={t("password")} type="password" />
             <CustomInput
-              text={t("confrimPassword")}
-              type="password"
-            ></CustomInput>
+              name={t("email")}
+              text={t("email")}
+              placeholder={t("enterMail")}
+            />
+
+            <ConfrimPasswordInput />
           </div>
         </div>
         <div className={styles.personalInfo}>
           <p className={styles.subTitle}>{t("personalInfo")}</p>
           <div className={styles.personalInfoOptions}>
             <div>
-              <CustomInput text={t("firstName")} />
-              <CustomInput text={t("lastName")} />
+              <CustomInput
+                name={t("firstName")}
+                text={t("firstName")}
+                placeholder={t("enterFirstName")}
+              />
+              <CustomInput
+                name={t("lastName")}
+                text={t("lastName")}
+                placeholder={t("enterLastName")}
+                isRequired={false}
+              />
             </div>
             <div>
-              <CustomInput text={t("phone")} />
-              <CustomInput text={t("age")} />
+              <CustomInput
+                name={t("gender")}
+                text={t("gender")}
+                placeholder={t("chooseGender")}
+              />
+              <CustomInput
+                name={t("dateOfBirth")}
+                text={t("dateOfBirth")}
+                placeholder={t("enterDateOfBirth")}
+                isRequired={false}
+              />
             </div>
           </div>
         </div>
         <div className={styles.address}>
           <p className={styles.subTitle}>{t("address")}</p>
           <div className={styles.addressOptions}>
-            <CustomInput text={t("country")} />
-            <CustomInput text={t("city")} />
+            <CustomInput
+              name={t("country")}
+              text={t("country")}
+              placeholder={t("enterCountry")}
+            />
+            <CustomInput
+              name={t("city")}
+              text={t("city")}
+              placeholder={t("enterCity")}
+              isRequired={false}
+            />
           </div>
         </div>
       </div>

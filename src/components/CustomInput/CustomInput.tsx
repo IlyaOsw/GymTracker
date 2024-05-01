@@ -1,36 +1,45 @@
-import { Input } from "antd";
+import { Form, Input } from "antd";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { animated, useSpring } from "@react-spring/web";
-
-import { useAnimationObserver } from "../../hooks/useAnimationObserver";
 
 import styles from "./CustomInput.module.scss";
 
 interface CustomInputProps {
+  name?: string;
   text: string;
   type?: string;
+  placeholder?: string;
+  isRequired?: boolean;
 }
 
-export const CustomInput: React.FC<CustomInputProps> = ({ text, type }) => {
-  const { t } = useTranslation();
-  const { isVisible, ref } = useAnimationObserver();
+type FieldType = {
+  [key: string]: string | undefined;
+  username?: string;
+  password?: string;
+};
 
-  const animationProps = useSpring({
-    opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translateY(0rem)" : "translateY(10rem)",
-    from: { opacity: 0, transform: "translateY(10rem)" },
-    delay: 500,
-  });
+export const CustomInput: React.FC<CustomInputProps> = ({
+  name,
+  text,
+  type,
+  placeholder,
+  isRequired = true,
+}) => {
+  const { t } = useTranslation();
 
   return (
-    <animated.div
-      ref={ref}
-      style={animationProps}
-      className={styles.inputWrapper}
-    >
-      <p className={styles.inputLabel}>{t(text)}</p>
-      <Input type={type} placeholder={text} className={styles.inputField} />
-    </animated.div>
+    <div className={styles.inputWrapper}>
+      <Form.Item<FieldType>
+        label={<span className={styles.inputLabel}>{t(text)}</span>}
+        name={name}
+        rules={[{ required: isRequired }]}
+      >
+        <Input
+          type={type}
+          placeholder={placeholder}
+          className={styles.inputField}
+        />
+      </Form.Item>
+    </div>
   );
 };
