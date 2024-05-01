@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Upload, Avatar } from "antd";
-import { UploadOutlined, UserOutlined } from "@ant-design/icons";
+import { Upload, Avatar, Form, Select, DatePicker, Button } from "antd";
+import {
+  CalendarOutlined,
+  CaretDownOutlined,
+  UploadOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
 import { FooterImage } from "../../components/FooterImage/FooterImage";
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
@@ -13,6 +18,8 @@ import { ConfrimPasswordInput } from "../../components/PasswordInput/ConfrimPass
 
 import styles from "./SignUp.module.scss";
 
+const { Option } = Select;
+
 const container: React.CSSProperties = {
   maxWidth: "1200px",
   margin: "0 auto",
@@ -21,6 +28,7 @@ const container: React.CSSProperties = {
 const SignUp: React.FC = () => {
   const { t } = useTranslation();
   const [image, setImage] = useState<string | null>(null);
+  const [form] = Form.useForm();
 
   const props = {
     beforeUpload(file: any) {
@@ -34,12 +42,39 @@ const SignUp: React.FC = () => {
     },
   };
 
+  const onReset = () => {
+    form.resetFields();
+  };
+
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
 
+  useEffect(() => {
+    const selectInputs = document.querySelectorAll<HTMLElement>(
+      ".ant-select-selector"
+    );
+    selectInputs.forEach((input) => {
+      input.style.color = "#ffffff";
+      input.style.backgroundColor = "#141414";
+      input.style.border = "1px solid #0097b2";
+      input.style.borderRadius = "10px";
+    });
+    const placeholderElements = document.querySelectorAll<HTMLElement>(
+      ".ant-select-selection-placeholder"
+    );
+    placeholderElements.forEach((element) => {
+      element.style.color = "#818181";
+    });
+  }, []);
+
   return (
-    <>
+    <Form
+      form={form}
+      name="signUpForm"
+      initialValues={{ remember: true }}
+      layout="vertical"
+    >
       <div style={container}>
         <DescriptionTitle text={t("signUp")} textAlign="center" />
         <div className={styles.registrationFlex}>
@@ -62,7 +97,6 @@ const SignUp: React.FC = () => {
               text={t("email")}
               placeholder={t("enterMail")}
             />
-
             <ConfrimPasswordInput />
           </div>
         </div>
@@ -83,17 +117,31 @@ const SignUp: React.FC = () => {
               />
             </div>
             <div>
-              <CustomInput
+              <Form.Item
                 name={t("gender")}
-                text={t("gender")}
-                placeholder={t("chooseGender")}
-              />
-              <CustomInput
+                label={<span className={styles.inputLabel}>{t("gender")}</span>}
+                rules={[{ required: true }]}
+              >
+                <Select
+                  placeholder={t("chooseGender")}
+                  className={styles.selectField}
+                  suffixIcon={<CaretDownOutlined style={{ color: "white" }} />}
+                >
+                  <Option value="male">{t("male")}</Option>
+                  <Option value="female">{t("female")}</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item
                 name={t("dateOfBirth")}
-                text={t("dateOfBirth")}
-                placeholder={t("enterDateOfBirth")}
-                isRequired={false}
-              />
+                label={
+                  <span className={styles.inputLabel}>{t("dateOfBirth")}</span>
+                }
+              >
+                <DatePicker
+                  className={styles.dateField}
+                  suffixIcon={<CalendarOutlined style={{ color: "white" }} />}
+                />
+              </Form.Item>
             </div>
           </div>
         </div>
@@ -113,12 +161,15 @@ const SignUp: React.FC = () => {
             />
           </div>
         </div>
+        <Button htmlType="button" onClick={onReset}>
+          Reset
+        </Button>
       </div>
       <Link to="/profile">
         <CustomButton className={styles.signUpBtn}>{t("signUp")}</CustomButton>
       </Link>
       <FooterImage />
-    </>
+    </Form>
   );
 };
 

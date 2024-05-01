@@ -59,5 +59,7 @@
     "dateOfBirth": "Дата рождения",
     "enterDateOfBirth": "Выберите дату рождения",
     "gender": "Пол",
-    "chooseGender": "Выберите ваш пол"
+    "chooseGender": "Выберите ваш пол",
+    "male": "Мужской",
+    "female": "Женский"
 }

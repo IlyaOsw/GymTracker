@@ -5,7 +5,6 @@
   .inputLabel {
     text-align: start;
     font-size: 1.2rem;
-    padding: 0px 10px;
     cursor: default;
     color: #ffffff;
     width: 270px;
@@ -18,9 +17,17 @@
     color: #ffffff;
     height: 40px;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: start;
 
     &:focus {
       box-shadow: 0 0 10px #0097b2;
+    }
+
+    svg {
+      color: #ffffff;
     }
   }
 

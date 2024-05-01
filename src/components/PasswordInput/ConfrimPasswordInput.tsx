@@ -1,5 +1,5 @@
 import { Form, Input } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 
@@ -8,6 +8,16 @@ import styles from "./PasswordInput.module.scss";
 export const ConfrimPasswordInput: React.FC = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
+
+  useEffect(() => {
+    const inputs = document.querySelectorAll<HTMLElement>(
+      ".ant-input-password"
+    );
+    inputs.forEach((input) => {
+      input.style.color = "rgb(167, 167, 167)";
+      input.style.backgroundColor = "#141414";
+    });
+  }, []);
 
   return (
     <div className={styles.inputWrapper}>

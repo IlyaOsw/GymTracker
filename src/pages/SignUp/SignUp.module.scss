@@ -50,6 +50,34 @@
   }
 }
 
+.inputLabel {
+  text-align: start;
+  font-size: 1.2rem;
+  cursor: default;
+  color: #ffffff;
+}
+
+.selectField {
+  margin: 3px 0px;
+  background-color: #141414;
+  color: #ffffff;
+  height: 40px;
+}
+
+.dateField {
+  background-color: #141414;
+  color: #ffffff;
+  border: 1px solid #0097b2;
+  width: 270px;
+  border-radius: 10px;
+  height: 40px;
+
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(0, 151, 178, 0.3);
+    border: 1px solid #0097b2;
+  }
+}
+
 .address {
   .addressOptions {
     display: flex;

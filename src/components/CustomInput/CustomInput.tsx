@@ -1,5 +1,5 @@
 import { Form, Input } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import styles from "./CustomInput.module.scss";
@@ -27,6 +27,13 @@ export const CustomInput: React.FC<CustomInputProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  useEffect(() => {
+    const inputs = document.querySelectorAll<HTMLElement>(".ant-input");
+    inputs.forEach((input) => {
+      input.style.color = "#ffffff";
+    });
+  }, []);
+
   return (
     <div className={styles.inputWrapper}>
       <Form.Item<FieldType>
@@ -38,6 +45,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
           type={type}
           placeholder={placeholder}
           className={styles.inputField}
+          allowClear
         />
       </Form.Item>
     </div>
