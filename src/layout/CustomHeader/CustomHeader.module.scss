@@ -41,6 +41,7 @@ $main-color: #0097b2;
 
     .signUp:hover {
       filter: brightness(110%);
+      box-shadow: 0px 0px 5px #0097b2;
     }
   }
 
@@ -78,7 +79,6 @@ $main-color: #0097b2;
 
 .dropdownItem {
   font-size: 1.2rem;
-  text-transform: uppercase;
 }
 
 .burgerItem {
@@ -108,4 +108,10 @@ $main-color: #0097b2;
   .navigation img {
     height: 40px;
   }
+}
+
+.lngIcons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

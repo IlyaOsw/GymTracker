@@ -1,23 +1,13 @@
 import { Form, Input } from "antd";
-import React, { useEffect } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 
 import styles from "./PasswordInput.module.scss";
 
-export const ConfrimPasswordInput: React.FC = () => {
+export const ConfirmPasswordInput: React.FC = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
-
-  useEffect(() => {
-    const inputs = document.querySelectorAll<HTMLElement>(
-      ".ant-input-password"
-    );
-    inputs.forEach((input) => {
-      input.style.color = "rgb(167, 167, 167)";
-      input.style.backgroundColor = "#141414";
-    });
-  }, []);
 
   return (
     <div className={styles.inputWrapper}>
@@ -25,7 +15,6 @@ export const ConfrimPasswordInput: React.FC = () => {
         form={form}
         name="dependencies"
         autoComplete="off"
-        style={{ maxWidth: 600 }}
         layout="vertical"
       >
         <Form.Item
@@ -37,6 +26,7 @@ export const ConfrimPasswordInput: React.FC = () => {
             className={styles.inputField}
             type="password"
             placeholder={t("enterPassword")}
+            autoComplete="new-password"
             iconRender={(visible) =>
               visible ? (
                 <EyeOutlined style={{ color: "white" }} />
@@ -72,6 +62,7 @@ export const ConfrimPasswordInput: React.FC = () => {
             className={styles.inputField}
             type="password"
             placeholder={t("enterConfirmPassword")}
+            autoComplete="new-password"
             iconRender={(visible) =>
               visible ? (
                 <EyeOutlined style={{ color: "white" }} />

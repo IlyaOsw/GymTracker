@@ -14,7 +14,7 @@ import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionT
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
 
-import { ConfrimPasswordInput } from "../../components/PasswordInput/ConfrimPasswordInput";
+import { ConfirmPasswordInput } from "../../components/PasswordInput/ConfirmPasswordInput";
 
 import styles from "./SignUp.module.scss";
 
@@ -42,13 +42,7 @@ const SignUp: React.FC = () => {
     },
   };
 
-  const onReset = () => {
-    form.resetFields();
-  };
-
-  useEffect(() => {
-    window.scroll(0, 0);
-  }, []);
+  const onReset = () => form.resetFields();
 
   useEffect(() => {
     const selectInputs = document.querySelectorAll<HTMLElement>(
@@ -66,6 +60,7 @@ const SignUp: React.FC = () => {
     placeholderElements.forEach((element) => {
       element.style.color = "#818181";
     });
+    window.scroll(0, 0);
   }, []);
 
   return (
@@ -97,7 +92,7 @@ const SignUp: React.FC = () => {
               text={t("email")}
               placeholder={t("enterMail")}
             />
-            <ConfrimPasswordInput />
+            <ConfirmPasswordInput />
           </div>
         </div>
         <div className={styles.personalInfo}>
@@ -125,7 +120,7 @@ const SignUp: React.FC = () => {
                 <Select
                   placeholder={t("chooseGender")}
                   className={styles.selectField}
-                  suffixIcon={<CaretDownOutlined style={{ color: "white" }} />}
+                  suffixIcon={<CaretDownOutlined />}
                 >
                   <Option value="male">{t("male")}</Option>
                   <Option value="female">{t("female")}</Option>
@@ -139,7 +134,9 @@ const SignUp: React.FC = () => {
               >
                 <DatePicker
                   className={styles.dateField}
-                  suffixIcon={<CalendarOutlined style={{ color: "white" }} />}
+                  placeholder={t("selectDate")}
+                  suffixIcon={<CalendarOutlined />}
+                  inputReadOnly
                 />
               </Form.Item>
             </div>
@@ -161,8 +158,13 @@ const SignUp: React.FC = () => {
             />
           </div>
         </div>
-        <Button htmlType="button" onClick={onReset}>
-          Reset
+        <Button
+          htmlType="button"
+          type="link"
+          className={styles.reset}
+          onClick={onReset}
+        >
+          {t("resetForm")}
         </Button>
       </div>
       <Link to="/profile">

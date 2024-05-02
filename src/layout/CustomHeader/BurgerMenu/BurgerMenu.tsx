@@ -1,5 +1,5 @@
 import { DownOutlined } from "@ant-design/icons";
-import { Drawer, Menu, Button, Dropdown, Space } from "antd";
+import { Drawer, Menu, Button, Dropdown, GetProp, MenuProps } from "antd";
 import React, { useEffect } from "react";
 import { Divider } from "antd";
 import { useTranslation } from "react-i18next";
@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { HeaderPropsType } from "../../../types/types";
 import styles from "../CustomHeader.module.scss";
 
+type MenuItem = GetProp<MenuProps, "items">[number];
 export const BurgerMenu: React.FC<HeaderPropsType> = ({
   open,
   setOpen,
@@ -54,52 +55,55 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     };
   }, [open]);
 
-  return (
-    <Drawer
-      title={t("menu")}
-      placement="right"
-      closable={true}
-      onClose={onClose}
-      open={open}
-      width={300}
-      className={styles.burgerColor}
-      destroyOnClose={true}
-    >
-      <Menu mode="vertical" className={styles.burgerColor}>
-        <Menu.Item key="1" className={styles.burgerItem}>
-          <Link
-            to={"/main"}
-            onClick={handleSignInClick}
-            className={styles.menuButton}
-          >
-            {t("main")}
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="2">
-          <Divider />
-        </Menu.Item>
-        <Menu.Item key="3" className={styles.burgerItem}>
-          <Link
-            to={"/signin"}
-            onClick={handleSignInClick}
-            className={styles.menuButton}
-          >
-            {t("signIn")}
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="4" className={styles.burgerItem}>
-          <Link
-            to={"/signup"}
-            onClick={handleSignUpClick}
-            className={styles.menuButton}
-          >
-            {t("signUp")}
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="5">
-          <Divider />
-        </Menu.Item>
-        <Menu.Item key="6" className={styles.burgerItem}>
+  const items: MenuItem[] = [
+    {
+      key: "1",
+      label: (
+        <Link
+          to={"/main"}
+          onClick={handleSignInClick}
+          className={styles.menuButton}
+        >
+          {t("main")}
+        </Link>
+      ),
+    },
+    {
+      key: "2",
+      label: <Divider />,
+    },
+    {
+      key: "3",
+      label: (
+        <Link
+          to={"/signin"}
+          onClick={handleSignInClick}
+          className={styles.menuButton}
+        >
+          {t("signIn")}
+        </Link>
+      ),
+    },
+    {
+      key: "4",
+      label: (
+        <Link
+          to={"/signup"}
+          onClick={handleSignUpClick}
+          className={styles.menuButton}
+        >
+          {t("signUp")}
+        </Link>
+      ),
+    },
+    {
+      key: "5",
+      label: <Divider />,
+    },
+    {
+      key: "6",
+      label: (
+        <>
           <span className={styles.burgerSettings}>{t("theme")}</span>
           <Dropdown
             overlay={
@@ -114,15 +118,18 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
               </Menu>
             }
           >
-            <Space>
-              <Button type="text" className={styles.settingsButton}>
-                {theme}
-                <DownOutlined />
-              </Button>
-            </Space>
+            <Button type="text" className={styles.settingsButton}>
+              {theme}
+              <DownOutlined />
+            </Button>
           </Dropdown>
-        </Menu.Item>
-        <Menu.Item key="7" className={styles.burgerItem}>
+        </>
+      ),
+    },
+    {
+      key: "7",
+      label: (
+        <>
           <span className={styles.burgerSettings}>{t("language")}</span>
           <Dropdown
             overlay={
@@ -136,21 +143,39 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
                       key={item.key}
                       onClick={() => changeLanguage(item.label)}
                     >
-                      {item.label}
+                      <div className={styles.lngIcons}>
+                        <span>{item.icon}</span>
+                        <span className={styles.dropdownItem}>
+                          {item.label}
+                        </span>
+                      </div>
                     </Menu.Item>
                   ))}
               </Menu>
             }
           >
-            <Space>
-              <Button type="text" className={styles.settingsButton}>
-                {language}
-                <DownOutlined />
-              </Button>
-            </Space>
+            <Button type="text" className={styles.settingsButton}>
+              {language}
+              <DownOutlined />
+            </Button>
           </Dropdown>
-        </Menu.Item>
-      </Menu>
+        </>
+      ),
+    },
+  ];
+
+  return (
+    <Drawer
+      title={t("menu")}
+      placement="right"
+      closable={true}
+      onClose={onClose}
+      open={open}
+      width={300}
+      className={styles.burgerColor}
+      destroyOnClose={true}
+    >
+      <Menu mode="vertical" className={styles.burgerColor} items={items} />
     </Drawer>
   );
 };

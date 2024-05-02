@@ -28,9 +28,11 @@ export const CustomInput: React.FC<CustomInputProps> = ({
   const { t } = useTranslation();
 
   useEffect(() => {
-    const inputs = document.querySelectorAll<HTMLElement>(".ant-input");
+    const inputs = document.querySelectorAll<HTMLElement>(
+      ".ant-input-outlined"
+    );
     inputs.forEach((input) => {
-      input.style.color = "#ffffff";
+      input.style.backgroundColor = "#141414";
     });
   }, []);
 

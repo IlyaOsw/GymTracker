@@ -61,5 +61,7 @@
     "gender": "Пол",
     "chooseGender": "Выберите ваш пол",
     "male": "Мужской",
-    "female": "Женский"
+    "female": "Женский",
+    "selectDate": "Выберите дату",
+    "resetForm": "Очистить форму"
 }

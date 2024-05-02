@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Checkbox } from "antd";
+import { Checkbox, Form } from "antd";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -18,13 +18,19 @@ const container: React.CSSProperties = {
 
 const SignIn: React.FC = () => {
   const { t } = useTranslation();
+  const [form] = Form.useForm();
 
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
 
   return (
-    <>
+    <Form
+      form={form}
+      name="signUpForm"
+      initialValues={{ remember: true }}
+      layout="vertical"
+    >
       <div style={container}>
         <DescriptionTitle text={t("signIn")} textAlign="center" />
         <div className={styles.form}>
@@ -60,7 +66,7 @@ const SignIn: React.FC = () => {
         </div>
       </div>
       <FooterImage />
-    </>
+    </Form>
   );
 };
 

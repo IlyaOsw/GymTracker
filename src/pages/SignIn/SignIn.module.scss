@@ -11,6 +11,7 @@
 
     &:hover {
       filter: brightness(110%);
+      box-shadow: 0px 0px 5px #0097b2;
     }
   }
 }
@@ -21,6 +22,7 @@
 
   .notRegistered {
     font-size: 1.1rem;
+    color: #ffffff;
     cursor: default;
   }
 }

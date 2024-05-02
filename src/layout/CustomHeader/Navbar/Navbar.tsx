@@ -65,7 +65,10 @@ export const Navbar: React.FC<HeaderPropsType> = ({
                     key={item.key}
                     onClick={() => changeLanguage(item.label)}
                   >
-                    <span className={styles.dropdownItem}>{item.label}</span>
+                    <div className={styles.lngIcons}>
+                      <span>{item.icon}</span>
+                      <span className={styles.dropdownItem}>{item.label}</span>
+                    </div>
                   </Menu.Item>
                 ))}
             </Menu>

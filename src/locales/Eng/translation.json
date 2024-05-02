@@ -61,5 +61,7 @@
     "gender": "Gender",
     "chooseGender": "Choose your gender",
     "male": "Male",
-    "female": "Female"
+    "female": "Female",
+    "selectDate": "Select date",
+    "resetForm": "Reset form"
 }
