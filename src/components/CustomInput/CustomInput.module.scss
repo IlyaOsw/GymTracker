@@ -12,7 +12,7 @@
 
   .inputField {
     margin: 3px 0px;
-    background-color: #141414;
+    background-color: #141414 !important;
     border: 1px solid #0097b2;
     color: #ffffff;
     height: 40px;
@@ -40,4 +40,12 @@
   ::placeholder {
     color: #818181 !important;
   }
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  // -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff;
+  transition: background-color 5000s ease-in-out 0s;
 }

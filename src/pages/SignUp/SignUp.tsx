@@ -51,7 +51,6 @@ const SignUp: React.FC = () => {
     selectInputs.forEach((input) => {
       input.style.color = "#ffffff";
       input.style.backgroundColor = "#141414";
-      input.style.border = "1px solid #0097b2";
       input.style.borderRadius = "10px";
     });
     const placeholderElements = document.querySelectorAll<HTMLElement>(
@@ -111,7 +110,7 @@ const SignUp: React.FC = () => {
                 isRequired={false}
               />
             </div>
-            <div>
+            <div className={styles.test}>
               <Form.Item
                 name={t("gender")}
                 label={<span className={styles.inputLabel}>{t("gender")}</span>}
@@ -121,6 +120,7 @@ const SignUp: React.FC = () => {
                   placeholder={t("chooseGender")}
                   className={styles.selectField}
                   suffixIcon={<CaretDownOutlined />}
+                  variant="borderless"
                 >
                   <Option value="male">{t("male")}</Option>
                   <Option value="female">{t("female")}</Option>

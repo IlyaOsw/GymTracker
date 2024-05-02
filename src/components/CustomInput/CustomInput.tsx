@@ -1,5 +1,5 @@
 import { Form, Input } from "antd";
-import React, { useEffect } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 
 import styles from "./CustomInput.module.scss";
@@ -26,15 +26,6 @@ export const CustomInput: React.FC<CustomInputProps> = ({
   isRequired = true,
 }) => {
   const { t } = useTranslation();
-
-  useEffect(() => {
-    const inputs = document.querySelectorAll<HTMLElement>(
-      ".ant-input-outlined"
-    );
-    inputs.forEach((input) => {
-      input.style.backgroundColor = "#141414";
-    });
-  }, []);
 
   return (
     <div className={styles.inputWrapper}>
