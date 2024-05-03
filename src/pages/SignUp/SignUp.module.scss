@@ -12,6 +12,12 @@
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
+
+  @media (max-width: 576px) {
+    .avatar {
+      order: 1;
+    }
+  }
 }
 
 .avatar {
@@ -40,14 +46,11 @@
   }
 }
 
-.personalInfo {
-  margin: 50px 0px;
-  .personalInfoOptions {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
+.personalInfoOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .inputLabel {
@@ -59,39 +62,12 @@
 
 .selectField {
   margin: 3px 0px;
-  background-color: #141414;
-  color: #ffffff;
   height: 40px;
   text-align: start;
   border-radius: 10px;
   border: 1px solid #0097b2;
-
   &:hover {
     box-shadow: 0px 0px 10px #0097b2;
-    background-color: #141414;
-  }
-
-  svg {
-    color: #ffffff;
-  }
-}
-
-.dateField {
-  border: 1px solid #0097b2;
-  width: 270px;
-  border-radius: 10px;
-  height: 40px;
-  background-color: #141414 !important;
-  border-color: #0097b2 !important;
-  color: #ffffff !important;
-
-  ::placeholder {
-    color: #818181 !important;
-  }
-
-  &:hover {
-    box-shadow: 0px 0px 10px #0097b2;
-    border: 1px solid #0097b2;
     background-color: #141414;
   }
 
@@ -112,6 +88,7 @@
 .reset {
   color: #ffffff;
   font-size: 1.2rem;
+  color: rgb(255, 40, 40);
 }
 
 .signUpBtn {

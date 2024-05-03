@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Upload, Avatar, Form, Select, DatePicker, Button } from "antd";
+import { Upload, Avatar, Form, Select, Button, ConfigProvider } from "antd";
 import {
-  CalendarOutlined,
   CaretDownOutlined,
   UploadOutlined,
   UserOutlined,
@@ -15,6 +14,8 @@ import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
 
 import { ConfirmPasswordInput } from "../../components/PasswordInput/ConfirmPasswordInput";
+
+import { Calendar } from "../../components/Calendar/Calendar";
 
 import styles from "./SignUp.module.scss";
 
@@ -45,20 +46,6 @@ const SignUp: React.FC = () => {
   const onReset = () => form.resetFields();
 
   useEffect(() => {
-    const selectInputs = document.querySelectorAll<HTMLElement>(
-      ".ant-select-selector"
-    );
-    selectInputs.forEach((input) => {
-      input.style.color = "#ffffff";
-      input.style.backgroundColor = "#141414";
-      input.style.borderRadius = "10px";
-    });
-    const placeholderElements = document.querySelectorAll<HTMLElement>(
-      ".ant-select-selection-placeholder"
-    );
-    placeholderElements.forEach((element) => {
-      element.style.color = "#818181";
-    });
     window.scroll(0, 0);
   }, []);
 
@@ -110,21 +97,37 @@ const SignUp: React.FC = () => {
                 isRequired={false}
               />
             </div>
-            <div className={styles.test}>
+            <div>
               <Form.Item
                 name={t("gender")}
                 label={<span className={styles.inputLabel}>{t("gender")}</span>}
                 rules={[{ required: true }]}
               >
-                <Select
-                  placeholder={t("chooseGender")}
-                  className={styles.selectField}
-                  suffixIcon={<CaretDownOutlined />}
-                  variant="borderless"
+                <ConfigProvider
+                  theme={{
+                    components: {
+                      Select: {
+                        colorTextPlaceholder: "#818181",
+                        colorText: "#ffffff",
+                        optionSelectedBg: "#0097b2",
+                      },
+                    },
+                  }}
                 >
-                  <Option value="male">{t("male")}</Option>
-                  <Option value="female">{t("female")}</Option>
-                </Select>
+                  <Select
+                    placeholder={t("chooseGender")}
+                    className={styles.selectField}
+                    suffixIcon={<CaretDownOutlined />}
+                    variant="borderless"
+                    dropdownStyle={{
+                      backgroundColor: "#141414",
+                      border: "1px solid #0097b2",
+                    }}
+                  >
+                    <Option value="male">{t("male")}</Option>
+                    <Option value="female">{t("female")}</Option>
+                  </Select>
+                </ConfigProvider>
               </Form.Item>
               <Form.Item
                 name={t("dateOfBirth")}
@@ -132,12 +135,7 @@ const SignUp: React.FC = () => {
                   <span className={styles.inputLabel}>{t("dateOfBirth")}</span>
                 }
               >
-                <DatePicker
-                  className={styles.dateField}
-                  placeholder={t("selectDate")}
-                  suffixIcon={<CalendarOutlined />}
-                  inputReadOnly
-                />
+                <Calendar />
               </Form.Item>
             </div>
           </div>
