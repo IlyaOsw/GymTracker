@@ -69,7 +69,7 @@ const mobileLogoSrc =
   process.env.PUBLIC_URL + "/assets/Logo/LogoMainMobile.svg";
 const desktopLogoSrc = process.env.PUBLIC_URL + "/assets/Logo/LogoMain.svg";
 
-export const CustomHeader: React.FC = () => {
+export const CustomHeader: React.FC = React.memo(() => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 992);
   const [logoSrc, setLogoSrc] = useState(
     isMobile ? mobileLogoSrc : desktopLogoSrc
@@ -148,4 +148,4 @@ export const CustomHeader: React.FC = () => {
       />
     </Header>
   );
-};
+});

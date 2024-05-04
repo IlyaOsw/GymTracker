@@ -1,10 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { animated, useSpring } from "@react-spring/web";
 
 import { ImageData } from "../../types/types";
-
-import { useAnimationObserver } from "../../hooks/useAnimationObserver";
 
 import styles from "./Hexagon.module.scss";
 
@@ -20,17 +17,9 @@ const imagesData: ImageData[] = [
 
 export const Hexagon: React.FC = () => {
   const { t } = useTranslation();
-  const { isVisible, ref } = useAnimationObserver();
-
-  const animationProps = useSpring({
-    opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translateY(0rem)" : "translateY(10rem)",
-    from: { opacity: 0, transform: "translateY(10rem)" },
-    delay: 1000,
-  });
 
   return (
-    <animated.div ref={ref} style={animationProps} className={styles.block}>
+    <div className={styles.block}>
       {imagesData.map((data, index) => (
         <React.Fragment key={index}>
           <div className={styles.imageContainer}>
@@ -53,6 +42,6 @@ export const Hexagon: React.FC = () => {
           )}
         </React.Fragment>
       ))}
-    </animated.div>
+    </div>
   );
 };

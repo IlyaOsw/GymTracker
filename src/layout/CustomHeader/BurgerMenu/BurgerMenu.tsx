@@ -108,13 +108,12 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
           <Dropdown
             overlay={
               <Menu onClick={handleThemeClick}>
-                {themeItems &&
-                  themeItems.map((item) => (
-                    <Menu.Item key={item.key}>
-                      <span className={styles.themeIcon}>{item.icon}</span>
-                      <span>{item.label}</span>
-                    </Menu.Item>
-                  ))}
+                {themeItems?.map((item) => (
+                  <Menu.Item key={item.key}>
+                    <span className={styles.themeIcon}>{item.icon}</span>
+                    <span>{item.label}</span>
+                  </Menu.Item>
+                ))}
               </Menu>
             }
           >
@@ -137,20 +136,17 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
                 onClick={handleLanguageClick}
                 className={styles.settingsBtn}
               >
-                {languageItems &&
-                  languageItems.map((item) => (
-                    <Menu.Item
-                      key={item.key}
-                      onClick={() => changeLanguage(item.label)}
-                    >
-                      <div className={styles.lngIcons}>
-                        <span>{item.icon}</span>
-                        <span className={styles.dropdownItem}>
-                          {item.label}
-                        </span>
-                      </div>
-                    </Menu.Item>
-                  ))}
+                {languageItems?.map((item) => (
+                  <Menu.Item
+                    key={item.key}
+                    onClick={() => changeLanguage(item.label)}
+                  >
+                    <div className={styles.lngIcons}>
+                      <span>{item.icon}</span>
+                      <span className={styles.dropdownItem}>{item.label}</span>
+                    </div>
+                  </Menu.Item>
+                ))}
               </Menu>
             }
           >

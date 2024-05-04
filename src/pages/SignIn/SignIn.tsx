@@ -25,15 +25,16 @@ const SignIn: React.FC = () => {
   }, []);
 
   return (
-    <Form
-      form={form}
-      name="signUpForm"
-      initialValues={{ remember: true }}
-      layout="vertical"
-    >
+    <>
       <div style={container}>
         <DescriptionTitle text={t("signIn")} textAlign="center" />
-        <div className={styles.form}>
+        <Form
+          form={form}
+          name="signUpForm"
+          initialValues={{ remember: true }}
+          layout="vertical"
+          className={styles.form}
+        >
           <CustomInput
             name={t("email")}
             text={t("email")}
@@ -63,10 +64,10 @@ const SignIn: React.FC = () => {
               </div>
             </Link>
           </div>
-        </div>
+        </Form>
       </div>
       <FooterImage />
-    </Form>
+    </>
   );
 };
 
