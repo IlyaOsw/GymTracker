@@ -1,10 +1,8 @@
 import React from "react";
-import { CaretDownOutlined } from "@ant-design/icons";
 import { Form, ConfigProvider, Select } from "antd";
 import { useTranslation } from "react-i18next";
 
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
-
 import styles from "../SignUp.module.scss";
 import { Calendar } from "../../../components/Calendar/Calendar";
 
@@ -49,7 +47,6 @@ export const PersonalInformation: React.FC = () => {
               <Select
                 placeholder={t("chooseGender")}
                 className={styles.selectField}
-                suffixIcon={<CaretDownOutlined />}
                 variant="borderless"
                 dropdownStyle={{
                   backgroundColor: "#141414",

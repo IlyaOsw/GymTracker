@@ -19,7 +19,6 @@ export const ConfirmPasswordInput: React.FC = () => {
           className={styles.inputField}
           type="password"
           placeholder={t("enterPassword")}
-          autoComplete="new-password"
           iconRender={(visible) =>
             visible ? (
               <EyeOutlined style={{ color: "white" }} />
@@ -55,7 +54,6 @@ export const ConfirmPasswordInput: React.FC = () => {
           className={styles.inputField}
           type="password"
           placeholder={t("enterConfirmPassword")}
-          autoComplete="new-password"
           iconRender={(visible) =>
             visible ? (
               <EyeOutlined style={{ color: "white" }} />

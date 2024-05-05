@@ -11,7 +11,11 @@ export const Offer: React.FC = () => {
 
   return (
     <>
-      <DescriptionTitle text={t("offerTitle")} textAlign="center" />
+      <DescriptionTitle
+        text={t("offerTitle")}
+        textAlign="center"
+        className="animation_item"
+      />
       <DescriptionText text={t("offerDescription")} textAlign="center" />
       <CustomCard />
     </>

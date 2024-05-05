@@ -8,13 +8,9 @@ import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionT
 import { CustomInput } from "../../components/CustomInput/CustomInput";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
+import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 
 import styles from "./SignIn.module.scss";
-
-const container: React.CSSProperties = {
-  maxWidth: "1200px",
-  margin: "0 auto",
-};
 
 const SignIn: React.FC = () => {
   const { t } = useTranslation();
@@ -26,7 +22,7 @@ const SignIn: React.FC = () => {
 
   return (
     <>
-      <div style={container}>
+      <PageWrapper>
         <DescriptionTitle text={t("signIn")} textAlign="center" />
         <Form
           form={form}
@@ -65,7 +61,8 @@ const SignIn: React.FC = () => {
             </Link>
           </div>
         </Form>
-      </div>
+      </PageWrapper>
+
       <FooterImage />
     </>
   );

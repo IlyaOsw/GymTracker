@@ -6,16 +6,12 @@ import { Form, Button } from "antd";
 import { FooterImage } from "../../components/FooterImage/FooterImage";
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
+import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 
-import styles from "./SignUp.module.scss";
 import { Registration } from "./Registration/Registration";
 import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
 import { Address } from "./Address/Address";
-
-const container: React.CSSProperties = {
-  maxWidth: "1200px",
-  margin: "0 auto",
-};
+import styles from "./SignUp.module.scss";
 
 const SignUp: React.FC = () => {
   const { t } = useTranslation();
@@ -35,7 +31,7 @@ const SignUp: React.FC = () => {
       initialValues={{ remember: true }}
       layout="vertical"
     >
-      <div style={container}>
+      <PageWrapper>
         <DescriptionTitle text={t("signUp")} textAlign="center" />
         <Registration />
         <PersonalInformation />
@@ -48,7 +44,7 @@ const SignUp: React.FC = () => {
         >
           {t("resetForm")}
         </Button>
-      </div>
+      </PageWrapper>
       <Link to="/profile">
         <CustomButton className={styles.signUpBtn}>{t("signUp")}</CustomButton>
       </Link>

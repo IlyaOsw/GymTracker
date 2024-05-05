@@ -42,7 +42,16 @@
     height: 50px;
     width: 175px;
     cursor: pointer;
-    margin: 50px auto;
+    margin: 35px auto;
+
+    span {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    img {
+      margin-top: 5px;
+    }
   }
 }
 
@@ -55,6 +64,7 @@
 
   .buttons {
     top: 57%;
+
     .downloadImage {
       height: 40px;
       width: 140px;

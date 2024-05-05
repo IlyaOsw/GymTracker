@@ -11,7 +11,11 @@ export const FooterImage: React.FC = () => {
   return (
     <div className={styles.footerImg}>
       <div className={styles.footerTitle}>
-        <DescriptionTitle text={t("unlockYourPotential")} textAlign="center" />
+        <DescriptionTitle
+          text={t("unlockYourPotential")}
+          textAlign="center"
+          className="animation_item"
+        />
       </div>
       <img
         src={process.env.PUBLIC_URL + "/assets/Images/FooterImg.jpg"}

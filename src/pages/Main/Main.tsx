@@ -1,18 +1,12 @@
 import React, { useEffect } from "react";
 
 import { Hexagon } from "../../components/Hexagon/Hexagon";
-
 import { FooterImage } from "../../components/FooterImage/FooterImage";
+import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 
 import { Greeting } from "./Greeting/Greeting";
-
 import { MainImage } from "./MainImage/MainImage";
 import { Offer } from "./Offer/Offer";
-
-const container: React.CSSProperties = {
-  maxWidth: "1200px",
-  margin: "0 auto",
-};
 
 const Main: React.FC = () => {
   useEffect(() => {
@@ -22,11 +16,11 @@ const Main: React.FC = () => {
   return (
     <>
       <MainImage />
-      <div style={container}>
+      <PageWrapper>
         <Greeting />
         <Hexagon />
         <Offer />
-      </div>
+      </PageWrapper>
       <FooterImage />
     </>
   );

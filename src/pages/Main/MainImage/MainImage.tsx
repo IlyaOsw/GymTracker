@@ -25,11 +25,13 @@ export const MainImage: React.FC = () => {
             {t("joinToday")}
           </CustomButton>
         </Link>
-        <img
-          className={styles.downloadImage}
-          src={process.env.PUBLIC_URL + "/assets/Images/DownloadOnApp.png"}
-          alt="Download"
-        />
+        <div className={styles.downloadImage}>
+          <span>{t("comingSoon")}</span>
+          <img
+            src={process.env.PUBLIC_URL + "/assets/Images/DownloadOnApp.png"}
+            alt="Download"
+          />
+        </div>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ export const Hexagon: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.block}>
+    <div className={`${styles.wrapper} animation_item`}>
       {imagesData.map((data, index) => (
         <React.Fragment key={index}>
           <div className={styles.imageContainer}>
