@@ -1,47 +1,26 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import { ImageData } from "../../types/types";
-
 import styles from "./Hexagon.module.scss";
 
-const imagesData: ImageData[] = [
-  {
-    src: "/assets/Icons/Hexagon/Hexagon.svg",
-    alt: "Hexagon",
-    text: "register",
-  },
-  { src: "/assets/Icons/Hexagon/Hexagon.svg", alt: "Hexagon", text: "track" },
-  { src: "/assets/Icons/Hexagon/Hexagon.svg", alt: "Hexagon", text: "result" },
-];
+interface HexagonProps {
+  text: string;
+  className?: string;
+}
 
-export const Hexagon: React.FC = () => {
+export const Hexagon: React.FC<HexagonProps> = ({ text, className }) => {
   const { t } = useTranslation();
 
   return (
-    <div className={`${styles.wrapper} animation_item`}>
-      {imagesData.map((data, index) => (
-        <React.Fragment key={index}>
-          <div className={styles.imageContainer}>
-            <img
-              src={process.env.PUBLIC_URL + data.src}
-              alt={data.alt}
-              className={styles.hexagon}
-            />
-            <div className={styles.imageText}>{t(data.text)}</div>
-          </div>
-          {index < imagesData.length - 1 && (
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/assets/Icons/Hexagon/LineHorizontal.svg"
-              }
-              alt="Line"
-              className={styles.lineHorizontal}
-            />
-          )}
-        </React.Fragment>
-      ))}
+    <div className={styles.wrapper}>
+      <div className={styles.imageContainer}>
+        <img
+          src={process.env.PUBLIC_URL + "/assets/Icons/Hexagon/Hexagon.svg"}
+          alt="Hexagon"
+          className={styles.hexagon}
+        />
+        <div className={`${styles.imageText} ${className}`}>{t(text)}</div>
+      </div>
     </div>
   );
 };

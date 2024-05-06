@@ -6,10 +6,13 @@ import {
   PlusCircleOutlined,
 } from "@ant-design/icons";
 
+import { Link } from "react-router-dom";
+
 import { Loader } from "../../components/Loader/Loader";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { SubTitle } from "../../components/SubTitle/SubTitle";
+import { Hexagon } from "../../components/Hexagon/Hexagon";
 
 import styles from "./Profile.module.scss";
 
@@ -85,7 +88,32 @@ const Profile: React.FC = () => {
           </div>
         </div>
       </div>
-      <Loader />
+      <div className={styles.diaryWrapper}>
+        <SubTitle>Training diary</SubTitle>
+        <div className={styles.info}>Choose to start recording workouts</div>
+        <div className={styles.hexagonWrapper}>
+          <Link to="/workout">
+            <Hexagon text={"Arms"} className={styles.link} />
+          </Link>
+          <Link to="/workout">
+            <Hexagon text={"Shoulders"} className={styles.link} />
+          </Link>
+          <Link to="/workout">
+            <Hexagon text={"Chest"} className={styles.link} />
+          </Link>
+          <Link to="/workout">
+            <Hexagon text={"Back"} className={styles.link} />
+          </Link>
+          <Link to="/workout">
+            <Hexagon text={"Legs"} className={styles.link} />
+          </Link>
+        </div>
+      </div>
+      <div className={styles.calcWrapper}>
+        <SubTitle>Maximum weight calculator</SubTitle>
+        <div className={styles.info}>Indicate your weight and reps</div>
+        <div className={styles.calc}></div>
+      </div>
     </PageWrapper>
   );
 };

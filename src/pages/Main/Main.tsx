@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 
-import { Hexagon } from "../../components/Hexagon/Hexagon";
 import { FooterImage } from "../../components/FooterImage/FooterImage";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 
@@ -18,7 +17,6 @@ const Main: React.FC = () => {
       <MainImage />
       <PageWrapper>
         <Greeting />
-        <Hexagon />
         <Offer />
       </PageWrapper>
       <FooterImage />

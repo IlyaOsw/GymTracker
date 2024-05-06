@@ -26,18 +26,13 @@
 
 .infoContainer {
   width: 100%;
-  margin-top: 150px;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .personalInformation {
   width: 50%;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: start;
-  //   flex-direction: column;
+  padding-top: 160px;
+  cursor: default;
 
   div {
     width: 100%;
@@ -63,6 +58,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding-top: 80px;
+  cursor: default;
 
   .exercisesBox {
     width: 80%;
@@ -99,6 +96,41 @@
   }
 }
 
+.diaryWrapper {
+  margin-top: 75px;
+}
+
+.hexagonWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 50px;
+
+  a {
+    border-radius: 50%;
+  }
+}
+
+.info {
+  font-size: 1.4rem;
+}
+
+.link {
+  cursor: pointer !important;
+}
+
+.calcWrapper {
+  margin: 75px 0px;
+  height: 500px;
+}
+.calc {
+  height: 200px;
+  background-color: #282828;
+  border-radius: 25px;
+  margin-top: 50px;
+}
+
 @media (max-width: 992px) {
   .avatar {
     left: 35%;
@@ -114,20 +146,35 @@
   }
   .exercises {
     width: 100%;
+    padding-top: 0px;
   }
 }
+
 @media (max-width: 768px) {
   .paper img {
-    height: 300px;
+    height: 200px;
   }
 
   .avatar {
     left: 25%;
-    top: 225px;
+    top: 150px;
 
     img {
       height: 200px;
       width: 200px;
+    }
+  }
+
+  .personalInformation {
+    width: 100%;
+    margin-top: 20px;
+
+    div {
+      width: 100%;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      line-height: 30px;
     }
   }
 
