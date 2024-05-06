@@ -5,6 +5,7 @@ import countries from "react-select-country-list";
 
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import styles from "../SignUp.module.scss";
+import { SubTitle } from "../../../components/SubTitle/SubTitle";
 
 const { Option } = Select;
 
@@ -14,7 +15,7 @@ export const Address: React.FC = () => {
   const { t } = useTranslation();
   return (
     <div className={styles.address}>
-      <p className={styles.subTitle}>{t("address")}</p>
+      <SubTitle>{t("address")}</SubTitle>
       <div className={styles.addressOptions}>
         <Form.Item
           name={t("country")}

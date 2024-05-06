@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import styles from "../SignUp.module.scss";
 import { Calendar } from "../../../components/Calendar/Calendar";
+import { SubTitle } from "../../../components/SubTitle/SubTitle";
 
 const { Option } = Select;
 
@@ -12,7 +13,7 @@ export const PersonalInformation: React.FC = () => {
   const { t } = useTranslation();
   return (
     <div className={styles.personalInfo}>
-      <p className={styles.subTitle}>{t("personalInfo")}</p>
+      <SubTitle>{t("personalInfo")}</SubTitle>
       <div className={styles.personalInfoOptions}>
         <div>
           <CustomInput

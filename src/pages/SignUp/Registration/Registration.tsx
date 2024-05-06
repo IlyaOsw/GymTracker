@@ -8,6 +8,7 @@ import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { ConfirmPasswordInput } from "../../../components/PasswordInput/ConfirmPasswordInput";
 
 import styles from "../SignUp.module.scss";
+import { SubTitle } from "../../../components/SubTitle/SubTitle";
 
 export const Registration: React.FC = () => {
   const { t } = useTranslation();
@@ -40,7 +41,7 @@ export const Registration: React.FC = () => {
         </Upload>
       </div>
       <div>
-        <p className={styles.subTitle}>{t("registration")}</p>
+        <SubTitle>{t("registration")}</SubTitle>
         <CustomInput
           name={t("email")}
           text={t("email")}

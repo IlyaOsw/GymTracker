@@ -27,10 +27,12 @@ export const MainImage: React.FC = () => {
         </Link>
         <div className={styles.downloadImage}>
           <span>{t("comingSoon")}</span>
-          <img
-            src={process.env.PUBLIC_URL + "/assets/Images/DownloadOnApp.png"}
-            alt="Download"
-          />
+          <Link to="https://www.apple.com/app-store/" target="_blank">
+            <img
+              src={process.env.PUBLIC_URL + "/assets/Images/DownloadOnApp.png"}
+              alt="Download"
+            />
+          </Link>
         </div>
       </div>
     </div>
