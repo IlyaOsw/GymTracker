@@ -7,7 +7,7 @@ import { RangePickerProps } from "antd/es/date-picker";
 
 import styles from "./Calendar.module.scss";
 
-export const Calendar: React.FC = () => {
+export const Calendar: React.FC<{ className?: string }> = ({ className }) => {
   const { t } = useTranslation();
 
   const disabledDate: RangePickerProps["disabledDate"] = (current) => {
@@ -32,7 +32,7 @@ export const Calendar: React.FC = () => {
       }}
     >
       <DatePicker
-        className={styles.dateField}
+        className={`${styles.dateField} ${className}`}
         placeholder={t("selectDate")}
         suffixIcon={<CalendarOutlined />}
         inputReadOnly

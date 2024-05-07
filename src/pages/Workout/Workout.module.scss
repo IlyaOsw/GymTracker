@@ -1,0 +1,53 @@
+.test {
+  height: 1000px;
+}
+
+.addExercise {
+  width: 100%;
+  display: flex;
+  margin-top: 75px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.input {
+  display: flex;
+}
+
+.inputLabel {
+  font-size: 1.2rem;
+  cursor: default;
+  color: #ffffff;
+}
+
+.exerciseDescription {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+}
+
+.addBtn {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 13px;
+  width: 150px;
+}
+
+.recentlyUsed {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .usedItem {
+    width: 150px;
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .addExercise {
+    flex-direction: column;
+  }
+}

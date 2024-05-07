@@ -10,6 +10,7 @@ interface CustomInputProps {
   type?: string;
   placeholder?: string;
   isRequired?: boolean;
+  className?: string;
 }
 
 type FieldType = {
@@ -24,6 +25,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
   type,
   placeholder,
   isRequired = true,
+  className,
 }) => {
   const { t } = useTranslation();
 
@@ -37,7 +39,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
         <Input
           type={type}
           placeholder={placeholder}
-          className={styles.inputField}
+          className={`${styles.inputField} ${className}`}
           allowClear
         />
       </Form.Item>

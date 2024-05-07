@@ -3,12 +3,12 @@ import { Checkbox, Form } from "antd";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { FooterImage } from "../../components/FooterImage/FooterImage";
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
+import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 
 import styles from "./SignIn.module.scss";
 
@@ -62,8 +62,7 @@ const SignIn: React.FC = () => {
           </div>
         </Form>
       </PageWrapper>
-
-      <FooterImage />
+      <CustomFooter />
     </>
   );
 };

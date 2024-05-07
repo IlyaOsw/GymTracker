@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
-import { FooterImage } from "../../components/FooterImage/FooterImage";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
+import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 
 import { Greeting } from "./Greeting/Greeting";
 import { MainImage } from "./MainImage/MainImage";
@@ -19,7 +19,7 @@ const Main: React.FC = () => {
         <Greeting />
         <Offer />
       </PageWrapper>
-      <FooterImage />
+      <CustomFooter />
     </>
   );
 };

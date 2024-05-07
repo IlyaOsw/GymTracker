@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
-
 import {
   CheckOutlined,
   MessageOutlined,
   PlusCircleOutlined,
 } from "@ant-design/icons";
-
 import { Link } from "react-router-dom";
 
-import { Loader } from "../../components/Loader/Loader";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { SubTitle } from "../../components/SubTitle/SubTitle";

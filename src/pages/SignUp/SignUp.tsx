@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Form, Button } from "antd";
 
-import { FooterImage } from "../../components/FooterImage/FooterImage";
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
+import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 
 import { Registration } from "./Registration/Registration";
 import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
@@ -48,7 +48,7 @@ const SignUp: React.FC = () => {
       <Link to="/profile">
         <CustomButton className={styles.signUpBtn}>{t("signUp")}</CustomButton>
       </Link>
-      <FooterImage />
+      <CustomFooter />
     </Form>
   );
 };

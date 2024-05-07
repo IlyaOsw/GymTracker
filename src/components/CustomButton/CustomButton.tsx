@@ -30,7 +30,6 @@ export const CustomButton = ({
       onClick={onClick}
       style={{
         backgroundColor: "#0097b2",
-        borderColor: "#0097b2",
         color: "#ffffff",
       }}
     >
