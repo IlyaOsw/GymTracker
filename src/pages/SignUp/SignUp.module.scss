@@ -78,7 +78,15 @@
 .reset {
   color: #ffffff;
   font-size: 1.2rem;
-  color: rgb(255, 40, 40);
+  color: rgb(255, 62, 62);
+
+  &:hover {
+    color: rgb(255, 6, 6) !important;
+  }
+
+  &:active {
+    color: rgb(188, 31, 31) !important;
+  }
 }
 
 .signUpBtn {

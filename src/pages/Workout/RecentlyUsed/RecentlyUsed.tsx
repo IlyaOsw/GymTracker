@@ -29,6 +29,7 @@ export const RecentlyUsed: React.FC = () => {
             key={index}
             title={<CustomTitle text={item.title} />}
             className={styles.usedItem}
+            bordered={false}
           >
             {item.content}
           </Card>

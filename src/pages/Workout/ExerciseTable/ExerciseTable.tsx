@@ -60,18 +60,18 @@ export const ExerciseTable: React.FC = () => {
       title: `${t("set")}`,
       dataIndex: "set",
       // sorter: (a, b) => a.set - b.set,
-      width: "30.333%",
+      width: "30%",
     },
     {
       title: `${t("weight")}`,
       dataIndex: "weight",
-      width: "30.333%",
+      width: "40%",
     },
 
     {
       title: `${t("reps")}`,
       dataIndex: "reps",
-      width: "30.333%",
+      width: "30%%",
     },
   ];
 
@@ -96,8 +96,9 @@ export const ExerciseTable: React.FC = () => {
               colorPrimary: "#ffffff",
               headerBorderRadius: 0,
               rowHoverBg: "#464646",
-              borderColor: "#0097B2",
+              borderColor: "#535353",
               fontWeightStrong: 700,
+              headerSplitColor: "#535353",
             },
           },
         }}
