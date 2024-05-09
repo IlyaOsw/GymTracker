@@ -1,0 +1,16 @@
+.addExercise {
+  display: flex;
+  margin-top: 50px;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  .inputLabel {
+    font-size: 1.2rem;
+    cursor: default;
+    color: #ffffff;
+  }
+}

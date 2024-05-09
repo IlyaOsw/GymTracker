@@ -1,0 +1,14 @@
+.button {
+  background-color: #0097b2;
+  color: #ffffff;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: #00a2bf !important;
+    box-shadow: 0px 0px 5px #0097b2;
+  }
+
+  &:active {
+    background-color: #007f96 !important;
+  }
+}

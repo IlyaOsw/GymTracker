@@ -28,3 +28,10 @@ export interface ImageData {
   alt: string;
   text: string;
 }
+
+export type ExerciseTableType = {
+  key: React.Key;
+  weight: number;
+  set: number;
+  reps: number;
+};

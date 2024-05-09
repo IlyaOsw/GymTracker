@@ -1,0 +1,23 @@
+.diaryWrapper {
+  margin-top: 75px;
+
+  .info {
+    font-size: 1.4rem;
+  }
+
+  .hexagonWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 50px;
+
+    a {
+      border-radius: 50%;
+    }
+  }
+
+  .link {
+    cursor: pointer !important;
+  }
+}

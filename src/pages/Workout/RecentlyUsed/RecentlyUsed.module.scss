@@ -1,0 +1,22 @@
+.recentlyUsed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+  margin-bottom: 50px;
+
+  .usedItem {
+    margin: 10px;
+    background-color: #282828;
+    color: #ffffff !important;
+    width: 175px;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      filter: brightness(120%);
+      box-shadow: 0 0 10px #0097b2;
+    }
+  }
+}

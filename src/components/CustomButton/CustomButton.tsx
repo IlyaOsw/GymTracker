@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button } from "antd";
 
+import styles from "./CustomButton.module.scss";
+
 import type { ConfigProviderProps } from "antd";
 
 type SizeType = ConfigProviderProps["componentSize"];
@@ -26,12 +28,8 @@ export const CustomButton = ({
       shape="round"
       icon={icon}
       size={size}
-      className={className}
+      className={`${styles.button} ${className}`}
       onClick={onClick}
-      style={{
-        backgroundColor: "#0097b2",
-        color: "#ffffff",
-      }}
     >
       {children}
     </Button>

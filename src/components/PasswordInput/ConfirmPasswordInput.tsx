@@ -9,7 +9,7 @@ export const ConfirmPasswordInput: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.confrimInputWrapper}>
+    <div className={styles.confirmInputWrapper}>
       <Form.Item
         label={<span className={styles.inputLabel}>{t("password")}</span>}
         name="password"

@@ -1,0 +1,24 @@
+.table {
+  margin: 0px 10px 25px;
+  cursor: default;
+}
+
+.tableTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 10px 0px;
+}
+
+.date {
+  font-size: 1.2rem;
+  cursor: default;
+  color: #ffffff;
+}
+
+.tableFooter {
+  margin: 100px 10px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
