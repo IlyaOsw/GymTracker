@@ -1,12 +1,12 @@
 .footerImg {
   position: relative;
   box-shadow: 0px 0px 10px rgba(0, 151, 178, 0.3);
-  height: 500px;
+  height: 600px;
   overflow-y: hidden;
 
   .image {
     background-image: url("../../../../public/assets/Images/FooterImg.jpg");
-    background-size: 100% 100%;
+    background-size: cover;
     height: 100vh;
     background-attachment: fixed;
   }
