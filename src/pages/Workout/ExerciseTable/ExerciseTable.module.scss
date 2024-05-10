@@ -22,3 +22,11 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.deleteIcon {
+  cursor: pointer;
+
+  &:hover {
+    color: red !important;
+  }
+}

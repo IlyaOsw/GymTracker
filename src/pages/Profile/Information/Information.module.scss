@@ -1,11 +1,11 @@
-.mainContainer {
+.mainContainer,
+.infoContainer {
   position: relative;
+  background-color: #1a1a1a;
 }
 
 .paper img {
   width: 100%;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 151, 178, 0.3);
   height: 400px;
   object-fit: cover;
 }
@@ -14,6 +14,7 @@
   position: absolute;
   left: 15%;
   top: 300px;
+  z-index: 1 !important;
 
   img {
     height: 250px;
@@ -28,15 +29,22 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  margin: 10px;
+  margin: 5px;
   z-index: 1;
+  background-color: transparent;
+  color: aliceblue;
 
   &:hover {
     color: #0097b2 !important;
+    background-color: transparent !important;
     border: 1px solid #0097b2 !important;
   }
 
-  @media (max-width: 576px) {
+  &:active {
+    background-color: #002c34 !important;
+  }
+
+  @media (max-width: 992px) {
     svg {
       margin-left: 5px;
     }
@@ -52,10 +60,21 @@
   display: flex;
 }
 
+.onlineIcon {
+  width: 20px !important;
+  height: 20px !important;
+  border: 2px solid white;
+  position: absolute;
+  top: 90%;
+  right: 13%;
+  transform: translate(-50%, -50%);
+}
+
 @media (max-width: 992px) {
   .avatar {
-    left: 35%;
-    top: 225px;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .infoContainer {
@@ -69,9 +88,6 @@
   }
 
   .avatar {
-    left: 30%;
-    top: 150px;
-
     img {
       height: 150px;
       width: 150px;

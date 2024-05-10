@@ -30,8 +30,9 @@ export interface ImageData {
 }
 
 export type ExerciseTableType = {
-  key: React.Key;
+  key: string;
   weight: number;
   set: number;
   reps: number;
+  icon: React.ReactNode;
 };

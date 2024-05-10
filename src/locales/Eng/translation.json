@@ -73,7 +73,7 @@
     "recentlyUsed": "Recently used",
     "date": "Date: ",
     "addRow": "Add row",
-    "seePrevious": "See Previous",
+    "previous": "Previous",
     "save": "Save",
     "set": "Set",
     "weight": "Weight (kg)",
@@ -93,5 +93,7 @@
     "favoriteExercises": "Favorite exercises",
     "bestResult": "Best result",
     "kg": "kg",
-    "editCoverPhoto": "Edit cover photo"
+    "editCoverPhoto": "Edit cover photo",
+    "editProfile": "Edit profile",
+    "birthday": "Birthday: "
 }

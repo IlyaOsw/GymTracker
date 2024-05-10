@@ -2,7 +2,7 @@ import React from "react";
 
 import { Button } from "antd";
 
-import { CameraOutlined } from "@ant-design/icons";
+import { CameraOutlined, SettingOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import styles from "./Information.module.scss";
@@ -28,11 +28,21 @@ export const Information: React.FC = () => {
             src="https://scontent.ftll3-2.fna.fbcdn.net/v/t1.15752-9/441948832_1641887679945902_7689976602008975630_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=eSlEon3VATkQ7kNvgF_YmOM&_nc_ht=scontent.ftll3-2.fna&oh=03_Q7cD1QGe-zsvVnR-ln-faJ4LWFjvNdBQBbnkuIbyEKaD5KYlGQ&oe=66602397"
             alt="Avatar"
           />
+          <img
+            src={
+              process.env.PUBLIC_URL + "/assets/Icons/OnlineIcon/OnlineIcon.svg"
+            }
+            alt="Online"
+            className={styles.onlineIcon}
+          />
         </div>
       </div>
       <div className={styles.infoContainer}>
         <UserInfo />
         <FavoriteExercises />
+        <Button icon={<SettingOutlined />} className={styles.editBtn}>
+          <span className={styles.buttonText}>{t("editProfile")}</span>
+        </Button>
       </div>
     </>
   );

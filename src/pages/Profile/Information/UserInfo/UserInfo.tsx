@@ -2,6 +2,7 @@ import {
   MessageOutlined,
   CheckOutlined,
   PlusCircleOutlined,
+  SafetyCertificateOutlined,
 } from "@ant-design/icons";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -20,10 +21,13 @@ export const UserInfo: React.FC = () => {
 
   return (
     <div className={styles.personalInformation}>
-      <div>Ilja Ossipov</div>
-      <div>Powerlifting</div>
-      <div>Estonia, Tartu</div>
-      <div>27 years old</div>
+      <div>
+        Ilja Ossipov
+        <SafetyCertificateOutlined className={styles.verificationIcon} />
+      </div>
+      <div>Sport: Powerlifting</div>
+      <div>Estonia, Tartumaa, Tartu</div>
+      <div>{t("birthday")} 02.09.1996 (27y.)</div>
       <div className={styles.buttons}>
         <CustomButton className={styles.button} icon={<MessageOutlined />}>
           {t("message")}

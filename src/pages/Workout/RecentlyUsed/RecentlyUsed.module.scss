@@ -16,7 +16,21 @@
 
     &:hover {
       filter: brightness(120%);
-      box-shadow: 0 0 10px #0097b2;
     }
+
+    &:active {
+      filter: brightness(80%);
+    }
+  }
+}
+.deleteIcon {
+  color: #ffffff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+
+  &:hover {
+    color: red;
   }
 }

@@ -11,11 +11,7 @@ export const MainImage: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <img
-        className={styles.mainImage}
-        src={process.env.PUBLIC_URL + "/assets/Images/MainImage.jpg"}
-        alt="Logo"
-      />
+      <div className={styles.image}></div>
       <div className={styles.title}>
         {t("title1")} <br /> {t("title2")}
       </div>

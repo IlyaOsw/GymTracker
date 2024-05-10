@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "antd";
 import { useTranslation } from "react-i18next";
+import { CloseOutlined } from "@ant-design/icons";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 
@@ -19,15 +20,30 @@ const cardData: { title: string; content: string }[] = [
 
 export const RecentlyUsed: React.FC = () => {
   const { t } = useTranslation();
+  const [data, setData] = useState(cardData);
+
+  const handleDeleteCard = (index: number) => {
+    const newCardData = [...data];
+    newCardData.splice(index, 1);
+    setData(newCardData);
+  };
 
   return (
     <>
       <SubTitle children={t("recentlyUsed")} />
       <div className={styles.recentlyUsed}>
-        {cardData.map((item, index) => (
+        {data.map((item, index) => (
           <Card
             key={index}
-            title={<CustomTitle text={item.title} />}
+            title={
+              <>
+                <CustomTitle text={item.title} />
+                <CloseOutlined
+                  className={styles.deleteIcon}
+                  onClick={() => handleDeleteCard(index)}
+                />
+              </>
+            }
             className={styles.usedItem}
             bordered={false}
           >

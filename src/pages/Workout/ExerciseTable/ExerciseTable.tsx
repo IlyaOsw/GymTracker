@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { ConfigProvider, Divider, Table } from "antd";
-import { CheckOutlined, LeftOutlined, PlusOutlined } from "@ant-design/icons";
+import {
+  CheckOutlined,
+  DeleteOutlined,
+  LeftOutlined,
+  PlusOutlined,
+} from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import { CustomButton } from "../../../components/CustomButton/CustomButton";
@@ -17,24 +22,28 @@ const initialData: ExerciseTableType[] = [
     weight: 60,
     set: 1,
     reps: 10,
+    icon: <DeleteOutlined className={styles.deleteIcon} />,
   },
   {
     key: "2",
     weight: 80,
     set: 2,
     reps: 8,
+    icon: <DeleteOutlined className={styles.deleteIcon} />,
   },
   {
     key: "3",
     weight: 100,
     set: 3,
     reps: 6,
+    icon: <DeleteOutlined className={styles.deleteIcon} />,
   },
   {
     key: "4",
     weight: 110,
     set: 4,
     reps: 3,
+    icon: <DeleteOutlined className={styles.deleteIcon} />,
   },
 ];
 
@@ -44,14 +53,23 @@ export const ExerciseTable: React.FC = () => {
 
   const addRow = () => {
     const newData = [...data];
-    const lastKey = parseInt(newData[newData.length - 1].key.toString());
+    let lastKey = 0;
+    if (newData.length > 0) {
+      lastKey = parseInt(newData[newData.length - 1].key);
+    }
     const newRow: ExerciseTableType = {
       key: (lastKey + 1).toString(),
       weight: 0,
       set: lastKey + 1,
       reps: 0,
+      icon: <DeleteOutlined className={styles.deleteIcon} />,
     };
     newData.push(newRow);
+    setData(newData);
+  };
+
+  const deleteRow = (key: React.Key) => {
+    const newData = data.filter((item) => item.key !== key);
     setData(newData);
   };
 
@@ -67,11 +85,20 @@ export const ExerciseTable: React.FC = () => {
       dataIndex: "weight",
       width: "40%",
     },
-
     {
       title: `${t("reps")}`,
       dataIndex: "reps",
-      width: "30%%",
+      width: "30%",
+    },
+    {
+      title: "",
+      dataIndex: "icon",
+      render: (_, record) => (
+        <DeleteOutlined
+          className={styles.deleteIcon}
+          onClick={() => deleteRow(record.key)}
+        />
+      ),
     },
   ];
 
@@ -87,10 +114,10 @@ export const ExerciseTable: React.FC = () => {
           components: {
             Table: {
               headerBg: "#1A1A1A",
-              headerColor: "#0097B2",
+              headerColor: "#ffffff",
               headerSortHoverBg: "#282828",
               bodySortBg: "#282828",
-              cellFontSize: 20,
+              cellFontSize: 16,
               colorBgContainer: "#282828",
               colorText: "#ffffff",
               colorPrimary: "#ffffff",
@@ -109,13 +136,14 @@ export const ExerciseTable: React.FC = () => {
           pagination={false}
           className={styles.table}
         />
+
         <CustomButton
           onClick={addRow}
           icon={<PlusOutlined />}
           children={t("addRow")}
         />
         <div className={styles.tableFooter}>
-          <CustomButton icon={<LeftOutlined />} children={t("seePrevious")} />
+          <CustomButton icon={<LeftOutlined />} children={t("previous")} />
           <CustomButton icon={<CheckOutlined />} children={t("save")} />
         </div>
       </ConfigProvider>
