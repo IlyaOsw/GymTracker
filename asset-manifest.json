@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/GymTracker/static/css/main.830ccd68.css",
-    "main.js": "/GymTracker/static/js/main.644e1cd1.js",
-    "static/css/32.5661b65a.chunk.css": "/GymTracker/static/css/32.5661b65a.chunk.css",
+    "main.js": "/GymTracker/static/js/main.113b58bc.js",
+    "static/css/32.d910457d.chunk.css": "/GymTracker/static/css/32.d910457d.chunk.css",
     "static/js/32.f79311bf.chunk.js": "/GymTracker/static/js/32.f79311bf.chunk.js",
-    "static/css/323.ad62b4d0.chunk.css": "/GymTracker/static/css/323.ad62b4d0.chunk.css",
+    "static/css/323.018952a1.chunk.css": "/GymTracker/static/css/323.018952a1.chunk.css",
     "static/js/323.c2f4d1c0.chunk.js": "/GymTracker/static/js/323.c2f4d1c0.chunk.js",
-    "static/css/379.47d9aabd.chunk.css": "/GymTracker/static/css/379.47d9aabd.chunk.css",
+    "static/css/379.eb25a035.chunk.css": "/GymTracker/static/css/379.eb25a035.chunk.css",
     "static/js/379.d14e3908.chunk.js": "/GymTracker/static/js/379.d14e3908.chunk.js",
     "static/css/574.ba2634f7.chunk.css": "/GymTracker/static/css/574.ba2634f7.chunk.css",
     "static/js/574.63404855.chunk.js": "/GymTracker/static/js/574.63404855.chunk.js",
@@ -25,12 +25,12 @@
     "index.html": "/GymTracker/index.html",
     "static/media/getFetch.cjs": "/GymTracker/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.830ccd68.css.map": "/GymTracker/static/css/main.830ccd68.css.map",
-    "main.644e1cd1.js.map": "/GymTracker/static/js/main.644e1cd1.js.map",
-    "32.5661b65a.chunk.css.map": "/GymTracker/static/css/32.5661b65a.chunk.css.map",
+    "main.113b58bc.js.map": "/GymTracker/static/js/main.113b58bc.js.map",
+    "32.d910457d.chunk.css.map": "/GymTracker/static/css/32.d910457d.chunk.css.map",
     "32.f79311bf.chunk.js.map": "/GymTracker/static/js/32.f79311bf.chunk.js.map",
-    "323.ad62b4d0.chunk.css.map": "/GymTracker/static/css/323.ad62b4d0.chunk.css.map",
+    "323.018952a1.chunk.css.map": "/GymTracker/static/css/323.018952a1.chunk.css.map",
     "323.c2f4d1c0.chunk.js.map": "/GymTracker/static/js/323.c2f4d1c0.chunk.js.map",
-    "379.47d9aabd.chunk.css.map": "/GymTracker/static/css/379.47d9aabd.chunk.css.map",
+    "379.eb25a035.chunk.css.map": "/GymTracker/static/css/379.eb25a035.chunk.css.map",
     "379.d14e3908.chunk.js.map": "/GymTracker/static/js/379.d14e3908.chunk.js.map",
     "574.ba2634f7.chunk.css.map": "/GymTracker/static/css/574.ba2634f7.chunk.css.map",
     "574.63404855.chunk.js.map": "/GymTracker/static/js/574.63404855.chunk.js.map",
@@ -47,6 +47,6 @@
   },
   "entrypoints": [
     "static/css/main.830ccd68.css",
-    "static/js/main.644e1cd1.js"
+    "static/js/main.113b58bc.js"
   ]
 }
