@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/GymTracker/static/css/main.830ccd68.css",
-    "main.js": "/GymTracker/static/js/main.7b4d1bab.js",
-    "static/css/32.5f5f6b3b.chunk.css": "/GymTracker/static/css/32.5f5f6b3b.chunk.css",
-    "static/js/32.1425dbb1.chunk.js": "/GymTracker/static/js/32.1425dbb1.chunk.js",
+    "main.js": "/GymTracker/static/js/main.d3b8e5b2.js",
+    "static/css/32.af2dae0c.chunk.css": "/GymTracker/static/css/32.af2dae0c.chunk.css",
+    "static/js/32.f79311bf.chunk.js": "/GymTracker/static/js/32.f79311bf.chunk.js",
     "static/css/323.21dfc8a9.chunk.css": "/GymTracker/static/css/323.21dfc8a9.chunk.css",
     "static/js/323.c2f4d1c0.chunk.js": "/GymTracker/static/js/323.c2f4d1c0.chunk.js",
     "static/css/379.5896175a.chunk.css": "/GymTracker/static/css/379.5896175a.chunk.css",
@@ -25,9 +25,9 @@
     "index.html": "/GymTracker/index.html",
     "static/media/getFetch.cjs": "/GymTracker/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.830ccd68.css.map": "/GymTracker/static/css/main.830ccd68.css.map",
-    "main.7b4d1bab.js.map": "/GymTracker/static/js/main.7b4d1bab.js.map",
-    "32.5f5f6b3b.chunk.css.map": "/GymTracker/static/css/32.5f5f6b3b.chunk.css.map",
-    "32.1425dbb1.chunk.js.map": "/GymTracker/static/js/32.1425dbb1.chunk.js.map",
+    "main.d3b8e5b2.js.map": "/GymTracker/static/js/main.d3b8e5b2.js.map",
+    "32.af2dae0c.chunk.css.map": "/GymTracker/static/css/32.af2dae0c.chunk.css.map",
+    "32.f79311bf.chunk.js.map": "/GymTracker/static/js/32.f79311bf.chunk.js.map",
     "323.21dfc8a9.chunk.css.map": "/GymTracker/static/css/323.21dfc8a9.chunk.css.map",
     "323.c2f4d1c0.chunk.js.map": "/GymTracker/static/js/323.c2f4d1c0.chunk.js.map",
     "379.5896175a.chunk.css.map": "/GymTracker/static/css/379.5896175a.chunk.css.map",
@@ -47,6 +47,6 @@
   },
   "entrypoints": [
     "static/css/main.830ccd68.css",
-    "static/js/main.7b4d1bab.js"
+    "static/js/main.d3b8e5b2.js"
   ]
 }
