@@ -50,8 +50,7 @@ export const PersonalInformation: React.FC = () => {
                 className={styles.selectField}
                 variant="borderless"
                 dropdownStyle={{
-                  backgroundColor: "#141414",
-                  border: "1px solid #0097b2",
+                  backgroundColor: "#282828",
                 }}
               >
                 <Option value="male">{t("male")}</Option>

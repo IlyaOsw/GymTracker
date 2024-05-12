@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ConfigProvider, Divider, Table } from "antd";
+import { ConfigProvider, Divider, Empty, Table } from "antd";
 import {
   CheckOutlined,
   DeleteOutlined,
@@ -73,6 +73,13 @@ export const ExerciseTable: React.FC = () => {
     setData(newData);
   };
 
+  const customEmpty = () => (
+    <Empty
+      image={Empty.PRESENTED_IMAGE_SIMPLE}
+      description={<span style={{ color: "#ffffff" }}>{t("noData")}</span>}
+    />
+  );
+
   const columns: TableColumnsType<ExerciseTableType> = [
     {
       title: `${t("set")}`,
@@ -126,6 +133,7 @@ export const ExerciseTable: React.FC = () => {
               borderColor: "#535353",
               fontWeightStrong: 700,
               headerSplitColor: "#535353",
+              colorTextDisabled: "red",
             },
           },
         }}
@@ -135,8 +143,8 @@ export const ExerciseTable: React.FC = () => {
           dataSource={data}
           pagination={false}
           className={styles.table}
+          locale={{ emptyText: customEmpty }}
         />
-
         <CustomButton
           onClick={addRow}
           icon={<PlusOutlined />}

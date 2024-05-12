@@ -2,7 +2,7 @@ import React from "react";
 
 import { Button } from "antd";
 
-import { CameraOutlined, SettingOutlined } from "@ant-design/icons";
+import { CameraOutlined, EditOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import styles from "./Information.module.scss";
@@ -40,7 +40,7 @@ export const Information: React.FC = () => {
       <div className={styles.infoContainer}>
         <UserInfo />
         <FavoriteExercises />
-        <Button icon={<SettingOutlined />} className={styles.editBtn}>
+        <Button icon={<EditOutlined />} className={styles.editBtn}>
           <span className={styles.buttonText}>{t("editProfile")}</span>
         </Button>
       </div>

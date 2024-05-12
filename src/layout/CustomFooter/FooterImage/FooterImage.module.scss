@@ -1,14 +1,10 @@
 .footerImg {
   position: relative;
-  box-shadow: 0px 0px 10px rgba(0, 151, 178, 0.3);
-  height: 600px;
-  overflow-y: hidden;
 
-  .image {
-    background-image: url("../../../../public/assets/Images/FooterImg.jpg");
-    background-size: cover;
-    height: 100vh;
-    background-attachment: fixed;
+  img {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
   }
 
   .footerTitle {

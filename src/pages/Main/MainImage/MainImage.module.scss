@@ -1,14 +1,13 @@
 .wrapper {
   position: relative;
-  height: 85vh;
   overflow-y: hidden;
+  height: 90vh;
 }
 
-.image {
-  background-image: url("../../../../public/assets/Images/MainImage.jpg");
-  background-size: cover;
-  height: 100vh;
-  background-attachment: fixed;
+.mainImage {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
 .title {
@@ -72,6 +71,10 @@
       width: 140px;
     }
   }
+
+  .image {
+    background-attachment: unset;
+  }
 }
 
 @media (max-width: 480px) {
@@ -83,6 +86,7 @@
 
   .buttons {
     top: 65%;
+
     .downloadImage {
       height: 40px;
       width: 140px;

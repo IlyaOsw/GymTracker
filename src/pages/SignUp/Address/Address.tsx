@@ -13,6 +13,7 @@ const countryOptions = countries().getData();
 
 export const Address: React.FC = () => {
   const { t } = useTranslation();
+
   return (
     <div className={styles.address}>
       <SubTitle>{t("address")}</SubTitle>
@@ -38,8 +39,7 @@ export const Address: React.FC = () => {
               className={styles.selectField}
               variant="borderless"
               dropdownStyle={{
-                backgroundColor: "#141414",
-                border: "1px solid #0097b2",
+                backgroundColor: "#282828",
               }}
             >
               {countryOptions.map(

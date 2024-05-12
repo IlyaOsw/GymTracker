@@ -17,7 +17,10 @@ export const FooterImage: React.FC = () => {
           className="animation_item"
         />
       </div>
-      <div className={styles.image}></div>
+      <img
+        src={process.env.PUBLIC_URL + "/assets/Images/FooterImg.jpg"}
+        alt="Footer"
+      />
     </div>
   );
 };
