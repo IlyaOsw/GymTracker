@@ -1,5 +1,5 @@
 import { Form, ConfigProvider, Select } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import countries from "react-select-country-list";
 
@@ -13,6 +13,14 @@ const countryOptions = countries().getData();
 
 export const Address: React.FC = () => {
   const { t } = useTranslation();
+  const [filteredCountries, setFilteredCountries] = useState(countryOptions);
+
+  const filterOptions = (input: string) => {
+    const filtered = countryOptions.filter((country) =>
+      country.label.toLowerCase().startsWith(input.toLowerCase())
+    );
+    setFilteredCountries(filtered.length > 0 ? filtered : countryOptions);
+  };
 
   return (
     <div className={styles.address}>
@@ -30,6 +38,7 @@ export const Address: React.FC = () => {
                   colorTextPlaceholder: "#818181",
                   colorText: "#ffffff",
                   optionSelectedBg: "#0097b2",
+                  optionActiveBg: "#0097b2",
                 },
               },
             }}
@@ -41,8 +50,12 @@ export const Address: React.FC = () => {
               dropdownStyle={{
                 backgroundColor: "#282828",
               }}
+              showSearch
+              allowClear
+              filterOption={false}
+              onSearch={(value) => filterOptions(value)}
             >
-              {countryOptions.map(
+              {filteredCountries.map(
                 (country: { value: string; label: string }) => (
                   <Option key={country.value} value={country.value}>
                     {country.label}

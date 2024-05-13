@@ -5,9 +5,13 @@
   flex-direction: column;
   margin: 75px 0px;
 
-  .signInBtn {
+  .signInLink {
     margin: 50px 0px;
-    letter-spacing: 2px;
+    border-radius: 25px;
+
+    .signInBtn {
+      letter-spacing: 2px;
+    }
   }
 }
 
@@ -18,7 +22,6 @@
   .notRegistered {
     font-size: 1.1rem;
     color: #ffffff;
-    cursor: default;
   }
 }
 
@@ -30,7 +33,6 @@
 .importantOption {
   font-size: 1.1rem;
   color: #0097b2;
-  cursor: pointer;
 
   &:hover {
     filter: brightness(130%) !important;

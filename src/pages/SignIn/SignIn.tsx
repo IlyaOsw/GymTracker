@@ -47,7 +47,7 @@ const SignIn: React.FC = () => {
             </Checkbox>
             <div className={styles.importantOption}>{t("forgotPassword")}</div>
           </div>
-          <Link to="/profile">
+          <Link to="/profile" className={styles.signInLink}>
             <CustomButton className={styles.signInBtn}>
               {t("signIn")}
             </CustomButton>

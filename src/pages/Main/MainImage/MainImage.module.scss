@@ -1,13 +1,20 @@
 .wrapper {
   position: relative;
   overflow-y: hidden;
-  height: 90vh;
+  height: 85vh;
 }
 
-.mainImage {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
+// .mainImage {
+//   object-fit: cover;
+//   height: 100%;
+//   width: 100%;
+// }
+
+.image {
+  background-image: url("../../../../public/assets/Images/MainImage.jpg");
+  background-size: 100% 100%;
+  height: 100vh;
+  background-attachment: fixed;
 }
 
 .title {
@@ -18,7 +25,6 @@
   font-size: 4rem;
   font-style: italic;
   font-weight: bold;
-  cursor: default;
   letter-spacing: 3px;
   width: 100%;
   text-transform: uppercase;
@@ -42,7 +48,6 @@
   .downloadImage {
     height: 50px;
     width: 175px;
-    cursor: pointer;
     margin: 35px auto;
 
     span {

@@ -23,13 +23,8 @@ $main-color: #0097b2;
     align-items: center;
     height: 100%;
 
-    > p {
-      cursor: default;
-    }
-
     > div {
       margin-right: 12px;
-      cursor: pointer;
     }
   }
 
@@ -44,7 +39,6 @@ $main-color: #0097b2;
     width: 1px;
     height: 50%;
     background-color: #b2b2b2;
-    cursor: default !important;
   }
 
   .settingsBtn {

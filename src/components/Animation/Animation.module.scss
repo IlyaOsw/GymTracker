@@ -1,12 +1,11 @@
 :global {
   .animation_item {
-    opacity: 0;
+    opacity: 1;
     transform: translate(0px, 25%);
     transition: all 1s ease 0s;
 
     &.active {
       transform: translate(0px, 0px);
-      opacity: 1;
     }
   }
 }
