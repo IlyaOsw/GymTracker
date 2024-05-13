@@ -70,3 +70,31 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+/* Общие стили для scrollbar */
+::-webkit-scrollbar {
+  width: 3px; /* Ширина полосы прокрутки */
+}
+
+/* Кнопка для скролла вверх */
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+  display: none; /* Скрыть кнопки */
+}
+
+/* Фон scrollbar */
+::-webkit-scrollbar-track {
+  background-color: #141414; /* Цвет фона */
+  border-radius: 0px; /* Скругление углов */
+}
+
+/* Кнопка ползунка scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #7d7d7d; /* Цвет кнопки */
+  border-radius: 15px; /* Скругление углов */
+}
+
+/* Hover эффект на scrollbar */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #888; /* Цвет при наведении */
+}
