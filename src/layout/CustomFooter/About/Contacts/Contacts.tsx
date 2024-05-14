@@ -2,14 +2,15 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { HomeOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
 
+import { SubTitle } from "../../../../components/SubTitle/SubTitle";
+
 import styles from "./Contacts.module.scss";
 
 export const Contacts: React.FC = () => {
   const { t } = useTranslation();
-
   return (
     <div className={styles.contacts}>
-      <span className={styles.contactsTitle}>{t("contacts")}</span>
+      <SubTitle children={t("contacts")} />
       <span className={styles.contactsItem}>
         <a href="mailto:infogymtracker@gmail.com">
           <MailOutlined /> gymtracker@gmail.com

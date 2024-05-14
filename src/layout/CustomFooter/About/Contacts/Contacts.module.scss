@@ -1,27 +1,13 @@
-$marginTop: 20px;
-$transitionDuration: 0.4s;
-
 .contacts {
   display: flex;
   flex-direction: column;
-  margin-top: $marginTop;
   align-items: start;
-
-  > img {
-    margin-top: $marginTop;
-  }
-
-  .contactsTitle {
-    color: #0097b2;
-    font-weight: bold;
-    font-size: 1.4rem;
-  }
 
   .contactsItem {
     margin-top: 10px;
     font-size: 1.2rem;
     position: relative;
-    transition: all $transitionDuration;
+    transition: all 0.4s;
 
     > a {
       color: #ffffff !important;
@@ -39,7 +25,7 @@ $transitionDuration: 0.4s;
       width: 0;
       height: 1px;
       background-color: #ffffff;
-      transition: width $transitionDuration;
+      transition: width 0.4s;
       right: 0;
       bottom: 0;
       z-index: -1;

@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 import { SocialLinks } from "../../../../types/types";
+import { SubTitle } from "../../../../components/SubTitle/SubTitle";
 
 import styles from "./SocialMedia.module.scss";
 
@@ -28,7 +29,7 @@ export const SocialMedia: React.FC = () => {
 
   return (
     <div className={styles.socialMedia}>
-      <span className={styles.socialMediaTitle}>{t("socialMedia")}</span>
+      <SubTitle children={t("socialMedia")}></SubTitle>
       <span className={styles.socialMediaItems}>
         {links.map((link) => (
           <a

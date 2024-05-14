@@ -62,7 +62,7 @@ export const ExerciseTable: React.FC = () => {
       weight: 0,
       set: lastKey + 1,
       reps: 0,
-      icon: <DeleteOutlined className={styles.deleteIcon} />,
+      icon: <DeleteOutlined />,
     };
     newData.push(newRow);
     setData(newData);
@@ -84,7 +84,7 @@ export const ExerciseTable: React.FC = () => {
     {
       title: `${t("set")}`,
       dataIndex: "set",
-      // sorter: (a, b) => a.set - b.set,
+      sorter: (a, b) => a.set - b.set,
       width: "30%",
     },
     {
@@ -133,7 +133,7 @@ export const ExerciseTable: React.FC = () => {
               borderColor: "#535353",
               fontWeightStrong: 700,
               headerSplitColor: "#535353",
-              colorTextDisabled: "red",
+              headerSortActiveBg: "282828",
             },
           },
         }}

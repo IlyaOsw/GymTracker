@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import { useTranslation } from "react-i18next";
 
 import { Hexagon } from "../../../components/Hexagon/Hexagon";
@@ -10,7 +9,6 @@ import styles from "./Diary.module.scss";
 
 export const Diary: React.FC = () => {
   const { t } = useTranslation();
-
   return (
     <div className={styles.diaryWrapper}>
       <SubTitle children={t("trainingDiary")} />

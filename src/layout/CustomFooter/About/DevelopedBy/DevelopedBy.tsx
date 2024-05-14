@@ -5,7 +5,6 @@ import styles from "../About.module.scss";
 
 export const DevelopedBy: React.FC = () => {
   const { t } = useTranslation();
-
   return (
     <div className={styles.logo}>
       <img

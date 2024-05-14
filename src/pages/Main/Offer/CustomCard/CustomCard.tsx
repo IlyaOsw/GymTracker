@@ -7,7 +7,6 @@ import styles from "./CustomCard.module.scss";
 
 export const CustomCard: React.FC = () => {
   const { t } = useTranslation();
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.upperBlock}>

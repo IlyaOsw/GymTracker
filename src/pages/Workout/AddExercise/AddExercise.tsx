@@ -1,7 +1,6 @@
 import { PlusOutlined } from "@ant-design/icons";
 import { Form } from "antd";
 import React from "react";
-
 import { useTranslation } from "react-i18next";
 
 import { CustomButton } from "../../../components/CustomButton/CustomButton";

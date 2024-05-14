@@ -1,5 +1,9 @@
 .table {
   margin: 0px 20px 25px;
+
+  svg {
+    color: #0097b2;
+  }
 }
 
 .tableTitle {
@@ -19,10 +23,4 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.deleteIcon {
-  &:hover {
-    color: red !important;
-  }
 }

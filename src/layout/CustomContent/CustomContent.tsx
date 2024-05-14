@@ -8,7 +8,6 @@ const { Content } = Layout;
 
 const contentStyle: React.CSSProperties = {
   textAlign: "center",
-  minHeight: 120,
   color: "#fff",
   position: "relative",
   backgroundColor: "#141414",

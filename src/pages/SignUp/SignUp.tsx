@@ -15,7 +15,6 @@ import styles from "./SignUp.module.scss";
 
 const SignUp: React.FC = () => {
   const { t } = useTranslation();
-
   const [form] = Form.useForm();
 
   const onReset = () => form.resetFields();

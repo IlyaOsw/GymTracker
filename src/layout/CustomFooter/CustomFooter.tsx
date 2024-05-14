@@ -7,7 +7,6 @@ import { FooterImage } from "./FooterImage/FooterImage";
 const { Footer } = Layout;
 
 const footerStyle: React.CSSProperties = {
-  textAlign: "center",
   color: "#fff",
   backgroundColor: "#141414",
   padding: "20px 0px",
