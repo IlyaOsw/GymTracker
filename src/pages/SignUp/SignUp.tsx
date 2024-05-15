@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Form, Button } from "antd";
+import { Form } from "antd";
 
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
+import { ResetButton } from "../../components/ResetButton/ResetButton";
 
 import { Registration } from "./Registration/Registration";
 import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
@@ -35,14 +36,7 @@ const SignUp: React.FC = () => {
         <Registration />
         <PersonalInformation />
         <Address />
-        <Button
-          htmlType="button"
-          type="link"
-          className={styles.reset}
-          onClick={onReset}
-        >
-          {t("resetForm")}
-        </Button>
+        <ResetButton children={t("resetForm")} onClick={onReset} />
       </PageWrapper>
       <Link to="/profile">
         <CustomButton className={styles.signUpBtn}>{t("signUp")}</CustomButton>

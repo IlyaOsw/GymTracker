@@ -96,5 +96,9 @@
     "editCoverPhoto": "Редактировать фото обложки",
     "editProfile": "Редактировать профиль",
     "birthday": "День рождения: ",
-    "noData": "Нет данных"
+    "noData": "Нет данных",
+    "workingWeight": "Рабочий вес, кг",
+    "calculate": "Рассчитать",
+    "calcResult": "Ваш лучший 1 ПМ: ",
+    "reset": "Сбсрос"
 }

@@ -96,5 +96,9 @@
     "editCoverPhoto": "Edit cover photo",
     "editProfile": "Edit profile",
     "birthday": "Birthday: ",
-    "noData": "No data"
+    "noData": "No data",
+    "workingWeight": "Working weight, kg",
+    "calculate": "Calculate",
+    "calcResult": "Your best 1 RM: ",
+    "reset": "Reset"
 }
