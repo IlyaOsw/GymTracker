@@ -86,7 +86,7 @@
     "back": "Back",
     "legs": "Legs",
     "weightCalculator": "Maximum weight calculator",
-    "indicateWeightAndReps": "Indicate your weight and reps",
+    "indicateWeightAndReps": "Specify the working weight, number of repetitions, and discover your maximum",
     "message": "Message",
     "followed": "Followed",
     "follow": "Follow",
@@ -97,8 +97,10 @@
     "editProfile": "Edit profile",
     "birthday": "Birthday: ",
     "noData": "No data",
-    "workingWeight": "Working weight, kg",
+    "workingWeight": "Your working weight",
+    "weightKg": "Weight, kg",
     "calculate": "Calculate",
     "calcResult": "Your best 1 RM: ",
-    "reset": "Reset"
+    "reset": "Reset",
+    "repsNumber": "Number of reps"
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
-import { ConfigProvider, Input } from "antd";
+import { Input } from "antd";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import { CustomButton } from "../../../components/CustomButton/CustomButton";
@@ -47,25 +47,17 @@ export const Calculator: React.FC = () => {
   };
 
   return (
-    <div className={styles.calcWrapper}>
-      <SubTitle children={t("weightCalculator")} />
+    <>
+      <SubTitle children={t("weightCalculator")} className={styles.header} />
       <div className={styles.info}>{t("indicateWeightAndReps")}</div>
       <div className={styles.container}>
         <div className={styles.calculator}>
-          <ConfigProvider
-            theme={{
-              components: {
-                Input: {
-                  activeShadow: "0px 0px 10px #0097b2",
-                  colorTextPlaceholder: "#818181",
-                },
-              },
-            }}
-          >
+          <div>
+            <div className={styles.subtitle}>{t("workingWeight")}</div>
             <Input
               className={styles.weight}
               allowClear
-              placeholder={t("workingWeight")}
+              placeholder={t("weightKg")}
               value={weight === 0 ? "" : weight.toString()}
               onChange={(e) => {
                 const inputWeight = e.target.value;
@@ -74,15 +66,18 @@ export const Calculator: React.FC = () => {
                 }
               }}
             />
-          </ConfigProvider>
-          <div className={styles.reps}>
-            <button className={styles.minus} onClick={decrement}>
-              <MinusOutlined />
-            </button>
-            <div className={styles.repsNumber}>{reps}</div>
-            <button className={styles.plus} onClick={increment}>
-              <PlusOutlined />
-            </button>
+          </div>
+          <div>
+            <div className={styles.subtitle}>{t("repsNumber")}</div>
+            <div className={styles.reps}>
+              <button className={styles.minus} onClick={decrement}>
+                <MinusOutlined />
+              </button>
+              <div className={styles.repsNumber}>{reps}</div>
+              <button className={styles.plus} onClick={increment}>
+                <PlusOutlined />
+              </button>
+            </div>
           </div>
           <CustomButton
             children={t("calculate")}
@@ -90,12 +85,12 @@ export const Calculator: React.FC = () => {
             onClick={calculate1RM}
           />
         </div>
-        <div className={styles.result}>
-          {t("calcResult")}
+        <div className={styles.result}>{t("calcResult")}</div>
+        <div className={styles.resultWeight}>
           {result} {t("kg")}
         </div>
         <ResetButton children={t("reset")} onClick={handleReset} />
       </div>
-    </div>
+    </>
   );
 };
