@@ -32,6 +32,9 @@
   @media (max-width: 576px) {
     flex-direction: column;
   }
+  input {
+    text-align: center;
+  }
 
   .weight,
   .reps {
@@ -41,12 +44,12 @@
     background-color: #282828;
     color: #ffffff;
     font-size: 1.2rem;
-
     padding: 10px;
     border: none;
 
     ::placeholder {
       color: #818181;
+      text-align: center;
     }
 
     svg {
