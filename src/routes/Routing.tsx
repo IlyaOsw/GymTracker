@@ -5,6 +5,9 @@ import { Loader } from "../components/Loader/Loader";
 
 const Main = React.lazy(() => import("../pages/Main/Main"));
 const SignIn = React.lazy(() => import("../pages/SignIn/SignIn"));
+const ResetPassword = React.lazy(
+  () => import("../pages/ResetPassword/ResetPassword")
+);
 const SignUp = React.lazy(() => import("../pages/SignUp/SignUp"));
 const RegistrationError = React.lazy(
   () => import("../pages/RegistrationError/RegistrationError")
@@ -22,9 +25,10 @@ export const Routing: React.FC = () => {
         <Route path="/" element={<Main />} />
         <Route path="/main" element={<Main />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/RegistrationError" element={<RegistrationError />} />
-        <Route path="/RegistrationSuccess" element={<RegistrationSuccess />} />
+        <Route path="/registrationerror" element={<RegistrationError />} />
+        <Route path="/registrationsuccess" element={<RegistrationSuccess />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/workout" element={<Workout />} />
       </Routes>

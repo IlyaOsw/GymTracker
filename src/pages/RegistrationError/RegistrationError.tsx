@@ -1,8 +1,11 @@
 import { Result } from "antd";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 import { CustomButton } from "../../components/CustomButton/CustomButton";
+import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
+import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 
 import styles from "./RegistrationError.module.scss";
 
@@ -18,13 +21,21 @@ const SubTitle: React.FC = () => {
 
 const RegistrationError: React.FC = () => {
   const { t } = useTranslation();
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
   return (
-    <div className={styles.result}>
-      <Result status="error" title={<Title />} subTitle={<SubTitle />} />
-      <Link to="/signup">
-        <CustomButton children={t("backToForm")} />
-      </Link>
-    </div>
+    <>
+      <PageWrapper>
+        <div className={styles.result}>
+          <Result status="error" title={<Title />} subTitle={<SubTitle />} />
+          <Link to="/signup">
+            <CustomButton children={t("backToForm")} />
+          </Link>
+        </div>
+      </PageWrapper>
+      <CustomFooter />
+    </>
   );
 };
 

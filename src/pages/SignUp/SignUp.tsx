@@ -2,20 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Form } from "antd";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 import { ResetButton } from "../../components/ResetButton/ResetButton";
-
-import RegistrationError from "../RegistrationError/RegistrationError";
 
 import { Registration } from "./Registration/Registration";
 import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
@@ -27,6 +21,7 @@ const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const auth = getAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -35,6 +30,7 @@ const SignUp: React.FC = () => {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
+
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
 
@@ -81,10 +77,11 @@ const SignUp: React.FC = () => {
       );
 
       const userData = {
+        id: userCredential.user.uid,
         email: email,
         firstName: firstName,
         lastName: lastName || "",
-        dateOfBirth: dateOfBirth || "",
+        dateOfBirth: dateOfBirth ? dateOfBirth.toString() : "",
         gender: gender,
         location: {
           country: country,
@@ -93,26 +90,25 @@ const SignUp: React.FC = () => {
       };
 
       const db = getFirestore();
-      const docRef = await addDoc(collection(db, "users"), userData);
+      await setDoc(doc(db, "users", userCredential.user.uid), userData);
 
       setSuccess(true);
     } catch (error) {
-      console.error("Error registering user:", error);
       setError(true);
     }
   };
 
   if (error) {
-    navigate("/registrationError");
+    navigate("/registrationerror");
   }
 
   if (success) {
-    navigate("/registrationSuccess");
+    navigate("/registrationsuccess");
   }
 
-  // useEffect(() => {
-  //   window.scroll(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   return (
     <Form

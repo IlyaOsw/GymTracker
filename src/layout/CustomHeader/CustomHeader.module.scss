@@ -16,6 +16,10 @@ $main-color: #0097b2;
     color: #ffffff;
     font-size: 1.2rem;
     margin-bottom: 30px;
+
+    &:hover {
+      filter: brightness(130%) !important;
+    }
   }
 
   .settings {
@@ -28,10 +32,12 @@ $main-color: #0097b2;
     }
   }
 
-  .login {
-    .signIn {
-      color: #ffffff;
-      font-size: 1.2rem;
+  .signIn {
+    color: #ffffff;
+    font-size: 1.2rem;
+
+    &:hover {
+      filter: brightness(130%) !important;
     }
   }
 
@@ -44,6 +50,10 @@ $main-color: #0097b2;
   .settingsBtn {
     color: $main-color;
     text-transform: uppercase;
+
+    &:hover {
+      filter: brightness(130%) !important;
+    }
   }
 
   .settingTitle {

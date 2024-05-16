@@ -19,10 +19,9 @@ export const Calendar: React.FC<ICalendar> = ({ className, onChange }) => {
     return current && current >= dayjs().endOf("day");
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
+  const handleChange = (dateString: string) => {
     if (onChange) {
-      onChange(value);
+      onChange(dateString);
     }
   };
 

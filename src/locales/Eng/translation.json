@@ -104,10 +104,13 @@
     "reset": "Reset",
     "repsNumber": "Number of reps",
     "registrationFailed": "Registration Failed",
-    "pleaseModify": "Please check or modify the information before resubmitting.",
+    "pleaseModify": "Please modify the information before resubmitting.",
     "registrationSuccess": "Registration Success",
     "thankForRegistration": "Thank you very much for registering! Your participation in our community is important to us.",
     "backToForm": "Back to form",
-    "toProfile": "To profile"
+    "toProfile": "To profile",
+    "resetPassword": "Reset password",
+    "emailForReset": "Enter your email address, to which we will send you instruction.",
+    "send": "Send"
 }
 
