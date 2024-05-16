@@ -6,12 +6,16 @@ import countries from "react-select-country-list";
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import styles from "../SignUp.module.scss";
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
+import { AddressType } from "../../../types/types";
 
 const { Option } = Select;
 
 const countryOptions = countries().getData();
 
-export const Address: React.FC = () => {
+export const Address: React.FC<AddressType> = ({
+  onCountryChange,
+  onCityChange,
+}) => {
   const { t } = useTranslation();
   const [filteredCountries, setFilteredCountries] = useState(countryOptions);
 
@@ -22,6 +26,13 @@ export const Address: React.FC = () => {
     setFilteredCountries(filtered.length > 0 ? filtered : countryOptions);
   };
 
+  const handleCountryChange = (value: string) => {
+    onCountryChange(value);
+  };
+
+  const handleCityChange = (value: string) => {
+    onCityChange(value);
+  };
   return (
     <div className={styles.address}>
       <SubTitle>{t("address")}</SubTitle>
@@ -46,6 +57,7 @@ export const Address: React.FC = () => {
             <Select
               placeholder={t("enterCountry")}
               className={styles.selectField}
+              onChange={handleCountryChange}
               variant="borderless"
               dropdownStyle={{
                 backgroundColor: "#282828",
@@ -70,6 +82,7 @@ export const Address: React.FC = () => {
           text={t("city")}
           placeholder={t("enterCity")}
           isRequired={false}
+          onChange={handleCityChange}
         />
       </div>
     </div>

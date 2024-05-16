@@ -6,11 +6,34 @@ import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import styles from "../SignUp.module.scss";
 import { Calendar } from "../../../components/Calendar/Calendar";
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
+import { PersonalInformationType } from "../../../types/types";
 
 const { Option } = Select;
 
-export const PersonalInformation: React.FC = () => {
+export const PersonalInformation: React.FC<PersonalInformationType> = ({
+  onFirstNameChange,
+  onLastNameChange,
+  onGenderChange,
+  onDateOfBithChange,
+}) => {
   const { t } = useTranslation();
+
+  const handleFirstNameChange = (value: string) => {
+    onFirstNameChange(value);
+  };
+
+  const handleLastNameChange = (value: string) => {
+    onLastNameChange(value);
+  };
+
+  const handleGenderChange = (value: string) => {
+    onGenderChange(value);
+  };
+
+  const handleDateOfBirthChange = (value: string) => {
+    onDateOfBithChange(value);
+  };
+
   return (
     <div className={styles.personalInfo}>
       <SubTitle>{t("personalInfo")}</SubTitle>
@@ -20,17 +43,19 @@ export const PersonalInformation: React.FC = () => {
             name={t("firstName")}
             text={t("firstName")}
             placeholder={t("enterFirstName")}
+            onChange={handleFirstNameChange}
           />
           <CustomInput
             name={t("lastName")}
             text={t("lastName")}
             placeholder={t("enterLastName")}
             isRequired={false}
+            onChange={handleLastNameChange}
           />
         </div>
         <div>
           <Form.Item
-            name={t("gender")}
+            name="gender"
             label={<span className={styles.inputLabel}>{t("gender")}</span>}
             rules={[{ required: true }]}
           >
@@ -47,6 +72,7 @@ export const PersonalInformation: React.FC = () => {
             >
               <Select
                 placeholder={t("chooseGender")}
+                onChange={handleGenderChange}
                 className={styles.selectField}
                 variant="borderless"
                 dropdownStyle={{
@@ -59,12 +85,12 @@ export const PersonalInformation: React.FC = () => {
             </ConfigProvider>
           </Form.Item>
           <Form.Item
-            name={t("dateOfBirth")}
+            name="dateOfBirth"
             label={
               <span className={styles.inputLabel}>{t("dateOfBirth")}</span>
             }
           >
-            <Calendar />
+            <Calendar onChange={handleDateOfBirthChange} />
           </Form.Item>
         </div>
       </div>

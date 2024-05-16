@@ -102,5 +102,12 @@
     "calculate": "Calculate",
     "calcResult": "Your best 1 RM: ",
     "reset": "Reset",
-    "repsNumber": "Number of reps"
+    "repsNumber": "Number of reps",
+    "registrationFailed": "Registration Failed",
+    "pleaseModify": "Please check or modify the information before resubmitting.",
+    "registrationSuccess": "Registration Success",
+    "thankForRegistration": "Thank you very much for registering! Your participation in our community is important to us.",
+    "backToForm": "Back to form",
+    "toProfile": "To profile"
 }
+

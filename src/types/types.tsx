@@ -36,3 +36,20 @@ export type ExerciseTableType = {
   reps: number;
   icon: React.ReactNode;
 };
+
+export type RegistrationType = {
+  onEmailChange: (email: string) => void;
+  onPasswordChange: (password: string) => void;
+};
+
+export type PersonalInformationType = {
+  onFirstNameChange: (firstName: string) => void;
+  onLastNameChange: (lastName: string) => void;
+  onGenderChange: (gender: string) => void;
+  onDateOfBithChange: (dateOfBirth: string) => void;
+};
+
+export type AddressType = {
+  onCountryChange: (country: string) => void;
+  onCityChange: (city: string) => void;
+};

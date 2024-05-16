@@ -9,8 +9,12 @@ import { ConfirmPasswordInput } from "../../../components/PasswordInput/ConfirmP
 
 import styles from "../SignUp.module.scss";
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
+import { RegistrationType } from "../../../types/types";
 
-export const Registration: React.FC = () => {
+export const Registration: React.FC<RegistrationType> = ({
+  onEmailChange,
+  onPasswordChange,
+}) => {
   const { t } = useTranslation();
   const [image, setImage] = useState<string | null>(null);
 
@@ -43,11 +47,12 @@ export const Registration: React.FC = () => {
       <div>
         <SubTitle>{t("registration")}</SubTitle>
         <CustomInput
-          name={t("email")}
+          name="email"
           text={t("email")}
           placeholder={t("enterMail")}
+          onChange={onEmailChange}
         />
-        <ConfirmPasswordInput />
+        <ConfirmPasswordInput onChange={onPasswordChange} />
       </div>
     </div>
   );

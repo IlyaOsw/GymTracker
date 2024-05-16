@@ -11,6 +11,7 @@ interface CustomInputProps {
   placeholder?: string;
   isRequired?: boolean;
   className?: string;
+  onChange?: (value: string) => void;
 }
 
 type FieldType = {
@@ -26,8 +27,16 @@ export const CustomInput: React.FC<CustomInputProps> = ({
   placeholder,
   isRequired = true,
   className,
+  onChange,
 }) => {
   const { t } = useTranslation();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    if (onChange) {
+      onChange(value);
+    }
+  };
 
   return (
     <div className={styles.inputWrapper}>
@@ -41,6 +50,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
           placeholder={placeholder}
           className={`${styles.inputField} ${className}`}
           allowClear
+          onChange={handleChange}
         />
       </Form.Item>
     </div>

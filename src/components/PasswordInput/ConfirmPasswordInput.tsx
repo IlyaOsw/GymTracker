@@ -5,8 +5,21 @@ import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 
 import styles from "./PasswordInput.module.scss";
 
-export const ConfirmPasswordInput: React.FC = () => {
+interface CustomPassInputProps {
+  onChange?: (value: string) => void;
+}
+
+export const ConfirmPasswordInput: React.FC<CustomPassInputProps> = ({
+  onChange,
+}) => {
   const { t } = useTranslation();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    if (onChange) {
+      onChange(value);
+    }
+  };
 
   return (
     <div className={styles.confirmInputWrapper}>
@@ -26,6 +39,7 @@ export const ConfirmPasswordInput: React.FC = () => {
               <EyeInvisibleOutlined style={{ color: "white" }} />
             )
           }
+          onChange={handleChange}
         />
       </Form.Item>
       <Form.Item
@@ -61,6 +75,7 @@ export const ConfirmPasswordInput: React.FC = () => {
               <EyeInvisibleOutlined style={{ color: "white" }} />
             )
           }
+          onChange={handleChange}
         />
       </Form.Item>
     </div>

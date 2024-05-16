@@ -7,11 +7,23 @@ import { RangePickerProps } from "antd/es/date-picker";
 
 import styles from "./Calendar.module.scss";
 
-export const Calendar: React.FC<{ className?: string }> = ({ className }) => {
+interface ICalendar {
+  className?: string;
+  onChange?: (value: string) => void;
+}
+
+export const Calendar: React.FC<ICalendar> = ({ className, onChange }) => {
   const { t } = useTranslation();
 
   const disabledDate: RangePickerProps["disabledDate"] = (current) => {
     return current && current >= dayjs().endOf("day");
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    if (onChange) {
+      onChange(value);
+    }
   };
 
   return (
@@ -38,6 +50,7 @@ export const Calendar: React.FC<{ className?: string }> = ({ className }) => {
         inputReadOnly
         allowClear={false}
         disabledDate={disabledDate}
+        onChange={handleChange}
       />
     </ConfigProvider>
   );
