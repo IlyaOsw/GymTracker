@@ -70,7 +70,6 @@
     "exerciseName": "Exercise name",
     "enterDate": "Enter date",
     "addExerciseBtn": "Add exercise",
-    "recentlyUsed": "Recently used",
     "date": "Date: ",
     "addRow": "Add row",
     "previous": "Previous",
@@ -111,6 +110,9 @@
     "toProfile": "To profile",
     "resetPassword": "Reset password",
     "emailForReset": "Enter your email address, to which we will send you instruction.",
-    "send": "Send"
+    "send": "Send",
+    "deleteExercise": "Delete exercise",
+    "editExercise": "Edit exercise",
+    "deleteRow": "Delete row"
 }
 

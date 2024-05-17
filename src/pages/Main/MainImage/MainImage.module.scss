@@ -24,7 +24,7 @@
   transform: translate(-50%, -50%);
   font-size: 4rem;
   font-style: italic;
-  font-weight: bold;
+  font-weight: 500;
   letter-spacing: 3px;
   width: 100%;
   text-transform: uppercase;
@@ -51,9 +51,8 @@
     width: 175px;
     margin: 35px auto;
 
-    span {
-      font-size: 1.2rem;
-      font-weight: 700;
+    div {
+      font-size: 1rem;
     }
 
     img {

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Card } from "antd";
+import { Card, Tooltip } from "antd";
 import { useTranslation } from "react-i18next";
-import { CloseOutlined } from "@ant-design/icons";
+import { CloseOutlined, EditOutlined } from "@ant-design/icons";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 
-import styles from "./RecentlyUsed.module.scss";
+import styles from "./FavoriteExercises.module.scss";
 
 const CustomTitle: React.FC<{ text: string }> = ({ text }) => (
   <span style={{ color: "#0097B2", fontWeight: "700" }}>{text}</span>
@@ -18,7 +18,7 @@ const cardData: { title: string; content: string }[] = [
   { title: "Push ups", content: "Last set: 50" },
 ];
 
-export const RecentlyUsed: React.FC = () => {
+export const FavoriteExercises: React.FC = () => {
   const { t } = useTranslation();
   const [data, setData] = useState(cardData);
 
@@ -30,24 +30,31 @@ export const RecentlyUsed: React.FC = () => {
 
   return (
     <>
-      <SubTitle children={t("recentlyUsed")} />
-      <div className={styles.recentlyUsed}>
+      <SubTitle children={t("favoriteExercises")} className={styles.title} />
+      <div className={styles.favoriteExercises}>
         {data.map((item, index) => (
           <Card
             key={index}
             title={
               <>
                 <CustomTitle text={item.title} />
-                <CloseOutlined
-                  className={styles.deleteIcon}
-                  onClick={() => handleDeleteCard(index)}
-                />
+                <Tooltip title={t("deleteExercise")}>
+                  <CloseOutlined
+                    className={styles.deleteIcon}
+                    onClick={() => handleDeleteCard(index)}
+                  />
+                </Tooltip>
               </>
             }
             className={styles.usedItem}
             bordered={false}
           >
             {item.content}
+            <Tooltip title={t("editExercise")}>
+              <div className={styles.editIcon}>
+                <EditOutlined />
+              </div>
+            </Tooltip>
           </Card>
         ))}
       </div>

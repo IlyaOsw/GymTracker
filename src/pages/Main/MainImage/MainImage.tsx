@@ -22,7 +22,7 @@ export const MainImage: React.FC = () => {
           </CustomButton>
         </Link>
         <div className={styles.downloadImage}>
-          <span>{t("comingSoon")}</span>
+          <div>{t("comingSoon")}</div>
           <Link to="https://www.apple.com/app-store/" target="_blank">
             <img
               src={process.env.PUBLIC_URL + "/assets/Images/DownloadOnApp.png"}

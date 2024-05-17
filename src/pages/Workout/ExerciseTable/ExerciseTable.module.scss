@@ -3,6 +3,10 @@
 
   svg {
     color: #0097b2;
+
+    &:hover {
+      color: red;
+    }
   }
 }
 

@@ -1,9 +1,12 @@
-.recentlyUsed {
+.title {
+  margin-top: 50px;
+}
+
+.favoriteExercises {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 50px;
 
   .usedItem {
     margin: 20px;
@@ -22,14 +25,31 @@
     }
   }
 }
+
 .deleteIcon {
   color: #ffffff;
   position: absolute;
   top: 0;
   right: 0;
-  margin: 5px;
+  margin: 5px 8px 0px 0px;
 
   &:hover {
     color: red;
+  }
+}
+
+.editIcon {
+  font-size: 1.2rem;
+  margin: 0px 8px 0px 0px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  &:hover {
+    color: #0097b2;
+  }
+
+  &:active {
+    color: #007f96;
   }
 }

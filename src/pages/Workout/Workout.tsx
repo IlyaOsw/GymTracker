@@ -5,7 +5,7 @@ import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 
 import { ExerciseTable } from "./ExerciseTable/ExerciseTable";
 import { AddExercise } from "./AddExercise/AddExercise";
-import { RecentlyUsed } from "./RecentlyUsed/RecentlyUsed";
+import { FavoriteExercises } from "./FavoriteExercises/FavoriteExercises";
 
 const Workout: React.FC = () => {
   useEffect(() => {
@@ -16,7 +16,7 @@ const Workout: React.FC = () => {
     <PageWrapper>
       <DescriptionTitle text="Chest workout" textAlign="center" />
       <AddExercise />
-      <RecentlyUsed />
+      <FavoriteExercises />
       <ExerciseTable />
     </PageWrapper>
   );

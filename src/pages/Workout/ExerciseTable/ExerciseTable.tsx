@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ConfigProvider, Divider, Empty, Table } from "antd";
+import { ConfigProvider, Divider, Empty, Table, Tooltip } from "antd";
 import {
   CheckOutlined,
   DeleteOutlined,
@@ -101,10 +101,12 @@ export const ExerciseTable: React.FC = () => {
       title: "",
       dataIndex: "icon",
       render: (_, record) => (
-        <DeleteOutlined
-          className={styles.deleteIcon}
-          onClick={() => deleteRow(record.key)}
-        />
+        <Tooltip title={t("deleteRow")}>
+          <DeleteOutlined
+            className={styles.deleteIcon}
+            onClick={() => deleteRow(record.key)}
+          />
+        </Tooltip>
       ),
     },
   ];
