@@ -16,7 +16,7 @@ export const Information: React.FC = () => {
       <div className={styles.mainContainer}>
         <div className={styles.paper}>
           <img
-            src="https://scontent.ftll3-2.fna.fbcdn.net/v/t39.30808-6/352395583_2514703918686762_386126034353017660_n.jpg?stp=cp6_dst-jpg&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=rHFhVZXsGRkQ7kNvgEaRYHt&_nc_oc=Adjc0rMMrQJLodWNt__Sc2OHF6UbvPPUYYADHl7nFfaEVUVWE4rDbFLDLiUiEjF6E0s&_nc_ht=scontent.ftll3-2.fna&oh=00_AfCIvlFneyFG9U9rJElpcAzEBm3RdrGIsKYuiezkDC9Fig&oe=663E7BF2"
+            src={process.env.PUBLIC_URL + "/assets/paper.jpg "}
             alt="Paper"
           />
           <Button icon={<CameraOutlined />} className={styles.editBtn}>

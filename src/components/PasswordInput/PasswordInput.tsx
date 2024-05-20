@@ -4,18 +4,31 @@ import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 
 import styles from "./PasswordInput.module.scss";
 
+interface PasswordInputProps {
+  name?: string;
+  text?: string;
+  placeholder?: string;
+  onChange?: (value: string) => void;
+}
+
 type FieldType = {
   [key: string]: string | undefined;
-  text?: string;
   password?: string;
-  placeholder?: string;
 };
 
-export const PasswordInput: React.FC<FieldType> = ({
+export const PasswordInput: React.FC<PasswordInputProps> = ({
   name,
   text,
   placeholder,
+  onChange,
 }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    if (onChange) {
+      onChange(value);
+    }
+  };
+
   return (
     <div className={styles.inputWrapper}>
       <Form.Item<FieldType>
@@ -26,6 +39,7 @@ export const PasswordInput: React.FC<FieldType> = ({
         <Input.Password
           className={styles.inputField}
           placeholder={placeholder}
+          onChange={handleChange}
           iconRender={(visible) =>
             visible ? (
               <EyeOutlined style={{ color: "white" }} />

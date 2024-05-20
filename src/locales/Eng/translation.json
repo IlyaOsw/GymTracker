@@ -113,6 +113,10 @@
     "send": "Send",
     "deleteExercise": "Delete exercise",
     "editExercise": "Edit exercise",
-    "deleteRow": "Delete row"
+    "deleteRow": "Delete row",
+    "toSignIn": "To sign in",
+    "invalidEmailOrPass": "Invalid email or password",
+    "error": "Error",
+    "signOut": "Sign out"
 }
 

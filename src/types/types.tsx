@@ -53,3 +53,9 @@ export type AddressType = {
   onCountryChange: (country: string) => void;
   onCityChange: (city: string) => void;
 };
+
+export interface ErrorModalProps {
+  open: boolean;
+  onClose: () => void;
+  message: string;
+}

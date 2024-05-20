@@ -1,13 +1,18 @@
 import React from "react";
-import { Dropdown, Menu, Space } from "antd";
-import { Button } from "antd";
-import { DownOutlined, HomeOutlined, LoginOutlined } from "@ant-design/icons";
+import { Dropdown, Menu, Space, Button } from "antd";
+import {
+  DownOutlined,
+  HomeOutlined,
+  LoginOutlined,
+  LogoutOutlined,
+} from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import styles from "../CustomHeader.module.scss";
 import { HeaderPropsType } from "../../../types/types";
 import { CustomButton } from "../../../components/CustomButton/CustomButton";
+import { useAuth } from "../../../context/AuthContext";
 
 export const Navbar: React.FC<HeaderPropsType> = ({
   handleThemeClick,
@@ -19,10 +24,11 @@ export const Navbar: React.FC<HeaderPropsType> = ({
   changeLanguage,
 }) => {
   const { t } = useTranslation();
+  const { isAuthenticated, logout } = useAuth();
 
   return (
     <div className={styles.navbar}>
-      <Link to={"/main"}>
+      <Link to="/main">
         <Button
           type="link"
           className={styles.backToMainBtn}
@@ -82,16 +88,26 @@ export const Navbar: React.FC<HeaderPropsType> = ({
         <div className={styles.verticalLine}></div>
       </div>
       <div className={styles.login}>
-        <Link to={"/signin"}>
-          <Button type="link" className={styles.signIn}>
-            {t("signIn")}
-          </Button>
-        </Link>
-        <Link to={"/signup"}>
-          <CustomButton icon={<LoginOutlined />} className={styles.signUp}>
-            {t("signUp")}
-          </CustomButton>
-        </Link>
+        {isAuthenticated ? (
+          <Link to="/">
+            <CustomButton icon={<LogoutOutlined />} onClick={logout}>
+              {t("signOut")}
+            </CustomButton>
+          </Link>
+        ) : (
+          <>
+            <Link to="/signup">
+              <Button type="link" className={styles.signIn}>
+                {t("signUp")}
+              </Button>
+            </Link>
+            <Link to="/signin">
+              <CustomButton icon={<LoginOutlined />}>
+                {t("signIn")}
+              </CustomButton>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { HeaderPropsType } from "../../../types/types";
 import styles from "../CustomHeader.module.scss";
+import { useAuth } from "../../../context/AuthContext";
 
 type MenuItem = GetProp<MenuProps, "items">[number];
 export const BurgerMenu: React.FC<HeaderPropsType> = ({
@@ -21,6 +22,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   changeLanguage,
 }) => {
   const { t } = useTranslation();
+  const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
 
   const onClose = () => {
@@ -37,6 +39,11 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   const handleSignUpClick = () => {
     onClose();
     navigate("/signup");
+  };
+
+  const handleLogout = () => {
+    logout();
+    onClose();
   };
 
   useEffect(() => {
@@ -74,7 +81,11 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     },
     {
       key: "3",
-      label: (
+      label: isAuthenticated ? (
+        <Link to="/" onClick={handleLogout} className={styles.menuButton}>
+          {t("signOut")}
+        </Link>
+      ) : (
         <Link
           to={"/signin"}
           onClick={handleSignInClick}
@@ -86,7 +97,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     },
     {
       key: "4",
-      label: (
+      label: isAuthenticated ? null : (
         <Link
           to={"/signup"}
           onClick={handleSignUpClick}

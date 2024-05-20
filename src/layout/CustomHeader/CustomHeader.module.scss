@@ -20,6 +20,10 @@ $main-color: #0097b2;
     &:hover {
       filter: brightness(130%) !important;
     }
+
+    &:active {
+      color: #007f96 !important;
+    }
   }
 
   .settings {
@@ -39,6 +43,10 @@ $main-color: #0097b2;
     &:hover {
       filter: brightness(130%) !important;
     }
+
+    &:active {
+      color: #007f96 !important;
+    }
   }
 
   .verticalLine {
@@ -53,6 +61,10 @@ $main-color: #0097b2;
 
     &:hover {
       filter: brightness(130%) !important;
+    }
+
+    &:active {
+      color: #007f96 !important;
     }
   }
 
