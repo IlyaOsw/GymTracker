@@ -15,9 +15,7 @@ export const DescriptionText: React.FC<CustomButtonProps> = ({
   const { t } = useTranslation();
 
   return (
-    <h2
-      className={`${styles.descriptionText} ${styles[textAlign]} animation_item`}
-    >
+    <h2 className={`${styles.descriptionText} ${styles[textAlign]}`}>
       {t(text)}
     </h2>
   );

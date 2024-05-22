@@ -11,11 +11,7 @@ export const FooterImage: React.FC = () => {
   return (
     <div className={styles.footerImg}>
       <div className={styles.footerTitle}>
-        <DescriptionTitle
-          text={t("unlockYourPotential")}
-          textAlign="center"
-          className="animation_item"
-        />
+        <DescriptionTitle text={t("unlockYourPotential")} textAlign="center" />
       </div>
       <div className={styles.image}></div>
     </div>

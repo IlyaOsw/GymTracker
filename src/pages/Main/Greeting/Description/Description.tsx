@@ -9,11 +9,7 @@ export const Description: React.FC = () => {
 
   return (
     <div style={{ width: "100%", maxWidth: "500px" }}>
-      <DescriptionTitle
-        text={t("descriptionTitle")}
-        textAlign="start"
-        className="animation_item"
-      />
+      <DescriptionTitle text={t("descriptionTitle")} textAlign="start" />
       <DescriptionText text={t("descriptionText")} textAlign="start" />
     </div>
   );

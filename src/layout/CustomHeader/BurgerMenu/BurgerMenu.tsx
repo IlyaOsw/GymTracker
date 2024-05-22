@@ -41,9 +41,13 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     navigate("/signup");
   };
 
-  const handleLogout = () => {
-    logout();
-    onClose();
+  const handleLogout = async () => {
+    try {
+      await logout();
+      onClose();
+    } catch (error) {
+      alert(error);
+    }
   };
 
   useEffect(() => {
@@ -97,7 +101,11 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     },
     {
       key: "4",
-      label: isAuthenticated ? null : (
+      label: isAuthenticated ? (
+        <Link to="/profile" onClick={onClose} className={styles.menuButton}>
+          {t("profile")}
+        </Link>
+      ) : (
         <Link
           to={"/signup"}
           onClick={handleSignUpClick}

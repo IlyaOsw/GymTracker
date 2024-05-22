@@ -117,6 +117,7 @@
     "toSignIn": "To sign in",
     "invalidEmailOrPass": "Invalid email or password",
     "error": "Error",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "profile": "Profile"
 }
 

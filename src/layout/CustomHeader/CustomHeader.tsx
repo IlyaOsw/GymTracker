@@ -135,7 +135,7 @@ export const CustomHeader: React.FC = React.memo(() => {
           changeLanguage={changeLanguage}
         />
       )}
-      <BurgerMenu
+      {/* <BurgerMenu
         open={open}
         setOpen={setOpen}
         theme={theme}
@@ -145,7 +145,7 @@ export const CustomHeader: React.FC = React.memo(() => {
         handleLanguageClick={handleLanguageClick}
         languageItems={languageItems}
         changeLanguage={changeLanguage}
-      />
+      /> */}
     </Header>
   );
 });

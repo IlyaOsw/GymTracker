@@ -13,7 +13,7 @@ export const Greeting: React.FC = () => {
     <div className={styles.wrapper}>
       <Description />
       <Images />
-      <div className={`${styles.hexagonWrapper} animation_item`}>
+      <div className={`${styles.hexagonWrapper}`}>
         {imagesData.map((text, index) => (
           <React.Fragment key={index}>
             <Hexagon text={text} />

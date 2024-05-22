@@ -1,6 +1,5 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
@@ -28,11 +27,8 @@ const ResetPassword: React.FC = () => {
             text={t("email")}
             placeholder={t("enterMail")}
           />
-          <CustomButton children={t("send")} className={styles.btn} />
         </div>
-        <Link to="/signin">
-          <CustomButton children={t("toSignIn")} className={styles.btnBack} />
-        </Link>
+        <CustomButton children={t("send")} className={styles.btn} />
       </PageWrapper>
       <CustomFooter />
     </>

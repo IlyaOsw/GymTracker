@@ -5,6 +5,8 @@ import {
   HomeOutlined,
   LoginOutlined,
   LogoutOutlined,
+  UserAddOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -25,6 +27,14 @@ export const Navbar: React.FC<HeaderPropsType> = ({
 }) => {
   const { t } = useTranslation();
   const { isAuthenticated, logout } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      alert(error);
+    }
+  };
 
   return (
     <div className={styles.navbar}>
@@ -89,15 +99,30 @@ export const Navbar: React.FC<HeaderPropsType> = ({
       </div>
       <div className={styles.login}>
         {isAuthenticated ? (
-          <Link to="/">
-            <CustomButton icon={<LogoutOutlined />} onClick={logout}>
-              {t("signOut")}
-            </CustomButton>
-          </Link>
+          <>
+            <Link to="/profile">
+              <Button
+                type="link"
+                icon={<UserOutlined />}
+                className={styles.signInAndProfile}
+              >
+                {t("profile")}
+              </Button>
+            </Link>
+            <Link to="/">
+              <CustomButton icon={<LogoutOutlined />} onClick={handleLogout}>
+                {t("signOut")}
+              </CustomButton>
+            </Link>
+          </>
         ) : (
           <>
             <Link to="/signup">
-              <Button type="link" className={styles.signIn}>
+              <Button
+                type="link"
+                icon={<UserAddOutlined />}
+                className={styles.signInAndProfile}
+              >
                 {t("signUp")}
               </Button>
             </Link>

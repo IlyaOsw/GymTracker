@@ -59,6 +59,7 @@ export const Calculator: React.FC = () => {
               allowClear
               placeholder={t("weightKg")}
               value={weight === 0 ? "" : weight.toString()}
+              type="tel"
               onChange={(e) => {
                 const inputWeight = e.target.value;
                 if (/^\d*$/.test(inputWeight)) {

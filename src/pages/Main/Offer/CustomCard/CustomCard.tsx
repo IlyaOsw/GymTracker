@@ -10,7 +10,7 @@ export const CustomCard: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.upperBlock}>
-        <div className={`${styles.firstCard} animation_item`}>
+        <div className={`${styles.firstCard}`}>
           <AboutCard
             title={t("cardTitle1")}
             text={t("cardText1")}
@@ -19,7 +19,7 @@ export const CustomCard: React.FC = () => {
             }
           />
         </div>
-        <div className={`${styles.secondCard} animation_item`}>
+        <div className={`${styles.secondCard}`}>
           <AboutCard
             title={t("cardTitle2")}
             text={t("cardText2")}
@@ -30,7 +30,7 @@ export const CustomCard: React.FC = () => {
         </div>
       </div>
       <div className={styles.bottomBlock}>
-        <div className={`${styles.thirdCard} animation_item`}>
+        <div className={`${styles.thirdCard}`}>
           <AboutCard
             title={t("cardTitle3")}
             text={t("cardText3")}
@@ -39,7 +39,7 @@ export const CustomCard: React.FC = () => {
             }
           />
         </div>
-        <div className={`${styles.fourthCard} animation_item`}>
+        <div className={`${styles.fourthCard}`}>
           <AboutCard
             title={t("cardTitle4")}
             text={t("cardText4")}

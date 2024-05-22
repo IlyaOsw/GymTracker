@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Checkbox, Form } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
@@ -19,36 +18,28 @@ import ErrorModal from "./ErrorModal/ErrorModal";
 const SignIn: React.FC = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  const auth = getAuth();
   const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorModalOpen, setErrorModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const { login } = useAuth();
 
-  const handleEmailChange = (value: string) => {
-    setEmail(value);
-  };
+  const handleEmailChange = (value: string) => setEmail(value);
 
-  const handlePasswordChange = (value: string) => {
-    setPassword(value);
-  };
+  const handlePasswordChange = (value: string) => setPassword(value);
 
-  const handleSignIn = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        login();
-        navigate("/profile");
-      })
-      .catch(() => {
-        setErrorMessage(t("invalidEmailOrPass"));
-        setErrorModalOpen(true);
-      });
-  };
+  const handleCloseErrorModal = () => setErrorModalOpen(false);
 
-  const handleCloseErrorModal = () => {
-    setErrorModalOpen(false);
+  const handleSignIn = async () => {
+    try {
+      await login(email, password);
+      navigate("/profile");
+    } catch (error) {
+      setErrorMessage(t("invalidEmailOrPass"));
+      setErrorModalOpen(true);
+    }
   };
 
   useEffect(() => {
