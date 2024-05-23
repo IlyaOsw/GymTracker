@@ -51,6 +51,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
           className={`${styles.inputField} ${className}`}
           allowClear
           onChange={handleChange}
+          autoComplete="username"
         />
       </Form.Item>
     </div>

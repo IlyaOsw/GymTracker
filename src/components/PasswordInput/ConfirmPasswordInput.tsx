@@ -29,6 +29,7 @@ export const ConfirmPasswordInput: React.FC<CustomPassInputProps> = ({
         rules={[{ required: true }]}
       >
         <Input.Password
+          autoComplete="new-password"
           className={styles.inputField}
           type="password"
           placeholder={t("enterPassword")}
@@ -65,6 +66,7 @@ export const ConfirmPasswordInput: React.FC<CustomPassInputProps> = ({
         ]}
       >
         <Input.Password
+          autoComplete="new-password"
           className={styles.inputField}
           type="password"
           placeholder={t("enterConfirmPassword")}

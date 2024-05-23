@@ -15,7 +15,10 @@ $main-color: #0097b2;
   .backToMainBtn {
     color: #ffffff;
     font-size: 1.2rem;
-    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
 
     &:hover {
       filter: brightness(130%) !important;
@@ -36,19 +39,6 @@ $main-color: #0097b2;
     }
   }
 
-  .signInAndProfile {
-    color: #ffffff;
-    font-size: 1.2rem;
-
-    &:hover {
-      filter: brightness(130%) !important;
-    }
-
-    &:active {
-      color: #007f96 !important;
-    }
-  }
-
   .verticalLine {
     width: 1px;
     height: 50%;
@@ -58,6 +48,7 @@ $main-color: #0097b2;
   .settingsBtn {
     color: $main-color;
     text-transform: uppercase;
+    margin: 0px 10px 0px 10px;
 
     &:hover {
       filter: brightness(130%) !important;
@@ -67,15 +58,10 @@ $main-color: #0097b2;
       color: #007f96 !important;
     }
   }
-
-  .settingTitle {
-    padding-bottom: 5px;
-  }
 }
 
 .themeIcon {
-  margin-right: 10px !important;
-  font-size: 1rem;
+  margin-right: 10px;
 }
 
 .burgerColor {
@@ -86,6 +72,10 @@ $main-color: #0097b2;
   margin-left: auto;
   background-color: $main-color;
   border: none;
+}
+
+.theme {
+  font-size: 1.2rem;
 }
 
 .dropdownItem {

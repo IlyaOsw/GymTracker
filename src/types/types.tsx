@@ -59,3 +59,16 @@ export interface ErrorModalProps {
   onClose: () => void;
   message: string;
 }
+
+export type ThemeDropdownPropsType = {
+  handleThemeClick?: ({ key }: { key: string }) => void;
+  themeItems?: MenuItem[];
+  theme: string | undefined;
+};
+
+export type LanguageDropdownPropsType = {
+  handleLanguageClick?: ({ key }: { key: string }) => void;
+  languageItems?: MenuItem[];
+  language: string | undefined;
+  changeLanguage: (language: string) => void;
+};

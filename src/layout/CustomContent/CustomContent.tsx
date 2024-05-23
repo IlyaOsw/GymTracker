@@ -1,8 +1,8 @@
 import React from "react";
 import { Layout } from "antd";
-import { FloatButton } from "antd";
 
 import { Routing } from "../../routes/Routing";
+import { BackToTop } from "../../components/BackToTop/BackToTop";
 
 const { Content } = Layout;
 
@@ -17,7 +17,7 @@ export const CustomContent: React.FC = () => {
   return (
     <Content style={contentStyle}>
       <Routing />
-      <FloatButton.BackTop />
+      <BackToTop />
     </Content>
   );
 };

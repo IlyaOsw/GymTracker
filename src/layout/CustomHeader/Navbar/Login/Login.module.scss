@@ -1,0 +1,12 @@
+.signInAndProfile {
+  color: #ffffff;
+  font-size: 1.2rem;
+
+  &:hover {
+    filter: brightness(130%) !important;
+  }
+
+  &:active {
+    color: #007f96 !important;
+  }
+}
