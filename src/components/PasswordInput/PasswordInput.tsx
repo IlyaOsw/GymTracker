@@ -37,6 +37,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
         rules={[{ required: true }]}
       >
         <Input.Password
+          autoComplete="current-password"
           className={styles.inputField}
           placeholder={placeholder}
           onChange={handleChange}

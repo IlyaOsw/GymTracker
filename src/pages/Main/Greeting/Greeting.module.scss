@@ -1,5 +1,5 @@
 .wrapper {
-  margin: 100px 0px;
+  margin: 50px 0px;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 50px auto;
+  margin: 25px auto;
 }
 
 .lineHorizontal {
@@ -35,7 +35,7 @@
 
 @media (max-width: 768px) {
   .wrapper {
-    margin: 50px 0;
+    margin: 50px 0 0 0;
   }
 
   .lineHorizontal {

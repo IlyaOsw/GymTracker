@@ -2,8 +2,6 @@ import { DownOutlined } from "@ant-design/icons";
 import { ConfigProvider, Dropdown, Typography, Space, MenuProps } from "antd";
 import React from "react";
 
-import { useTranslation } from "react-i18next";
-
 import styles from "../CustomHeader.module.scss";
 import { LanguageDropdownPropsType } from "../../../types/types";
 
@@ -13,8 +11,6 @@ export const LanguageDropdown: React.FC<LanguageDropdownPropsType> = ({
   language,
   changeLanguage,
 }) => {
-  const { t } = useTranslation();
-
   const items: MenuProps["items"] =
     languageItems?.map((item) => ({
       key: item.key,
@@ -28,34 +24,30 @@ export const LanguageDropdown: React.FC<LanguageDropdownPropsType> = ({
     })) || [];
 
   return (
-    <>
-      <div className={styles.verticalLine}></div>
-      <p>{t("language")}</p>
-      <ConfigProvider
-        theme={{
-          token: {
-            controlItemBgActiveHover: "#ffffff",
-            controlItemBgActive: "#ffffff",
-            colorPrimary: "#0097b2",
-          },
+    <ConfigProvider
+      theme={{
+        token: {
+          controlItemBgActiveHover: "#ffffff",
+          controlItemBgActive: "#ffffff",
+          colorPrimary: "#0097b2",
+        },
+      }}
+    >
+      <Dropdown
+        menu={{
+          items,
+          selectable: true,
+          defaultSelectedKeys: ["1"],
+          onClick: handleLanguageClick,
         }}
       >
-        <Dropdown
-          menu={{
-            items,
-            selectable: true,
-            defaultSelectedKeys: ["1"],
-            onClick: handleLanguageClick,
-          }}
-        >
-          <Typography.Link className={styles.settingsBtn}>
-            <Space className={styles.theme}>
-              {language}
-              <DownOutlined />
-            </Space>
-          </Typography.Link>
-        </Dropdown>
-      </ConfigProvider>
-    </>
+        <Typography.Link className={styles.settingsBtn}>
+          <Space className={styles.theme}>
+            {language}
+            <DownOutlined />
+          </Space>
+        </Typography.Link>
+      </Dropdown>
+    </ConfigProvider>
   );
 };

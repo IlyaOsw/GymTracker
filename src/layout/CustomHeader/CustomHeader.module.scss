@@ -44,19 +44,18 @@ $main-color: #0097b2;
     height: 50%;
     background-color: #b2b2b2;
   }
+}
 
-  .settingsBtn {
-    color: $main-color;
-    text-transform: uppercase;
-    margin: 0px 10px 0px 10px;
+.settingsBtn {
+  color: $main-color !important;
+  margin: 0px 10px 0px 10px;
 
-    &:hover {
-      filter: brightness(130%) !important;
-    }
+  &:hover {
+    filter: brightness(130%) !important;
+  }
 
-    &:active {
-      color: #007f96 !important;
-    }
+  &:active {
+    color: #007f96 !important;
   }
 }
 
@@ -65,7 +64,7 @@ $main-color: #0097b2;
 }
 
 .burgerColor {
-  background-color: #f3f3f3 !important;
+  background-color: #efefef !important;
 }
 
 .burgerBtn {
@@ -74,18 +73,9 @@ $main-color: #0097b2;
   border: none;
 }
 
-.theme {
-  font-size: 1.2rem;
-}
-
+.theme,
 .dropdownItem {
   font-size: 1.2rem;
-}
-
-.burgerItem {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 .menuButton {
@@ -96,12 +86,13 @@ $main-color: #0097b2;
 
 .burgerSettings {
   margin-right: 8px;
-  font-weight: bold;
+  font-size: 16px;
 }
 
-.settingsButton {
-  font-size: 16px;
-  color: $main-color;
+.lngIcons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 1200px) {
@@ -109,10 +100,4 @@ $main-color: #0097b2;
   .navigation img {
     height: 40px;
   }
-}
-
-.lngIcons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

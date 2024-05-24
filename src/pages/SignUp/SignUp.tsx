@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { Form } from "antd";
+import { Form, message } from "antd";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
@@ -33,8 +33,15 @@ const SignUp: React.FC = () => {
 
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [messageApi, contextHolder] = message.useMessage();
 
-  const onReset = () => form.resetFields();
+  const onReset = () => {
+    form.resetFields();
+    messageApi.open({
+      type: "success",
+      content: `${t("reseted")}`,
+    });
+  };
 
   const handleEmailChange = (email: string) => {
     setEmail(email);
@@ -133,6 +140,7 @@ const SignUp: React.FC = () => {
           onCountryChange={handleCountryChange}
           onCityChange={handleCityChange}
         />
+        {contextHolder}
         <ResetButton children={t("resetForm")} onClick={onReset} />
       </PageWrapper>
       <CustomButton className={styles.signUpBtn} onClick={handleRegister}>

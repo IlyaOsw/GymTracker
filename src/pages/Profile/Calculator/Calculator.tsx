@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
-import { Input } from "antd";
+import { Input, message } from "antd";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import { CustomButton } from "../../../components/CustomButton/CustomButton";
@@ -14,6 +14,7 @@ export const Calculator: React.FC = () => {
   const [weight, setWeight] = useState<number>(0);
   const [reps, setReps] = useState<number>(1);
   const [result, setResult] = useState<number>(0);
+  const [messageApi, contextHolder] = message.useMessage();
 
   const increment = () => {
     if (reps < 15) {
@@ -44,6 +45,10 @@ export const Calculator: React.FC = () => {
     setWeight(0);
     setReps(1);
     setResult(0);
+    messageApi.open({
+      type: "success",
+      content: `${t("reseted")}`,
+    });
   };
 
   return (
@@ -90,6 +95,7 @@ export const Calculator: React.FC = () => {
         <div className={styles.resultWeight}>
           {result} {t("kg")}
         </div>
+        {contextHolder}
         <ResetButton children={t("reset")} onClick={handleReset} />
       </div>
     </>

@@ -18,7 +18,13 @@ const ErrorModal: React.FC<ErrorModalProps> = ({ open, onClose, message }) => {
         },
       }}
     >
-      <Modal open={open} title={t("error")} onCancel={onClose} footer={null}>
+      <Modal
+        open={open}
+        title={t("error")}
+        onCancel={onClose}
+        footer={null}
+        style={{ marginTop: "50px" }}
+      >
         <Result status="error" title={t(message)} />
       </Modal>
     </ConfigProvider>

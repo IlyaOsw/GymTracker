@@ -34,11 +34,15 @@ export const Navbar: React.FC<HeaderPropsType> = ({
         </Button>
       </Link>
       <div className={styles.settings}>
+        <div className={styles.verticalLine}></div>
+        <p>{t("theme")}</p>
         <ThemeDropdown
           handleThemeClick={handleThemeClick}
           themeItems={themeItems}
           theme={theme}
         />
+        <div className={styles.verticalLine}></div>
+        <p>{t("language")}</p>
         <LanguageDropdown
           handleLanguageClick={handleLanguageClick}
           languageItems={languageItems}

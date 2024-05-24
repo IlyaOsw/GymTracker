@@ -118,6 +118,7 @@
     "invalidEmailOrPass": "Invalid email or password",
     "error": "Error",
     "signOut": "Sign out",
-    "profile": "Profile"
+    "profile": "Profile",
+    "reseted": "Successfully reseted"
 }
 

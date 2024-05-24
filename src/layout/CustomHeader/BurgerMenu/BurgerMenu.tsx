@@ -1,5 +1,4 @@
-import { DownOutlined } from "@ant-design/icons";
-import { Drawer, Menu, Button, Dropdown, GetProp, MenuProps } from "antd";
+import { Drawer, Menu, GetProp, MenuProps } from "antd";
 import React, { useEffect } from "react";
 import { Divider } from "antd";
 import { useTranslation } from "react-i18next";
@@ -8,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { HeaderPropsType } from "../../../types/types";
 import styles from "../CustomHeader.module.scss";
 import { useAuth } from "../../../context/AuthContext";
+import { ThemeDropdown } from "../ThemeDropdown/ThemeDropdown";
+import { LanguageDropdown } from "../LanguageDropdown/LanguageDropdown";
 
 type MenuItem = GetProp<MenuProps, "items">[number];
 export const BurgerMenu: React.FC<HeaderPropsType> = ({
@@ -66,7 +67,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     };
   }, [open]);
 
-  const items: MenuItem[] = [
+  const itemsMenu: MenuItem[] = [
     {
       key: "1",
       label: (
@@ -124,23 +125,11 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
       label: (
         <>
           <span className={styles.burgerSettings}>{t("theme")}</span>
-          <Dropdown
-            overlay={
-              <Menu onClick={handleThemeClick}>
-                {themeItems?.map((item) => (
-                  <Menu.Item key={item.key}>
-                    <span className={styles.themeIcon}>{item.icon}</span>
-                    <span>{item.label}</span>
-                  </Menu.Item>
-                ))}
-              </Menu>
-            }
-          >
-            <Button type="text" className={styles.settingsButton}>
-              {theme}
-              <DownOutlined />
-            </Button>
-          </Dropdown>
+          <ThemeDropdown
+            handleThemeClick={handleThemeClick}
+            themeItems={themeItems}
+            theme={theme}
+          />
         </>
       ),
     },
@@ -149,31 +138,12 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
       label: (
         <>
           <span className={styles.burgerSettings}>{t("language")}</span>
-          <Dropdown
-            overlay={
-              <Menu
-                onClick={handleLanguageClick}
-                className={styles.settingsBtn}
-              >
-                {languageItems?.map((item) => (
-                  <Menu.Item
-                    key={item.key}
-                    onClick={() => changeLanguage(item.label)}
-                  >
-                    <div className={styles.lngIcons}>
-                      <span>{item.icon}</span>
-                      <span className={styles.dropdownItem}>{item.label}</span>
-                    </div>
-                  </Menu.Item>
-                ))}
-              </Menu>
-            }
-          >
-            <Button type="text" className={styles.settingsButton}>
-              {language}
-              <DownOutlined />
-            </Button>
-          </Dropdown>
+          <LanguageDropdown
+            handleLanguageClick={handleLanguageClick}
+            languageItems={languageItems}
+            language={language}
+            changeLanguage={changeLanguage}
+          />
         </>
       ),
     },
@@ -186,11 +156,11 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
       closable={true}
       onClose={onClose}
       open={open}
-      width={300}
+      width={275}
       className={styles.burgerColor}
       destroyOnClose={true}
     >
-      <Menu mode="vertical" className={styles.burgerColor} items={items} />
+      <Menu mode="vertical" className={styles.burgerColor} items={itemsMenu} />
     </Drawer>
   );
 };
