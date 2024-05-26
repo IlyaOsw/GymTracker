@@ -9,11 +9,10 @@ import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
-
 import { useAuth } from "../../context/AuthContext";
 
 import styles from "./SignIn.module.scss";
-import ErrorModal from "./ErrorModal/ErrorModal";
+import { ErrorModal } from "./ErrorModal/ErrorModal";
 
 const SignIn: React.FC = () => {
   const { t } = useTranslation();

@@ -119,5 +119,7 @@
     "error": "Ошибка",
     "signOut": "Выйти",
     "profile": "Профиль",
-    "reseted": "Успешно сброшено"
+    "reseted": "Успешно сброшено",
+    "passwordResetSuccess": "Отправка письма была успешна",
+    "passwordResetError": "Отправка письма не удалась"
 }

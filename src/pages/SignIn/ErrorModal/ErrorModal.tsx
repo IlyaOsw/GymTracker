@@ -4,7 +4,11 @@ import { useTranslation } from "react-i18next";
 
 import { ErrorModalProps } from "../../../types/types";
 
-const ErrorModal: React.FC<ErrorModalProps> = ({ open, onClose, message }) => {
+export const ErrorModal: React.FC<ErrorModalProps> = ({
+  open,
+  onClose,
+  message,
+}) => {
   const { t } = useTranslation();
   return (
     <ConfigProvider
@@ -30,5 +34,3 @@ const ErrorModal: React.FC<ErrorModalProps> = ({ open, onClose, message }) => {
     </ConfigProvider>
   );
 };
-
-export default ErrorModal;

@@ -119,6 +119,8 @@
     "error": "Error",
     "signOut": "Sign out",
     "profile": "Profile",
-    "reseted": "Successfully reseted"
+    "reseted": "Successfully reseted",
+    "passwordResetSuccess": "Password reset email sent successfull",
+    "passwordResetError": "Failed to send password reset email"
 }
 

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { message } from "antd";
 
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
@@ -12,6 +14,29 @@ import styles from "./ResetPassword.module.scss";
 
 const ResetPassword: React.FC = () => {
   const { t } = useTranslation();
+  const auth = getAuth();
+  const [email, setEmail] = useState("");
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const handleResetPassword = async () => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      messageApi.open({
+        type: "success",
+        content: `${t("passwordResetSuccess")}`,
+      });
+    } catch (error) {
+      messageApi.open({
+        type: "error",
+        content: `${t("passwordResetError")}`,
+      });
+    }
+  };
+
+  const handleEmailChange = (email: string) => {
+    setEmail(email);
+  };
+
   return (
     <>
       <PageWrapper>
@@ -26,12 +51,20 @@ const ResetPassword: React.FC = () => {
             name="email"
             text={t("email")}
             placeholder={t("enterMail")}
+            value={email}
+            onChange={handleEmailChange}
           />
         </div>
-        <CustomButton children={t("send")} className={styles.btn} />
+        <CustomButton
+          children={t("send")}
+          className={styles.btn}
+          onClick={handleResetPassword}
+        />
+        {contextHolder}
       </PageWrapper>
       <CustomFooter />
     </>
   );
 };
+
 export default ResetPassword;

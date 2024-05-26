@@ -12,6 +12,7 @@ interface CustomInputProps {
   isRequired?: boolean;
   className?: string;
   onChange?: (value: string) => void;
+  value?: string;
 }
 
 type FieldType = {
