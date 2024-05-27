@@ -1,6 +1,8 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 import { Hexagon } from "../../../components/Hexagon/Hexagon";
+import { useAnimatedInView } from "../../../hooks/useAnimatedInView ";
 
 import styles from "./Greeting.module.scss";
 import { Images } from "./Images/Images";
@@ -9,11 +11,21 @@ import { Description } from "./Description/Description";
 const imagesData = ["register", "track", "result"];
 
 export const Greeting: React.FC = () => {
+  const { ref, controls } = useAnimatedInView();
   return (
     <div className={styles.wrapper}>
       <Description />
       <Images />
-      <div className={`${styles.hexagonWrapper}`}>
+      <motion.div
+        ref={ref}
+        className={`${styles.hexagonWrapper}`}
+        initial="hidden"
+        animate={controls}
+        variants={{
+          hidden: { opacity: 0, y: 100 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+        }}
+      >
         {imagesData.map((text, index) => (
           <React.Fragment key={index}>
             <Hexagon text={text} />
@@ -29,7 +41,7 @@ export const Greeting: React.FC = () => {
             )}
           </React.Fragment>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

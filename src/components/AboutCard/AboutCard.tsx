@@ -1,5 +1,8 @@
 import React from "react";
 import { Card, Typography } from "antd";
+import { motion } from "framer-motion";
+
+import { useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./AboutCard.module.scss";
 
@@ -10,6 +13,7 @@ interface AboutCardProps {
 }
 
 export const AboutCard: React.FC<AboutCardProps> = ({ title, text, image }) => {
+  const { ref, controls } = useAnimatedInView();
   return (
     <Card
       className={styles.card}
@@ -21,7 +25,18 @@ export const AboutCard: React.FC<AboutCardProps> = ({ title, text, image }) => {
       }
       cover={<img alt="Card" src={image} />}
     >
-      <p className={styles.cardText}>{text}</p>
+      <motion.p
+        ref={ref}
+        className={styles.cardText}
+        initial="hidden"
+        animate={controls}
+        variants={{
+          hidden: { opacity: 0, y: 100 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+        }}
+      >
+        {text}
+      </motion.p>
     </Card>
   );
 };

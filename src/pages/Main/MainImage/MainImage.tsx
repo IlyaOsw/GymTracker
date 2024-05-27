@@ -1,19 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 import { CustomButton } from "../../../components/CustomButton/CustomButton";
+import { useAnimatedInView } from "../../../hooks/useAnimatedInView ";
 
 import styles from "./MainImage.module.scss";
 
 export const MainImage: React.FC = () => {
   const { t } = useTranslation();
+  const { ref, controls } = useAnimatedInView();
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.image}></div>
       <div className={styles.title}>
-        {t("title1")} <br /> {t("title2")}
+        <motion.p
+          ref={ref}
+          initial="hidden"
+          animate={controls}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { duration: 0.5 } },
+          }}
+        >
+          {t("title1")} <br /> {t("title2")}
+        </motion.p>
       </div>
       <div className={styles.buttons}>
         <Link to={"/signup"}>

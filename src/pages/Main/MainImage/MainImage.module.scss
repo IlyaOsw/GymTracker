@@ -17,7 +17,7 @@
   }
 }
 
-.title {
+.title p {
   position: absolute;
   top: 45%;
   left: 50%;
@@ -62,7 +62,7 @@
 }
 
 @media (max-width: 992px) {
-  .title {
+  .title p {
     top: 40%;
     font-size: 40px;
     line-height: 1.2;
@@ -79,7 +79,7 @@
 }
 
 @media (max-width: 480px) {
-  .title {
+  .title p {
     top: 40%;
     font-size: 40px;
     line-height: 1.2;
