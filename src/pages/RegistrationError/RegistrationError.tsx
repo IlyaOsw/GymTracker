@@ -30,7 +30,7 @@ const RegistrationError: React.FC = () => {
         <div className={styles.result}>
           <Result status="error" title={<Title />} subTitle={<SubTitle />} />
           <Link to="/signup">
-            <CustomButton children={t("backToForm")} />
+            <CustomButton text={t("backToForm")} />
           </Link>
         </div>
       </PageWrapper>

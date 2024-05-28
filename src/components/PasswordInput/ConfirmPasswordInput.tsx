@@ -3,11 +3,9 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 
-import styles from "./PasswordInput.module.scss";
+import { CustomPassInputProps } from "../../types/types";
 
-interface CustomPassInputProps {
-  onChange?: (value: string) => void;
-}
+import styles from "./PasswordInput.module.scss";
 
 export const ConfirmPasswordInput: React.FC<CustomPassInputProps> = ({
   onChange,

@@ -2,24 +2,9 @@ import { Form, Input } from "antd";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { CustomInputProps, FieldType } from "../../types/types";
+
 import styles from "./CustomInput.module.scss";
-
-interface CustomInputProps {
-  name?: string;
-  text: string;
-  type?: string;
-  placeholder?: string;
-  isRequired?: boolean;
-  className?: string;
-  onChange?: (value: string) => void;
-  value?: string;
-}
-
-type FieldType = {
-  [key: string]: string | undefined;
-  username?: string;
-  password?: string;
-};
 
 export const CustomInput: React.FC<CustomInputProps> = ({
   name,

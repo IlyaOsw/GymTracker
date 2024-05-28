@@ -1,12 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import styles from "./Hexagon.module.scss";
+import { HexagonProps } from "../../types/types";
 
-interface HexagonProps {
-  text: string;
-  className?: string;
-}
+import styles from "./Hexagon.module.scss";
 
 export const Hexagon: React.FC<HexagonProps> = ({ text, className }) => {
   const { t } = useTranslation();

@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import { SocialLinks } from "../../../../types/types";
+import { SocialLinks, SocialLinksType } from "../../../../types/types";
 import { SubTitle } from "../../../../components/SubTitle/SubTitle";
 
 import styles from "./SocialMedia.module.scss";
@@ -9,7 +9,7 @@ import styles from "./SocialMedia.module.scss";
 export const SocialMedia: React.FC = () => {
   const { t } = useTranslation();
 
-  const links: { id: number; url: string; label: SocialLinks }[] = [
+  const links: SocialLinksType[] = [
     {
       id: 1,
       url: "https://www.linkedin.com/in/ilyaosw/",

@@ -5,12 +5,9 @@ import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import { RangePickerProps } from "antd/es/date-picker";
 
-import styles from "./Calendar.module.scss";
+import { ICalendar } from "../../types/types";
 
-interface ICalendar {
-  className?: string;
-  onChange?: (value: string) => void;
-}
+import styles from "./Calendar.module.scss";
 
 export const Calendar: React.FC<ICalendar> = ({ className, onChange }) => {
   const { t } = useTranslation();

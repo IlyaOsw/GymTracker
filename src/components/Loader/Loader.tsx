@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 
 export const Loader: React.FC = () => {
   const { t } = useTranslation();
-
   return (
     <Flex
       align="center"

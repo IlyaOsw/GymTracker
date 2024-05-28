@@ -1,8 +1,6 @@
 import React from "react";
 
-interface PageWrapperProps {
-  children: React.ReactNode;
-}
+import { PageWrapperProps } from "../../types/types";
 
 const container: React.CSSProperties = {
   maxWidth: "1200px",

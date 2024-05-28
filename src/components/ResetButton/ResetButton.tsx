@@ -2,12 +2,9 @@ import React from "react";
 import { Button } from "antd";
 import { SyncOutlined } from "@ant-design/icons";
 
-import styles from "./ResetButton.module.scss";
+import { ResetBtnType } from "../../types/types";
 
-interface ResetBtnType {
-  onClick?: () => void;
-  children?: string;
-}
+import styles from "./ResetButton.module.scss";
 
 export const ResetButton: React.FC<ResetBtnType> = ({ onClick, children }) => {
   return (

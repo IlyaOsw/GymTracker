@@ -1,18 +1,9 @@
 import { useState } from "react";
 import { Button } from "antd";
 
+import { CustomButtonProps, SizeType } from "../../types/types";
+
 import styles from "./CustomButton.module.scss";
-
-import type { ConfigProviderProps } from "antd";
-
-type SizeType = ConfigProviderProps["componentSize"];
-
-interface CustomButtonProps {
-  children: React.ReactNode;
-  icon?: React.ReactNode;
-  className?: string;
-  onClick?: () => void;
-}
 
 export const CustomButton = ({
   children,

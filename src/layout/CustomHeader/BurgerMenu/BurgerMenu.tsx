@@ -1,16 +1,15 @@
-import { Drawer, Menu, GetProp, MenuProps } from "antd";
+import { Drawer, Menu } from "antd";
 import React, { useEffect } from "react";
 import { Divider } from "antd";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 
-import { HeaderPropsType } from "../../../types/types";
+import { BurgerMenuItem, HeaderPropsType } from "../../../types/types";
 import styles from "../CustomHeader.module.scss";
 import { useAuth } from "../../../context/AuthContext";
 import { ThemeDropdown } from "../ThemeDropdown/ThemeDropdown";
 import { LanguageDropdown } from "../LanguageDropdown/LanguageDropdown";
 
-type MenuItem = GetProp<MenuProps, "items">[number];
 export const BurgerMenu: React.FC<HeaderPropsType> = ({
   open,
   setOpen,
@@ -67,7 +66,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     };
   }, [open]);
 
-  const itemsMenu: MenuItem[] = [
+  const itemsMenu: BurgerMenuItem[] = [
     {
       key: "1",
       label: (

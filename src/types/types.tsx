@@ -1,9 +1,17 @@
+import { GetProp, MenuProps, ConfigProviderProps } from "antd";
+
 export enum SocialLinks {
   LINKEDIN = "Linkedin",
   FACEBOOK = "Facebook",
   INSTAGRAM = "Instagram",
   TELEGRAM = "Telegram",
 }
+
+export type SocialLinksType = {
+  id: number;
+  url: string;
+  label: SocialLinks;
+};
 
 export interface MenuItem {
   key: string;
@@ -72,3 +80,74 @@ export type LanguageDropdownPropsType = {
   language: string | undefined;
   changeLanguage: (language: string) => void;
 };
+
+export interface AboutCardProps {
+  title: string;
+  text: string;
+  image: string;
+}
+
+export interface ICalendar {
+  className?: string;
+  onChange?: (value: string) => void;
+}
+
+export type SizeType = ConfigProviderProps["componentSize"];
+
+export interface CustomButtonProps {
+  children?: React.ReactNode;
+  icon?: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+  text?: string | any;
+  textAlign?: "start" | "center" | "end";
+}
+
+export interface CustomInputProps {
+  name?: string;
+  text: string;
+  type?: string;
+  placeholder?: string;
+  isRequired?: boolean;
+  className?: string;
+  onChange?: (value: string) => void;
+  value?: string;
+}
+
+export type FieldType = {
+  [key: string]: string | undefined;
+  username?: string;
+  password?: string;
+};
+
+export interface HexagonProps {
+  text: string;
+  className?: string;
+}
+
+export interface PageWrapperProps {
+  children: React.ReactNode;
+}
+
+export interface CustomPassInputProps {
+  onChange?: (value: string) => void;
+}
+
+export interface PasswordInputProps {
+  name?: string;
+  text?: string;
+  placeholder?: string;
+  onChange?: (value: string) => void;
+}
+
+export interface ResetBtnType {
+  onClick?: () => void;
+  children?: string;
+}
+
+export interface SubTitleType {
+  children: string;
+  className?: string;
+}
+
+export type BurgerMenuItem = GetProp<MenuProps, "items">[number];

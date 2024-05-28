@@ -2,19 +2,9 @@ import { Form, Input } from "antd";
 import React from "react";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 
+import { FieldType, PasswordInputProps } from "../../types/types";
+
 import styles from "./PasswordInput.module.scss";
-
-interface PasswordInputProps {
-  name?: string;
-  text?: string;
-  placeholder?: string;
-  onChange?: (value: string) => void;
-}
-
-type FieldType = {
-  [key: string]: string | undefined;
-  password?: string;
-};
 
 export const PasswordInput: React.FC<PasswordInputProps> = ({
   name,
