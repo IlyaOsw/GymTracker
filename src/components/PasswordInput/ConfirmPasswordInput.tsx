@@ -22,7 +22,12 @@ export const ConfirmPasswordInput: React.FC<CustomPassInputProps> = ({
   return (
     <div className={styles.confirmInputWrapper}>
       <Form.Item
-        label={<span className={styles.inputLabel}>{t("password")}</span>}
+        label={
+          <span className={styles.inputLabel}>
+            {t("password")}{" "}
+            <span className={styles.passwordRule}>{t("passwordRule")}</span>
+          </span>
+        }
         name="password"
         rules={[{ required: true }]}
       >

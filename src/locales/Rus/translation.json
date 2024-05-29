@@ -121,5 +121,6 @@
     "profile": "Профиль",
     "reseted": "Успешно сброшено",
     "passwordResetSuccess": "Отправка письма была успешна",
-    "passwordResetError": "Отправка письма не удалась"
+    "passwordResetError": "Отправка письма не удалась",
+    "passwordRule": "( Мин. 6 символов )"
 }
