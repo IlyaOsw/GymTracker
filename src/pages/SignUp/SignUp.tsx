@@ -41,25 +41,15 @@ const SignUp: React.FC = () => {
     });
   };
 
-  const handleEmailChange = (email: string) => {
-    setEmail(email);
-  };
+  const handleEmailChange = (email: string) => setEmail(email);
 
-  const handlePasswordChange = (password: string) => {
-    setPassword(password);
-  };
+  const handlePasswordChange = (password: string) => setPassword(password);
 
-  const handleFirstNameChange = (value: string) => {
-    setFirstName(value);
-  };
+  const handleFirstNameChange = (value: string) => setFirstName(value);
 
-  const handleLastNameChange = (value: string) => {
-    setLastName(value);
-  };
+  const handleLastNameChange = (value: string) => setLastName(value);
 
-  const handleGenderChange = (value: string) => {
-    setGender(value);
-  };
+  const handleGenderChange = (value: string) => setGender(value);
 
   const handleDateOfBirthChange = (value: string) => {
     const newDate = new Date(value);
@@ -68,13 +58,9 @@ const SignUp: React.FC = () => {
     }
   };
 
-  const handleCountryChange = (value: string) => {
-    setCountry(value);
-  };
+  const handleCountryChange = (value: string) => setCountry(value);
 
-  const handleCityChange = (value: string) => {
-    setCity(value);
-  };
+  const handleCityChange = (value: string) => setCity(value);
 
   const calculateAge = (dateOfBirth: Date) => {
     const currentDate = new Date();

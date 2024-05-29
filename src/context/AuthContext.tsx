@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  ReactNode,
-} from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import {
   getAuth,
   onAuthStateChanged,
@@ -12,11 +6,7 @@ import {
   signOut,
 } from "firebase/auth";
 
-interface AuthContextType {
-  isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  logout: () => Promise<void>;
-}
+import { AuthContextType, AuthProviderProps } from "../types/types";
 
 const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
@@ -25,10 +15,6 @@ const AuthContext = createContext<AuthContextType>({
 });
 
 export const useAuth = () => useContext(AuthContext);
-
-interface AuthProviderProps {
-  children: ReactNode;
-}
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

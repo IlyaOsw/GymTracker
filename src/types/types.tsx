@@ -1,4 +1,5 @@
 import { GetProp, MenuProps, ConfigProviderProps } from "antd";
+import { ReactNode } from "react";
 
 export enum SocialLinks {
   LINKEDIN = "Linkedin",
@@ -151,3 +152,27 @@ export interface SubTitleType {
 }
 
 export type BurgerMenuItem = GetProp<MenuProps, "items">[number];
+
+export interface AuthContextType {
+  isAuthenticated: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
+}
+
+export interface AuthProviderProps {
+  children: ReactNode;
+}
+
+export interface UserData {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  dateOfBirth: Date;
+  age: number;
+  gender: string;
+  location: {
+    country: string;
+    city: string;
+  };
+}

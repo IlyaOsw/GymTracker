@@ -18,21 +18,13 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
 }) => {
   const { t } = useTranslation();
 
-  const handleFirstNameChange = (value: string) => {
-    onFirstNameChange(value);
-  };
+  const handleFirstNameChange = (value: string) => onFirstNameChange(value);
 
-  const handleLastNameChange = (value: string) => {
-    onLastNameChange(value);
-  };
+  const handleLastNameChange = (value: string) => onLastNameChange(value);
 
-  const handleGenderChange = (value: string) => {
-    onGenderChange(value);
-  };
+  const handleGenderChange = (value: string) => onGenderChange(value);
 
-  const handleDateOfBirthChange = (value: string) => {
-    onDateOfBithChange(value);
-  };
+  const handleDateOfBirthChange = (value: string) => onDateOfBithChange(value);
 
   return (
     <div className={styles.personalInfo}>
@@ -66,6 +58,7 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
                     colorTextPlaceholder: "#818181",
                     colorText: "#ffffff",
                     optionSelectedBg: "#0097b2",
+                    optionActiveBg: "#0097b2",
                   },
                 },
               }}
@@ -86,6 +79,7 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
           </Form.Item>
           <Form.Item
             name="dateOfBirth"
+            rules={[{ required: true }]}
             label={
               <span className={styles.inputLabel}>{t("dateOfBirth")}</span>
             }
