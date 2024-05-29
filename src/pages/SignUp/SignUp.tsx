@@ -27,7 +27,7 @@ const SignUp: React.FC = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gender, setGender] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState(new Date());
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
 
@@ -62,7 +62,10 @@ const SignUp: React.FC = () => {
   };
 
   const handleDateOfBirthChange = (value: string) => {
-    setDateOfBirth(value);
+    const newDate = new Date(value);
+    if (!isNaN(newDate.getTime())) {
+      setDateOfBirth(newDate);
+    }
   };
 
   const handleCountryChange = (value: string) => {
@@ -73,7 +76,7 @@ const SignUp: React.FC = () => {
     setCity(value);
   };
 
-  const calculateAge = (dateOfBirth: string) => {
+  const calculateAge = (dateOfBirth: Date) => {
     const currentDate = new Date();
     const birthDate = new Date(dateOfBirth);
 
@@ -102,8 +105,8 @@ const SignUp: React.FC = () => {
         email: email,
         firstName: firstName,
         lastName: lastName || "",
-        dateOfBirth: dateOfBirth ? dateOfBirth.toString() : "",
-        age: dateOfBirth ? calculateAge(dateOfBirth) : "",
+        dateOfBirth: dateOfBirth,
+        age: calculateAge(dateOfBirth),
         gender: gender,
         location: {
           country: country,
