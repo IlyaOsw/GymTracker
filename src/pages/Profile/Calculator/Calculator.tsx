@@ -2,15 +2,22 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 import { Input, message } from "antd";
+import { motion } from "framer-motion";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import { CustomButton } from "../../../components/CustomButton/CustomButton";
 import { ResetButton } from "../../../components/ResetButton/ResetButton";
+import {
+  animation,
+  useAnimatedInView,
+} from "../../../hooks/useAnimatedInView ";
 
 import styles from "./Calculator.module.scss";
 
 export const Calculator: React.FC = () => {
   const { t } = useTranslation();
+  const { ref, controls } = useAnimatedInView();
+
   const [weight, setWeight] = useState<number>(0);
   const [reps, setReps] = useState<number>(1);
   const [result, setResult] = useState<number>(0);
@@ -54,7 +61,15 @@ export const Calculator: React.FC = () => {
   return (
     <>
       <SubTitle children={t("weightCalculator")} className={styles.header} />
-      <div className={styles.info}>{t("indicateWeightAndReps")}</div>
+      <motion.div
+        ref={ref}
+        className={styles.info}
+        initial="hidden"
+        animate={controls}
+        variants={animation}
+      >
+        {t("indicateWeightAndReps")}
+      </motion.div>
       <div className={styles.container}>
         <div className={styles.calculator}>
           <div>

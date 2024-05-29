@@ -31,8 +31,6 @@ const SignUp: React.FC = () => {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
 
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
 
   const onReset = () => {
@@ -75,6 +73,22 @@ const SignUp: React.FC = () => {
     setCity(value);
   };
 
+  const calculateAge = (dateOfBirth: string) => {
+    const currentDate = new Date();
+    const birthDate = new Date(dateOfBirth);
+
+    let age = currentDate.getFullYear() - birthDate.getFullYear();
+    const monthDifference = currentDate.getMonth() - birthDate.getMonth();
+
+    if (
+      monthDifference < 0 ||
+      (monthDifference === 0 && currentDate.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+    return age;
+  };
+
   const handleRegister = async () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -89,6 +103,7 @@ const SignUp: React.FC = () => {
         firstName: firstName,
         lastName: lastName || "",
         dateOfBirth: dateOfBirth ? dateOfBirth.toString() : "",
+        age: dateOfBirth ? calculateAge(dateOfBirth) : "",
         gender: gender,
         location: {
           country: country,
@@ -98,20 +113,11 @@ const SignUp: React.FC = () => {
 
       const db = getFirestore();
       await setDoc(doc(db, "users", userCredential.user.uid), userData);
-
-      setSuccess(true);
+      navigate("/registrationsuccess");
     } catch (error) {
-      setError(true);
+      navigate("/registrationerror");
     }
   };
-
-  if (error) {
-    navigate("/registrationerror");
-  }
-
-  if (success) {
-    navigate("/registrationsuccess");
-  }
 
   useEffect(() => {
     window.scroll(0, 0);

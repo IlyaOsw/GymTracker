@@ -69,7 +69,7 @@ export const Address: React.FC<AddressType> = ({
             >
               {filteredCountries.map(
                 (country: { value: string; label: string }) => (
-                  <Option key={country.value} value={country.value}>
+                  <Option key={country.value} value={country.label}>
                     {country.label}
                   </Option>
                 )
