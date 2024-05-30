@@ -2,7 +2,9 @@ import {
   MessageOutlined,
   CheckOutlined,
   PlusCircleOutlined,
-  SafetyCertificateOutlined,
+  UserOutlined,
+  HomeOutlined,
+  CalendarOutlined,
 } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -11,6 +13,7 @@ import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 
 import { CustomButton } from "../../../../components/CustomButton/CustomButton";
 import { UserData } from "../../../../types/types";
+import { Loader } from "../../../../components/Loader/Loader";
 
 import styles from "./UserInfo.module.scss";
 
@@ -30,14 +33,11 @@ export const UserInfo: React.FC = () => {
       const docSnap = await getDoc(userDoc);
 
       if (docSnap.exists()) {
-        console.log("User data:", docSnap.data());
         return docSnap.data() as UserData;
       } else {
-        console.log("No such document!");
         return null;
       }
     } catch (error) {
-      console.error("Error fetching user data:", error);
       return null;
     }
   };
@@ -49,7 +49,6 @@ export const UserInfo: React.FC = () => {
         const data = await fetchUserData(user.uid);
         setUserData(data);
       } else {
-        console.log("No user is signed in.");
         setUserData(null);
       }
     });
@@ -58,18 +57,25 @@ export const UserInfo: React.FC = () => {
   }, []);
 
   if (!userData) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (
     <div className={styles.personalInformation}>
-      <div>
-        {userData.firstName} {userData.lastName}
-        <SafetyCertificateOutlined className={styles.verificationIcon} />
+      <div className={styles.userInfo}>
+        <div>
+          <UserOutlined className={styles.icon} />
+          {userData.firstName} {userData.lastName}
+        </div>
+        <div>
+          <HomeOutlined className={styles.icon} />
+          {userData.location.country}, {userData.location.city}
+        </div>
+        <div>
+          <CalendarOutlined className={styles.icon} />
+          {userData.age} years old
+        </div>
       </div>
-      <div>Sport: Powerlifting</div>
-      <div>Estonia, Tartumaa, Tartu</div>
-      <div>{t("birthday")} 02.09.1996 (27y.)</div>
       <div className={styles.buttons}>
         <CustomButton className={styles.button} icon={<MessageOutlined />}>
           {t("message")}

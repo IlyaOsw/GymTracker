@@ -3,39 +3,50 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-top: 60px;
+  padding-top: 25px;
 
   .exercisesBox {
-    width: 80%;
-    height: 44px;
+    min-height: 44px;
+    width: 400px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 1.4rem;
-    margin: 12px 0px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    background-color: #282828;
+    border-radius: 10px;
 
     .exerciseName {
-      background-color: #282828;
-      height: 100%;
-      width: 35%;
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
+      width: 40%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #0097b2;
+      word-wrap: break-word;
+      word-break: break-word;
+      text-align: center;
+      border-right: 1px solid #0097b2;
     }
 
     .exerciseResult {
-      background-color: #282828;
-      height: 100%;
-      width: 65%;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
+      width: 60%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-left: 1px solid #0097b2;
+      margin-left: 10px;
+      word-wrap: break-word;
+      word-break: break-word;
+      text-align: center;
+    }
+  }
+
+  .deleteIcon {
+    color: #0097b2;
+    transition: 0.4s all;
+    padding: 5px;
+
+    &:hover {
+      color: red;
     }
   }
 

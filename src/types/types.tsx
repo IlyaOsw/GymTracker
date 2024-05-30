@@ -164,6 +164,7 @@ export interface AuthProviderProps {
 }
 
 export interface UserData {
+  toJSON(): unknown;
   id: string;
   email: string;
   firstName: string;
@@ -176,3 +177,9 @@ export interface UserData {
     city: string;
   };
 }
+
+export type FavoriteExercisesType = {
+  id: number;
+  name: string;
+  result: string;
+};

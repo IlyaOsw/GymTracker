@@ -94,7 +94,6 @@
     "kg": "kg",
     "editCoverPhoto": "Edit cover photo",
     "editProfile": "Edit profile",
-    "birthday": "Birthday: ",
     "noData": "No data",
     "workingWeight": "Your working weight",
     "weightKg": "Weight, kg",
@@ -122,6 +121,7 @@
     "reseted": "Successfully reseted",
     "passwordResetSuccess": "Password reset email sent successfull",
     "passwordResetError": "Failed to send password reset email",
-    "passwordRule": "( Min. 6 characters long )"
+    "passwordRule": "( Min. 6 characters long )",
+    "yourBestResult": "Your best result (kg)"
 }
 
