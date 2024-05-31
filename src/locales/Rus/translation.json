@@ -115,12 +115,13 @@
     "deleteRow": "Удалить ряд",
     "toSignIn": "Вернуться к входу",
     "invalidEmailOrPass": "Неверный адрес электронной почты или пароль",
-    "error": "Ошибка",
+
     "signOut": "Выйти",
     "profile": "Профиль",
     "reseted": "Успешно сброшено",
     "passwordResetSuccess": "Отправка письма была успешна",
-    "passwordResetError": "Отправка письма не удалась",
+    "passwordResetError": "Отправка письма не удалась!",
     "passwordRule": "( Мин. 6 символов )",
-    "yourBestResult": "Ваш лучший результат (kg)"
+    "yourBestResult": "Ваш лучший результат (kg)",
+    "addExerciseError": "Поля введены не корректно!"
 }

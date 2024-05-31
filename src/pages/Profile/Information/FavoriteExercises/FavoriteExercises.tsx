@@ -7,9 +7,8 @@ import { SubTitle } from "../../../../components/SubTitle/SubTitle";
 import { FavoriteExercisesType } from "../../../../types/types";
 import { CustomButton } from "../../../../components/CustomButton/CustomButton";
 
-import { CustomInput } from "../../../../components/CustomInput/CustomInput";
-
 import styles from "./FavoriteExercises.module.scss";
+import { AddExercise } from "./AddExercise/AddExercise";
 
 export const FavoriteExercises: React.FC = () => {
   const { t } = useTranslation();
@@ -20,24 +19,12 @@ export const FavoriteExercises: React.FC = () => {
     { id: 2, name: "Squat", result: "155" },
     { id: 3, name: "Deadlift", result: "180" },
   ]);
-  const [showAddModal, setshowAddModal] = useState<boolean>(false);
-  const [newExercise, setNewExercise] = useState<FavoriteExercisesType>({
-    id: 0,
-    name: "",
-    result: "",
-  });
 
-  const handleNameChange = (value: string) => {
-    setNewExercise((prevExercise) => ({ ...prevExercise, name: value }));
-  };
-
-  const handleResultChange = (value: string) => {
-    setNewExercise((prevExercise) => ({ ...prevExercise, result: value }));
-  };
+  const [showAddModal, setShowAddModal] = useState<boolean>(false);
 
   const addFavoriteExercise = () => {
-    if (favoriteExercisesArray.length < 4) {
-      setshowAddModal(true);
+    if (favoriteExercisesArray.length < 3) {
+      setShowAddModal(true);
     }
   };
 
@@ -45,17 +32,6 @@ export const FavoriteExercises: React.FC = () => {
     setFavoriteExercisesArray((prevExercises) =>
       prevExercises.filter((exercise) => exercise.id !== id)
     );
-  };
-
-  const handleAddExercise = () => {
-    if (newExercise.name && newExercise.result) {
-      setFavoriteExercisesArray((prevExercises) => [
-        ...prevExercises,
-        { ...newExercise, id: prevExercises.length + 1 },
-      ]);
-      setNewExercise({ id: 0, name: "", result: "" });
-      setshowAddModal(false);
-    }
   };
 
   return (
@@ -75,25 +51,17 @@ export const FavoriteExercises: React.FC = () => {
           </Tooltip>
         </div>
       ))}
-      {favoriteExercisesArray.length < 4 && (
+      {favoriteExercisesArray.length < 3 && (
         <CustomButton onClick={addFavoriteExercise} icon={<PlusOutlined />}>
           {t("addExerciseBtn")}
         </CustomButton>
       )}
       {showAddModal && (
-        <>
-          <CustomInput
-            text={t("exerciseName")}
-            value={newExercise.name}
-            onChange={handleNameChange}
-          />
-          <CustomInput
-            text={t("yourBestResult")}
-            value={newExercise.result}
-            onChange={handleResultChange}
-          />
-          <CustomButton onClick={handleAddExercise}>{t("save")}</CustomButton>
-        </>
+        <AddExercise
+          setFavoriteExercisesArray={setFavoriteExercisesArray}
+          setShowAddModal={setShowAddModal}
+          showAddModal={showAddModal}
+        />
       )}
     </div>
   );

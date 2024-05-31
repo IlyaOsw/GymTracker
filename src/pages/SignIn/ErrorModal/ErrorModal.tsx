@@ -15,21 +15,28 @@ export const ErrorModal: React.FC<ErrorModalProps> = ({
       theme={{
         components: {
           Modal: {
-            contentBg: "#E2E2E2",
-            headerBg: "#E2E2E2",
-            titleColor: "#ff4d4f",
+            contentBg: "#141414",
+            colorIcon: "#0097B2",
+            colorIconHover: "red",
           },
         },
       }}
     >
       <Modal
         open={open}
-        title={t("error")}
         onCancel={onClose}
         footer={null}
         style={{ marginTop: "50px" }}
       >
-        <Result status="error" title={t(message)} />
+        <ConfigProvider
+          theme={{
+            token: {
+              colorTextHeading: "#ffffff",
+            },
+          }}
+        >
+          <Result status="error" title={t(message)} />
+        </ConfigProvider>
       </Modal>
     </ConfigProvider>
   );

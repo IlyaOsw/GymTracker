@@ -13,7 +13,6 @@ import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 
 import { CustomButton } from "../../../../components/CustomButton/CustomButton";
 import { UserData } from "../../../../types/types";
-import { Loader } from "../../../../components/Loader/Loader";
 
 import styles from "./UserInfo.module.scss";
 
@@ -57,7 +56,7 @@ export const UserInfo: React.FC = () => {
   }, []);
 
   if (!userData) {
-    return <Loader />;
+    return <div className={styles.personalInformation} />;
   }
 
   return (

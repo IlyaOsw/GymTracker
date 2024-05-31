@@ -183,3 +183,11 @@ export type FavoriteExercisesType = {
   name: string;
   result: string;
 };
+
+export type AddExercisePropsType = {
+  setFavoriteExercisesArray: React.Dispatch<
+    React.SetStateAction<FavoriteExercisesType[]>
+  >;
+  setShowAddModal: (value: boolean) => void;
+  showAddModal: boolean;
+};
