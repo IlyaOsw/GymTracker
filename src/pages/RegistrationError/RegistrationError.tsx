@@ -2,6 +2,7 @@ import { Result } from "antd";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
@@ -30,7 +31,10 @@ const RegistrationError: React.FC = () => {
         <div className={styles.result}>
           <Result status="error" title={<Title />} subTitle={<SubTitle />} />
           <Link to="/signup">
-            <CustomButton children={t("backToForm")} />
+            <CustomButton
+              children={t("backToForm")}
+              icon={<ArrowLeftOutlined />}
+            />
           </Link>
         </div>
       </PageWrapper>

@@ -24,7 +24,6 @@
   transform: translate(-50%, -50%);
   font-size: 4rem;
   font-style: italic;
-  font-weight: 500;
   letter-spacing: 3px;
   width: 100%;
   text-transform: uppercase;
@@ -37,7 +36,6 @@
   transform: translateX(-50%);
 
   .joinBtn {
-    text-transform: uppercase;
     letter-spacing: 2px;
 
     &:hover {

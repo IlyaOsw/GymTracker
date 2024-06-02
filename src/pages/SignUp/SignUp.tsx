@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, message } from "antd";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { CheckCircleOutlined } from "@ant-design/icons";
 
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
@@ -138,7 +139,11 @@ const SignUp: React.FC = () => {
         {contextHolder}
         <ResetButton children={t("resetForm")} onClick={onReset} />
       </PageWrapper>
-      <CustomButton className={styles.signUpBtn} onClick={handleRegister}>
+      <CustomButton
+        className={styles.signUpBtn}
+        onClick={handleRegister}
+        icon={<CheckCircleOutlined />}
+      >
         {t("signUp")}
       </CustomButton>
       <CustomFooter />

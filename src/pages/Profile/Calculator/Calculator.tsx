@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
+import {
+  MinusOutlined,
+  PlusOutlined,
+  RightCircleOutlined,
+} from "@ant-design/icons";
 import { Input, message } from "antd";
 import { motion } from "framer-motion";
 
@@ -104,6 +108,7 @@ export const Calculator: React.FC = () => {
             children={t("calculate")}
             className={styles.calculate}
             onClick={calculate1RM}
+            icon={<RightCircleOutlined />}
           />
         </div>
         <div className={styles.result}>{t("calcResult")}</div>

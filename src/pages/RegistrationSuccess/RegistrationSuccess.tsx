@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Result } from "antd";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { ArrowRightOutlined } from "@ant-design/icons";
 
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
@@ -30,7 +31,10 @@ const RegistrationSuccess: React.FC = () => {
         <div className={styles.result}>
           <Result status="success" title={<Title />} subTitle={<SubTitle />} />
           <Link to="/profile">
-            <CustomButton children={t("toProfile")} />
+            <CustomButton
+              children={t("toProfile")}
+              icon={<ArrowRightOutlined />}
+            />
           </Link>
         </div>
       </PageWrapper>
