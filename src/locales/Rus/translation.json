@@ -92,7 +92,7 @@
     "favoriteExercises": "Любимые упражнения",
     "bestResult": "Лучший результат",
     "kg": "кг",
-    "editCoverPhoto": "Редактировать фото обложки",
+    "uploadCoverImage": "Загрузить изображение",
     "editProfile": "Редактировать профиль",
     "noData": "Нет данных",
     "workingWeight": "Ваш рабочий вес",
@@ -122,5 +122,12 @@
     "passwordResetError": "Отправка письма не удалась!",
     "passwordRule": "( Мин. 6 символов )",
     "yourBestResult": "Ваш лучший результат (kg)",
-    "addExerciseError": "Поля введены не корректно!"
+    "addExerciseError": "Поля введены не корректно!",
+    "uploadNewProfilePhoto": "Загрузить новую фотографию профиля",
+    "deleteProfilePhoto": "Удалить фотографию профиля",
+    "profilePhotoUpdated": "Фото профиля обновлено",
+    "uploadFailed": "Загрузка не удалась",
+    "profilePhotoDeleted": "Фото профиля удалено",
+    "deleteFailed": "Удаление не удалось",
+    "coverImageUploaded": "Изображение обложки загружено"
 }

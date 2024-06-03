@@ -5,12 +5,14 @@ import { Form, message } from "antd";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { CheckCircleOutlined } from "@ant-design/icons";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 import { ResetButton } from "../../components/ResetButton/ResetButton";
+import { storage } from "../..";
 
 import { Registration } from "./Registration/Registration";
 import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
@@ -31,6 +33,7 @@ const SignUp: React.FC = () => {
   const [dateOfBirth, setDateOfBirth] = useState(new Date());
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
+  const [image, setImage] = useState<File | null>(null);
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -63,6 +66,8 @@ const SignUp: React.FC = () => {
 
   const handleCityChange = (value: string) => setCity(value);
 
+  const handleImageChange = (file: File) => setImage(file);
+
   const calculateAge = (dateOfBirth: Date) => {
     const currentDate = new Date();
     const birthDate = new Date(dateOfBirth);
@@ -87,8 +92,16 @@ const SignUp: React.FC = () => {
         password
       );
 
+      const user = userCredential.user;
+      let avatarURL = "";
+      if (image) {
+        const avatarRef = ref(storage, `avatar/${user.uid}.jpg`);
+        await uploadBytes(avatarRef, image);
+        avatarURL = await getDownloadURL(avatarRef);
+      }
+
       const userData = {
-        id: userCredential.user.uid,
+        id: user.uid,
         email: email,
         firstName: firstName,
         lastName: lastName || "",
@@ -99,12 +112,14 @@ const SignUp: React.FC = () => {
           country: country,
           city: city || "",
         },
+        avatarURL: avatarURL,
       };
 
       const db = getFirestore();
-      await setDoc(doc(db, "users", userCredential.user.uid), userData);
+      await setDoc(doc(db, "users", user.uid), userData);
       navigate("/registrationsuccess");
     } catch (error) {
+      alert(error);
       navigate("/registrationerror");
     }
   };
@@ -125,6 +140,7 @@ const SignUp: React.FC = () => {
         <Registration
           onEmailChange={handleEmailChange}
           onPasswordChange={handlePasswordChange}
+          onImageChange={handleImageChange}
         />
         <PersonalInformation
           onFirstNameChange={handleFirstNameChange}

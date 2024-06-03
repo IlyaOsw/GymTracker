@@ -92,7 +92,7 @@
     "favoriteExercises": "Favorite exercises",
     "bestResult": "Best result",
     "kg": "kg",
-    "editCoverPhoto": "Edit cover photo",
+    "uploadCoverImage": "Upload cover image",
     "editProfile": "Edit profile",
     "noData": "No data",
     "workingWeight": "Your working weight",
@@ -122,6 +122,13 @@
     "passwordResetError": "Failed to send password reset email!",
     "passwordRule": "( Min. 6 characters long )",
     "yourBestResult": "Your best result (kg)",
-    "addExerciseError": "Fields entered incorrectly!"
+    "addExerciseError": "Fields entered incorrectly!",
+    "uploadNewProfilePhoto": "Upload new profile photo",
+    "deleteProfilePhoto": "Delete profile photo",
+    "profilePhotoUpdated": "Profile photo updated",
+    "uploadFailed": "Upload failed",
+    "profilePhotoDeleted": "Profile photo deleted",
+    "deleteFailed": "Delete failed",
+    "coverImageUploaded": "Cover image uploaded"
 }
 

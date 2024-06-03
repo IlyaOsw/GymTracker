@@ -39,6 +39,7 @@ export const ThemeDropdown: React.FC<ThemeDropdownPropsType> = ({
           defaultSelectedKeys: ["1"],
           onClick: handleThemeClick,
         }}
+        arrow
       >
         <Typography.Link className={styles.settingsBtn}>
           <Space className={styles.theme}>

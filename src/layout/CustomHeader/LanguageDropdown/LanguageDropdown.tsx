@@ -40,6 +40,7 @@ export const LanguageDropdown: React.FC<LanguageDropdownPropsType> = ({
           defaultSelectedKeys: ["1"],
           onClick: handleLanguageClick,
         }}
+        arrow
       >
         <Typography.Link className={styles.settingsBtn}>
           <Space className={styles.theme}>

@@ -68,7 +68,7 @@ export const UserInfo: React.FC = () => {
         </div>
         <div>
           <HomeOutlined className={styles.icon} />
-          {userData.location.country}, {userData.location.city}
+          {userData.location.country} {userData.location.city}
         </div>
         <div>
           <CalendarOutlined className={styles.icon} />

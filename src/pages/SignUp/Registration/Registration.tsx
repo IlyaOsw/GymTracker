@@ -14,6 +14,7 @@ import { RegistrationType } from "../../../types/types";
 export const Registration: React.FC<RegistrationType> = ({
   onEmailChange,
   onPasswordChange,
+  onImageChange,
 }) => {
   const { t } = useTranslation();
   const [image, setImage] = useState<string | null>(null);
@@ -25,6 +26,7 @@ export const Registration: React.FC<RegistrationType> = ({
       reader.onload = () => {
         const result = reader.result as string;
         setImage(result);
+        onImageChange(file);
       };
       return false;
     },
@@ -36,7 +38,11 @@ export const Registration: React.FC<RegistrationType> = ({
         {image ? (
           <img src={image} alt="Profile" className={styles.profileImage} />
         ) : (
-          <Avatar size={250} icon={<UserOutlined />} />
+          <Avatar
+            size={250}
+            icon={<UserOutlined />}
+            style={{ background: "rgb(103, 103, 103)" }}
+          />
         )}
         <Upload {...props} showUploadList={false}>
           <CustomButton icon={<UploadOutlined />} className={styles.upload}>
@@ -44,7 +50,7 @@ export const Registration: React.FC<RegistrationType> = ({
           </CustomButton>
         </Upload>
       </div>
-      <div>
+      <div className={styles.info}>
         <SubTitle>{t("registration")}</SubTitle>
         <CustomInput
           name="email"
