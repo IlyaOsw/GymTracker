@@ -192,3 +192,13 @@ export type AddExercisePropsType = {
   setShowAddModal: (value: boolean) => void;
   showAddModal: boolean;
 };
+
+export type ProfileAvatarPropsType = {
+  avatarURL: string | null;
+  setAvatarURL: (value: string | null) => void;
+};
+
+export type CoverImagePropsType = {
+  coverURL: string | null;
+  setCoverURL: (value: string | null) => void;
+};

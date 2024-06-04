@@ -62,18 +62,20 @@ export const UserInfo: React.FC = () => {
   return (
     <div className={styles.personalInformation}>
       <div className={styles.userInfo}>
-        <div>
-          <UserOutlined className={styles.icon} />
-          {userData.firstName} {userData.lastName}
-        </div>
-        <div>
-          <HomeOutlined className={styles.icon} />
-          {userData.location.country} {userData.location.city}
-        </div>
-        <div>
-          <CalendarOutlined className={styles.icon} />
-          {userData.age} years old
-        </div>
+        <ul>
+          <li>
+            <UserOutlined className={styles.icon} />
+            {userData.firstName} {userData.lastName}
+          </li>
+          <li>
+            <HomeOutlined className={styles.icon} />
+            {userData.location.country} {userData.location.city}
+          </li>
+          <li>
+            <CalendarOutlined className={styles.icon} />
+            {userData.age} y. o.
+          </li>
+        </ul>
       </div>
       <div className={styles.buttons}>
         <CustomButton className={styles.button} icon={<MessageOutlined />}>
