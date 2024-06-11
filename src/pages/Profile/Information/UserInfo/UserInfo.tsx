@@ -3,21 +3,23 @@ import {
   CheckOutlined,
   PlusCircleOutlined,
   UserOutlined,
-  HomeOutlined,
   CalendarOutlined,
+  EnvironmentOutlined,
 } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 import { CustomButton } from "../../../../components/CustomButton/CustomButton";
 import { UserData } from "../../../../types/types";
+import { useUserContext } from "../../../../context/UserContext";
 
 import styles from "./UserInfo.module.scss";
 
 export const UserInfo: React.FC = () => {
   const { t } = useTranslation();
+  const { updateUserData } = useUserContext();
   const [userData, setUserData] = useState<UserData | null>(null);
   const [follow, setFollow] = useState<boolean>(false);
 
@@ -55,6 +57,23 @@ export const UserInfo: React.FC = () => {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    if (userData) {
+      const auth = getAuth();
+      const unsubscribe = onAuthStateChanged(
+        auth,
+        async (user: User | null) => {
+          if (user) {
+            const updatedData = await fetchUserData(user.uid);
+            setUserData(updatedData);
+          }
+        }
+      );
+
+      return () => unsubscribe();
+    }
+  }, [updateUserData, userData]);
+
   if (!userData) {
     return <div className={styles.personalInformation} />;
   }
@@ -68,7 +87,8 @@ export const UserInfo: React.FC = () => {
             {userData.firstName} {userData.lastName}
           </li>
           <li>
-            <HomeOutlined className={styles.icon} />
+            <EnvironmentOutlined className={styles.icon} />
+            {/* <HomeOutlined className={styles.icon} /> */}
             {userData.location.country} {userData.location.city}
           </li>
           <li>

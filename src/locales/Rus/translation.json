@@ -129,5 +129,9 @@
     "uploadFailed": "Загрузка не удалась",
     "profilePhotoDeleted": "Фото профиля удалено",
     "deleteFailed": "Удаление не удалось",
-    "coverImageUploaded": "Изображение обложки загружено"
+    "coverImageUploaded": "Изображение обложки загружено",
+    "editInfo": "Отредактируйте поля, которые хотите обновить",
+    "update": "Обновить",
+    "profileInformationUpdated": "Информация профиля успешно обновлена",
+    "profileInformationUpdateFailed": "Ошибка обновления информации профиля"
 }

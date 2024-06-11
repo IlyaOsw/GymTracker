@@ -15,6 +15,7 @@ export const CoverImage: React.FC<CoverImagePropsType> = ({
   setCoverURL,
 }) => {
   const { t } = useTranslation();
+
   const handleUploadCoverImage = async (file: File) => {
     const user = auth.currentUser;
     if (user) {

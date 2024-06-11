@@ -9,7 +9,6 @@ import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import { AddressType } from "../../../types/types";
 
 const { Option } = Select;
-
 const countryOptions = countries().getData();
 
 export const Address: React.FC<AddressType> = ({

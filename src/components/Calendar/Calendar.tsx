@@ -1,7 +1,7 @@
 import { CalendarOutlined } from "@ant-design/icons";
 import { ConfigProvider, DatePicker } from "antd";
 import React from "react";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { useTranslation } from "react-i18next";
 import { RangePickerProps } from "antd/es/date-picker";
 
@@ -9,16 +9,20 @@ import { ICalendar } from "../../types/types";
 
 import styles from "./Calendar.module.scss";
 
-export const Calendar: React.FC<ICalendar> = ({ className, onChange }) => {
+export const Calendar: React.FC<ICalendar> = ({
+  className,
+  value,
+  onChange,
+}) => {
   const { t } = useTranslation();
 
   const disabledDate: RangePickerProps["disabledDate"] = (current) => {
     return current && current >= dayjs().endOf("day");
   };
 
-  const handleChange = (dateString: string) => {
-    if (onChange) {
-      onChange(dateString);
+  const handleChange = (date: Dayjs | null) => {
+    if (onChange && date) {
+      onChange(date.toDate());
     }
   };
 
@@ -34,17 +38,22 @@ export const Calendar: React.FC<ICalendar> = ({ className, onChange }) => {
             colorTextHeading: "#ffffff",
             colorText: "#ffffff",
             colorIcon: "#ffffff",
-            colorIconHover: "#1677ff",
+            colorIconHover: "#0097b2",
+            colorPrimary: "#0097b2",
           },
         },
       }}
     >
       <DatePicker
+        format={{
+          format: "YYYY-MM-DD",
+          type: "mask",
+        }}
+        showNow={false}
         className={`${styles.dateField} ${className}`}
+        value={value ? dayjs(value) : null}
         placeholder={t("selectDate")}
         suffixIcon={<CalendarOutlined />}
-        inputReadOnly
-        allowClear={false}
         disabledDate={disabledDate}
         onChange={handleChange}
       />

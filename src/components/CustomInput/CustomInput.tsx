@@ -14,6 +14,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
   isRequired = true,
   className,
   onChange,
+  value,
 }) => {
   const { t } = useTranslation();
 
@@ -37,6 +38,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
           className={`${styles.inputField} ${className}`}
           allowClear
           onChange={handleChange}
+          value={value}
           autoComplete="username"
         />
       </Form.Item>

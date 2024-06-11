@@ -35,14 +35,9 @@ const SignUp: React.FC = () => {
   const [city, setCity] = useState("");
   const [image, setImage] = useState<File | null>(null);
 
-  const [messageApi, contextHolder] = message.useMessage();
-
   const onReset = () => {
     form.resetFields();
-    messageApi.open({
-      type: "success",
-      content: `${t("reseted")}`,
-    });
+    message.success(t("reseted"));
   };
 
   const handleEmailChange = (email: string) => setEmail(email);
@@ -119,7 +114,6 @@ const SignUp: React.FC = () => {
       await setDoc(doc(db, "users", user.uid), userData);
       navigate("/registrationsuccess");
     } catch (error) {
-      alert(error);
       navigate("/registrationerror");
     }
   };
@@ -152,7 +146,6 @@ const SignUp: React.FC = () => {
           onCountryChange={handleCountryChange}
           onCityChange={handleCityChange}
         />
-        {contextHolder}
         <ResetButton children={t("resetForm")} onClick={onReset} />
       </PageWrapper>
       <CustomButton

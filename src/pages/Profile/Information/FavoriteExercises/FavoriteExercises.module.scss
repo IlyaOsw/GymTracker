@@ -18,7 +18,7 @@
     padding: 5px;
 
     @media (max-width: 576px) {
-      width: 330px;
+      width: 350px;
     }
 
     .exerciseName {
@@ -29,8 +29,8 @@
       color: #0097b2;
       word-wrap: break-word;
       word-break: break-word;
-      text-align: center;
       border-right: 1px solid #0097b2;
+      padding: 5px;
     }
 
     .exerciseResult {

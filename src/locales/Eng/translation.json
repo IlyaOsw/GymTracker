@@ -129,6 +129,10 @@
     "uploadFailed": "Upload failed",
     "profilePhotoDeleted": "Profile photo deleted",
     "deleteFailed": "Delete failed",
-    "coverImageUploaded": "Cover image uploaded"
+    "coverImageUploaded": "Cover image uploaded",
+    "editInfo": "Edit fields you want to update",
+    "update": "Update",
+    "profileInformationUpdated": "Profile information successfuly updated",
+    "profileInformationUpdateFailed": "Profile informationd update failed"
 }
 

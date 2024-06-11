@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ConfigProvider, Divider, Empty, Table, Tooltip } from "antd";
 import {
   CheckOutlined,
-  DeleteOutlined,
+  CloseCircleOutlined,
   LeftOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
@@ -22,28 +22,28 @@ const initialData: ExerciseTableType[] = [
     weight: 60,
     set: 1,
     reps: 10,
-    icon: <DeleteOutlined className={styles.deleteIcon} />,
+    icon: <CloseCircleOutlined className={styles.deleteIcon} />,
   },
   {
     key: "2",
     weight: 80,
     set: 2,
     reps: 8,
-    icon: <DeleteOutlined className={styles.deleteIcon} />,
+    icon: <CloseCircleOutlined className={styles.deleteIcon} />,
   },
   {
     key: "3",
     weight: 100,
     set: 3,
     reps: 6,
-    icon: <DeleteOutlined className={styles.deleteIcon} />,
+    icon: <CloseCircleOutlined className={styles.deleteIcon} />,
   },
   {
     key: "4",
     weight: 110,
     set: 4,
     reps: 3,
-    icon: <DeleteOutlined className={styles.deleteIcon} />,
+    icon: <CloseCircleOutlined className={styles.deleteIcon} />,
   },
 ];
 
@@ -62,7 +62,7 @@ export const ExerciseTable: React.FC = () => {
       weight: 0,
       set: lastKey + 1,
       reps: 0,
-      icon: <DeleteOutlined />,
+      icon: <CloseCircleOutlined />,
     };
     newData.push(newRow);
     setData(newData);
@@ -102,7 +102,7 @@ export const ExerciseTable: React.FC = () => {
       dataIndex: "icon",
       render: (_, record) => (
         <Tooltip title={t("deleteRow")}>
-          <DeleteOutlined
+          <CloseCircleOutlined
             className={styles.deleteIcon}
             onClick={() => deleteRow(record.key)}
           />

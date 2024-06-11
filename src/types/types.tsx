@@ -91,7 +91,8 @@ export interface AboutCardProps {
 
 export interface ICalendar {
   className?: string;
-  onChange?: (value: string) => void;
+  onChange?: (value: Date) => void;
+  value?: Date | null;
 }
 
 export type SizeType = ConfigProviderProps["componentSize"];
@@ -202,3 +203,27 @@ export type CoverImagePropsType = {
   coverURL: string | null;
   setCoverURL: (value: string | null) => void;
 };
+
+export type EditProfilePropsType = {
+  onClose: () => void;
+};
+
+export type EditFormPropsType = {
+  onClose: () => void;
+  setIsModalOpen: (value: boolean) => void;
+};
+
+export interface UpdateUserData {
+  firstName: string;
+  lastName: string;
+  location: {
+    country: string | undefined;
+    city: string;
+  };
+  dateOfBirth: Date;
+  age: number;
+}
+
+export interface UserContextType {
+  updateUserData: (userData: UpdateUserData) => Promise<void>;
+}
