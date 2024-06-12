@@ -76,11 +76,11 @@ export const UserInfo: React.FC = () => {
           </li>
           <li>
             <EnvironmentOutlined className={styles.icon} />
-            {userData.location.country} {userData.location.city}
+            {userData.location.country}, {userData.location.city}
           </li>
           <li>
             <CalendarOutlined className={styles.icon} />
-            {userData.age} y. o.
+            {t("age")}: {userData.age}
           </li>
         </ul>
       </div>

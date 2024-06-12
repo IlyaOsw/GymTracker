@@ -9,8 +9,8 @@
 
 .container {
   background-color: #1a1a1a;
-  border-radius: 25px;
-  margin: 75px 0px;
+  border-radius: 20px;
+  margin: 70px 0px;
 }
 
 .subtitle {
@@ -24,7 +24,6 @@
 
 .calculator {
   min-height: 175px;
-  margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -33,6 +32,7 @@
   @media (max-width: 576px) {
     flex-direction: column;
   }
+
   input {
     text-align: center;
   }
@@ -90,9 +90,7 @@
   }
 
   .calculate {
-    height: 45px;
-    width: 200px;
-    margin-top: 40px;
+    margin-top: 50px;
 
     @media (max-width: 576px) {
       margin-bottom: 15px;

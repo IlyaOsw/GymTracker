@@ -4,7 +4,7 @@
   object-fit: cover;
 
   @media (max-width: 768px) {
-    height: 200px;
+    height: 225px;
   }
 }
 
@@ -22,9 +22,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: 1;
   background-color: transparent;
-  color: #ffffff;
 }
 
 .editBtn {
@@ -32,9 +30,9 @@
   bottom: 0;
   right: 0;
   margin: 5px;
-  z-index: 1;
   background-color: transparent;
   color: #ffffff;
+  border-radius: 20px;
 
   &:hover {
     color: #0097b2 !important;

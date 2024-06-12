@@ -3,12 +3,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 75px 0px;
+  margin: 70px 0px;
 
   .signInBtn {
     letter-spacing: 2px;
-    margin: 50px 0px;
-    border-radius: 25px;
+    margin: 40px 0px;
   }
 }
 
@@ -17,18 +16,18 @@
   gap: 10px;
 
   .notRegistered {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #ffffff;
   }
 }
 
 .checkboxRemember {
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .importantOption {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #0097b2;
 
   &:hover {
