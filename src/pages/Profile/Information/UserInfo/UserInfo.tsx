@@ -45,46 +45,21 @@ export const UserInfo: React.FC = () => {
 
   useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, async (user: User | null) => {
+
+    const fetchData = async (user: User | null) => {
       if (user) {
         const data = await fetchUserData(user.uid);
         setUserData(data);
       } else {
         setUserData(null);
       }
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  // useEffect(() => {
-  //   if (userData) {
-  //     const auth = getAuth();
-  //     const unsubscribe = onAuthStateChanged(
-  //       auth,
-  //       async (user: User | null) => {
-  //         if (user) {
-  //           const updatedData = await fetchUserData(user.uid);
-  //           setUserData(updatedData);
-  //         }
-  //       }
-  //     );
-
-  //     return () => unsubscribe();
-  //   }
-  // }, [updateUserData, userData]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const auth = getAuth();
-      const user = auth.currentUser;
-      if (user) {
-        const updatedData = await fetchUserData(user.uid);
-        setUserData(updatedData);
-      }
     };
 
-    fetchData();
+    const unsubscribe = onAuthStateChanged(auth, fetchData);
+
+    fetchData(auth.currentUser);
+
+    return () => unsubscribe();
   }, [updateUserData]);
 
   if (!userData) {

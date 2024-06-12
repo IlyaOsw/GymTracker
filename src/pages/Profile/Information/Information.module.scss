@@ -1,15 +1,17 @@
 .mainContainer,
 .infoContainer {
   position: relative;
-  background-color: #1a1a1a;
+  height: 100%;
+}
+
+.editButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .editBtn {
-  position: absolute;
-  bottom: 0;
-  right: 0;
   margin: 5px;
-  z-index: 1;
   background-color: transparent;
   color: #ffffff;
 

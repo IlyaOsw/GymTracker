@@ -29,6 +29,7 @@
     top: 92%;
     right: 10%;
     transform: translate(-50%, -50%);
+    border-radius: 50%;
 
     @media (max-width: 768px) {
       right: 0%;
@@ -42,5 +43,5 @@
 }
 
 .avatarIcons {
-  margin-right: 5px;
+  padding-right: 10px;
 }

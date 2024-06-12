@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "antd";
+import { Button, Divider } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { doc, getDoc } from "firebase/firestore";
+
+import { onAuthStateChanged, User } from "firebase/auth";
 
 import { auth, db } from "../../..";
 import { UserProvider } from "../../../context/UserContext";
@@ -25,25 +27,29 @@ export const Information: React.FC = () => {
   const handleModalClose = () => setEdit(false);
 
   useEffect(() => {
-    const loadUserPhotos = async () => {
-      const user = auth.currentUser;
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          if (data?.avatarURL) {
-            setAvatarURL(data.avatarURL);
-          }
-          if (data?.coverURL) {
-            setCoverURL(data.coverURL);
-          }
-        }
+        loadUserPhotos(user);
       }
-    };
+    });
 
-    loadUserPhotos();
+    return () => unsubscribe();
   }, []);
+
+  const loadUserPhotos = async (user: User) => {
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+
+      if (data?.avatarURL) {
+        setAvatarURL(data.avatarURL);
+      }
+      if (data?.coverURL) {
+        setCoverURL(data.coverURL);
+      }
+    }
+  };
 
   return (
     <UserProvider>
@@ -54,14 +60,17 @@ export const Information: React.FC = () => {
       <div className={styles.infoContainer}>
         <UserInfo />
         <FavoriteExercises />
-        <Button
-          icon={<EditOutlined />}
-          onClick={handleEditProfile}
-          className={styles.editBtn}
-        >
-          <span className={styles.buttonText}>{t("editProfile")}</span>
-        </Button>
+        <div className={styles.editButtonContainer}>
+          <Button
+            icon={<EditOutlined />}
+            onClick={handleEditProfile}
+            className={styles.editBtn}
+          >
+            <span className={styles.buttonText}>{t("editProfile")}</span>
+          </Button>
+        </div>
       </div>
+      <Divider style={{ backgroundColor: "gray" }} />
       {edit && <EditProfile onClose={handleModalClose} />}
     </UserProvider>
   );
