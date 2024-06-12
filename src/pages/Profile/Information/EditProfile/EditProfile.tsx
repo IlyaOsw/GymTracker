@@ -36,12 +36,7 @@ export const EditProfile: React.FC<EditProfilePropsType> = ({ onClose }) => {
         },
       }}
     >
-      <Modal
-        open={isModalOpen}
-        onCancel={handleCancel}
-        footer={null}
-        style={{ marginTop: "50px" }}
-      >
+      <Modal open={isModalOpen} onCancel={handleCancel} footer={null}>
         <motion.div
           ref={ref}
           className={styles.info}

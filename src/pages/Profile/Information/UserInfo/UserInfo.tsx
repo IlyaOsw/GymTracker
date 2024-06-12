@@ -57,22 +57,35 @@ export const UserInfo: React.FC = () => {
     return () => unsubscribe();
   }, []);
 
-  useEffect(() => {
-    if (userData) {
-      const auth = getAuth();
-      const unsubscribe = onAuthStateChanged(
-        auth,
-        async (user: User | null) => {
-          if (user) {
-            const updatedData = await fetchUserData(user.uid);
-            setUserData(updatedData);
-          }
-        }
-      );
+  // useEffect(() => {
+  //   if (userData) {
+  //     const auth = getAuth();
+  //     const unsubscribe = onAuthStateChanged(
+  //       auth,
+  //       async (user: User | null) => {
+  //         if (user) {
+  //           const updatedData = await fetchUserData(user.uid);
+  //           setUserData(updatedData);
+  //         }
+  //       }
+  //     );
 
-      return () => unsubscribe();
-    }
-  }, [updateUserData, userData]);
+  //     return () => unsubscribe();
+  //   }
+  // }, [updateUserData, userData]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      if (user) {
+        const updatedData = await fetchUserData(user.uid);
+        setUserData(updatedData);
+      }
+    };
+
+    fetchData();
+  }, [updateUserData]);
 
   if (!userData) {
     return <div className={styles.personalInformation} />;
@@ -88,7 +101,6 @@ export const UserInfo: React.FC = () => {
           </li>
           <li>
             <EnvironmentOutlined className={styles.icon} />
-            {/* <HomeOutlined className={styles.icon} /> */}
             {userData.location.country} {userData.location.city}
           </li>
           <li>
