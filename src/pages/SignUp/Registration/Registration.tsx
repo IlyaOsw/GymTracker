@@ -51,7 +51,7 @@ export const Registration: React.FC<RegistrationType> = ({
         </Upload>
       </div>
       <div className={styles.info}>
-        <SubTitle>{t("registration")}</SubTitle>
+        <SubTitle className={styles.subTitle}>{t("registration")}</SubTitle>
         <CustomInput
           name="email"
           text={t("email")}

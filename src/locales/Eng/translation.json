@@ -111,7 +111,6 @@
     "emailForReset": "Enter your email address, to which we will send you instruction.",
     "send": "Send",
     "deleteExercise": "Delete exercise",
-    "editExercise": "Edit exercise",
     "deleteRow": "Delete row",
     "toSignIn": "To sign in",
     "invalidEmailOrPass": "Invalid email or password",
@@ -133,6 +132,8 @@
     "editInfo": "Edit fields you want to update",
     "update": "Update",
     "profileInformationUpdated": "Profile information successfuly updated",
-    "profileInformationUpdateFailed": "Profile informationd update failed"
+    "profileInformationUpdateFailed": "Profile informationd update failed",
+    "exercises": "Exercises",
+    "chooseExercise": "Choose exercise to start recording your workout"
 }
 

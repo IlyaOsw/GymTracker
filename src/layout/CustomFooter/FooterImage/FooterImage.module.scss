@@ -22,6 +22,10 @@
     left: 40%;
     transform: translate(-50%, -50%);
 
+    h2 {
+      font-style: italic;
+    }
+
     @media (max-width: 992px) {
       font-size: 30px;
       line-height: 1.3;

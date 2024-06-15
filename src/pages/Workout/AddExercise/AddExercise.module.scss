@@ -1,15 +1,11 @@
 .addExercise {
-  display: flex;
   margin: 20px;
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-
-  .inputLabel {
-    font-size: 1.2rem;
-    color: #ffffff;
+  .button {
+    margin-top: 15px;
   }
 }

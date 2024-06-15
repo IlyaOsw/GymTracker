@@ -110,13 +110,17 @@ export const ExerciseTable: React.FC = () => {
       ),
     },
   ];
+  const dateNow = new Date().toLocaleDateString();
 
   return (
     <>
-      <Divider style={{ backgroundColor: "#0097B2" }} />
+      <Divider style={{ backgroundColor: "gray" }} />
       <div className={styles.tableTitle}>
         <SubTitle children={"Bench press"} />
-        <div className={styles.date}>{t("date")}02.04.2024</div>
+        <div className={styles.date}>
+          {t("date")}
+          {dateNow}
+        </div>
       </div>
       <ConfigProvider
         theme={{
@@ -135,7 +139,7 @@ export const ExerciseTable: React.FC = () => {
               borderColor: "#535353",
               fontWeightStrong: 700,
               headerSplitColor: "#535353",
-              headerSortActiveBg: "282828",
+              headerSortActiveBg: "#282828",
             },
           },
         }}

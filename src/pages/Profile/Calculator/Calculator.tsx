@@ -76,7 +76,7 @@ export const Calculator: React.FC = () => {
       </motion.div>
       <div className={styles.container}>
         <div className={styles.calculator}>
-          <div>
+          <div className={styles.block}>
             <div className={styles.subtitle}>{t("workingWeight")}</div>
             <Input
               className={styles.weight}
@@ -92,7 +92,7 @@ export const Calculator: React.FC = () => {
               }}
             />
           </div>
-          <div>
+          <div className={styles.block}>
             <div className={styles.subtitle}>{t("repsNumber")}</div>
             <div className={styles.reps}>
               <button className={styles.minus} onClick={decrement}>

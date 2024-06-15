@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { Card, Tooltip } from "antd";
 import { useTranslation } from "react-i18next";
-import { CloseOutlined, EditOutlined } from "@ant-design/icons";
+import { CloseOutlined } from "@ant-design/icons";
+import { motion } from "framer-motion";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
+import {
+  animation,
+  useAnimatedInView,
+} from "../../../hooks/useAnimatedInView ";
 
 import styles from "./FavoriteExercises.module.scss";
 
@@ -20,6 +25,7 @@ const cardData: { title: string; content: string }[] = [
 
 export const FavoriteExercises: React.FC = () => {
   const { t } = useTranslation();
+  const { ref, controls } = useAnimatedInView();
   const [data, setData] = useState(cardData);
 
   const handleDeleteCard = (index: number) => {
@@ -30,34 +36,42 @@ export const FavoriteExercises: React.FC = () => {
 
   return (
     <>
-      <SubTitle children={t("favoriteExercises")} className={styles.title} />
-      <div className={styles.favoriteExercises}>
-        {data.map((item, index) => (
-          <Card
-            key={index}
-            title={
-              <>
-                <CustomTitle text={item.title} />
-                <Tooltip title={t("deleteExercise")}>
-                  <CloseOutlined
-                    className={styles.deleteIcon}
-                    onClick={() => handleDeleteCard(index)}
-                  />
-                </Tooltip>
-              </>
-            }
-            className={styles.usedItem}
-            bordered={false}
+      {data.length > 0 && (
+        <>
+          <SubTitle children={t("exercises")} className={styles.title} />
+          <motion.div
+            ref={ref}
+            className={styles.info}
+            initial="hidden"
+            animate={controls}
+            variants={animation}
           >
-            {item.content}
-            <Tooltip title={t("editExercise")}>
-              <div className={styles.editIcon}>
-                <EditOutlined />
-              </div>
-            </Tooltip>
-          </Card>
-        ))}
-      </div>
+            {t("chooseExercise")}
+          </motion.div>
+          <div className={styles.favoriteExercises}>
+            {data.map((item, index) => (
+              <Card
+                key={index}
+                title={
+                  <>
+                    <CustomTitle text={item.title} />
+                    <Tooltip title={t("deleteExercise")}>
+                      <CloseOutlined
+                        className={styles.deleteIcon}
+                        onClick={() => handleDeleteCard(index)}
+                      />
+                    </Tooltip>
+                  </>
+                }
+                className={styles.usedItem}
+                bordered={false}
+              >
+                {item.content}
+              </Card>
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 };
