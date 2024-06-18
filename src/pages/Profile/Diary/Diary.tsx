@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
@@ -10,11 +10,34 @@ import {
   useAnimatedInView,
 } from "../../../hooks/useAnimatedInView ";
 
+import { HexagonLinkProps } from "../../../types/types";
+
 import styles from "./Diary.module.scss";
+
+const HexagonLink: React.FC<HexagonLinkProps> = ({ text }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/workout", { state: { title: text } });
+  };
+
+  return (
+    <div onClick={handleClick} className={styles.link}>
+      <Hexagon text={text} />
+    </div>
+  );
+};
 
 export const Diary: React.FC = () => {
   const { t } = useTranslation();
   const { ref, controls } = useAnimatedInView();
+
+  const categories = {
+    Hands: t("Hands"),
+    Shoulders: t("Shoulders"),
+    Chest: t("Chest"),
+    Back: t("Back"),
+    Legs: t("Legs"),
+  };
 
   return (
     <div className={styles.diaryWrapper}>
@@ -29,21 +52,11 @@ export const Diary: React.FC = () => {
         {t("diaryChoose")}
       </motion.div>
       <div className={styles.hexagonWrapper}>
-        <Link to="/workout">
-          <Hexagon text={t("arms")} className={styles.link} />
-        </Link>
-        <Link to="/workout">
-          <Hexagon text={t("shoulders")} className={styles.link} />
-        </Link>
-        <Link to="/workout">
-          <Hexagon text={t("chest")} className={styles.link} />
-        </Link>
-        <Link to="/workout">
-          <Hexagon text={t("back")} className={styles.link} />
-        </Link>
-        <Link to="/workout">
-          <Hexagon text={t("legs")} className={styles.link} />
-        </Link>
+        <HexagonLink text={categories.Hands} />
+        <HexagonLink text={categories.Shoulders} />
+        <HexagonLink text={categories.Chest} />
+        <HexagonLink text={categories.Back} />
+        <HexagonLink text={categories.Legs} />
       </div>
     </div>
   );

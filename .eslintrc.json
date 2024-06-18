@@ -13,7 +13,6 @@
     "no-unused-expressions": "off",
     "no-sequences": "off",
     "no-mixed-operators": "off",
-    "no-console": "warn",
     "quotes": ["warn", "double"],
     "import/order": [
       "error",

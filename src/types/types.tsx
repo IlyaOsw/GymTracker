@@ -227,3 +227,23 @@ export interface UpdateUserData {
 export interface UserContextType {
   updateUserData: (userData: UpdateUserData) => Promise<void>;
 }
+
+export interface LocationState {
+  title: string;
+}
+
+export interface HexagonLinkProps {
+  text: string;
+}
+
+export interface ExercisesProps {
+  category: string;
+}
+
+export interface Exercise {
+  id: string;
+  category: string;
+  name: string;
+  bestResult: number;
+  isFavorite: boolean;
+}

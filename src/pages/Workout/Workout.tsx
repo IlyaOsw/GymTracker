@@ -1,22 +1,27 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
+import { LocationState } from "../../types/types";
 
 import { ExerciseTable } from "./ExerciseTable/ExerciseTable";
 import { AddExercise } from "./AddExercise/AddExercise";
-import { FavoriteExercises } from "./FavoriteExercises/FavoriteExercises";
+import { Exercises } from "./Exercises/Exercises";
 
 const Workout: React.FC = () => {
+  const location = useLocation();
+  const state = location.state as LocationState;
+
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
 
   return (
     <PageWrapper>
-      <DescriptionTitle text="Chest workout" textAlign="center" />
+      <DescriptionTitle text={state?.title} textAlign="center" />
       <AddExercise />
-      <FavoriteExercises />
+      <Exercises category={state?.title} />
       <ExerciseTable />
     </PageWrapper>
   );

@@ -25,22 +25,28 @@ export const FavoriteExercises: React.FC = () => {
   };
 
   return (
-    <div className={styles.exercises}>
-      <SubTitle children={t("favoriteExercises")} />
-      {favoriteExercisesArray.map((item) => (
-        <div key={item.id} className={styles.exercisesBox}>
-          <div className={styles.exerciseName}>{item.name}</div>
-          <div className={styles.exerciseResult}>
-            {t("bestResult")} {item.result} {t("kg")}
-          </div>
-          <Tooltip title={t("deleteRow")}>
-            <CloseCircleOutlined
-              className={styles.deleteIcon}
-              onClick={() => deleteFavoriteExercise(item.id)}
-            />
-          </Tooltip>
+    <>
+      {favoriteExercisesArray.length > 0 ? (
+        <div className={styles.exercises}>
+          <SubTitle children={t("favoriteExercises")} />
+          {favoriteExercisesArray.map((item) => (
+            <div key={item.id} className={styles.exercisesBox}>
+              <div className={styles.exerciseName}>{item.name}</div>
+              <div className={styles.exerciseResult}>
+                {t("bestResult")} {item.result} {t("kg")}
+              </div>
+              <Tooltip title={t("deleteRow")}>
+                <CloseCircleOutlined
+                  className={styles.deleteIcon}
+                  onClick={() => deleteFavoriteExercise(item.id)}
+                />
+              </Tooltip>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      ) : (
+        <div className={styles.exercises} />
+      )}
+    </>
   );
 };

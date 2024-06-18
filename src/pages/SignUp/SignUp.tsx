@@ -6,6 +6,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { CheckCircleOutlined } from "@ant-design/icons";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { v4 as uuidv4 } from "uuid";
 
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
@@ -13,6 +14,7 @@ import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 import { ResetButton } from "../../components/ResetButton/ResetButton";
 import { storage } from "../..";
+import { Exercise } from "../../types/types";
 
 import { Registration } from "./Registration/Registration";
 import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
@@ -110,8 +112,50 @@ const SignUp: React.FC = () => {
         avatarURL: avatarURL,
       };
 
+      const defaultExercises: Exercise[] = [
+        {
+          bestResult: 0,
+          category: "Back",
+          id: uuidv4(),
+          isFavorite: false,
+          name: "Pull-down to the chest",
+        },
+        {
+          bestResult: 0,
+          category: "Legs",
+          id: uuidv4(),
+          isFavorite: false,
+          name: "Barbell squats",
+        },
+        {
+          bestResult: 0,
+          category: "Chest",
+          id: uuidv4(),
+          isFavorite: false,
+          name: "Bench press",
+        },
+        {
+          bestResult: 0,
+          category: "Hands",
+          id: uuidv4(),
+          isFavorite: false,
+          name: "Bicep curls",
+        },
+        {
+          bestResult: 0,
+          category: "Shoulders",
+          id: uuidv4(),
+          isFavorite: false,
+          name: "Seated dumbbell press",
+        },
+      ];
+
       const db = getFirestore();
       await setDoc(doc(db, "users", user.uid), userData);
+      await setDoc(doc(db, "exercises", user.uid), {
+        exercises: defaultExercises,
+      });
+
       navigate("/registrationsuccess");
     } catch (error) {
       navigate("/registrationerror");

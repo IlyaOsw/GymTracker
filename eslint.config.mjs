@@ -1,9 +1,9 @@
+import path from "path";
+import { fileURLToPath } from "url";
+
 import globals from "globals";
 import tseslint from "typescript-eslint";
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
-
-import path from "path";
-import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
 import pluginJs from "@eslint/js";
 

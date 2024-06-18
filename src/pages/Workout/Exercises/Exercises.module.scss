@@ -17,9 +17,11 @@
     margin: 15px;
     background-color: #282828;
     color: #ffffff !important;
-    width: 200px;
+    padding: 5px 15px;
+    // width: 200px;
     display: flex;
     flex-direction: column;
+    transition: 0.3s all;
 
     &:hover {
       filter: brightness(120%);
@@ -29,9 +31,9 @@
       filter: brightness(90%);
     }
 
-    @media (max-width: 480px) {
-      width: 160px;
-    }
+    // @media (max-width: 480px) {
+    //   width: 160px;
+    // }
   }
 }
 

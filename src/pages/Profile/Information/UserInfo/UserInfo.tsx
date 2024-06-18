@@ -1,7 +1,4 @@
 import {
-  MessageOutlined,
-  CheckOutlined,
-  PlusCircleOutlined,
   UserOutlined,
   CalendarOutlined,
   EnvironmentOutlined,
@@ -11,7 +8,6 @@ import { useTranslation } from "react-i18next";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 
-import { CustomButton } from "../../../../components/CustomButton/CustomButton";
 import { UserData } from "../../../../types/types";
 import { useUserContext } from "../../../../context/UserContext";
 
@@ -21,11 +17,6 @@ export const UserInfo: React.FC = () => {
   const { t } = useTranslation();
   const { updateUserData } = useUserContext();
   const [userData, setUserData] = useState<UserData | null>(null);
-  const [follow, setFollow] = useState<boolean>(false);
-
-  const handleFollow = () => {
-    setFollow((prevFollow) => !prevFollow);
-  };
 
   const fetchUserData = async (userId: string): Promise<UserData | null> => {
     try {
@@ -83,28 +74,6 @@ export const UserInfo: React.FC = () => {
             {t("age")}: {userData.age}
           </li>
         </ul>
-      </div>
-      <div className={styles.buttons}>
-        <CustomButton className={styles.button} icon={<MessageOutlined />}>
-          {t("message")}
-        </CustomButton>
-        {follow ? (
-          <CustomButton
-            className={styles.button}
-            onClick={handleFollow}
-            icon={<CheckOutlined />}
-          >
-            {t("followed")}
-          </CustomButton>
-        ) : (
-          <CustomButton
-            className={styles.button}
-            onClick={handleFollow}
-            icon={<PlusCircleOutlined />}
-          >
-            {t("follow")}
-          </CustomButton>
-        )}
       </div>
     </div>
   );

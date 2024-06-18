@@ -24,27 +24,6 @@ const initialData: ExerciseTableType[] = [
     reps: 10,
     icon: <CloseCircleOutlined className={styles.deleteIcon} />,
   },
-  {
-    key: "2",
-    weight: 80,
-    set: 2,
-    reps: 8,
-    icon: <CloseCircleOutlined className={styles.deleteIcon} />,
-  },
-  {
-    key: "3",
-    weight: 100,
-    set: 3,
-    reps: 6,
-    icon: <CloseCircleOutlined className={styles.deleteIcon} />,
-  },
-  {
-    key: "4",
-    weight: 110,
-    set: 4,
-    reps: 3,
-    icon: <CloseCircleOutlined className={styles.deleteIcon} />,
-  },
 ];
 
 export const ExerciseTable: React.FC = () => {
