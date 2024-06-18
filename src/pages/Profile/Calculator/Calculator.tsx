@@ -56,10 +56,7 @@ export const Calculator: React.FC = () => {
     setWeight(0);
     setReps(1);
     setResult(0);
-    messageApi.open({
-      type: "success",
-      content: `${t("reseted")}`,
-    });
+    message.success(t("reseted"));
   };
 
   return (

@@ -142,6 +142,11 @@
     "profileInformationUpdated": "Profile information successfully updated",
     "profileInformationUpdateFailed": "Profile informationd update failed",
     "exercises": "Exercises",
-    "chooseExercise": "Choose exercise to start recording your workout"
+    "chooseExercise": "Choose exercise to start recording your workout",
+    "exerciseAdded": "Exercise successfully added",
+    "userNotAuthenticated": "Error: user not authenticated",
+    "errorAddingExercise": "Error adding exercise",
+    "exerciseDeleted": "Exercise successfully deleted",
+    "errorDeletingExercise": "Error deleting exercise"
 }
 

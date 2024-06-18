@@ -104,6 +104,7 @@ export interface CustomButtonProps {
   onClick?: () => void;
   text?: string | any;
   textAlign?: "start" | "center" | "end";
+  htmlType?: "button" | "submit" | "reset";
 }
 
 export interface CustomInputProps {
@@ -236,8 +237,14 @@ export interface HexagonLinkProps {
   text: string;
 }
 
+export interface IAddExercise {
+  category: string;
+  onAddExercise: () => void;
+}
+
 export interface ExercisesProps {
   category: string;
+  updateTrigger: number;
 }
 
 export interface Exercise {

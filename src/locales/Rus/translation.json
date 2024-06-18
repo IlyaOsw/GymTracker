@@ -142,5 +142,10 @@
     "profileInformationUpdated": "Информация профиля успешно обновлена",
     "profileInformationUpdateFailed": "Ошибка обновления информации профиля",
     "exercises": "Упражнения",
-    "chooseExercise": "Выберите упражнение для начала записи тренировки"
+    "chooseExercise": "Выберите упражнение для начала записи тренировки",
+    "exerciseAdded": "Упражнение успешно добавлено",
+    "userNotAuthenticated": "Ошибка: пользователь не аутентифицирован",
+    "errorAddingExercise": "Ошибка при добавлении упражнения",
+    "exerciseDeleted": "Упражнение успешно удалено",
+    "errorDeletingExercise": "Ошибка при удалении упражнения"
 }
