@@ -147,5 +147,6 @@
     "userNotAuthenticated": "Ошибка: пользователь не аутентифицирован",
     "errorAddingExercise": "Ошибка при добавлении упражнения",
     "exerciseDeleted": "Упражнение успешно удалено",
-    "errorDeletingExercise": "Ошибка при удалении упражнения"
+    "errorDeletingExercise": "Ошибка при удалении упражнения",
+    "addToFavorite": "Добавить в избранное"
 }

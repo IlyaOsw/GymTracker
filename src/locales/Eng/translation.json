@@ -147,6 +147,7 @@
     "userNotAuthenticated": "Error: user not authenticated",
     "errorAddingExercise": "Error adding exercise",
     "exerciseDeleted": "Exercise successfully deleted",
-    "errorDeletingExercise": "Error deleting exercise"
+    "errorDeletingExercise": "Error deleting exercise",
+    "addToFavorite": "Add to favorite"
 }
 

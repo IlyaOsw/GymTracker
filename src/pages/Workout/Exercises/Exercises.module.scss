@@ -1,51 +1,43 @@
 .title {
-  margin-top: 40px;
-}
-
-.info {
   font-size: 1.4rem;
-  margin: 15px;
+  margin: 40px 0px;
 }
 
-.favoriteExercises {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+.exercises {
+  background-color: #282828;
+  color: #ffffff;
+  margin: 0px 10px;
+}
 
-  .usedItem {
-    margin: 15px;
-    background-color: #282828;
-    color: #ffffff !important;
-    padding: 5px 15px;
-    // width: 200px;
-    display: flex;
-    flex-direction: column;
-    transition: 0.3s all;
+.icons {
+  margin: -15px -15px 0px -15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.delete {
+  svg {
+    color: #0097b2;
+    transition: 0.4s all;
 
     &:hover {
-      filter: brightness(120%);
+      color: red;
     }
-
-    &:active {
-      filter: brightness(90%);
-    }
-
-    // @media (max-width: 480px) {
-    //   width: 160px;
-    // }
   }
 }
 
-.deleteIcon {
-  color: #ffffff;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10px;
-  transition: 0.4s all;
+.star {
+  font-size: 1.4rem;
+  color: grey;
+  transition: color 0.3s;
+}
 
-  &:hover {
-    color: red;
-  }
+.star:hover {
+  color: gold;
+  transform: scale(1.1);
+}
+
+.star.active {
+  color: gold;
 }

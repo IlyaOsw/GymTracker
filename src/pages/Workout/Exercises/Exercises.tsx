@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Card, message, notification, Tooltip } from "antd";
+import {
+  Card,
+  ConfigProvider,
+  Empty,
+  message,
+  notification,
+  Tooltip,
+} from "antd";
 import { useTranslation } from "react-i18next";
-import { CloseOutlined } from "@ant-design/icons";
-import { motion } from "framer-motion";
+import { CloseCircleOutlined, StarFilled } from "@ant-design/icons";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
@@ -12,16 +18,17 @@ import { Loader } from "../../../components/Loader/Loader";
 
 import styles from "./Exercises.module.scss";
 
-const CustomTitle: React.FC<{ text: string }> = ({ text }) => (
-  <span style={{ color: "#0097B2", fontWeight: "700" }}>{text}</span>
-);
-
 export const Exercises: React.FC<
   ExercisesProps & { updateTrigger: number }
 > = ({ category, updateTrigger }) => {
   const { t } = useTranslation();
   const [data, setData] = useState<Exercise[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [isActive, setIsActive] = useState(false);
+
+  const handleClick = () => {
+    setIsActive(!isActive);
+  };
 
   const handleDeleteCard = async (exerciseId: string) => {
     setLoading(true);
@@ -130,40 +137,57 @@ export const Exercises: React.FC<
         <Loader />
       ) : (
         <>
-          {data.length > 0 && (
-            <>
-              <SubTitle children={t("exercises")} className={styles.title} />
-              <motion.div
-                className={styles.info}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 1 } }}
-              >
-                {t("chooseExercise")}
-              </motion.div>
-              <div className={styles.favoriteExercises}>
-                {data.map((item) => (
-                  <Card
-                    key={item.id}
-                    title={
-                      <>
-                        <CustomTitle text={item.name} />
-                        <Tooltip title={t("deleteExercise")}>
-                          <CloseOutlined
-                            className={styles.deleteIcon}
-                            onClick={() => handleDeleteCard(item.id)}
-                          />
-                        </Tooltip>
-                      </>
-                    }
-                    className={styles.usedItem}
-                    bordered={false}
-                  >
-                    {item.bestResult}
-                  </Card>
-                ))}
-              </div>
-            </>
-          )}
+          <SubTitle children={t("exercises")} className={styles.title} />
+          <ConfigProvider
+            theme={{
+              components: {
+                Card: {
+                  headerFontSize: 20,
+                  headerBg: "#1a1a1a",
+                  colorTextHeading: "#ffffff",
+                  fontSize: 16,
+                  colorBorderSecondary: "#535353",
+                },
+              },
+            }}
+          >
+            <Card
+              title={t("chooseExercise")}
+              className={styles.exercises}
+              bordered={false}
+            >
+              {data.length > 0 ? (
+                data.map((item) => (
+                  <Card.Grid key={item.id}>
+                    <div className={styles.icons}>
+                      <Tooltip title={t("addToFavorite")}>
+                        <StarFilled
+                          className={`${styles.star} ${
+                            isActive ? styles.active : ""
+                          }`}
+                          onClick={handleClick}
+                        />
+                      </Tooltip>
+                      <Tooltip title={t("deleteExercise")}>
+                        <CloseCircleOutlined
+                          className={styles.delete}
+                          onClick={() => handleDeleteCard(item.id)}
+                        />
+                      </Tooltip>
+                    </div>
+                    {item.name}
+                  </Card.Grid>
+                ))
+              ) : (
+                <Empty
+                  image={Empty.PRESENTED_IMAGE_SIMPLE}
+                  description={
+                    <span style={{ color: "#ffffff" }}>{t("noData")}</span>
+                  }
+                />
+              )}
+            </Card>
+          </ConfigProvider>
         </>
       )}
     </>
