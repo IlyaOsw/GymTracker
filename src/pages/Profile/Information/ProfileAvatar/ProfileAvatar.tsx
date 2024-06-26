@@ -29,7 +29,7 @@ export const ProfileAvatar: React.FC = () => {
   const handleDeleteAvatar = async () => {
     const user = auth.currentUser;
     if (user) {
-      const avatarRef = ref(storage, `avatar/${user.uid}.jpg`);
+      const avatarRef = ref(storage, `avatar/${user.uid}`);
       try {
         await deleteObject(avatarRef);
         setAvatarURL("");
@@ -46,7 +46,7 @@ export const ProfileAvatar: React.FC = () => {
   const handleUploadAvatar = async (file: Blob | ArrayBuffer) => {
     const user = auth.currentUser;
     if (user) {
-      const avatarRef = ref(storage, `avatar/${user.uid}.jpg`);
+      const avatarRef = ref(storage, `avatar/${user.uid}`);
       try {
         await uploadBytes(avatarRef, file);
         const newAvatarURL = await getDownloadURL(avatarRef);
@@ -75,7 +75,7 @@ export const ProfileAvatar: React.FC = () => {
   useEffect(() => {
     const user = auth.currentUser;
     if (user) {
-      const avatarRef = ref(storage, `avatar/${user.uid}.jpg`);
+      const avatarRef = ref(storage, `avatar/${user.uid}`);
       getDownloadURL(avatarRef)
         .then((url) => {
           setAvatarURL(url);

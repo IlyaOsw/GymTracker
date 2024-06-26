@@ -41,3 +41,40 @@
     }
   }
 }
+
+// .editBtn {
+//   margin-right: 5px;
+//   background-color: #0097b2;
+//   color: #ffffff;
+//   border: none;
+//   border-radius: 20px;
+//   font-size: 16px;
+//   transition: all 0.3s ease;
+
+//   &:hover {
+//     color: #0097b2 !important;
+//     background-color: #ffffff;
+//   }
+
+//   &:focus {
+//     outline: none;
+//     box-shadow: 0 0 5px rgba(0, 151, 178, 0.5);
+//   }
+
+//   &:active {
+//     background-color: #007a8f;
+//     border-color: #007a8f;
+//   }
+
+//   @media (max-width: 992px) {
+//     margin-top: 20px;
+
+//     svg {
+//       margin-left: 5px;
+//     }
+
+//     .buttonText {
+//       display: none;
+//     }
+//   }
+// }

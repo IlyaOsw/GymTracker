@@ -15,7 +15,7 @@ export const CoverImage: React.FC = () => {
   const handleUploadCoverImage = async (file: File) => {
     const user = auth.currentUser;
     if (user) {
-      const coverImageRef = ref(storage, `cover/${user.uid}.jpg`);
+      const coverImageRef = ref(storage, `cover/${user.uid}`);
       try {
         await uploadBytes(coverImageRef, file);
         const newCoverURL = await getDownloadURL(coverImageRef);
@@ -32,7 +32,7 @@ export const CoverImage: React.FC = () => {
   useEffect(() => {
     const user = auth.currentUser;
     if (user) {
-      const coverRef = ref(storage, `cover/${user.uid}.jpg`);
+      const coverRef = ref(storage, `cover/${user.uid}`);
       getDownloadURL(coverRef)
         .then((url) => {
           setCoverURL(url);

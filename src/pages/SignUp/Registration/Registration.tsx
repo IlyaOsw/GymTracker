@@ -49,6 +49,7 @@ export const Registration: React.FC<RegistrationType> = ({
             {t("uploadProfilePhoto")}
           </CustomButton>
         </Upload>
+        <span className={styles.avatarFormat}>{t("avatarFormat")}</span>
       </div>
       <div className={styles.info}>
         <SubTitle className={styles.subTitle}>{t("registration")}</SubTitle>

@@ -24,8 +24,8 @@ export const ConfirmPasswordInput: React.FC<CustomPassInputProps> = ({
       <Form.Item
         label={
           <span className={styles.inputLabel}>
-            {t("password")}{" "}
-            <span className={styles.passwordRule}>{t("passwordRule")}</span>
+            {t("password")}
+            <span className={styles.passwordRule}> {t("passwordRule")}</span>
           </span>
         }
         name="password"
