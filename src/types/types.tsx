@@ -147,6 +147,7 @@ export interface PasswordInputProps {
 export interface ResetBtnType {
   onClick?: () => void;
   children?: string;
+  icon?: ReactNode;
 }
 
 export interface SubTitleType {

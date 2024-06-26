@@ -6,15 +6,13 @@ import { ResetBtnType } from "../../types/types";
 
 import styles from "./ResetButton.module.scss";
 
-export const ResetButton: React.FC<ResetBtnType> = ({ onClick, children }) => {
+export const ResetButton: React.FC<ResetBtnType> = ({
+  onClick,
+  children,
+  icon,
+}) => {
   return (
-    <Button
-      danger
-      type="primary"
-      className={styles.reset}
-      onClick={onClick}
-      icon={<SyncOutlined />}
-    >
+    <Button className={styles.reset} onClick={onClick} icon={icon}>
       {children}
     </Button>
   );

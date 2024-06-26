@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Divider } from "antd";
-import { EditOutlined } from "@ant-design/icons";
+import { EditOutlined, UserDeleteOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { doc, getDoc } from "firebase/firestore";
 
@@ -54,11 +54,14 @@ export const Information: React.FC = () => {
         <UserInfo />
         <FavoriteExercises />
       </div>
-      <div className={styles.editButtonContainer}>
+      <div className={styles.buttons}>
+        <Button icon={<UserDeleteOutlined />} className={styles.btn}>
+          <span className={styles.buttonText}>{t("deleteAccount")}</span>
+        </Button>
         <Button
           icon={<EditOutlined />}
           onClick={handleEditProfile}
-          className={styles.editBtn}
+          className={styles.btn}
         >
           <span className={styles.buttonText}>{t("editProfile")}</span>
         </Button>

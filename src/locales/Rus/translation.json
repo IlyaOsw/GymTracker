@@ -154,5 +154,8 @@
     "addedToFavorite": "Успешно добавлено в избранное",
     "removedFromFavorite": "Успешно удалено из избранного",
     "errorFetchingFavoriteExercises": "Ошибка при загрузке избранных упражнений",
-    "deleteExerciseFromFavorites": "Удалить упражнение из избранного"
+    "deleteExerciseFromFavorites": "Удалить упражнение из избранного",
+    "deleteAccount": "Удалить аккаунт",
+    "confirmDeletingFromFavorite": "Пожалуйста, подтвердите удаление из избранных упражнений",
+    "delete": "Удалить"
 }

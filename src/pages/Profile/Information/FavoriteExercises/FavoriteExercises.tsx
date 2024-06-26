@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { RightOutlined, CloseOutlined } from "@ant-design/icons";
-import { Collapse, CollapseProps, Empty, Tooltip, message } from "antd";
+import {
+  RightOutlined,
+  CloseOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
+import { Collapse, ConfigProvider, Empty, Modal, Tooltip, message } from "antd";
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import { SubTitle } from "../../../../components/SubTitle/SubTitle";
 import { Exercise } from "../../../../types/types";
 import { Loader } from "../../../../components/Loader/Loader";
+import { ResetButton } from "../../../../components/ResetButton/ResetButton";
 
 import styles from "./FavoriteExercises.module.scss";
 
@@ -17,45 +22,17 @@ export const FavoriteExercises: React.FC = () => {
     Exercise[]
   >([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [confirm, setCofirm] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    const fetchFavoriteExercises = async (user: any) => {
-      setLoading(true);
-      try {
-        const db = getFirestore();
-        const userId = user.uid;
-        const exercisesDocRef = doc(db, "exercises", userId);
-        const exercisesDoc = await getDoc(exercisesDocRef);
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
-        if (exercisesDoc.exists()) {
-          const exercisesData = exercisesDoc.data();
-          const favoriteExercises = exercisesData.exercises
-            .filter((exercise: Exercise) => exercise.isFavorite)
-            .map((exercise: Exercise) => ({
-              id: exercise.id,
-              name: t(exercise.name),
-              result: exercise.bestResult,
-            }));
-          setFavoriteExercisesArray(favoriteExercises);
-        }
-      } catch (error) {
-        message.error(t("errorFetchingFavoriteExercises"));
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        fetchFavoriteExercises(user);
-      } else {
-        setLoading(false);
-      }
-    });
-
-    return () => unsubscribe();
-  }, [t]);
+  const handleConfirm = () => {
+    setCofirm(true);
+    setIsModalOpen(true);
+  };
 
   const deleteFavoriteExercise = async (id: string) => {
     try {
@@ -107,13 +84,78 @@ export const FavoriteExercises: React.FC = () => {
               title={t("deleteExerciseFromFavorites")}
               placement="bottom"
             >
-              <CloseOutlined onClick={() => deleteFavoriteExercise(item.id)} />
+              <CloseOutlined onClick={handleConfirm} />
             </Tooltip>
           </div>
+          {confirm && (
+            <ConfigProvider
+              theme={{
+                components: {
+                  Modal: {
+                    contentBg: "#141414",
+                    colorIcon: "lightgray",
+                    colorIconHover: "gray",
+                  },
+                },
+              }}
+            >
+              <Modal open={isModalOpen} onCancel={handleCancel} footer={false}>
+                <p className={styles.confirm}>
+                  {t("confirmDeletingFromFavorite")}
+                </p>
+                <div className={styles.delete}>
+                  <ResetButton
+                    children={t("delete")}
+                    onClick={() => deleteFavoriteExercise(item.id)}
+                    icon={<DeleteOutlined />}
+                  />
+                </div>
+              </Modal>
+            </ConfigProvider>
+          )}
         </div>
       ),
     },
   ];
+
+  useEffect(() => {
+    const fetchFavoriteExercises = async (user: any) => {
+      setLoading(true);
+      try {
+        const db = getFirestore();
+        const userId = user.uid;
+        const exercisesDocRef = doc(db, "exercises", userId);
+        const exercisesDoc = await getDoc(exercisesDocRef);
+
+        if (exercisesDoc.exists()) {
+          const exercisesData = exercisesDoc.data();
+          const favoriteExercises = exercisesData.exercises
+            .filter((exercise: Exercise) => exercise.isFavorite)
+            .map((exercise: Exercise) => ({
+              id: exercise.id,
+              name: t(exercise.name),
+              result: exercise.bestResult,
+            }));
+          setFavoriteExercisesArray(favoriteExercises);
+        }
+      } catch (error) {
+        message.error(t("errorFetchingFavoriteExercises"));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        fetchFavoriteExercises(user);
+      } else {
+        setLoading(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [t]);
 
   return (
     <>

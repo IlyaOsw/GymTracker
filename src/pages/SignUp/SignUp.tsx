@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, message } from "antd";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
-import { CheckCircleOutlined } from "@ant-design/icons";
+import { CheckCircleOutlined, SyncOutlined } from "@ant-design/icons";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 
@@ -187,7 +187,11 @@ const SignUp: React.FC = () => {
           onCountryChange={handleCountryChange}
           onCityChange={handleCityChange}
         />
-        <ResetButton children={t("resetForm")} onClick={onReset} />
+        <ResetButton
+          children={t("resetForm")}
+          onClick={onReset}
+          icon={<SyncOutlined />}
+        />
       </PageWrapper>
       <CustomButton
         className={styles.signUpBtn}

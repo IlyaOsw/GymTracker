@@ -12,12 +12,12 @@
     flex-wrap: wrap;
     margin-top: 40px;
 
-    a {
+    div {
       border-radius: 50%;
       transition: 0.3s all;
 
       &:hover {
-        transform: scale(1.05);
+        transform: scale(1.02);
       }
     }
   }

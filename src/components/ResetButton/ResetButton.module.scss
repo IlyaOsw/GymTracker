@@ -1,7 +1,33 @@
 .reset {
-  margin: 25px;
+  background-color: #ff6347;
+  background-image: linear-gradient(to right, #ff6347, #ff4500);
+  color: #ffffff;
+  border-radius: 20px;
+  transition: all 0.4s ease;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  border-radius: 25px;
+  box-shadow: 0 3px 10px rgba(255, 99, 71, 0.4) !important;
+  font-size: 16px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px;
+  letter-spacing: 1px;
   height: 40px;
+
+  &:hover {
+    color: #ff6347 !important;
+    background-color: #ffffff !important;
+    transform: scale(1.03);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 99, 71, 0.5);
+  }
+
+  &:active {
+    background-color: #ff4500;
+    transform: scale(0.97);
+  }
 }

@@ -16,7 +16,7 @@ export const Hexagon: React.FC<HexagonProps> = ({ text, className }) => {
           alt="Hexagon"
           className={styles.hexagon}
         />
-        <div className={`${styles.imageText} ${className}`}>{t(text)}</div>
+        <span className={`${styles.imageText} ${className}`}>{t(text)}</span>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import {
   MinusOutlined,
   PlusOutlined,
   RightCircleOutlined,
+  SyncOutlined,
 } from "@ant-design/icons";
 import { Input, message } from "antd";
 import { motion } from "framer-motion";
@@ -113,7 +114,11 @@ export const Calculator: React.FC = () => {
           {result} {t("kg")}
         </div>
         {contextHolder}
-        <ResetButton children={t("reset")} onClick={handleReset} />
+        <ResetButton
+          children={t("reset")}
+          onClick={handleReset}
+          icon={<SyncOutlined />}
+        />
       </div>
     </>
   );
