@@ -8,7 +8,7 @@ import {
   Tooltip,
 } from "antd";
 import { useTranslation } from "react-i18next";
-import { CloseCircleOutlined, StarFilled } from "@ant-design/icons";
+import { CloseOutlined, StarFilled } from "@ant-design/icons";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
@@ -26,8 +26,50 @@ export const Exercises: React.FC<
   const [loading, setLoading] = useState<boolean>(true);
   const [isActive, setIsActive] = useState(false);
 
-  const handleClick = () => {
-    setIsActive(!isActive);
+  const toggleFavorite = async (exerciseId: string, currentStatus: boolean) => {
+    try {
+      const db = getFirestore();
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      if (user) {
+        const userId = user.uid;
+        const exercisesDocRef = doc(db, "exercises", userId);
+        const exercisesDoc = await getDoc(exercisesDocRef);
+
+        if (exercisesDoc.exists()) {
+          const exercisesData = exercisesDoc.data();
+          let updatedExercises = exercisesData.exercises.map(
+            (exercise: { id: string }) => {
+              if (exercise.id === exerciseId) {
+                return { ...exercise, isFavorite: !currentStatus };
+              }
+              return exercise;
+            }
+          );
+
+          await updateDoc(exercisesDocRef, {
+            exercises: updatedExercises,
+          });
+
+          const translatedCategory = t(`categories.${category}`);
+          const filteredData = updatedExercises.filter(
+            (exercise: { category: string }) =>
+              t(`categories.${exercise.category}`) === translatedCategory
+          );
+          setData(filteredData);
+        }
+
+        if (!currentStatus) {
+          message.success(t("removedFromFavorite"));
+        } else {
+          message.success(t("addedToFavorite"));
+        }
+        setIsActive(!isActive);
+      }
+    } catch (error) {
+      message.error(t("errorUpdatingFavorite"));
+    }
   };
 
   const handleDeleteCard = async (exerciseId: string) => {
@@ -152,30 +194,36 @@ export const Exercises: React.FC<
             }}
           >
             <Card
-              title={t("chooseExercise")}
+              title={
+                <span className={styles.cardTitle}> {t("chooseExercise")}</span>
+              }
               className={styles.exercises}
               bordered={false}
             >
               {data.length > 0 ? (
                 data.map((item) => (
                   <Card.Grid key={item.id}>
-                    <div className={styles.icons}>
-                      <Tooltip title={t("addToFavorite")}>
-                        <StarFilled
-                          className={`${styles.star} ${
-                            isActive ? styles.active : ""
-                          }`}
-                          onClick={handleClick}
-                        />
-                      </Tooltip>
+                    <div className={styles.deleteIcon}>
                       <Tooltip title={t("deleteExercise")}>
-                        <CloseCircleOutlined
+                        <CloseOutlined
                           className={styles.delete}
                           onClick={() => handleDeleteCard(item.id)}
                         />
                       </Tooltip>
                     </div>
                     {item.name}
+                    <div className={styles.favoriteIcon}>
+                      <Tooltip title={t("addToFavorite")}>
+                        <StarFilled
+                          className={`${styles.star} ${
+                            item.isFavorite ? styles.active : ""
+                          }`}
+                          onClick={() =>
+                            toggleFavorite(item.id, item.isFavorite)
+                          }
+                        />
+                      </Tooltip>
+                    </div>
                   </Card.Grid>
                 ))
               ) : (

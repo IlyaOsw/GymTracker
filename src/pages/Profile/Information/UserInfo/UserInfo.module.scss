@@ -1,12 +1,7 @@
 .personalInformation {
-  width: 50%;
-  padding-top: 160px;
-  height: 100%;
-
-  div {
-    font-size: 1.4rem;
-    line-height: 40px;
-  }
+  width: 100%;
+  padding-top: 150px;
+  font-size: 1.4rem;
 
   @media (max-width: 992px) {
     width: 100%;
@@ -43,8 +38,4 @@
     margin-right: 10px;
     color: #0097b2;
   }
-}
-
-.button {
-  margin: 10px;
 }

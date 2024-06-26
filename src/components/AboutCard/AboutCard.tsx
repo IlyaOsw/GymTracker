@@ -20,7 +20,7 @@ export const AboutCard: React.FC<AboutCardProps> = ({ title, text, image }) => {
           animate={controls}
           variants={animation}
         >
-          <Typography.Title level={4} style={{ color: "#0097b2" }}>
+          <Typography.Title level={4} style={{ color: "#ffffff" }}>
             {title}
           </Typography.Title>
         </motion.div>

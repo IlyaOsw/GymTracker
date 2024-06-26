@@ -16,8 +16,8 @@ export const ErrorModal: React.FC<ErrorModalProps> = ({
         components: {
           Modal: {
             contentBg: "#141414",
-            colorIcon: "#0097B2",
-            colorIconHover: "red",
+            colorIcon: "lightgray",
+            colorIconHover: "gray",
           },
         },
       }}

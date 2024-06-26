@@ -1,35 +1,48 @@
 import { CameraOutlined } from "@ant-design/icons";
 import { Button, message, Upload } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useTranslation } from "react-i18next";
-import { doc, updateDoc } from "firebase/firestore";
 
-import { auth, db, storage } from "../../../..";
-import { CoverImagePropsType } from "../../../../types/types";
+import { auth, storage } from "../../../..";
 
 import styles from "./CoverImage.module.scss";
 
-export const CoverImage: React.FC<CoverImagePropsType> = ({
-  coverURL,
-  setCoverURL,
-}) => {
+export const CoverImage: React.FC = () => {
   const { t } = useTranslation();
+  const [coverURL, setCoverURL] = useState("");
 
   const handleUploadCoverImage = async (file: File) => {
     const user = auth.currentUser;
     if (user) {
       const coverImageRef = ref(storage, `cover/${user.uid}.jpg`);
-      await uploadBytes(coverImageRef, file);
-      const newCoverURL = await getDownloadURL(coverImageRef);
-      const docRef = doc(db, "users", user.uid);
-      await updateDoc(docRef, { coverURL: newCoverURL });
-      setCoverURL(newCoverURL);
-      message.success(t("coverImageUploaded"));
-    } else {
-      message.error(t("uploadFailed"));
+      try {
+        await uploadBytes(coverImageRef, file);
+        const newCoverURL = await getDownloadURL(coverImageRef);
+
+        setCoverURL(newCoverURL);
+        message.success(t("coverImageUploaded"));
+      } catch (error) {
+        console.error("Error uploading cover image:", error);
+        message.error(t("uploadFailed"));
+      }
     }
   };
+
+  useEffect(() => {
+    const user = auth.currentUser;
+    if (user) {
+      const coverRef = ref(storage, `cover/${user.uid}.jpg`);
+      getDownloadURL(coverRef)
+        .then((url) => {
+          setCoverURL(url);
+        })
+        .catch((error) => {
+          console.error("Error fetching avatar URL:", error);
+          setCoverURL("");
+        });
+    }
+  }, [auth.currentUser]);
 
   return (
     <div className={styles.paper}>

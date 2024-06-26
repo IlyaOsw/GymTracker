@@ -1,65 +1,69 @@
 .exercises {
-  width: 50%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 
-  .exercisesBox {
-    min-height: 42px;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1.2rem;
-    background-color: #1a1a1a;
-    border-radius: 20px;
-    padding: 5px;
-    margin: 10px;
+  .collapse {
+    width: 320px;
+    background-color: #1a1a1a !important;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
 
-    .exerciseName {
-      width: 35%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0097b2;
-      word-wrap: break-word;
-      word-break: break-word;
-      border-right: 1px solid #0097b2;
-      padding: 5px;
+    &:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
     }
 
-    .exerciseResult {
-      width: 65%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 10px;
-      word-wrap: break-word;
-      word-break: break-word;
-      text-align: center;
+    p {
+      color: #0097b2;
+      font-size: 1.2rem;
+      margin-left: -20px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #00bcd4;
+      }
+    }
+
+    span {
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    svg {
+      color: #ffffff;
+      font-size: 1rem;
+      margin-top: 7px;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #00bcd4;
+      }
     }
   }
 
-  .deleteIcon {
-    color: #0097b2;
-    transition: 0.4s all;
-    padding: 5px;
+  .delete {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    svg {
+      color: lightgray;
+      transition: 0.4s all;
 
-    &:hover {
-      color: red;
+      &:hover {
+        color: gray;
+      }
     }
   }
 
   @media (max-width: 992px) {
     width: 100%;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-
-    .exercisesBox {
-      font-size: 1rem;
-    }
   }
 }

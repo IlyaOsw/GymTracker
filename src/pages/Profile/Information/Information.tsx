@@ -18,9 +18,8 @@ import { EditProfile } from "./EditProfile/EditProfile";
 
 export const Information: React.FC = () => {
   const { t } = useTranslation();
-  const [avatarURL, setAvatarURL] = useState<string | null>(null);
-  const [coverURL, setCoverURL] = useState<string | null>(null);
   const [edit, setEdit] = useState<boolean>(false);
+  const [, setUserData] = useState<any>(null);
 
   const handleEditProfile = () => setEdit(true);
 
@@ -40,35 +39,29 @@ export const Information: React.FC = () => {
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      const data = docSnap.data();
-
-      if (data?.avatarURL) {
-        setAvatarURL(data.avatarURL);
-      }
-      if (data?.coverURL) {
-        setCoverURL(data.coverURL);
-      }
+      const userData = docSnap.data();
+      setUserData(userData);
     }
   };
 
   return (
     <UserProvider>
       <div className={styles.mainContainer}>
-        <CoverImage coverURL={coverURL} setCoverURL={setCoverURL} />
-        <ProfileAvatar avatarURL={avatarURL} setAvatarURL={setAvatarURL} />
+        <CoverImage />
+        <ProfileAvatar />
       </div>
       <div className={styles.infoContainer}>
         <UserInfo />
         <FavoriteExercises />
-        <div className={styles.editButtonContainer}>
-          <Button
-            icon={<EditOutlined />}
-            onClick={handleEditProfile}
-            className={styles.editBtn}
-          >
-            <span className={styles.buttonText}>{t("editProfile")}</span>
-          </Button>
-        </div>
+      </div>
+      <div className={styles.editButtonContainer}>
+        <Button
+          icon={<EditOutlined />}
+          onClick={handleEditProfile}
+          className={styles.editBtn}
+        >
+          <span className={styles.buttonText}>{t("editProfile")}</span>
+        </Button>
       </div>
       <Divider style={{ backgroundColor: "gray" }} />
       {edit && <EditProfile onClose={handleModalClose} />}

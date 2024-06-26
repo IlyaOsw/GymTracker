@@ -148,5 +148,10 @@
     "errorAddingExercise": "Ошибка при добавлении упражнения",
     "exerciseDeleted": "Упражнение успешно удалено",
     "errorDeletingExercise": "Ошибка при удалении упражнения",
-    "addToFavorite": "Добавить в избранное"
+    "addToFavorite": "Добавить в избранное",
+    "errorUpdatingFavorite": "Ошибка при добавлении в избранное",
+    "addedToFavorite": "Успешно добавлено в избранное",
+    "removedFromFavorite": "Успешно удалено из избранного",
+    "errorFetchingFavoriteExercises": "Ошибка при загрузке избранных упражнений",
+    "deleteExerciseFromFavorites": "Удалить упражнение из избранного"
 }

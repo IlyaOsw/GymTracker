@@ -13,8 +13,8 @@
 
 .editButtonContainer {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: end;
+  align-items: end;
 }
 
 .editBtn {
@@ -39,13 +39,5 @@
     .buttonText {
       display: none;
     }
-  }
-}
-
-@media (max-width: 768px) {
-  .buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 }

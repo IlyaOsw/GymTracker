@@ -98,7 +98,7 @@
     "followed": "Followed",
     "follow": "Follow",
     "favoriteExercises": "Favorite exercises",
-    "bestResult": "Best result",
+    "bestResult": "Best result is",
     "kg": "kg",
     "uploadCoverImage": "Upload cover image",
     "editProfile": "Edit profile",
@@ -148,6 +148,11 @@
     "errorAddingExercise": "Error adding exercise",
     "exerciseDeleted": "Exercise successfully deleted",
     "errorDeletingExercise": "Error deleting exercise",
-    "addToFavorite": "Add to favorite"
+    "addToFavorite": "Add to favorite",
+    "errorUpdatingFavorite": "Error when adding to favorites",
+    "addedToFavorite": "Successfully added to favorite",
+    "removedFromFavorite": "Successfully removed from favorite",
+    "errorFetchingFavoriteExercises": "Error fetching favorite exercises",
+    "deleteExerciseFromFavorites": "Delete exercise from favorites"
 }
 

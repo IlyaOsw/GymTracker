@@ -181,28 +181,10 @@ export interface UserData {
   };
 }
 
-export type FavoriteExercisesType = {
-  id: number;
-  name: string;
-  result: string;
-};
-
 export type AddExercisePropsType = {
-  setFavoriteExercisesArray: React.Dispatch<
-    React.SetStateAction<FavoriteExercisesType[]>
-  >;
+  setFavoriteExercisesArray: React.Dispatch<React.SetStateAction<Exercise[]>>;
   setShowAddModal: (value: boolean) => void;
   showAddModal: boolean;
-};
-
-export type ProfileAvatarPropsType = {
-  avatarURL: string | null;
-  setAvatarURL: (value: string | null) => void;
-};
-
-export type CoverImagePropsType = {
-  coverURL: string | null;
-  setCoverURL: (value: string | null) => void;
 };
 
 export type EditProfilePropsType = {
@@ -254,3 +236,7 @@ export interface Exercise {
   bestResult: number;
   isFavorite: boolean;
 }
+
+export type CloseIconType = {
+  onClick?: () => void;
+};

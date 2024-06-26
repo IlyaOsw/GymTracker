@@ -3,26 +3,34 @@
   margin: 40px 0px;
 }
 
+.cardTitle {
+  white-space: normal !important;
+}
+
 .exercises {
   background-color: #282828;
   color: #ffffff;
   margin: 0px 10px;
 }
 
-.icons {
+.deleteIcon {
   margin: -15px -15px 0px -15px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: end;
+}
+
+.favoriteIcon {
+  margin-top: 10px;
+  margin-bottom: -15px;
 }
 
 .delete {
   svg {
-    color: #0097b2;
+    color: lightgray;
     transition: 0.4s all;
 
     &:hover {
-      color: red;
+      color: gray;
     }
   }
 }

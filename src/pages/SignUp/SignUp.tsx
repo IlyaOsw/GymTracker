@@ -21,6 +21,44 @@ import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
 import { Address } from "./Address/Address";
 import styles from "./SignUp.module.scss";
 
+const defaultExercises: Exercise[] = [
+  {
+    bestResult: 0,
+    category: "Back",
+    id: uuidv4(),
+    isFavorite: false,
+    name: "Pull-down to the chest",
+  },
+  {
+    bestResult: 0,
+    category: "Legs",
+    id: uuidv4(),
+    isFavorite: false,
+    name: "Barbell squats",
+  },
+  {
+    bestResult: 0,
+    category: "Chest",
+    id: uuidv4(),
+    isFavorite: false,
+    name: "Bench press",
+  },
+  {
+    bestResult: 0,
+    category: "Hands",
+    id: uuidv4(),
+    isFavorite: false,
+    name: "Bicep curls",
+  },
+  {
+    bestResult: 0,
+    category: "Shoulders",
+    id: uuidv4(),
+    isFavorite: false,
+    name: "Seated dumbbell press",
+  },
+];
+
 const SignUp: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -90,11 +128,9 @@ const SignUp: React.FC = () => {
       );
 
       const user = userCredential.user;
-      let avatarURL = "";
       if (image) {
         const avatarRef = ref(storage, `avatar/${user.uid}.jpg`);
         await uploadBytes(avatarRef, image);
-        avatarURL = await getDownloadURL(avatarRef);
       }
 
       const userData = {
@@ -109,46 +145,7 @@ const SignUp: React.FC = () => {
           country: country,
           city: city || "",
         },
-        avatarURL: avatarURL,
       };
-
-      const defaultExercises: Exercise[] = [
-        {
-          bestResult: 0,
-          category: "Back",
-          id: uuidv4(),
-          isFavorite: false,
-          name: "Pull-down to the chest",
-        },
-        {
-          bestResult: 0,
-          category: "Legs",
-          id: uuidv4(),
-          isFavorite: false,
-          name: "Barbell squats",
-        },
-        {
-          bestResult: 0,
-          category: "Chest",
-          id: uuidv4(),
-          isFavorite: false,
-          name: "Bench press",
-        },
-        {
-          bestResult: 0,
-          category: "Hands",
-          id: uuidv4(),
-          isFavorite: false,
-          name: "Bicep curls",
-        },
-        {
-          bestResult: 0,
-          category: "Shoulders",
-          id: uuidv4(),
-          isFavorite: false,
-          name: "Seated dumbbell press",
-        },
-      ];
 
       const db = getFirestore();
       await setDoc(doc(db, "users", user.uid), userData);
