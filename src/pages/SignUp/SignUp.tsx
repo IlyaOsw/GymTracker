@@ -65,15 +65,19 @@ const SignUp: React.FC = () => {
   const [form] = Form.useForm();
   const auth = getAuth();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [gender, setGender] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [gender, setGender] = useState<string>("");
   const [dateOfBirth, setDateOfBirth] = useState(new Date());
-  const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
+  const [country, setCountry] = useState<string>("");
+  const [city, setCity] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   const onReset = () => {
     form.resetFields();
@@ -129,7 +133,7 @@ const SignUp: React.FC = () => {
 
       const user = userCredential.user;
       if (image) {
-        const avatarRef = ref(storage, `avatar/${user.uid}.jpg`);
+        const avatarRef = ref(storage, `avatar/${user.uid}`);
         await uploadBytes(avatarRef, image);
       }
 
@@ -158,10 +162,6 @@ const SignUp: React.FC = () => {
       navigate("/registrationerror");
     }
   };
-
-  useEffect(() => {
-    window.scroll(0, 0);
-  }, []);
 
   return (
     <Form

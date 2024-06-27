@@ -15,6 +15,7 @@
   display: flex;
   justify-content: space-between;
   align-self: center;
+  margin: 0px 20px;
 }
 
 .btn {
@@ -40,4 +41,15 @@
       display: none;
     }
   }
+}
+
+.confirm {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 25px;
+  color: #ffffff !important;
+}
+
+.delete {
+  text-align: center;
 }

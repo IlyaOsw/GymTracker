@@ -241,3 +241,10 @@ export interface Exercise {
 export type CloseIconType = {
   onClick?: () => void;
 };
+
+export interface CustomModalProps {
+  open?: boolean;
+  onCancel?: () => void;
+  footer?: React.ReactNode;
+  children?: React.ReactNode;
+}

@@ -23,10 +23,14 @@ const SignIn: React.FC = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorModalOpen, setErrorModalOpen] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [errorModalOpen, setErrorModalOpen] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   const handleEmailChange = (value: string) => setEmail(value);
 
@@ -43,10 +47,6 @@ const SignIn: React.FC = () => {
       setErrorModalOpen(true);
     }
   };
-
-  useEffect(() => {
-    window.scroll(0, 0);
-  }, []);
 
   return (
     <>

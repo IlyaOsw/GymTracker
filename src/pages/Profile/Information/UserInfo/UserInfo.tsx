@@ -18,22 +18,6 @@ export const UserInfo: React.FC = () => {
   const { updateUserData } = useUserContext();
   const [userData, setUserData] = useState<UserData | null>(null);
 
-  const fetchUserData = async (userId: string): Promise<UserData | null> => {
-    try {
-      const db = getFirestore();
-      const userDoc = doc(db, "users", userId);
-      const docSnap = await getDoc(userDoc);
-
-      if (docSnap.exists()) {
-        return docSnap.data() as UserData;
-      } else {
-        return null;
-      }
-    } catch (error) {
-      return null;
-    }
-  };
-
   useEffect(() => {
     const auth = getAuth();
 
@@ -52,6 +36,22 @@ export const UserInfo: React.FC = () => {
 
     return () => unsubscribe();
   }, [updateUserData]);
+
+  const fetchUserData = async (userId: string): Promise<UserData | null> => {
+    try {
+      const db = getFirestore();
+      const userDoc = doc(db, "users", userId);
+      const docSnap = await getDoc(userDoc);
+
+      if (docSnap.exists()) {
+        return docSnap.data() as UserData;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      return null;
+    }
+  };
 
   if (!userData) {
     return <div className={styles.personalInformation} />;

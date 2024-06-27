@@ -12,6 +12,21 @@ export const CoverImage: React.FC = () => {
   const { t } = useTranslation();
   const [coverURL, setCoverURL] = useState("");
 
+  useEffect(() => {
+    const user = auth.currentUser;
+    if (user) {
+      const coverRef = ref(storage, `cover/${user.uid}`);
+      getDownloadURL(coverRef)
+        .then((url) => {
+          setCoverURL(url);
+        })
+        .catch((error) => {
+          console.error("Error fetching avatar URL:", error);
+          setCoverURL("");
+        });
+    }
+  }, [auth.currentUser]);
+
   const handleUploadCoverImage = async (file: File) => {
     const user = auth.currentUser;
     if (user) {
@@ -28,21 +43,6 @@ export const CoverImage: React.FC = () => {
       }
     }
   };
-
-  useEffect(() => {
-    const user = auth.currentUser;
-    if (user) {
-      const coverRef = ref(storage, `cover/${user.uid}`);
-      getDownloadURL(coverRef)
-        .then((url) => {
-          setCoverURL(url);
-        })
-        .catch((error) => {
-          console.error("Error fetching avatar URL:", error);
-          setCoverURL("");
-        });
-    }
-  }, [auth.currentUser]);
 
   return (
     <div className={styles.paper}>

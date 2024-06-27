@@ -121,9 +121,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
     setFilteredCountries(filtered.length > 0 ? filtered : countryOptions);
   };
 
-  const handleFirstNameChange = (value: string) => {
-    setFirstName(value);
-  };
+  const handleFirstNameChange = (value: string) => setFirstName(value);
 
   const handleLastNameChange = (value: string) => setLastName(value);
 
@@ -131,9 +129,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
 
   const handleCityChange = (value: string) => setCity(value);
 
-  const handleDateOfBirthChange = (date: Date | null) => {
-    setDateOfBirth(date);
-  };
+  const handleDateOfBirthChange = (date: Date | null) => setDateOfBirth(date);
 
   return (
     <Form

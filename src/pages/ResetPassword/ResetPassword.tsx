@@ -16,20 +16,13 @@ const ResetPassword: React.FC = () => {
   const { t } = useTranslation();
   const auth = getAuth();
   const [email, setEmail] = useState("");
-  const [messageApi, contextHolder] = message.useMessage();
 
   const handleResetPassword = async () => {
     try {
       await sendPasswordResetEmail(auth, email);
-      messageApi.open({
-        type: "success",
-        content: `${t("passwordResetSuccess")}`,
-      });
+      message.success(t("passwordResetSuccess"));
     } catch (error) {
-      messageApi.open({
-        type: "error",
-        content: `${t("passwordResetError")}`,
-      });
+      message.error(t("passwordResetError"));
     }
   };
 
@@ -60,7 +53,6 @@ const ResetPassword: React.FC = () => {
           className={styles.btn}
           onClick={handleResetPassword}
         />
-        {contextHolder}
       </PageWrapper>
       <CustomFooter />
     </>
