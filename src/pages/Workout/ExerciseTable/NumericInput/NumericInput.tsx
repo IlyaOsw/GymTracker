@@ -22,6 +22,7 @@ const NumericInput: React.ForwardRefRenderFunction<
       onChange={handleChange}
       onBlur={onBlur}
       className={styles.input}
+      type="tel"
     />
   );
 };

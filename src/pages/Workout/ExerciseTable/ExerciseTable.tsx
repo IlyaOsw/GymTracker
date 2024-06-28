@@ -75,7 +75,7 @@ export const ExerciseTable: React.FC = () => {
     {
       title: `${t("set")}`,
       dataIndex: "set",
-      sorter: (a: { set: number }, b: { set: number }) => a.set - b.set,
+      // sorter: (a: { set: number }, b: { set: number }) => a.set - b.set,
       width: "30%",
     },
     {
@@ -102,7 +102,7 @@ export const ExerciseTable: React.FC = () => {
     {
       title: `${t("reps")}`,
       dataIndex: "reps",
-      width: "30%",
+      width: "40%",
       render: (text: string, record: ExerciseTableType) =>
         editReps === record.key ? (
           <NumericInput
@@ -169,7 +169,7 @@ export const ExerciseTable: React.FC = () => {
               headerColor: "#ffffff",
               headerSortHoverBg: "#282828",
               bodySortBg: "#282828",
-              cellFontSize: 16,
+              cellFontSize: 18,
               colorBgContainer: "#282828",
               colorText: "#ffffff",
               colorPrimary: "#ffffff",

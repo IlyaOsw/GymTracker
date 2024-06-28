@@ -6,7 +6,7 @@
   transition: all 0.4s ease;
   text-transform: uppercase;
   box-shadow: 0 3px 10px rgba(0, 151, 178, 0.4);
-  background-image: linear-gradient(to right, #0097b2, #007a8f);
+  background-image: linear-gradient(to right, #0097b2, #006a7d);
 
   &:hover {
     color: #0097b2 !important;
@@ -20,7 +20,23 @@
   }
 
   &:active {
-    background-color: #007a8f;
     transform: scale(0.97);
+  }
+
+  @media (max-width: 768px) {
+    transition: all 0s ease;
+    &:hover {
+      color: inherit !important;
+      background-image: linear-gradient(to right, #0097b2, #006a7d) !important;
+      transform: none;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:active {
+      transform: none;
+    }
   }
 }

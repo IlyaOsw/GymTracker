@@ -1,5 +1,4 @@
 .reset {
-  background-color: #ff6347;
   background-image: linear-gradient(to right, #ff6347, #ff4500);
   color: #ffffff;
   border-radius: 20px;
@@ -27,7 +26,23 @@
   }
 
   &:active {
-    background-color: #ff4500;
     transform: scale(0.97);
+  }
+
+  @media (max-width: 768px) {
+    transition: all 0s ease;
+    &:hover {
+      color: inherit !important;
+      background-image: linear-gradient(to right, #ff6347, #ff4500) !important;
+      transform: none;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:active {
+      transform: none;
+    }
   }
 }
