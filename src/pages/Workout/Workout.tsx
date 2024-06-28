@@ -14,13 +14,13 @@ const Workout: React.FC = () => {
   const state = location.state as LocationState;
   const [updateTrigger, setUpdateTrigger] = useState(0);
 
-  const handleUpdateExercises = () => {
-    setUpdateTrigger((prev) => prev + 1);
-  };
-
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
+
+  const handleUpdateExercises = () => {
+    setUpdateTrigger((prev) => prev + 1);
+  };
 
   return (
     <PageWrapper>

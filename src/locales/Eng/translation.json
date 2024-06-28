@@ -159,6 +159,8 @@
     "confirmDeletingFromFavorite": "Please confirm deleting from favorite exercises",
     "delete": "Delete",
     "accountDeleted": "Account successfully deleted",
-    "confirmDeletingAccount": "Are you sure you want to delete your account permanently?"
+    "confirmDeletingAccount": "Are you sure you want to delete your account permanently?",
+    "confirmDeletingExercise": "Please confirm deleting exercise",
+    "clickToEdit": "Edit"
 }
 

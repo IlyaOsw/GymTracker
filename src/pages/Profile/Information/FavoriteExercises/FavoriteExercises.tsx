@@ -23,7 +23,7 @@ export const FavoriteExercises: React.FC = () => {
     Exercise[]
   >([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [confirm, setCofirm] = useState<boolean>(false);
+  const [confirm, setConfirm] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -65,12 +65,10 @@ export const FavoriteExercises: React.FC = () => {
     return () => unsubscribe();
   }, [t]);
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const handleCancel = () => setIsModalOpen(false);
 
   const handleConfirm = () => {
-    setCofirm(true);
+    setConfirm(true);
     setIsModalOpen(true);
   };
 

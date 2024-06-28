@@ -5,7 +5,7 @@ import { Form, message } from "antd";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { CheckCircleOutlined, SyncOutlined } from "@ant-design/icons";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";

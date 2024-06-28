@@ -40,10 +40,10 @@ export interface ImageData {
 
 export type ExerciseTableType = {
   key: string;
-  weight: number;
+  weight: string;
   set: number;
-  reps: number;
-  icon: React.ReactNode;
+  reps: string;
+  icon: JSX.Element;
 };
 
 export type RegistrationType = {
@@ -247,4 +247,10 @@ export interface CustomModalProps {
   onCancel?: () => void;
   footer?: React.ReactNode;
   children?: React.ReactNode;
+}
+
+export interface NumericInputProps {
+  value: string;
+  onChange: (value: string) => void;
+  onBlur: () => void;
 }

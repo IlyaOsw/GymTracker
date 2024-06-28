@@ -8,13 +8,15 @@ import {
   Tooltip,
 } from "antd";
 import { useTranslation } from "react-i18next";
-import { CloseOutlined, StarFilled } from "@ant-design/icons";
+import { CloseOutlined, DeleteOutlined, StarFilled } from "@ant-design/icons";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import { Exercise, ExercisesProps } from "../../../types/types";
 import { Loader } from "../../../components/Loader/Loader";
+import { CustomModal } from "../../../components/CustomModal/CustomModal";
+import { ResetButton } from "../../../components/ResetButton/ResetButton";
 
 import styles from "./Exercises.module.scss";
 
@@ -25,6 +27,26 @@ export const Exercises: React.FC<
   const [data, setData] = useState<Exercise[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [isActive, setIsActive] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [confirm, setConfirm] = useState<boolean>(false);
+
+  useEffect(() => {
+    const storedData = JSON.parse(
+      localStorage.getItem("exercisesData") || "[]"
+    );
+
+    if (storedData.length > 0) {
+      setData(storedData);
+      setLoading(false);
+    }
+  }, [category]);
+
+  const handleCancel = () => setIsModalOpen(false);
+
+  const handleConfirm = () => {
+    setConfirm(true);
+    setIsModalOpen(true);
+  };
 
   const toggleFavorite = async (exerciseId: string, currentStatus: boolean) => {
     try {
@@ -107,9 +129,8 @@ export const Exercises: React.FC<
             setData(filteredData);
           }
         }
-      } else {
-        message.error(t("userNotAuthenticated"));
       }
+      setConfirm(false);
     } catch (error) {
       message.error(t("errorDeletingExercise"));
     } finally {
@@ -162,17 +183,6 @@ export const Exercises: React.FC<
     fetchExercises();
   }, [category, t, updateTrigger]);
 
-  useEffect(() => {
-    const storedData = JSON.parse(
-      localStorage.getItem("exercisesData") || "[]"
-    );
-
-    if (storedData.length > 0) {
-      setData(storedData);
-      setLoading(false);
-    }
-  }, [category]);
-
   return (
     <>
       {loading ? (
@@ -203,13 +213,31 @@ export const Exercises: React.FC<
               {data.length > 0 ? (
                 data.map((item) => (
                   <Card.Grid key={item.id}>
-                    <div className={styles.deleteIcon}>
+                    <div className={styles.deleteIconBlock}>
                       <Tooltip title={t("deleteExercise")}>
                         <CloseOutlined
-                          className={styles.delete}
-                          onClick={() => handleDeleteCard(item.id)}
+                          className={styles.deleteIcon}
+                          onClick={handleConfirm}
                         />
                       </Tooltip>
+                      {confirm && (
+                        <CustomModal
+                          open={isModalOpen}
+                          onCancel={handleCancel}
+                          footer={false}
+                        >
+                          <p className={styles.confirm}>
+                            {t("confirmDeletingExercise")}
+                          </p>
+                          <div className={styles.delete}>
+                            <ResetButton
+                              children={t("delete")}
+                              onClick={() => handleDeleteCard(item.id)}
+                              icon={<DeleteOutlined />}
+                            />
+                          </div>
+                        </CustomModal>
+                      )}
                     </div>
                     {item.name}
                     <div className={styles.favoriteIcon}>

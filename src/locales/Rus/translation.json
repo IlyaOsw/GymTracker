@@ -159,5 +159,7 @@
     "confirmDeletingFromFavorite": "Пожалуйста, подтвердите удаление из избранных упражнений",
     "delete": "Удалить",
     "accountDeleted": "Аккаунт успешно удален",
-    "confirmDeletingAccount": "Вы уверены, что хотите удалить свой аккаут безвозвратно?"
+    "confirmDeletingAccount": "Вы уверены, что хотите удалить свой аккаут безвозвратно?",
+    "confirmDeletingExercise": "Пожалуйста, подтвердите удаление упражнения",
+    "clickToEdit": "Изменить"
 }

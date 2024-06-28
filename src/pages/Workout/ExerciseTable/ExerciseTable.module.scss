@@ -1,3 +1,15 @@
+.tableTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 10px 0px;
+
+  .date {
+    font-size: 1.2rem;
+    color: #ffffff;
+  }
+}
+
 .table {
   margin: 0px 10px 25px;
 
@@ -9,29 +21,25 @@
       color: red;
     }
   }
-}
 
-.delete {
-  svg {
-    color: lightgray;
-    transition: 0.4s all;
+  .editableDiv {
+    width: 100px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
 
-    &:hover {
-      color: gray;
+  .delete {
+    svg {
+      color: lightgray;
+      transition: 0.4s all;
+
+      &:hover {
+        color: gray;
+      }
     }
   }
-}
-
-.tableTitle {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 50px 10px 0px;
-}
-
-.date {
-  font-size: 1.2rem;
-  color: #ffffff;
 }
 
 .tableFooter {

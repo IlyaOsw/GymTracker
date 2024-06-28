@@ -13,7 +13,7 @@
   margin: 0px 10px;
 }
 
-.deleteIcon {
+.deleteIconBlock {
   margin: -15px -15px 0px -15px;
   display: flex;
   justify-content: end;
@@ -24,7 +24,7 @@
   margin-bottom: -15px;
 }
 
-.delete {
+.deleteIcon {
   svg {
     color: lightgray;
     transition: 0.4s all;
@@ -33,6 +33,17 @@
       color: gray;
     }
   }
+}
+
+.confirm {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 25px;
+  color: #ffffff !important;
+}
+
+.delete {
+  text-align: center;
 }
 
 .star {
