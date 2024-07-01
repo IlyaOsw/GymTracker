@@ -26,40 +26,6 @@ export const ProfileAvatar: React.FC = () => {
   const auth = getAuth();
   const storage = getStorage();
 
-  const handleDeleteAvatar = async () => {
-    const user = auth.currentUser;
-    if (user) {
-      const avatarRef = ref(storage, `avatar/${user.uid}`);
-      try {
-        await deleteObject(avatarRef);
-        setAvatarURL("");
-        message.success(t("profilePhotoDeleted"));
-      } catch (error) {
-        console.error("Error deleting avatar:", error);
-        message.error(t("deleteFailed"));
-      }
-    } else {
-      message.error(t("deleteFailed"));
-    }
-  };
-
-  const handleUploadAvatar = async (file: Blob | ArrayBuffer) => {
-    const user = auth.currentUser;
-    if (user) {
-      const avatarRef = ref(storage, `avatar/${user.uid}`);
-      try {
-        await uploadBytes(avatarRef, file);
-        const newAvatarURL = await getDownloadURL(avatarRef);
-
-        setAvatarURL(newAvatarURL);
-        message.success(t("profilePhotoUpdated"));
-      } catch (error) {
-        console.error("Error uploading avatar:", error);
-        message.error(t("uploadFailed"));
-      }
-    }
-  };
-
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -86,6 +52,37 @@ export const ProfileAvatar: React.FC = () => {
         });
     }
   }, [auth.currentUser]);
+
+  const handleDeleteAvatar = async () => {
+    const user = auth.currentUser;
+    if (user) {
+      const avatarRef = ref(storage, `avatar/${user.uid}`);
+      try {
+        await deleteObject(avatarRef);
+
+        setAvatarURL("");
+        message.success(t("profilePhotoDeleted"));
+      } catch (error) {
+        message.error(t("deleteFailed"));
+      }
+    }
+  };
+
+  const handleUploadAvatar = async (file: Blob | ArrayBuffer) => {
+    const user = auth.currentUser;
+    if (user) {
+      const avatarRef = ref(storage, `avatar/${user.uid}`);
+      try {
+        await uploadBytes(avatarRef, file);
+        const newAvatarURL = await getDownloadURL(avatarRef);
+
+        setAvatarURL(newAvatarURL);
+        message.success(t("profilePhotoUpdated"));
+      } catch (error) {
+        message.error(t("uploadFailed"));
+      }
+    }
+  };
 
   const items = [
     {
