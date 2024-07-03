@@ -161,5 +161,11 @@
     "accountDeleted": "Аккаунт успешно удален",
     "confirmDeletingAccount": "Вы уверены, что хотите удалить свой аккаут безвозвратно?",
     "confirmDeletingExercise": "Пожалуйста, подтвердите удаление упражнения",
-    "clickToEdit": "Изменить"
+    "clickToEdit": "Изменить",
+    "noExerciseSelected": "Упражнение не выбрано",
+    "errorLoadingExerciseData": "Ошибка загрузки данных упражнения",
+    "exerciseDataDeletedSuccessfully": "Данные упражнения успешно удалены",
+    "failedToDeleteExerciseData": "Не удалось удалить данные упражнения",
+    "exerciseDataSaved": "Данные упражнения сохранены",
+    "errorSavingExerciseData": "Ошибка при сохранении данных упражнения"
 }

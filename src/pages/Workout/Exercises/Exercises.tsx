@@ -9,7 +9,13 @@ import {
 } from "antd";
 import { useTranslation } from "react-i18next";
 import { CloseOutlined, DeleteOutlined, StarFilled } from "@ant-design/icons";
-import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
+import {
+  deleteDoc,
+  doc,
+  getDoc,
+  getFirestore,
+  updateDoc,
+} from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
@@ -20,9 +26,11 @@ import { ResetButton } from "../../../components/ResetButton/ResetButton";
 
 import styles from "./Exercises.module.scss";
 
-export const Exercises: React.FC<
-  ExercisesProps & { updateTrigger: number }
-> = ({ category, updateTrigger }) => {
+export const Exercises: React.FC<ExercisesProps> = ({
+  category,
+  updateTrigger,
+  onSelectExercise,
+}) => {
   const { t } = useTranslation();
   const [data, setData] = useState<Exercise[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -40,6 +48,51 @@ export const Exercises: React.FC<
       setLoading(false);
     }
   }, [category]);
+
+  useEffect(() => {
+    const fetchExercises = async () => {
+      setLoading(true);
+
+      try {
+        const db = getFirestore();
+        const auth = getAuth();
+        const user = auth.currentUser;
+
+        if (user) {
+          const userId = user.uid;
+          const exercisesDocRef = doc(db, "exercises", userId);
+          const exercisesDoc = await getDoc(exercisesDocRef);
+
+          if (exercisesDoc.exists()) {
+            const exercisesData = exercisesDoc.data();
+            const translatedCategory = t(`categories.${category}`);
+            const filteredData = exercisesData.exercises
+              .filter(
+                (exercise: Exercise) =>
+                  t(`categories.${exercise.category}`) === translatedCategory
+              )
+              .map((exercise: Exercise) => ({
+                id: exercise.id,
+                name: t(exercise.name),
+                category: exercise.category,
+                bestResult: `${t("lastSet")}: ${exercise.bestResult}`,
+                isFavorite: exercise.isFavorite,
+              }));
+            localStorage.setItem("exercisesData", JSON.stringify(filteredData));
+            setData(filteredData);
+          } else {
+            setData([]);
+          }
+        }
+      } catch (error) {
+        notification.error({ message: t("errorFetchingExercises") });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchExercises();
+  }, [category, t, updateTrigger]);
 
   const handleCancel = () => setIsModalOpen(false);
 
@@ -105,7 +158,10 @@ export const Exercises: React.FC<
       if (user) {
         const userId = user.uid;
         const exercisesDocRef = doc(db, "exercises", userId);
+        const setsCollectionRef = doc(db, "sets", exerciseId);
         const exercisesDoc = await getDoc(exercisesDocRef);
+
+        await deleteDoc(setsCollectionRef);
 
         if (exercisesDoc.exists()) {
           const exercisesData = exercisesDoc.data();
@@ -138,51 +194,6 @@ export const Exercises: React.FC<
     }
   };
 
-  useEffect(() => {
-    const fetchExercises = async () => {
-      setLoading(true);
-
-      try {
-        const db = getFirestore();
-        const auth = getAuth();
-        const user = auth.currentUser;
-
-        if (user) {
-          const userId = user.uid;
-          const exercisesDocRef = doc(db, "exercises", userId);
-          const exercisesDoc = await getDoc(exercisesDocRef);
-
-          if (exercisesDoc.exists()) {
-            const exercisesData = exercisesDoc.data();
-            const translatedCategory = t(`categories.${category}`);
-            const filteredData = exercisesData.exercises
-              .filter(
-                (exercise: Exercise) =>
-                  t(`categories.${exercise.category}`) === translatedCategory
-              )
-              .map((exercise: Exercise) => ({
-                id: exercise.id,
-                name: t(exercise.name),
-                category: exercise.category,
-                bestResult: `${t("lastSet")}: ${exercise.bestResult}`,
-                isFavorite: exercise.isFavorite,
-              }));
-            localStorage.setItem("exercisesData", JSON.stringify(filteredData));
-            setData(filteredData);
-          } else {
-            setData([]);
-          }
-        }
-      } catch (error) {
-        notification.error({ message: t("errorFetchingExercises") });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchExercises();
-  }, [category, t, updateTrigger]);
-
   return (
     <>
       {loading ? (
@@ -205,14 +216,17 @@ export const Exercises: React.FC<
           >
             <Card
               title={
-                <span className={styles.cardTitle}> {t("chooseExercise")}</span>
+                <span className={styles.cardTitle}>{t("chooseExercise")}</span>
               }
               className={styles.exercises}
               bordered={false}
             >
               {data.length > 0 ? (
-                data.map((item) => (
-                  <Card.Grid key={item.id}>
+                data.map((item: Exercise) => (
+                  <Card.Grid
+                    key={item.id}
+                    onClick={() => onSelectExercise(item)}
+                  >
                     <div className={styles.deleteIconBlock}>
                       <Tooltip title={t("deleteExercise")}>
                         <CloseOutlined

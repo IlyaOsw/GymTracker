@@ -228,6 +228,7 @@ export interface IAddExercise {
 export interface ExercisesProps {
   category: string;
   updateTrigger: number;
+  onSelectExercise: (exercise: any) => void;
 }
 
 export interface Exercise {
@@ -253,4 +254,14 @@ export interface NumericInputProps {
   value: string;
   onChange: (value: string) => void;
   onBlur: () => void;
+}
+
+export type ExerciseTablePropsType = {
+  selectedExercise: Exercise | null;
+};
+
+export interface Approach {
+  key: string;
+  reps: number;
+  weight: number;
 }

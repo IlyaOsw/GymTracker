@@ -161,6 +161,12 @@
     "accountDeleted": "Account successfully deleted",
     "confirmDeletingAccount": "Are you sure you want to delete your account permanently?",
     "confirmDeletingExercise": "Please confirm deleting exercise",
-    "clickToEdit": "Edit"
+    "clickToEdit": "Edit",
+    "noExerciseSelected": "No exercise selected",
+    "errorLoadingExerciseData": "Error loading exercise data",
+    "exerciseDataDeletedSuccessfully": "Exercise data deleted successfully",
+    "failedToDeleteExerciseData": "Failed to delete exercise data",
+    "exerciseDataSaved": "Exercise data saved",
+    "errorSavingExerciseData": "Error saving exercise data"
 }
 

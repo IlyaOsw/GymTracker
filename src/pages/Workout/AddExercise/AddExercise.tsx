@@ -1,5 +1,5 @@
 import { PlusOutlined } from "@ant-design/icons";
-import { notification, Form, message } from "antd";
+import { message } from "antd";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
@@ -22,7 +22,7 @@ export const AddExercise: React.FC<IAddExercise> = ({
 
   const handleAddExercise = async () => {
     if (!exerciseName) {
-      notification.error({ message: t("typeExercise") });
+      message.error(t("typeExercise"));
       return;
     }
 
@@ -56,20 +56,16 @@ export const AddExercise: React.FC<IAddExercise> = ({
         message.success(t("exerciseAdded"));
         setExerciseName("");
         onAddExercise();
-      } else {
-        message.error(t("userNotAuthenticated"));
       }
     } catch (error) {
       message.error(t("errorAddingExercise"));
     }
   };
 
-  const handleInputChange = (value: string) => {
-    setExerciseName(value);
-  };
+  const handleInputChange = (value: string) => setExerciseName(value);
 
   return (
-    <div>
+    <>
       <SubTitle>{t("addAnExercise")}</SubTitle>
       <div className={styles.addExercise}>
         <CustomInput
@@ -86,6 +82,6 @@ export const AddExercise: React.FC<IAddExercise> = ({
           {t("addExerciseBtn")}
         </CustomButton>
       </div>
-    </div>
+    </>
   );
 };
