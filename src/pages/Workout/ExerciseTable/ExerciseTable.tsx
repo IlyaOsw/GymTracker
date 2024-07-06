@@ -40,11 +40,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   useEffect(() => {
     if (selectedExercise) {
       loadExerciseData();
-      window.scrollTo({
-        left: 0,
-        top: document.body.scrollHeight,
-        behavior: "smooth",
-      });
     } else {
       setData([]);
     }
@@ -77,6 +72,14 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
           }));
 
           setData(loadedData);
+
+          setTimeout(() => {
+            window.scrollTo({
+              left: 0,
+              top: document.body.scrollHeight,
+              behavior: "smooth",
+            });
+          }, 100);
         } else {
           setData([]);
         }
@@ -121,15 +124,12 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       const setDocSnapshot = await getDoc(setDocRef);
 
       if (!setDocSnapshot.exists()) {
-        throw new Error(
-          `Document with ID ${selectedExerciseId} does not exist`
-        );
+        throw new Error(`${selectedExerciseId} does not exist`);
       }
 
       const { approaches } = setDocSnapshot.data();
-
       const approachIndex = approaches.findIndex(
-        (approach: any) => approach.key === key
+        (approach: { key: string }) => approach.key === key
       );
 
       approaches.splice(approachIndex, 1);
@@ -176,7 +176,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
 
       try {
         const batch = writeBatch(db);
-
         const setDocRef = doc(setsCollectionRef, selectedExercise?.id);
         const approaches = data.map((row, index) => ({
           key: index.toString(),
@@ -203,7 +202,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     {
       title: `${t("weight")}`,
       dataIndex: "weight",
-      width: "40%",
+      width: "30%",
       render: (text: string, record: ExerciseTableType) =>
         editWeight === record.key ? (
           <NumericInput
@@ -224,7 +223,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     {
       title: `${t("reps")}`,
       dataIndex: "reps",
-      width: "40%",
+      width: "30%",
       render: (text: string, record: ExerciseTableType) =>
         editReps === record.key ? (
           <NumericInput
@@ -234,25 +233,20 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
             onBlur={() => setEditReps(null)}
           />
         ) : (
-          <div
-            onClick={() => setEditReps(record.key)}
-            className={styles.editableDiv}
-          >
-            {record.reps || t("clickToEdit")}
+          <div className={styles.repsAndDelete}>
+            <div
+              onClick={() => setEditReps(record.key)}
+              className={styles.editableDiv}
+            >
+              {record.reps || t("clickToEdit")}
+            </div>
+            <div className={styles.deledeContainer}>
+              <Tooltip title={t("deleteRow")}>
+                <CloseOutlined onClick={() => deleteRow(record.key)} />
+              </Tooltip>
+            </div>
           </div>
         ),
-    },
-    {
-      title: "",
-      dataIndex: "icon",
-      render: (_: any, record: ExerciseTableType) => (
-        <Tooltip title={t("deleteRow")}>
-          <CloseOutlined
-            className={styles.delete}
-            onClick={() => deleteRow(record.key)}
-          />
-        </Tooltip>
-      ),
     },
   ];
 
@@ -323,9 +317,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
                 headerColor: "#ffffff",
                 cellFontSize: 18,
                 colorBgContainer: "#282828",
-                colorText: "#ffffff",
-                colorPrimary: "#ffffff",
-                rowHoverBg: "#464646",
                 borderColor: "#535353",
                 headerSplitColor: "#535353",
               },
@@ -334,8 +325,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
         >
           <Table
             columns={columns}
-            dataSource={data}
-            pagination={false}
             className={styles.table}
             locale={{
               emptyText: (

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 50px 10px 0px;
+  margin: 50px 10px;
 
   .date {
     font-size: 1.2rem;
@@ -11,7 +11,7 @@
 }
 
 .table {
-  margin: 0px 10px 25px;
+  margin: 20px 10px;
 
   .editableDiv {
     width: 100px;
@@ -21,7 +21,11 @@
     justify-content: start;
   }
 
-  .delete {
+  .repsAndDelete {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+
     svg {
       color: lightgray;
       transition: 0.4s all;
@@ -34,7 +38,7 @@
 }
 
 .tableFooter {
-  margin: 50px 10px;
+  margin: 50px 10px 75px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -31,8 +31,9 @@
 
   @media (max-width: 768px) {
     transition: all 0s ease;
+
     &:hover {
-      color: inherit !important;
+      color: #ffffff !important;
       background-image: linear-gradient(to right, #ff6347, #ff4500) !important;
       transform: none;
     }

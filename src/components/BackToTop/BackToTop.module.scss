@@ -1,19 +1,20 @@
 .scrollBtn {
   position: fixed;
-  background-color: #0097b2;
+  background-color: #282828;
+  color: #ffffff;
+  border: 2px solid #444;
   z-index: 99;
-  right: 5%;
-  bottom: 5%;
-  opacity: 0.9;
+  right: 3%;
+  bottom: 3%;
   transition: 0.6s all;
 
   &:hover {
-    background-color: #0097b2 !important;
-    box-shadow: 0px 0px 5px #0097b2;
+    background-color: #333 !important;
+    box-shadow: 0px 0px 5px #555 !important;
   }
 
   &:active {
-    background-color: #007f96 !important;
+    background-color: #555 !important;
   }
 }
 
