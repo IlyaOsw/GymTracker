@@ -9,6 +9,7 @@ import styles from "./AboutCard.module.scss";
 
 export const AboutCard: React.FC<AboutCardProps> = ({ title, text, image }) => {
   const { ref, controls } = useAnimatedInView();
+
   return (
     <Card
       className={styles.card}

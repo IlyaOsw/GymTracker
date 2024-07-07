@@ -115,7 +115,7 @@ export const FavoriteExercises: React.FC = () => {
       key: item.id,
       label: <p>{item.name}</p>,
       children: (
-        <div>
+        <>
           <span>{`${t("bestResult")} ${item.bestResult} ${t("kg")}`}</span>
           <div className={styles.deleteIcon}>
             <Tooltip
@@ -143,7 +143,7 @@ export const FavoriteExercises: React.FC = () => {
               </div>
             </CustomModal>
           )}
-        </div>
+        </>
       ),
     },
   ];

@@ -26,9 +26,7 @@ const ResetPassword: React.FC = () => {
     }
   };
 
-  const handleEmailChange = (email: string) => {
-    setEmail(email);
-  };
+  const handleEmailChange = (email: string) => setEmail(email);
 
   return (
     <>

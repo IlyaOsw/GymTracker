@@ -17,7 +17,6 @@
 
     &:hover {
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      transform: translateY(-2px);
     }
 
     p {
@@ -26,10 +25,6 @@
       margin-left: -20px;
       font-weight: 600;
       transition: color 0.3s ease;
-
-      &:hover {
-        color: #00bcd4;
-      }
     }
 
     span {
@@ -53,6 +48,7 @@
     display: flex;
     justify-content: end;
     align-items: end;
+
     svg {
       color: lightgray;
       transition: 0.4s all;

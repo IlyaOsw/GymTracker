@@ -22,11 +22,11 @@ import styles from "./Calculator.module.scss";
 export const Calculator: React.FC = () => {
   const { t } = useTranslation();
   const { ref, controls } = useAnimatedInView();
-
   const [weight, setWeight] = useState<number>(0);
+  const [inputValue, setInputValue] = useState<string>("");
+
   const [reps, setReps] = useState<number>(1);
   const [result, setResult] = useState<number>(0);
-  const [messageApi, contextHolder] = message.useMessage();
 
   const increment = () => {
     if (reps < 15) {
@@ -41,6 +41,10 @@ export const Calculator: React.FC = () => {
   };
 
   const calculate1RM = () => {
+    if (!inputValue.trim()) {
+      message.error(t("enterWorkingWeight"));
+    }
+
     const M = weight;
     const k = reps;
 
@@ -54,10 +58,18 @@ export const Calculator: React.FC = () => {
   };
 
   const handleReset = () => {
-    setWeight(0);
+    setInputValue("");
     setReps(1);
     setResult(0);
     message.success(t("reseted"));
+  };
+
+  const handleInputChange = (e: { target: { value: string } }) => {
+    const value = e.target.value;
+    if (/^\d*\.?\d?$/.test(value)) {
+      setInputValue(value);
+      setWeight(value === "" ? 0 : parseFloat(value));
+    }
   };
 
   return (
@@ -80,24 +92,19 @@ export const Calculator: React.FC = () => {
               className={styles.weight}
               allowClear
               placeholder={t("weightKg")}
-              value={weight === 0 ? "" : weight.toString()}
+              value={inputValue}
               type="tel"
-              onChange={(e) => {
-                const inputWeight = e.target.value;
-                if (/^\d*$/.test(inputWeight)) {
-                  setWeight(inputWeight === "" ? 0 : Number(inputWeight));
-                }
-              }}
+              onChange={handleInputChange}
             />
           </div>
           <div className={styles.block}>
             <div className={styles.subtitle}>{t("repsNumber")}</div>
             <div className={styles.reps}>
-              <button className={styles.minus} onClick={decrement}>
+              <button className={styles.plusMinus} onClick={decrement}>
                 <MinusOutlined />
               </button>
               <div className={styles.repsNumber}>{reps}</div>
-              <button className={styles.plus} onClick={increment}>
+              <button className={styles.plusMinus} onClick={increment}>
                 <PlusOutlined />
               </button>
             </div>
@@ -113,7 +120,6 @@ export const Calculator: React.FC = () => {
         <div className={styles.resultWeight}>
           {result} {t("kg")}
         </div>
-        {contextHolder}
         <ResetButton
           children={t("reset")}
           onClick={handleReset}

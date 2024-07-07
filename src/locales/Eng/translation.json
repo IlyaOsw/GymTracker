@@ -167,6 +167,7 @@
     "exerciseDataDeletedSuccessfully": "Exercise data deleted successfully",
     "failedToDeleteExerciseData": "Failed to delete exercise data",
     "exerciseDataSaved": "Exercise data saved",
-    "errorSavingExerciseData": "Error saving exercise data"
+    "errorSavingExerciseData": "Error saving exercise data",
+    "enterWorkingWeight": "Please enter your working weight"
 }
 

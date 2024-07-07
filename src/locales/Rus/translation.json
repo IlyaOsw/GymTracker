@@ -167,5 +167,6 @@
     "exerciseDataDeletedSuccessfully": "Данные упражнения успешно удалены",
     "failedToDeleteExerciseData": "Не удалось удалить данные упражнения",
     "exerciseDataSaved": "Данные упражнения сохранены",
-    "errorSavingExerciseData": "Ошибка при сохранении данных упражнения"
+    "errorSavingExerciseData": "Ошибка при сохранении данных упражнения",
+    "enterWorkingWeight": "Пожалуйста введите свой рабочий вес"
 }

@@ -8,6 +8,7 @@ import styles from "./SubTitle.module.scss";
 
 export const SubTitle: React.FC<SubTitleType> = ({ children, className }) => {
   const { ref, controls } = useAnimatedInView();
+
   return (
     <motion.p
       ref={ref}
