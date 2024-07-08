@@ -183,6 +183,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
                 t(`categories.${exercise.category}`) === translatedCategory
             );
             setData(filteredData);
+            localStorage.setItem("exercisesData", JSON.stringify(filteredData));
           }
         }
       }
@@ -231,7 +232,10 @@ export const Exercises: React.FC<ExercisesProps> = ({
                       <Tooltip title={t("deleteExercise")}>
                         <CloseOutlined
                           className={styles.deleteIcon}
-                          onClick={handleConfirm}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleConfirm();
+                          }}
                         />
                       </Tooltip>
                       {confirm && (
@@ -260,9 +264,10 @@ export const Exercises: React.FC<ExercisesProps> = ({
                           className={`${styles.star} ${
                             item.isFavorite ? styles.active : ""
                           }`}
-                          onClick={() =>
-                            toggleFavorite(item.id, item.isFavorite)
-                          }
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleFavorite(item.id, item.isFavorite);
+                          }}
                         />
                       </Tooltip>
                     </div>

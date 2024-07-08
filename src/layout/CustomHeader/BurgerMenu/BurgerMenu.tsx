@@ -25,6 +25,22 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const handleScroll = (event: TouchEvent | WheelEvent) => {
+      if (open) {
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener("touchmove", handleScroll, { passive: false });
+    document.addEventListener("wheel", handleScroll, { passive: false });
+
+    return () => {
+      document.removeEventListener("touchmove", handleScroll);
+      document.removeEventListener("wheel", handleScroll);
+    };
+  }, [open]);
+
   const onClose = () => {
     if (setOpen) {
       setOpen(false);
@@ -42,29 +58,9 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   };
 
   const handleLogout = async () => {
-    try {
-      await logout();
-      onClose();
-    } catch (error) {
-      alert(error);
-    }
+    await logout();
+    onClose();
   };
-
-  useEffect(() => {
-    const handleScroll = (event: TouchEvent | WheelEvent) => {
-      if (open) {
-        event.preventDefault();
-      }
-    };
-
-    document.addEventListener("touchmove", handleScroll, { passive: false });
-    document.addEventListener("wheel", handleScroll, { passive: false });
-
-    return () => {
-      document.removeEventListener("touchmove", handleScroll);
-      document.removeEventListener("wheel", handleScroll);
-    };
-  }, [open]);
 
   const itemsMenu: BurgerMenuItem[] = [
     {
@@ -86,8 +82,8 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     {
       key: "3",
       label: isAuthenticated ? (
-        <Link to="/" onClick={handleLogout} className={styles.menuButton}>
-          {t("signOut")}
+        <Link to="/profile" onClick={onClose} className={styles.menuButton}>
+          {t("profile")}
         </Link>
       ) : (
         <Link
@@ -102,8 +98,8 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     {
       key: "4",
       label: isAuthenticated ? (
-        <Link to="/profile" onClick={onClose} className={styles.menuButton}>
-          {t("profile")}
+        <Link to="/" onClick={handleLogout} className={styles.menuButton}>
+          {t("signOut")}
         </Link>
       ) : (
         <Link
@@ -155,11 +151,11 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
       closable={true}
       onClose={onClose}
       open={open}
-      width={275}
+      width={270}
       className={styles.burgerColor}
       destroyOnClose={true}
     >
-      <Menu mode="vertical" className={styles.burgerColor} items={itemsMenu} />
+      <Menu className={styles.burgerColor} items={itemsMenu} />
     </Drawer>
   );
 };

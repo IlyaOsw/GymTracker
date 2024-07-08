@@ -5,12 +5,16 @@ import { HexagonProps } from "../../types/types";
 
 import styles from "./Hexagon.module.scss";
 
-export const Hexagon: React.FC<HexagonProps> = ({ text, className }) => {
+export const Hexagon: React.FC<HexagonProps> = ({
+  text,
+  className,
+  onClick,
+}) => {
   const { t } = useTranslation();
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.imageContainer}>
+      <div className={styles.imageContainer} onClick={onClick}>
         <img
           src={process.env.PUBLIC_URL + "/assets/Icons/Hexagon/Hexagon.svg"}
           alt="Hexagon"

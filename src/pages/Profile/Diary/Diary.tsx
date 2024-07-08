@@ -21,8 +21,8 @@ const HexagonLink: React.FC<HexagonLinkProps> = ({ text }) => {
   };
 
   return (
-    <div onClick={handleClick} className={styles.link}>
-      <Hexagon text={text} />
+    <div className={styles.link}>
+      <Hexagon text={text} onClick={handleClick} />
     </div>
   );
 };

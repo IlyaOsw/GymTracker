@@ -45,6 +45,27 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     }
   }, [selectedExercise]);
 
+  useEffect(() => {
+    if (editWeight && weightInputRef.current) {
+      weightInputRef.current.focus();
+    }
+  }, [editWeight]);
+
+  useEffect(() => {
+    if (editReps && repsInputRef.current) {
+      repsInputRef.current.focus();
+    }
+  }, [editReps]);
+
+  const scrollToBottom = () =>
+    setTimeout(() => {
+      window.scrollTo({
+        left: 0,
+        top: document.body.scrollHeight,
+        behavior: "smooth",
+      });
+    }, 100);
+
   const loadExerciseData = async () => {
     if (!selectedExercise) {
       return;
@@ -72,16 +93,10 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
           }));
 
           setData(loadedData);
-
-          setTimeout(() => {
-            window.scrollTo({
-              left: 0,
-              top: document.body.scrollHeight,
-              behavior: "smooth",
-            });
-          }, 100);
+          scrollToBottom();
         } else {
           setData([]);
+          scrollToBottom();
         }
       } catch (error) {
         message.error(t("errorLoadingExerciseData"));

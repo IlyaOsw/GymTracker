@@ -41,23 +41,12 @@
 
   @media (max-width: 768px) {
     .imageText {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
     }
 
     .hexagon {
       height: 100px;
       width: 100px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .imageText {
-      font-size: 0.6rem;
-    }
-
-    .hexagon {
-      height: 80px;
-      width: 80px;
     }
   }
 }

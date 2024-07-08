@@ -3,7 +3,6 @@ import { Layout, Button } from "antd";
 import { MenuOutlined, MoonFilled, SunOutlined } from "@ant-design/icons";
 
 import { MenuItem } from "../../types/types";
-
 import i18n from "../../i18n";
 
 import styles from "./CustomHeader.module.scss";
@@ -78,6 +77,21 @@ export const CustomHeader: React.FC = React.memo(() => {
   const [language, setLanguage] = useState("Eng");
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 992);
+      setLogoSrc(width <= 1200 ? mobileLogoSrc : desktopLogoSrc);
+    };
+
+    i18n.changeLanguage("en");
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const handleThemeClick = ({ key }: { key: string }) => {
     const selectedTheme = themeItems.find((item) => item.key === key);
     if (selectedTheme) {
@@ -98,25 +112,8 @@ export const CustomHeader: React.FC = React.memo(() => {
     i18n.changeLanguage(language);
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setIsMobile(width <= 992);
-      setLogoSrc(width <= 1200 ? mobileLogoSrc : desktopLogoSrc);
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    i18n.changeLanguage("en");
-  }, []);
-
   return (
-    <Header style={headerStyle}>
+    <Header style={headerStyle} className={styles.header}>
       <div className={styles.logo}>
         <img src={logoSrc} alt="Gym Tracker Logo" />
       </div>

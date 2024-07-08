@@ -127,6 +127,7 @@ export type FieldType = {
 export interface HexagonProps {
   text: string;
   className?: string;
+  onClick?: () => void;
 }
 
 export interface PageWrapperProps {

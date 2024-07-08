@@ -15,6 +15,7 @@ const imagesData = ["register", "track", "result"];
 
 export const Greeting: React.FC = () => {
   const { ref, controls } = useAnimatedInView();
+
   return (
     <div className={styles.wrapper}>
       <Description />

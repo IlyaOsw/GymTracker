@@ -10,14 +10,23 @@
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin-top: 40px;
+    margin-top: 50px;
 
-    div {
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+
+    .link {
       border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100px;
       transition: 0.3s all;
+      margin: 10px;
 
       &:hover {
-        transform: scale(1.02);
+        transform: scale(1.03);
       }
     }
   }
