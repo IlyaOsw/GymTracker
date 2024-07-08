@@ -179,8 +179,8 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
         const setDocRef = doc(setsCollectionRef, selectedExercise?.id);
         const approaches = data.map((row, index) => ({
           key: index.toString(),
-          reps: parseInt(row.reps),
-          weight: parseInt(row.weight),
+          reps: row.reps,
+          weight: row.weight,
         }));
 
         batch.set(setDocRef, { approaches });

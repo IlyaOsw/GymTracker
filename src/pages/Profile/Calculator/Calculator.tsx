@@ -93,7 +93,7 @@ export const Calculator: React.FC = () => {
               allowClear
               placeholder={t("weightKg")}
               value={inputValue}
-              type="tel"
+              type="number"
               onChange={handleInputChange}
             />
           </div>

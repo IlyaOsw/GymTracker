@@ -73,7 +73,7 @@ select {
 
 /* Общие стили для scrollbar */
 ::-webkit-scrollbar {
-  width: 2px; /* Ширина полосы прокрутки */
+  width: 1px; /* Ширина полосы прокрутки */
 }
 
 /* Кнопка для скролла вверх */
@@ -101,4 +101,11 @@ select {
 
 * {
   cursor: url("../../public/assets/cursorDefault.png"), auto !important;
+}
+
+/* Убирает стрелочки в Chrome, Safari, Edge и Opera */
+::-webkit-outer-spin-button,
+::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
