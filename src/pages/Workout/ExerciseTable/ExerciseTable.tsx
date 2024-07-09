@@ -290,7 +290,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
                 colorBgContainer: "#282828",
                 colorText: "#ffffff",
                 colorPrimary: "#ffffff",
-                rowHoverBg: "#464646",
                 borderColor: "#535353",
                 headerSplitColor: "#535353",
               },

@@ -28,7 +28,7 @@ const Workout: React.FC = () => {
 
   return (
     <PageWrapper>
-      <DescriptionTitle text={state?.title} textAlign="center" />
+      <DescriptionTitle text={state.title} textAlign="center" />
       <AddExercise
         category={state?.title}
         onAddExercise={handleUpdateExercises}

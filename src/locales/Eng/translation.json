@@ -168,6 +168,8 @@
     "failedToDeleteExerciseData": "Failed to delete exercise data",
     "exerciseDataSaved": "Exercise data saved",
     "errorSavingExerciseData": "Error saving exercise data",
-    "enterWorkingWeight": "Please enter your working weight"
+    "enterWorkingWeight": "Please enter your working weight",
+    "editName": "Edit exercise name",
+    "nameChangeFailed": "Failed to change the name"
 }
 

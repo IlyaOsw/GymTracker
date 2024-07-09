@@ -8,7 +8,13 @@ import {
   Tooltip,
 } from "antd";
 import { useTranslation } from "react-i18next";
-import { CloseOutlined, DeleteOutlined, StarFilled } from "@ant-design/icons";
+import {
+  CheckCircleOutlined,
+  CloseOutlined,
+  DeleteOutlined,
+  EditOutlined,
+  StarFilled,
+} from "@ant-design/icons";
 import {
   deleteDoc,
   doc,
@@ -23,6 +29,7 @@ import { Exercise, ExercisesProps } from "../../../types/types";
 import { Loader } from "../../../components/Loader/Loader";
 import { CustomModal } from "../../../components/CustomModal/CustomModal";
 import { ResetButton } from "../../../components/ResetButton/ResetButton";
+import { CustomButton } from "../../../components/CustomButton/CustomButton";
 
 import styles from "./Exercises.module.scss";
 
@@ -37,6 +44,9 @@ export const Exercises: React.FC<ExercisesProps> = ({
   const [isActive, setIsActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [confirm, setConfirm] = useState<boolean>(false);
+  const [editMode, setEditMode] = useState(false);
+  const [currentEditingId, setCurrentEditingId] = useState<string | null>(null);
+  const [newName, setNewName] = useState<string>("");
 
   useEffect(() => {
     const storedData = JSON.parse(
@@ -136,9 +146,9 @@ export const Exercises: React.FC<ExercisesProps> = ({
         }
 
         if (!currentStatus) {
-          message.success(t("removedFromFavorite"));
-        } else {
           message.success(t("addedToFavorite"));
+        } else {
+          message.success(t("removedFromFavorite"));
         }
         setIsActive(!isActive);
       }
@@ -195,6 +205,85 @@ export const Exercises: React.FC<ExercisesProps> = ({
     }
   };
 
+  const changeExerciseName = async (exerciseId: string, newName: string) => {
+    try {
+      const db = getFirestore();
+      const auth = getAuth();
+      const user = auth.currentUser;
+      if (user) {
+        const userId = user.uid;
+        const exercisesDocRef = doc(db, "exercises", userId);
+        const exercisesDoc = await getDoc(exercisesDocRef);
+        if (exercisesDoc.exists()) {
+          const exercisesData = exercisesDoc.data();
+          let updatedExercises = exercisesData.exercises.map(
+            (exercise: { id: string; name: string }) => {
+              if (exercise.id === exerciseId) {
+                return { ...exercise, name: newName };
+              }
+              return exercise;
+            }
+          );
+          await updateDoc(exercisesDocRef, {
+            exercises: updatedExercises,
+          });
+
+          const translatedCategory = t(`categories.${category}`);
+          const filteredData = updatedExercises
+            .filter(
+              (exercise: { category: string }) =>
+                t(`categories.${exercise.category}`) === translatedCategory
+            )
+            .map(
+              (exercise: {
+                id: string;
+                name: string;
+                category: string;
+                bestResult: string;
+                isFavorite: boolean;
+              }) => ({
+                id: exercise.id,
+                name: t(exercise.name),
+                category: exercise.category,
+                bestResult: `${t("lastSet")}: ${exercise.bestResult}`,
+                isFavorite: exercise.isFavorite,
+              })
+            );
+
+          localStorage.setItem("exercisesData", JSON.stringify(filteredData));
+          setData(filteredData);
+        }
+      }
+    } catch (error) {
+      message.error(t("nameChangeFailed"));
+    }
+  };
+
+  const handleEditClick = (exerciseId: string, currentName: string) => {
+    setCurrentEditingId(exerciseId);
+    setNewName(currentName);
+    setEditMode(true);
+    setIsModalOpen(true);
+  };
+
+  const handleEditKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter" && currentEditingId) {
+      changeExerciseName(currentEditingId, newName);
+      setEditMode(false);
+      setCurrentEditingId(null);
+      setIsModalOpen(false);
+    }
+  };
+
+  const handleBlur = () => {
+    if (currentEditingId) {
+      changeExerciseName(currentEditingId, newName);
+      setEditMode(false);
+      setCurrentEditingId(null);
+      setIsModalOpen(false);
+    }
+  };
+
   return (
     <>
       {loading ? (
@@ -247,7 +336,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
                           <p className={styles.confirm}>
                             {t("confirmDeletingExercise")}
                           </p>
-                          <div className={styles.delete}>
+                          <div className={styles.deleteSave}>
                             <ResetButton
                               children={t("delete")}
                               onClick={() => handleDeleteCard(item.id)}
@@ -257,8 +346,41 @@ export const Exercises: React.FC<ExercisesProps> = ({
                         </CustomModal>
                       )}
                     </div>
-                    {item.name}
-                    <div className={styles.favoriteIcon}>
+                    {currentEditingId === item.id && editMode ? (
+                      <CustomModal
+                        open={isModalOpen}
+                        onCancel={() => {
+                          handleCancel();
+                          setNewName(item.name);
+                          setEditMode(false);
+                          setCurrentEditingId(null);
+                        }}
+                        footer={false}
+                      >
+                        <div className={styles.inputContainer}>
+                          <input
+                            type="text"
+                            value={newName}
+                            className={styles.editInput}
+                            onChange={(e) => setNewName(e.target.value)}
+                            onKeyDown={handleEditKeyDown}
+                            onBlur={handleBlur}
+                          />
+                        </div>
+                        <div className={styles.deleteSave}>
+                          <CustomButton
+                            children={t("save")}
+                            onClick={() =>
+                              changeExerciseName(currentEditingId, newName)
+                            }
+                            icon={<CheckCircleOutlined />}
+                          />
+                        </div>
+                      </CustomModal>
+                    ) : (
+                      <span>{item.name}</span>
+                    )}
+                    <div className={styles.options}>
                       <Tooltip title={t("addToFavorite")}>
                         <StarFilled
                           className={`${styles.star} ${
@@ -267,6 +389,15 @@ export const Exercises: React.FC<ExercisesProps> = ({
                           onClick={(e) => {
                             e.stopPropagation();
                             toggleFavorite(item.id, item.isFavorite);
+                          }}
+                        />
+                      </Tooltip>
+                      <Tooltip title={t("editName")}>
+                        <EditOutlined
+                          className={styles.editIcon}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleEditClick(item.id, item.name);
                           }}
                         />
                       </Tooltip>

@@ -19,12 +19,17 @@
   justify-content: end;
 }
 
-.favoriteIcon {
+.options {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   margin-top: 10px;
   margin-bottom: -15px;
 }
 
-.deleteIcon {
+.deleteIcon,
+.editIcon {
+  font-size: 1.2rem;
   svg {
     color: lightgray;
     transition: 0.4s all;
@@ -42,7 +47,7 @@
   color: #ffffff !important;
 }
 
-.delete {
+.deleteSave {
   text-align: center;
 }
 
@@ -59,4 +64,23 @@
 
 .star.active {
   color: gold;
+}
+
+.inputContainer {
+  height: 50px;
+  margin: 25px;
+  text-align: center;
+}
+.editInput {
+  border: none;
+  color: #ffffff;
+  background-color: transparent;
+  border-bottom: 1px solid #ffffff;
+  transition: all 0.3s ease;
+  border-radius: 0px;
+  height: 28px;
+
+  &:focus {
+    outline: none;
+  }
 }
