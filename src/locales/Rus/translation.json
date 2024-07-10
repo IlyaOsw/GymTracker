@@ -149,7 +149,7 @@
     "errorAddingExercise": "Ошибка при добавлении упражнения",
     "exerciseDeleted": "Упражнение успешно удалено",
     "errorDeletingExercise": "Ошибка при удалении упражнения",
-    "addToFavorite": "Добавить в избранное",
+    "favorite": "Избранное",
     "errorUpdatingFavorite": "Ошибка при добавлении в избранное",
     "addedToFavorite": "Успешно добавлено в избранное",
     "removedFromFavorite": "Успешно удалено из избранного",
@@ -169,6 +169,6 @@
     "exerciseDataSaved": "Данные упражнения сохранены",
     "errorSavingExerciseData": "Ошибка при сохранении данных упражнения",
     "enterWorkingWeight": "Пожалуйста введите свой рабочий вес",
-    "editName": "Изменить название упражнения",
+    "editName": "Изменить название",
     "nameChangeFailed": "Изменение названия не удалось"
 }

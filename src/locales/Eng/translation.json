@@ -149,7 +149,7 @@
     "errorAddingExercise": "Error adding exercise",
     "exerciseDeleted": "Exercise successfully deleted",
     "errorDeletingExercise": "Error deleting exercise",
-    "addToFavorite": "Add to favorite",
+    "favorite": "Favorite",
     "errorUpdatingFavorite": "Error when adding to favorites",
     "addedToFavorite": "Successfully added to favorite",
     "removedFromFavorite": "Successfully removed from favorite",
@@ -169,7 +169,7 @@
     "exerciseDataSaved": "Exercise data saved",
     "errorSavingExerciseData": "Error saving exercise data",
     "enterWorkingWeight": "Please enter your working weight",
-    "editName": "Edit exercise name",
+    "editName": "Edit exercise",
     "nameChangeFailed": "Failed to change the name"
 }
 

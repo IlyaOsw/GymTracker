@@ -101,7 +101,7 @@ export interface CustomButtonProps {
   children?: React.ReactNode;
   icon?: React.ReactNode;
   className?: string;
-  onClick?: () => void;
+  onClick?: (e: any) => void;
   text?: string | any;
   textAlign?: "start" | "center" | "end";
   htmlType?: "button" | "submit" | "reset";
@@ -266,3 +266,31 @@ export interface Approach {
   reps: number;
   weight: number;
 }
+
+export type ExerciseCardPropsType = {
+  item: Exercise;
+  onSelectExercise: (item: Exercise) => void;
+  category: string;
+  setData: (value: Exercise[]) => void;
+  setLoading: (value: boolean) => void;
+};
+
+export type CardOptionsPropsType = {
+  item: Exercise;
+  category: string;
+  setData: (value: Exercise[]) => void;
+  setCurrentEditingId: (value: string) => void;
+  setNewName: (value: string) => void;
+  setEditMode: (value: boolean) => void;
+  setIsModalOpen: (value: boolean) => void;
+};
+
+export type DeleteIconPropsType = {
+  setLoading: (value: boolean) => void;
+  setIsModalOpen: (value: boolean) => void;
+  category: string;
+  setData: (value: Exercise[]) => void;
+  isModalOpen: boolean;
+  handleCancel: () => void;
+  item: Exercise;
+};

@@ -1,0 +1,29 @@
+.deleteIconBlock {
+  display: flex;
+  justify-content: end;
+
+  .deleteIcon {
+    font-size: 1.2rem;
+    margin: 10px 15px 0px 0px;
+
+    svg {
+      color: lightgray;
+      transition: 0.4s all;
+
+      &:hover {
+        color: gray;
+      }
+    }
+  }
+}
+
+.confirm {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 25px;
+  color: #ffffff !important;
+}
+
+.deleteSave {
+  text-align: center;
+}
