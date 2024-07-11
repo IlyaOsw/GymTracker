@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Empty, message } from "antd";
+import { message } from "antd";
 import { useTranslation } from "react-i18next";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -59,8 +59,6 @@ export const Exercises: React.FC<ExercisesProps> = ({
               }));
             localStorage.setItem("exercisesData", JSON.stringify(filteredData));
             setData(filteredData);
-          } else {
-            setData([]);
           }
         }
         setLoading(false);

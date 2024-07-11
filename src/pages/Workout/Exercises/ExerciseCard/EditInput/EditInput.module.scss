@@ -1,0 +1,16 @@
+.editInput {
+  font-size: 1.1rem;
+  border: none;
+  color: #ffffff;
+  background-color: transparent;
+  border-bottom: 1px solid #ffffff;
+  transition: all 0.3s ease;
+  border-radius: 0px;
+  width: 300px;
+  padding-bottom: 5px;
+  text-align: center;
+
+  &:focus {
+    outline: none;
+  }
+}

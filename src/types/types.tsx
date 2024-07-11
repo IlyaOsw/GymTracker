@@ -146,7 +146,7 @@ export interface PasswordInputProps {
 }
 
 export interface ResetBtnType {
-  onClick?: () => void;
+  onClick?: (e: any) => void;
   children?: string;
   icon?: ReactNode;
 }
@@ -246,7 +246,7 @@ export type CloseIconType = {
 
 export interface CustomModalProps {
   open?: boolean;
-  onCancel?: () => void;
+  onCancel?: (e: any) => void;
   footer?: React.ReactNode;
   children?: React.ReactNode;
 }
@@ -279,10 +279,9 @@ export type CardOptionsPropsType = {
   item: Exercise;
   category: string;
   setData: (value: Exercise[]) => void;
-  setCurrentEditingId: (value: string) => void;
+  setCurrentEditingId: (value: string | null) => void;
   setNewName: (value: string) => void;
   setEditMode: (value: boolean) => void;
-  setIsModalOpen: (value: boolean) => void;
 };
 
 export type DeleteIconPropsType = {
@@ -291,6 +290,17 @@ export type DeleteIconPropsType = {
   category: string;
   setData: (value: Exercise[]) => void;
   isModalOpen: boolean;
-  handleCancel: () => void;
+  handleCancel: (e: any) => void;
   item: Exercise;
+};
+
+export type EditInputPropsType = {
+  newName: string;
+  editMode: boolean;
+  currentEditingId: string | null;
+  setCurrentEditingId: (value: string | null) => void;
+  category: string;
+  setData: (value: Exercise[]) => void;
+  setEditMode: (value: boolean) => void;
+  setNewName: (value: string) => void;
 };

@@ -59,19 +59,20 @@ export const DeleteIcon: React.FC<DeleteIconPropsType> = ({
             await updateDoc(exercisesDocRef, {
               exercises: updatedExercises,
             });
-            message.success(t("exerciseDeleted"));
 
-            const translatedCategory = t(`categories.${category}`);
             const filteredData = updatedExercises.filter(
               (exercise: Exercise) =>
-                t(`categories.${exercise.category}`) === translatedCategory
+                t(`categories.${exercise.category}`) ===
+                t(`categories.${category}`)
             );
             setData(filteredData);
             localStorage.setItem("exercisesData", JSON.stringify(filteredData));
+            message.success(t("exerciseDeleted"));
           }
         }
       }
       setConfirm(false);
+      setIsModalOpen(false);
     } catch (error) {
       message.error(t("errorDeletingExercise"));
     } finally {
@@ -80,7 +81,7 @@ export const DeleteIcon: React.FC<DeleteIconPropsType> = ({
   };
 
   return (
-    <div className={styles.deleteIconBlock}>
+    <>
       <Tooltip title={t("deleteExercise")}>
         <CloseOutlined
           className={styles.deleteIcon}
@@ -91,17 +92,27 @@ export const DeleteIcon: React.FC<DeleteIconPropsType> = ({
         />
       </Tooltip>
       {confirm && (
-        <CustomModal open={isModalOpen} onCancel={handleCancel} footer={false}>
+        <CustomModal
+          open={isModalOpen}
+          onCancel={(e) => {
+            handleCancel(e);
+            setIsModalOpen(false);
+          }}
+          footer={false}
+        >
           <p className={styles.confirm}>{t("confirmDeletingExercise")}</p>
           <div className={styles.deleteSave}>
             <ResetButton
               children={t("delete")}
-              onClick={() => handleDeleteCard(item.id)}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDeleteCard(item.id);
+              }}
               icon={<DeleteOutlined />}
             />
           </div>
         </CustomModal>
       )}
-    </div>
+    </>
   );
 };

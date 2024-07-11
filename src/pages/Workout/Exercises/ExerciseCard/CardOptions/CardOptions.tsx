@@ -16,7 +16,6 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
   setCurrentEditingId,
   setNewName,
   setEditMode,
-  setIsModalOpen,
 }) => {
   const { t } = useTranslation();
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -68,7 +67,6 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
     setCurrentEditingId(exerciseId);
     setNewName(currentName);
     setEditMode(true);
-    setIsModalOpen(true);
   };
 
   return (
