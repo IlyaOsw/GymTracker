@@ -50,7 +50,7 @@ export const ConfirmPasswordInput: React.FC<CustomPassInputProps> = ({
         label={
           <span className={styles.inputLabel}>{t("confirmPassword")}</span>
         }
-        name="password2"
+        name="confirm password"
         dependencies={["password"]}
         rules={[
           {

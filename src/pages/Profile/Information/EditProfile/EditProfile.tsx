@@ -16,7 +16,6 @@ import { EditForm } from "./EditForm/EditForm";
 export const EditProfile: React.FC<EditProfilePropsType> = ({ onClose }) => {
   const { t } = useTranslation();
   const { ref, controls } = useAnimatedInView();
-
   const [isModalOpen, setIsModalOpen] = useState(true);
 
   const handleCancel = () => {

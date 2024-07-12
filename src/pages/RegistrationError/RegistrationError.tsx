@@ -22,9 +22,11 @@ const SubTitle: React.FC = () => {
 
 const RegistrationError: React.FC = () => {
   const { t } = useTranslation();
+
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
+
   return (
     <>
       <PageWrapper>

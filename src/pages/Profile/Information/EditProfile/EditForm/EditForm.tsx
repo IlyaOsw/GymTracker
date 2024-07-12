@@ -4,6 +4,7 @@ import countries from "react-select-country-list";
 import { useTranslation } from "react-i18next";
 import { getAuth } from "firebase/auth";
 import { doc, getDoc, setDoc, getFirestore } from "firebase/firestore";
+import { SyncOutlined } from "@ant-design/icons";
 
 import { CustomButton } from "../../../../../components/CustomButton/CustomButton";
 import { CustomInput } from "../../../../../components/CustomInput/CustomInput";
@@ -22,7 +23,6 @@ export const EditForm: React.FC<EditFormPropsType> = ({
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const { updateUserData } = useUserContext();
-
   const [filteredCountries, setFilteredCountries] = useState(countryOptions);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -212,7 +212,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
             onChange={handleDateOfBirthChange}
           />
         </Form.Item>
-        <CustomButton onClick={handleUpdateInformation}>
+        <CustomButton onClick={handleUpdateInformation} icon={<SyncOutlined />}>
           {t("update")}
         </CustomButton>
       </div>

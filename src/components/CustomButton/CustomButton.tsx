@@ -15,8 +15,6 @@ export const CustomButton = ({
 
   return (
     <Button
-      type="primary"
-      shape="round"
       icon={icon}
       size={size}
       className={`${styles.button} ${className}`}

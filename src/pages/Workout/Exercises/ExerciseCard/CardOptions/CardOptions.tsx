@@ -6,6 +6,7 @@ import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 import { CardOptionsPropsType } from "../../../../../types/types";
+import { CustomButton } from "../../../../../components/CustomButton/CustomButton";
 
 import styles from "./CardOptions.module.scss";
 
@@ -71,7 +72,7 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
 
   return (
     <div className={styles.options}>
-      <button
+      <CustomButton
         onClick={(e) => {
           e.stopPropagation();
           toggleFavorite(item.id, item.isFavorite);
@@ -79,9 +80,8 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
         className={`${styles.star} ${item.isFavorite ? styles.active : ""}`}
       >
         <StarFilled /> {t("favorite")}
-      </button>
-      <button
-        className={styles.editBtn}
+      </CustomButton>
+      <CustomButton
         onClick={(e) => {
           e.stopPropagation();
           handleEditClick(item.id, item.name);
@@ -89,7 +89,7 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
       >
         <EditOutlined className={styles.editIcon} />
         {t("editName")}
-      </button>
+      </CustomButton>
     </div>
   );
 };

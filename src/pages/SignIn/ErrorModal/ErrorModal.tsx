@@ -1,5 +1,5 @@
 import React from "react";
-import { Result, Modal, ConfigProvider } from "antd";
+import { Result, ConfigProvider } from "antd";
 import { useTranslation } from "react-i18next";
 
 import { ErrorModalProps } from "../../../types/types";

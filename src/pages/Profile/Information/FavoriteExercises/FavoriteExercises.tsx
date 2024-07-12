@@ -77,7 +77,6 @@ export const FavoriteExercises: React.FC = () => {
       const db = getFirestore();
       const auth = getAuth();
       const user = auth.currentUser;
-
       if (user) {
         const userId = user.uid;
         const exercisesDocRef = doc(db, "exercises", userId);
@@ -97,7 +96,6 @@ export const FavoriteExercises: React.FC = () => {
           await updateDoc(exercisesDocRef, {
             exercises: updatedExercises,
           });
-
           const updatedFavorites = updatedExercises.filter(
             (exercise: Exercise) => exercise.isFavorite
           );

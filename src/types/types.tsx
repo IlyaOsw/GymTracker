@@ -226,6 +226,11 @@ export interface IAddExercise {
   onAddExercise: () => void;
 }
 
+export interface ProtectedRouteProps {
+  isAuthenticated: boolean;
+  children: React.ReactNode;
+}
+
 export interface ExercisesProps {
   category: string;
   updateTrigger: number;
@@ -294,6 +299,17 @@ export type DeleteIconPropsType = {
   item: Exercise;
 };
 
+export type ModalDeletePropsType = {
+  setLoading: (value: boolean) => void;
+  setIsModalOpen: (value: boolean) => void;
+  category: string;
+  setData: (value: Exercise[]) => void;
+  isModalOpen: boolean;
+  handleCancel: (e: any) => void;
+  item: Exercise;
+  setConfirm: (value: boolean) => void;
+};
+
 export type EditInputPropsType = {
   newName: string;
   editMode: boolean;
@@ -303,4 +319,12 @@ export type EditInputPropsType = {
   setData: (value: Exercise[]) => void;
   setEditMode: (value: boolean) => void;
   setNewName: (value: string) => void;
+};
+
+export type InputContainerPropsType = {
+  inputValue: string;
+  reps: number;
+  setReps: (reps: number) => void;
+  setResult: (result: number) => void;
+  setInputValue: (inputValue: string) => void;
 };

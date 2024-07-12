@@ -17,10 +17,9 @@ export const UserInfo: React.FC = () => {
   const { t } = useTranslation();
   const { updateUserData } = useUserContext();
   const [userData, setUserData] = useState<UserData | null>(null);
+  const auth = getAuth();
 
   useEffect(() => {
-    const auth = getAuth();
-
     const fetchData = async (user: User | null) => {
       if (user) {
         const data = await fetchUserData(user.uid);

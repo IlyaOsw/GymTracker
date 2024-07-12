@@ -25,12 +25,10 @@ export const AddExercise: React.FC<IAddExercise> = ({
       message.error(t("typeExercise"));
       return;
     }
-
     try {
       const db = getFirestore();
       const auth = getAuth();
       const user = auth.currentUser;
-
       if (user) {
         const userId = user.uid;
         const exercise = {
@@ -40,7 +38,6 @@ export const AddExercise: React.FC<IAddExercise> = ({
           bestResult: 0,
           isFavorite: false,
         };
-
         const exercisesDocRef = doc(db, "exercises", userId);
         const docSnapshot = await getDoc(exercisesDocRef);
 

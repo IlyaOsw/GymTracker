@@ -5,32 +5,15 @@
   margin: 15px 0px;
 
   button {
-    border-radius: 25px;
-    color: #ffffff;
-    padding: 6px 10px;
-    border: none;
     display: flex;
     align-items: center;
-    font-weight: 700;
     transition:
       background-color 0.3s,
       transform 0.3s;
-    box-shadow: 0 4px 8px rgba(80, 80, 80, 0.1);
-
-    svg {
-      margin-right: 5px;
-      transition: transform 0.3s;
-      font-size: 1.2rem;
-    }
-  }
-
-  .editBtn {
-    background-image: linear-gradient(to right, #0097b2, #006a7d);
+    height: 32px;
+    text-transform: none;
 
     &:hover {
-      background-color: #555555;
-      transform: scale(1.05);
-
       svg {
         transform: rotate(20deg);
       }
@@ -38,21 +21,13 @@
   }
 
   .star {
-    background-image: linear-gradient(to right, #0097b2, #006a7d);
-    color: #ffffff;
-
     transition:
       background-color 0.3s,
       color 0.3s,
       transform 0.3s;
 
-    &:hover {
-      background-color: rgb(201, 174, 23);
-      transform: scale(1.03);
-    }
-
     &.active {
-      background-image: linear-gradient(to right, #888321, #b69d11);
+      background-image: linear-gradient(to right, #aea721, #c4ab19);
     }
 
     @media (max-width: 768px) {
@@ -62,13 +37,11 @@
         transform 0s;
 
       &:hover {
-        background-color: #444444;
-        color: rgb(251, 217, 27);
         transform: none;
       }
 
       &.active {
-        background-color: rgb(201, 174, 23);
+        background-image: linear-gradient(to right, #aea721, #c4ab19);
         color: #ffffff;
       }
     }

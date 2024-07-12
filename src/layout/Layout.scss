@@ -71,39 +71,33 @@ select {
   }
 }
 
-/* Общие стили для scrollbar */
 ::-webkit-scrollbar {
-  width: 1px; /* Ширина полосы прокрутки */
+  width: 1px;
 }
 
-/* Кнопка для скролла вверх */
 ::-webkit-scrollbar-button:start:decrement,
 ::-webkit-scrollbar-button:end:increment {
-  display: none; /* Скрыть кнопки */
+  display: none;
 }
 
-/* Фон scrollbar */
 ::-webkit-scrollbar-track {
-  background-color: #141414; /* Цвет фона */
-  border-radius: 0px; /* Скругление углов */
+  background-color: #141414;
+  border-radius: 0px;
 }
 
-/* Кнопка ползунка scrollbar */
 ::-webkit-scrollbar-thumb {
-  background-color: #0097b2; /* Цвет кнопки */
-  border-radius: 15px; /* Скругление углов */
+  background-color: #0097b2;
+  border-radius: 15px;
 }
 
-/* Hover эффект на scrollbar */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #888; /* Цвет при наведении */
+  background-color: #888;
 }
 
 * {
   cursor: url("../../public/assets/cursorDefault.png"), auto !important;
 }
 
-/* Убирает стрелочки в Chrome, Safari, Edge и Opera */
 ::-webkit-outer-spin-button,
 ::-webkit-inner-spin-button {
   -webkit-appearance: none;
