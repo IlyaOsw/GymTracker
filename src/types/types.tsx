@@ -328,3 +328,8 @@ export type InputContainerPropsType = {
   setResult: (result: number) => void;
   setInputValue: (inputValue: string) => void;
 };
+
+export type ConfirmDeleteAccountPropsType = {
+  confirm: boolean;
+  setConfirm: (value: boolean) => void;
+};
