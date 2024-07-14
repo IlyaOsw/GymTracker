@@ -61,18 +61,18 @@ export const Information: React.FC = () => {
       </div>
       <div className={styles.buttons}>
         <Button
-          icon={<UserDeleteOutlined />}
-          className={styles.btn}
-          onClick={handleConfirmDelete}
-        >
-          <span className={styles.buttonText}>{t("deleteAccount")}</span>
-        </Button>
-        <Button
           icon={<EditOutlined />}
           onClick={handleEditProfile}
           className={styles.btn}
         >
           <span className={styles.buttonText}>{t("editProfile")}</span>
+        </Button>
+        <Button
+          icon={<UserDeleteOutlined />}
+          className={styles.btn}
+          onClick={handleConfirmDelete}
+        >
+          <span className={styles.buttonText}>{t("deleteAccount")}</span>
         </Button>
       </div>
       <Divider style={{ backgroundColor: "gray" }} />

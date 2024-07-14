@@ -278,6 +278,8 @@ export type ExerciseCardPropsType = {
   category: string;
   setData: (value: Exercise[]) => void;
   setLoading: (value: boolean) => void;
+  activeCardId: string | null;
+  setActiveCardId: (value: string | null) => void;
 };
 
 export type CardOptionsPropsType = {

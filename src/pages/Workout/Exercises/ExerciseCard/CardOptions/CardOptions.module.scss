@@ -16,6 +16,10 @@
     &:hover {
       svg {
         transform: rotate(20deg);
+
+        @media (max-width: 768px) {
+          transform: none;
+        }
       }
     }
   }
@@ -27,22 +31,31 @@
       transform 0.3s;
 
     &.active {
-      background-image: linear-gradient(to right, #aea721, #c4ab19);
+      background-image: linear-gradient(to right, #aea721, #c4ab19) !important;
+      box-shadow: none !important;
+      color: #ffffff !important;
+    }
+
+    &:hover {
+      background-image: linear-gradient(to right, #aea721, #c4ab19) !important;
+      box-shadow: none !important;
+      color: #ffffff !important;
     }
 
     @media (max-width: 768px) {
-      transition:
-        background-color 0s,
-        color 0s,
-        transform 0s;
+      transition: none;
 
       &:hover {
         transform: none;
       }
 
       &.active {
-        background-image: linear-gradient(to right, #aea721, #c4ab19);
-        color: #ffffff;
+        background-image: linear-gradient(
+          to right,
+          #aea721,
+          #c4ab19
+        ) !important;
+        box-shadow: none !important;
       }
     }
   }

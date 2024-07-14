@@ -13,6 +13,8 @@ export const ExerciseCard: React.FC<ExerciseCardPropsType> = ({
   category,
   setData,
   setLoading,
+  activeCardId,
+  setActiveCardId,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [newName, setNewName] = useState<string>("");
@@ -24,8 +26,18 @@ export const ExerciseCard: React.FC<ExerciseCardPropsType> = ({
     setIsModalOpen(false);
   };
 
+  const handleCardClick = (item: any) => {
+    setActiveCardId(item.id);
+    onSelectExercise(item);
+  };
+
   return (
-    <div className={styles.cardItem} onClick={() => onSelectExercise(item)}>
+    <div
+      className={`${styles.cardItem} ${
+        activeCardId === item.id ? styles.active : ""
+      }`}
+      onClick={() => handleCardClick(item)}
+    >
       <DeleteIcon
         setLoading={setLoading}
         setIsModalOpen={setIsModalOpen}

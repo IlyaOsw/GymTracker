@@ -20,6 +20,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
   const { t } = useTranslation();
   const [data, setData] = useState<Exercise[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   useEffect(() => {
     const storedData = JSON.parse(
@@ -87,6 +88,8 @@ export const Exercises: React.FC<ExercisesProps> = ({
                   category={category}
                   setData={setData}
                   setLoading={setLoading}
+                  activeCardId={activeCardId}
+                  setActiveCardId={setActiveCardId}
                 />
               ))
             ) : (
