@@ -6,8 +6,10 @@ import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 import { HashRouter } from "react-router-dom";
 import { getAuth } from "firebase/auth";
+import { Provider } from "react-redux";
 
 import App from "./App";
+import { store } from "./state/store";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBg1LS3f644UZ6uYC6KTnakEaEJFTwPEhc",
@@ -32,7 +34,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </HashRouter>
   </React.StrictMode>
 );
