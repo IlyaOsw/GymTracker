@@ -55,6 +55,11 @@
       }
 
       &.active {
+        background-image: linear-gradient(
+          to right,
+          #debf10,
+          #b5ad1b
+        ) !important;
         box-shadow: none !important;
       }
     }
