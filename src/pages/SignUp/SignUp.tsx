@@ -6,7 +6,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { CheckCircleOutlined, SyncOutlined } from "@ant-design/icons";
 import { ref, uploadBytes } from "firebase/storage";
-import { v4 as uuidv4 } from "uuid";
+import { useSelector } from "react-redux";
 
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
@@ -21,50 +21,11 @@ import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
 import { Address } from "./Address/Address";
 import styles from "./SignUp.module.scss";
 
-const defaultExercises: Exercise[] = [
-  {
-    bestResult: 0,
-    category: "Back",
-    id: uuidv4(),
-    isFavorite: false,
-    name: "Pull-down to the chest",
-  },
-  {
-    bestResult: 0,
-    category: "Legs",
-    id: uuidv4(),
-    isFavorite: false,
-    name: "Barbell squats",
-  },
-  {
-    bestResult: 0,
-    category: "Chest",
-    id: uuidv4(),
-    isFavorite: false,
-    name: "Bench press",
-  },
-  {
-    bestResult: 0,
-    category: "Hands",
-    id: uuidv4(),
-    isFavorite: false,
-    name: "Bicep curls",
-  },
-  {
-    bestResult: 0,
-    category: "Shoulders",
-    id: uuidv4(),
-    isFavorite: false,
-    name: "Seated dumbbell press",
-  },
-];
-
 const SignUp: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const auth = getAuth();
-
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
@@ -74,6 +35,9 @@ const SignUp: React.FC = () => {
   const [country, setCountry] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
+  const exercises = useSelector(
+    (state: { exercises: Exercise[] }) => state.exercises
+  );
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -154,7 +118,7 @@ const SignUp: React.FC = () => {
       const db = getFirestore();
       await setDoc(doc(db, "users", user.uid), userData);
       await setDoc(doc(db, "exercises", user.uid), {
-        exercises: defaultExercises,
+        exercises: exercises,
       });
 
       navigate("/registrationsuccess");

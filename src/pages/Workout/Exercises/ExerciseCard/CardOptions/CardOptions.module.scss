@@ -29,16 +29,19 @@
       background-color 0.3s,
       color 0.3s,
       transform 0.3s;
+    background-image: none;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    box-shadow: none;
 
     &.active {
-      background-image: linear-gradient(to right, #aea721, #c4ab19) !important;
-      box-shadow: none !important;
+      background-image: linear-gradient(to right, #debf10, #b5ad1b) !important;
       color: #ffffff !important;
+      border: none;
     }
 
     &:hover {
-      background-image: linear-gradient(to right, #aea721, #c4ab19) !important;
-      box-shadow: none !important;
+      background-image: linear-gradient(to right, #debf10, #b5ad1b) !important;
       color: #ffffff !important;
     }
 
@@ -46,15 +49,11 @@
       transition: none;
 
       &:hover {
+        background-image: none !important;
         transform: none;
       }
 
       &.active {
-        background-image: linear-gradient(
-          to right,
-          #aea721,
-          #c4ab19
-        ) !important;
         box-shadow: none !important;
       }
     }
