@@ -335,3 +335,15 @@ export type ConfirmDeleteAccountPropsType = {
   confirm: boolean;
   setConfirm: (value: boolean) => void;
 };
+
+export interface CountrySelectProps {
+  country?: string | undefined;
+  handleCountryChange: (value: string) => void;
+  filterOptions: (value: string) => void;
+  filteredCountries: { value: string; label: string }[];
+}
+
+export interface ExerciseItemProps {
+  item: Exercise;
+  onDelete: (id: string) => void;
+}

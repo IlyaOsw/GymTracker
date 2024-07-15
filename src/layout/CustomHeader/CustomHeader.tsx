@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Layout, Button } from "antd";
 import { MenuOutlined, MoonFilled, SunOutlined } from "@ant-design/icons";
 
 import { MenuItem } from "../../types/types";
 import i18n from "../../i18n";
+import { useResponsive } from "../../hooks/useResponsive";
 
 import styles from "./CustomHeader.module.scss";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
@@ -11,16 +12,62 @@ import { Navbar } from "./Navbar/Navbar";
 
 const { Header } = Layout;
 
-const headerStyle: React.CSSProperties = {
-  color: "#fff",
-  height: 70,
-  paddingInline: 40,
-  lineHeight: "64px",
-  backgroundColor: "#141414",
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-};
+export const CustomHeader: React.FC = React.memo(() => {
+  const { isMobile, logoSrc } = useResponsive(992);
+  const [theme, setTheme] = useState("Dark");
+  const [language, setLanguage] = useState("Eng");
+  const [open, setOpen] = useState(false);
+
+  const handleThemeClick = ({ key }: { key: string }) => {
+    const selectedTheme = themeItems.find((item) => item.key === key);
+    if (selectedTheme) {
+      setTheme(selectedTheme.label);
+    }
+  };
+
+  const handleLanguageClick = ({ key }: { key: string }) => {
+    const selectedLanguage = languageItems.find((item) => item.key === key);
+    if (selectedLanguage) {
+      setLanguage(selectedLanguage.label);
+    }
+  };
+
+  const changeLanguage = (language: string) => i18n.changeLanguage(language);
+
+  return (
+    <Header className={styles.header}>
+      <div className={styles.logo}>
+        <img src={logoSrc} alt="Gym Tracker Logo" />
+      </div>
+      {isMobile ? (
+        <Button className={styles.burgerBtn} onClick={() => setOpen(true)}>
+          <MenuOutlined style={{ color: "white" }} />
+        </Button>
+      ) : (
+        <Navbar
+          handleThemeClick={handleThemeClick}
+          themeItems={themeItems}
+          theme={theme}
+          handleLanguageClick={handleLanguageClick}
+          languageItems={languageItems}
+          language={language}
+          changeLanguage={changeLanguage}
+        />
+      )}
+      <BurgerMenu
+        open={open}
+        setOpen={setOpen}
+        theme={theme}
+        handleThemeClick={handleThemeClick}
+        themeItems={themeItems}
+        language={language}
+        handleLanguageClick={handleLanguageClick}
+        languageItems={languageItems}
+        changeLanguage={changeLanguage}
+      />
+    </Header>
+  );
+});
 
 const themeItems: MenuItem[] = [
   {
@@ -63,86 +110,3 @@ const languageItems: MenuItem[] = [
     ),
   },
 ];
-
-const mobileLogoSrc =
-  process.env.PUBLIC_URL + "/assets/Logo/LogoMainMobile.svg";
-const desktopLogoSrc = process.env.PUBLIC_URL + "/assets/Logo/LogoMain.svg";
-
-export const CustomHeader: React.FC = React.memo(() => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 992);
-  const [logoSrc, setLogoSrc] = useState(
-    isMobile ? mobileLogoSrc : desktopLogoSrc
-  );
-  const [theme, setTheme] = useState("Dark");
-  const [language, setLanguage] = useState("Eng");
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setIsMobile(width <= 992);
-      setLogoSrc(width <= 1200 ? mobileLogoSrc : desktopLogoSrc);
-    };
-
-    i18n.changeLanguage("en");
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const handleThemeClick = ({ key }: { key: string }) => {
-    const selectedTheme = themeItems.find((item) => item.key === key);
-    if (selectedTheme) {
-      setTheme(selectedTheme.label);
-    }
-  };
-
-  const handleLanguageClick = ({ key }: { key: string }) => {
-    const selectedLanguage = languageItems.find((item) => item.key === key);
-    if (selectedLanguage) {
-      setLanguage(selectedLanguage.label);
-    }
-  };
-
-  const showDrawer = () => setOpen(true);
-
-  const changeLanguage = (language: string): void => {
-    i18n.changeLanguage(language);
-  };
-
-  return (
-    <Header style={headerStyle} className={styles.header}>
-      <div className={styles.logo}>
-        <img src={logoSrc} alt="Gym Tracker Logo" />
-      </div>
-      {isMobile ? (
-        <Button className={styles.burgerBtn} onClick={showDrawer}>
-          <MenuOutlined style={{ color: "white" }} />
-        </Button>
-      ) : (
-        <Navbar
-          handleThemeClick={handleThemeClick}
-          themeItems={themeItems}
-          theme={theme}
-          handleLanguageClick={handleLanguageClick}
-          languageItems={languageItems}
-          language={language}
-          changeLanguage={changeLanguage}
-        />
-      )}
-      <BurgerMenu
-        open={open}
-        setOpen={setOpen}
-        theme={theme}
-        handleThemeClick={handleThemeClick}
-        themeItems={themeItems}
-        language={language}
-        handleLanguageClick={handleLanguageClick}
-        languageItems={languageItems}
-        changeLanguage={changeLanguage}
-      />
-    </Header>
-  );
-});

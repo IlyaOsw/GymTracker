@@ -9,17 +9,16 @@ import {
   animation,
   useAnimatedInView,
 } from "../../../hooks/useAnimatedInView ";
-
 import { HexagonLinkProps } from "../../../types/types";
 
 import styles from "./Diary.module.scss";
 
 const HexagonLink: React.FC<HexagonLinkProps> = ({ text }) => {
   const navigate = useNavigate();
+
   const handleClick = () => {
     navigate("/workout", { state: { title: text } });
   };
-
   return (
     <div className={styles.link}>
       <Hexagon text={text} onClick={handleClick} />

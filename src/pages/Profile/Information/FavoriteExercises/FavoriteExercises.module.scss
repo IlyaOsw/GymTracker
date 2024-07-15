@@ -5,72 +5,7 @@
   justify-content: center;
   flex-direction: column;
 
-  .collapse {
-    width: 320px;
-    background-color: #1a1a1a !important;
-    border-radius: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition:
-      box-shadow 0.3s ease,
-      transform 0.3s ease;
-
-    &:hover {
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    }
-
-    p {
-      color: #0097b2;
-      font-size: 1.2rem;
-      margin-left: -20px;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    span {
-      color: #ffffff;
-      font-size: 1rem;
-    }
-
-    svg {
-      color: #ffffff;
-      font-size: 1rem;
-      margin-top: 7px;
-      transition: color 0.3s ease;
-
-      &:hover {
-        color: #00bcd4;
-      }
-    }
-  }
-
-  .deleteIcon {
-    display: flex;
-    justify-content: end;
-    align-items: end;
-
-    svg {
-      color: lightgray;
-      transition: 0.4s all;
-
-      &:hover {
-        color: gray;
-      }
-    }
-  }
-
   @media (max-width: 992px) {
     width: 100%;
   }
-}
-
-.confirm {
-  text-align: center;
-  font-size: 1.2rem;
-  margin-top: 25px;
-  color: #ffffff !important;
-}
-
-.delete {
-  text-align: center;
 }

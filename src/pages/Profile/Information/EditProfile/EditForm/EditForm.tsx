@@ -1,4 +1,4 @@
-import { Form, ConfigProvider, Select, message } from "antd";
+import { Form, message } from "antd";
 import React, { useState, useEffect } from "react";
 import countries from "react-select-country-list";
 import { useTranslation } from "react-i18next";
@@ -12,8 +12,9 @@ import { Calendar } from "../../../../../components/Calendar/Calendar";
 import styles from "../EditProfile.module.scss";
 import { EditFormPropsType } from "../../../../../types/types";
 import { useUserContext } from "../../../../../context/UserContext";
+import { CountrySelect } from "../../../../../components/CountrySelect/CountrySelect";
+import { calculateAge } from "../../../../../utils/dateUtils";
 
-const { Option } = Select;
 const countryOptions = countries().getData();
 
 export const EditForm: React.FC<EditFormPropsType> = ({
@@ -57,22 +58,6 @@ export const EditForm: React.FC<EditFormPropsType> = ({
     };
     fetchUserData();
   }, [form]);
-
-  const calculateAge = (dateOfBirth: Date) => {
-    const currentDate = new Date();
-    const birthDate = new Date(dateOfBirth);
-
-    let age = currentDate.getFullYear() - birthDate.getFullYear();
-    const monthDifference = currentDate.getMonth() - birthDate.getMonth();
-
-    if (
-      monthDifference < 0 ||
-      (monthDifference === 0 && currentDate.getDate() < birthDate.getDate())
-    ) {
-      age--;
-    }
-    return age;
-  };
 
   const handleUpdateInformation = async () => {
     const auth = getAuth();
@@ -155,45 +140,12 @@ export const EditForm: React.FC<EditFormPropsType> = ({
           value={lastName}
           onChange={handleLastNameChange}
         />
-        <Form.Item
-          name="country"
-          label={<span className={styles.inputLabel}>{t("country")}</span>}
-          rules={[{ required: false }]}
-        >
-          <ConfigProvider
-            theme={{
-              components: {
-                Select: {
-                  colorTextPlaceholder: "#818181",
-                  colorText: "#ffffff",
-                  optionSelectedBg: "#0097b2",
-                  optionActiveBg: "#0097b2",
-                },
-              },
-            }}
-          >
-            <Select
-              placeholder={t("enterCountry")}
-              className={styles.selectField}
-              value={country}
-              onChange={handleCountryChange}
-              variant="borderless"
-              dropdownStyle={{ backgroundColor: "#282828" }}
-              showSearch
-              allowClear
-              filterOption={false}
-              onSearch={(value) => filterOptions(value)}
-            >
-              {filteredCountries.map(
-                (country: { value: string; label: string }) => (
-                  <Option key={country.value} value={country.label}>
-                    {country.label}
-                  </Option>
-                )
-              )}
-            </Select>
-          </ConfigProvider>
-        </Form.Item>
+        <CountrySelect
+          country={country}
+          handleCountryChange={handleCountryChange}
+          filterOptions={filterOptions}
+          filteredCountries={filteredCountries}
+        />
         <CustomInput
           name="city"
           text={t("city")}
