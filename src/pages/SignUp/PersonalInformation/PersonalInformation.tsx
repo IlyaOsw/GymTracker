@@ -60,8 +60,9 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
                   Select: {
                     colorTextPlaceholder: "#818181",
                     colorText: "#ffffff",
-                    optionSelectedBg: "#0097b2",
-                    optionActiveBg: "#0097b2",
+                    optionSelectedBg: "#404040",
+                    optionActiveBg: "#404040",
+                    colorBgElevated: "#282828",
                   },
                 },
               }}
@@ -71,9 +72,6 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
                 onChange={handleGenderChange}
                 className={styles.selectField}
                 variant="borderless"
-                dropdownStyle={{
-                  backgroundColor: "#282828",
-                }}
               >
                 <Option value="male">{t("male")}</Option>
                 <Option value="female">{t("female")}</Option>

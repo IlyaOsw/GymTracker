@@ -11,6 +11,7 @@
   &.active {
     border: 1px solid rgb(165, 165, 165);
     box-shadow: 0 4px 8px rgba(80, 80, 80, 0.4);
+    background-color: #3a3a3a;
   }
 
   &:hover {
@@ -31,16 +32,17 @@
 
   @media (max-width: 768px) {
     width: calc(100% - 20px);
+
     &:hover {
       transform: none;
       box-shadow: none;
-      background-color: #282828;
+      background-color: #3a3a3a;
     }
 
     &:active {
       transform: none;
       box-shadow: none;
-      background-color: #282828;
+      background-color: #3a3a3a;
     }
   }
 

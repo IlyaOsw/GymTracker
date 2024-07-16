@@ -15,6 +15,7 @@ import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 import { ResetButton } from "../../components/ResetButton/ResetButton";
 import { storage } from "../..";
 import { Exercise } from "../../types/types";
+import { calculateAge } from "../../utils/dateUtils";
 
 import { Registration } from "./Registration/Registration";
 import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
@@ -46,6 +47,11 @@ const SignUp: React.FC = () => {
   const onReset = () => {
     form.resetFields();
     message.success(t("reseted"));
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   };
 
   const handleEmailChange = (email: string) => setEmail(email);
@@ -71,22 +77,6 @@ const SignUp: React.FC = () => {
 
   const handleImageChange = (file: File) => setImage(file);
 
-  const calculateAge = (dateOfBirth: Date) => {
-    const currentDate = new Date();
-    const birthDate = new Date(dateOfBirth);
-
-    let age = currentDate.getFullYear() - birthDate.getFullYear();
-    const monthDifference = currentDate.getMonth() - birthDate.getMonth();
-
-    if (
-      monthDifference < 0 ||
-      (monthDifference === 0 && currentDate.getDate() < birthDate.getDate())
-    ) {
-      age--;
-    }
-    return age;
-  };
-
   const handleRegister = async () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -94,7 +84,6 @@ const SignUp: React.FC = () => {
         email,
         password
       );
-
       const user = userCredential.user;
       if (image) {
         const avatarRef = ref(storage, `avatar/${user.uid}`);
@@ -114,13 +103,10 @@ const SignUp: React.FC = () => {
           city: city || "",
         },
       };
-
-      const db = getFirestore();
-      await setDoc(doc(db, "users", user.uid), userData);
-      await setDoc(doc(db, "exercises", user.uid), {
+      await setDoc(doc(getFirestore(), "users", user.uid), userData);
+      await setDoc(doc(getFirestore(), "exercises", user.uid), {
         exercises: exercises,
       });
-
       navigate("/registrationsuccess");
     } catch (error) {
       navigate("/registrationerror");

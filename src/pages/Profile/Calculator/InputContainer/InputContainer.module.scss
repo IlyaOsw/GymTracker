@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-wrap: wrap;
 
   @media (max-width: 576px) {
     flex-direction: column;
@@ -31,7 +30,7 @@
 
   .weight,
   .reps {
-    height: 50px;
+    height: 46px;
     width: 200px;
     border-radius: 20px;
     background-color: #282828;
@@ -68,8 +67,8 @@
 
   .plusMinus {
     background-color: #0097b2;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     border-radius: 10px;
     display: flex;
     align-items: center;

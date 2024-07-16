@@ -347,3 +347,16 @@ export interface ExerciseItemProps {
   item: Exercise;
   onDelete: (id: string) => void;
 }
+
+export type TableFooterPropsType = {
+  selectedExercise: Exercise | null;
+  data: ExerciseTableType[];
+  setData: (value: ExerciseTableType[]) => void;
+  setEditWeight: (value: string | null) => void;
+};
+
+export type DeleteRowPropsType = {
+  selectedExercise: Exercise | null;
+  loadExerciseData: () => void;
+  record: ExerciseTableType;
+};

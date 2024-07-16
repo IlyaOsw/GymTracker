@@ -36,12 +36,9 @@ export const Exercises: React.FC<ExercisesProps> = ({
     const fetchExercises = async () => {
       setLoading(true);
       try {
-        const db = getFirestore();
-        const auth = getAuth();
-        const user = auth.currentUser;
+        const user = getAuth().currentUser;
         if (user) {
-          const userId = user.uid;
-          const exercisesDocRef = doc(db, "exercises", userId);
+          const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
           const exercisesDoc = await getDoc(exercisesDocRef);
           if (exercisesDoc.exists()) {
             const exercisesData = exercisesDoc.data();

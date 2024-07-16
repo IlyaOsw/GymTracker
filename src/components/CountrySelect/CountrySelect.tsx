@@ -28,8 +28,8 @@ export const CountrySelect: React.FC<CountrySelectProps> = ({
             Select: {
               colorTextPlaceholder: "#818181",
               colorText: "#ffffff",
-              optionSelectedBg: "#0097b2",
-              optionActiveBg: "#0097b2",
+              optionSelectedBg: "#404040",
+              optionActiveBg: "#404040",
             },
           },
         }}

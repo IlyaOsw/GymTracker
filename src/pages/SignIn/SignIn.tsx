@@ -22,7 +22,6 @@ const SignIn: React.FC = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const { login } = useAuth();
-
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errorModalOpen, setErrorModalOpen] = useState<boolean>(false);
@@ -35,8 +34,6 @@ const SignIn: React.FC = () => {
   const handleEmailChange = (value: string) => setEmail(value);
 
   const handlePasswordChange = (value: string) => setPassword(value);
-
-  const handleCloseErrorModal = () => setErrorModalOpen(false);
 
   const handleSignIn = async () => {
     try {
@@ -81,10 +78,8 @@ const SignIn: React.FC = () => {
             <Checkbox className={styles.checkboxRemember}>
               {t("rememberMe")}
             </Checkbox>
-            <Link to="/resetpassword">
-              <div className={styles.importantOption}>
-                {t("forgotPassword")}
-              </div>
+            <Link to="/resetpassword" className={styles.importantOption}>
+              {t("forgotPassword")}
             </Link>
           </motion.div>
           <CustomButton className={styles.signInBtn} onClick={handleSignIn}>
@@ -98,20 +93,18 @@ const SignIn: React.FC = () => {
             variants={animation}
           >
             <div className={styles.notRegistered}>{t("notRegistered")}</div>
-            <Link to="/signup">
-              <div className={styles.importantOption}>
-                {t("createAnAccount")}
-              </div>
+            <Link to="/signup" className={styles.importantOption}>
+              {t("createAnAccount")}
             </Link>
           </motion.div>
         </Form>
+        <ErrorModal
+          open={errorModalOpen}
+          onClose={() => setErrorModalOpen(false)}
+          message={errorMessage}
+        />
       </PageWrapper>
       <CustomFooter />
-      <ErrorModal
-        open={errorModalOpen}
-        onClose={handleCloseErrorModal}
-        message={errorMessage}
-      />
     </>
   );
 };
