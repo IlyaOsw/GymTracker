@@ -44,14 +44,15 @@
       background-image: linear-gradient(to right, #debf10, #b5ad1b) !important;
       color: #ffffff !important;
       border: none;
+      background-color: none !important;
     }
 
     @media (max-width: 768px) {
       transition: none;
 
       &:hover {
-        background-image: none !important;
         transform: none;
+        background-color: none !important;
       }
 
       &.active {
