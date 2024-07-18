@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Collapse, Tooltip } from "antd";
+import { Button, Collapse, CollapseProps, Tooltip } from "antd";
 import {
   RightOutlined,
   CloseOutlined,
@@ -31,39 +31,54 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({
     setIsModalOpen(false);
   };
 
+  const items: CollapseProps["items"] = [
+    {
+      key: "1",
+      label: <p>{item.name}</p>,
+      children: (
+        <>
+          <span>{`${t("bestResult")} ${item.bestResult} ${t("kg")}`}</span>
+          <div>
+            <Button
+              icon={<CloseOutlined />}
+              onClick={handleConfirm}
+              className={styles.btn}
+            >
+              <span>{t("delete")}</span>
+            </Button>
+          </div>
+        </>
+      ),
+    },
+  ];
+
   return (
-    <Collapse
-      key={item.id}
-      bordered={false}
-      expandIcon={({ isActive }) => (
-        <RightOutlined rotate={isActive ? 90 : 0} />
-      )}
-      className={styles.collapse}
-    >
-      <Collapse.Panel key={item.id} header={<p>{item.name}</p>}>
-        <span>{`${t("bestResult")} ${item.bestResult} ${t("kg")}`}</span>
-        <div className={styles.deleteIcon}>
-          <Tooltip title={t("deleteExerciseFromFavorites")} placement="bottom">
-            <CloseOutlined onClick={handleConfirm} />
-          </Tooltip>
-        </div>
-        {confirm && (
-          <CustomModal
-            open={isModalOpen}
-            onCancel={() => setIsModalOpen(false)}
-            footer={false}
-          >
-            <p className={styles.confirm}>{t("confirmDeletingFromFavorite")}</p>
-            <div className={styles.delete}>
-              <ResetButton
-                children={t("delete")}
-                onClick={handleDelete}
-                icon={<DeleteOutlined />}
-              />
-            </div>
-          </CustomModal>
+    <>
+      <Collapse
+        key={item.id}
+        bordered={false}
+        expandIcon={({ isActive }) => (
+          <RightOutlined rotate={isActive ? 90 : 0} />
         )}
-      </Collapse.Panel>
-    </Collapse>
+        className={styles.collapse}
+        items={items}
+      />
+      {confirm && (
+        <CustomModal
+          open={isModalOpen}
+          onCancel={() => setIsModalOpen(false)}
+          footer={false}
+        >
+          <p className={styles.confirm}>{t("confirmDeletingFromFavorite")}</p>
+          <div className={styles.delete}>
+            <ResetButton
+              children={t("delete")}
+              onClick={handleDelete}
+              icon={<DeleteOutlined />}
+            />
+          </div>
+        </CustomModal>
+      )}
+    </>
   );
 };

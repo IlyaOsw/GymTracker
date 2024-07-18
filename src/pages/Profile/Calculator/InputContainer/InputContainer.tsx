@@ -18,10 +18,11 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
   setReps,
   setResult,
   setInputValue,
+  weight,
+  setWeight,
 }) => {
   const { t } = useTranslation();
   const [messageApi, contextHolder] = message.useMessage();
-  const [weight, setWeight] = useState<number>(0);
 
   const increment = () => {
     if (reps < 15) setReps(reps + 1);

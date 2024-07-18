@@ -329,6 +329,8 @@ export type InputContainerPropsType = {
   setReps: (reps: number) => void;
   setResult: (result: number) => void;
   setInputValue: (inputValue: string) => void;
+  weight: number;
+  setWeight: (weight: number) => void;
 };
 
 export type ConfirmDeleteAccountPropsType = {

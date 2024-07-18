@@ -154,7 +154,6 @@
   "addedToFavorite": "Successfully added to favorite",
   "removedFromFavorite": "Successfully removed from favorite",
   "errorFetchingFavoriteExercises": "Error fetching favorite exercises",
-  "deleteExerciseFromFavorites": "Delete exercise from favorites",
   "deleteAccount": "Delete account",
   "confirmDeletingFromFavorite": "Please confirm deleting from favorite exercises",
   "delete": "Delete",

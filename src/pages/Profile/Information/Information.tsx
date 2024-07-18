@@ -65,14 +65,14 @@ export const Information: React.FC = () => {
           onClick={handleEditProfile}
           className={styles.btn}
         >
-          <span className={styles.buttonText}>{t("editProfile")}</span>
+          <span>{t("editProfile")}</span>
         </Button>
         <Button
           icon={<UserDeleteOutlined />}
           className={styles.btn}
           onClick={handleConfirmDelete}
         >
-          <span className={styles.buttonText}>{t("deleteAccount")}</span>
+          <span>{t("deleteAccount")}</span>
         </Button>
       </div>
       <Divider style={{ backgroundColor: "gray" }} />

@@ -22,11 +22,13 @@ export const Calculator: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [reps, setReps] = useState<number>(1);
   const [result, setResult] = useState<number>(0);
+  const [weight, setWeight] = useState<number>(0);
 
   const handleReset = () => {
     setInputValue("");
     setReps(1);
     setResult(0);
+    setWeight(0);
     messageApi.open({
       type: "success",
       content: t("reseted"),
@@ -53,6 +55,8 @@ export const Calculator: React.FC = () => {
           setReps={setReps}
           setResult={setResult}
           setInputValue={setInputValue}
+          weight={weight}
+          setWeight={setWeight}
         />
         <div className={styles.result}>{t("calcResult")}</div>
         <div className={styles.resultWeight}>
