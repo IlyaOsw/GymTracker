@@ -20,6 +20,7 @@ import styles from "./ProfileAvatar.module.scss";
 
 export const ProfileAvatar: React.FC = () => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [avatarURL, setAvatarURL] = useState("");
   const avatarSize = windowWidth <= 768 ? 150 : 250;
@@ -61,9 +62,15 @@ export const ProfileAvatar: React.FC = () => {
         await deleteObject(avatarRef);
 
         setAvatarURL("");
-        message.success(t("profilePhotoDeleted"));
+        messageApi.open({
+          type: "success",
+          content: t("profilePhotoDeleted"),
+        });
       } catch (error) {
-        message.error(t("deleteFailed"));
+        messageApi.open({
+          type: "error",
+          content: t("deleteFailed"),
+        });
       }
     }
   };
@@ -77,9 +84,15 @@ export const ProfileAvatar: React.FC = () => {
         const newAvatarURL = await getDownloadURL(avatarRef);
 
         setAvatarURL(newAvatarURL);
-        message.success(t("profilePhotoUpdated"));
+        messageApi.open({
+          type: "success",
+          content: t("profilePhotoUpdated"),
+        });
       } catch (error) {
-        message.error(t("uploadFailed"));
+        messageApi.open({
+          type: "error",
+          content: t("uploadFailed"),
+        });
       }
     }
   };
@@ -115,6 +128,7 @@ export const ProfileAvatar: React.FC = () => {
 
   return (
     <div className={styles.avatar}>
+      {contextHolder}
       {avatarURL ? (
         <img
           src={avatarURL}

@@ -19,6 +19,7 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
   setEditMode,
 }) => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const toggleFavorite = async (exerciseId: string, currentStatus: boolean) => {
@@ -53,14 +54,23 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
         }
 
         if (!currentStatus) {
-          message.success(t("addedToFavorite"));
+          messageApi.open({
+            type: "success",
+            content: t("addedToFavorite"),
+          });
         } else {
-          message.success(t("removedFromFavorite"));
+          messageApi.open({
+            type: "success",
+            content: t("removedFromFavorite"),
+          });
         }
         setIsActive(!isActive);
       }
     } catch (error) {
-      message.error(t("errorUpdatingFavorite"));
+      messageApi.open({
+        type: "error",
+        content: t("errorUpdatingFavorite"),
+      });
     }
   };
 
@@ -72,6 +82,7 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
 
   return (
     <div className={styles.options}>
+      {contextHolder}
       <CustomButton
         onClick={(e) => {
           e.stopPropagation();

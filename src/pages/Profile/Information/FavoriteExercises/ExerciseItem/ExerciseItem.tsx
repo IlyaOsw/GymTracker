@@ -34,7 +34,6 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({
   return (
     <Collapse
       key={item.id}
-      defaultActiveKey={["1"]}
       bordered={false}
       expandIcon={({ isActive }) => (
         <RightOutlined rotate={isActive ? 90 : 0} />

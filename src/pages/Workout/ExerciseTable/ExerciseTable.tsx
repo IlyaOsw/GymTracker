@@ -21,6 +21,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   selectedExercise,
 }) => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const [data, setData] = useState<ExerciseTableType[]>([]);
   const [editWeight, setEditWeight] = useState<string | null>(null);
   const [editReps, setEditReps] = useState<string | null>(null);
@@ -85,7 +86,10 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
           scrollToBottom();
         }
       } catch (error) {
-        message.error(t("errorLoadingExerciseData"));
+        messageApi.open({
+          type: "error",
+          content: t("errorLoadingExerciseData"),
+        });
       }
     }
   };
@@ -169,6 +173,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
 
   return (
     <>
+      {contextHolder}
       <Divider style={{ backgroundColor: "gray" }} />
       <div className={styles.tableTitle}>
         <SubTitle

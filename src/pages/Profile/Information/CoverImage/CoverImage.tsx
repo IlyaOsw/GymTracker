@@ -10,6 +10,7 @@ import styles from "./CoverImage.module.scss";
 
 export const CoverImage: React.FC = () => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const [coverURL, setCoverURL] = useState("");
 
   useEffect(() => {
@@ -36,16 +37,22 @@ export const CoverImage: React.FC = () => {
         const newCoverURL = await getDownloadURL(coverImageRef);
 
         setCoverURL(newCoverURL);
-        message.success(t("coverImageUploaded"));
+        messageApi.open({
+          type: "success",
+          content: t("coverImageUploaded"),
+        });
       } catch (error) {
-        console.error("Error uploading cover image:", error);
-        message.error(t("uploadFailed"));
+        messageApi.open({
+          type: "error",
+          content: t("uploadFailed"),
+        });
       }
     }
   };
 
   return (
     <div className={styles.paper}>
+      {contextHolder}
       {coverURL ? (
         <img src={coverURL} alt="Paper" />
       ) : (

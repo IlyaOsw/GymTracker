@@ -28,17 +28,16 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = ({
   setConfirm,
 }) => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
 
   const handleDeleteCard = async (exerciseId: string) => {
     setLoading(true);
     try {
-      const db = getFirestore();
-      const auth = getAuth();
-      const user = auth.currentUser;
+      const user = getAuth().currentUser;
       if (user) {
         const userId = user.uid;
-        const exercisesDocRef = doc(db, "exercises", userId);
-        const setsCollectionRef = doc(db, "sets", exerciseId);
+        const exercisesDocRef = doc(getFirestore(), "exercises", userId);
+        const setsCollectionRef = doc(getFirestore(), "sets", exerciseId);
         const exercisesDoc = await getDoc(exercisesDocRef);
 
         await deleteDoc(setsCollectionRef);
@@ -62,16 +61,21 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = ({
             );
             setData(filteredData);
             localStorage.setItem("exercisesData", JSON.stringify(filteredData));
-            message.success(t("exerciseDeleted"));
           }
         }
+        messageApi.open({
+          type: "success",
+          content: t("exerciseDeleted"),
+        });
       }
       setConfirm(false);
       setIsModalOpen(false);
-    } catch (error) {
-      message.error(t("errorDeletingExercise"));
-    } finally {
       setLoading(false);
+    } catch (error) {
+      messageApi.open({
+        type: "error",
+        content: t("errorDeletingExercise"),
+      });
     }
   };
 
@@ -84,6 +88,7 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = ({
       }}
       footer={false}
     >
+      {contextHolder}
       <p className={styles.confirm}>{t("confirmDeletingExercise")}</p>
       <div className={styles.deleteSave}>
         <ResetButton

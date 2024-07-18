@@ -22,6 +22,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
   setIsModalOpen,
 }) => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm();
   const { updateUserData } = useUserContext();
   const [filteredCountries, setFilteredCountries] = useState(countryOptions);
@@ -92,9 +93,15 @@ export const EditForm: React.FC<EditFormPropsType> = ({
         });
         setIsModalOpen(false);
         onClose();
-        message.success(t("profileInformationUpdated"));
+        messageApi.open({
+          type: "success",
+          content: t("profileInformationUpdated"),
+        });
       } catch (error) {
-        message.error(t("profileInformationUpdateFailed"));
+        messageApi.open({
+          type: "error",
+          content: t("profileInformationUpdateFailed"),
+        });
       }
     }
   };
@@ -123,6 +130,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
       initialValues={{ remember: true }}
       name="editProfileForm"
     >
+      {contextHolder}
       <div className={styles.modal}>
         <CustomInput
           name="firstName"

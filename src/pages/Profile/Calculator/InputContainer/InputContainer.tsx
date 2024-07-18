@@ -20,37 +20,36 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
   setInputValue,
 }) => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const [weight, setWeight] = useState<number>(0);
 
   const increment = () => {
-    if (reps < 15) {
-      setReps(reps + 1);
-    }
+    if (reps < 15) setReps(reps + 1);
   };
 
   const decrement = () => {
-    if (reps > 1) {
-      setReps(reps - 1);
-    }
+    if (reps > 1) setReps(reps - 1);
   };
 
   const calculate1RM = () => {
     if (!inputValue.trim()) {
-      message.error(t("enterWorkingWeight"));
+      messageApi.open({
+        type: "error",
+        content: t("enterWorkingWeight"),
+      });
     }
-    const M = weight;
-    const k = reps;
-
-    const oneRM_Epley = (M * k) / 30 + M;
-    const oneRM_Brzycki = M * (36 / (37 - k));
+    const oneRM_Epley = (weight * reps) / 30 + weight;
+    const oneRM_Brzycki = weight * (36 / (37 - reps));
     const average = ((Number(oneRM_Epley) + Number(oneRM_Brzycki)) / 2).toFixed(
       1
     );
     setResult(Number(average));
   };
 
-  const handleInputChange = (e: { target: { value: string } }) => {
-    const value = e.target.value;
+  const handleChange = (e: { target: { value: string } }) => {
+    let value = e.target.value;
+    value = value.replace(",", ".");
+
     if (/^\d*\.?\d?$/.test(value)) {
       setInputValue(value);
       setWeight(value === "" ? 0 : parseFloat(value));
@@ -59,6 +58,7 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
 
   return (
     <div className={styles.calculator}>
+      {contextHolder}
       <div className={styles.block}>
         <div className={styles.subtitle}>{t("workingWeight")}</div>
         <Input
@@ -66,8 +66,10 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
           allowClear
           placeholder={t("weightKg")}
           value={inputValue}
-          type="number"
-          onChange={handleInputChange}
+          type="text"
+          inputMode="decimal"
+          pattern="[0-9]*[.,]?[0-9]*"
+          onChange={handleChange}
         />
       </div>
       <div className={styles.block}>

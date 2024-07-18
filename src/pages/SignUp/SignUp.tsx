@@ -24,6 +24,7 @@ import styles from "./SignUp.module.scss";
 
 const SignUp: React.FC = () => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const auth = getAuth();
@@ -46,7 +47,10 @@ const SignUp: React.FC = () => {
 
   const onReset = () => {
     form.resetFields();
-    message.success(t("reseted"));
+    messageApi.open({
+      type: "success",
+      content: t("reseted"),
+    });
     window.scroll({
       top: 0,
       left: 0,
@@ -120,6 +124,7 @@ const SignUp: React.FC = () => {
       initialValues={{ remember: true }}
       layout="vertical"
     >
+      {contextHolder}
       <PageWrapper>
         <DescriptionTitle text={t("signUp")} textAlign="center" />
         <Registration

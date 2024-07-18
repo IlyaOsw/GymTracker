@@ -25,6 +25,7 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
   setEditWeight,
 }) => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
 
   const addRow = () => {
     if (!selectedExercise) {
@@ -62,15 +63,22 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
 
         batch.set(setDocRef, { approaches });
         await batch.commit();
-        message.success(t("exerciseDataSaved"));
+        messageApi.open({
+          type: "success",
+          content: t("exerciseDataSaved"),
+        });
       } catch (error) {
-        message.error(t("errorSavingExerciseData"));
+        messageApi.open({
+          type: "error",
+          content: t("errorSavingExerciseData"),
+        });
       }
     }
   };
 
   return (
     <>
+      {contextHolder}
       <CustomButton onClick={addRow} icon={<PlusOutlined />}>
         {t("addRow")}
       </CustomButton>

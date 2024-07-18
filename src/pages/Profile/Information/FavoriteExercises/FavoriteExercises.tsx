@@ -13,6 +13,7 @@ import { ExerciseItem } from "./ExerciseItem/ExerciseItem";
 
 export const FavoriteExercises: React.FC = () => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const [favoriteExercisesArray, setFavoriteExercisesArray] = useState<
     Exercise[]
   >([]);
@@ -22,9 +23,7 @@ export const FavoriteExercises: React.FC = () => {
     const fetchFavoriteExercises = async (user: User) => {
       setLoading(true);
       try {
-        const db = getFirestore();
-        const userId = user.uid;
-        const exercisesDocRef = doc(db, "exercises", userId);
+        const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
         const exercisesDoc = await getDoc(exercisesDocRef);
         if (exercisesDoc.exists()) {
           const exercisesData = exercisesDoc.data();
@@ -36,11 +35,13 @@ export const FavoriteExercises: React.FC = () => {
               bestResult: exercise.bestResult,
             }));
           setFavoriteExercisesArray(favoriteExercises);
+          setLoading(false);
         }
       } catch (error) {
-        message.error(t("errorFetchingFavoriteExercises"));
-      } finally {
-        setLoading(false);
+        messageApi.open({
+          type: "error",
+          content: t("errorFetchingFavoriteExercises"),
+        });
       }
     };
     const auth = getAuth();
@@ -56,11 +57,9 @@ export const FavoriteExercises: React.FC = () => {
 
   const handleDelete = async (id: string) => {
     try {
-      const db = getFirestore();
-      const auth = getAuth();
-      const user = auth.currentUser;
+      const user = getAuth().currentUser;
       if (user) {
-        const exercisesDocRef = doc(db, "exercises", user.uid);
+        const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
         const exercisesDoc = await getDoc(exercisesDocRef);
         if (exercisesDoc.exists()) {
           const exercisesData = exercisesDoc.data();
@@ -77,16 +76,23 @@ export const FavoriteExercises: React.FC = () => {
             (exercise: Exercise) => exercise.isFavorite
           );
           setFavoriteExercisesArray(updatedFavorites);
-          message.success(t("removedFromFavorite"));
+          messageApi.open({
+            type: "success",
+            content: t("removedFromFavorite"),
+          });
         }
       }
     } catch (error) {
-      message.error(t("errorUpdatingFavorite"));
+      messageApi.open({
+        type: "error",
+        content: t("errorUpdatingFavorite"),
+      });
     }
   };
 
   return (
     <>
+      {contextHolder}
       {loading ? (
         <Loader />
       ) : favoriteExercisesArray.length > 0 ? (

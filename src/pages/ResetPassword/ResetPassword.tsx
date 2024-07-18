@@ -14,15 +14,22 @@ import styles from "./ResetPassword.module.scss";
 
 const ResetPassword: React.FC = () => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const auth = getAuth();
   const [email, setEmail] = useState("");
 
   const handleResetPassword = async () => {
     try {
       await sendPasswordResetEmail(auth, email);
-      message.success(t("passwordResetSuccess"));
+      messageApi.open({
+        type: "success",
+        content: t("passwordResetSuccess"),
+      });
     } catch (error) {
-      message.error(t("passwordResetError"));
+      messageApi.open({
+        type: "error",
+        content: t("passwordResetError"),
+      });
     }
   };
 
@@ -30,6 +37,7 @@ const ResetPassword: React.FC = () => {
 
   return (
     <>
+      {contextHolder}
       <PageWrapper>
         <DescriptionTitle
           text={t("resetPassword")}

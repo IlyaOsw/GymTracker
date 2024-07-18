@@ -19,6 +19,7 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
   setConfirm,
 }) => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
 
   const handleDeleteAccount = async () => {
@@ -48,7 +49,10 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
         });
         await deleteUser(user);
         navigate("/main");
-        message.success(t("accountDeleted"));
+        messageApi.open({
+          type: "success",
+          content: t("accountDeleted"),
+        });
       } catch (error) {
         alert("error");
       }
@@ -57,6 +61,7 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
 
   return (
     <CustomModal open={confirm} onCancel={() => setConfirm(false)}>
+      {contextHolder}
       <p className={styles.confirm}>{t("confirmDeletingAccount")}</p>
       <div className={styles.delete}>
         <ResetButton

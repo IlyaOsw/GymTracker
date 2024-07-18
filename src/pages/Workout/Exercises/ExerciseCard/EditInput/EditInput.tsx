@@ -19,6 +19,7 @@ export const EditInput: React.FC<EditInputPropsType> = ({
   setNewName,
 }) => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -67,7 +68,10 @@ export const EditInput: React.FC<EditInputPropsType> = ({
         }
       }
     } catch (error) {
-      message.error(t("nameChangeFailed"));
+      messageApi.open({
+        type: "error",
+        content: t("nameChangeFailed"),
+      });
     }
   };
 
@@ -88,13 +92,16 @@ export const EditInput: React.FC<EditInputPropsType> = ({
   };
 
   return (
-    <input
-      value={newName}
-      className={styles.editInput}
-      onChange={(e) => setNewName(e.target.value)}
-      onKeyDown={handleEditKeyDown}
-      onBlur={handleBlur}
-      ref={inputRef}
-    />
+    <>
+      {contextHolder}
+      <input
+        value={newName}
+        className={styles.editInput}
+        onChange={(e) => setNewName(e.target.value)}
+        onKeyDown={handleEditKeyDown}
+        onBlur={handleBlur}
+        ref={inputRef}
+      />
+    </>
   );
 };

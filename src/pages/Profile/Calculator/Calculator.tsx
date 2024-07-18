@@ -17,6 +17,7 @@ import styles from "./Calculator.module.scss";
 
 export const Calculator: React.FC = () => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const { ref, controls } = useAnimatedInView();
   const [inputValue, setInputValue] = useState<string>("");
   const [reps, setReps] = useState<number>(1);
@@ -26,11 +27,15 @@ export const Calculator: React.FC = () => {
     setInputValue("");
     setReps(1);
     setResult(0);
-    message.success(t("reseted"));
+    messageApi.open({
+      type: "success",
+      content: t("reseted"),
+    });
   };
 
   return (
     <>
+      {contextHolder}
       <SubTitle children={t("weightCalculator")} className={styles.header} />
       <motion.div
         ref={ref}

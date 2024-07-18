@@ -18,17 +18,19 @@ export const AddExercise: React.FC<IAddExercise> = ({
   category,
 }) => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const [exerciseName, setExerciseName] = useState("");
 
   const handleAddExercise = async () => {
     if (!exerciseName) {
-      message.error(t("typeExercise"));
+      messageApi.open({
+        type: "error",
+        content: t("typeExercise"),
+      });
       return;
     }
     try {
-      const db = getFirestore();
-      const auth = getAuth();
-      const user = auth.currentUser;
+      const user = getAuth().currentUser;
       if (user) {
         const userId = user.uid;
         const exercise = {
@@ -38,7 +40,7 @@ export const AddExercise: React.FC<IAddExercise> = ({
           bestResult: 0,
           isFavorite: false,
         };
-        const exercisesDocRef = doc(db, "exercises", userId);
+        const exercisesDocRef = doc(getFirestore(), "exercises", userId);
         const docSnapshot = await getDoc(exercisesDocRef);
 
         if (docSnapshot.exists()) {
@@ -50,24 +52,29 @@ export const AddExercise: React.FC<IAddExercise> = ({
             exercises: [exercise],
           });
         }
-        message.success(t("exerciseAdded"));
+        messageApi.open({
+          type: "success",
+          content: t("exerciseAdded"),
+        });
         setExerciseName("");
         onAddExercise();
       }
     } catch (error) {
-      message.error(t("errorAddingExercise"));
+      messageApi.open({
+        type: "error",
+        content: t("errorAddingExercise"),
+      });
     }
   };
 
-  const handleInputChange = (value: string) => setExerciseName(value);
-
   return (
     <>
+      {contextHolder}
       <SubTitle>{t("addAnExercise")}</SubTitle>
       <div className={styles.addExercise}>
         <CustomInput
           value={exerciseName}
-          onChange={handleInputChange}
+          onChange={(value: string) => setExerciseName(value)}
           text={t("exerciseName")}
           placeholder={t("typeExercise")}
         />

@@ -12,6 +12,7 @@ export const DeleteRow: React.FC<DeleteRowPropsType> = ({
   record,
 }) => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
 
   const deleteRow = async (key: string) => {
     if (!selectedExercise) {
@@ -34,14 +35,21 @@ export const DeleteRow: React.FC<DeleteRowPropsType> = ({
       await updateDoc(setDocRef, {
         approaches: approaches,
       });
-      message.success(t("exerciseDataDeletedSuccessfully"));
+      messageApi.open({
+        type: "success",
+        content: t("exerciseDataDeletedSuccessfully"),
+      });
       loadExerciseData();
     } catch (error) {
-      message.error(t("failedToDeleteExerciseData"));
+      messageApi.open({
+        type: "error",
+        content: t("failedToDeleteExerciseData"),
+      });
     }
   };
   return (
     <Tooltip title={t("deleteRow")}>
+      {contextHolder}
       <CloseOutlined onClick={() => deleteRow(record.key)} />
     </Tooltip>
   );

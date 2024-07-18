@@ -18,6 +18,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
   onSelectExercise,
 }) => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const [data, setData] = useState<Exercise[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
@@ -61,7 +62,10 @@ export const Exercises: React.FC<ExercisesProps> = ({
         }
         setLoading(false);
       } catch (error) {
-        message.error(t("errorFetchingExercises"));
+        messageApi.open({
+          type: "error",
+          content: t("errorFetchingExercises"),
+        });
       }
     };
     fetchExercises();
@@ -69,6 +73,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
 
   return (
     <>
+      {contextHolder}
       {loading ? (
         <Loader />
       ) : (

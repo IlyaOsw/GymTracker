@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
-import "./Layout.scss";
 
+import "./Layout.scss";
 import { CustomHeader } from "./CustomHeader/CustomHeader";
 import { CustomContent } from "./CustomContent/CustomContent";
 
