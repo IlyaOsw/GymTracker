@@ -9,7 +9,8 @@ const NumericInput: React.ForwardRefRenderFunction<
   NumericInputProps
 > = ({ value, onChange, onBlur }, ref) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    let value = e.target.value;
+    value = value.replace(",", ".");
     if (/^\d*\.?\d?$/.test(value)) {
       onChange(value);
     }
@@ -22,7 +23,9 @@ const NumericInput: React.ForwardRefRenderFunction<
       onChange={handleChange}
       onBlur={onBlur}
       className={styles.input}
-      type="number"
+      type="text"
+      inputMode="decimal"
+      pattern="[0-9]*[.,]?[0-9]*"
     />
   );
 };
