@@ -37,8 +37,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
       const auth = getAuth();
       const user = auth.currentUser;
       if (user) {
-        const db = getFirestore();
-        const userDoc = await getDoc(doc(db, "users", user.uid));
+        const userDoc = await getDoc(doc(getFirestore(), "users", user.uid));
         if (userDoc.exists()) {
           const userData = userDoc.data();
           setFirstName(userData.firstName);
@@ -61,14 +60,12 @@ export const EditForm: React.FC<EditFormPropsType> = ({
   }, [form]);
 
   const handleUpdateInformation = async () => {
-    const auth = getAuth();
-    const user = auth.currentUser;
+    const user = getAuth().currentUser;
     if (user && dateOfBirth) {
       try {
-        const db = getFirestore();
         const age = calculateAge(dateOfBirth);
         await setDoc(
-          doc(db, "users", user.uid),
+          doc(getFirestore(), "users", user.uid),
           {
             firstName,
             lastName,

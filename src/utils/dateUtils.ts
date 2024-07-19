@@ -1,4 +1,8 @@
-export const calculateAge = (dateOfBirth: Date): number => {
+export const calculateAge = (dateOfBirth: Date | null) => {
+  if (dateOfBirth === null) {
+    return 0;
+  }
+
   const currentDate = new Date();
   const birthDate = new Date(dateOfBirth);
 

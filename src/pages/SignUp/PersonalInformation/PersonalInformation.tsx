@@ -24,9 +24,8 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
 
   const handleGenderChange = (value: string) => onGenderChange(value);
 
-  const handleDateOfBirthChange = (value: Date) => {
-    const dateString = value.toISOString().split("T")[0];
-    onDateOfBithChange(dateString);
+  const handleDateOfBirthChange = (date: Date | null) => {
+    onDateOfBithChange(date);
   };
 
   return (

@@ -56,7 +56,7 @@ export type PersonalInformationType = {
   onFirstNameChange: (firstName: string) => void;
   onLastNameChange: (lastName: string) => void;
   onGenderChange: (gender: string) => void;
-  onDateOfBithChange: (dateOfBirth: string) => void;
+  onDateOfBithChange: (dateOfBirth: Date | null) => void;
 };
 
 export type AddressType = {
@@ -174,7 +174,7 @@ export interface UserData {
   email: string;
   firstName: string;
   lastName: string;
-  dateOfBirth: Date;
+  dateOfBirth: Date | null;
   age: number;
   gender: string;
   location: {
