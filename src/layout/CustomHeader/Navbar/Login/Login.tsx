@@ -4,7 +4,7 @@ import {
   UserAddOutlined,
   LoginOutlined,
 } from "@ant-design/icons";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -16,17 +16,19 @@ import styles from "./Login.module.scss";
 
 export const Login: React.FC = () => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const { isAuthenticated, logout } = useAuth();
 
   const handleLogout = async () => {
-    try {
-      await logout();
-    } catch (error) {
-      alert(error);
-    }
+    await logout();
+    messageApi.open({
+      type: "success",
+      content: t("logout"),
+    });
   };
   return (
     <>
+      {contextHolder}
       {isAuthenticated ? (
         <>
           <Link to="/profile">

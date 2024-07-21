@@ -25,7 +25,7 @@
   "offerTitle": "What we offer",
   "offerDescription": "We're committed to bringing you the best workout experience.",
   "cardTitle1": "Convenient workout tracking",
-  "cardText1": "Never forget your workouts with our intuitive interface. Simply input your exercises, duration, and intensity, and GYM TRACKERwill take care of the rest.",
+  "cardText1": "Never forget your workouts with our intuitive interface. Simply input your exercises, duration, and intensity, and GYM TRACKER will take care of the rest.",
   "cardTitle2": "Motivation at every step ",
   "cardText2": "Receive daily reminders, motivational messages, and achievements for your successes. Our motivation system supports you on the path to your goals.",
   "cardTitle3": "Tracking performance",
@@ -174,6 +174,7 @@
   "notAuthorized": "Sorry, you are not authorized to access this page",
   "notFound": "Sorry, the page you visited does not exist",
   "404error": "Not Found",
-  "403error": "Forbidden"
+  "403error": "Forbidden",
+  "logout": "You have successfully logged out"
 }
 

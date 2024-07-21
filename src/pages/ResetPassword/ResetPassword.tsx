@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { message } from "antd";
+import { SendOutlined } from "@ant-design/icons";
 
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
@@ -58,6 +59,7 @@ const ResetPassword: React.FC = () => {
           children={t("send")}
           className={styles.btn}
           onClick={handleResetPassword}
+          icon={<SendOutlined />}
         />
       </PageWrapper>
       <CustomFooter />

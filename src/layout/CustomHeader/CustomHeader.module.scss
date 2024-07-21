@@ -16,7 +16,7 @@
   font-size: 1.2rem;
 
   img {
-    height: 55px;
+    height: 50px;
   }
 
   .backToMainBtn {
@@ -75,9 +75,14 @@
 }
 
 .burgerBtn {
-  margin-left: auto;
-  background-color: #0097b2;
+  background-color: #141414;
   border: none;
+  font-size: 1.6rem;
+  width: 10px;
+
+  &:active {
+    background-color: #141414 !important;
+  }
 }
 
 .theme,

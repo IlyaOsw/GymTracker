@@ -38,10 +38,8 @@ export const UserInfo: React.FC = () => {
 
   const fetchUserData = async (userId: string): Promise<UserData | null> => {
     try {
-      const db = getFirestore();
-      const userDoc = doc(db, "users", userId);
+      const userDoc = doc(getFirestore(), "users", userId);
       const docSnap = await getDoc(userDoc);
-
       if (docSnap.exists()) {
         return docSnap.data() as UserData;
       } else {

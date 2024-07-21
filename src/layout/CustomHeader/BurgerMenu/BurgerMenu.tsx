@@ -1,4 +1,4 @@
-import { Drawer, Menu } from "antd";
+import { Drawer, Menu, message } from "antd";
 import React, { useEffect } from "react";
 import { Divider } from "antd";
 import { useTranslation } from "react-i18next";
@@ -22,6 +22,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   changeLanguage,
 }) => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -60,6 +61,10 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   const handleLogout = async () => {
     await logout();
     onClose();
+    messageApi.open({
+      type: "success",
+      content: t("logout"),
+    });
   };
 
   const itemsMenu: BurgerMenuItem[] = [
@@ -145,17 +150,20 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   ];
 
   return (
-    <Drawer
-      title={t("menu")}
-      placement="right"
-      closable={true}
-      onClose={onClose}
-      open={open}
-      width={270}
-      className={styles.burgerColor}
-      destroyOnClose={true}
-    >
-      <Menu className={styles.burgerColor} items={itemsMenu} />
-    </Drawer>
+    <>
+      {contextHolder}
+      <Drawer
+        title={t("menu")}
+        placement="right"
+        closable={true}
+        onClose={onClose}
+        open={open}
+        width={270}
+        className={styles.burgerColor}
+        destroyOnClose={true}
+      >
+        <Menu className={styles.burgerColor} items={itemsMenu} />
+      </Drawer>
+    </>
   );
 };

@@ -3,6 +3,7 @@ import { Checkbox, Form } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import { LoginOutlined } from "@ant-design/icons";
 
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
@@ -82,7 +83,11 @@ const SignIn: React.FC = () => {
               {t("forgotPassword")}
             </Link>
           </motion.div>
-          <CustomButton className={styles.signInBtn} onClick={handleSignIn}>
+          <CustomButton
+            className={styles.signInBtn}
+            onClick={handleSignIn}
+            icon={<LoginOutlined />}
+          >
             {t("signIn")}
           </CustomButton>
           <motion.div
