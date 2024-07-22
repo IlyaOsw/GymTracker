@@ -174,7 +174,8 @@
   "notAuthorized": "Sorry, you are not authorized to access this page",
   "notFound": "Sorry, the page you visited does not exist",
   "404error": "Not Found",
-  "403error": "Forbidden",
-  "logout": "You have successfully logged out"
+  "401error": "Forbidden",
+  "logout": "You have successfully logged out",
+  "edit": "Edit"
 }
 

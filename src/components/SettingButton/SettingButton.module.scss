@@ -1,0 +1,37 @@
+.btn {
+  background-color: transparent;
+  border-radius: 20px;
+  margin-top: 10px;
+  color: #ffffff;
+
+  svg {
+    font-size: 1rem;
+    transition: all 0.3s !important;
+  }
+
+  &:hover {
+    color: #ffffff !important;
+    background-color: transparent !important;
+    border: 1px solid #0097b2 !important;
+
+    svg {
+      transform: rotate(20deg);
+
+      @media (max-width: 768px) {
+        transform: none;
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    margin-top: 10px;
+
+    &:hover {
+      border: 1px solid #ffffff !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 10px;
+  }
+}

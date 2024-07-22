@@ -6,7 +6,7 @@ import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 import { CardOptionsPropsType } from "../../../../../types/types";
-import { CustomButton } from "../../../../../components/CustomButton/CustomButton";
+import { SettingButton } from "../../../../../components/SettingButton/SettingButton";
 
 import styles from "./CardOptions.module.scss";
 
@@ -24,12 +24,10 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
 
   const toggleFavorite = async (exerciseId: string, currentStatus: boolean) => {
     try {
-      const db = getFirestore();
-      const auth = getAuth();
-      const user = auth.currentUser;
+      const user = getAuth().currentUser;
       if (user) {
         const userId = user.uid;
-        const exercisesDocRef = doc(db, "exercises", userId);
+        const exercisesDocRef = doc(getFirestore(), "exercises", userId);
         const exercisesDoc = await getDoc(exercisesDocRef);
         if (exercisesDoc.exists()) {
           const exercisesData = exercisesDoc.data();
@@ -83,24 +81,26 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
   return (
     <div className={styles.options}>
       {contextHolder}
-      <CustomButton
+      <SettingButton
+        icon={<StarFilled />}
         onClick={(e) => {
           e.stopPropagation();
           toggleFavorite(item.id, item.isFavorite);
         }}
         className={`${styles.star} ${item.isFavorite ? styles.active : ""}`}
       >
-        <StarFilled /> {t("favorite")}
-      </CustomButton>
-      <CustomButton
+        <span>{t("favorite")}</span>
+      </SettingButton>
+      <SettingButton
+        icon={<EditOutlined />}
         onClick={(e) => {
           e.stopPropagation();
           handleEditClick(item.id, item.name);
         }}
+        className={styles.editExercise}
       >
-        <EditOutlined className={styles.editIcon} />
-        {t("editName")}
-      </CustomButton>
+        <span>{t("editName")}</span>
+      </SettingButton>
     </div>
   );
 };

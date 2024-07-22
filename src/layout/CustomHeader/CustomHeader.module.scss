@@ -99,6 +99,7 @@
 .burgerSettings {
   margin-right: 8px;
   font-size: 16px;
+  color: rgb(0, 0, 0) !important;
 }
 
 .lngIcons {
@@ -112,4 +113,8 @@
   .navigation img {
     height: 40px;
   }
+}
+
+li {
+  background-color: transparent !important;
 }

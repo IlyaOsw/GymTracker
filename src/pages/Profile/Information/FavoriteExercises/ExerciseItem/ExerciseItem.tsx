@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Collapse, CollapseProps, Tooltip } from "antd";
+import { Collapse, CollapseProps } from "antd";
 import {
   RightOutlined,
   CloseOutlined,
@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import { ExerciseItemProps } from "../../../../../types/types";
 import { CustomModal } from "../../../../../components/CustomModal/CustomModal";
 import { ResetButton } from "../../../../../components/ResetButton/ResetButton";
+import { SettingButton } from "../../../../../components/SettingButton/SettingButton";
 
 import styles from "./ExerciseItem.module.scss";
 
@@ -38,14 +39,17 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({
       children: (
         <>
           <span>{`${t("bestResult")} ${item.bestResult} ${t("kg")}`}</span>
-          <div>
-            <Button
+          <div className={styles.settings}>
+            <SettingButton icon={<CloseOutlined />} className={styles.btn}>
+              <span>{t("edit")}</span>
+            </SettingButton>
+            <SettingButton
               icon={<CloseOutlined />}
               onClick={handleConfirm}
               className={styles.btn}
             >
               <span>{t("delete")}</span>
-            </Button>
+            </SettingButton>
           </div>
         </>
       ),

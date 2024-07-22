@@ -26,8 +26,8 @@ export const ThemeDropdown: React.FC<ThemeDropdownPropsType> = ({
     <ConfigProvider
       theme={{
         token: {
-          controlItemBgActiveHover: "#ffffff",
-          controlItemBgActive: "#ffffff",
+          controlItemBgActiveHover: "#EFEFEF",
+          controlItemBgActive: "#EFEFEF",
           colorPrimary: "#0097b2",
         },
       }}

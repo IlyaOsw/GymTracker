@@ -2,6 +2,7 @@ import React from "react";
 import { Result } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 
@@ -21,7 +22,11 @@ const NotFound: React.FC = () => {
       title={<span className={styles.title}>404 {t("404error")} </span>}
       subTitle={<span className={styles.subTitle}>{t("notFound")}</span>}
       extra={
-        <CustomButton className={styles.backHome} onClick={handleBackHome}>
+        <CustomButton
+          className={styles.backHome}
+          onClick={handleBackHome}
+          icon={<ArrowLeftOutlined />}
+        >
           {t("backHome")}
         </CustomButton>
       }

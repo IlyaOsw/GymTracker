@@ -27,8 +27,8 @@ export const LanguageDropdown: React.FC<LanguageDropdownPropsType> = ({
     <ConfigProvider
       theme={{
         token: {
-          controlItemBgActiveHover: "#ffffff",
-          controlItemBgActive: "#ffffff",
+          controlItemBgActiveHover: "#EFEFEF",
+          controlItemBgActive: "#EFEFEF",
           colorPrimary: "#0097b2",
         },
       }}

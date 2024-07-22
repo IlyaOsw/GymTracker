@@ -5,6 +5,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useTranslation } from "react-i18next";
 
 import { auth, storage } from "../../../..";
+import { SettingButton } from "../../../../components/SettingButton/SettingButton";
 
 import styles from "./CoverImage.module.scss";
 
@@ -66,9 +67,9 @@ export const CoverImage: React.FC = () => {
         }}
         className={styles.uploadCoverImage}
       >
-        <Button icon={<CameraOutlined />} className={styles.editBtn}>
+        <SettingButton icon={<CameraOutlined />} className={styles.editBtn}>
           <span className={styles.buttonText}>{t("uploadCoverImage")}</span>
-        </Button>
+        </SettingButton>
       </Upload>
     </div>
   );

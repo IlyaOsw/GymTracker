@@ -54,7 +54,7 @@ export const Routing: React.FC = () => {
           }
         />
         <Route path="*" element={<NotFound />} />
-        <Route path="/403" element={<NotAuthorized />} />
+        <Route path="/401" element={<NotAuthorized />} />
       </Routes>
     </Suspense>
   );

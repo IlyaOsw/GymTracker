@@ -22,18 +22,13 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: transparent;
-  margin: 10px 20px;
 }
 
 .editBtn {
   position: absolute;
   bottom: 0;
   right: 0;
-  margin: 5px;
-  background-color: transparent;
-  color: #ffffff;
-  border-radius: 20px;
+  margin: 10px 20px;
 
   &:hover {
     color: #ffffff !important;
@@ -44,9 +39,6 @@
   @media (max-width: 992px) {
     .buttonText {
       display: none;
-    }
-    &:hover {
-      border: 1px solid #ffffff !important;
     }
   }
 }

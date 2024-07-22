@@ -7,6 +7,7 @@ import { onAuthStateChanged, User } from "firebase/auth";
 
 import { auth, db } from "../../..";
 import { UserProvider } from "../../../context/UserContext";
+import { SettingButton } from "../../../components/SettingButton/SettingButton";
 
 import styles from "./Information.module.scss";
 import { FavoriteExercises } from "./FavoriteExercises/FavoriteExercises";
@@ -60,20 +61,20 @@ export const Information: React.FC = () => {
         <FavoriteExercises />
       </div>
       <div className={styles.buttons}>
-        <Button
+        <SettingButton
           icon={<EditOutlined />}
           onClick={handleEditProfile}
           className={styles.btn}
         >
           <span>{t("editProfile")}</span>
-        </Button>
-        <Button
+        </SettingButton>
+        <SettingButton
           icon={<UserDeleteOutlined />}
-          className={styles.btn}
           onClick={handleConfirmDelete}
+          className={styles.btn}
         >
           <span>{t("deleteAccount")}</span>
-        </Button>
+        </SettingButton>
       </div>
       <Divider style={{ backgroundColor: "gray" }} />
       {edit && <EditProfile onClose={handleModalClose} />}

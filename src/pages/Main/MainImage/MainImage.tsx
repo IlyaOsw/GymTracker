@@ -30,9 +30,7 @@ export const MainImage: React.FC = () => {
       </div>
       <div className={styles.buttons}>
         <Link to={"/signup"}>
-          <CustomButton className={styles.joinBtn}>
-            {t("joinToday")}
-          </CustomButton>
+          <CustomButton>{t("joinToday")}</CustomButton>
         </Link>
         <div className={styles.downloadImage}>
           <div>{t("comingSoon")}</div>
