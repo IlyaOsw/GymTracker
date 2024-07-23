@@ -2,12 +2,11 @@
   width: 320px;
   background-color: #1a1a1a !important;
   border-radius: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition:
     box-shadow 0.3s ease,
     transform 0.3s ease;
-
   &:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   }
@@ -40,7 +39,7 @@
 .settings {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .confirm {
@@ -56,6 +55,25 @@
 
 .btn {
   svg {
-    margin-bottom: 5px;
+    margin-bottom: 6px;
   }
+}
+
+.resultTitle {
+  margin: -5px 0px;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.bestResult {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #ffffff;
+  font-size: 1rem;
+  margin: 10px 0px;
+}
+
+.test {
+  border: 1px solid green;
 }

@@ -38,7 +38,19 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({
       label: <p>{item.name}</p>,
       children: (
         <>
-          <span>{`${t("bestResult")} ${item.bestResult} ${t("kg")}`}</span>
+          <div className={styles.resultTitle}>{t("bestResult")}</div>
+          <div className={styles.bestResult}>
+            <div>
+              <span>{t("bestResultWeight")}</span>
+              <div>
+                {item.bestResult} {t("kg")}
+              </div>
+            </div>
+            <div>
+              <span>{t("bestResultReps")}</span>
+              <div>{item.bestResult}</div>
+            </div>
+          </div>
           <div className={styles.settings}>
             <SettingButton icon={<CloseOutlined />} className={styles.btn}>
               <span>{t("edit")}</span>

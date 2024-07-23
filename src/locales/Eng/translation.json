@@ -98,7 +98,7 @@
   "followed": "Followed",
   "follow": "Follow",
   "favoriteExercises": "Favorite exercises",
-  "bestResult": "Best result is",
+  "bestResult": "Best result",
   "kg": "kg",
   "uploadCoverImage": "Upload cover image",
   "editProfile": "Edit profile",
@@ -176,6 +176,8 @@
   "404error": "Not Found",
   "401error": "Forbidden",
   "logout": "You have successfully logged out",
-  "edit": "Edit"
+  "edit": "Edit",
+  "bestResultReps": "Reps",
+  "bestResultWeight": "Weight"
 }
 

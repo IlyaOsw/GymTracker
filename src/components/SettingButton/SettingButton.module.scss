@@ -3,6 +3,7 @@
   border-radius: 20px;
   margin-top: 10px;
   color: #ffffff;
+  box-shadow: 0 3px 10px rgba(203, 203, 203, 0.2);
 
   svg {
     font-size: 1rem;
@@ -15,7 +16,7 @@
     border: 1px solid #0097b2 !important;
 
     svg {
-      transform: rotate(20deg);
+      transform: rotate(30deg);
 
       @media (max-width: 768px) {
         transform: none;
@@ -24,14 +25,8 @@
   }
 
   @media (max-width: 992px) {
-    margin-top: 10px;
-
     &:hover {
       border: 1px solid #ffffff !important;
     }
-  }
-
-  @media (max-width: 480px) {
-    margin-top: 10px;
   }
 }
