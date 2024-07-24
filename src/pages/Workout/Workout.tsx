@@ -28,17 +28,19 @@ const Workout: React.FC = () => {
 
   return (
     <PageWrapper>
-      <DescriptionTitle text={state.title} textAlign="center" />
-      <AddExercise
-        category={state?.title}
-        onAddExercise={handleUpdateExercises}
-      />
-      <Exercises
-        category={state?.title}
-        updateTrigger={updateTrigger}
-        onSelectExercise={handleSelectExercise}
-      />
-      <ExerciseTable selectedExercise={selectedExercise} />
+      <div style={{ height: "100vh" }}>
+        <DescriptionTitle text={state.title} textAlign="center" />
+        <AddExercise
+          category={state?.title}
+          onAddExercise={handleUpdateExercises}
+        />
+        <Exercises
+          category={state?.title}
+          updateTrigger={updateTrigger}
+          onSelectExercise={handleSelectExercise}
+        />
+        <ExerciseTable selectedExercise={selectedExercise} />
+      </div>
     </PageWrapper>
   );
 };

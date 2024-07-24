@@ -39,7 +39,7 @@
 .settings {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .confirm {
@@ -72,8 +72,4 @@
   color: #ffffff;
   font-size: 1rem;
   margin: 10px 0px;
-}
-
-.test {
-  border: 1px solid green;
 }

@@ -52,9 +52,6 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({
             </div>
           </div>
           <div className={styles.settings}>
-            <SettingButton icon={<CloseOutlined />} className={styles.btn}>
-              <span>{t("edit")}</span>
-            </SettingButton>
             <SettingButton
               icon={<CloseOutlined />}
               onClick={handleConfirm}
