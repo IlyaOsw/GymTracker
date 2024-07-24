@@ -28,7 +28,7 @@ const Workout: React.FC = () => {
 
   return (
     <PageWrapper>
-      <div style={{ height: "100vh" }}>
+      <div style={{ minHeight: "100vh" }}>
         <DescriptionTitle text={state.title} textAlign="center" />
         <AddExercise
           category={state?.title}
