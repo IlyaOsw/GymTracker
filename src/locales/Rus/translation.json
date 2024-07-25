@@ -178,5 +178,8 @@
   "logout": "Вы успешно вышли из аккаунта",
   "edit": "Изменить",
   "bestResultReps": "Повторений",
-  "bestResultWeight": "Вес"
+  "bestResultWeight": "Вес",
+  "per": "на",
+  "bestExerciseResult": "Лучший результат в этом упражнении",
+  "updateRecord": "Обновить свой рекорд"
 }

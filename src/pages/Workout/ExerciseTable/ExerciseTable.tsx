@@ -16,6 +16,7 @@ import styles from "./ExerciseTable.module.scss";
 import NumericInput from "./NumericInput/NumericInput";
 import { TableFooter } from "./TableFooter/TableFooter";
 import { DeleteRow } from "./DeleteRow/DeleteRow";
+import { BestReult } from "./BestReult/BestReult";
 
 export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   selectedExercise,
@@ -178,6 +179,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       <div className={styles.tableTitle}>
         <SubTitle
           children={selectedExercise?.name || t("noExerciseSelected")}
+          className={styles.subtitle}
         />
         <div className={styles.date}>
           {t("date")}
@@ -200,6 +202,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       >
         {selectedExercise ? (
           <>
+            <BestReult />
             <Table
               columns={columns}
               dataSource={data}

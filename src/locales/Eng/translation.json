@@ -178,6 +178,9 @@
   "logout": "You have successfully logged out",
   "edit": "Edit",
   "bestResultReps": "Reps",
-  "bestResultWeight": "Weight"
+  "bestResultWeight": "Weight",
+  "per": "per",
+  "bestExerciseResult": "Best result in this exercise",
+  "updateRecord": "Update your record"
 }
 
