@@ -177,10 +177,9 @@
   "401error": "Forbidden",
   "logout": "You have successfully logged out",
   "edit": "Edit",
-  "bestResultReps": "Reps",
+  "bestResultReps": "reps",
   "bestResultWeight": "Weight",
-  "per": "per",
-  "bestExerciseResult": "Best result in this exercise",
+  "bestExerciseResult": "Best result",
   "updateRecord": "Update your record"
 }
 

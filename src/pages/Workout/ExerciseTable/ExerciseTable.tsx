@@ -11,9 +11,9 @@ import {
   ExerciseTableType,
 } from "../../../types/types";
 import { EmptyBox } from "../../../components/EmptyBox/EmptyBox";
+import NumericInput from "../../../components/NumericInput/NumericInput";
 
 import styles from "./ExerciseTable.module.scss";
-import NumericInput from "./NumericInput/NumericInput";
 import { TableFooter } from "./TableFooter/TableFooter";
 import { DeleteRow } from "./DeleteRow/DeleteRow";
 import { BestReult } from "./BestReult/BestReult";

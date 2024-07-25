@@ -1,9 +1,11 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { EditOutlined, SettingOutlined } from "@ant-design/icons";
-import { Collapse, Divider } from "antd";
+import { EditOutlined } from "@ant-design/icons";
+import { Collapse } from "antd";
 
 import { SettingButton } from "../../../../components/SettingButton/SettingButton";
+import NumericInput from "../../../../components/NumericInput/NumericInput";
 
 import styles from "./BestReult.module.scss";
 
@@ -12,7 +14,9 @@ export const BestReult: React.FC = () => {
   const [editMode, setEditMode] = useState<boolean>(false);
 
   const genExtra = () => (
-    <img src={process.env.PUBLIC_URL + "/assets/Icons/trophy.png"} />
+    <img
+      src={process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/trophy.png"}
+    />
   );
 
   const items = [
@@ -23,11 +27,15 @@ export const BestReult: React.FC = () => {
         <>
           {editMode ? (
             <>
-              <Divider style={{ backgroundColor: "gray" }} />
               <div className={styles.wrapper}>
-                <input />
-                <div>{t("per")}</div>
-                <input />
+                <div>
+                  <NumericInput />
+                  {t("kg")}
+                </div>
+                <div>
+                  <NumericInput />
+                  {t("bestResultReps")}
+                </div>
               </div>
               <div className={styles.editBtn}>
                 <SettingButton
@@ -41,11 +49,9 @@ export const BestReult: React.FC = () => {
             </>
           ) : (
             <>
-              <Divider style={{ backgroundColor: "gray" }} />
               <div className={styles.wrapper}>
-                <div className={styles.weight}>100 {t("kg")}</div>
-                <div>{t("per")}</div>
-                <div className={styles.reps}>10 {t("bestResultReps")}</div>
+                <div>100 {t("kg")}</div>
+                <div>10 {t("bestResultReps")}</div>
               </div>
               <div className={styles.editBtn}>
                 <SettingButton

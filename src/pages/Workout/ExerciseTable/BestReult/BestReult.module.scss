@@ -5,8 +5,8 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
   img {
-    height: 38px;
-    width: 38px;
+    height: 34px;
+    width: 34px;
   }
 
   .title {
@@ -14,7 +14,6 @@
     text-align: start;
     color: #ffffff;
     margin-top: 4px;
-    color: rgb(227, 152, 60);
   }
 
   svg {
@@ -31,18 +30,8 @@
     justify-content: space-around;
     font-size: 1.4rem;
     background-color: #282828;
-    width: 100%;
-    color: #ffffff;
     border-radius: 10px;
-
-    .weight {
-      color: #0097b2;
-      padding: 25px;
-    }
-
-    .reps {
-      color: #0097b2;
-    }
+    color: #0097b2;
   }
 
   .editBtn {

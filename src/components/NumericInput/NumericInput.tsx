@@ -1,6 +1,6 @@
 import React, { forwardRef, ChangeEvent } from "react";
 
-import { NumericInputProps } from "../../../../types/types";
+import { NumericInputProps } from "../../types/types";
 
 import styles from "./NumericInput.module.scss";
 

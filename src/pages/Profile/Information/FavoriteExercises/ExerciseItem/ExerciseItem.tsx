@@ -32,6 +32,12 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({
     setIsModalOpen(false);
   };
 
+  const genExtra = () => (
+    <img
+      src={process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/star.png"}
+    />
+  );
+
   const items: CollapseProps["items"] = [
     {
       key: "1",
@@ -62,6 +68,7 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({
           </div>
         </>
       ),
+      extra: genExtra(),
     },
   ];
 

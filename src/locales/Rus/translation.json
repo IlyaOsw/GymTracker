@@ -177,9 +177,8 @@
   "401error": "Запрещено",
   "logout": "Вы успешно вышли из аккаунта",
   "edit": "Изменить",
-  "bestResultReps": "Повторений",
+  "bestResultReps": "повторений",
   "bestResultWeight": "Вес",
-  "per": "на",
-  "bestExerciseResult": "Лучший результат в этом упражнении",
+  "bestExerciseResult": "Лучший результат",
   "updateRecord": "Обновить свой рекорд"
 }
