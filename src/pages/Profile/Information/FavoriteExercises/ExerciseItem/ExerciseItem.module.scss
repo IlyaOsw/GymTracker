@@ -14,12 +14,13 @@
   }
 
   &:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 
   p {
     font-size: 1.2rem;
     text-align: start;
+    color: #0097b2;
   }
 
   span {
@@ -32,17 +33,13 @@
     font-size: 1rem;
     margin-top: 7px;
     transition: color 0.3s ease;
-
-    &:hover {
-      color: #00bcd4;
-    }
   }
 }
 
 .settings {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
 }
 
 .confirm {
@@ -63,9 +60,9 @@
 }
 
 .resultTitle {
-  margin: -5px 0px;
+  margin: -10px 0px;
   font-size: 1rem;
-  color: #ffffff;
+  color: rgb(209, 148, 35);
 }
 
 .bestResult {
@@ -74,5 +71,10 @@
   justify-content: space-around;
   color: #ffffff;
   font-size: 1rem;
-  margin: 10px 0px;
+  margin: 10px 0px 0px 0px;
+
+  .result {
+    color: #0097b2;
+    font-size: 1.2rem;
+  }
 }

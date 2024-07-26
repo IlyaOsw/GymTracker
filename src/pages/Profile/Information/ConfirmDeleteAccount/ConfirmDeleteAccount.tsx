@@ -28,11 +28,9 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
 
     if (user) {
       try {
-        const db = getFirestore();
         const storage = getStorage();
-
-        await deleteDoc(doc(db, "users", user.uid));
-        await deleteDoc(doc(db, "exercises", user.uid));
+        await deleteDoc(doc(getFirestore(), "users", user.uid));
+        await deleteDoc(doc(getFirestore(), "exercises", user.uid));
 
         const avatarRef = ref(storage, `avatar/${user.uid}`);
         const coverRef = ref(storage, `cover/${user.uid}`);
@@ -54,7 +52,7 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
           content: t("accountDeleted"),
         });
       } catch (error) {
-        alert("error");
+        alert("Error deleting account");
       }
     }
   };

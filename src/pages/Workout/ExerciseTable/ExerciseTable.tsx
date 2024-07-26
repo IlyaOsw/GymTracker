@@ -16,7 +16,7 @@ import NumericInput from "../../../components/NumericInput/NumericInput";
 import styles from "./ExerciseTable.module.scss";
 import { TableFooter } from "./TableFooter/TableFooter";
 import { DeleteRow } from "./DeleteRow/DeleteRow";
-import { BestReult } from "./BestReult/BestReult";
+import { BestResult } from "./BestResult/BestResult";
 
 export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   selectedExercise,
@@ -202,7 +202,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       >
         {selectedExercise ? (
           <>
-            <BestReult />
+            <BestResult />
             <Table
               columns={columns}
               dataSource={data}

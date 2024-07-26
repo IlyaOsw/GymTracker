@@ -7,9 +7,9 @@ import { Collapse } from "antd";
 import { SettingButton } from "../../../../components/SettingButton/SettingButton";
 import NumericInput from "../../../../components/NumericInput/NumericInput";
 
-import styles from "./BestReult.module.scss";
+import styles from "./BestResult.module.scss";
 
-export const BestReult: React.FC = () => {
+export const BestResult: React.FC = () => {
   const { t } = useTranslation();
   const [editMode, setEditMode] = useState<boolean>(false);
 
