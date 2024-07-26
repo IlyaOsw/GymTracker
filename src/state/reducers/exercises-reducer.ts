@@ -4,35 +4,50 @@ import { Exercise } from "../../types/types";
 
 const initialState: Exercise[] = [
   {
-    bestResult: 0,
+    bestResult: {
+      weight: 0,
+      reps: 0,
+    },
     category: "Back",
     id: uuidv4(),
     isFavorite: false,
     name: "Pull-down to the chest",
   },
   {
-    bestResult: 0,
+    bestResult: {
+      weight: 0,
+      reps: 0,
+    },
     category: "Legs",
     id: uuidv4(),
     isFavorite: false,
     name: "Barbell squats",
   },
   {
-    bestResult: 0,
+    bestResult: {
+      weight: 0,
+      reps: 0,
+    },
     category: "Chest",
     id: uuidv4(),
     isFavorite: false,
     name: "Bench press",
   },
   {
-    bestResult: 0,
+    bestResult: {
+      weight: 0,
+      reps: 0,
+    },
     category: "Hands",
     id: uuidv4(),
     isFavorite: false,
     name: "Bicep curls",
   },
   {
-    bestResult: 0,
+    bestResult: {
+      weight: 0,
+      reps: 0,
+    },
     category: "Shoulders",
     id: uuidv4(),
     isFavorite: false,

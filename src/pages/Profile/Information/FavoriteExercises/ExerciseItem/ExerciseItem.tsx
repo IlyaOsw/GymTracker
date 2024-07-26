@@ -49,12 +49,12 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({
             <div>
               <span>{t("bestResultWeight")}</span>
               <div>
-                {item.bestResult} {t("kg")}
+                {item.bestResult.weight} {t("kg")}
               </div>
             </div>
             <div>
               <span>{t("bestResultReps")}</span>
-              <div>{item.bestResult}</div>
+              <div>{item.bestResult.reps}</div>
             </div>
           </div>
           <div className={styles.settings}>

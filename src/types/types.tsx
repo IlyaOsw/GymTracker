@@ -237,11 +237,16 @@ export interface ExercisesProps {
   onSelectExercise: (exercise: any) => void;
 }
 
+export interface BestResult {
+  weight: number;
+  reps: number;
+}
+
 export interface Exercise {
   id: string;
   category: string;
   name: string;
-  bestResult: number;
+  bestResult: BestResult;
   isFavorite: boolean;
 }
 

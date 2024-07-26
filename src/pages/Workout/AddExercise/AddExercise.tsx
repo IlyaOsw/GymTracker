@@ -37,7 +37,10 @@ export const AddExercise: React.FC<IAddExercise> = ({
           id: uuidv4(),
           name: exerciseName,
           category: category,
-          bestResult: 0,
+          bestResult: {
+            weight: 0,
+            reps: 0,
+          },
           isFavorite: false,
         };
         const exercisesDocRef = doc(getFirestore(), "exercises", userId);
