@@ -180,6 +180,7 @@
   "bestResultReps": "reps",
   "bestExerciseResult": "Best result",
   "updateRecord": "Update record",
-  "saveRecord": "Save new record"
+  "saveRecord": "Save new record",
+  "recordUpdated": "Record has been updated"
 }
 

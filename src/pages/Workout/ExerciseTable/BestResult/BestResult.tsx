@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { CheckOutlined, EditOutlined } from "@ant-design/icons";
-import { Collapse } from "antd";
+import { Collapse, message } from "antd";
 
 import { SettingButton } from "../../../../components/SettingButton/SettingButton";
 import NumericInput from "../../../../components/NumericInput/NumericInput";
@@ -14,6 +14,7 @@ export const BestResult: React.FC<BestResultProps> = ({
   onSave,
 }) => {
   const { t } = useTranslation();
+  const [messageApi, contextHolder] = message.useMessage();
   const [editMode, setEditMode] = useState<boolean>(false);
   const [weight, setWeight] = useState<string>(bestResult?.weight || "");
   const [reps, setReps] = useState<string>(bestResult?.reps || "");
@@ -26,6 +27,10 @@ export const BestResult: React.FC<BestResultProps> = ({
   const handleSave = () => {
     onSave({ weight, reps });
     setEditMode(false);
+    messageApi.open({
+      type: "success",
+      content: t("recordUpdated"),
+    });
   };
 
   const genExtra = () => (
@@ -91,6 +96,7 @@ export const BestResult: React.FC<BestResultProps> = ({
 
   return (
     <div className={styles.collapse}>
+      {contextHolder}
       <Collapse size="large" items={items} bordered={false} />
     </div>
   );

@@ -180,5 +180,6 @@
   "bestResultReps": "повторений",
   "bestExerciseResult": "Лучший результат",
   "updateRecord": "Обновить рекорд",
-  "saveRecord": "Сохранить рекорд"
+  "saveRecord": "Сохранить рекорд",
+  "recordUpdated": "Рекорд обновлен"
 }
