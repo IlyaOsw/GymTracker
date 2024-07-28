@@ -30,7 +30,6 @@ export const Information: React.FC = () => {
         loadUserPhotos(user);
       }
     });
-
     return () => unsubscribe();
   }, []);
 

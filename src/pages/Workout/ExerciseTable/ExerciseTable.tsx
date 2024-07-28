@@ -3,10 +3,17 @@ import { ConfigProvider, Divider, message, Table } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { getAuth } from "firebase/auth";
-import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getFirestore,
+  updateDoc,
+} from "firebase/firestore";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import {
+  Exercise,
   ExerciseTablePropsType,
   ExerciseTableType,
 } from "../../../types/types";
@@ -24,6 +31,10 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   const { t } = useTranslation();
   const [messageApi, contextHolder] = message.useMessage();
   const [data, setData] = useState<ExerciseTableType[]>([]);
+  const [bestResult, setBestResult] = useState<{
+    weight: string;
+    reps: string;
+  } | null>(null);
   const [editWeight, setEditWeight] = useState<string | null>(null);
   const [editReps, setEditReps] = useState<string | null>(null);
   const weightInputRef = useRef<HTMLInputElement | null>(null);
@@ -60,8 +71,13 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     if (user) {
       const setsCollectionRef = collection(getFirestore(), "sets");
       const setDocRef = doc(setsCollectionRef, selectedExercise?.id);
+      const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
       try {
-        const docSnapshot = await getDoc(setDocRef);
+        const [docSnapshot, exercisesDoc] = await Promise.all([
+          getDoc(setDocRef),
+          getDoc(exercisesDocRef),
+        ]);
+
         if (docSnapshot.exists()) {
           const approaches = docSnapshot.data().approaches || [];
           const loadedData = approaches.map(
@@ -86,11 +102,62 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
           setData([]);
           scrollToBottom();
         }
+
+        if (exercisesDoc.exists()) {
+          const exercisesData = exercisesDoc.data();
+          const exercise = exercisesData.exercises.find(
+            (ex: any) => ex.id === selectedExercise?.id
+          );
+          if (exercise) {
+            setBestResult(exercise.bestResult);
+          }
+        }
       } catch (error) {
         messageApi.open({
           type: "error",
           content: t("errorLoadingExerciseData"),
         });
+      }
+    }
+  };
+
+  const saveBestResult = async (updatedBestResult: {
+    weight: string;
+    reps: string;
+  }) => {
+    const user = getAuth().currentUser;
+    if (user && selectedExercise) {
+      const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
+      try {
+        const exercisesDoc = await getDoc(exercisesDocRef);
+        if (exercisesDoc.exists()) {
+          const exercisesData = exercisesDoc.data();
+          const updatedExercises = exercisesData.exercises.map(
+            (exercise: Exercise) => {
+              if (exercise.id === selectedExercise.id) {
+                return {
+                  ...exercise,
+                  bestResult: updatedBestResult,
+                };
+              }
+              return exercise;
+            }
+          );
+
+          await updateDoc(exercisesDocRef, { exercises: updatedExercises });
+          setBestResult(updatedBestResult);
+        } else {
+          messageApi.open({
+            type: "error",
+            content: t("noExercisesFound"),
+          });
+        }
+      } catch (error) {
+        messageApi.open({
+          type: "error",
+          content: t("errorSavingBestResult"),
+        });
+        console.error("Error saving best result:", error);
       }
     }
   };
@@ -202,7 +269,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       >
         {selectedExercise ? (
           <>
-            <BestResult />
+            <BestResult bestResult={bestResult} onSave={saveBestResult} />
             <Table
               columns={columns}
               dataSource={data}

@@ -38,8 +38,8 @@ export const AddExercise: React.FC<IAddExercise> = ({
           name: exerciseName,
           category: category,
           bestResult: {
-            weight: 0,
-            reps: 0,
+            weight: "0",
+            reps: "0",
           },
           isFavorite: false,
         };

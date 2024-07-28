@@ -178,7 +178,7 @@
   "logout": "Вы успешно вышли из аккаунта",
   "edit": "Изменить",
   "bestResultReps": "повторений",
-  "bestResultWeight": "Вес",
   "bestExerciseResult": "Лучший результат",
-  "updateRecord": "Обновить свой рекорд"
+  "updateRecord": "Обновить рекорд",
+  "saveRecord": "Сохранить рекорд"
 }

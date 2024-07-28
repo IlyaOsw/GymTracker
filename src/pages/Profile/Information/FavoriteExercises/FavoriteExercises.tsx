@@ -34,6 +34,7 @@ export const FavoriteExercises: React.FC = () => {
               name: t(exercise.name),
               bestResult: exercise.bestResult,
             }));
+
           setFavoriteExercisesArray(favoriteExercises);
           setLoading(false);
         }
@@ -44,8 +45,8 @@ export const FavoriteExercises: React.FC = () => {
         });
       }
     };
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+
+    const unsubscribe = onAuthStateChanged(getAuth(), (user) => {
       if (user) {
         fetchFavoriteExercises(user);
       } else {
@@ -54,41 +55,6 @@ export const FavoriteExercises: React.FC = () => {
     });
     return () => unsubscribe();
   }, [t]);
-
-  const handleDelete = async (id: string) => {
-    try {
-      const user = getAuth().currentUser;
-      if (user) {
-        const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
-        const exercisesDoc = await getDoc(exercisesDocRef);
-        if (exercisesDoc.exists()) {
-          const exercisesData = exercisesDoc.data();
-          const updatedExercises = exercisesData.exercises.map(
-            (exercise: Exercise) => {
-              if (exercise.id === id) {
-                return { ...exercise, isFavorite: false };
-              }
-              return exercise;
-            }
-          );
-          await updateDoc(exercisesDocRef, { exercises: updatedExercises });
-          const updatedFavorites = updatedExercises.filter(
-            (exercise: Exercise) => exercise.isFavorite
-          );
-          setFavoriteExercisesArray(updatedFavorites);
-          messageApi.open({
-            type: "success",
-            content: t("removedFromFavorite"),
-          });
-        }
-      }
-    } catch (error) {
-      messageApi.open({
-        type: "error",
-        content: t("errorUpdatingFavorite"),
-      });
-    }
-  };
 
   return (
     <>
@@ -99,7 +65,7 @@ export const FavoriteExercises: React.FC = () => {
         <div className={styles.exercises}>
           <SubTitle children={t("favoriteExercises")} />
           {favoriteExercisesArray.map((item) => (
-            <ExerciseItem key={item.id} item={item} onDelete={handleDelete} />
+            <ExerciseItem key={item.id} item={item} />
           ))}
         </div>
       ) : (

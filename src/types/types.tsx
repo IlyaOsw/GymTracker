@@ -238,8 +238,8 @@ export interface ExercisesProps {
 }
 
 export interface BestResult {
-  weight: number;
-  reps: number;
+  weight: string;
+  reps: string;
 }
 
 export interface Exercise {
@@ -262,9 +262,9 @@ export interface CustomModalProps {
 }
 
 export interface NumericInputProps {
-  value: string;
+  value: string | undefined;
   onChange: (value: string) => void;
-  onBlur: () => void;
+  onBlur?: () => void;
 }
 
 export type ExerciseTablePropsType = {
@@ -352,7 +352,6 @@ export interface CountrySelectProps {
 
 export interface ExerciseItemProps {
   item: Exercise;
-  onDelete: (id: string) => void;
 }
 
 export type TableFooterPropsType = {
@@ -367,3 +366,11 @@ export type DeleteRowPropsType = {
   loadExerciseData: () => void;
   record: ExerciseTableType;
 };
+
+export interface BestResultProps {
+  bestResult: {
+    weight: string;
+    reps: string;
+  } | null;
+  onSave: (bestResult: { weight: string; reps: string }) => void;
+}

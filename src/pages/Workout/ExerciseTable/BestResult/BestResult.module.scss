@@ -25,14 +25,19 @@
   }
 
   .wrapper {
-    height: 50px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     font-size: 1.4rem;
     background-color: #282828;
     border-radius: 10px;
-    color: #0097b2;
+    color: rgb(209, 148, 35);
+  }
+
+  input {
+    text-align: center;
+    color: rgb(209, 148, 35);
   }
 
   .editBtn {

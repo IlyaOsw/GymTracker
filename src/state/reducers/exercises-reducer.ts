@@ -5,8 +5,8 @@ import { Exercise } from "../../types/types";
 const initialState: Exercise[] = [
   {
     bestResult: {
-      weight: 0,
-      reps: 0,
+      weight: "0",
+      reps: "0",
     },
     category: "Back",
     id: uuidv4(),
@@ -15,8 +15,8 @@ const initialState: Exercise[] = [
   },
   {
     bestResult: {
-      weight: 0,
-      reps: 0,
+      weight: "0",
+      reps: "0",
     },
     category: "Legs",
     id: uuidv4(),
@@ -25,8 +25,8 @@ const initialState: Exercise[] = [
   },
   {
     bestResult: {
-      weight: 0,
-      reps: 0,
+      weight: "0",
+      reps: "0",
     },
     category: "Chest",
     id: uuidv4(),
@@ -35,8 +35,8 @@ const initialState: Exercise[] = [
   },
   {
     bestResult: {
-      weight: 0,
-      reps: 0,
+      weight: "0",
+      reps: "0",
     },
     category: "Hands",
     id: uuidv4(),
@@ -45,8 +45,8 @@ const initialState: Exercise[] = [
   },
   {
     bestResult: {
-      weight: 0,
-      reps: 0,
+      weight: "0",
+      reps: "0",
     },
     category: "Shoulders",
     id: uuidv4(),

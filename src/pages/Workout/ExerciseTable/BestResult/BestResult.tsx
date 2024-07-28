@@ -1,17 +1,32 @@
-// @ts-nocheck
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { EditOutlined } from "@ant-design/icons";
+import { CheckOutlined, EditOutlined } from "@ant-design/icons";
 import { Collapse } from "antd";
 
 import { SettingButton } from "../../../../components/SettingButton/SettingButton";
 import NumericInput from "../../../../components/NumericInput/NumericInput";
+import { BestResultProps } from "../../../../types/types";
 
 import styles from "./BestResult.module.scss";
 
-export const BestResult: React.FC = () => {
+export const BestResult: React.FC<BestResultProps> = ({
+  bestResult,
+  onSave,
+}) => {
   const { t } = useTranslation();
   const [editMode, setEditMode] = useState<boolean>(false);
+  const [weight, setWeight] = useState<string>(bestResult?.weight || "");
+  const [reps, setReps] = useState<string>(bestResult?.reps || "");
+
+  useEffect(() => {
+    setWeight(bestResult?.weight || "");
+    setReps(bestResult?.reps || "");
+  }, [bestResult]);
+
+  const handleSave = () => {
+    onSave({ weight, reps });
+    setEditMode(false);
+  };
 
   const genExtra = () => (
     <img
@@ -29,35 +44,39 @@ export const BestResult: React.FC = () => {
             <>
               <div className={styles.wrapper}>
                 <div>
-                  <NumericInput />
+                  <NumericInput value={weight} onChange={setWeight} />
                   {t("kg")}
                 </div>
                 <div>
-                  <NumericInput />
+                  <NumericInput value={reps} onChange={setReps} />
                   {t("bestResultReps")}
                 </div>
               </div>
               <div className={styles.editBtn}>
                 <SettingButton
-                  icon={<EditOutlined />}
+                  icon={<CheckOutlined />}
                   className={styles.editExercise}
-                  onClick={() => setEditMode((prev) => !prev)}
+                  onClick={handleSave}
                 >
-                  <span>{t("updateRecord")}</span>
+                  <span>{t("saveRecord")}</span>
                 </SettingButton>
               </div>
             </>
           ) : (
             <>
               <div className={styles.wrapper}>
-                <div>100 {t("kg")}</div>
-                <div>10 {t("bestResultReps")}</div>
+                <div>
+                  {weight} {t("kg")}
+                </div>
+                <div>
+                  {reps} {t("bestResultReps")}
+                </div>
               </div>
               <div className={styles.editBtn}>
                 <SettingButton
                   icon={<EditOutlined />}
                   className={styles.editExercise}
-                  onClick={() => setEditMode((prev) => !prev)}
+                  onClick={() => setEditMode(true)}
                 >
                   <span>{t("updateRecord")}</span>
                 </SettingButton>

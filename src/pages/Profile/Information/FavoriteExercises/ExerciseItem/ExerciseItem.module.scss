@@ -23,39 +23,11 @@
     color: #0097b2;
   }
 
-  span {
-    color: #ffffff;
-    font-size: 1rem;
-  }
-
   svg {
     color: #ffffff;
     font-size: 1rem;
     margin-top: 7px;
     transition: color 0.3s ease;
-  }
-}
-
-.settings {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-}
-
-.confirm {
-  text-align: center;
-  font-size: 1.2rem;
-  margin-top: 25px;
-  color: #ffffff !important;
-}
-
-.delete {
-  text-align: center;
-}
-
-.btn {
-  svg {
-    margin-bottom: 6px;
   }
 }
 
@@ -74,7 +46,7 @@
   margin: 10px 0px 0px 0px;
 
   .result {
-    color: #0097b2;
+    color: rgb(209, 148, 35);
     font-size: 1.2rem;
   }
 }
