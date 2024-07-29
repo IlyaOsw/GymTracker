@@ -234,7 +234,7 @@ export interface ProtectedRouteProps {
 export interface ExercisesProps {
   category: string;
   updateTrigger: number;
-  onSelectExercise: (exercise: any) => void;
+  onSelectExercise: (exercise: Exercise) => void;
 }
 
 export interface BestResult {

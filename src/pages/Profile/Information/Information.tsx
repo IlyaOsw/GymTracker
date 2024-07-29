@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Divider } from "antd";
+import { Divider } from "antd";
 import { EditOutlined, UserDeleteOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { doc, getDoc } from "firebase/firestore";

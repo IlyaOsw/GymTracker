@@ -11,7 +11,12 @@ const NumericInput: React.ForwardRefRenderFunction<
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
     value = value.replace(",", ".");
-    if (/^\d*\.?\d?$/.test(value)) {
+
+    if (value.length > 1 && value.startsWith("0") && !value.startsWith("0.")) {
+      value = value.substring(1);
+    }
+
+    if (/^\d*\.?\d*$/.test(value)) {
       onChange(value);
     }
   };
