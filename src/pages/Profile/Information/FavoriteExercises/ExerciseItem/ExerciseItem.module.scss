@@ -20,7 +20,7 @@
   p {
     font-size: 1.2rem;
     text-align: start;
-    color: #debf10;
+    color: #0097b2;
   }
 
   svg {
@@ -31,22 +31,11 @@
   }
 }
 
-.resultTitle {
-  margin: -10px 0px;
-  font-size: 1rem;
+.result {
+  margin: -5px 0px;
+  font-size: 1.1rem;
   color: rgb(209, 148, 35);
-}
-
-.bestResult {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  color: #ffffff;
-  font-size: 1rem;
-  margin: 10px 0px 0px 0px;
-
-  .result {
-    color: rgb(209, 148, 35);
-    font-size: 1.2rem;
-  }
 }

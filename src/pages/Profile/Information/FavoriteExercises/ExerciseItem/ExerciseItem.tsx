@@ -22,17 +22,10 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({ item }) => {
       label: <p>{item.name}</p>,
       children: (
         <>
-          <div className={styles.resultTitle}>{t("bestResult")}</div>
-          <div className={styles.bestResult}>
+          <div className={styles.result}>
+            <div>{t("bestResult")}</div>
             <div>
-              <div className={styles.result}>
-                {item.bestResult.weight} {t("kg")}
-              </div>
-            </div>
-            <div>
-              <div className={styles.result}>
-                {item.bestResult.reps} {t("bestResultReps")}
-              </div>
+              {item.bestResult.weight} {t("kg")} x {item.bestResult.reps}
             </div>
           </div>
         </>

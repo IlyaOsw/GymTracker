@@ -85,12 +85,14 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
           </button>
         </div>
       </div>
-      <CustomButton
-        children={t("calculate")}
-        className={styles.calculate}
-        onClick={calculate1RM}
-        icon={<RightCircleOutlined />}
-      />
+      <div className={styles.calculateWrapper}>
+        <CustomButton
+          children={t("calculate")}
+          className={styles.calculate}
+          onClick={calculate1RM}
+          icon={<RightCircleOutlined />}
+        />
+      </div>
     </div>
   );
 };
