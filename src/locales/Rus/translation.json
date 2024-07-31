@@ -72,7 +72,7 @@
   "addExerciseBtn": "Добавить",
   "date": "Дата: ",
   "addRow": "Добавить строку",
-  "previous": "Предыдущее",
+  "previous": "Назад",
   "save": "Сохранить",
   "set": "Подход",
   "weight": "Вес (кг)",
@@ -181,5 +181,6 @@
   "bestExerciseResult": "Лучший результат",
   "updateRecord": "Обновить рекорд",
   "saveRecord": "Сохранить рекорд",
-  "recordUpdated": "Рекорд обновлен"
+  "recordUpdated": "Рекорд обновлен",
+  "newEntry": "Новая запись"
 }

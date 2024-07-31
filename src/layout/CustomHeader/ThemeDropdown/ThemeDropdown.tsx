@@ -16,7 +16,12 @@ export const ThemeDropdown: React.FC<ThemeDropdownPropsType> = ({
       label: (
         <>
           <span className={styles.themeIcon}>{item.icon}</span>
-          <span className={styles.dropdownItem}>{item.label}</span>
+          <span
+            className={styles.dropdownItem}
+            onClick={() => alert("Light theme in progress")}
+          >
+            {item.label}
+          </span>
         </>
       ),
       onClick: handleThemeClick,

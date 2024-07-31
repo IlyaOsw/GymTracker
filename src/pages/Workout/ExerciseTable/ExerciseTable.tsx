@@ -9,6 +9,7 @@ import {
   getDoc,
   getFirestore,
   updateDoc,
+  writeBatch,
 } from "firebase/firestore";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
@@ -39,6 +40,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   const [editReps, setEditReps] = useState<string | null>(null);
   const weightInputRef = useRef<HTMLInputElement | null>(null);
   const repsInputRef = useRef<HTMLInputElement | null>(null);
+  const user = getAuth().currentUser;
 
   useEffect(() => {
     if (selectedExercise) {
@@ -67,7 +69,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     }, 100);
 
   const loadExerciseData = async () => {
-    const user = getAuth().currentUser;
     if (user) {
       const setsCollectionRef = collection(getFirestore(), "sets");
       const setDocRef = doc(setsCollectionRef, selectedExercise?.id);
@@ -125,7 +126,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     weight: string;
     reps: string;
   }) => {
-    const user = getAuth().currentUser;
     if (user && selectedExercise) {
       const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
       try {
@@ -158,6 +158,33 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
           content: t("errorSavingBestResult"),
         });
         console.error("Error saving best result:", error);
+      }
+    }
+  };
+
+  const saveExerciseData = async () => {
+    if (user) {
+      const setsCollectionRef = collection(getFirestore(), "sets");
+      try {
+        const batch = writeBatch(getFirestore());
+        const setDocRef = doc(setsCollectionRef, selectedExercise?.id);
+        const approaches = data.map((row, index) => ({
+          key: index.toString(),
+          reps: row.reps,
+          weight: row.weight,
+        }));
+
+        batch.set(setDocRef, { approaches });
+        await batch.commit();
+        messageApi.open({
+          type: "success",
+          content: t("exerciseDataSaved"),
+        });
+      } catch (error) {
+        messageApi.open({
+          type: "error",
+          content: t("errorSavingExerciseData"),
+        });
       }
     }
   };
@@ -198,7 +225,10 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
             ref={weightInputRef}
             value={record.weight}
             onChange={(value) => updateWeight(record.key, value)}
-            onBlur={() => setEditWeight(null)}
+            onBlur={() => {
+              setEditWeight(null);
+              saveExerciseData();
+            }}
           />
         ) : (
           <div
@@ -219,7 +249,10 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
             ref={repsInputRef}
             value={record.reps}
             onChange={(value) => updateReps(record.key, value)}
-            onBlur={() => setEditReps(null)}
+            onBlur={() => {
+              setEditReps(null);
+              saveExerciseData();
+            }}
           />
         ) : (
           <div className={styles.repsAndDelete}>
