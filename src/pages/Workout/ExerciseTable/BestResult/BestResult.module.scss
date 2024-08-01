@@ -31,12 +31,17 @@
     background-color: #282828;
     border-radius: 10px;
     color: rgb(209, 148, 35);
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   input {
     text-align: center;
     color: rgb(209, 148, 35);
-    height: 26px;
   }
 
   .editBtn {

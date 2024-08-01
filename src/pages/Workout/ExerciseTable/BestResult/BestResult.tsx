@@ -50,11 +50,11 @@ export const BestResult: React.FC<BestResultProps> = ({
               <div className={styles.wrapper}>
                 <div>
                   <NumericInput value={weight} onChange={setWeight} />
-                  {t("kg")}
+                  <span>{t("kg")}</span>
                 </div>
                 <div>
                   <NumericInput value={reps} onChange={setReps} />
-                  {t("bestResultReps")}
+                  <span>{t("bestResultReps")}</span>
                 </div>
               </div>
               <div className={styles.editBtn}>

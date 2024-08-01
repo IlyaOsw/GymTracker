@@ -213,12 +213,12 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     {
       title: `${t("set")}`,
       dataIndex: "set",
-      width: "30%",
+      width: "25%",
     },
     {
       title: `${t("weight")}`,
       dataIndex: "weight",
-      width: "30%",
+      width: "35%",
       render: (text: string, record: ExerciseTableType) =>
         editWeight === record.key ? (
           <NumericInput
