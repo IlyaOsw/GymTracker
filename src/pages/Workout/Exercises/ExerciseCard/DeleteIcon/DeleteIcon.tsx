@@ -16,6 +16,7 @@ export const DeleteIcon: React.FC<DeleteIconPropsType> = ({
   isModalOpen,
   handleCancel,
   item,
+  index,
 }) => {
   const { t } = useTranslation();
   const [confirm, setConfirm] = useState<boolean>(false);
@@ -24,10 +25,10 @@ export const DeleteIcon: React.FC<DeleteIconPropsType> = ({
     setConfirm(true);
     setIsModalOpen(true);
   };
-
   return (
     <>
       <div className={styles.deleteIconContainer}>
+        <div className={styles.exerciseNumber}>{index + 1}.</div>
         <Tooltip title={t("deleteExercise")}>
           <CloseOutlined
             className={styles.deleteIcon}

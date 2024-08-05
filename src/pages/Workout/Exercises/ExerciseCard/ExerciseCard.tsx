@@ -15,6 +15,7 @@ export const ExerciseCard: React.FC<ExerciseCardPropsType> = ({
   setLoading,
   activeCardId,
   setActiveCardId,
+  index,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [newName, setNewName] = useState<string>("");
@@ -46,6 +47,7 @@ export const ExerciseCard: React.FC<ExerciseCardPropsType> = ({
         isModalOpen={isModalOpen}
         handleCancel={handleCancel}
         item={item}
+        index={index}
       />
       {currentEditingId === item.id && editMode ? (
         <EditInput

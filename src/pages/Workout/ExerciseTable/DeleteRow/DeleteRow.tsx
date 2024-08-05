@@ -9,12 +9,12 @@ import { DeleteRowPropsType } from "../../../../types/types";
 export const DeleteRow: React.FC<DeleteRowPropsType> = ({
   selectedExercise,
   loadExerciseData,
-  record,
+  index,
 }) => {
   const { t } = useTranslation();
   const [messageApi, contextHolder] = message.useMessage();
 
-  const deleteRow = async (key: string) => {
+  const deleteRow = async (index: number) => {
     if (!selectedExercise) {
       return;
     }
@@ -27,18 +27,20 @@ export const DeleteRow: React.FC<DeleteRowPropsType> = ({
       }
 
       const { approaches } = setDocSnapshot.data();
-      const approachIndex = approaches.findIndex(
-        (approach: { key: string }) => approach.key === key
-      );
+      if (index < 0 || index >= approaches.length) {
+        throw new Error("Invalid index");
+      }
+      approaches.splice(index, 1);
 
-      approaches.splice(approachIndex, 1);
       await updateDoc(setDocRef, {
         approaches: approaches,
       });
+
       messageApi.open({
         type: "success",
         content: t("exerciseDataDeletedSuccessfully"),
       });
+
       loadExerciseData();
     } catch (error) {
       messageApi.open({
@@ -47,10 +49,11 @@ export const DeleteRow: React.FC<DeleteRowPropsType> = ({
       });
     }
   };
+
   return (
     <Tooltip title={t("deleteRow")}>
       {contextHolder}
-      <CloseOutlined onClick={() => deleteRow(record.key)} />
+      <CloseOutlined onClick={() => deleteRow(index)} />
     </Tooltip>
   );
 };

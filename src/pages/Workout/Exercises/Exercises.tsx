@@ -82,7 +82,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
           <div className={styles.description}>{t("chooseExercise")}</div>
           <div className={styles.cards}>
             {data.length ? (
-              data.map((item: Exercise) => (
+              data.map((item: Exercise, index) => (
                 <ExerciseCard
                   key={item.id}
                   item={item}
@@ -92,6 +92,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
                   setLoading={setLoading}
                   activeCardId={activeCardId}
                   setActiveCardId={setActiveCardId}
+                  index={index}
                 />
               ))
             ) : (

@@ -168,8 +168,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       try {
         const batch = writeBatch(getFirestore());
         const setDocRef = doc(setsCollectionRef, selectedExercise?.id);
-        const approaches = data.map((row, index) => ({
-          key: index.toString(),
+        const approaches = data.map((row) => ({
           reps: row.reps,
           weight: row.weight,
         }));
@@ -243,7 +242,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       title: `${t("reps")}`,
       dataIndex: "reps",
       width: "30%",
-      render: (text: string, record: ExerciseTableType) =>
+      render: (text: string, record: ExerciseTableType, index: number) =>
         editReps === record.key ? (
           <NumericInput
             ref={repsInputRef}
@@ -265,7 +264,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
             <DeleteRow
               selectedExercise={selectedExercise}
               loadExerciseData={loadExerciseData}
-              record={record}
+              index={index} // Передача индекса
             />
           </div>
         ),

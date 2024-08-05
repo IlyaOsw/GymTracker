@@ -285,6 +285,7 @@ export type ExerciseCardPropsType = {
   setLoading: (value: boolean) => void;
   activeCardId: string | null;
   setActiveCardId: (value: string | null) => void;
+  index: number;
 };
 
 export type CardOptionsPropsType = {
@@ -304,6 +305,7 @@ export type DeleteIconPropsType = {
   isModalOpen: boolean;
   handleCancel: (e: any) => void;
   item: Exercise;
+  index: number;
 };
 
 export type ModalDeletePropsType = {
@@ -364,7 +366,7 @@ export type TableFooterPropsType = {
 export type DeleteRowPropsType = {
   selectedExercise: Exercise | null;
   loadExerciseData: () => void;
-  record: ExerciseTableType;
+  index: number;
 };
 
 export interface BestResultProps {
