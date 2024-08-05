@@ -264,7 +264,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
             <DeleteRow
               selectedExercise={selectedExercise}
               loadExerciseData={loadExerciseData}
-              index={index} // Передача индекса
+              index={index}
             />
           </div>
         ),

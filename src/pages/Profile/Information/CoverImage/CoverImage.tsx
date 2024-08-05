@@ -23,7 +23,6 @@ export const CoverImage: React.FC = () => {
           setCoverURL(url);
         })
         .catch((error) => {
-          console.error("Error fetching avatar URL:", error);
           setCoverURL("");
         });
     }

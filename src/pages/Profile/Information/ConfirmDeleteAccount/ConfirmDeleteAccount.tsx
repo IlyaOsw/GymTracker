@@ -23,8 +23,7 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
   const navigate = useNavigate();
 
   const handleDeleteAccount = async () => {
-    const auth = getAuth();
-    const user = auth.currentUser;
+    const user = getAuth().currentUser;
 
     if (user) {
       try {
@@ -35,24 +34,19 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
         const avatarRef = ref(storage, `avatar/${user.uid}`);
         const coverRef = ref(storage, `cover/${user.uid}`);
 
-        await deleteObject(avatarRef).catch((error) => {
-          if (error.code !== "storage/object-not-found") {
-            throw error;
-          }
-        });
-        await deleteObject(coverRef).catch((error) => {
-          if (error.code !== "storage/object-not-found") {
-            throw error;
-          }
-        });
+        await deleteObject(avatarRef);
+        await deleteObject(coverRef);
         await deleteUser(user);
+
         navigate("/main");
+
         messageApi.open({
           type: "success",
           content: t("accountDeleted"),
         });
       } catch (error) {
-        alert("Error deleting account");
+        console.log("Error deleting account");
+        navigate("/main");
       }
     }
   };

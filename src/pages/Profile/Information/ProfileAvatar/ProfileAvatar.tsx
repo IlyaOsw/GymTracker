@@ -22,10 +22,11 @@ export const ProfileAvatar: React.FC = () => {
   const { t } = useTranslation();
   const [messageApi, contextHolder] = message.useMessage();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [avatarURL, setAvatarURL] = useState("");
+  const [avatarURL, setAvatarURL] = useState<string | null>(null);
   const avatarSize = windowWidth <= 768 ? 150 : 250;
   const auth = getAuth();
   const storage = getStorage();
+  const user = auth.currentUser;
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,7 +41,6 @@ export const ProfileAvatar: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const user = auth.currentUser;
     if (user) {
       const avatarRef = ref(storage, `avatar/${user.uid}`);
       getDownloadURL(avatarRef)
@@ -48,20 +48,18 @@ export const ProfileAvatar: React.FC = () => {
           setAvatarURL(url);
         })
         .catch((error) => {
-          console.error("Error fetching avatar URL:", error);
-          setAvatarURL("");
+          setAvatarURL(null);
         });
     }
   }, [auth.currentUser]);
 
   const handleDeleteAvatar = async () => {
-    const user = auth.currentUser;
     if (user) {
       const avatarRef = ref(storage, `avatar/${user.uid}`);
       try {
         await deleteObject(avatarRef);
 
-        setAvatarURL("");
+        setAvatarURL(null);
         messageApi.open({
           type: "success",
           content: t("profilePhotoDeleted"),
@@ -76,7 +74,6 @@ export const ProfileAvatar: React.FC = () => {
   };
 
   const handleUploadAvatar = async (file: Blob | ArrayBuffer) => {
-    const user = auth.currentUser;
     if (user) {
       const avatarRef = ref(storage, `avatar/${user.uid}`);
       try {
