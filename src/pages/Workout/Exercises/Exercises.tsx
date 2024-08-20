@@ -53,7 +53,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
                 id: exercise.id,
                 name: t(exercise.name),
                 category: exercise.category,
-                bestResult: `${t("lastSet")}: ${exercise.bestResult}`,
+                bestResult: exercise.bestResult,
                 isFavorite: exercise.isFavorite,
               }));
             localStorage.setItem("exercisesData", JSON.stringify(filteredData));

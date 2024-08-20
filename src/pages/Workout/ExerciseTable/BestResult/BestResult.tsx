@@ -16,12 +16,12 @@ export const BestResult: React.FC<BestResultProps> = ({
   const { t } = useTranslation();
   const [messageApi, contextHolder] = message.useMessage();
   const [editMode, setEditMode] = useState<boolean>(false);
-  const [weight, setWeight] = useState<string>(bestResult?.weight || "");
-  const [reps, setReps] = useState<string>(bestResult?.reps || "");
+  const [weight, setWeight] = useState<string>(bestResult?.weight || "0");
+  const [reps, setReps] = useState<string>(bestResult?.reps || "0");
 
   useEffect(() => {
-    setWeight(bestResult?.weight || "");
-    setReps(bestResult?.reps || "");
+    setWeight(bestResult?.weight || "0");
+    setReps(bestResult?.reps || "0");
   }, [bestResult]);
 
   const handleSave = () => {

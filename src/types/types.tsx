@@ -361,6 +361,14 @@ export type TableFooterPropsType = {
   data: ExerciseTableType[];
   setData: (value: ExerciseTableType[]) => void;
   setEditWeight: (value: string | null) => void;
+  saveExerciseData: () => void;
+  onWorkoutDateChange: any;
+  setCurrentWorkout: (currentWorkout: boolean) => void;
+  addRowBtn: boolean;
+  setAddRowBtn: (addRowBtn: boolean) => void;
+  saveBtn: boolean;
+  setSaveBtn: (saveBtn: boolean) => void;
+  setDeleteBtn: (deleteBtn: boolean) => void;
 };
 
 export type DeleteRowPropsType = {

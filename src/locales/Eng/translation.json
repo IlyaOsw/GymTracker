@@ -91,7 +91,6 @@
   "Bench press": "Bench press",
   "Bicep curls": "Bicep curls",
   "Seated dumbbell press": "Seated dumbbell press",
-  "lastSet": "Last set:",
   "weightCalculator": "Maximum weight calculator",
   "indicateWeightAndReps": "Specify the working weight, number of repetitions, and discover your maximum",
   "message": "Message",
@@ -182,6 +181,13 @@
   "updateRecord": "Update record",
   "saveRecord": "Save new record",
   "recordUpdated": "Record has been updated",
-  "newEntry": "New entry"
+  "newEntry": "New training",
+  "workoutDate": "Workout date",
+  "saveWorkout": "Save workout",
+  "noDataToSave": "No data to save",
+  "saveTraining": "Save training",
+  "deleteWorkout": "Delete workout",
+  "workoutDeleted": "Workout deleted",
+  "workoutNotFound": "Workout not found",
+  "errorDeletingWorkout": "Error deleting workout"
 }
-

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ConfigProvider, Divider, message, Table } from "antd";
-import { CloseOutlined } from "@ant-design/icons";
+import { CloseOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { getAuth } from "firebase/auth";
 import {
@@ -11,6 +11,7 @@ import {
   updateDoc,
   writeBatch,
 } from "firebase/firestore";
+import { v4 as uuidv4 } from "uuid";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import {
@@ -20,10 +21,10 @@ import {
 } from "../../../types/types";
 import { EmptyBox } from "../../../components/EmptyBox/EmptyBox";
 import NumericInput from "../../../components/NumericInput/NumericInput";
+import { ResetButton } from "../../../components/ResetButton/ResetButton";
 
 import styles from "./ExerciseTable.module.scss";
 import { TableFooter } from "./TableFooter/TableFooter";
-import { DeleteRow } from "./DeleteRow/DeleteRow";
 import { BestResult } from "./BestResult/BestResult";
 
 export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
@@ -40,7 +41,12 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   const [editReps, setEditReps] = useState<string | null>(null);
   const weightInputRef = useRef<HTMLInputElement | null>(null);
   const repsInputRef = useRef<HTMLInputElement | null>(null);
+  const [workoutDate, setWorkoutDate] = useState<string | null>(null);
   const user = getAuth().currentUser;
+  const [currentWorkout, setCurrentWorkout] = useState(false);
+  const [addRowBtn, setAddRowBtn] = useState(false);
+  const [saveBtn, setSaveBtn] = useState(false);
+  const [deleteBtn, setDeleteBtn] = useState(true);
 
   useEffect(() => {
     if (selectedExercise) {
@@ -69,10 +75,11 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     }, 100);
 
   const loadExerciseData = async () => {
-    if (user) {
+    if (user && selectedExercise) {
       const setsCollectionRef = collection(getFirestore(), "sets");
-      const setDocRef = doc(setsCollectionRef, selectedExercise?.id);
+      const setDocRef = doc(setsCollectionRef, selectedExercise.id);
       const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
+
       try {
         const [docSnapshot, exercisesDoc] = await Promise.all([
           getDoc(setDocRef),
@@ -80,44 +87,59 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
         ]);
 
         if (docSnapshot.exists()) {
-          const approaches = docSnapshot.data().approaches || [];
-          const loadedData = approaches.map(
-            (
-              approach: {
-                weight: { toString: () => any };
-                reps: { toString: () => any };
-              },
-              index: number
-            ) => ({
-              key: index.toString(),
-              set: index + 1,
-              weight: approach.weight.toString(),
-              reps: approach.reps.toString(),
-              icon: <CloseOutlined />,
-            })
-          );
+          const documentData = docSnapshot.data();
+          const workouts = documentData?.workouts || [];
 
-          setData(loadedData);
-          scrollToBottom();
+          if (workouts.length > 0) {
+            const latestWorkout = workouts[workouts.length - 1];
+            const workoutDate = new Date(latestWorkout.date).toLocaleString();
+
+            setWorkoutDate(workoutDate);
+            const approaches = latestWorkout.approaches || [];
+            const loadedData: ExerciseTableType[] = approaches.map(
+              (approach: {
+                id: string;
+                set: number;
+                weight: string;
+                reps: string;
+              }) => ({
+                key: approach.id,
+                set: approach.set,
+                weight: approach.weight,
+                reps: approach.reps,
+                icon: <CloseOutlined />,
+              })
+            );
+            setData(loadedData);
+            scrollToBottom();
+          } else {
+            setData([]);
+            setWorkoutDate(null);
+            scrollToBottom();
+          }
+
+          if (exercisesDoc.exists()) {
+            const exercisesData = exercisesDoc.data();
+            const exercise = exercisesData.exercises.find(
+              (ex: { id: string }) => ex.id === selectedExercise.id
+            );
+            if (exercise) {
+              setBestResult(exercise.bestResult);
+            }
+          }
+          setAddRowBtn(true);
+          setSaveBtn(true);
+          setDeleteBtn(true);
         } else {
           setData([]);
+          setWorkoutDate(null);
           scrollToBottom();
+          setDeleteBtn(false);
         }
-
-        if (exercisesDoc.exists()) {
-          const exercisesData = exercisesDoc.data();
-          const exercise = exercisesData.exercises.find(
-            (ex: any) => ex.id === selectedExercise?.id
-          );
-          if (exercise) {
-            setBestResult(exercise.bestResult);
-          }
-        }
+        setAddRowBtn(false);
+        setSaveBtn(false);
       } catch (error) {
-        messageApi.open({
-          type: "error",
-          content: t("errorLoadingExerciseData"),
-        });
+        alert(error);
       }
     }
   };
@@ -157,24 +179,65 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
           type: "error",
           content: t("errorSavingBestResult"),
         });
-        console.error("Error saving best result:", error);
       }
     }
   };
 
   const saveExerciseData = async () => {
-    if (user) {
+    if (user && selectedExercise) {
+      const validData = data.filter((row) => row.reps && row.weight);
+
+      if (validData.length === 0) {
+        messageApi.open({
+          type: "error",
+          content: t("noDataToSave"),
+        });
+        return;
+      }
       const setsCollectionRef = collection(getFirestore(), "sets");
+      const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
+
       try {
         const batch = writeBatch(getFirestore());
-        const setDocRef = doc(setsCollectionRef, selectedExercise?.id);
-        const approaches = data.map((row) => ({
-          reps: row.reps,
-          weight: row.weight,
-        }));
+        const setDocRef = doc(setsCollectionRef, selectedExercise.id);
 
-        batch.set(setDocRef, { approaches });
+        const setDoc = await getDoc(setDocRef);
+        const setData = setDoc.exists() ? setDoc.data() : { workouts: [] };
+
+        const newWorkout = {
+          id: uuidv4(),
+          date: new Date().toISOString(),
+          approaches: data.map((row, index) => ({
+            id: uuidv4(),
+            set: index + 1,
+            reps: row.reps,
+            weight: row.weight,
+          })),
+        };
+
+        setData.workouts.push(newWorkout);
+        batch.set(setDocRef, setData);
+
+        const exercisesDoc = await getDoc(exercisesDocRef);
+        if (exercisesDoc.exists()) {
+          const exercisesData = exercisesDoc.data();
+          const updatedExercises = exercisesData.exercises.map(
+            (exercise: Exercise) => {
+              if (exercise.id === selectedExercise.id) {
+                return {
+                  ...exercise,
+                };
+              }
+              return exercise;
+            }
+          );
+
+          batch.update(exercisesDocRef, { exercises: updatedExercises });
+        }
+
         await batch.commit();
+        setAddRowBtn(false);
+        setSaveBtn(false);
         messageApi.open({
           type: "success",
           content: t("exerciseDataSaved"),
@@ -212,22 +275,19 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     {
       title: `${t("set")}`,
       dataIndex: "set",
-      width: "25%",
+      width: "20%",
     },
     {
       title: `${t("weight")}`,
       dataIndex: "weight",
-      width: "35%",
+      width: "30%",
       render: (text: string, record: ExerciseTableType) =>
         editWeight === record.key ? (
           <NumericInput
             ref={weightInputRef}
             value={record.weight}
             onChange={(value) => updateWeight(record.key, value)}
-            onBlur={() => {
-              setEditWeight(null);
-              saveExerciseData();
-            }}
+            onBlur={() => setEditWeight(null)}
           />
         ) : (
           <div
@@ -241,17 +301,14 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     {
       title: `${t("reps")}`,
       dataIndex: "reps",
-      width: "30%",
+      width: "25%",
       render: (text: string, record: ExerciseTableType, index: number) =>
         editReps === record.key ? (
           <NumericInput
             ref={repsInputRef}
             value={record.reps}
             onChange={(value) => updateReps(record.key, value)}
-            onBlur={() => {
-              setEditReps(null);
-              saveExerciseData();
-            }}
+            onBlur={() => setEditReps(null)}
           />
         ) : (
           <div className={styles.repsAndDelete}>
@@ -261,15 +318,67 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
             >
               {record.reps || t("clickToEdit")}
             </div>
-            <DeleteRow
-              selectedExercise={selectedExercise}
-              loadExerciseData={loadExerciseData}
-              index={index}
-            />
           </div>
         ),
     },
   ];
+
+  const handleWorkoutDateChange = (date: string) => {
+    const workoutDate = new Date(date);
+    const formattedDate = workoutDate.toLocaleString();
+    if (!isNaN(workoutDate.getTime())) {
+      setWorkoutDate(formattedDate);
+    } else {
+      console.error("Invalid date:", date);
+    }
+  };
+
+  const deleteWorkoutByDate = async () => {
+    if (!workoutDate || !selectedExercise || !user) return;
+
+    const setsCollectionRef = collection(getFirestore(), "sets");
+    const setDocRef = doc(setsCollectionRef, selectedExercise.id);
+
+    try {
+      const docSnapshot = await getDoc(setDocRef);
+      if (docSnapshot.exists()) {
+        const documentData = docSnapshot.data();
+        const workouts = documentData.workouts || [];
+
+        const filteredWorkouts = workouts.filter(
+          (workout: any) =>
+            new Date(workout.date).toLocaleString() !== workoutDate
+        );
+
+        if (filteredWorkouts.length === workouts.length) {
+          messageApi.open({
+            type: "error",
+            content: t("workoutNotFound"),
+          });
+          return;
+        }
+
+        await updateDoc(setDocRef, { workouts: filteredWorkouts });
+
+        setData([]);
+        setWorkoutDate(null);
+        messageApi.open({
+          type: "success",
+          content: t("workoutDeleted"),
+        });
+      } else {
+        messageApi.open({
+          type: "error",
+          content: t("errorDeletingWorkout"),
+        });
+      }
+    } catch (error) {
+      messageApi.open({
+        type: "error",
+        content: t("errorDeletingWorkout"),
+      });
+    }
+  };
 
   return (
     <>
@@ -280,10 +389,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
           children={selectedExercise?.name || t("noExerciseSelected")}
           className={styles.subtitle}
         />
-        <div className={styles.date}>
-          {t("date")}
-          {new Date().toLocaleDateString()}
-        </div>
       </div>
       <ConfigProvider
         theme={{
@@ -302,18 +407,44 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
         {selectedExercise ? (
           <>
             <BestResult bestResult={bestResult} onSave={saveBestResult} />
+            {currentWorkout ? (
+              <div className={styles.dateAndDelete}>
+                {t("workoutDate")}: {new Date().toLocaleDateString()}
+              </div>
+            ) : (
+              <div className={styles.dateAndDelete}>
+                {t("workoutDate")}: {workoutDate ? workoutDate : ". . ."}
+              </div>
+            )}
             <Table
+              rowKey={(record) => record.key}
               columns={columns}
               dataSource={data}
               pagination={false}
               className={styles.table}
               locale={{ emptyText: <EmptyBox /> }}
             />
+            {deleteBtn && (
+              <ResetButton
+                icon={<DeleteOutlined />}
+                onClick={deleteWorkoutByDate}
+              >
+                {t("deleteWorkout")}
+              </ResetButton>
+            )}
             <TableFooter
               selectedExercise={selectedExercise}
               data={data}
               setData={setData}
               setEditWeight={setEditWeight}
+              saveExerciseData={saveExerciseData}
+              onWorkoutDateChange={handleWorkoutDateChange}
+              setCurrentWorkout={setCurrentWorkout}
+              addRowBtn={addRowBtn}
+              setAddRowBtn={setAddRowBtn}
+              saveBtn={saveBtn}
+              setSaveBtn={setSaveBtn}
+              setDeleteBtn={setDeleteBtn}
             />
           </>
         ) : (

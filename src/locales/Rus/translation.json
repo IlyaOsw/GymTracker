@@ -91,7 +91,6 @@
   "Bench press": "Жим лежа",
   "Bicep curls": "Подьем гантелей на бицепс",
   "Seated dumbbell press": "Жим гантелей сидя",
-  "lastSet": "Последний подход:",
   "weightCalculator": "Калькулятор максимального веса",
   "indicateWeightAndReps": "Укажите рабочий вес, количество повторений и узнайте свой максимум",
   "message": "Сообщение",
@@ -182,5 +181,13 @@
   "updateRecord": "Обновить рекорд",
   "saveRecord": "Сохранить рекорд",
   "recordUpdated": "Рекорд обновлен",
-  "newEntry": "Новая запись"
+  "newEntry": "Новая тренировка",
+  "workoutDate": "Дата тренировки",
+  "saveWorkout": "Сохранить тренировку",
+  "noDataToSave": "Нет данных для сохранения",
+  "saveTraining": "Сохранить тренировку",
+  "deleteWorkout": "Удалить тренировку",
+  "workoutDeleted": "Тренировка удалена",
+  "workoutNotFound": "Тренировка не найдена",
+  "errorDeletingWorkout": "Ошибка при удалении тренировки"
 }
