@@ -25,6 +25,7 @@ export const DeleteIcon: React.FC<DeleteIconPropsType> = ({
     setConfirm(true);
     setIsModalOpen(true);
   };
+
   return (
     <>
       <div className={styles.deleteIconContainer}>

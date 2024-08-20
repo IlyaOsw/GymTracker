@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ConfigProvider, Divider, message, Table } from "antd";
-import { CloseOutlined, DeleteOutlined } from "@ant-design/icons";
+import { CloseOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { getAuth } from "firebase/auth";
 import {
@@ -21,11 +21,11 @@ import {
 } from "../../../types/types";
 import { EmptyBox } from "../../../components/EmptyBox/EmptyBox";
 import NumericInput from "../../../components/NumericInput/NumericInput";
-import { ResetButton } from "../../../components/ResetButton/ResetButton";
 
 import styles from "./ExerciseTable.module.scss";
 import { TableFooter } from "./TableFooter/TableFooter";
 import { BestResult } from "./BestResult/BestResult";
+import { DeleteWorkout } from "./DeleteWorkout/DeleteWorkout";
 
 export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   selectedExercise,
@@ -333,53 +333,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     }
   };
 
-  const deleteWorkoutByDate = async () => {
-    if (!workoutDate || !selectedExercise || !user) return;
-
-    const setsCollectionRef = collection(getFirestore(), "sets");
-    const setDocRef = doc(setsCollectionRef, selectedExercise.id);
-
-    try {
-      const docSnapshot = await getDoc(setDocRef);
-      if (docSnapshot.exists()) {
-        const documentData = docSnapshot.data();
-        const workouts = documentData.workouts || [];
-
-        const filteredWorkouts = workouts.filter(
-          (workout: any) =>
-            new Date(workout.date).toLocaleString() !== workoutDate
-        );
-
-        if (filteredWorkouts.length === workouts.length) {
-          messageApi.open({
-            type: "error",
-            content: t("workoutNotFound"),
-          });
-          return;
-        }
-
-        await updateDoc(setDocRef, { workouts: filteredWorkouts });
-
-        setData([]);
-        setWorkoutDate(null);
-        messageApi.open({
-          type: "success",
-          content: t("workoutDeleted"),
-        });
-      } else {
-        messageApi.open({
-          type: "error",
-          content: t("errorDeletingWorkout"),
-        });
-      }
-    } catch (error) {
-      messageApi.open({
-        type: "error",
-        content: t("errorDeletingWorkout"),
-      });
-    }
-  };
-
   return (
     <>
       {contextHolder}
@@ -425,12 +378,12 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
               locale={{ emptyText: <EmptyBox /> }}
             />
             {deleteBtn && (
-              <ResetButton
-                icon={<DeleteOutlined />}
-                onClick={deleteWorkoutByDate}
-              >
-                {t("deleteWorkout")}
-              </ResetButton>
+              <DeleteWorkout
+                workoutDate={workoutDate}
+                selectedExercise={selectedExercise}
+                setData={setData}
+                setWorkoutDate={setWorkoutDate}
+              />
             )}
             <TableFooter
               selectedExercise={selectedExercise}

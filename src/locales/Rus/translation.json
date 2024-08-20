@@ -185,9 +185,11 @@
   "workoutDate": "Дата тренировки",
   "saveWorkout": "Сохранить тренировку",
   "noDataToSave": "Нет данных для сохранения",
+  "noDataToDelete": "Нет данных для удаления",
   "saveTraining": "Сохранить тренировку",
   "deleteWorkout": "Удалить тренировку",
   "workoutDeleted": "Тренировка удалена",
   "workoutNotFound": "Тренировка не найдена",
-  "errorDeletingWorkout": "Ошибка при удалении тренировки"
+  "errorDeletingWorkout": "Ошибка при удалении тренировки",
+  "confirmDeletingWorkout": "Пожалуйста, подтвердите удаление тренировки"
 }

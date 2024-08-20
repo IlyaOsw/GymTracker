@@ -384,3 +384,10 @@ export interface BestResultProps {
   } | null;
   onSave: (bestResult: { weight: string; reps: string }) => void;
 }
+
+export interface DeleteWorkoutProps {
+  workoutDate: string | null;
+  selectedExercise: Exercise | null;
+  setData: (value: ExerciseTableType[]) => void;
+  setWorkoutDate: (workoutDate: string | null) => void;
+}
