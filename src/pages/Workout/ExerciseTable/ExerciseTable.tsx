@@ -185,7 +185,9 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
 
   const saveExerciseData = async () => {
     if (user && selectedExercise) {
-      const validData = data.filter((row) => row.reps && row.weight);
+      const validData = data.filter(
+        (row) => Number(row.reps) > 0 && Number(row.weight) > 0
+      );
 
       if (validData.length === 0) {
         messageApi.open({
@@ -377,14 +379,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
               className={styles.table}
               locale={{ emptyText: <EmptyBox /> }}
             />
-            {deleteBtn && (
-              <DeleteWorkout
-                workoutDate={workoutDate}
-                selectedExercise={selectedExercise}
-                setData={setData}
-                setWorkoutDate={setWorkoutDate}
-              />
-            )}
+
             <TableFooter
               selectedExercise={selectedExercise}
               data={data}
@@ -399,6 +394,14 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
               setSaveBtn={setSaveBtn}
               setDeleteBtn={setDeleteBtn}
             />
+            {deleteBtn && (
+              <DeleteWorkout
+                workoutDate={workoutDate}
+                selectedExercise={selectedExercise}
+                setData={setData}
+                setWorkoutDate={setWorkoutDate}
+              />
+            )}
           </>
         ) : (
           <Table

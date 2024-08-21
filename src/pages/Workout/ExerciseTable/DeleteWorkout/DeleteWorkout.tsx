@@ -82,9 +82,11 @@ export const DeleteWorkout: React.FC<DeleteWorkoutProps> = ({
   return (
     <>
       {contextHolder}
-      <ResetButton icon={<DeleteOutlined />} onClick={confirmDelete}>
-        {t("deleteWorkout")}
-      </ResetButton>
+      <div className={styles.deleteWorkout}>
+        <ResetButton icon={<DeleteOutlined />} onClick={confirmDelete}>
+          {t("deleteWorkout")}
+        </ResetButton>
+      </div>
       <CustomModal
         open={isModalOpen}
         onCancel={(e) => {
