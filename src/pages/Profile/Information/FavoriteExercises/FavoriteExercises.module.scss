@@ -9,3 +9,19 @@
     width: 100%;
   }
 }
+
+.starIcon {
+  font-size: 24px;
+  margin: -10px 0px 15px 0px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.filledStar {
+  color: #cbb106;
+}
+
+.emptyStar {
+  color: rgb(78, 78, 78);
+}

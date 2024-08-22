@@ -191,5 +191,6 @@
   "workoutDeleted": "Тренировка удалена",
   "workoutNotFound": "Тренировка не найдена",
   "errorDeletingWorkout": "Ошибка при удалении тренировки",
-  "confirmDeletingWorkout": "Пожалуйста, подтвердите удаление тренировки"
+  "confirmDeletingWorkout": "Пожалуйста, подтвердите удаление тренировки",
+  "maxFavoritesReached": "Максимум 3 упражнения в избранном"
 }

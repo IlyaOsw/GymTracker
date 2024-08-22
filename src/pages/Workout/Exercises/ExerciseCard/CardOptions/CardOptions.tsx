@@ -29,8 +29,21 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
         const userId = user.uid;
         const exercisesDocRef = doc(getFirestore(), "exercises", userId);
         const exercisesDoc = await getDoc(exercisesDocRef);
+
         if (exercisesDoc.exists()) {
           const exercisesData = exercisesDoc.data();
+          const favoriteExercisesCount = exercisesData.exercises.filter(
+            (exercise: { isFavorite: boolean }) => exercise.isFavorite
+          ).length;
+
+          if (!currentStatus && favoriteExercisesCount >= 3) {
+            messageApi.open({
+              type: "error",
+              content: t("maxFavoritesReached"),
+            });
+            return;
+          }
+
           let updatedExercises = exercisesData.exercises.map(
             (exercise: { id: string }) => {
               if (exercise.id === exerciseId) {
@@ -39,6 +52,7 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
               return exercise;
             }
           );
+
           await updateDoc(exercisesDocRef, {
             exercises: updatedExercises,
           });

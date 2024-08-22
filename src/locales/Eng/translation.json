@@ -191,5 +191,6 @@
   "workoutDeleted": "Workout deleted",
   "workoutNotFound": "Workout not found",
   "errorDeletingWorkout": "Error deleting workout",
-  "confirmDeletingWorkout": "Please confirm deleting workout"
+  "confirmDeletingWorkout": "Please confirm deleting workout",
+  "maxFavoritesReached": "Maximum of 3 favorite exercises allowed"
 }

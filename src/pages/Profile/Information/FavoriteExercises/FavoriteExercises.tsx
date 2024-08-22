@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Empty, message } from "antd";
-import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { StarFilled } from "@ant-design/icons";
 
 import { Exercise } from "../../../../types/types";
 import { Loader } from "../../../../components/Loader/Loader";
@@ -56,6 +57,17 @@ export const FavoriteExercises: React.FC = () => {
     return () => unsubscribe();
   }, [t]);
 
+  const renderStars = () => {
+    const totalStars = 3;
+    const filledStars = favoriteExercisesArray.length;
+    return Array.from({ length: totalStars }, (_, index) => (
+      <StarFilled
+        key={index}
+        className={index < filledStars ? styles.filledStar : styles.emptyStar}
+      />
+    ));
+  };
+
   return (
     <>
       {contextHolder}
@@ -64,6 +76,7 @@ export const FavoriteExercises: React.FC = () => {
       ) : favoriteExercisesArray.length > 0 ? (
         <div className={styles.exercises}>
           <SubTitle children={t("favoriteExercises")} />
+          <div className={styles.starIcon}>{renderStars()}</div>
           {favoriteExercisesArray.map((item) => (
             <ExerciseItem key={item.id} item={item} />
           ))}
@@ -71,6 +84,7 @@ export const FavoriteExercises: React.FC = () => {
       ) : (
         <div className={styles.exercises}>
           <SubTitle children={t("favoriteExercises")} />
+          <div className={styles.starIcon}>{renderStars()}</div>
           <Empty
             image={Empty.PRESENTED_IMAGE_SIMPLE}
             description={
