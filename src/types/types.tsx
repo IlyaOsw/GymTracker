@@ -1,5 +1,5 @@
 import { GetProp, MenuProps, ConfigProviderProps } from "antd";
-import { ReactNode } from "react";
+import { ReactNode, RefObject } from "react";
 
 export enum SocialLinks {
   LINKEDIN = "Linkedin",
@@ -235,6 +235,7 @@ export interface ExercisesProps {
   category: string;
   updateTrigger: number;
   onSelectExercise: (exercise: Exercise) => void;
+  exercisesRef: RefObject<HTMLDivElement>;
 }
 
 export interface BestResult {
@@ -286,6 +287,7 @@ export type ExerciseCardPropsType = {
   activeCardId: string | null;
   setActiveCardId: (value: string | null) => void;
   index: number;
+  exercisesRef: RefObject<HTMLDivElement>;
 };
 
 export type CardOptionsPropsType = {
@@ -382,7 +384,8 @@ export interface BestResultProps {
     weight: string;
     reps: string;
   } | null;
-  onSave: (bestResult: { weight: string; reps: string }) => void;
+  selectedExercise: Exercise | null;
+  setBestResult: (value: BestResult) => void;
 }
 
 export interface DeleteWorkoutProps {

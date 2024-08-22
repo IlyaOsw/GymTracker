@@ -16,6 +16,7 @@ export const ExerciseCard: React.FC<ExerciseCardPropsType> = ({
   activeCardId,
   setActiveCardId,
   index,
+  exercisesRef,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [newName, setNewName] = useState<string>("");
@@ -38,6 +39,7 @@ export const ExerciseCard: React.FC<ExerciseCardPropsType> = ({
         activeCardId === item.id ? styles.active : ""
       }`}
       onClick={() => handleCardClick(item)}
+      ref={exercisesRef}
     >
       <DeleteIcon
         setLoading={setLoading}

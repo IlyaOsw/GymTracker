@@ -144,45 +144,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     }
   };
 
-  const saveBestResult = async (updatedBestResult: {
-    weight: string;
-    reps: string;
-  }) => {
-    if (user && selectedExercise) {
-      const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
-      try {
-        const exercisesDoc = await getDoc(exercisesDocRef);
-        if (exercisesDoc.exists()) {
-          const exercisesData = exercisesDoc.data();
-          const updatedExercises = exercisesData.exercises.map(
-            (exercise: Exercise) => {
-              if (exercise.id === selectedExercise.id) {
-                return {
-                  ...exercise,
-                  bestResult: updatedBestResult,
-                };
-              }
-              return exercise;
-            }
-          );
-
-          await updateDoc(exercisesDocRef, { exercises: updatedExercises });
-          setBestResult(updatedBestResult);
-        } else {
-          messageApi.open({
-            type: "error",
-            content: t("noExercisesFound"),
-          });
-        }
-      } catch (error) {
-        messageApi.open({
-          type: "error",
-          content: t("errorSavingBestResult"),
-        });
-      }
-    }
-  };
-
   const saveExerciseData = async () => {
     if (user && selectedExercise) {
       const validData = data.filter(
@@ -209,7 +170,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
         const newWorkout = {
           id: uuidv4(),
           date: new Date().toISOString(),
-          approaches: data.map((row, index) => ({
+          approaches: validData.map((row, index) => ({
             id: uuidv4(),
             set: index + 1,
             reps: row.reps,
@@ -361,7 +322,11 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       >
         {selectedExercise ? (
           <>
-            <BestResult bestResult={bestResult} onSave={saveBestResult} />
+            <BestResult
+              bestResult={bestResult}
+              selectedExercise={selectedExercise}
+              setBestResult={setBestResult}
+            />
             {currentWorkout ? (
               <div className={styles.dateAndDelete}>
                 {t("workoutDate")}: {new Date().toLocaleDateString()}

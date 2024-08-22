@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
@@ -16,12 +16,19 @@ const Workout: React.FC = () => {
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(
     null
   );
+  const exercisesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
 
-  const handleUpdateExercises = () => setUpdateTrigger((prev) => prev + 1);
+  const handleUpdateExercises = () => {
+    setUpdateTrigger((prev) => prev + 1);
+
+    if (exercisesRef.current) {
+      exercisesRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const handleSelectExercise = (exercise: Exercise) =>
     setSelectedExercise(exercise);
@@ -38,6 +45,7 @@ const Workout: React.FC = () => {
           category={state?.title}
           updateTrigger={updateTrigger}
           onSelectExercise={handleSelectExercise}
+          exercisesRef={exercisesRef}
         />
         <ExerciseTable selectedExercise={selectedExercise} />
       </div>
