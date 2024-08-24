@@ -236,6 +236,8 @@ export interface ExercisesProps {
   updateTrigger: number;
   onSelectExercise: (exercise: Exercise) => void;
   exercisesRef: RefObject<HTMLDivElement>;
+  activeCardId: string | null;
+  setActiveCardId: (value: string | null) => void;
 }
 
 export interface BestResult {
@@ -270,6 +272,8 @@ export interface NumericInputProps {
 
 export type ExerciseTablePropsType = {
   selectedExercise: Exercise | null;
+  setSelectedExercise: (value: Exercise | null) => void;
+  setActiveCardId: (value: string | null) => void;
 };
 
 export interface Approach {
@@ -393,4 +397,6 @@ export interface DeleteWorkoutProps {
   selectedExercise: Exercise | null;
   setData: (value: ExerciseTableType[]) => void;
   setWorkoutDate: (workoutDate: string | null) => void;
+  setSelectedExercise: (value: Exercise | null) => void;
+  setActiveCardId: (value: string | null) => void;
 }

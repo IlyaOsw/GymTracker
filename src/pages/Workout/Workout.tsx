@@ -16,6 +16,7 @@ const Workout: React.FC = () => {
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(
     null
   );
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
   const exercisesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,8 +47,14 @@ const Workout: React.FC = () => {
           updateTrigger={updateTrigger}
           onSelectExercise={handleSelectExercise}
           exercisesRef={exercisesRef}
+          activeCardId={activeCardId}
+          setActiveCardId={setActiveCardId}
         />
-        <ExerciseTable selectedExercise={selectedExercise} />
+        <ExerciseTable
+          selectedExercise={selectedExercise}
+          setSelectedExercise={setSelectedExercise}
+          setActiveCardId={setActiveCardId}
+        />
       </div>
     </PageWrapper>
   );

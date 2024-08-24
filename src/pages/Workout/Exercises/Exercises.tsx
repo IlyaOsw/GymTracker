@@ -17,12 +17,13 @@ export const Exercises: React.FC<ExercisesProps> = ({
   updateTrigger,
   onSelectExercise,
   exercisesRef,
+  activeCardId,
+  setActiveCardId,
 }) => {
   const { t } = useTranslation();
   const [messageApi, contextHolder] = message.useMessage();
   const [data, setData] = useState<Exercise[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   useEffect(() => {
     const storedData = JSON.parse(

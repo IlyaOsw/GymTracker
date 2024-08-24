@@ -13,7 +13,7 @@ import styles from "../EditProfile.module.scss";
 import { EditFormPropsType } from "../../../../../types/types";
 import { useUserContext } from "../../../../../context/UserContext";
 import { CountrySelect } from "../../../../../components/CountrySelect/CountrySelect";
-import { calculateAge } from "../../../../../utils/dateUtils";
+import { calculateAge } from "../../../../../utils/calculateAge";
 
 const countryOptions = countries().getData();
 

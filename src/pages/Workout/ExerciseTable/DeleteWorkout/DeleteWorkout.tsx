@@ -14,6 +14,7 @@ import { getAuth } from "firebase/auth";
 import { ResetButton } from "../../../../components/ResetButton/ResetButton";
 import { DeleteWorkoutProps } from "../../../../types/types";
 import { CustomModal } from "../../../../components/CustomModal/CustomModal";
+import { scrollToTop } from "../../../../utils/scrollToTop";
 
 import styles from "./DeleteWorkout.module.scss";
 
@@ -22,6 +23,8 @@ export const DeleteWorkout: React.FC<DeleteWorkoutProps> = ({
   selectedExercise,
   setData,
   setWorkoutDate,
+  setSelectedExercise,
+  setActiveCardId,
 }) => {
   const { t } = useTranslation();
   const user = getAuth().currentUser;
@@ -41,19 +44,21 @@ export const DeleteWorkout: React.FC<DeleteWorkoutProps> = ({
         const documentData = docSnapshot.data();
         const workouts = documentData.workouts || [];
         const filteredWorkouts = workouts.filter(
-          (workout: any) =>
+          (workout: { date: string | number | Date }) =>
             new Date(workout.date).toLocaleString() !== workoutDate
         );
 
         await updateDoc(setDocRef, { workouts: filteredWorkouts });
         setData([]);
         setWorkoutDate(null);
-
+        setIsModalOpen(false);
+        setSelectedExercise(null);
+        scrollToTop();
+        setActiveCardId(null);
         messageApi.open({
           type: "success",
           content: t("workoutDeleted"),
         });
-        setIsModalOpen(false);
       }
     } catch (error) {
       messageApi.open({

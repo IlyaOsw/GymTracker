@@ -15,7 +15,7 @@ import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 import { ResetButton } from "../../components/ResetButton/ResetButton";
 import { storage } from "../..";
 import { Exercise } from "../../types/types";
-import { calculateAge } from "../../utils/dateUtils";
+import { calculateAge } from "../../utils/calculateAge";
 
 import { Registration } from "./Registration/Registration";
 import { PersonalInformation } from "./PersonalInformation/PersonalInformation";

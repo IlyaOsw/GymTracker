@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { ExerciseCardPropsType } from "../../../../types/types";
+import { Exercise, ExerciseCardPropsType } from "../../../../types/types";
 
 import { CardOptions } from "./CardOptions/CardOptions";
 import { DeleteIcon } from "./DeleteIcon/DeleteIcon";
@@ -23,12 +23,12 @@ export const ExerciseCard: React.FC<ExerciseCardPropsType> = ({
   const [currentEditingId, setCurrentEditingId] = useState<string | null>(null);
   const [editMode, setEditMode] = useState(false);
 
-  const handleCancel = (e: any) => {
+  const handleCancel = (e: { stopPropagation: () => void }) => {
     e.stopPropagation();
     setIsModalOpen(false);
   };
 
-  const handleCardClick = (item: any) => {
+  const handleCardClick = (item: Exercise) => {
     setActiveCardId(item.id);
     onSelectExercise(item);
   };

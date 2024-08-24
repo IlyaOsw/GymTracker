@@ -8,7 +8,6 @@ import {
   doc,
   getDoc,
   getFirestore,
-  updateDoc,
   writeBatch,
 } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
@@ -21,6 +20,7 @@ import {
 } from "../../../types/types";
 import { EmptyBox } from "../../../components/EmptyBox/EmptyBox";
 import NumericInput from "../../../components/NumericInput/NumericInput";
+import { scrollToBottom } from "../../../utils/scrollToBottom";
 
 import styles from "./ExerciseTable.module.scss";
 import { TableFooter } from "./TableFooter/TableFooter";
@@ -29,6 +29,8 @@ import { DeleteWorkout } from "./DeleteWorkout/DeleteWorkout";
 
 export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   selectedExercise,
+  setSelectedExercise,
+  setActiveCardId,
 }) => {
   const { t } = useTranslation();
   const [messageApi, contextHolder] = message.useMessage();
@@ -39,14 +41,15 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   } | null>(null);
   const [editWeight, setEditWeight] = useState<string | null>(null);
   const [editReps, setEditReps] = useState<string | null>(null);
-  const weightInputRef = useRef<HTMLInputElement | null>(null);
-  const repsInputRef = useRef<HTMLInputElement | null>(null);
   const [workoutDate, setWorkoutDate] = useState<string | null>(null);
-  const user = getAuth().currentUser;
   const [currentWorkout, setCurrentWorkout] = useState(false);
   const [addRowBtn, setAddRowBtn] = useState(false);
   const [saveBtn, setSaveBtn] = useState(false);
   const [deleteBtn, setDeleteBtn] = useState(true);
+
+  const weightInputRef = useRef<HTMLInputElement | null>(null);
+  const repsInputRef = useRef<HTMLInputElement | null>(null);
+  const user = getAuth().currentUser;
 
   useEffect(() => {
     if (selectedExercise) {
@@ -64,15 +67,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       weightInputRef.current.focus();
     }
   }, [editReps, editWeight]);
-
-  const scrollToBottom = () =>
-    setTimeout(() => {
-      window.scrollTo({
-        left: 0,
-        top: document.body.scrollHeight,
-        behavior: "smooth",
-      });
-    }, 100);
 
   const loadExerciseData = async () => {
     if (user && selectedExercise) {
@@ -316,6 +310,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
               colorBgContainer: "#282828",
               colorText: "#ffffff",
               borderColor: "#535353",
+              cellPaddingBlock: 14,
             },
           },
         }}
@@ -344,7 +339,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
               className={styles.table}
               locale={{ emptyText: <EmptyBox /> }}
             />
-
             <TableFooter
               selectedExercise={selectedExercise}
               data={data}
@@ -365,6 +359,8 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
                 selectedExercise={selectedExercise}
                 setData={setData}
                 setWorkoutDate={setWorkoutDate}
+                setSelectedExercise={setSelectedExercise}
+                setActiveCardId={setActiveCardId}
               />
             )}
           </>
