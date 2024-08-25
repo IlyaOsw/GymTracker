@@ -112,6 +112,8 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
             scrollToBottom();
           }
 
+          setDeleteBtn(workouts.length > 0);
+
           if (exercisesDoc.exists()) {
             const exercisesData = exercisesDoc.data();
             const exercise = exercisesData.exercises.find(
@@ -121,15 +123,16 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
               setBestResult(exercise.bestResult);
             }
           }
+
           setAddRowBtn(true);
           setSaveBtn(true);
-          setDeleteBtn(true);
         } else {
           setData([]);
           setWorkoutDate(null);
           scrollToBottom();
           setDeleteBtn(false);
         }
+
         setAddRowBtn(false);
         setSaveBtn(false);
       } catch (error) {
@@ -193,8 +196,11 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
         }
 
         await batch.commit();
+
+        setCurrentWorkout(false);
         setAddRowBtn(false);
         setSaveBtn(false);
+
         messageApi.open({
           type: "success",
           content: t("exerciseDataSaved"),
@@ -239,43 +245,51 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       dataIndex: "weight",
       width: "30%",
       render: (text: string, record: ExerciseTableType) =>
-        editWeight === record.key ? (
-          <NumericInput
-            ref={weightInputRef}
-            value={record.weight}
-            onChange={(value) => updateWeight(record.key, value)}
-            onBlur={() => setEditWeight(null)}
-          />
+        currentWorkout ? (
+          editWeight === record.key ? (
+            <NumericInput
+              ref={weightInputRef}
+              value={record.weight}
+              onChange={(value) => updateWeight(record.key, value)}
+              onBlur={() => setEditWeight(null)}
+            />
+          ) : (
+            <div
+              onClick={() => setEditWeight(record.key)}
+              className={styles.editableDiv}
+            >
+              {record.weight || t("clickToEdit")}
+            </div>
+          )
         ) : (
-          <div
-            onClick={() => setEditWeight(record.key)}
-            className={styles.editableDiv}
-          >
-            {record.weight || t("clickToEdit")}
-          </div>
+          <div className={styles.editableDiv}>{record.weight}</div>
         ),
     },
     {
       title: `${t("reps")}`,
       dataIndex: "reps",
       width: "25%",
-      render: (text: string, record: ExerciseTableType, index: number) =>
-        editReps === record.key ? (
-          <NumericInput
-            ref={repsInputRef}
-            value={record.reps}
-            onChange={(value) => updateReps(record.key, value)}
-            onBlur={() => setEditReps(null)}
-          />
-        ) : (
-          <div className={styles.repsAndDelete}>
-            <div
-              onClick={() => setEditReps(record.key)}
-              className={styles.editableDiv}
-            >
-              {record.reps || t("clickToEdit")}
+      render: (text: string, record: ExerciseTableType) =>
+        currentWorkout ? (
+          editReps === record.key ? (
+            <NumericInput
+              ref={repsInputRef}
+              value={record.reps}
+              onChange={(value) => updateReps(record.key, value)}
+              onBlur={() => setEditReps(null)}
+            />
+          ) : (
+            <div className={styles.repsAndDelete}>
+              <div
+                onClick={() => setEditReps(record.key)}
+                className={styles.editableDiv}
+              >
+                {record.reps || t("clickToEdit")}
+              </div>
             </div>
-          </div>
+          )
+        ) : (
+          <div className={styles.editableDiv}>{record.reps}</div>
         ),
     },
   ];
@@ -285,6 +299,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     const formattedDate = workoutDate.toLocaleString();
     if (!isNaN(workoutDate.getTime())) {
       setWorkoutDate(formattedDate);
+      setCurrentWorkout(false);
     } else {
       console.error("Invalid date:", date);
     }

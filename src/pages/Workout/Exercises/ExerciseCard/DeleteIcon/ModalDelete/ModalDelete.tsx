@@ -14,6 +14,7 @@ import { message } from "antd";
 import { CustomModal } from "../../../../../../components/CustomModal/CustomModal";
 import { ResetButton } from "../../../../../../components/ResetButton/ResetButton";
 import { ModalDeletePropsType, Exercise } from "../../../../../../types/types";
+import { scrollToTop } from "../../../../../../utils/scrollToTop";
 
 import styles from "../DeleteIcon.module.scss";
 
@@ -26,6 +27,7 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = ({
   handleCancel,
   item,
   setConfirm,
+  setSelectedExercise,
 }) => {
   const { t } = useTranslation();
   const [messageApi, contextHolder] = message.useMessage();
@@ -63,14 +65,17 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = ({
             localStorage.setItem("exercisesData", JSON.stringify(filteredData));
           }
         }
+        setConfirm(false);
+        setIsModalOpen(false);
+        setLoading(false);
+        setSelectedExercise(null);
+        scrollToTop();
+
         messageApi.open({
           type: "success",
           content: t("exerciseDeleted"),
         });
       }
-      setConfirm(false);
-      setIsModalOpen(false);
-      setLoading(false);
     } catch (error) {
       messageApi.open({
         type: "error",

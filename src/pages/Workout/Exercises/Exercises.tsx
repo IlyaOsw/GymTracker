@@ -19,6 +19,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
   exercisesRef,
   activeCardId,
   setActiveCardId,
+  setSelectedExercise,
 }) => {
   const { t } = useTranslation();
   const [messageApi, contextHolder] = message.useMessage();
@@ -96,6 +97,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
                   setActiveCardId={setActiveCardId}
                   index={index}
                   exercisesRef={exercisesRef}
+                  setSelectedExercise={setSelectedExercise}
                 />
               ))
             ) : (

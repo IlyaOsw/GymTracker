@@ -55,12 +55,12 @@ export const AddExercise: React.FC<IAddExercise> = ({
             exercises: [exercise],
           });
         }
+        setExerciseName("");
+        onAddExercise();
         messageApi.open({
           type: "success",
           content: t("exerciseAdded"),
         });
-        setExerciseName("");
-        onAddExercise();
       }
     } catch (error) {
       messageApi.open({

@@ -238,6 +238,7 @@ export interface ExercisesProps {
   exercisesRef: RefObject<HTMLDivElement>;
   activeCardId: string | null;
   setActiveCardId: (value: string | null) => void;
+  setSelectedExercise: (value: Exercise | null) => void;
 }
 
 export interface BestResult {
@@ -292,6 +293,7 @@ export type ExerciseCardPropsType = {
   setActiveCardId: (value: string | null) => void;
   index: number;
   exercisesRef: RefObject<HTMLDivElement>;
+  setSelectedExercise: (value: Exercise | null) => void;
 };
 
 export type CardOptionsPropsType = {
@@ -312,6 +314,7 @@ export type DeleteIconPropsType = {
   handleCancel: (e: any) => void;
   item: Exercise;
   index: number;
+  setSelectedExercise: (value: Exercise | null) => void;
 };
 
 export type ModalDeletePropsType = {
@@ -323,6 +326,7 @@ export type ModalDeletePropsType = {
   handleCancel: (e: any) => void;
   item: Exercise;
   setConfirm: (value: boolean) => void;
+  setSelectedExercise: (value: Exercise | null) => void;
 };
 
 export type EditInputPropsType = {

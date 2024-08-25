@@ -32,7 +32,6 @@ export const DeleteWorkout: React.FC<DeleteWorkoutProps> = ({
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const deleteWorkoutByDate = async () => {
-    setIsModalOpen(true);
     if (!workoutDate || !selectedExercise || !user) return;
 
     const setsCollectionRef = collection(getFirestore(), "sets");
@@ -49,12 +48,14 @@ export const DeleteWorkout: React.FC<DeleteWorkoutProps> = ({
         );
 
         await updateDoc(setDocRef, { workouts: filteredWorkouts });
+
         setData([]);
         setWorkoutDate(null);
-        setIsModalOpen(false);
         setSelectedExercise(null);
-        scrollToTop();
         setActiveCardId(null);
+        scrollToTop();
+        setIsModalOpen(false);
+
         messageApi.open({
           type: "success",
           content: t("workoutDeleted"),

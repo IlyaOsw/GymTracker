@@ -17,6 +17,7 @@ export const DeleteIcon: React.FC<DeleteIconPropsType> = ({
   handleCancel,
   item,
   index,
+  setSelectedExercise,
 }) => {
   const { t } = useTranslation();
   const [confirm, setConfirm] = useState<boolean>(false);
@@ -50,6 +51,7 @@ export const DeleteIcon: React.FC<DeleteIconPropsType> = ({
           handleCancel={handleCancel}
           item={item}
           setConfirm={setConfirm}
+          setSelectedExercise={setSelectedExercise}
         />
       )}
     </>

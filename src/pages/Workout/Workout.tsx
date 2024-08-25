@@ -49,6 +49,7 @@ const Workout: React.FC = () => {
           exercisesRef={exercisesRef}
           activeCardId={activeCardId}
           setActiveCardId={setActiveCardId}
+          setSelectedExercise={setSelectedExercise}
         />
         <ExerciseTable
           selectedExercise={selectedExercise}
