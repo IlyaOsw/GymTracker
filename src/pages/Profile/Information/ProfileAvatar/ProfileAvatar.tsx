@@ -106,6 +106,7 @@ export const ProfileAvatar: React.FC = () => {
               handleUploadAvatar(file);
               return false;
             }}
+            accept="image/*"
           >
             <span>{t("uploadNewProfilePhoto")}</span>
           </Upload>

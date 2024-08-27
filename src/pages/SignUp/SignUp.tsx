@@ -16,6 +16,7 @@ import { ResetButton } from "../../components/ResetButton/ResetButton";
 import { storage } from "../..";
 import { Exercise } from "../../types/types";
 import { calculateAge } from "../../utils/calculateAge";
+import { scrollToTop } from "../../utils/scrollToTop";
 
 import { Registration } from "./Registration/Registration";
 import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
@@ -42,7 +43,7 @@ const SignUp: React.FC = () => {
   );
 
   useEffect(() => {
-    window.scroll(0, 0);
+    scrollToTop();
   }, []);
 
   const onReset = () => {
@@ -51,11 +52,7 @@ const SignUp: React.FC = () => {
       type: "success",
       content: t("reseted"),
     });
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    scrollToTop();
   };
 
   const handleEmailChange = (email: string) => setEmail(email);

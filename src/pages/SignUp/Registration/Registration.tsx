@@ -44,7 +44,7 @@ export const Registration: React.FC<RegistrationType> = ({
             style={{ background: "rgb(103, 103, 103)" }}
           />
         )}
-        <Upload {...props} showUploadList={false}>
+        <Upload {...props} showUploadList={false} accept="image/*">
           <CustomButton icon={<UploadOutlined />} className={styles.upload}>
             {t("uploadProfilePhoto")}
           </CustomButton>

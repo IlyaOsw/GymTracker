@@ -1,17 +1,17 @@
 .cardItem {
   width: calc(33.33% - 10px);
-  background-image: linear-gradient(to bottom, #3a3a3a, #232323);
+  background-image: linear-gradient(to bottom, #282828, #151515);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(80, 80, 80, 0.2);
   transition:
-    transform 0.3s,
-    box-shadow 0.3s,
-    background-color 0.3s;
+    transform 0.4s,
+    box-shadow 0.4s,
+    background-color 0.4s;
 
   &.active {
     border: 1px solid rgb(165, 165, 165);
     box-shadow: 0 4px 8px rgba(80, 80, 80, 0.4);
-    background-image: linear-gradient(to bottom, #454545, #373737);
+    background-image: linear-gradient(to bottom, #404040, #333333);
   }
 
   &:hover {
@@ -50,7 +50,7 @@
     padding-bottom: 5px;
 
     .exerciseName {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
   }
 }

@@ -23,9 +23,15 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({ item }) => {
       children: (
         <>
           <div className={styles.result}>
-            <div>{t("bestResult")}</div>
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                "/assets/Icons/AdditionalIcons/trophy.png"
+              }
+            />
             <div>
-              {item.bestResult.weight} {t("kg")} x {item.bestResult.reps}
+              {item.bestResult.weight} {t("kg")} {t("on")}{" "}
+              {item.bestResult.reps}
             </div>
           </div>
         </>

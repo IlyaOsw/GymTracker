@@ -193,5 +193,6 @@
   "errorDeletingWorkout": "Ошибка при удалении тренировки",
   "confirmDeletingWorkout": "Пожалуйста, подтвердите удаление тренировки",
   "maxFavoritesReached": "Максимум 3 упражнения в избранном",
-  "lastWorkout": "Последняя тренировка"
+  "lastWorkout": "Последняя тренировка",
+  "on": "на"
 }

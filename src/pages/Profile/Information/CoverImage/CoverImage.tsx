@@ -64,6 +64,7 @@ export const CoverImage: React.FC = () => {
           handleUploadCoverImage(file);
           return false;
         }}
+        accept="image/*"
         className={styles.uploadCoverImage}
       >
         <SettingButton icon={<CameraOutlined />} className={styles.editBtn}>

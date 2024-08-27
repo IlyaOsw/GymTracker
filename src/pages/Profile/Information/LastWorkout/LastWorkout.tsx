@@ -58,10 +58,10 @@ export const LastWorkout: React.FC = () => {
           "/assets/Icons/AdditionalIcons/lastWorkout.png"
         }
       />
-      <span>
+      <div className={styles.title}>
         {t("lastWorkout")}:{" "}
-        {lastWorkoutDate ? lastWorkoutDate : "No workouts found"}
-      </span>
+        <span>{lastWorkoutDate ? lastWorkoutDate : "No workouts found"}</span>
+      </div>
     </div>
   );
 };
