@@ -263,6 +263,7 @@ export interface CustomModalProps {
   onCancel?: (e: any) => void;
   footer?: React.ReactNode;
   children?: React.ReactNode;
+  className?: string;
 }
 
 export interface NumericInputProps {

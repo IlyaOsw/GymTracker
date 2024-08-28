@@ -27,18 +27,14 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   const navigate = useNavigate();
 
   useEffect(() => {
-    const handleScroll = (event: TouchEvent | WheelEvent) => {
-      if (open) {
-        event.preventDefault();
-      }
-    };
-
-    document.addEventListener("touchmove", handleScroll, { passive: false });
-    document.addEventListener("wheel", handleScroll, { passive: false });
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
 
     return () => {
-      document.removeEventListener("touchmove", handleScroll);
-      document.removeEventListener("wheel", handleScroll);
+      document.body.style.overflow = "auto";
     };
   }, [open]);
 

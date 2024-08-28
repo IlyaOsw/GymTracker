@@ -31,11 +31,10 @@ export const EditForm: React.FC<EditFormPropsType> = ({
   const [country, setCountry] = useState<string | undefined>(undefined);
   const [city, setCity] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
+  const user = getAuth().currentUser;
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const auth = getAuth();
-      const user = auth.currentUser;
       if (user) {
         const userDoc = await getDoc(doc(getFirestore(), "users", user.uid));
         if (userDoc.exists()) {
@@ -60,7 +59,6 @@ export const EditForm: React.FC<EditFormPropsType> = ({
   }, [form]);
 
   const handleUpdateInformation = async () => {
-    const user = getAuth().currentUser;
     if (user && dateOfBirth) {
       try {
         const age = calculateAge(dateOfBirth);

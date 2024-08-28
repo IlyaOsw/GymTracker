@@ -1,5 +1,5 @@
 import { ConfigProvider, Modal } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { CustomModalProps } from "../../types/types";
 
@@ -8,7 +8,20 @@ export const CustomModal: React.FC<CustomModalProps> = ({
   onCancel,
   footer = null,
   children,
+  className,
 }) => {
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [open]);
+
   return (
     <ConfigProvider
       theme={{
@@ -25,7 +38,8 @@ export const CustomModal: React.FC<CustomModalProps> = ({
         open={open}
         onCancel={onCancel}
         footer={footer}
-        style={{ marginTop: "50px" }}
+        style={{ marginTop: "45px" }}
+        className={className}
       >
         {children}
       </Modal>
