@@ -1,41 +1,57 @@
-.personalInformation {
+.profileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   padding-top: 150px;
-  font-size: 1.4rem;
-
-  @media (max-width: 992px) {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-    .buttons {
-      display: flex;
-      flex-direction: column;
-    }
-  }
+  letter-spacing: 1px;
 
   @media (max-width: 768px) {
-    margin-top: -50px;
+    margin-top: -60px;
+  }
+}
+
+.profileCard {
+  background-image: linear-gradient(to bottom, #303030, #181818);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 25px;
+  margin: 15px 0px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 15px;
   }
 }
 
 .userInfo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  ul {
-    list-style: none;
-    text-align: start;
-
-    @media (max-width: 768px) {
-      font-size: 1.2rem;
-    }
+  .name {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #0097b2;
+    margin-bottom: 10px;
   }
 
-  .icon {
-    margin-right: 10px;
-    color: #0097b2;
+  .bio {
+    font-size: 1rem;
+    color: #a5a5a5;
+    margin-bottom: 20px;
+  }
+
+  .userDetails {
+    margin-left: 35px;
+
+    .detailItem {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #fff;
+
+      img {
+        height: 28px;
+        margin-right: 10px;
+      }
+    }
   }
 }

@@ -16,7 +16,6 @@ import { ProfileAvatar } from "./ProfileAvatar/ProfileAvatar";
 import { CoverImage } from "./CoverImage/CoverImage";
 import { EditProfile } from "./EditProfile/EditProfile";
 import { ConfirmDeleteAccount } from "./ConfirmDeleteAccount/ConfirmDeleteAccount";
-import { LastWorkout } from "./LastWorkout/LastWorkout";
 
 export const Information: React.FC = () => {
   const { t } = useTranslation();
@@ -60,19 +59,13 @@ export const Information: React.FC = () => {
         <UserInfo />
         <FavoriteExercises />
       </div>
-      <LastWorkout />
       <div className={styles.buttons}>
-        <SettingButton
-          icon={<EditOutlined />}
-          onClick={handleEditProfile}
-          className={styles.btn}
-        >
+        <SettingButton icon={<EditOutlined />} onClick={handleEditProfile}>
           <span>{t("editProfile")}</span>
         </SettingButton>
         <SettingButton
           icon={<UserDeleteOutlined />}
           onClick={handleConfirmDelete}
-          className={styles.btn}
         >
           <span>{t("deleteAccount")}</span>
         </SettingButton>

@@ -1,8 +1,3 @@
-import {
-  UserOutlined,
-  CalendarOutlined,
-  EnvironmentOutlined,
-} from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
@@ -10,6 +5,7 @@ import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 import { UserData } from "../../../../types/types";
 import { useUserContext } from "../../../../context/UserContext";
+import { LastWorkout } from "../LastWorkout/LastWorkout";
 
 import styles from "./UserInfo.module.scss";
 
@@ -50,26 +46,57 @@ export const UserInfo: React.FC = () => {
   };
 
   if (!userData) {
-    return <div className={styles.personalInformation} />;
+    return <div className={styles.profileContainer} />;
   }
 
   return (
-    <div className={styles.personalInformation}>
-      <div className={styles.userInfo}>
-        <ul>
-          <li>
-            <UserOutlined className={styles.icon} />
+    <div className={styles.profileContainer}>
+      <div className={styles.profileCard}>
+        <div className={styles.userInfo}>
+          <h2 className={styles.name}>
             {userData.firstName} {userData.lastName}
-          </li>
-          <li>
-            <EnvironmentOutlined className={styles.icon} />
-            {userData.location.country}, {userData.location.city}
-          </li>
-          <li>
-            <CalendarOutlined className={styles.icon} />
-            {t("age")}: {userData.age}
-          </li>
-        </ul>
+          </h2>
+          <p className={styles.bio}>Fitness / Powerlifting</p>
+          <div className={styles.userDetails}>
+            <div className={styles.detailItem}>
+              <img
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/Icons/AdditionalIcons/location.png"
+                }
+              />
+              {userData.location.country}, {userData.location.city}
+            </div>
+            <div className={styles.detailItem}>
+              <img
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/Icons/AdditionalIcons/age.png"
+                }
+              />
+              {t("age")}: {userData.age}
+            </div>
+            <div className={styles.detailItem}>
+              <img
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/Icons/AdditionalIcons/gender.png"
+                }
+              />
+              {t("gender")}: {t(userData.gender)}
+            </div>
+            <div className={styles.detailItem}>
+              <img
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/Icons/AdditionalIcons/mail.png"
+                }
+              />
+              {userData.email}
+            </div>
+          </div>
+        </div>
+        <LastWorkout />
       </div>
     </div>
   );

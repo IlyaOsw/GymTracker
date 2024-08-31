@@ -193,6 +193,6 @@
   "errorDeletingWorkout": "Error deleting workout",
   "confirmDeletingWorkout": "Please confirm deleting workout",
   "maxFavoritesReached": "Maximum of 3 favorite exercises allowed",
-  "lastWorkout": "Last workout",
+  "lastWorkout": "Was in the gym",
   "on": "on"
 }

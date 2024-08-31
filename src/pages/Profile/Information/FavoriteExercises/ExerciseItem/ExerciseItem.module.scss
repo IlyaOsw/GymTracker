@@ -1,8 +1,9 @@
 .collapse {
   width: 320px;
-  background-image: linear-gradient(to bottom, #282828, #151515);
+
+  background-image: linear-gradient(to bottom, #303030, #181818);
   border-radius: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition:
     box-shadow 0.3s ease,
@@ -21,7 +22,7 @@
     font-size: 1.2rem;
     text-align: start;
     color: #0097b2;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   svg {
@@ -33,8 +34,9 @@
 }
 
 .result {
-  margin: -7px 0px 0px 0px;
-  font-size: 1.2rem;
+  margin: 0px 0px 0px 0px;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
   color: rgb(209, 148, 35);
   display: flex;
   align-items: center;
