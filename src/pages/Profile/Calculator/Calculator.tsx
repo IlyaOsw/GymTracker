@@ -20,13 +20,13 @@ export const Calculator: React.FC = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const { ref, controls } = useAnimatedInView();
   const [inputValue, setInputValue] = useState<string>("");
-  const [reps, setReps] = useState<number>(1);
+  const [reps, setReps] = useState<number>(2);
   const [result, setResult] = useState<number>(0);
   const [weight, setWeight] = useState<number>(0);
 
   const handleReset = () => {
     setInputValue("");
-    setReps(1);
+    setReps(2);
     setResult(0);
     setWeight(0);
     messageApi.open({

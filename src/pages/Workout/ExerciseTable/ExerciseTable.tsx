@@ -325,7 +325,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
               colorBgContainer: "#282828",
               colorText: "#ffffff",
               borderColor: "#535353",
-              cellPaddingBlock: 13,
+              cellPaddingBlock: 12,
             },
           },
         }}

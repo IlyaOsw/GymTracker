@@ -12,8 +12,8 @@ export const Contacts: React.FC = () => {
     <div className={styles.contacts}>
       <SubTitle children={t("contacts")} />
       <span className={styles.contactsItem}>
-        <a href="mailto:infogymtracker@gmail.com">
-          <MailOutlined /> gymtracker@gmail.com
+        <a href="mailto:ossipov96@gmail.com">
+          <MailOutlined /> gymtracker@info.com
         </a>
       </span>
       <span className={styles.contactsItem}>

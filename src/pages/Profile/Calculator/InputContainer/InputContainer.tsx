@@ -25,11 +25,11 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
   const [messageApi, contextHolder] = message.useMessage();
 
   const increment = () => {
-    if (reps < 15) setReps(reps + 1);
+    if (reps < 10) setReps(reps + 1);
   };
 
   const decrement = () => {
-    if (reps > 1) setReps(reps - 1);
+    if (reps > 2) setReps(reps - 1);
   };
 
   const calculate1RM = () => {
