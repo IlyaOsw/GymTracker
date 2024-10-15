@@ -25,7 +25,7 @@ import styles from "./SignUp.module.scss";
 
 const SignUp: React.FC = () => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const auth = getAuth();
@@ -48,8 +48,8 @@ const SignUp: React.FC = () => {
 
   const onReset = () => {
     form.resetFields();
-    messageApi.open({
-      type: "success",
+    message.success({
+      key: "limit-success",
       content: t("reseted"),
     });
     scrollToTop();

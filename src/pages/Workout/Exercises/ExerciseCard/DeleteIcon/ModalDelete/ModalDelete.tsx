@@ -30,7 +30,7 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = ({
   setSelectedExercise,
 }) => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
 
   const handleDeleteCard = async (exerciseId: string) => {
     setLoading(true);
@@ -71,14 +71,14 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = ({
         setSelectedExercise(null);
         scrollToTop();
 
-        messageApi.open({
-          type: "success",
+        message.success({
+          key: "limit-success",
           content: t("exerciseDeleted"),
         });
       }
     } catch (error) {
-      messageApi.open({
-        type: "error",
+      message.error({
+        key: "limit-error",
         content: t("errorDeletingExercise"),
       });
     }

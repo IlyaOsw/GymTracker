@@ -19,7 +19,7 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
   setEditMode,
 }) => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const toggleFavorite = async (exerciseId: string, currentStatus: boolean) => {
@@ -37,10 +37,11 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
           ).length;
 
           if (!currentStatus && favoriteExercisesCount >= 3) {
-            messageApi.open({
-              type: "error",
+            message.warning({
+              key: "limit-warning",
               content: t("maxFavoritesReached"),
             });
+
             return;
           }
 
@@ -66,21 +67,21 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
         }
 
         if (!currentStatus) {
-          messageApi.open({
-            type: "success",
+          message.success({
+            key: "limit-success",
             content: t("addedToFavorite"),
           });
         } else {
-          messageApi.open({
-            type: "success",
+          message.success({
+            key: "limit-success",
             content: t("removedFromFavorite"),
           });
         }
         setIsActive(!isActive);
       }
     } catch (error) {
-      messageApi.open({
-        type: "error",
+      message.success({
+        key: "limit-success",
         content: t("errorUpdatingFavorite"),
       });
     }

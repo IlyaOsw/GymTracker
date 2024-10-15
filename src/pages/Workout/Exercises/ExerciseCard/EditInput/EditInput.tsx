@@ -19,7 +19,7 @@ export const EditInput: React.FC<EditInputPropsType> = ({
   setNewName,
 }) => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -68,8 +68,8 @@ export const EditInput: React.FC<EditInputPropsType> = ({
         }
       }
     } catch (error) {
-      messageApi.open({
-        type: "error",
+      message.error({
+        key: "limit-error",
         content: t("nameChangeFailed"),
       });
     }

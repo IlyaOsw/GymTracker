@@ -19,7 +19,7 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
   setConfirm,
 }) => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const navigate = useNavigate();
 
   const handleDeleteAccount = async () => {
@@ -40,8 +40,8 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
 
         navigate("/main");
 
-        messageApi.open({
-          type: "success",
+        message.success({
+          key: "limit-success",
           content: t("accountDeleted"),
         });
       } catch (error) {

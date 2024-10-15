@@ -22,7 +22,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
   setIsModalOpen,
 }) => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const [form] = Form.useForm();
   const { updateUserData } = useUserContext();
   const [filteredCountries, setFilteredCountries] = useState(countryOptions);
@@ -88,13 +88,13 @@ export const EditForm: React.FC<EditFormPropsType> = ({
         });
         setIsModalOpen(false);
         onClose();
-        messageApi.open({
-          type: "success",
+        message.success({
+          key: "limit-success",
           content: t("profileInformationUpdated"),
         });
       } catch (error) {
-        messageApi.open({
-          type: "error",
+        message.error({
+          key: "limit-error",
           content: t("profileInformationUpdateFailed"),
         });
       }

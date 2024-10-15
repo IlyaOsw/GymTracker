@@ -33,7 +33,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   setActiveCardId,
 }) => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const [data, setData] = useState<ExerciseTableType[]>([]);
   const [bestResult, setBestResult] = useState<{
     weight: string;
@@ -148,8 +148,8 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       );
 
       if (validData.length === 0) {
-        messageApi.open({
-          type: "error",
+        message.error({
+          key: "limit-error",
           content: t("noDataToSave"),
         });
         return;
@@ -201,13 +201,13 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
         setAddRowBtn(false);
         setSaveBtn(false);
 
-        messageApi.open({
-          type: "success",
+        message.success({
+          key: "limit-success",
           content: t("exerciseDataSaved"),
         });
       } catch (error) {
-        messageApi.open({
-          type: "error",
+        message.error({
+          key: "limit-error",
           content: t("errorSavingExerciseData"),
         });
       }

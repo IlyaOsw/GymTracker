@@ -15,20 +15,20 @@ import styles from "./ResetPassword.module.scss";
 
 const ResetPassword: React.FC = () => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const auth = getAuth();
   const [email, setEmail] = useState("");
 
   const handleResetPassword = async () => {
     try {
       await sendPasswordResetEmail(auth, email);
-      messageApi.open({
-        type: "success",
+      message.success({
+        key: "limit-success",
         content: t("passwordResetSuccess"),
       });
     } catch (error) {
-      messageApi.open({
-        type: "error",
+      message.error({
+        key: "limit-error",
         content: t("passwordResetError"),
       });
     }

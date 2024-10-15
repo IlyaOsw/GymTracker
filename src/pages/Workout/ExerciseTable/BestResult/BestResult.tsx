@@ -18,7 +18,7 @@ export const BestResult: React.FC<BestResultProps> = ({
 }) => {
   const { t } = useTranslation();
   const user = getAuth().currentUser;
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const [editMode, setEditMode] = useState<boolean>(false);
   const [weight, setWeight] = useState<string>(bestResult?.weight || "0");
   const [reps, setReps] = useState<string>(bestResult?.reps || "0");
@@ -53,14 +53,14 @@ export const BestResult: React.FC<BestResultProps> = ({
           await updateDoc(exercisesDocRef, { exercises: updatedExercises });
           setBestResult(updatedBestResult);
         } else {
-          messageApi.open({
-            type: "error",
+          message.error({
+            key: "limit-error",
             content: t("noExercisesFound"),
           });
         }
       } catch (error) {
-        messageApi.open({
-          type: "error",
+        message.error({
+          key: "limit-error",
           content: t("errorSavingBestResult"),
         });
       }
@@ -70,8 +70,8 @@ export const BestResult: React.FC<BestResultProps> = ({
   const handleSave = () => {
     saveBestResult({ weight, reps });
     setEditMode(false);
-    messageApi.open({
-      type: "success",
+    message.success({
+      key: "limit-success",
       content: t("recordUpdated"),
     });
   };

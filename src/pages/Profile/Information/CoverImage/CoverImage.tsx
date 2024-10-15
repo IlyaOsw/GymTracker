@@ -11,7 +11,7 @@ import styles from "./CoverImage.module.scss";
 
 export const CoverImage: React.FC = () => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const [coverURL, setCoverURL] = useState("");
 
   useEffect(() => {
@@ -37,13 +37,13 @@ export const CoverImage: React.FC = () => {
         const newCoverURL = await getDownloadURL(coverImageRef);
 
         setCoverURL(newCoverURL);
-        messageApi.open({
-          type: "success",
+        message.success({
+          key: "limit-success",
           content: t("coverImageUploaded"),
         });
       } catch (error) {
-        messageApi.open({
-          type: "error",
+        message.error({
+          key: "limit-error",
           content: t("uploadFailed"),
         });
       }

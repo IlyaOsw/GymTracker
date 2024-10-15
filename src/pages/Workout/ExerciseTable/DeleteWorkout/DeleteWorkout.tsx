@@ -28,7 +28,7 @@ export const DeleteWorkout: React.FC<DeleteWorkoutProps> = ({
 }) => {
   const { t } = useTranslation();
   const user = getAuth().currentUser;
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const deleteWorkoutByDate = async () => {
@@ -56,14 +56,14 @@ export const DeleteWorkout: React.FC<DeleteWorkoutProps> = ({
         scrollToTop();
         setIsModalOpen(false);
 
-        messageApi.open({
-          type: "success",
+        message.success({
+          key: "limit-success",
           content: t("workoutDeleted"),
         });
       }
     } catch (error) {
-      messageApi.open({
-        type: "error",
+      message.error({
+        key: "limit-error",
         content: t("errorDeletingWorkout"),
       });
     }
@@ -71,8 +71,8 @@ export const DeleteWorkout: React.FC<DeleteWorkoutProps> = ({
 
   const confirmDelete = () => {
     if (!workoutDate || !selectedExercise) {
-      messageApi.open({
-        type: "error",
+      message.error({
+        key: "limit-error",
         content: t("noDataToDelete"),
       });
       return;

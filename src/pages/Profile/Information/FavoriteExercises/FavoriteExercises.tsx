@@ -14,7 +14,7 @@ import { ExerciseItem } from "./ExerciseItem/ExerciseItem";
 
 export const FavoriteExercises: React.FC = () => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const [favoriteExercisesArray, setFavoriteExercisesArray] = useState<
     Exercise[]
   >([]);
@@ -40,8 +40,8 @@ export const FavoriteExercises: React.FC = () => {
           setLoading(false);
         }
       } catch (error) {
-        messageApi.open({
-          type: "error",
+        message.error({
+          key: "limit-error",
           content: t("errorFetchingFavoriteExercises"),
         });
       }

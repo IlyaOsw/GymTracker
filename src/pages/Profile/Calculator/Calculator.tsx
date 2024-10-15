@@ -21,12 +21,12 @@ export const Calculator: React.FC = () => {
   const { ref, controls } = useAnimatedInView();
   const [reps, setReps] = useState<number>(2);
   const [result, setResult] = useState<number>(0);
-  const [weight, setWeight] = useState<string>("0");
+  const [weight, setWeight] = useState<string>("");
 
   const handleReset = () => {
     setReps(2);
     setResult(0);
-    setWeight("0");
+    setWeight("");
     message.success({
       key: "limit-success",
       content: t("reseted"),

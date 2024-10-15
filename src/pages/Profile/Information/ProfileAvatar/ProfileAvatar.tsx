@@ -20,7 +20,7 @@ import styles from "./ProfileAvatar.module.scss";
 
 export const ProfileAvatar: React.FC = () => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [avatarURL, setAvatarURL] = useState<string | null>(null);
   const avatarSize = windowWidth <= 768 ? 150 : 250;
@@ -60,13 +60,13 @@ export const ProfileAvatar: React.FC = () => {
         await deleteObject(avatarRef);
 
         setAvatarURL(null);
-        messageApi.open({
-          type: "success",
+        message.success({
+          key: "limit-success",
           content: t("profilePhotoDeleted"),
         });
       } catch (error) {
-        messageApi.open({
-          type: "error",
+        message.error({
+          key: "limit-error",
           content: t("deleteFailed"),
         });
       }
@@ -81,13 +81,13 @@ export const ProfileAvatar: React.FC = () => {
         const newAvatarURL = await getDownloadURL(avatarRef);
 
         setAvatarURL(newAvatarURL);
-        messageApi.open({
-          type: "success",
+        message.success({
+          key: "limit-success",
           content: t("profilePhotoUpdated"),
         });
       } catch (error) {
-        messageApi.open({
-          type: "error",
+        message.error({
+          key: "limit-error",
           content: t("uploadFailed"),
         });
       }

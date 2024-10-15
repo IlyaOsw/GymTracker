@@ -1,5 +1,5 @@
-import { Input, message } from "antd";
-import React, { useState } from "react";
+import { ConfigProvider, Input, message } from "antd";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import {
   MinusOutlined,
@@ -56,7 +56,7 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
         key: "limit-warning",
         content: t("noLessThan10kg"),
       });
-      setWeight("0");
+      setWeight("");
       setResult(0);
       return;
     }
@@ -72,7 +72,6 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
   const handleChange = (e: { target: { value: string } }) => {
     let value = e.target.value;
     value = value.replace(",", ".");
-
     const numericValue = parseFloat(value);
 
     if (numericValue > 1000) {
@@ -89,7 +88,17 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
 
   return (
     <div className={styles.calculator}>
-      {contextHolder}
+      <ConfigProvider
+        theme={{
+          components: {
+            Message: {
+              contentBg: "red",
+            },
+          },
+        }}
+      >
+        {contextHolder}
+      </ConfigProvider>
       <div className={styles.block}>
         <div className={styles.subtitle}>{t("workingWeight")}</div>
         <Input

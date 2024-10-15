@@ -18,13 +18,13 @@ export const AddExercise: React.FC<IAddExercise> = ({
   category,
 }) => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const [exerciseName, setExerciseName] = useState("");
 
   const handleAddExercise = async () => {
     if (!exerciseName) {
-      messageApi.open({
-        type: "error",
+      message.error({
+        key: "limit-error",
         content: t("typeExercise"),
       });
       return;
@@ -57,14 +57,14 @@ export const AddExercise: React.FC<IAddExercise> = ({
         }
         setExerciseName("");
         onAddExercise();
-        messageApi.open({
-          type: "success",
+        message.success({
+          key: "limit-success",
           content: t("exerciseAdded"),
         });
       }
     } catch (error) {
-      messageApi.open({
-        type: "error",
+      message.error({
+        key: "limit-error",
         content: t("errorAddingExercise"),
       });
     }

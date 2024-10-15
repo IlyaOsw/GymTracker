@@ -22,7 +22,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
   setSelectedExercise,
 }) => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const [data, setData] = useState<Exercise[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -65,8 +65,8 @@ export const Exercises: React.FC<ExercisesProps> = ({
         }
         setLoading(false);
       } catch (error) {
-        messageApi.open({
-          type: "error",
+        message.error({
+          key: "limit-error",
           content: t("errorFetchingExercises"),
         });
       }
