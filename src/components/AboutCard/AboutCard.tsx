@@ -3,11 +3,15 @@ import { Card, Typography } from "antd";
 import { motion } from "framer-motion";
 
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
-import { AboutCardProps } from "../../types/types";
+import { IAboutCardProps } from "../../types/types";
 
 import styles from "./AboutCard.module.scss";
 
-export const AboutCard: React.FC<AboutCardProps> = ({ title, text, image }) => {
+export const AboutCard: React.FC<IAboutCardProps> = ({
+  title,
+  text,
+  image,
+}) => {
   const { ref, controls } = useAnimatedInView();
 
   return (
@@ -21,7 +25,7 @@ export const AboutCard: React.FC<AboutCardProps> = ({ title, text, image }) => {
           animate={controls}
           variants={animation}
         >
-          <Typography.Title level={4} style={{ color: "#ffffff" }}>
+          <Typography.Title level={4} style={{ color: "#0097b2" }}>
             {title}
           </Typography.Title>
         </motion.div>

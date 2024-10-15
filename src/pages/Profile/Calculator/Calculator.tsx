@@ -17,20 +17,18 @@ import styles from "./Calculator.module.scss";
 
 export const Calculator: React.FC = () => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
   const { ref, controls } = useAnimatedInView();
-  const [inputValue, setInputValue] = useState<string>("");
   const [reps, setReps] = useState<number>(2);
   const [result, setResult] = useState<number>(0);
-  const [weight, setWeight] = useState<number>(0);
+  const [weight, setWeight] = useState<string>("0");
 
   const handleReset = () => {
-    setInputValue("");
     setReps(2);
     setResult(0);
-    setWeight(0);
-    messageApi.open({
-      type: "success",
+    setWeight("0");
+    message.success({
+      key: "limit-success",
       content: t("reseted"),
     });
   };
@@ -50,11 +48,9 @@ export const Calculator: React.FC = () => {
       </motion.div>
       <div className={styles.container}>
         <InputContainer
-          inputValue={inputValue}
           reps={reps}
           setReps={setReps}
           setResult={setResult}
-          setInputValue={setInputValue}
           weight={weight}
           setWeight={setWeight}
         />

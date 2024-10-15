@@ -83,7 +83,7 @@ export type LanguageDropdownPropsType = {
   changeLanguage: (language: string) => void;
 };
 
-export interface AboutCardProps {
+export interface IAboutCardProps {
   title: string;
   text: string;
   image: string;
@@ -102,9 +102,12 @@ export interface CustomButtonProps {
   icon?: React.ReactNode;
   className?: string;
   onClick?: (e: any) => void;
+}
+
+export interface IDescriptionTitleAndText {
   text?: string | any;
   textAlign?: "start" | "center" | "end";
-  htmlType?: "button" | "submit" | "reset";
+  className?: string;
 }
 
 export interface CustomInputProps {
@@ -342,13 +345,11 @@ export type EditInputPropsType = {
 };
 
 export type InputContainerPropsType = {
-  inputValue: string;
   reps: number;
   setReps: (reps: number) => void;
   setResult: (result: number) => void;
-  setInputValue: (inputValue: string) => void;
-  weight: number;
-  setWeight: (weight: number) => void;
+  weight: string;
+  setWeight: (weight: string) => void;
 };
 
 export type ConfirmDeleteAccountPropsType = {

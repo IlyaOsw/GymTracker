@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
-import { CustomButtonProps } from "../../types/types";
+import { IDescriptionTitleAndText } from "../../types/types";
 
 import styles from "./DescriptionTitle.module.scss";
 
-export const DescriptionTitle: React.FC<CustomButtonProps> = ({
+export const DescriptionTitle: React.FC<IDescriptionTitleAndText> = ({
   text,
   textAlign = "start",
   className,

@@ -13,34 +13,56 @@ import { InputContainerPropsType } from "../../../../types/types";
 import styles from "./InputContainer.module.scss";
 
 export const InputContainer: React.FC<InputContainerPropsType> = ({
-  inputValue,
   reps,
   setReps,
   setResult,
-  setInputValue,
   weight,
   setWeight,
 }) => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [, contextHolder] = message.useMessage();
 
   const increment = () => {
-    if (reps < 10) setReps(reps + 1);
+    if (reps < 10) {
+      setReps(reps + 1);
+    } else {
+      message.warning({
+        key: "limit-warning",
+        content: t("noMoreThan10reps"),
+      });
+    }
   };
 
   const decrement = () => {
-    if (reps > 2) setReps(reps - 1);
+    if (reps > 2) {
+      setReps(reps - 1);
+    } else {
+      message.warning({
+        key: "limit-warning",
+        content: t("noLessThan2reps"),
+      });
+    }
   };
 
   const calculate1RM = () => {
-    if (!inputValue.trim()) {
-      messageApi.open({
-        type: "error",
+    if (!weight.trim()) {
+      message.error({
+        key: "limit-error",
         content: t("enterWorkingWeight"),
       });
+      return;
+    } else if (Number(weight) < 10) {
+      message.warning({
+        key: "limit-warning",
+        content: t("noLessThan10kg"),
+      });
+      setWeight("0");
+      setResult(0);
+      return;
     }
-    const oneRM_Epley = (weight * reps) / 30 + weight;
-    const oneRM_Brzycki = weight * (36 / (37 - reps));
+    const weightToNum = Number(weight);
+    const oneRM_Epley = (weightToNum * reps) / 30 + weightToNum;
+    const oneRM_Brzycki = weightToNum * (36 / (37 - reps));
     const average = ((Number(oneRM_Epley) + Number(oneRM_Brzycki)) / 2).toFixed(
       1
     );
@@ -51,9 +73,17 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
     let value = e.target.value;
     value = value.replace(",", ".");
 
-    if (/^\d*\.?\d?$/.test(value)) {
-      setInputValue(value);
-      setWeight(value === "" ? 0 : parseFloat(value));
+    const numericValue = parseFloat(value);
+
+    if (numericValue > 1000) {
+      message.warning({
+        key: "limit-warning",
+        content: t("noMoreThan1000kg"),
+      });
+    } else if (!isNaN(numericValue) && /^\d*\.?\d*$/.test(value)) {
+      setWeight(value);
+    } else {
+      setWeight("");
     }
   };
 
@@ -66,7 +96,7 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
           className={styles.weight}
           allowClear
           placeholder={t("weightKg")}
-          value={inputValue}
+          value={weight}
           type="text"
           inputMode="decimal"
           pattern="[0-9]*[.,]?[0-9]*"

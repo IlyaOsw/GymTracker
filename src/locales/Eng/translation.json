@@ -31,7 +31,7 @@
   "cardTitle3": "Motivation at every step",
   "cardText3": "Record and analyze your workout metrics, including working weight, repetitions, records, and more. Track your progress and optimize your workout plans.",
   "cardTitle4": "Goal setting and achievement",
-  "cardText4": "Set clear and measurable goals for yourself and track your progress towards achieving them. GYP TRACKER will assist you every step of the way on your path to success.",
+  "cardText4": "Set clear and measurable goals for yourself and track your progress towards achieving them. GYM TRACKER will assist you every step of the way on your path to success.",
   "email": "E-Mail",
   "password": "Password",
   "rememberMe": "Remember me",
@@ -194,5 +194,9 @@
   "confirmDeletingWorkout": "Please confirm deleting workout",
   "maxFavoritesReached": "Maximum of 3 favorite exercises allowed",
   "lastWorkout": "Was in the gym",
-  "on": "on"
+  "on": "on",
+  "noMoreThan10reps": "The number of reps must not exceed 10",
+  "noLessThan2reps": "The minimum number of repetitions is 2",
+  "noMoreThan1000kg": "It must not exceed 1000kg",
+  "noLessThan10kg": "The working weight must be greater than 10kg"
 }
