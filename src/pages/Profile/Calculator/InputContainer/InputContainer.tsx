@@ -23,12 +23,12 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
   const [, contextHolder] = message.useMessage();
 
   const increment = () => {
-    if (reps < 10) {
+    if (reps < 15) {
       setReps(reps + 1);
     } else {
       message.warning({
         key: "limit-warning",
-        content: t("noMoreThan10reps"),
+        content: t("noMoreThan15reps"),
       });
     }
   };

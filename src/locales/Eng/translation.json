@@ -195,7 +195,7 @@
   "maxFavoritesReached": "Maximum of 3 favorite exercises allowed",
   "lastWorkout": "Was in the gym",
   "on": "on",
-  "noMoreThan10reps": "The number of reps must not exceed 10",
+  "noMoreThan15reps": "The number of repetitions must not exceed 15",
   "noLessThan2reps": "The minimum number of repetitions is 2",
   "noMoreThan1000kg": "It must not exceed 1000kg",
   "noLessThan10kg": "The working weight must be greater than 10kg"

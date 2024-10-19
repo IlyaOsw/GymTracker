@@ -98,7 +98,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
                 reps: string;
               }) => ({
                 key: approach.id,
-                set: approach.set,
+                set: approach.set + `.`,
                 weight: approach.weight,
                 reps: approach.reps,
                 icon: <CloseOutlined />,
@@ -160,7 +160,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       try {
         const batch = writeBatch(getFirestore());
         const setDocRef = doc(setsCollectionRef, selectedExercise.id);
-
         const setDoc = await getDoc(setDocRef);
         const setData = setDoc.exists() ? setDoc.data() : { workouts: [] };
 
