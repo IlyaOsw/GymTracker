@@ -282,9 +282,12 @@ export type ExerciseTablePropsType = {
 };
 
 export interface Approach {
-  key: string;
+  key: number;
   reps: number;
+  set: number;
   weight: number;
+  icon: React.ReactNode;
+  id: string;
 }
 
 export type ExerciseCardPropsType = {

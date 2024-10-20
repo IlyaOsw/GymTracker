@@ -14,6 +14,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import {
+  Approach,
   Exercise,
   ExerciseTablePropsType,
   ExerciseTableType,
@@ -91,14 +92,9 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
             setWorkoutDate(workoutDate);
             const approaches = latestWorkout.approaches || [];
             const loadedData: ExerciseTableType[] = approaches.map(
-              (approach: {
-                id: string;
-                set: number;
-                weight: string;
-                reps: string;
-              }) => ({
+              (approach: Approach) => ({
                 key: approach.id,
-                set: approach.set + `.`,
+                set: approach.set,
                 weight: approach.weight,
                 reps: approach.reps,
                 icon: <CloseOutlined />,
@@ -136,7 +132,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
         setAddRowBtn(false);
         setSaveBtn(false);
       } catch (error) {
-        alert(error);
+        console.log(error);
       }
     }
   };
@@ -238,6 +234,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       title: `${t("set")}`,
       dataIndex: "set",
       width: "20%",
+      render: (set: string) => <span>{set}.</span>,
     },
     {
       title: `${t("weight")}`,
