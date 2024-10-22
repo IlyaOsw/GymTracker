@@ -22,6 +22,7 @@ export const BestResult: React.FC<BestResultProps> = ({
   const [editMode, setEditMode] = useState<boolean>(false);
   const [weight, setWeight] = useState<string>(bestResult?.weight || "0");
   const [reps, setReps] = useState<string>(bestResult?.reps || "0");
+  const [isSaving, setIsSaving] = useState<boolean>(false);
 
   useEffect(() => {
     setWeight(bestResult?.weight || "0");
@@ -32,12 +33,29 @@ export const BestResult: React.FC<BestResultProps> = ({
     weight: string;
     reps: string;
   }) => {
-    if (user && selectedExercise) {
+    if (user && selectedExercise && !isSaving) {
+      setIsSaving(true);
       const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
       try {
         const exercisesDoc = await getDoc(exercisesDocRef);
         if (exercisesDoc.exists()) {
           const exercisesData = exercisesDoc.data();
+          const exerciseToUpdate = exercisesData.exercises.find(
+            (exercise: Exercise) => exercise.id === selectedExercise.id
+          );
+
+          if (
+            exerciseToUpdate.bestResult.weight === updatedBestResult.weight &&
+            exerciseToUpdate.bestResult.reps === updatedBestResult.reps
+          ) {
+            message.info({
+              key: "limit-info",
+              content: t("noChangesDetected"),
+            });
+            setIsSaving(false);
+            return;
+          }
+
           const updatedExercises = exercisesData.exercises.map(
             (exercise: Exercise) => {
               if (exercise.id === selectedExercise.id) {
@@ -52,6 +70,11 @@ export const BestResult: React.FC<BestResultProps> = ({
 
           await updateDoc(exercisesDocRef, { exercises: updatedExercises });
           setBestResult(updatedBestResult);
+
+          message.success({
+            key: "limit-success",
+            content: t("recordUpdated"),
+          });
         } else {
           message.error({
             key: "limit-error",
@@ -63,17 +86,17 @@ export const BestResult: React.FC<BestResultProps> = ({
           key: "limit-error",
           content: t("errorSavingBestResult"),
         });
+      } finally {
+        setIsSaving(false);
       }
     }
   };
 
-  const handleSave = () => {
-    saveBestResult({ weight, reps });
-    setEditMode(false);
-    message.success({
-      key: "limit-success",
-      content: t("recordUpdated"),
-    });
+  const handleSave = async () => {
+    if (!isSaving) {
+      await saveBestResult({ weight, reps });
+      setEditMode(false);
+    }
   };
 
   const genExtra = () => (
@@ -92,11 +115,7 @@ export const BestResult: React.FC<BestResultProps> = ({
             <>
               <div className={styles.wrapper}>
                 <div>
-                  <NumericInput
-                    value={weight}
-                    onChange={setWeight}
-                    onBlur={handleSave}
-                  />
+                  <NumericInput value={weight} onChange={setWeight} />
                   <span>{t("kg")}</span>
                 </div>
                 <div>
@@ -109,7 +128,11 @@ export const BestResult: React.FC<BestResultProps> = ({
                 </div>
               </div>
               <div className={styles.editBtn}>
-                <SettingButton icon={<CheckOutlined />} onClick={handleSave}>
+                <SettingButton
+                  icon={<CheckOutlined />}
+                  onClick={handleSave}
+                  className={styles.saveRecord}
+                >
                   <span>{t("saveRecord")}</span>
                 </SettingButton>
               </div>
@@ -128,6 +151,7 @@ export const BestResult: React.FC<BestResultProps> = ({
                 <SettingButton
                   icon={<EditOutlined />}
                   onClick={() => setEditMode(true)}
+                  className={styles.updateRecord}
                 >
                   <span>{t("updateRecord")}</span>
                 </SettingButton>

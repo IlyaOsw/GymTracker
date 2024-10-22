@@ -29,6 +29,7 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
       message.warning({
         key: "limit-warning",
         content: t("noMoreThan15reps"),
+        className: styles.customMessageWarning,
       });
     }
   };
@@ -40,6 +41,7 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
       message.warning({
         key: "limit-warning",
         content: t("noLessThan2reps"),
+        className: styles.customMessageWarning,
       });
     }
   };
@@ -49,12 +51,14 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
       message.error({
         key: "limit-error",
         content: t("enterWorkingWeight"),
+        className: styles.customMessageError,
       });
       return;
     } else if (Number(weight) < 10) {
       message.warning({
         key: "limit-warning",
         content: t("noLessThan10kg"),
+        className: styles.customMessageWarning,
       });
       setWeight("");
       setResult(0);
@@ -78,6 +82,7 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
       message.warning({
         key: "limit-warning",
         content: t("noMoreThan1000kg"),
+        className: styles.customMessageWarning,
       });
     } else if (!isNaN(numericValue) && /^\d*\.?\d*$/.test(value)) {
       setWeight(value);
@@ -88,17 +93,7 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
 
   return (
     <div className={styles.calculator}>
-      <ConfigProvider
-        theme={{
-          components: {
-            Message: {
-              contentBg: "red",
-            },
-          },
-        }}
-      >
-        {contextHolder}
-      </ConfigProvider>
+      {contextHolder}
       <div className={styles.block}>
         <div className={styles.subtitle}>{t("workingWeight")}</div>
         <Input
