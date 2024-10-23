@@ -1,17 +1,17 @@
 import { CameraOutlined } from "@ant-design/icons";
-import { Button, message, Upload } from "antd";
+import { Upload } from "antd";
 import React, { useEffect, useState } from "react";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useTranslation } from "react-i18next";
 
 import { auth, storage } from "../../../..";
 import { SettingButton } from "../../../../components/SettingButton/SettingButton";
+import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./CoverImage.module.scss";
 
 export const CoverImage: React.FC = () => {
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
   const [coverURL, setCoverURL] = useState("");
 
   useEffect(() => {
@@ -37,22 +37,15 @@ export const CoverImage: React.FC = () => {
         const newCoverURL = await getDownloadURL(coverImageRef);
 
         setCoverURL(newCoverURL);
-        message.success({
-          key: "limit-success",
-          content: t("coverImageUploaded"),
-        });
+        ClosableMessage({ type: "success", content: t("coverImageUploaded") });
       } catch (error) {
-        message.error({
-          key: "limit-error",
-          content: t("uploadFailed"),
-        });
+        ClosableMessage({ type: "error", content: t("uploadFailed") });
       }
     }
   };
 
   return (
     <div className={styles.paper}>
-      {contextHolder}
       {coverURL ? (
         <img src={coverURL} alt="Paper" />
       ) : (

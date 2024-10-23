@@ -125,7 +125,7 @@
   "profile": "Profile",
   "reseted": "Successfully reseted",
   "passwordResetSuccess": "Password reset email sent successfully",
-  "passwordResetError": "Failed to send password reset email!",
+  "passwordResetError": "Failed to send password reset email",
   "passwordRule": "Min. 6 characters long",
   "avatarFormat": "Jpeg/jpg format is preferred",
   "yourBestResult": "Your best result (kg)",
@@ -199,5 +199,10 @@
   "noLessThan2reps": "The minimum number of repetitions is 2",
   "noMoreThan1000kg": "It must not exceed 1000kg",
   "noLessThan10kg": "The working weight must be greater than 10kg",
-  "noChangesDetected": "No changes detected"
+  "noChangesDetected": "No changes detected",
+  "errorDeletingAccount": "Error deleting account",
+  "nameUpdated": "Exercise name updated",
+  "nameNotChanged": "The new name matches the current one",
+  "nameMin3Symbols": "Name must be over 3 characters",
+  "nameAlreadyExists": "This name already exists"
 }

@@ -60,3 +60,19 @@
     }
   }
 }
+
+.editBtn {
+  .saveRecord {
+    background-image: linear-gradient(to right, #007011, #00550d) !important;
+    border: none;
+
+    &:hover {
+      border: none !important;
+      box-shadow: 0 3px 10px #00440a;
+    }
+  }
+
+  svg {
+    margin-top: 0px;
+  }
+}

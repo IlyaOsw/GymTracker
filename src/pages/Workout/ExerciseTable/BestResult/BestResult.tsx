@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { CheckOutlined, EditOutlined } from "@ant-design/icons";
-import { Collapse, message } from "antd";
+import { Collapse } from "antd";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 import { SettingButton } from "../../../../components/SettingButton/SettingButton";
 import NumericInput from "../../../../components/NumericInput/NumericInput";
 import { BestResultProps, Exercise } from "../../../../types/types";
+import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./BestResult.module.scss";
 
@@ -18,7 +19,6 @@ export const BestResult: React.FC<BestResultProps> = ({
 }) => {
   const { t } = useTranslation();
   const user = getAuth().currentUser;
-  const [, contextHolder] = message.useMessage();
   const [editMode, setEditMode] = useState<boolean>(false);
   const [weight, setWeight] = useState<string>(bestResult?.weight || "0");
   const [reps, setReps] = useState<string>(bestResult?.reps || "0");
@@ -48,8 +48,8 @@ export const BestResult: React.FC<BestResultProps> = ({
             exerciseToUpdate.bestResult.weight === updatedBestResult.weight &&
             exerciseToUpdate.bestResult.reps === updatedBestResult.reps
           ) {
-            message.info({
-              key: "limit-info",
+            ClosableMessage({
+              type: "info",
               content: t("noChangesDetected"),
             });
             setIsSaving(false);
@@ -70,20 +70,19 @@ export const BestResult: React.FC<BestResultProps> = ({
 
           await updateDoc(exercisesDocRef, { exercises: updatedExercises });
           setBestResult(updatedBestResult);
-
-          message.success({
-            key: "limit-success",
+          ClosableMessage({
+            type: "success",
             content: t("recordUpdated"),
           });
         } else {
-          message.error({
-            key: "limit-error",
+          ClosableMessage({
+            type: "error",
             content: t("noExercisesFound"),
           });
         }
       } catch (error) {
-        message.error({
-          key: "limit-error",
+        ClosableMessage({
+          type: "error",
           content: t("errorSavingBestResult"),
         });
       } finally {
@@ -166,7 +165,6 @@ export const BestResult: React.FC<BestResultProps> = ({
 
   return (
     <div className={styles.collapse}>
-      {contextHolder}
       <Collapse size="large" items={items} bordered={false} />
     </div>
   );

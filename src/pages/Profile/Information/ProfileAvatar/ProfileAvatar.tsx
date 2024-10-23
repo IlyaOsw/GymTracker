@@ -5,7 +5,7 @@ import {
   CloseOutlined,
   RedoOutlined,
 } from "@ant-design/icons";
-import { Avatar, Dropdown, Button, Upload, message } from "antd";
+import { Avatar, Dropdown, Button, Upload } from "antd";
 import {
   deleteObject,
   getDownloadURL,
@@ -16,11 +16,12 @@ import {
 import { useTranslation } from "react-i18next";
 import { getAuth } from "firebase/auth";
 
+import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
+
 import styles from "./ProfileAvatar.module.scss";
 
 export const ProfileAvatar: React.FC = () => {
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [avatarURL, setAvatarURL] = useState<string | null>(null);
   const avatarSize = windowWidth <= 768 ? 150 : 250;
@@ -47,7 +48,7 @@ export const ProfileAvatar: React.FC = () => {
         .then((url) => {
           setAvatarURL(url);
         })
-        .catch((error) => {
+        .catch(() => {
           setAvatarURL(null);
         });
     }
@@ -60,15 +61,9 @@ export const ProfileAvatar: React.FC = () => {
         await deleteObject(avatarRef);
 
         setAvatarURL(null);
-        message.success({
-          key: "limit-success",
-          content: t("profilePhotoDeleted"),
-        });
+        ClosableMessage({ type: "success", content: t("profilePhotoDeleted") });
       } catch (error) {
-        message.error({
-          key: "limit-error",
-          content: t("deleteFailed"),
-        });
+        ClosableMessage({ type: "error", content: t("deleteFailed") });
       }
     }
   };
@@ -81,15 +76,9 @@ export const ProfileAvatar: React.FC = () => {
         const newAvatarURL = await getDownloadURL(avatarRef);
 
         setAvatarURL(newAvatarURL);
-        message.success({
-          key: "limit-success",
-          content: t("profilePhotoUpdated"),
-        });
+        ClosableMessage({ type: "success", content: t("profilePhotoUpdated") });
       } catch (error) {
-        message.error({
-          key: "limit-error",
-          content: t("uploadFailed"),
-        });
+        ClosableMessage({ type: "error", content: t("uploadFailed") });
       }
     }
   };
@@ -126,7 +115,6 @@ export const ProfileAvatar: React.FC = () => {
 
   return (
     <div className={styles.avatar}>
-      {contextHolder}
       {avatarURL ? (
         <img
           src={avatarURL}

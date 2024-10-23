@@ -33,7 +33,6 @@ const SignIn: React.FC = () => {
   }, []);
 
   const handleEmailChange = (value: string) => setEmail(value);
-
   const handlePasswordChange = (value: string) => setPassword(value);
 
   const handleSignIn = async () => {

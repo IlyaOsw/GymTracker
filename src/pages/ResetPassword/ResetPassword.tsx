@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
-import { message } from "antd";
 import { SendOutlined } from "@ant-design/icons";
 
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
@@ -10,27 +9,22 @@ import { DescriptionText } from "../../components/DescriptionText/DescriptionTex
 import { CustomInput } from "../../components/CustomInput/CustomInput";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
+import { ClosableMessage } from "../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./ResetPassword.module.scss";
 
 const ResetPassword: React.FC = () => {
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
+
   const auth = getAuth();
   const [email, setEmail] = useState("");
 
   const handleResetPassword = async () => {
     try {
       await sendPasswordResetEmail(auth, email);
-      message.success({
-        key: "limit-success",
-        content: t("passwordResetSuccess"),
-      });
+      ClosableMessage({ type: "success", content: t("passwordResetSuccess") });
     } catch (error) {
-      message.error({
-        key: "limit-error",
-        content: t("passwordResetError"),
-      });
+      ClosableMessage({ type: "error", content: t("passwordResetError") });
     }
   };
 
@@ -38,7 +32,6 @@ const ResetPassword: React.FC = () => {
 
   return (
     <>
-      {contextHolder}
       <PageWrapper>
         <DescriptionTitle
           text={t("resetPassword")}

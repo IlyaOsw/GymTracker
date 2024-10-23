@@ -46,7 +46,6 @@ export const LastWorkout: React.FC = () => {
         }
       }
     };
-
     fetchLastWorkoutDate();
   }, [user]);
 

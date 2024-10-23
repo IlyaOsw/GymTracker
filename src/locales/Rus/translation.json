@@ -125,7 +125,7 @@
   "profile": "Профиль",
   "reseted": "Успешно сброшено",
   "passwordResetSuccess": "Отправка письма была успешна",
-  "passwordResetError": "Отправка письма не удалась!",
+  "passwordResetError": "Отправка письма не удалась",
   "passwordRule": "Мин. 6 символов",
   "avatarFormat": "Предпочтительный формат - Jpeg/jpg",
   "yourBestResult": "Ваш лучший результат (kg)",
@@ -195,9 +195,14 @@
   "maxFavoritesReached": "Максимум 3 упражнения в избранном",
   "lastWorkout": "Был в зале",
   "on": "на",
-  "noMoreThan15reps": "Число повторений не должно превышать 15",
+  "noMoreThan15reps": "Максимальное число повторений 15",
   "noLessThan2reps": "Минимальное число повторений 2",
   "noMoreThan1000kg": "Не должно превышать 1000кг",
   "noLessThan10kg": "Рабочий вес должен быть больше 10кг",
-   "noChangesDetected": "Никаких изменений не обнаружено"
+  "noChangesDetected": "Никаких изменений не обнаружено",
+  "errorDeletingAccount": "Удаление аккаунта не удалось",
+  "nameUpdated": "Название упражнения обновлено",
+  "nameNotChanged": "Новое имя совпадает с текущим",
+  "nameMin3Symbols": "Имя должно быть больше 3 символов",
+  "nameAlreadyExists": "Такое название уже существует"
 }

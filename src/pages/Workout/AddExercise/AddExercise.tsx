@@ -1,5 +1,4 @@
 import { PlusOutlined } from "@ant-design/icons";
-import { message } from "antd";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
@@ -10,6 +9,7 @@ import { CustomButton } from "../../../components/CustomButton/CustomButton";
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import { IAddExercise } from "../../../types/types";
+import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./AddExercise.module.scss";
 
@@ -18,15 +18,11 @@ export const AddExercise: React.FC<IAddExercise> = ({
   category,
 }) => {
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
   const [exerciseName, setExerciseName] = useState("");
 
   const handleAddExercise = async () => {
     if (!exerciseName) {
-      message.error({
-        key: "limit-error",
-        content: t("typeExercise"),
-      });
+      ClosableMessage({ type: "error", content: t("typeExercise") });
       return;
     }
     try {
@@ -57,22 +53,15 @@ export const AddExercise: React.FC<IAddExercise> = ({
         }
         setExerciseName("");
         onAddExercise();
-        message.success({
-          key: "limit-success",
-          content: t("exerciseAdded"),
-        });
+        ClosableMessage({ type: "success", content: t("exerciseAdded") });
       }
     } catch (error) {
-      message.error({
-        key: "limit-error",
-        content: t("errorAddingExercise"),
-      });
+      ClosableMessage({ type: "error", content: t("errorAddingExercise") });
     }
   };
 
   return (
     <>
-      {contextHolder}
       <SubTitle>{t("addAnExercise")}</SubTitle>
       <div className={styles.addExercise}>
         <CustomInput

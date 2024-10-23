@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { EditOutlined, StarFilled } from "@ant-design/icons";
+import { CheckOutlined, EditOutlined, StarFilled } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { message } from "antd";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 import { CardOptionsPropsType } from "../../../../../types/types";
 import { SettingButton } from "../../../../../components/SettingButton/SettingButton";
+import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./CardOptions.module.scss";
 
@@ -16,10 +16,10 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
   setData,
   setCurrentEditingId,
   setNewName,
+  editMode,
   setEditMode,
 }) => {
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const toggleFavorite = async (exerciseId: string, currentStatus: boolean) => {
@@ -37,11 +37,10 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
           ).length;
 
           if (!currentStatus && favoriteExercisesCount >= 3) {
-            message.warning({
-              key: "limit-warning",
+            ClosableMessage({
+              type: "warning",
               content: t("maxFavoritesReached"),
             });
-
             return;
           }
 
@@ -67,23 +66,18 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
         }
 
         if (!currentStatus) {
-          message.success({
-            key: "limit-success",
-            content: t("addedToFavorite"),
-          });
+          ClosableMessage({ type: "success", content: t("addedToFavorite") });
+          return;
         } else {
-          message.success({
-            key: "limit-success",
+          ClosableMessage({
+            type: "success",
             content: t("removedFromFavorite"),
           });
         }
         setIsActive(!isActive);
       }
     } catch (error) {
-      message.success({
-        key: "limit-success",
-        content: t("errorUpdatingFavorite"),
-      });
+      ClosableMessage({ type: "error", content: t("errorUpdatingFavorite") });
     }
   };
 
@@ -95,7 +89,6 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
 
   return (
     <div className={styles.options}>
-      {contextHolder}
       <SettingButton
         icon={<StarFilled />}
         onClick={(e) => {
@@ -106,16 +99,24 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
       >
         <span>{t("favorite")}</span>
       </SettingButton>
-      <SettingButton
-        icon={<EditOutlined />}
-        onClick={(e) => {
-          e.stopPropagation();
-          handleEditClick(item.id, item.name);
-        }}
-        className={styles.editExercise}
-      >
-        <span>{t("editName")}</span>
-      </SettingButton>
+      {editMode ? (
+        <div className={styles.editBtn}>
+          <SettingButton icon={<CheckOutlined />} className={styles.saveRecord}>
+            <span>{t("save")}</span>
+          </SettingButton>
+        </div>
+      ) : (
+        <SettingButton
+          icon={<EditOutlined />}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleEditClick(item.id, item.name);
+          }}
+          className={styles.editExercise}
+        >
+          <span>{t("editName")}</span>
+        </SettingButton>
+      )}
     </div>
   );
 };

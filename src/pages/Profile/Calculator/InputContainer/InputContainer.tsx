@@ -1,4 +1,4 @@
-import { ConfigProvider, Input, message } from "antd";
+import { Input } from "antd";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -9,6 +9,7 @@ import {
 
 import { CustomButton } from "../../../../components/CustomButton/CustomButton";
 import { InputContainerPropsType } from "../../../../types/types";
+import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./InputContainer.module.scss";
 
@@ -20,17 +21,12 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
   setWeight,
 }) => {
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
 
   const increment = () => {
     if (reps < 15) {
       setReps(reps + 1);
     } else {
-      message.warning({
-        key: "limit-warning",
-        content: t("noMoreThan15reps"),
-        className: styles.customMessageWarning,
-      });
+      ClosableMessage({ type: "warning", content: t("noMoreThan15reps") });
     }
   };
 
@@ -38,28 +34,16 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
     if (reps > 2) {
       setReps(reps - 1);
     } else {
-      message.warning({
-        key: "limit-warning",
-        content: t("noLessThan2reps"),
-        className: styles.customMessageWarning,
-      });
+      ClosableMessage({ type: "warning", content: t("noLessThan2reps") });
     }
   };
 
   const calculate1RM = () => {
     if (!weight.trim()) {
-      message.error({
-        key: "limit-error",
-        content: t("enterWorkingWeight"),
-        className: styles.customMessageError,
-      });
+      ClosableMessage({ type: "error", content: t("enterWorkingWeight") });
       return;
     } else if (Number(weight) < 10) {
-      message.warning({
-        key: "limit-warning",
-        content: t("noLessThan10kg"),
-        className: styles.customMessageWarning,
-      });
+      ClosableMessage({ type: "warning", content: t("noLessThan10kg") });
       setWeight("");
       setResult(0);
       return;
@@ -79,11 +63,7 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
     const numericValue = parseFloat(value);
 
     if (numericValue > 1000) {
-      message.warning({
-        key: "limit-warning",
-        content: t("noMoreThan1000kg"),
-        className: styles.customMessageWarning,
-      });
+      ClosableMessage({ type: "warning", content: t("noMoreThan1000kg") });
     } else if (!isNaN(numericValue) && /^\d*\.?\d*$/.test(value)) {
       setWeight(value);
     } else {
@@ -93,7 +73,6 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
 
   return (
     <div className={styles.calculator}>
-      {contextHolder}
       <div className={styles.block}>
         <div className={styles.subtitle}>{t("workingWeight")}</div>
         <Input

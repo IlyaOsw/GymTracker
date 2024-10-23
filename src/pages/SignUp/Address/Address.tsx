@@ -24,13 +24,9 @@ export const Address: React.FC<AddressType> = ({
     setFilteredCountries(filtered.length > 0 ? filtered : countryOptions);
   };
 
-  const handleCountryChange = (value: string) => {
-    onCountryChange(value);
-  };
+  const handleCountryChange = (value: string) => onCountryChange(value);
+  const handleCityChange = (value: string) => onCityChange(value);
 
-  const handleCityChange = (value: string) => {
-    onCityChange(value);
-  };
   return (
     <div className={styles.address}>
       <SubTitle>{t("address")}</SubTitle>

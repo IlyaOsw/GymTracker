@@ -9,7 +9,6 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { message } from "antd";
 
 import { CustomModal } from "../../../../../../components/CustomModal/CustomModal";
 import { ResetButton } from "../../../../../../components/ResetButton/ResetButton";
@@ -17,6 +16,7 @@ import { ModalDeletePropsType, Exercise } from "../../../../../../types/types";
 import { scrollToTop } from "../../../../../../utils/scrollToTop";
 
 import styles from "../DeleteIcon.module.scss";
+import { ClosableMessage } from "../../../../../../components/ClosableMessage/ClosableMessage";
 
 export const ModalDelete: React.FC<ModalDeletePropsType> = ({
   setLoading,
@@ -30,7 +30,6 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = ({
   setSelectedExercise,
 }) => {
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
 
   const handleDeleteCard = async (exerciseId: string) => {
     setLoading(true);
@@ -70,17 +69,10 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = ({
         setLoading(false);
         setSelectedExercise(null);
         scrollToTop();
-
-        message.success({
-          key: "limit-success",
-          content: t("exerciseDeleted"),
-        });
+        ClosableMessage({ type: "success", content: t("exerciseDeleted") });
       }
     } catch (error) {
-      message.error({
-        key: "limit-error",
-        content: t("errorDeletingExercise"),
-      });
+      ClosableMessage({ type: "error", content: t("errorDeletingExercise") });
     }
   };
 
@@ -93,7 +85,6 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = ({
       }}
       footer={false}
     >
-      {contextHolder}
       <p className={styles.confirm}>{t("confirmDeletingExercise")}</p>
       <div className={styles.deleteSave}>
         <ResetButton

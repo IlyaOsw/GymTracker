@@ -75,6 +75,7 @@ export const ExerciseCard: React.FC<ExerciseCardPropsType> = ({
         setData={setData}
         setCurrentEditingId={setCurrentEditingId}
         setNewName={setNewName}
+        editMode={editMode}
         setEditMode={setEditMode}
       />
     </div>

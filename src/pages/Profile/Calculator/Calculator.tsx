@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SyncOutlined } from "@ant-design/icons";
-import { message } from "antd";
 import { motion } from "framer-motion";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
@@ -10,14 +9,13 @@ import {
   animation,
   useAnimatedInView,
 } from "../../../hooks/useAnimatedInView ";
+import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMessage";
 
 import { InputContainer } from "./InputContainer/InputContainer";
-
 import styles from "./Calculator.module.scss";
 
 export const Calculator: React.FC = () => {
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
   const { ref, controls } = useAnimatedInView();
   const [reps, setReps] = useState<number>(2);
   const [result, setResult] = useState<number>(0);
@@ -27,15 +25,11 @@ export const Calculator: React.FC = () => {
     setReps(2);
     setResult(0);
     setWeight("");
-    message.success({
-      key: "limit-success",
-      content: t("reseted"),
-    });
+    ClosableMessage({ type: "success", content: t("reseted") });
   };
 
   return (
     <>
-      {contextHolder}
       <SubTitle children={t("weightCalculator")} className={styles.header} />
       <motion.div
         ref={ref}

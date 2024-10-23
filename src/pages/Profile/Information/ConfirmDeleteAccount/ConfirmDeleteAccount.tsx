@@ -5,12 +5,12 @@ import { useTranslation } from "react-i18next";
 import { deleteUser, getAuth } from "firebase/auth";
 import { deleteDoc, doc, getFirestore } from "firebase/firestore";
 import { deleteObject, getStorage, ref } from "firebase/storage";
-import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import { CustomModal } from "../../../../components/CustomModal/CustomModal";
 import { ResetButton } from "../../../../components/ResetButton/ResetButton";
 import { ConfirmDeleteAccountPropsType } from "../../../../types/types";
+import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./ConfirmDeleteAccount.module.scss";
 
@@ -19,7 +19,6 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
   setConfirm,
 }) => {
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
   const navigate = useNavigate();
 
   const handleDeleteAccount = async () => {
@@ -39,13 +38,9 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
         await deleteUser(user);
 
         navigate("/main");
-
-        message.success({
-          key: "limit-success",
-          content: t("accountDeleted"),
-        });
+        ClosableMessage({ type: "success", content: t("accountDeleted") });
       } catch (error) {
-        console.log("Error deleting account");
+        ClosableMessage({ type: "error", content: t("errorDeletingAccount") });
         navigate("/main");
       }
     }
@@ -53,7 +48,6 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
 
   return (
     <CustomModal open={confirm} onCancel={() => setConfirm(false)}>
-      {contextHolder}
       <p className={styles.confirm}>{t("confirmDeletingAccount")}</p>
       <div className={styles.delete}>
         <ResetButton

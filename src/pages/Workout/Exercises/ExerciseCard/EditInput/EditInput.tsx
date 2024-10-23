@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import { message } from "antd";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { useTranslation } from "react-i18next";
 
 import { EditInputPropsType, Exercise } from "../../../../../types/types";
+import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./EditInput.module.scss";
 
@@ -18,8 +18,8 @@ export const EditInput: React.FC<EditInputPropsType> = ({
   setEditMode,
   setNewName,
 }) => {
+  const user = getAuth().currentUser;
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -30,15 +30,50 @@ export const EditInput: React.FC<EditInputPropsType> = ({
 
   const changeExerciseName = async (exerciseId: string, newName: string) => {
     try {
-      const db = getFirestore();
-      const auth = getAuth();
-      const user = auth.currentUser;
       if (user) {
         const userId = user.uid;
-        const exercisesDocRef = doc(db, "exercises", userId);
+        const exercisesDocRef = doc(getFirestore(), "exercises", userId);
         const exercisesDoc = await getDoc(exercisesDocRef);
+
         if (exercisesDoc.exists()) {
           const exercisesData = exercisesDoc.data();
+
+          const currentExercise = exercisesData.exercises.find(
+            (exercise: { id: string }) => exercise.id === exerciseId
+          );
+
+          // Check if the new name matches the current name
+          if (currentExercise && currentExercise.name === newName) {
+            ClosableMessage({
+              type: "warning",
+              content: t("nameNotChanged"),
+            });
+            return;
+          }
+
+          // Check if the new name is too short
+          if (newName.trim().length < 3) {
+            ClosableMessage({
+              type: "error",
+              content: t("nameMin3Symbols"),
+            });
+            return;
+          }
+
+          // Check if the new name already exists in other exercises
+          const nameExists = exercisesData.exercises.some(
+            (exercise: { id: string; name: string }) =>
+              exercise.id !== exerciseId && exercise.name === newName
+          );
+
+          if (nameExists) {
+            ClosableMessage({
+              type: "error",
+              content: t("nameAlreadyExists"),
+            });
+            return;
+          }
+
           let updatedExercises = exercisesData.exercises.map(
             (exercise: { id: string; name: string }) => {
               if (exercise.id === exerciseId) {
@@ -47,9 +82,11 @@ export const EditInput: React.FC<EditInputPropsType> = ({
               return exercise;
             }
           );
+
           await updateDoc(exercisesDocRef, {
             exercises: updatedExercises,
           });
+
           const filteredData = updatedExercises
             .filter(
               (exercise: { category: string }) =>
@@ -63,15 +100,18 @@ export const EditInput: React.FC<EditInputPropsType> = ({
               bestResult: `${t("lastSet")}: ${exercise.bestResult}`,
               isFavorite: exercise.isFavorite,
             }));
+
           localStorage.setItem("exercisesData", JSON.stringify(filteredData));
           setData(filteredData);
+
+          ClosableMessage({
+            type: "success",
+            content: t("nameUpdated"),
+          });
         }
       }
     } catch (error) {
-      message.error({
-        key: "limit-error",
-        content: t("nameChangeFailed"),
-      });
+      ClosableMessage({ type: "error", content: t("nameChangeFailed") });
     }
   };
 
@@ -92,16 +132,13 @@ export const EditInput: React.FC<EditInputPropsType> = ({
   };
 
   return (
-    <>
-      {contextHolder}
-      <input
-        value={newName}
-        className={styles.editInput}
-        onChange={(e) => setNewName(e.target.value)}
-        onKeyDown={handleEditKeyDown}
-        onBlur={handleBlur}
-        ref={inputRef}
-      />
-    </>
+    <input
+      value={newName}
+      className={styles.editInput}
+      onChange={(e) => setNewName(e.target.value)}
+      onKeyDown={handleEditKeyDown}
+      onBlur={handleBlur}
+      ref={inputRef}
+    />
   );
 };

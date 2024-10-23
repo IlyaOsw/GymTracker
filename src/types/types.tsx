@@ -309,6 +309,7 @@ export type CardOptionsPropsType = {
   setData: (value: Exercise[]) => void;
   setCurrentEditingId: (value: string | null) => void;
   setNewName: (value: string) => void;
+  editMode: boolean;
   setEditMode: (value: boolean) => void;
 };
 
@@ -409,3 +410,8 @@ export interface DeleteWorkoutProps {
   setSelectedExercise: (value: Exercise | null) => void;
   setActiveCardId: (value: string | null) => void;
 }
+
+export type ClosableMessagePropsType = {
+  type: "error" | "warning" | "success" | "info";
+  content: string;
+};

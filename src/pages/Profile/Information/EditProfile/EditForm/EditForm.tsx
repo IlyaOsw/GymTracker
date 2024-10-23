@@ -1,4 +1,4 @@
-import { Form, message } from "antd";
+import { Form } from "antd";
 import React, { useState, useEffect } from "react";
 import countries from "react-select-country-list";
 import { useTranslation } from "react-i18next";
@@ -14,6 +14,7 @@ import { EditFormPropsType } from "../../../../../types/types";
 import { useUserContext } from "../../../../../context/UserContext";
 import { CountrySelect } from "../../../../../components/CountrySelect/CountrySelect";
 import { calculateAge } from "../../../../../utils/calculateAge";
+import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
 
 const countryOptions = countries().getData();
 
@@ -22,7 +23,6 @@ export const EditForm: React.FC<EditFormPropsType> = ({
   setIsModalOpen,
 }) => {
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
   const [form] = Form.useForm();
   const { updateUserData } = useUserContext();
   const [filteredCountries, setFilteredCountries] = useState(countryOptions);
@@ -88,13 +88,13 @@ export const EditForm: React.FC<EditFormPropsType> = ({
         });
         setIsModalOpen(false);
         onClose();
-        message.success({
-          key: "limit-success",
+        ClosableMessage({
+          type: "success",
           content: t("profileInformationUpdated"),
         });
       } catch (error) {
-        message.error({
-          key: "limit-error",
+        ClosableMessage({
+          type: "error",
           content: t("profileInformationUpdateFailed"),
         });
       }
@@ -109,13 +109,9 @@ export const EditForm: React.FC<EditFormPropsType> = ({
   };
 
   const handleFirstNameChange = (value: string) => setFirstName(value);
-
   const handleLastNameChange = (value: string) => setLastName(value);
-
   const handleCountryChange = (value: string | undefined) => setCountry(value);
-
   const handleCityChange = (value: string) => setCity(value);
-
   const handleDateOfBirthChange = (date: Date | null) => setDateOfBirth(date);
 
   return (
@@ -125,7 +121,6 @@ export const EditForm: React.FC<EditFormPropsType> = ({
       initialValues={{ remember: true }}
       name="editProfileForm"
     >
-      {contextHolder}
       <div className={styles.modal}>
         <CustomInput
           name="firstName"

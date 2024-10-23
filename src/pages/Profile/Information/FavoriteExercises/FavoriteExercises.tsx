@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Empty, message } from "antd";
+import { Empty } from "antd";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { StarFilled } from "@ant-design/icons";
@@ -8,13 +8,13 @@ import { StarFilled } from "@ant-design/icons";
 import { Exercise } from "../../../../types/types";
 import { Loader } from "../../../../components/Loader/Loader";
 import { SubTitle } from "../../../../components/SubTitle/SubTitle";
+import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./FavoriteExercises.module.scss";
 import { ExerciseItem } from "./ExerciseItem/ExerciseItem";
 
 export const FavoriteExercises: React.FC = () => {
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
   const [favoriteExercisesArray, setFavoriteExercisesArray] = useState<
     Exercise[]
   >([]);
@@ -40,8 +40,8 @@ export const FavoriteExercises: React.FC = () => {
           setLoading(false);
         }
       } catch (error) {
-        message.error({
-          key: "limit-error",
+        ClosableMessage({
+          type: "error",
           content: t("errorFetchingFavoriteExercises"),
         });
       }
@@ -70,7 +70,6 @@ export const FavoriteExercises: React.FC = () => {
 
   return (
     <>
-      {contextHolder}
       {loading ? (
         <Loader />
       ) : favoriteExercisesArray.length > 0 ? (

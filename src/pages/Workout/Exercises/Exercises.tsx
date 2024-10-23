@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { message } from "antd";
 import { useTranslation } from "react-i18next";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -8,6 +7,7 @@ import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import { Exercise, ExercisesProps } from "../../../types/types";
 import { Loader } from "../../../components/Loader/Loader";
 import { EmptyBox } from "../../../components/EmptyBox/EmptyBox";
+import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./Exercises.module.scss";
 import { ExerciseCard } from "./ExerciseCard/ExerciseCard";
@@ -22,7 +22,6 @@ export const Exercises: React.FC<ExercisesProps> = ({
   setSelectedExercise,
 }) => {
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
   const [data, setData] = useState<Exercise[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -65,8 +64,8 @@ export const Exercises: React.FC<ExercisesProps> = ({
         }
         setLoading(false);
       } catch (error) {
-        message.error({
-          key: "limit-error",
+        ClosableMessage({
+          type: "error",
           content: t("errorFetchingExercises"),
         });
       }
@@ -76,7 +75,6 @@ export const Exercises: React.FC<ExercisesProps> = ({
 
   return (
     <>
-      {contextHolder}
       {loading ? (
         <Loader />
       ) : (

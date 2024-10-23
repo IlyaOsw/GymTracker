@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { Form, message } from "antd";
+import { Form } from "antd";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { CheckCircleOutlined, SyncOutlined } from "@ant-design/icons";
@@ -17,6 +17,7 @@ import { storage } from "../..";
 import { Exercise } from "../../types/types";
 import { calculateAge } from "../../utils/calculateAge";
 import { scrollToTop } from "../../utils/scrollToTop";
+import { ClosableMessage } from "../../components/ClosableMessage/ClosableMessage";
 
 import { Registration } from "./Registration/Registration";
 import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
@@ -25,7 +26,6 @@ import styles from "./SignUp.module.scss";
 
 const SignUp: React.FC = () => {
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const auth = getAuth();
@@ -48,29 +48,18 @@ const SignUp: React.FC = () => {
 
   const onReset = () => {
     form.resetFields();
-    message.success({
-      key: "limit-success",
-      content: t("reseted"),
-    });
+    ClosableMessage({ type: "success", content: t("reseted") });
     scrollToTop();
   };
 
   const handleEmailChange = (email: string) => setEmail(email);
-
   const handlePasswordChange = (password: string) => setPassword(password);
-
   const handleFirstNameChange = (value: string) => setFirstName(value);
-
   const handleLastNameChange = (value: string) => setLastName(value);
-
   const handleGenderChange = (value: string) => setGender(value);
-
   const handleDateOfBirthChange = (date: Date | null) => setDateOfBirth(date);
-
   const handleCountryChange = (value: string) => setCountry(value);
-
   const handleCityChange = (value: string) => setCity(value);
-
   const handleImageChange = (file: File) => setImage(file);
 
   const handleRegister = async () => {
@@ -116,7 +105,6 @@ const SignUp: React.FC = () => {
       initialValues={{ remember: true }}
       layout="vertical"
     >
-      {contextHolder}
       <PageWrapper>
         <DescriptionTitle text={t("signUp")} textAlign="center" />
         <Registration
