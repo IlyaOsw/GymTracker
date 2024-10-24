@@ -56,7 +56,7 @@ export const UserInfo: React.FC = () => {
           <h2 className={styles.name}>
             {userData.firstName} {userData.lastName}
           </h2>
-          <p className={styles.status}>Fitness / Powerlifting</p>
+          <p className={styles.status}>{userData.status}</p>
           <div className={styles.userDetails}>
             <div className={styles.detailItem}>
               <img

@@ -180,6 +180,7 @@ export interface UserData {
   dateOfBirth: Date | null;
   age: number;
   gender: string;
+  status: string;
   location: {
     country: string;
     city: string;
