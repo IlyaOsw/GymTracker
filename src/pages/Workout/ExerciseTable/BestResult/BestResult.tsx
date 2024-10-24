@@ -56,6 +56,16 @@ export const BestResult: React.FC<BestResultProps> = ({
             return;
           }
 
+          if (Number(updatedBestResult.reps) === 0) {
+            setReps(exerciseToUpdate.bestResult.reps);
+            ClosableMessage({
+              type: "error",
+              content: t("repsNot0"),
+            });
+            setIsSaving(false);
+            return;
+          }
+
           const updatedExercises = exercisesData.exercises.map(
             (exercise: Exercise) => {
               if (exercise.id === selectedExercise.id) {

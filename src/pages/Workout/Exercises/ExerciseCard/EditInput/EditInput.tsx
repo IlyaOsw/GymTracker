@@ -42,7 +42,6 @@ export const EditInput: React.FC<EditInputPropsType> = ({
             (exercise: { id: string }) => exercise.id === exerciseId
           );
 
-          // Check if the new name matches the current name
           if (currentExercise && currentExercise.name === newName) {
             ClosableMessage({
               type: "warning",
@@ -51,7 +50,6 @@ export const EditInput: React.FC<EditInputPropsType> = ({
             return;
           }
 
-          // Check if the new name is too short
           if (newName.trim().length < 3) {
             ClosableMessage({
               type: "error",
@@ -59,8 +57,6 @@ export const EditInput: React.FC<EditInputPropsType> = ({
             });
             return;
           }
-
-          // Check if the new name already exists in other exercises
           const nameExists = exercisesData.exercises.some(
             (exercise: { id: string; name: string }) =>
               exercise.id !== exerciseId && exercise.name === newName

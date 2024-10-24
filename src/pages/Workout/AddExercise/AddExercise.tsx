@@ -17,6 +17,7 @@ export const AddExercise: React.FC<IAddExercise> = ({
   onAddExercise,
   category,
 }) => {
+  const user = getAuth().currentUser;
   const { t } = useTranslation();
   const [exerciseName, setExerciseName] = useState("");
 
@@ -26,7 +27,6 @@ export const AddExercise: React.FC<IAddExercise> = ({
       return;
     }
     try {
-      const user = getAuth().currentUser;
       if (user) {
         const userId = user.uid;
         const exercise = {
@@ -43,14 +43,28 @@ export const AddExercise: React.FC<IAddExercise> = ({
         const docSnapshot = await getDoc(exercisesDocRef);
 
         if (docSnapshot.exists()) {
+          const existingExercises = docSnapshot.data().exercises || [];
+
+          const exerciseExists = existingExercises.some(
+            (existingExercise: { name: string }) =>
+              existingExercise.name.toLowerCase() === exerciseName.toLowerCase()
+          );
+
+          if (exerciseExists) {
+            ClosableMessage({ type: "error", content: t("nameAlreadyExists") });
+            setExerciseName("");
+            return;
+          }
+
           await updateDoc(exercisesDocRef, {
-            exercises: [...docSnapshot.data().exercises, exercise],
+            exercises: [...existingExercises, exercise],
           });
         } else {
           await updateDoc(exercisesDocRef, {
             exercises: [exercise],
           });
         }
+
         setExerciseName("");
         onAddExercise();
         ClosableMessage({ type: "success", content: t("exerciseAdded") });

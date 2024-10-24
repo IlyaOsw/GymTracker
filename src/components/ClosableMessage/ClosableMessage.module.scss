@@ -1,12 +1,11 @@
 .customMessage {
   div {
-    background-image: linear-gradient(to right, #424242, #282828) !important;
+    // background-image: linear-gradient(to right, #424242, #282828) !important;
+    background-color: #424242 !important;
     color: #ffffff;
     letter-spacing: 0.5px;
     min-height: 24px;
     border-radius: 15px !important;
-    border: none !important;
-    outline: none !important;
   }
 }
 

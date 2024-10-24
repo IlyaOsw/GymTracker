@@ -63,7 +63,10 @@ export const InputContainer: React.FC<InputContainerPropsType> = ({
     const numericValue = parseFloat(value);
 
     if (numericValue > 1000) {
-      ClosableMessage({ type: "warning", content: t("noMoreThan1000kg") });
+      ClosableMessage({
+        type: "warning",
+        content: t("noMoreThan1000kg"),
+      });
     } else if (!isNaN(numericValue) && /^\d*\.?\d*$/.test(value)) {
       setWeight(value);
     } else {
