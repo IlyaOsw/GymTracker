@@ -28,6 +28,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
   const [filteredCountries, setFilteredCountries] = useState(countryOptions);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [status, setStatus] = useState("");
   const [country, setCountry] = useState<string | undefined>(undefined);
   const [city, setCity] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
@@ -41,6 +42,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
           const userData = userDoc.data();
           setFirstName(userData.firstName);
           setLastName(userData.lastName);
+          setStatus(userData.status);
           setCountry(userData.location.country);
           setCity(userData.location.city);
           setDateOfBirth(userData.dateOfBirth.toDate());
@@ -48,6 +50,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
           form.setFieldsValue({
             firstName: userData.firstName,
             lastName: userData.lastName,
+            status: userData.status,
             country: userData.location.country,
             city: userData.location.city,
             dateOfBirth: userData.dateOfBirth.toDate(),
@@ -67,6 +70,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
           {
             firstName,
             lastName,
+            status,
             location: {
               country,
               city,
@@ -79,6 +83,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
         await updateUserData({
           firstName,
           lastName,
+          status,
           location: {
             country,
             city,
@@ -110,6 +115,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
 
   const handleFirstNameChange = (value: string) => setFirstName(value);
   const handleLastNameChange = (value: string) => setLastName(value);
+  const handleStatusChange = (value: string) => setStatus(value);
   const handleCountryChange = (value: string | undefined) => setCountry(value);
   const handleCityChange = (value: string) => setCity(value);
   const handleDateOfBirthChange = (date: Date | null) => setDateOfBirth(date);
@@ -137,6 +143,14 @@ export const EditForm: React.FC<EditFormPropsType> = ({
           isRequired={false}
           value={lastName}
           onChange={handleLastNameChange}
+        />
+        <CustomInput
+          name="status"
+          text={t("status")}
+          placeholder={t("enterStatus")}
+          isRequired={false}
+          value={status}
+          onChange={handleStatusChange}
         />
         <CountrySelect
           country={country}

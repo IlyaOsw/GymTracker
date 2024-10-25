@@ -205,6 +205,7 @@ export type EditFormPropsType = {
 export interface UpdateUserData {
   firstName: string;
   lastName: string;
+  status: string;
   location: {
     country: string | undefined;
     city: string;

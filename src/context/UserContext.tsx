@@ -19,11 +19,11 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const updateUserData = async (userData: UpdateUserData) => {
     try {
-      const auth = getAuth();
-      const user = auth.currentUser;
+      const user = getAuth().currentUser;
       if (user) {
-        const db = getFirestore();
-        await setDoc(doc(db, "users", user.uid), userData, { merge: true });
+        await setDoc(doc(getFirestore(), "users", user.uid), userData, {
+          merge: true,
+        });
       }
     } catch (error) {
       throw new Error("Failed to update user data");
