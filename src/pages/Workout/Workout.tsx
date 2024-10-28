@@ -12,6 +12,7 @@ import { Exercises } from "./Exercises/Exercises";
 const Workout: React.FC = () => {
   const location = useLocation();
   const state = location.state as LocationState;
+  const [data, setData] = useState<Exercise[]>([]);
   const [updateTrigger, setUpdateTrigger] = useState(0);
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(
     null
@@ -31,8 +32,18 @@ const Workout: React.FC = () => {
     }
   };
 
-  const handleSelectExercise = (exercise: Exercise) =>
-    setSelectedExercise(exercise);
+  const handleSelectExercise = (exercise: Exercise) => {
+    // Проверка наличия данных для выбранного упражнения
+    const exerciseData = data.find((item) => item.id === exercise.id);
+
+    if (exerciseData) {
+      setSelectedExercise(exercise); // Устанавливаем выбранное упражнение
+    } else {
+      // Сбрасываем состояние и данные при отсутствии информации
+      setSelectedExercise(null);
+      setData([]); // Очищаем данные, если для упражнения нет записей
+    }
+  };
 
   return (
     <PageWrapper>
@@ -50,6 +61,8 @@ const Workout: React.FC = () => {
           activeCardId={activeCardId}
           setActiveCardId={setActiveCardId}
           setSelectedExercise={setSelectedExercise}
+          data={data}
+          setData={setData}
         />
         <ExerciseTable
           selectedExercise={selectedExercise}

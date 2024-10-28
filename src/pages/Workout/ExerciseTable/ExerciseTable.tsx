@@ -22,6 +22,7 @@ import {
 import { EmptyBox } from "../../../components/EmptyBox/EmptyBox";
 import NumericInput from "../../../components/NumericInput/NumericInput";
 import { scrollToBottom } from "../../../utils/scrollToBottom";
+import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./ExerciseTable.module.scss";
 import { TableFooter } from "./TableFooter/TableFooter";
@@ -33,8 +34,8 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   setSelectedExercise,
   setActiveCardId,
 }) => {
+  const user = getAuth().currentUser;
   const { t } = useTranslation();
-  const [, contextHolder] = message.useMessage();
   const [data, setData] = useState<ExerciseTableType[]>([]);
   const [bestResult, setBestResult] = useState<{
     weight: string;
@@ -50,13 +51,13 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
 
   const weightInputRef = useRef<HTMLInputElement | null>(null);
   const repsInputRef = useRef<HTMLInputElement | null>(null);
-  const user = getAuth().currentUser;
 
   useEffect(() => {
     if (selectedExercise) {
       loadExerciseData();
     } else {
       setData([]);
+      setBestResult(null);
     }
   }, [selectedExercise]);
 
@@ -100,15 +101,15 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
                 icon: <CloseOutlined />,
               })
             );
+
             setData(loadedData);
             scrollToBottom();
+            setDeleteBtn(true);
           } else {
             setData([]);
             setWorkoutDate(null);
-            scrollToBottom();
+            setDeleteBtn(false);
           }
-
-          setDeleteBtn(workouts.length > 0);
 
           if (exercisesDoc.exists()) {
             const exercisesData = exercisesDoc.data();
@@ -117,22 +118,19 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
             );
             if (exercise) {
               setBestResult(exercise.bestResult);
+            } else {
+              setBestResult(null);
             }
           }
-
-          setAddRowBtn(true);
-          setSaveBtn(true);
         } else {
           setData([]);
           setWorkoutDate(null);
+          setBestResult(null);
           scrollToBottom();
           setDeleteBtn(false);
         }
-
-        setAddRowBtn(false);
-        setSaveBtn(false);
       } catch (error) {
-        console.log(error);
+        console.error("Error loading exercise data:", error);
       }
     }
   };
@@ -144,8 +142,8 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       );
 
       if (validData.length === 0) {
-        message.error({
-          key: "limit-error",
+        ClosableMessage({
+          type: "error",
           content: t("noDataToSave"),
         });
         return;
@@ -196,13 +194,13 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
         setAddRowBtn(false);
         setSaveBtn(false);
 
-        message.success({
-          key: "limit-success",
+        ClosableMessage({
+          type: "success",
           content: t("exerciseDataSaved"),
         });
       } catch (error) {
-        message.error({
-          key: "limit-error",
+        ClosableMessage({
+          type: "error",
           content: t("errorSavingExerciseData"),
         });
       }
@@ -303,7 +301,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
 
   return (
     <>
-      {contextHolder}
       <Divider style={{ backgroundColor: "gray" }} />
       <div className={styles.tableTitle}>
         <SubTitle

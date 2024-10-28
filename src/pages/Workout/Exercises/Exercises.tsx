@@ -20,9 +20,10 @@ export const Exercises: React.FC<ExercisesProps> = ({
   activeCardId,
   setActiveCardId,
   setSelectedExercise,
+  data,
+  setData,
 }) => {
   const { t } = useTranslation();
-  const [data, setData] = useState<Exercise[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {

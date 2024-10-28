@@ -40,26 +40,34 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
 
   useEffect(() => {
     const loadWorkouts = async () => {
+      setHideButtons(true);
+      setCurrentWorkoutIndex(-1);
+      setAddRowBtn(false);
+      setSaveBtn(false);
+      setDeleteBtn(false);
+      setCurrentWorkout(false);
+      setData([]);
+
       if (selectedExercise) {
         const setsCollectionRef = collection(getFirestore(), "sets");
         const setDocRef = doc(setsCollectionRef, selectedExercise.id);
         try {
           const docSnapshot = await getDoc(setDocRef);
           if (docSnapshot.exists()) {
-            const setData = docSnapshot.data();
-            const workouts = setData?.workouts || [];
+            const workouts = docSnapshot.data()?.workouts || [];
 
-            if (
-              Array.isArray(workouts) &&
-              workouts.every((workout) => Array.isArray(workout.approaches))
-            ) {
+            if (Array.isArray(workouts) && workouts.length > 0) {
               setWorkouts(workouts.map((workout) => workout.approaches || []));
               setWorkoutDates(workouts.map((workout) => workout.date));
               const lastIndex = workouts.length - 1;
               setCurrentWorkoutIndex(lastIndex);
+              setHideButtons(false);
               onWorkoutDateChange(workouts[lastIndex].date);
             } else {
-              console.error("Workouts data format is incorrect.");
+              setData([]);
+              setWorkoutDates([]);
+              setCurrentWorkoutIndex(-1);
+              setHideButtons(true);
             }
           }
         } catch (error) {
@@ -67,14 +75,12 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
         }
       }
     };
-    setHideButtons(false);
+
     loadWorkouts();
   }, [selectedExercise]);
 
   const addRow = () => {
-    if (!selectedExercise) {
-      return;
-    }
+    if (!selectedExercise) return;
     const newData = [...data];
     const nextSet =
       newData.length > 0 ? newData[newData.length - 1].set + 1 : 1;
@@ -143,12 +149,14 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
         ) : (
           <div></div>
         )}
+
         {!hideButtons && !isLastWorkout && (
           <CustomButton onClick={showNextWorkout} icon={<RightOutlined />}>
             {t("next")}
           </CustomButton>
         )}
-        {!hideButtons && isLastWorkout && (
+
+        {(isLastWorkout || hideButtons) && !saveBtn && (
           <CustomButton onClick={startNewTraining}>
             {t("newEntry")}
             <RightOutlined />

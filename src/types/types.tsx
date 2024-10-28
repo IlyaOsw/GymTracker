@@ -244,6 +244,8 @@ export interface ExercisesProps {
   activeCardId: string | null;
   setActiveCardId: (value: string | null) => void;
   setSelectedExercise: (value: Exercise | null) => void;
+  data: Exercise[];
+  setData: (value: Exercise[]) => void;
 }
 
 export interface BestResult {
