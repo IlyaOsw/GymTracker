@@ -54,11 +54,8 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = ({
             await updateDoc(exercisesDocRef, {
               exercises: updatedExercises,
             });
-
             const filteredData = updatedExercises.filter(
-              (exercise: Exercise) =>
-                t(`categories.${exercise.category}`) ===
-                t(`categories.${category}`)
+              (exercise: Exercise) => t(exercise.category) === t(category)
             );
             setData(filteredData);
             localStorage.setItem("exercisesData", JSON.stringify(filteredData));

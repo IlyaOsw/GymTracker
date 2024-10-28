@@ -8,6 +8,7 @@ import { Exercise, ExercisesProps } from "../../../types/types";
 import { Loader } from "../../../components/Loader/Loader";
 import { EmptyBox } from "../../../components/EmptyBox/EmptyBox";
 import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMessage";
+import i18n from "../../../i18n";
 
 import styles from "./Exercises.module.scss";
 import { ExerciseCard } from "./ExerciseCard/ExerciseCard";
@@ -23,6 +24,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
   data,
   setData,
 }) => {
+  const user = getAuth().currentUser;
   const { t } = useTranslation();
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -40,39 +42,54 @@ export const Exercises: React.FC<ExercisesProps> = ({
     const fetchExercises = async () => {
       setLoading(true);
       try {
-        const user = getAuth().currentUser;
         if (user) {
           const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
           const exercisesDoc = await getDoc(exercisesDocRef);
+
           if (exercisesDoc.exists()) {
             const exercisesData = exercisesDoc.data();
-            const filteredData = exercisesData.exercises
-              .filter(
-                (exercise: Exercise) =>
-                  t(`categories.${exercise.category}`) ===
-                  t(`categories.${category}`)
-              )
-              .map((exercise: Exercise) => ({
-                id: exercise.id,
-                name: t(exercise.name),
-                category: exercise.category,
-                bestResult: exercise.bestResult,
-                isFavorite: exercise.isFavorite,
-              }));
+            const categoryTranslated = t(category); // Получаем перевод текущей категории с учетом языка
+
+            const filteredData = exercisesData.exercises.filter(
+              (exercise: Exercise) => {
+                const exerciseCategoryTranslated = t(exercise.category); // Переводим категорию упражнения
+                console.log(
+                  "Exercise category (translated):",
+                  exerciseCategoryTranslated
+                );
+                console.log(
+                  "Current selected category (translated):",
+                  categoryTranslated
+                );
+
+                // Сравниваем переводы
+                return exerciseCategoryTranslated === categoryTranslated;
+              }
+            );
+
+            console.log(
+              "Filtered data after fetch with language:",
+              i18n.language,
+              filteredData
+            );
             localStorage.setItem("exercisesData", JSON.stringify(filteredData));
             setData(filteredData);
+          } else {
+            console.log("No exercises found in Firestore for user.");
           }
         }
         setLoading(false);
       } catch (error) {
+        console.error("Error fetching exercises:", error);
         ClosableMessage({
           type: "error",
           content: t("errorFetchingExercises"),
         });
       }
     };
+
     fetchExercises();
-  }, [category, t, updateTrigger]);
+  }, [category, t, updateTrigger, i18n.language]);
 
   return (
     <>

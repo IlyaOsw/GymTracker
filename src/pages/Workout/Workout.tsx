@@ -5,9 +5,9 @@ import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionT
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { Exercise, LocationState } from "../../types/types";
 
+import { Exercises } from "./Exercises/Exercises";
 import { ExerciseTable } from "./ExerciseTable/ExerciseTable";
 import { AddExercise } from "./AddExercise/AddExercise";
-import { Exercises } from "./Exercises/Exercises";
 
 const Workout: React.FC = () => {
   const location = useLocation();
@@ -33,15 +33,13 @@ const Workout: React.FC = () => {
   };
 
   const handleSelectExercise = (exercise: Exercise) => {
-    // Проверка наличия данных для выбранного упражнения
     const exerciseData = data.find((item) => item.id === exercise.id);
 
     if (exerciseData) {
-      setSelectedExercise(exercise); // Устанавливаем выбранное упражнение
+      setSelectedExercise(exercise);
     } else {
-      // Сбрасываем состояние и данные при отсутствии информации
       setSelectedExercise(null);
-      setData([]); // Очищаем данные, если для упражнения нет записей
+      setData([]);
     }
   };
 
