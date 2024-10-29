@@ -48,39 +48,22 @@ export const Exercises: React.FC<ExercisesProps> = ({
 
           if (exercisesDoc.exists()) {
             const exercisesData = exercisesDoc.data();
-            const categoryTranslated = t(category); // Получаем перевод текущей категории с учетом языка
+            const categoryTranslated = t(category);
 
             const filteredData = exercisesData.exercises.filter(
               (exercise: Exercise) => {
-                const exerciseCategoryTranslated = t(exercise.category); // Переводим категорию упражнения
-                console.log(
-                  "Exercise category (translated):",
-                  exerciseCategoryTranslated
-                );
-                console.log(
-                  "Current selected category (translated):",
-                  categoryTranslated
-                );
+                const exerciseCategoryTranslated = t(exercise.category);
 
-                // Сравниваем переводы
                 return exerciseCategoryTranslated === categoryTranslated;
               }
             );
 
-            console.log(
-              "Filtered data after fetch with language:",
-              i18n.language,
-              filteredData
-            );
             localStorage.setItem("exercisesData", JSON.stringify(filteredData));
             setData(filteredData);
-          } else {
-            console.log("No exercises found in Firestore for user.");
           }
         }
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching exercises:", error);
         ClosableMessage({
           type: "error",
           content: t("errorFetchingExercises"),

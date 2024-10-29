@@ -24,7 +24,6 @@ export const UserInfo: React.FC = () => {
         setUserData(null);
       }
     };
-
     const unsubscribe = onAuthStateChanged(auth, fetchData);
     fetchData(auth.currentUser);
 

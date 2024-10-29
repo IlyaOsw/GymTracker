@@ -10,16 +10,15 @@ import { UserProvider } from "../../../context/UserContext";
 import { SettingButton } from "../../../components/SettingButton/SettingButton";
 
 import styles from "./Information.module.scss";
-import { FavoriteExercises } from "./FavoriteExercises/FavoriteExercises";
 import { UserInfo } from "./UserInfo/UserInfo";
 import { ProfileAvatar } from "./ProfileAvatar/ProfileAvatar";
 import { CoverImage } from "./CoverImage/CoverImage";
 import { EditProfile } from "./EditProfile/EditProfile";
 import { ConfirmDeleteAccount } from "./ConfirmDeleteAccount/ConfirmDeleteAccount";
+import { ProfileAside } from "./ProfileAside/ProfileAside";
 
 export const Information: React.FC = () => {
   const { t } = useTranslation();
-
   const [edit, setEdit] = useState<boolean>(false);
   const [, setUserData] = useState<any>(null);
   const [confirm, setConfirm] = useState<boolean>(false);
@@ -34,14 +33,10 @@ export const Information: React.FC = () => {
   }, []);
 
   const handleEditProfile = () => setEdit(true);
-
   const handleModalClose = () => setEdit(false);
-
   const handleConfirmDelete = () => setConfirm(true);
-
   const loadUserPhotos = async (user: User) => {
-    const docRef = doc(db, "users", user.uid);
-    const docSnap = await getDoc(docRef);
+    const docSnap = await getDoc(doc(db, "users", user.uid));
 
     if (docSnap.exists()) {
       const userData = docSnap.data();
@@ -57,7 +52,7 @@ export const Information: React.FC = () => {
       </div>
       <div className={styles.infoContainer}>
         <UserInfo />
-        <FavoriteExercises />
+        <ProfileAside />
       </div>
       <div className={styles.buttons}>
         <SettingButton icon={<EditOutlined />} onClick={handleEditProfile}>

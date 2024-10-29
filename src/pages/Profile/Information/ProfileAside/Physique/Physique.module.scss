@@ -1,0 +1,24 @@
+.physique {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 75px;
+    width: 100%;
+
+    .hexagon {
+      font-size: 1.2rem;
+    }
+
+    img {
+      height: 110px;
+      width: 110px;
+    }
+  }
+}

@@ -51,6 +51,8 @@ export const EditForm: React.FC<EditFormPropsType> = ({
             firstName: userData.firstName,
             lastName: userData.lastName,
             status: userData.status,
+            height: userData.height,
+            weight: userData.weight,
             country: userData.location.country,
             city: userData.location.city,
             dateOfBirth: userData.dateOfBirth.toDate(),

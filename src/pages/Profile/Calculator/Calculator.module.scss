@@ -8,10 +8,14 @@
 }
 
 .container {
-  background-color: #1a1a1a;
+  // background-color: #1a1a1a;
+  background-image: linear-gradient(to bottom, #141414, #202020);
+  // background-image: linear-gradient(to bottom, #202020, #141414);
   border-radius: 20px;
   margin: 50px 0px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    inset 8px 0 8px -6px rgba(0, 0, 0, 0.2),
+    inset -8px 0 8px -6px rgba(0, 0, 0, 0.2);
 }
 
 .result {

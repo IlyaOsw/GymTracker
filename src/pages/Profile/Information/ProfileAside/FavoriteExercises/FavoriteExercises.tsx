@@ -5,10 +5,10 @@ import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { StarFilled } from "@ant-design/icons";
 
-import { Exercise } from "../../../../types/types";
-import { Loader } from "../../../../components/Loader/Loader";
-import { SubTitle } from "../../../../components/SubTitle/SubTitle";
-import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
+import { Exercise } from "../../../../../types/types";
+import { Loader } from "../../../../../components/Loader/Loader";
+import { SubTitle } from "../../../../../components/SubTitle/SubTitle";
+import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./FavoriteExercises.module.scss";
 import { ExerciseItem } from "./ExerciseItem/ExerciseItem";

@@ -217,5 +217,8 @@
   "nameNotChanged": "The new name matches the current one",
   "nameMin3Symbols": "Name must be over 3 characters",
   "nameAlreadyExists": "This name already exists",
-  "repsNot0": "Repetitions cannot be 0"
+  "repsNot0": "Repetitions cannot be 0",
+  "physique": "Physique",
+  "userHeight": "Height",
+  "userWeight": "Weight"
 }

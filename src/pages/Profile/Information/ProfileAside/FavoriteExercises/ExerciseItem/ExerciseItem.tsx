@@ -3,7 +3,7 @@ import { Collapse, CollapseProps } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
-import { ExerciseItemProps } from "../../../../../types/types";
+import { ExerciseItemProps } from "../../../../../../types/types";
 
 import styles from "./ExerciseItem.module.scss";
 

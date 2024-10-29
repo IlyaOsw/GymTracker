@@ -181,6 +181,8 @@ export interface UserData {
   age: number;
   gender: string;
   status: string;
+  height: string;
+  weight: string;
   location: {
     country: string;
     city: string;
