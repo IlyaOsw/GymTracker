@@ -219,6 +219,10 @@
   "nameAlreadyExists": "Такое название уже существует",
   "repsNot0": "Повторений не может быть 0",
   "physique": "Телосложение",
-  "userHeight": "Рост",
-  "userWeight": "Вес"
+  "userHeight": "Рост (см)",
+  "userWeight": "Вес (кг)",
+  "heightAndWeightSaved": "Данные пользователя обновлены успешно",
+  "heightAndWeightError": "Ошибка обновления пользовательских данных",
+  "notChanged": "Рост и вес не были изменены",
+  "saveChanges": "Сохранить изменения"
 }

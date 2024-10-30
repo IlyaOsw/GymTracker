@@ -84,8 +84,8 @@ const SignUp: React.FC = () => {
         age: dateOfBirth ? calculateAge(dateOfBirth) : 0,
         gender: gender,
         status: "",
-        height: "",
-        weight: "",
+        height: "0",
+        weight: "0",
         location: {
           country: country,
           city: city || "",

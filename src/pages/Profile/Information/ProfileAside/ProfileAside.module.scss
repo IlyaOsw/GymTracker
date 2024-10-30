@@ -5,4 +5,8 @@
   justify-content: center;
   flex-direction: column;
   border-left: 1px solid gray;
+
+  @media (max-width: 768px) {
+    border-left: none;
+  }
 }
