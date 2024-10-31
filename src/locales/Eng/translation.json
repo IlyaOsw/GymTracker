@@ -219,10 +219,12 @@
   "nameAlreadyExists": "This name already exists",
   "repsNot0": "Repetitions cannot be 0",
   "physique": "Physique",
-  "userHeight": "Height (cm)",
-  "userWeight": "Weight (kg)",
+  "userHeight": "Height",
+  "userWeight": "Weight",
   "heightAndWeightSaved": "User data updated successfully",
   "heightAndWeightError": "Error updating user data",
   "notChanged": "Height and weight were not changed",
-  "saveChanges": "Save changes"
+  "saveChanges": "Save changes",
+  "cm": "cm",
+  "notValidData": "Not valid data"
 }

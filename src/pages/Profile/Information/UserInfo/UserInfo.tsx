@@ -10,10 +10,10 @@ import { LastWorkout } from "../LastWorkout/LastWorkout";
 import styles from "./UserInfo.module.scss";
 
 export const UserInfo: React.FC = () => {
+  const auth = getAuth();
   const { t } = useTranslation();
   const { updateUserData } = useUserContext();
   const [userData, setUserData] = useState<UserData | null>(null);
-  const auth = getAuth();
 
   useEffect(() => {
     const fetchData = async (user: User | null) => {
@@ -32,8 +32,7 @@ export const UserInfo: React.FC = () => {
 
   const fetchUserData = async (userId: string): Promise<UserData | null> => {
     try {
-      const userDoc = doc(getFirestore(), "users", userId);
-      const docSnap = await getDoc(userDoc);
+      const docSnap = await getDoc(doc(getFirestore(), "users", userId));
       if (docSnap.exists()) {
         return docSnap.data() as UserData;
       } else {
@@ -44,18 +43,14 @@ export const UserInfo: React.FC = () => {
     }
   };
 
-  if (!userData) {
-    return <div className={styles.profileContainer} />;
-  }
-
   return (
     <div className={styles.profileContainer}>
       <div className={styles.profileCard}>
         <div className={styles.userInfo}>
           <h2 className={styles.name}>
-            {userData.firstName} {userData.lastName}
+            {userData?.firstName} {userData?.lastName}
           </h2>
-          <p className={styles.status}>{userData.status}</p>
+          <p className={styles.status}>{userData?.status}</p>
           <div className={styles.userDetails}>
             <div className={styles.detailItem}>
               <img
@@ -64,7 +59,7 @@ export const UserInfo: React.FC = () => {
                   "/assets/Icons/AdditionalIcons/location.png"
                 }
               />
-              {userData.location.country}, {userData.location.city}
+              {userData?.location.country}, {userData?.location.city}
             </div>
             <div className={styles.detailItem}>
               <img
@@ -73,7 +68,7 @@ export const UserInfo: React.FC = () => {
                   "/assets/Icons/AdditionalIcons/age.png"
                 }
               />
-              {t("age")}: {userData.age}
+              {t("age")}: {userData?.age}
             </div>
             <div className={styles.detailItem}>
               <img
@@ -82,7 +77,7 @@ export const UserInfo: React.FC = () => {
                   "/assets/Icons/AdditionalIcons/gender.png"
                 }
               />
-              {t("gender")}: {t(userData.gender)}
+              {t("gender")}: {userData?.gender ? t(userData.gender) : ""}
             </div>
             <div className={styles.detailItem}>
               <img
@@ -91,7 +86,7 @@ export const UserInfo: React.FC = () => {
                   "/assets/Icons/AdditionalIcons/mail.png"
                 }
               />
-              {userData.email}
+              {userData?.email}
             </div>
           </div>
         </div>

@@ -38,10 +38,16 @@ export const Physique: React.FC = () => {
     return () => unsubscribe();
   }, [updateUserData]);
 
+  useEffect(() => {
+    if (userData) {
+      setHeight(userData.height);
+      setWeight(userData.weight);
+    }
+  }, [userData]);
+
   const fetchUserData = async (userId: string): Promise<UserData | null> => {
     try {
-      const userDoc = doc(getFirestore(), "users", userId);
-      const docSnap = await getDoc(userDoc);
+      const docSnap = await getDoc(doc(getFirestore(), "users", userId));
       if (docSnap.exists()) {
         return docSnap.data() as UserData;
       } else {
@@ -52,15 +58,20 @@ export const Physique: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    if (userData) {
-      setHeight(userData.height);
-      setWeight(userData.weight);
-    }
-  }, [userData]);
+  const handleEditMode = () => setEditMode(true);
+  const handleSave = () => handleSaveChanges();
 
-  const handleEditMode = () => {
-    setEditMode(true);
+  const updateUserDataInDb = async (
+    userId: string,
+    height: string,
+    weight: string
+  ) => {
+    try {
+      await updateDoc(doc(getFirestore(), "users", userId), { height, weight });
+      ClosableMessage({ type: "success", content: t("heightAndWeightSaved") });
+    } catch (error) {
+      ClosableMessage({ type: "error", content: t("heightAndWeightError") });
+    }
   };
 
   const handleSaveChanges = async () => {
@@ -71,32 +82,21 @@ export const Physique: React.FC = () => {
         return;
       }
 
+      if (Number(height) > 250 || Number(weight) > 250) {
+        setHeight(userData?.height);
+        setWeight(userData?.weight);
+        setEditMode(false);
+        ClosableMessage({ type: "error", content: t("notValidData") });
+        return;
+      }
+
       await updateUserDataInDb(auth.currentUser.uid, height, weight);
       setEditMode(false);
-
       setUserData((prevData) =>
         prevData ? { ...prevData, height, weight } : null
       );
     }
   };
-
-  const updateUserDataInDb = async (
-    userId: string,
-    height: string,
-    weight: string
-  ) => {
-    try {
-      const userDoc = doc(getFirestore(), "users", userId);
-      await updateDoc(userDoc, { height, weight });
-      ClosableMessage({ type: "success", content: t("heightAndWeightSaved") });
-    } catch (error) {
-      ClosableMessage({ type: "error", content: t("heightAndWeightError") });
-    }
-  };
-
-  if (!userData) {
-    return <div className={styles.profileContainer} />;
-  }
 
   return (
     <div className={styles.physique}>
@@ -105,35 +105,34 @@ export const Physique: React.FC = () => {
         <>
           <div className={styles.editWrapper}>
             <div>
-              <span className={styles.editTitle}>{t("userHeight")}</span>
+              <span>{t("userHeight")}</span>
               <NumericInput
                 value={height}
                 onChange={(value: string) => setHeight(value)}
               />
+              <span>{t("cm")}</span>
             </div>
             <div>
-              <span className={styles.editTitle}>{t("userWeight")}</span>
+              <span>{t("userWeight")}</span>
               <NumericInput
                 value={weight}
                 onChange={(value: string) => setWeight(value)}
+                onBlur={handleSave}
               />
+              <span>{t("kg")}</span>
             </div>
           </div>
-          <SettingButton
-            icon={<CheckOutlined />}
-            onClick={handleSaveChanges}
-            className={styles.saveBtn}
-          >
+          <SettingButton icon={<CheckOutlined />} onClick={handleSaveChanges}>
             <span>{t("saveChanges")}</span>
           </SettingButton>
         </>
       ) : (
         <div className={styles.wrapper}>
           <div>
-            <div className={styles.hexagonTitle}>{t("userHeight")}</div>
+            <div className={styles.hexagonTitle}>{t("userHeight")} </div>
             <div className={styles.hexagonContainer}>
               <Hexagon
-                text={`${userData.height}`}
+                text={`${userData?.height} ${t("cm")}`}
                 className={styles.hexagon}
                 onClick={handleEditMode}
               />
@@ -143,7 +142,7 @@ export const Physique: React.FC = () => {
             <div className={styles.hexagonTitle}>{t("userWeight")}</div>
             <div className={styles.hexagonContainer}>
               <Hexagon
-                text={`${userData.weight}`}
+                text={`${userData?.weight} ${t("kg")}`}
                 className={styles.hexagon}
                 onClick={handleEditMode}
               />
