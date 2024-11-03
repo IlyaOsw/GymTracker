@@ -391,6 +391,10 @@ export type TableFooterPropsType = {
   saveBtn: boolean;
   setSaveBtn: (saveBtn: boolean) => void;
   setDeleteBtn: (deleteBtn: boolean) => void;
+  historyButton: boolean;
+  setHistoryButton: (historyButton: boolean) => void;
+  showHistory: boolean;
+  setShowHistory: (showHistory: boolean) => void;
 };
 
 export type DeleteRowPropsType = {
@@ -420,4 +424,12 @@ export interface DeleteWorkoutProps {
 export type ClosableMessagePropsType = {
   type: "error" | "warning" | "success" | "info";
   content: string;
+};
+
+export type TrainingHistoryPropsType = {
+  historyButton: boolean;
+  showHistory: boolean;
+  setShowHistory: (showHistory: boolean | any) => void;
+  workouts: ExerciseTableType[][];
+  workoutDates: string[];
 };

@@ -37,37 +37,32 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
         try {
           await deleteObject(avatarRef);
         } catch (error) {
-          // Handle error if object doesn't exist
           if (
             error instanceof FirebaseError &&
             error.code === "storage/object-not-found"
           ) {
-            // Ignore the error for object not found
           } else {
-            throw error; // Re-throw other errors
+            throw error;
           }
         }
 
-        // Delete cover if it exists
         try {
           await deleteObject(coverRef);
         } catch (error) {
-          // Handle error if object doesn't exist
           if (
             error instanceof FirebaseError &&
             error.code === "storage/object-not-found"
           ) {
-            // Ignore the error for object not found
           } else {
-            throw error; // Re-throw other errors
+            throw error;
           }
         }
         await deleteUser(user);
 
-        navigate("/main");
         ClosableMessage({ type: "success", content: t("accountDeleted") });
       } catch (error) {
         ClosableMessage({ type: "error", content: t("errorDeletingAccount") });
+      } finally {
         navigate("/main");
       }
     }

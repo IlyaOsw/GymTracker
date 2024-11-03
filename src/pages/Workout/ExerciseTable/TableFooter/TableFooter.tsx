@@ -17,6 +17,7 @@ import {
 import { SettingButton } from "../../../../components/SettingButton/SettingButton";
 
 import styles from "./TableFooter.module.scss";
+import { TrainingHistory } from "./TrainingHistory/TrainingHistory";
 
 export const TableFooter: React.FC<TableFooterPropsType> = ({
   selectedExercise,
@@ -31,6 +32,10 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
   saveBtn,
   setSaveBtn,
   setDeleteBtn,
+  historyButton,
+  setHistoryButton,
+  showHistory,
+  setShowHistory,
 }) => {
   const { t } = useTranslation();
   const [workouts, setWorkouts] = useState<ExerciseTableType[][]>([]);
@@ -54,15 +59,17 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
         try {
           const docSnapshot = await getDoc(setDocRef);
           if (docSnapshot.exists()) {
-            const workouts = docSnapshot.data()?.workouts || [];
+            const workoutsData = docSnapshot.data()?.workouts || [];
 
-            if (Array.isArray(workouts) && workouts.length > 0) {
-              setWorkouts(workouts.map((workout) => workout.approaches || []));
-              setWorkoutDates(workouts.map((workout) => workout.date));
-              const lastIndex = workouts.length - 1;
+            if (Array.isArray(workoutsData) && workoutsData.length > 0) {
+              setWorkouts(
+                workoutsData.map((workout) => workout.approaches || [])
+              );
+              setWorkoutDates(workoutsData.map((workout) => workout.date));
+              const lastIndex = workoutsData.length - 1;
               setCurrentWorkoutIndex(lastIndex);
               setHideButtons(false);
-              onWorkoutDateChange(workouts[lastIndex].date);
+              onWorkoutDateChange(workoutsData[lastIndex].date);
             } else {
               setData([]);
               setWorkoutDates([]);
@@ -105,6 +112,7 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
     setHideButtons(true);
     setCurrentWorkout(true);
     setDeleteBtn(false);
+    setHistoryButton(true);
   };
 
   const showPreviousWorkout = () => {
@@ -149,13 +157,11 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
         ) : (
           <div></div>
         )}
-
         {!hideButtons && !isLastWorkout && (
           <CustomButton onClick={showNextWorkout} icon={<RightOutlined />}>
             {t("next")}
           </CustomButton>
         )}
-
         {(isLastWorkout || hideButtons) && !saveBtn && (
           <CustomButton onClick={startNewTraining}>
             {t("newEntry")}
@@ -163,6 +169,13 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
           </CustomButton>
         )}
       </div>
+      <TrainingHistory
+        historyButton={historyButton}
+        showHistory={showHistory}
+        setShowHistory={setShowHistory}
+        workouts={workouts}
+        workoutDates={workoutDates}
+      />
     </>
   );
 };
