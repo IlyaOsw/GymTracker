@@ -59,7 +59,8 @@ export const UserInfo: React.FC = () => {
                   "/assets/Icons/AdditionalIcons/location.png"
                 }
               />
-              {userData?.location.country}, {userData?.location.city}
+              {userData?.location.country}
+              {userData?.location.city && `, ${userData.location.city}`}
             </div>
             <div className={styles.detailItem}>
               <img

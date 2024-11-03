@@ -6,6 +6,7 @@ import { deleteUser, getAuth } from "firebase/auth";
 import { deleteDoc, doc, getFirestore } from "firebase/firestore";
 import { deleteObject, getStorage, ref } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
+import { FirebaseError } from "firebase/app";
 
 import { CustomModal } from "../../../../components/CustomModal/CustomModal";
 import { ResetButton } from "../../../../components/ResetButton/ResetButton";
@@ -33,8 +34,34 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
         const avatarRef = ref(storage, `avatar/${user.uid}`);
         const coverRef = ref(storage, `cover/${user.uid}`);
 
-        await deleteObject(avatarRef);
-        await deleteObject(coverRef);
+        try {
+          await deleteObject(avatarRef);
+        } catch (error) {
+          // Handle error if object doesn't exist
+          if (
+            error instanceof FirebaseError &&
+            error.code === "storage/object-not-found"
+          ) {
+            // Ignore the error for object not found
+          } else {
+            throw error; // Re-throw other errors
+          }
+        }
+
+        // Delete cover if it exists
+        try {
+          await deleteObject(coverRef);
+        } catch (error) {
+          // Handle error if object doesn't exist
+          if (
+            error instanceof FirebaseError &&
+            error.code === "storage/object-not-found"
+          ) {
+            // Ignore the error for object not found
+          } else {
+            throw error; // Re-throw other errors
+          }
+        }
         await deleteUser(user);
 
         navigate("/main");

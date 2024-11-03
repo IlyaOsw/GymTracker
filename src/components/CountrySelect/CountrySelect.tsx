@@ -20,7 +20,7 @@ export const CountrySelect: React.FC<CountrySelectProps> = ({
     <Form.Item
       name="country"
       label={<span className={styles.inputLabel}>{t("country")}</span>}
-      rules={[{ required: false }]}
+      rules={[{ required: true }]}
     >
       <ConfigProvider
         theme={{
