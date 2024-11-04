@@ -226,5 +226,6 @@
   "notChanged": "Height and weight were not changed",
   "saveChanges": "Save changes",
   "cm": "cm",
-  "notValidData": "Not valid data"
+  "notValidData": "Not valid data",
+  "workoutFor": "Workout for"
 }

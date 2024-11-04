@@ -32,8 +32,6 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
   saveBtn,
   setSaveBtn,
   setDeleteBtn,
-  historyButton,
-  setHistoryButton,
   showHistory,
   setShowHistory,
 }) => {
@@ -112,7 +110,7 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
     setHideButtons(true);
     setCurrentWorkout(true);
     setDeleteBtn(false);
-    setHistoryButton(true);
+    setShowHistory(true);
   };
 
   const showPreviousWorkout = () => {
@@ -170,7 +168,6 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
         )}
       </div>
       <TrainingHistory
-        historyButton={historyButton}
         showHistory={showHistory}
         setShowHistory={setShowHistory}
         workouts={workouts}

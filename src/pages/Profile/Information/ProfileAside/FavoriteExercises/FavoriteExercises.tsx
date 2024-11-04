@@ -58,9 +58,8 @@ export const FavoriteExercises: React.FC = () => {
   }, [t]);
 
   const renderStars = () => {
-    const totalStars = 3;
     const filledStars = favoriteExercisesArray.length;
-    return Array.from({ length: totalStars }, (_, index) => (
+    return Array.from({ length: 3 }, (_, index) => (
       <StarFilled
         key={index}
         className={index < filledStars ? styles.filledStar : styles.emptyStar}

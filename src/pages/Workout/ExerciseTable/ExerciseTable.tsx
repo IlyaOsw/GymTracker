@@ -48,7 +48,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   const [addRowBtn, setAddRowBtn] = useState(false);
   const [saveBtn, setSaveBtn] = useState(false);
   const [deleteBtn, setDeleteBtn] = useState(true);
-  const [historyButton, setHistoryButton] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
 
   const weightInputRef = useRef<HTMLInputElement | null>(null);
@@ -83,7 +82,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
           getDoc(setDocRef),
           getDoc(exercisesDocRef),
         ]);
-        setHistoryButton(false);
         setShowHistory(false);
         if (docSnapshot.exists()) {
           const documentData = docSnapshot.data();
@@ -196,7 +194,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
         setCurrentWorkout(false);
         setAddRowBtn(false);
         setSaveBtn(false);
-        setHistoryButton(false);
+
         setShowHistory(false);
 
         ClosableMessage({
@@ -365,8 +363,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
               saveBtn={saveBtn}
               setSaveBtn={setSaveBtn}
               setDeleteBtn={setDeleteBtn}
-              historyButton={historyButton}
-              setHistoryButton={setHistoryButton}
               showHistory={showHistory}
               setShowHistory={setShowHistory}
             />

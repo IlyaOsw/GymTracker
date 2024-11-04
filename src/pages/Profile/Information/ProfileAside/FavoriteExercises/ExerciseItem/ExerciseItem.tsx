@@ -21,20 +21,17 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({ item }) => {
       key: "1",
       label: <p>{item.name}</p>,
       children: (
-        <>
-          <div className={styles.result}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/assets/Icons/AdditionalIcons/trophy.png"
-              }
-            />
-            <div>
-              {item.bestResult.weight} {t("kg")} {t("on")}{" "}
-              {item.bestResult.reps}
-            </div>
+        <div className={styles.result}>
+          <img
+            src={
+              process.env.PUBLIC_URL +
+              "/assets/Icons/AdditionalIcons/trophy.png"
+            }
+          />
+          <div>
+            {item.bestResult.weight} {t("kg")} {t("on")} {item.bestResult.reps}
           </div>
-        </>
+        </div>
       ),
       extra: genExtra(),
     },
@@ -42,7 +39,6 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({ item }) => {
 
   return (
     <Collapse
-      key={item.id}
       bordered={false}
       expandIcon={({ isActive }) => (
         <RightOutlined rotate={isActive ? 90 : 0} />
