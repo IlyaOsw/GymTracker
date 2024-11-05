@@ -1,11 +1,11 @@
+.container {
+  margin: 0px 10px 50px 0px;
+}
+
 .collapse {
   width: 100%;
   background-image: linear-gradient(to bottom, #303030, #181818);
-  margin-bottom: 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition:
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
   text-align: start;
 
   p {
@@ -25,6 +25,11 @@
     font-size: 1rem;
     margin-top: 10px;
     transition: color 0.3s ease;
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
   }
 }
 

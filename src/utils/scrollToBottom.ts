@@ -5,4 +5,4 @@ export const scrollToBottom = () =>
       top: document.body.scrollHeight,
       behavior: "smooth",
     });
-  }, 100);
+  }, 150);

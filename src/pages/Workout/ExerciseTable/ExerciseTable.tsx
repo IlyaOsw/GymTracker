@@ -317,11 +317,11 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
             Table: {
               headerBg: "#1A1A1A",
               headerColor: "#ffffff",
-              cellFontSize: 18,
+              cellFontSize: 17,
               colorBgContainer: "#282828",
               colorText: "#ffffff",
               borderColor: "#535353",
-              cellPaddingBlock: 12,
+              cellPaddingBlock: 11,
             },
           },
         }}

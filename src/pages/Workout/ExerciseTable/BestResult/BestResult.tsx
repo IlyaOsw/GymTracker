@@ -9,6 +9,7 @@ import { SettingButton } from "../../../../components/SettingButton/SettingButto
 import NumericInput from "../../../../components/NumericInput/NumericInput";
 import { BestResultProps, Exercise } from "../../../../types/types";
 import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
+import { Hexagon } from "../../../../components/Hexagon/Hexagon";
 
 import styles from "./BestResult.module.scss";
 
@@ -136,35 +137,38 @@ export const BestResult: React.FC<BestResultProps> = ({
                   <span>{t("bestResultReps")}</span>
                 </div>
               </div>
-              <div className={styles.editBtn}>
-                <SettingButton
-                  icon={<CheckOutlined />}
-                  onClick={handleSave}
-                  className={styles.saveRecord}
-                >
-                  <span>{t("saveRecord")}</span>
-                </SettingButton>
-              </div>
+              <SettingButton
+                icon={<CheckOutlined />}
+                onClick={handleSave}
+                className={styles.saveRecord}
+              >
+                <span>{t("saveRecord")}</span>
+              </SettingButton>
             </>
           ) : (
             <>
               <div className={styles.wrapper}>
                 <div>
-                  {weight} {t("kg")}
+                  <div className={styles.hexagonTitle}>{t("userWeight")}</div>
+                  <div className={styles.hexagonContainer}>
+                    <Hexagon text={weight} className={styles.hexagon} />
+                  </div>
                 </div>
                 <div>
-                  {reps} {t("bestResultReps")}
+                  <div className={styles.hexagonTitle}>{t("reps")}</div>
+                  <div className={styles.hexagonContainer}>
+                    <Hexagon text={reps} className={styles.hexagon} />
+                  </div>
                 </div>
               </div>
-              <div className={styles.editBtn}>
-                <SettingButton
-                  icon={<EditOutlined />}
-                  onClick={() => setEditMode(true)}
-                  className={styles.updateRecord}
-                >
-                  <span>{t("updateRecord")}</span>
-                </SettingButton>
-              </div>
+
+              <SettingButton
+                icon={<EditOutlined />}
+                onClick={() => setEditMode(true)}
+                className={styles.updateRecord}
+              >
+                <span>{t("updateRecord")}</span>
+              </SettingButton>
             </>
           )}
         </>
@@ -175,7 +179,7 @@ export const BestResult: React.FC<BestResultProps> = ({
 
   return (
     <div className={styles.collapse}>
-      <Collapse size="large" items={items} bordered={false} />
+      <Collapse items={items} bordered={false} />
     </div>
   );
 };

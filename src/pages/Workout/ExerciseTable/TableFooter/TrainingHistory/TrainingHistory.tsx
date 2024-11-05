@@ -4,6 +4,7 @@ import { RightOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import { TrainingHistoryPropsType } from "../../../../../types/types";
+import { scrollToBottom } from "../../../../../utils/scrollToBottom";
 
 import styles from "./TrainingHistory.module.scss";
 
@@ -13,47 +14,56 @@ export const TrainingHistory: React.FC<TrainingHistoryPropsType> = ({
   workoutDates,
 }) => {
   const { t } = useTranslation();
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("ru-RU");
   };
 
-  const items = workoutDates
-    .slice()
-    .reverse()
-    .map((date, dateIndex) => ({
-      key: dateIndex.toString(),
-      label: (
-        <p>
-          {t("workoutFor")} <span> {formatDate(date)} </span>
-        </p>
-      ),
-      children: (
-        <div className={styles.historyWorkout}>
-          <table>
-            <thead>
-              <tr>
-                <th>{t("set")}</th>
-                <th>{t("weight")}</th>
-                <th>{t("reps")}</th>
+  const sortedData = workoutDates
+    .map((date, index) => ({ date, workout: workouts[index] }))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  const genExtra = () => (
+    <img
+      src={process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/history.png"}
+    />
+  );
+
+  const items = sortedData.map((item, index) => ({
+    key: index.toString(),
+    label: (
+      <p onClick={scrollToBottom}>
+        {t("workoutFor")} <span> {formatDate(item.date)} </span>
+      </p>
+    ),
+    children: (
+      <div className={styles.historyWorkout}>
+        <table>
+          <thead>
+            <tr>
+              <th>{t("set")}</th>
+              <th>{t("weight")}</th>
+              <th>{t("reps")}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {item.workout.map((w, i) => (
+              <tr key={i}>
+                <td>{w.set}.</td>
+                <td>{w.weight}</td>
+                <td>{w.reps}</td>
               </tr>
-            </thead>
-            <tbody>
-              {workouts[dateIndex].map((w, i) => (
-                <tr key={i}>
-                  <td>{w.set}.</td>
-                  <td>{w.weight}</td>
-                  <td>{w.reps}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ),
-    }));
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ),
+    extra: genExtra(),
+  }));
 
   return (
-    <>
+    <div className={styles.container}>
       {showHistory && workouts.length > 0 && (
         <Collapse
           bordered={false}
@@ -64,6 +74,6 @@ export const TrainingHistory: React.FC<TrainingHistoryPropsType> = ({
           className={styles.collapse}
         />
       )}
-    </>
+    </div>
   );
 };
