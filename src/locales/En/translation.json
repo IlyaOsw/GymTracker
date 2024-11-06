@@ -98,6 +98,11 @@
   "Грудь": "Chest",
   "Спина": "Back",
   "Ноги": "Legs",
+  "Käed": "Hands",
+  "Õlad": "Shoulders",
+  "Rind": "Chest",
+  "Selg": "Back",
+  "Jalad": "Legs",
   "Pull-down to the chest": "Pull-down to the chest",
   "Barbell squats": "Barbell squats",
   "Bench press": "Bench press",
@@ -227,5 +232,6 @@
   "saveChanges": "Save changes",
   "cm": "cm",
   "notValidData": "Not valid data",
-  "workoutFor": "Workout for"
+  "workoutFor": "Workout for",
+  "passwordNotMatch": "The new password that you entered do not match!"
 }

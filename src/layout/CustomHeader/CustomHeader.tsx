@@ -85,27 +85,40 @@ const themeItems: MenuItem[] = [
 const languageItems: MenuItem[] = [
   {
     key: "1",
-    label: "Eng",
+    label: "EN",
     icon: (
       <img
         src={
-          process.env.PUBLIC_URL + "/assets/Icons/Header/LanguageIcons/Eng.png"
+          process.env.PUBLIC_URL + "/assets/Icons/Header/LanguageIcons/En.png"
         }
         alt="Eng"
-        style={{ width: "25px", height: "25px", marginRight: "5px" }}
+        style={{ width: "25px", height: "25px", marginRight: "10px" }}
       />
     ),
   },
   {
     key: "2",
-    label: "Rus",
+    label: "RU",
     icon: (
       <img
         src={
-          process.env.PUBLIC_URL + "/assets/Icons/Header/LanguageIcons/Rus.png"
+          process.env.PUBLIC_URL + "/assets/Icons/Header/LanguageIcons/Ru.png"
         }
         alt="Rus"
-        style={{ width: "25px", height: "25px", marginRight: "5px" }}
+        style={{ width: "25px", height: "25px", marginRight: "10px" }}
+      />
+    ),
+  },
+  {
+    key: "3",
+    label: "EE",
+    icon: (
+      <img
+        src={
+          process.env.PUBLIC_URL + "/assets/Icons/Header/LanguageIcons/Ee.png"
+        }
+        alt="Ee"
+        style={{ width: "25px", height: "25px", marginRight: "10px" }}
       />
     ),
   },

@@ -30,6 +30,7 @@ export const LanguageDropdown: React.FC<LanguageDropdownPropsType> = ({
           controlItemBgActiveHover: "#EFEFEF",
           controlItemBgActive: "#EFEFEF",
           colorPrimary: "#0097b2",
+          controlPaddingHorizontal: 8,
         },
       }}
     >

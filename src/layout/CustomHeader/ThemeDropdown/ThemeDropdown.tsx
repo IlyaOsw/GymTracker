@@ -34,6 +34,7 @@ export const ThemeDropdown: React.FC<ThemeDropdownPropsType> = ({
           controlItemBgActiveHover: "#EFEFEF",
           controlItemBgActive: "#EFEFEF",
           colorPrimary: "#0097b2",
+          controlPaddingHorizontal: 8,
         },
       }}
     >
