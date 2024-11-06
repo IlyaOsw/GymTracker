@@ -19,7 +19,7 @@ i18n
         translation: require("./locales/Ee/translation.json"),
       },
     },
-    fallbackLng: "Eng",
+    fallbackLng: "En",
     // debug: true,
     detection: {
       order: ["queryString", "cookie"],
