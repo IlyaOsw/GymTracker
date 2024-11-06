@@ -33,13 +33,17 @@
 }
 
 .result {
-  margin: 0px 0px 0px 0px;
   font-size: 1.3rem;
   letter-spacing: 1px;
-  color: rgb(209, 148, 35);
+  color: rgb(229, 156, 19);
   display: flex;
   align-items: center;
   justify-content: center;
+
+  svg {
+    font-size: 0.8rem;
+    color: rgb(229, 156, 19);
+  }
 
   img {
     height: 34px;

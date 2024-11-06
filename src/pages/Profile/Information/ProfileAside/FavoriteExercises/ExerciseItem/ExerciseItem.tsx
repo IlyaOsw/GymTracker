@@ -1,6 +1,6 @@
 import React from "react";
 import { Collapse, CollapseProps } from "antd";
-import { RightOutlined } from "@ant-design/icons";
+import { RightOutlined, CloseOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import { ExerciseItemProps } from "../../../../../../types/types";
@@ -29,7 +29,8 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({ item }) => {
             }
           />
           <div>
-            {item.bestResult.weight} {t("kg")} {t("on")} {item.bestResult.reps}
+            {item.bestResult.weight} {t("kg")} <CloseOutlined />{" "}
+            {item.bestResult.reps}
           </div>
         </div>
       ),

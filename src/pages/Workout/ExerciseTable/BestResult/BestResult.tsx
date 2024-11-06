@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { CheckOutlined, EditOutlined } from "@ant-design/icons";
+import { CheckOutlined } from "@ant-design/icons";
 import { Collapse } from "antd";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -109,6 +109,8 @@ export const BestResult: React.FC<BestResultProps> = ({
     }
   };
 
+  const handleEditMode = () => setEditMode(true);
+
   const genExtra = () => (
     <img
       src={process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/trophy.png"}
@@ -124,11 +126,11 @@ export const BestResult: React.FC<BestResultProps> = ({
           {editMode ? (
             <>
               <div className={styles.wrapper}>
-                <div>
+                <div className={styles.numericInput}>
                   <NumericInput value={weight} onChange={setWeight} />
                   <span>{t("kg")}</span>
                 </div>
-                <div>
+                <div className={styles.numericInput}>
                   <NumericInput
                     value={reps}
                     onChange={setReps}
@@ -146,30 +148,28 @@ export const BestResult: React.FC<BestResultProps> = ({
               </SettingButton>
             </>
           ) : (
-            <>
-              <div className={styles.wrapper}>
-                <div>
-                  <div className={styles.hexagonTitle}>{t("userWeight")}</div>
-                  <div className={styles.hexagonContainer}>
-                    <Hexagon text={weight} className={styles.hexagon} />
-                  </div>
-                </div>
-                <div>
-                  <div className={styles.hexagonTitle}>{t("reps")}</div>
-                  <div className={styles.hexagonContainer}>
-                    <Hexagon text={reps} className={styles.hexagon} />
-                  </div>
+            <div className={styles.wrapper}>
+              <div>
+                <div className={styles.hexagonTitle}>{t("userWeight")}</div>
+                <div className={styles.hexagonContainer}>
+                  <Hexagon
+                    text={weight}
+                    className={styles.hexagon}
+                    onClick={handleEditMode}
+                  />
                 </div>
               </div>
-
-              <SettingButton
-                icon={<EditOutlined />}
-                onClick={() => setEditMode(true)}
-                className={styles.updateRecord}
-              >
-                <span>{t("updateRecord")}</span>
-              </SettingButton>
-            </>
+              <div>
+                <div className={styles.hexagonTitle}>{t("reps")}</div>
+                <div className={styles.hexagonContainer}>
+                  <Hexagon
+                    text={reps}
+                    className={styles.hexagon}
+                    onClick={handleEditMode}
+                  />
+                </div>
+              </div>
+            </div>
           )}
         </>
       ),
