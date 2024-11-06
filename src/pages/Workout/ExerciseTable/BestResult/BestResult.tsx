@@ -150,7 +150,7 @@ export const BestResult: React.FC<BestResultProps> = ({
           ) : (
             <div className={styles.wrapper}>
               <div>
-                <div className={styles.hexagonTitle}>{t("userWeight")}</div>
+                <div className={styles.hexagonTitle}>{t("weight")}</div>
                 <div className={styles.hexagonContainer}>
                   <Hexagon
                     text={weight}
