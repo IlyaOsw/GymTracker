@@ -126,11 +126,11 @@ export const BestResult: React.FC<BestResultProps> = ({
           {editMode ? (
             <>
               <div className={styles.wrapper}>
-                <div className={styles.numericInput}>
+                <div>
                   <NumericInput value={weight} onChange={setWeight} />
                   <span>{t("kg")}</span>
                 </div>
-                <div className={styles.numericInput}>
+                <div>
                   <NumericInput
                     value={reps}
                     onChange={setReps}
@@ -152,21 +152,13 @@ export const BestResult: React.FC<BestResultProps> = ({
               <div>
                 <div className={styles.hexagonTitle}>{t("weight")}</div>
                 <div className={styles.hexagonContainer}>
-                  <Hexagon
-                    text={weight}
-                    className={styles.hexagon}
-                    onClick={handleEditMode}
-                  />
+                  <Hexagon text={weight} onClick={handleEditMode} />
                 </div>
               </div>
               <div>
                 <div className={styles.hexagonTitle}>{t("reps")}</div>
                 <div className={styles.hexagonContainer}>
-                  <Hexagon
-                    text={reps}
-                    className={styles.hexagon}
-                    onClick={handleEditMode}
-                  />
+                  <Hexagon text={reps} onClick={handleEditMode} />
                 </div>
               </div>
             </div>

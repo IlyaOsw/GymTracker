@@ -27,35 +27,28 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: -5px;
+    margin-top: -10px;
     border-top: 1px solid #535353;
+    height: 140px;
 
     .hexagonTitle {
       font-size: 1rem;
       color: #ffffff;
       font-weight: 500;
       letter-spacing: 1px;
-      margin-top: 15px;
     }
 
     .hexagonContainer {
-      height: 75px;
-      width: 75px;
+      height: 85px;
+      width: 85px;
       display: flex;
       align-items: center;
-
-      .hexagon {
-        font-size: 1.2rem;
-      }
     }
 
     span {
       color: #ffffff;
       font-size: 1.2rem;
     }
-  }
-  .numericInput {
-    margin-top: 15px;
   }
 
   input {
@@ -67,8 +60,7 @@
   }
 
   .saveRecord {
-    margin-top: 15px;
-
+    margin-top: -5px;
     svg {
       margin-bottom: 7px;
     }
