@@ -132,19 +132,11 @@ export const Physique: React.FC = () => {
         <div className={styles.wrapper}>
           <div>
             <div className={styles.hexagonTitle}>{t("userHeight")}</div>
-            <Hexagon
-              text={`${height} ${t("cm")}`}
-              className={styles.hexagon}
-              onClick={handleEditMode}
-            />
+            <Hexagon text={`${height} ${t("cm")}`} onClick={handleEditMode} />
           </div>
           <div>
             <div className={styles.hexagonTitle}>{t("userWeight")}</div>
-            <Hexagon
-              text={`${weight} ${t("kg")}`}
-              className={styles.hexagon}
-              onClick={handleEditMode}
-            />
+            <Hexagon text={`${weight} ${t("kg")}`} onClick={handleEditMode} />
           </div>
         </div>
       )}

@@ -15,7 +15,7 @@
     margin-bottom: 10px;
 
     .hexagonTitle {
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: 500;
     }
 
@@ -23,12 +23,10 @@
       height: 100px;
       display: flex;
       align-items: center;
-
-      .hexagon {
-        font-size: 1rem;
-      }
     }
-
+    span {
+      font-size: 1.2rem;
+    }
     img {
       height: 100px;
       width: 100px;
@@ -45,6 +43,7 @@
   gap: 50px;
   margin-top: -20px;
   font-size: 1.2rem;
+
   @media (max-width: 768px) {
     height: 150px;
     flex-direction: column;
