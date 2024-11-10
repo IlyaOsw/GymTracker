@@ -107,7 +107,7 @@ export const Physique: React.FC = () => {
       {editMode ? (
         <>
           <div className={styles.editWrapper}>
-            <div>
+            <div className={styles.container}>
               <span>{t("userHeight")}</span>
               <NumericInput
                 value={height}
@@ -115,7 +115,7 @@ export const Physique: React.FC = () => {
               />
               <span>{t("cm")}</span>
             </div>
-            <div>
+            <div className={styles.container}>
               <span>{t("userWeight")}</span>
               <NumericInput
                 value={weight}

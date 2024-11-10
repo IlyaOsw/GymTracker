@@ -1,9 +1,5 @@
 .physique {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 
   .wrapper {
     display: flex;
@@ -12,21 +8,16 @@
     gap: 75px;
     width: 100%;
     letter-spacing: 1px;
-    margin-bottom: 10px;
 
     .hexagonTitle {
       font-size: 1.2rem;
       font-weight: 500;
     }
 
-    .hexagonContainer {
-      height: 100px;
-      display: flex;
-      align-items: center;
-    }
     span {
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
+
     img {
       height: 100px;
       width: 100px;
@@ -43,6 +34,12 @@
   gap: 50px;
   margin-top: -20px;
   font-size: 1.2rem;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   @media (max-width: 768px) {
     height: 150px;

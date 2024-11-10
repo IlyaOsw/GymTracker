@@ -126,11 +126,11 @@ export const BestResult: React.FC<BestResultProps> = ({
           {editMode ? (
             <>
               <div className={styles.wrapper}>
-                <div>
+                <div className={styles.container}>
                   <NumericInput value={weight} onChange={setWeight} />
                   <span>{t("kg")}</span>
                 </div>
-                <div>
+                <div className={styles.container}>
                   <NumericInput
                     value={reps}
                     onChange={setReps}
