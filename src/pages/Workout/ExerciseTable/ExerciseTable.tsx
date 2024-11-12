@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ConfigProvider, Divider, message, Table } from "antd";
+import { ConfigProvider, Divider, Table } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { getAuth } from "firebase/auth";

@@ -27,6 +27,7 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({ item }) => {
               process.env.PUBLIC_URL +
               "/assets/Icons/AdditionalIcons/trophy.png"
             }
+            alt="Trophy"
           />
           <div>
             {item.bestResult.weight} {t("kg")} <CloseOutlined />{" "}

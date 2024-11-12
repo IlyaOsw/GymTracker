@@ -61,7 +61,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
       }
     };
     fetchUserData();
-  }, [form]);
+  }, [user, form]);
 
   const handleUpdateInformation = async () => {
     if (user && dateOfBirth) {

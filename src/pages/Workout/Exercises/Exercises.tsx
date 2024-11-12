@@ -36,7 +36,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
       setData(storedData);
       setLoading(false);
     }
-  }, [category]);
+  }, [category, setData]);
 
   useEffect(() => {
     const fetchExercises = async () => {
@@ -72,7 +72,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
     };
 
     fetchExercises();
-  }, [category, t, updateTrigger, i18n.language]);
+  }, [category, t, updateTrigger, i18n.language, setData]);
 
   return (
     <>

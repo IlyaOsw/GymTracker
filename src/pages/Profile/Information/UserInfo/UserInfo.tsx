@@ -58,6 +58,7 @@ export const UserInfo: React.FC = () => {
                   process.env.PUBLIC_URL +
                   "/assets/Icons/AdditionalIcons/location.png"
                 }
+                alt="Location"
               />
               {userData?.location.country}
               {userData?.location.city && `, ${userData.location.city}`}
@@ -68,6 +69,7 @@ export const UserInfo: React.FC = () => {
                   process.env.PUBLIC_URL +
                   "/assets/Icons/AdditionalIcons/age.png"
                 }
+                alt="Age"
               />
               {t("age")}: {userData?.age}
             </div>
@@ -77,6 +79,7 @@ export const UserInfo: React.FC = () => {
                   process.env.PUBLIC_URL +
                   "/assets/Icons/AdditionalIcons/gender.png"
                 }
+                alt="Gender"
               />
               {t("gender")}: {userData?.gender ? t(userData.gender) : ""}
             </div>
@@ -86,6 +89,7 @@ export const UserInfo: React.FC = () => {
                   process.env.PUBLIC_URL +
                   "/assets/Icons/AdditionalIcons/mail.png"
                 }
+                alt="Mail"
               />
               {userData?.email}
             </div>

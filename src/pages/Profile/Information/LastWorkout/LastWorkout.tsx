@@ -56,6 +56,7 @@ export const LastWorkout: React.FC = () => {
           process.env.PUBLIC_URL +
           "/assets/Icons/AdditionalIcons/lastWorkout.png"
         }
+        alt="LastWorkout"
       />
       <div className={styles.title}>
         {t("lastWorkout")}:{" "}
