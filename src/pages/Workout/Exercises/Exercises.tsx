@@ -8,7 +8,6 @@ import { Exercise, ExercisesProps } from "../../../types/types";
 import { Loader } from "../../../components/Loader/Loader";
 import { EmptyBox } from "../../../components/EmptyBox/EmptyBox";
 import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMessage";
-import i18n from "../../../i18n";
 
 import styles from "./Exercises.module.scss";
 import { ExerciseCard } from "./ExerciseCard/ExerciseCard";

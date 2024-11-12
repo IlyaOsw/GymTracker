@@ -82,7 +82,15 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
     };
 
     loadWorkouts();
-  }, [selectedExercise]);
+  }, [
+    selectedExercise,
+    // onWorkoutDateChange,
+    setAddRowBtn,
+    setCurrentWorkout,
+    setData,
+    setDeleteBtn,
+    setSaveBtn,
+  ]);
 
   const addRow = () => {
     if (!selectedExercise) return;
