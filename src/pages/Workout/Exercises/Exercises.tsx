@@ -72,7 +72,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
     };
 
     fetchExercises();
-  }, [category, t, updateTrigger, i18n.language, user, setData]);
+  }, [category, t, updateTrigger, user, setData]);
 
   return (
     <>
