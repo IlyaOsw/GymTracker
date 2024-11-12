@@ -53,6 +53,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   const weightInputRef = useRef<HTMLInputElement | null>(null);
   const repsInputRef = useRef<HTMLInputElement | null>(null);
 
+  // Effect when selectedExercise changes
   useEffect(() => {
     if (selectedExercise) {
       loadExerciseData();
@@ -70,6 +71,22 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       weightInputRef.current.focus();
     }
   }, [editReps, editWeight]);
+
+  // Add missing dependencies to this effect:
+  // useEffect(() => {
+  //   // Assuming this is a handler for workout date change
+  //   if (workoutDate) {
+  //     handleWorkoutDateChange(workoutDate);
+  //   }
+  // }, [
+  //   workoutDate, // Add workoutDate as a dependency
+  //   handleWorkoutDateChange, // This is the correct function
+  //   setAddRowBtn,
+  //   setCurrentWorkout,
+  //   setData,
+  //   setDeleteBtn,
+  //   setSaveBtn,
+  // ]);
 
   const loadExerciseData = async () => {
     if (user && selectedExercise) {

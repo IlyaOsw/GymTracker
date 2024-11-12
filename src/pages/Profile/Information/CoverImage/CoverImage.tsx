@@ -26,7 +26,7 @@ export const CoverImage: React.FC = () => {
           setCoverURL("");
         });
     }
-  }, [auth.currentUser]);
+  }, []);
 
   const handleUploadCoverImage = async (file: File) => {
     const user = auth.currentUser;
@@ -47,7 +47,7 @@ export const CoverImage: React.FC = () => {
   return (
     <div className={styles.paper}>
       {coverURL ? (
-        <img src={coverURL} alt="Paper" />
+        <img src={coverURL} alt="CoverImg" />
       ) : (
         <div className={styles.paperPlaceholder} />
       )}

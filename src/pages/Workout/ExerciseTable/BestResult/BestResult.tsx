@@ -114,6 +114,7 @@ export const BestResult: React.FC<BestResultProps> = ({
   const genExtra = () => (
     <img
       src={process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/trophy.png"}
+      alt="Trophy"
     />
   );
 

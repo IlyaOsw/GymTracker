@@ -27,6 +27,7 @@ export const TrainingHistory: React.FC<TrainingHistoryPropsType> = ({
   const genExtra = () => (
     <img
       src={process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/history.png"}
+      alt="History"
     />
   );
 

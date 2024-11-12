@@ -13,6 +13,7 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({ item }) => {
   const genExtra = () => (
     <img
       src={process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/star.png"}
+      alt="Star"
     />
   );
 

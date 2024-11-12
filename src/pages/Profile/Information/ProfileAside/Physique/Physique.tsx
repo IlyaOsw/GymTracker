@@ -14,7 +14,6 @@ import { Loader } from "../../../../../components/Loader/Loader";
 import styles from "./Physique.module.scss";
 
 export const Physique: React.FC = () => {
-  const auth = getAuth();
   const { t } = useTranslation();
   const [height, setHeight] = useState<string | undefined>(undefined);
   const [weight, setWeight] = useState<string | undefined>(undefined);
@@ -28,6 +27,7 @@ export const Physique: React.FC = () => {
   );
 
   useEffect(() => {
+    const auth = getAuth();
     const fetchHeightAndWeight = async (user: User | null) => {
       if (user) {
         setLoading(true);
@@ -65,6 +65,7 @@ export const Physique: React.FC = () => {
   };
 
   const handleSaveChanges = async () => {
+    const auth = getAuth();
     if (auth.currentUser && height && weight) {
       if (height === initialHeight && weight === initialWeight) {
         ClosableMessage({ type: "warning", content: t("notChanged") });

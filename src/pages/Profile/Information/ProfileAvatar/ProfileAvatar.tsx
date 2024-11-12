@@ -25,9 +25,8 @@ export const ProfileAvatar: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [avatarURL, setAvatarURL] = useState<string | null>(null);
   const avatarSize = windowWidth <= 768 ? 150 : 250;
-  const auth = getAuth();
   const storage = getStorage();
-  const user = auth.currentUser;
+  const user = getAuth().currentUser;
 
   useEffect(() => {
     const handleResize = () => {
@@ -52,7 +51,7 @@ export const ProfileAvatar: React.FC = () => {
           setAvatarURL(null);
         });
     }
-  }, [auth.currentUser]);
+  }, [user, storage]);
 
   const handleDeleteAvatar = async () => {
     if (user) {
