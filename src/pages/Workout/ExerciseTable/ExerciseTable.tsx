@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { ConfigProvider, Divider, Table } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
@@ -54,15 +54,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
   const repsInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    if (selectedExercise) {
-      loadExerciseData();
-    } else {
-      setData([]);
-      setBestResult(null);
-    }
-  }, [selectedExercise]);
-
-  useEffect(() => {
     if (editReps && repsInputRef.current) {
       repsInputRef.current.focus();
     }
@@ -71,7 +62,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     }
   }, [editReps, editWeight]);
 
-  async function loadExerciseData() {
+  const loadExerciseData = useCallback(async () => {
     if (user && selectedExercise) {
       const setsCollectionRef = collection(getFirestore(), "sets");
       const setDocRef = doc(setsCollectionRef, selectedExercise.id);
@@ -134,7 +125,16 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
         console.error("Error loading exercise data:", error);
       }
     }
-  }
+  }, [selectedExercise, user]);
+
+  useEffect(() => {
+    if (selectedExercise) {
+      loadExerciseData();
+    } else {
+      setData([]);
+      setBestResult(null);
+    }
+  }, [selectedExercise, loadExerciseData]);
 
   const saveExerciseData = async () => {
     if (user && selectedExercise) {
