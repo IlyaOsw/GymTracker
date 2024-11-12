@@ -291,16 +291,19 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
     },
   ];
 
-  const handleWorkoutDateChange = (date: string) => {
-    const workoutDate = new Date(date);
-    const formattedDate = workoutDate.toLocaleString();
-    if (!isNaN(workoutDate.getTime())) {
-      setWorkoutDate(formattedDate);
-      setCurrentWorkout(false);
-    } else {
-      console.error("Invalid date:", date);
-    }
-  };
+  const handleWorkoutDateChange = useCallback(
+    (date: string) => {
+      const workoutDate = new Date(date);
+      const formattedDate = workoutDate.toLocaleString();
+      if (!isNaN(workoutDate.getTime())) {
+        setWorkoutDate(formattedDate);
+        setCurrentWorkout(false);
+      } else {
+        console.error("Invalid date:", date);
+      }
+    },
+    [setWorkoutDate, setCurrentWorkout]
+  );
 
   return (
     <>
