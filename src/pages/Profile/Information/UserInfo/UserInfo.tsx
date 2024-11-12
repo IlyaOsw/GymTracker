@@ -4,6 +4,7 @@ import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 import { UserData } from "../../../../types/types";
+import { useUserContext } from "../../../../context/UserContext";
 import { LastWorkout } from "../LastWorkout/LastWorkout";
 
 import styles from "./UserInfo.module.scss";
@@ -11,6 +12,7 @@ import styles from "./UserInfo.module.scss";
 export const UserInfo: React.FC = () => {
   const auth = getAuth();
   const { t } = useTranslation();
+  const { updateUserData } = useUserContext();
   const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
@@ -26,7 +28,7 @@ export const UserInfo: React.FC = () => {
     fetchData(auth.currentUser);
 
     return () => unsubscribe();
-  }, [auth]);
+  }, [auth, updateUserData]);
 
   const fetchUserData = async (userId: string): Promise<UserData | null> => {
     try {
