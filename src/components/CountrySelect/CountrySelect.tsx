@@ -13,6 +13,7 @@ export const CountrySelect: React.FC<CountrySelectProps> = ({
   handleCountryChange,
   filterOptions,
   filteredCountries,
+  isRequired,
 }) => {
   const { t } = useTranslation();
 
@@ -20,7 +21,7 @@ export const CountrySelect: React.FC<CountrySelectProps> = ({
     <Form.Item
       name="country"
       label={<span className={styles.inputLabel}>{t("country")}</span>}
-      rules={[{ required: true }]}
+      rules={[{ required: isRequired }]}
     >
       <ConfigProvider
         theme={{

@@ -159,6 +159,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
           handleCountryChange={handleCountryChange}
           filterOptions={filterOptions}
           filteredCountries={filteredCountries}
+          isRequired={false}
         />
         <CustomInput
           name="city"

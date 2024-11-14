@@ -35,6 +35,7 @@ export const Address: React.FC<AddressType> = ({
           handleCountryChange={handleCountryChange}
           filterOptions={filterOptions}
           filteredCountries={filteredCountries}
+          isRequired={true}
         />
         <CustomInput
           name={t("city")}
