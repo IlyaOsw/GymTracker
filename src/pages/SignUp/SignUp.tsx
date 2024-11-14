@@ -38,6 +38,7 @@ const SignUp: React.FC = () => {
   const [country, setCountry] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
+
   const exercises = useSelector(
     (state: { exercises: Exercise[] }) => state.exercises
   );
@@ -84,6 +85,7 @@ const SignUp: React.FC = () => {
         age: dateOfBirth ? calculateAge(dateOfBirth) : 0,
         gender: gender,
         status: "",
+        sport: "",
         height: "0",
         weight: "0",
         location: {

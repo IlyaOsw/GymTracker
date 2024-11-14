@@ -234,5 +234,7 @@
 "notValidData": "Andmed pole kehtivad",
 "workoutFor": "Treening",
 "next": "Edasi",
-"passwordNotMatch": "Sisestatud uued paroolid ei ühti!"
+"passwordNotMatch": "Sisestatud uued paroolid ei ühti!",
+"sport": "Spordiala",
+"selectSport": "Vali spordiala"
 }

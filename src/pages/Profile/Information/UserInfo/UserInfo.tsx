@@ -6,6 +6,7 @@ import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { UserData } from "../../../../types/types";
 import { useUserContext } from "../../../../context/UserContext";
 import { LastWorkout } from "../LastWorkout/LastWorkout";
+import { formatDateOfBirth } from "../../../../utils/formatDateOfBirth";
 
 import styles from "./UserInfo.module.scss";
 
@@ -51,6 +52,18 @@ export const UserInfo: React.FC = () => {
             {userData?.firstName} {userData?.lastName}
           </h2>
           <p className={styles.status}>{userData?.status}</p>
+          {userData?.sport && (
+            <div className={styles.sport}>
+              <img
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/Icons/AdditionalIcons/workout.png"
+                }
+                alt="Workout"
+              />
+              <span>{userData?.sport}</span>
+            </div>
+          )}
           <div className={styles.userDetails}>
             <div className={styles.detailItem}>
               <img
@@ -67,6 +80,16 @@ export const UserInfo: React.FC = () => {
               <img
                 src={
                   process.env.PUBLIC_URL +
+                  "/assets/Icons/AdditionalIcons/gender.png"
+                }
+                alt="Gender"
+              />
+              {t("gender")}: {userData?.gender ? t(userData.gender) : ""}
+            </div>
+            <div className={styles.detailItem}>
+              <img
+                src={
+                  process.env.PUBLIC_URL +
                   "/assets/Icons/AdditionalIcons/age.png"
                 }
                 alt="Age"
@@ -77,11 +100,11 @@ export const UserInfo: React.FC = () => {
               <img
                 src={
                   process.env.PUBLIC_URL +
-                  "/assets/Icons/AdditionalIcons/gender.png"
+                  "/assets/Icons/AdditionalIcons/birthday.png"
                 }
-                alt="Gender"
+                alt="DateOfBirth"
               />
-              {t("gender")}: {userData?.gender ? t(userData.gender) : ""}
+              {t("dateOfBirth")}: {formatDateOfBirth(userData?.dateOfBirth)}
             </div>
             <div className={styles.detailItem}>
               <img

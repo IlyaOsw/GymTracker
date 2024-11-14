@@ -32,6 +32,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
   const [country, setCountry] = useState<string | undefined>(undefined);
   const [city, setCity] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
+  const [sport, setSport] = useState("");
   const user = getAuth().currentUser;
 
   useEffect(() => {
@@ -46,6 +47,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
           setCountry(userData.location.country);
           setCity(userData.location.city);
           setDateOfBirth(userData.dateOfBirth.toDate());
+          setSport(userData.sport);
 
           form.setFieldsValue({
             firstName: userData.firstName,
@@ -56,6 +58,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
             country: userData.location.country,
             city: userData.location.city,
             dateOfBirth: userData.dateOfBirth.toDate(),
+            sport: userData.sport,
           });
         }
       }
@@ -92,6 +95,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
           },
           dateOfBirth,
           age,
+          sport,
         });
         setIsModalOpen(false);
         onClose();
@@ -121,6 +125,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
   const handleCountryChange = (value: string | undefined) => setCountry(value);
   const handleCityChange = (value: string) => setCity(value);
   const handleDateOfBirthChange = (date: Date | null) => setDateOfBirth(date);
+  const handleSportChange = (value: string) => setSport(value);
 
   return (
     <Form
@@ -145,6 +150,14 @@ export const EditForm: React.FC<EditFormPropsType> = ({
           isRequired={false}
           value={lastName}
           onChange={handleLastNameChange}
+        />
+        <CustomInput
+          name="sport"
+          text={t("sport")}
+          placeholder={t("selectSport")}
+          isRequired={false}
+          value={status}
+          onChange={handleSportChange}
         />
         <CustomInput
           name="status"

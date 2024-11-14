@@ -181,6 +181,7 @@ export interface UserData {
   age: number;
   gender: string;
   status: string;
+  sport: string;
   height: string;
   weight: string;
   location: {
@@ -214,6 +215,7 @@ export interface UpdateUserData {
   };
   dateOfBirth: Date;
   age: number;
+  sport: string;
 }
 
 export interface UserContextType {

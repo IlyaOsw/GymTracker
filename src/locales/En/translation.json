@@ -233,5 +233,7 @@
   "cm": "cm",
   "notValidData": "Not valid data",
   "workoutFor": "Workout for",
-  "passwordNotMatch": "The new password that you entered do not match!"
+  "passwordNotMatch": "The new password that you entered do not match!",
+  "sport": "Sport",
+  "selectSport": "Select sport"
 }
