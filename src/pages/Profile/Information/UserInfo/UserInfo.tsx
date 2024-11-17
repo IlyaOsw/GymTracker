@@ -61,7 +61,7 @@ export const UserInfo: React.FC = () => {
                 }
                 alt="Workout"
               />
-              <span>{userData?.sport}</span>
+              <span>{t(userData?.sport)}</span>
             </div>
           )}
           <div className={styles.userDetails}>

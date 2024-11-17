@@ -238,12 +238,12 @@
   "sport": "Вид спорта",
   "selectSport": "Выберите вид спорта",
   "maxCategoryExercisesReached": "Вы можете добавить не более 10 упражнений",
-  "Not Selected": "Не выбрано",
+  "NotSelected": "Не выбрано",
   "Fitness": "Фитнес",
   "Bodybuilding": "Бодибилдинг",
   "Powerbuilding": "Пауэрбилдинг",
   "Powerlifting": "Пауэрлифтинг",
   "Crossfit": "Кроссфит",
-  "Functional training": "Функциональный тренинг",
+  "FTraining": "Функциональный тренинг",
   "Weightlifting": "Тяжёлая атлетика"
 }

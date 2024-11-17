@@ -237,12 +237,12 @@
   "sport": "Sport",
   "selectSport": "Select sport",
   "maxExercisesReached": "You can only add up to 10 exercises",
-  "Not Selected": "Not Selected",
+  "NotSelected": "Not Selected",
   "Fitness": "Fitness",
   "Bodybuilding": "Bodybuilding",
   "Powerbuilding": "Powerbuilding",
   "Powerlifting": "Powerlifting",
   "Crossfit": "Crossfit",
-  "Functional training": "Functional training",
+  "FTraining": "Functional training",
   "Weightlifting": "Weightlifting"
 }

@@ -40,14 +40,14 @@ export const SportSelect: React.FC<SportSelectPropsType> = ({
             allowClear
             variant="borderless"
             options={[
-              { value: "", label: "Not Selected" },
-              { value: "Fitness", label: "Fitness" },
-              { value: "Bodybuilding", label: "Bodybuilding" },
-              { value: "Powerbuilding", label: "Powerbuilding" },
-              { value: "Powerlifting", label: "Powerlifting" },
-              { value: "Crossfit", label: "Crossfit" },
-              { value: "Functional training", label: "Functional training" },
-              { value: "Weightlifting", label: "Weightlifting" },
+              { value: "", label: t("NotSelected") },
+              { value: t("Fitness"), label: t("Fitness") },
+              { value: t("Bodybuilding"), label: t("Bodybuilding") },
+              { value: t("Powerbuilding"), label: t("Powerbuilding") },
+              { value: t("Powerlifting"), label: t("Powerlifting") },
+              { value: t("Crossfit"), label: t("Crossfit") },
+              { value: t("FTraining"), label: t("FTraining") },
+              { value: t("Weightlifting"), label: t("Weightlifting") },
             ]}
           />
         </ConfigProvider>
