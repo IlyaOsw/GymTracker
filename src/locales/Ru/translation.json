@@ -237,5 +237,13 @@
   "passwordNotMatch": "Введённые новые пароли не совпадают!",
   "sport": "Вид спорта",
   "selectSport": "Выберите вид спорта",
-  "maxCategoryExercisesReached": "Вы можете добавить не более 10 упражнений"
+  "maxCategoryExercisesReached": "Вы можете добавить не более 10 упражнений",
+  "Not Selected": "Не выбрано",
+  "Fitness": "Фитнес",
+  "Bodybuilding": "Бодибилдинг",
+  "Powerbuilding": "Пауэрбилдинг",
+  "Powerlifting": "Пауэрлифтинг",
+  "Crossfit": "Кроссфит",
+  "Functional training": "Функциональный тренинг",
+  "Weightlifting": "Тяжёлая атлетика"
 }

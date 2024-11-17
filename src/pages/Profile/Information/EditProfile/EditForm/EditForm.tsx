@@ -15,6 +15,7 @@ import { useUserContext } from "../../../../../context/UserContext";
 import { CountrySelect } from "../../../../../components/CountrySelect/CountrySelect";
 import { calculateAge } from "../../../../../utils/calculateAge";
 import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
+import { SportSelect } from "../../../../../components/SportSelect/SportSelect";
 
 const countryOptions = countries().getData();
 
@@ -151,14 +152,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
           value={lastName}
           onChange={handleLastNameChange}
         />
-        <CustomInput
-          name="sport"
-          text={t("sport")}
-          placeholder={t("selectSport")}
-          isRequired={false}
-          value={status}
-          onChange={handleSportChange}
-        />
+        <SportSelect value={sport} onChange={handleSportChange} />
         <CustomInput
           name="status"
           text={t("status")}

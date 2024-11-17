@@ -236,5 +236,13 @@
   "passwordNotMatch": "The new password that you entered do not match!",
   "sport": "Sport",
   "selectSport": "Select sport",
-  "maxExercisesReached": "You can only add up to 10 exercises"
+  "maxExercisesReached": "You can only add up to 10 exercises",
+  "Not Selected": "Not Selected",
+  "Fitness": "Fitness",
+  "Bodybuilding": "Bodybuilding",
+  "Powerbuilding": "Powerbuilding",
+  "Powerlifting": "Powerlifting",
+  "Crossfit": "Crossfit",
+  "Functional training": "Functional training",
+  "Weightlifting": "Weightlifting"
 }

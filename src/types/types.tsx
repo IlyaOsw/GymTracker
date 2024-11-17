@@ -433,3 +433,8 @@ export type TrainingHistoryPropsType = {
   workouts: ExerciseTableType[][];
   workoutDates: string[];
 };
+
+export type SportSelectPropsType = {
+  value: string;
+  onChange: (value: string) => void;
+};

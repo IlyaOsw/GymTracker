@@ -237,5 +237,13 @@
 "passwordNotMatch": "Sisestatud uued paroolid ei ühti!",
 "sport": "Spordiala",
 "selectSport": "Vali spordiala",
-"maxCategoryExercisesReached": "Saate lisada kuni 10 harjutust"
+"maxCategoryExercisesReached": "Saate lisada kuni 10 harjutust",
+"Not Selected": "Pole valitud",
+"Fitness": "Fitness",
+"Bodybuilding": "Kulturism",
+"Powerbuilding": "Powerbuilding",
+"Powerlifting": "Jõutõstmine",
+"Crossfit": "Crossfit",
+"Functional training": "Funktsionaalne treening",
+"Weightlifting": "Tõstmine"
 }
