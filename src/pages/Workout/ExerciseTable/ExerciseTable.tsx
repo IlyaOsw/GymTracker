@@ -244,12 +244,14 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       render: (text: string, record: ExerciseTableType) =>
         currentWorkout ? (
           editWeight === record.key ? (
-            <NumericInput
-              ref={weightInputRef}
-              value={record.weight}
-              onChange={(value) => updateWeight(record.key, value)}
-              onBlur={() => setEditWeight(null)}
-            />
+            <div className={styles.inputContainer}>
+              <NumericInput
+                ref={weightInputRef}
+                value={record.weight}
+                onChange={(value) => updateWeight(record.key, value)}
+                onBlur={() => setEditWeight(null)}
+              />
+            </div>
           ) : (
             <div
               onClick={() => setEditWeight(record.key)}
@@ -269,20 +271,20 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
       render: (text: string, record: ExerciseTableType) =>
         currentWorkout ? (
           editReps === record.key ? (
-            <NumericInput
-              ref={repsInputRef}
-              value={record.reps}
-              onChange={(value) => updateReps(record.key, value)}
-              onBlur={() => setEditReps(null)}
-            />
+            <div className={styles.inputContainer}>
+              <NumericInput
+                ref={repsInputRef}
+                value={record.reps}
+                onChange={(value) => updateReps(record.key, value)}
+                onBlur={() => setEditReps(null)}
+              />
+            </div>
           ) : (
-            <div className={styles.repsAndDelete}>
-              <div
-                onClick={() => setEditReps(record.key)}
-                className={styles.editableDiv}
-              >
-                {record.reps || t("clickToEdit")}
-              </div>
+            <div
+              onClick={() => setEditReps(record.key)}
+              className={styles.editableDiv}
+            >
+              {record.reps || t("clickToEdit")}
             </div>
           )
         ) : (

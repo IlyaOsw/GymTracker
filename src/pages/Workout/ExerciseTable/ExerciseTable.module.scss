@@ -22,24 +22,17 @@
 
   .editableDiv {
     width: 75px;
-    height: 28px;
     display: flex;
     align-items: center;
     justify-content: start;
   }
 
-  .repsAndDelete {
-    display: inline-flex;
-    width: 100%;
-    justify-content: space-between;
-
-    svg {
-      color: lightgray;
-      transition: 0.4s all;
-
-      &:hover {
-        color: gray;
-      }
-    }
+  .inputContainer {
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 75px;
+    height: 26px;
   }
 }
