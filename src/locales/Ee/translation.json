@@ -236,5 +236,6 @@
 "next": "Edasi",
 "passwordNotMatch": "Sisestatud uued paroolid ei ühti!",
 "sport": "Spordiala",
-"selectSport": "Vali spordiala"
+"selectSport": "Vali spordiala",
+"maxCategoryExercisesReached": "Saate lisada kuni 10 harjutust"
 }

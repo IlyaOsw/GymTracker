@@ -235,5 +235,6 @@
   "workoutFor": "Workout for",
   "passwordNotMatch": "The new password that you entered do not match!",
   "sport": "Sport",
-  "selectSport": "Select sport"
+  "selectSport": "Select sport",
+  "maxExercisesReached": "You can only add up to 10 exercises"
 }

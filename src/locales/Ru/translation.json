@@ -236,5 +236,6 @@
   "next": "Вперед",
   "passwordNotMatch": "Введённые новые пароли не совпадают!",
   "sport": "Вид спорта",
-  "selectSport": "Выберите вид спорта"
+  "selectSport": "Выберите вид спорта",
+  "maxCategoryExercisesReached": "Вы можете добавить не более 10 упражнений"
 }

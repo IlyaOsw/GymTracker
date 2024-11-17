@@ -45,6 +45,19 @@ export const AddExercise: React.FC<IAddExercise> = ({
         if (docSnapshot.exists()) {
           const existingExercises = docSnapshot.data().exercises || [];
 
+          const exercisesInCategory = existingExercises.filter(
+            (existingExercise: { category: string }) =>
+              existingExercise.category === category
+          );
+
+          if (exercisesInCategory.length >= 10) {
+            ClosableMessage({
+              type: "error",
+              content: t("maxExercisesReached"),
+            });
+            return;
+          }
+
           const exerciseExists = existingExercises.some(
             (existingExercise: { name: string }) =>
               existingExercise.name.toLowerCase() === exerciseName.toLowerCase()
