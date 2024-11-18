@@ -30,7 +30,7 @@ export const DeleteIcon: React.FC<DeleteIconPropsType> = ({
   return (
     <>
       <div className={styles.deleteIconContainer}>
-        <div className={styles.exerciseNumber}>{index + 1}.</div>
+        <div className={styles.numberWrapper}>{index + 1}</div>
         <Tooltip title={t("deleteExercise")}>
           <CloseOutlined
             className={styles.deleteIcon}

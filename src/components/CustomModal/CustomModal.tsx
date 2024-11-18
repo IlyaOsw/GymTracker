@@ -38,8 +38,8 @@ export const CustomModal: React.FC<CustomModalProps> = ({
         open={open}
         onCancel={onCancel}
         footer={footer}
-        style={{ marginTop: "40px" }}
         className={className}
+        centered={true}
       >
         {children}
       </Modal>

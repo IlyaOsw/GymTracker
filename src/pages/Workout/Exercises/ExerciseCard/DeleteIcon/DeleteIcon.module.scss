@@ -3,17 +3,25 @@
   justify-content: space-between;
   font-size: 1.2rem;
 
-  .exerciseNumber {
-    margin: 5px 0px 0px 20px;
+  .numberWrapper {
+    border-radius: 50%;
+    display: flex;
+    margin: 5px 0px 0px 5px;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, #303030, #181818);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 34px;
+    height: 34px;
+    font-weight: 600;
+    color: #0097b2;
   }
 
   .deleteIcon {
     margin: 5px 15px 0px 0px;
 
     svg {
-      color: lightgray;
       transition: 0.4s all;
-
       &:hover {
         color: gray;
       }

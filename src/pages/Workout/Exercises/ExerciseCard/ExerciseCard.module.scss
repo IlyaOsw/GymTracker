@@ -1,29 +1,36 @@
 .cardItem {
   width: calc(33.33% - 10px);
-  background-image: linear-gradient(to bottom, #303030, #181818);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(80, 80, 80, 0.2);
+  background: linear-gradient(145deg, #2d2d2d, #252525);
+  border-radius: 16px;
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(255, 255, 255, 0.05);
   transition:
-    transform 0.4s,
-    box-shadow 0.4s,
-    background-color 0.4s;
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   &.active {
-    border: 1px solid rgb(165, 165, 165);
-    box-shadow: 0 4px 8px rgba(80, 80, 80, 0.4);
-    background-image: linear-gradient(to bottom, #404040, #333333);
+    border: 1px solid rgba(255, 255, 255, 0.377);
+    box-shadow:
+      0 8px 16px rgba(0, 0, 0, 0.5),
+      0 2px 5px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(145deg, #383838, #2f2f2f);
   }
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    background-image: linear-gradient(to bottom, #3e3e3e, #2d2d2d);
+    transform: translateY(-8px);
+    box-shadow:
+      0 14px 28px rgba(0, 0, 0, 0.4),
+      0 4px 10px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(145deg, #434343, #353535);
   }
 
   &:active {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    background-image: linear-gradient(to bottom, #2d2d2d, #242424);
+    transform: translateY(-3px);
+    box-shadow:
+      0 6px 12px rgba(0, 0, 0, 0.4),
+      0 2px 4px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(145deg, #292929, #232323);
   }
 
   @media (max-width: 992px) {
@@ -45,8 +52,8 @@
   }
 
   .exerciseContainer {
-    border-bottom: 1px solid #535353;
-    margin: 0px 40px;
+    border-bottom: 1px solid #646464;
+    margin: 0px 35px;
     padding-bottom: 5px;
 
     .exerciseName {
