@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
+import { UserProvider } from "../../context/UserContext";
 
 import { Diary } from "./Diary/Diary";
 import { Calculator } from "./Calculator/Calculator";
@@ -12,11 +13,13 @@ const Profile: React.FC = () => {
   }, []);
 
   return (
-    <PageWrapper>
-      <Information />
-      <Diary />
-      <Calculator />
-    </PageWrapper>
+    <UserProvider>
+      <PageWrapper>
+        <Information />
+        <Diary />
+        <Calculator />
+      </PageWrapper>
+    </UserProvider>
   );
 };
 

@@ -198,11 +198,13 @@ export type AddExercisePropsType = {
 
 export type EditProfilePropsType = {
   onClose: () => void;
+  userData: UserData | null;
 };
 
 export type EditFormPropsType = {
   onClose: () => void;
   setIsModalOpen: (value: boolean) => void;
+  userData: UserData | null;
 };
 
 export interface UpdateUserData {
@@ -437,4 +439,8 @@ export type TrainingHistoryPropsType = {
 export type SportSelectPropsType = {
   value: string;
   onChange: (value: string) => void;
+};
+
+export type UserInfoPropsType = {
+  userData: UserData | null;
 };
