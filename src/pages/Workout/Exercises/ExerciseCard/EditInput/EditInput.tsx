@@ -31,8 +31,7 @@ export const EditInput: React.FC<EditInputPropsType> = ({
   const changeExerciseName = async (exerciseId: string, newName: string) => {
     try {
       if (user) {
-        const userId = user.uid;
-        const exercisesDocRef = doc(getFirestore(), "exercises", userId);
+        const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
         const exercisesDoc = await getDoc(exercisesDocRef);
 
         if (exercisesDoc.exists()) {
@@ -93,7 +92,7 @@ export const EditInput: React.FC<EditInputPropsType> = ({
               id: exercise.id,
               name: t(exercise.name),
               category: exercise.category,
-              bestResult: `${t("lastSet")}: ${exercise.bestResult}`,
+              bestResult: exercise.bestResult,
               isFavorite: exercise.isFavorite,
             }));
 

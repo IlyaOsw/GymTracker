@@ -7,29 +7,32 @@ import { useTranslation } from "react-i18next";
 import { auth, storage } from "../../../..";
 import { SettingButton } from "../../../../components/SettingButton/SettingButton";
 import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
+import { Loader } from "../../../../components/Loader/Loader";
 
 import styles from "./CoverImage.module.scss";
 
 export const CoverImage: React.FC = () => {
   const { t } = useTranslation();
+  const user = auth.currentUser;
   const [coverURL, setCoverURL] = useState("");
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const user = auth.currentUser;
     if (user) {
+      setLoading(true);
       const coverRef = ref(storage, `cover/${user.uid}`);
       getDownloadURL(coverRef)
         .then((url) => {
           setCoverURL(url);
+          setLoading(false);
         })
-        .catch((error) => {
+        .catch(() => {
           setCoverURL("");
         });
     }
-  }, []);
+  }, [user]);
 
   const handleUploadCoverImage = async (file: File) => {
-    const user = auth.currentUser;
     if (user) {
       const coverImageRef = ref(storage, `cover/${user.uid}`);
       try {
@@ -46,6 +49,7 @@ export const CoverImage: React.FC = () => {
 
   return (
     <div className={styles.paper}>
+      {loading && <Loader />}
       {coverURL ? (
         <img src={coverURL} alt="CoverImg" />
       ) : (

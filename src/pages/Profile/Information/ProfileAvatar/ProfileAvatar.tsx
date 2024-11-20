@@ -17,6 +17,7 @@ import { useTranslation } from "react-i18next";
 import { getAuth } from "firebase/auth";
 
 import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
+import { Loader } from "../../../../components/Loader/Loader";
 
 import styles from "./ProfileAvatar.module.scss";
 
@@ -24,6 +25,7 @@ export const ProfileAvatar: React.FC = () => {
   const { t } = useTranslation();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [avatarURL, setAvatarURL] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   const avatarSize = windowWidth <= 768 ? 150 : 250;
   const storage = getStorage();
   const user = getAuth().currentUser;
@@ -42,10 +44,12 @@ export const ProfileAvatar: React.FC = () => {
 
   useEffect(() => {
     if (user) {
+      setLoading(true);
       const avatarRef = ref(storage, `avatar/${user.uid}`);
       getDownloadURL(avatarRef)
         .then((url) => {
           setAvatarURL(url);
+          setLoading(false);
         })
         .catch(() => {
           setAvatarURL(null);
@@ -58,7 +62,6 @@ export const ProfileAvatar: React.FC = () => {
       const avatarRef = ref(storage, `avatar/${user.uid}`);
       try {
         await deleteObject(avatarRef);
-
         setAvatarURL(null);
         ClosableMessage({ type: "success", content: t("profilePhotoDeleted") });
       } catch (error) {
@@ -72,9 +75,7 @@ export const ProfileAvatar: React.FC = () => {
       const avatarRef = ref(storage, `avatar/${user.uid}`);
       try {
         await uploadBytes(avatarRef, file);
-        const newAvatarURL = await getDownloadURL(avatarRef);
-
-        setAvatarURL(newAvatarURL);
+        setAvatarURL(await getDownloadURL(avatarRef));
         ClosableMessage({ type: "success", content: t("profilePhotoUpdated") });
       } catch (error) {
         ClosableMessage({ type: "error", content: t("uploadFailed") });
@@ -113,23 +114,30 @@ export const ProfileAvatar: React.FC = () => {
   ];
 
   return (
-    <div className={styles.avatar}>
-      {avatarURL ? (
-        <img
-          src={avatarURL}
-          alt="Profile"
-          style={{ width: avatarSize, height: avatarSize, borderRadius: "50%" }}
-        />
-      ) : (
-        <Avatar size={avatarSize} icon={<UserOutlined />} />
-      )}
-      <Dropdown menu={{ items }} arrow>
-        <Button
-          icon={<SettingOutlined />}
-          className={styles.settingIcon}
-          size="middle"
-        />
-      </Dropdown>
-    </div>
+    <>
+      {loading && <Loader />}
+      <div className={styles.avatar}>
+        {avatarURL ? (
+          <img
+            src={avatarURL}
+            alt="Profile"
+            style={{
+              width: avatarSize,
+              height: avatarSize,
+              borderRadius: "50%",
+            }}
+          />
+        ) : (
+          <Avatar size={avatarSize} icon={<UserOutlined />} />
+        )}
+        <Dropdown menu={{ items }} arrow>
+          <Button
+            icon={<SettingOutlined />}
+            className={styles.settingIcon}
+            size="middle"
+          />
+        </Dropdown>
+      </div>
+    </>
   );
 };

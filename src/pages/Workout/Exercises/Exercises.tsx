@@ -2,15 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { motion } from "framer-motion";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import { Exercise, ExercisesProps } from "../../../types/types";
 import { Loader } from "../../../components/Loader/Loader";
 import { EmptyBox } from "../../../components/EmptyBox/EmptyBox";
 import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMessage";
+import {
+  animation,
+  useAnimatedInView,
+} from "../../../hooks/useAnimatedInView ";
 
-import styles from "./Exercises.module.scss";
 import { ExerciseCard } from "./ExerciseCard/ExerciseCard";
+import styles from "./Exercises.module.scss";
 
 export const Exercises: React.FC<ExercisesProps> = ({
   category,
@@ -24,6 +29,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
   setData,
 }) => {
   const user = getAuth().currentUser;
+  const { ref, controls } = useAnimatedInView();
   const { t } = useTranslation();
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -42,18 +48,16 @@ export const Exercises: React.FC<ExercisesProps> = ({
       setLoading(true);
       try {
         if (user) {
-          const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
-          const exercisesDoc = await getDoc(exercisesDocRef);
+          const exercisesDoc = await getDoc(
+            doc(getFirestore(), "exercises", user.uid)
+          );
 
           if (exercisesDoc.exists()) {
             const exercisesData = exercisesDoc.data();
-            const categoryTranslated = t(category);
-
             const filteredData = exercisesData.exercises.filter(
               (exercise: Exercise) => {
                 const exerciseCategoryTranslated = t(exercise.category);
-
-                return exerciseCategoryTranslated === categoryTranslated;
+                return exerciseCategoryTranslated === t(category);
               }
             );
 
@@ -80,8 +84,22 @@ export const Exercises: React.FC<ExercisesProps> = ({
       ) : (
         <>
           <SubTitle children={t("exercises")} className={styles.title} />
-          <div className={styles.description}>{t("chooseExercise")}</div>
-          <div className={styles.cards}>
+          <motion.div
+            ref={ref}
+            initial="hidden"
+            animate={controls}
+            variants={animation}
+            className={styles.description}
+          >
+            {t("chooseExercise")}
+          </motion.div>
+          <motion.div
+            ref={ref}
+            initial="hidden"
+            animate={controls}
+            variants={animation}
+            className={styles.cards}
+          >
             {data.length ? (
               data.map((item: Exercise, index) => (
                 <ExerciseCard
@@ -101,7 +119,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
             ) : (
               <EmptyBox />
             )}
-          </div>
+          </motion.div>
         </>
       )}
     </>

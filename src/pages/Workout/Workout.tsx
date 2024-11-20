@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { Exercise, LocationState } from "../../types/types";
+import { scrollToTop } from "../../utils/scrollToTop";
 
 import { Exercises } from "./Exercises/Exercises";
 import { ExerciseTable } from "./ExerciseTable/ExerciseTable";
@@ -21,7 +22,7 @@ const Workout: React.FC = () => {
   const exercisesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.scroll(0, 0);
+    scrollToTop();
   }, []);
 
   const handleUpdateExercises = () => {
