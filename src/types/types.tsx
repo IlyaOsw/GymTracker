@@ -444,3 +444,11 @@ export type SportSelectPropsType = {
 export type UserInfoPropsType = {
   userData: UserData | null;
 };
+
+export type ProfileAsidePropsType = {
+  userData: UserData | null;
+};
+
+export type PhysiquePropsType = {
+  userData: UserData | null;
+};

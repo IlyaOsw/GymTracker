@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Divider } from "antd";
+import { Divider, Skeleton } from "antd";
 import { EditOutlined, UserDeleteOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
@@ -25,6 +25,7 @@ export const Information: React.FC = () => {
   const [confirm, setConfirm] = useState<boolean>(false);
   const { updateUserData } = useUserContext();
   const [userData, setUserData] = useState<UserData | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -37,13 +38,16 @@ export const Information: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async (user: User | null) => {
+      setLoading(true);
       if (user) {
         const data = await fetchUserData(user.uid);
         setUserData(data);
       } else {
         setUserData(null);
       }
+      setLoading(false);
     };
+
     const unsubscribe = onAuthStateChanged(auth, fetchData);
     fetchData(auth.currentUser);
 
@@ -83,8 +87,16 @@ export const Information: React.FC = () => {
         <ProfileAvatar />
       </div>
       <div className={styles.infoContainer}>
-        <UserInfo userData={userData} />
-        <ProfileAside />
+        {loading ? (
+          <Skeleton
+            active
+            className={styles.sceleton}
+            paragraph={{ rows: 5, width: ["100%", "80%", "70%", "90%"] }}
+          />
+        ) : (
+          <UserInfo userData={userData} />
+        )}
+        <ProfileAside userData={userData} />
       </div>
       <div className={styles.buttons}>
         <SettingButton icon={<EditOutlined />} onClick={handleEditProfile}>

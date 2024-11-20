@@ -1,17 +1,29 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 import { LastWorkout } from "../LastWorkout/LastWorkout";
 import { formatDateOfBirth } from "../../../../utils/formatDateOfBirth";
 import { UserInfoPropsType } from "../../../../types/types";
+import {
+  animation,
+  useAnimatedInView,
+} from "../../../../hooks/useAnimatedInView ";
 
 import styles from "./UserInfo.module.scss";
 
 export const UserInfo: React.FC<UserInfoPropsType> = ({ userData }) => {
   const { t } = useTranslation();
+  const { ref, controls } = useAnimatedInView();
   return (
     <div className={styles.profileContainer}>
-      <div className={styles.profileCard}>
+      <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={controls}
+        variants={animation}
+        className={styles.profileCard}
+      >
         <div className={styles.userInfo}>
           <h2 className={styles.name}>
             {userData?.firstName} {userData?.lastName}
@@ -84,7 +96,7 @@ export const UserInfo: React.FC<UserInfoPropsType> = ({ userData }) => {
           </div>
         </div>
         <LastWorkout />
-      </div>
+      </motion.div>
     </div>
   );
 };

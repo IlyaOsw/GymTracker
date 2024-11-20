@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Layout, Button } from "antd";
 import { MenuOutlined, MoonFilled, SunOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 import { MenuItem } from "../../types/types";
 import i18n from "../../i18n";
@@ -36,9 +37,9 @@ export const CustomHeader: React.FC = React.memo(() => {
 
   return (
     <Header className={styles.header}>
-      <div className={styles.logo}>
+      <Link to={"/"} className={styles.logo}>
         <img src={logoSrc} alt="Gym Tracker Logo" />
-      </div>
+      </Link>
       {isMobile ? (
         <Button className={styles.burgerBtn} onClick={() => setOpen(true)}>
           <MenuOutlined style={{ color: "white" }} />

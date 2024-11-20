@@ -1,8 +1,8 @@
 .collapse {
-  width: 320px;
+  width: 330px;
   background-image: linear-gradient(to bottom, #303030, #181818);
   border-radius: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition:
     box-shadow 0.3s ease,
@@ -19,6 +19,7 @@
 
   p {
     font-size: 1.2rem;
+    letter-spacing: 1px;
     text-align: start;
     color: #0097b2;
     font-weight: 600;
@@ -32,25 +33,45 @@
   }
 }
 
-.result {
-  font-size: 1.3rem;
-  letter-spacing: 1px;
-  color: rgb(229, 156, 19);
+.title {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
+  margin: -5px 0px 10px -15px;
+  font-size: 1.2rem;
 
-  svg {
-    font-size: 0.8rem;
-    color: rgb(229, 156, 19);
+  span {
+    letter-spacing: 1px;
+    color: rgb(209, 148, 35);
   }
 
   img {
-    height: 34px;
-    width: 34px;
+    height: 40px;
+    width: 40px;
   }
+}
 
-  div {
-    margin: 0px 10px;
+.result {
+  letter-spacing: 1px;
+  color: #ffffff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding-top: 10px;
+  border-top: 1px solid #535353;
+
+  .hexagonWrapper {
+    font-size: 1rem;
+    span {
+      font-size: 1rem;
+    }
+
+    img {
+      height: 75px;
+      width: 75px;
+    }
   }
 }

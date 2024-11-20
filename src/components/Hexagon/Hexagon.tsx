@@ -1,7 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 import { HexagonProps } from "../../types/types";
+import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./Hexagon.module.scss";
 
@@ -11,9 +13,16 @@ export const Hexagon: React.FC<HexagonProps> = ({
   onClick,
 }) => {
   const { t } = useTranslation();
+  const { ref, controls } = useAnimatedInView();
 
   return (
-    <div className={styles.wrapper}>
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={animation}
+      className={styles.wrapper}
+    >
       <div className={styles.imageContainer} onClick={onClick}>
         <img
           src={process.env.PUBLIC_URL + "/assets/Icons/Hexagon/Hexagon.svg"}
@@ -22,6 +31,6 @@ export const Hexagon: React.FC<HexagonProps> = ({
         />
         <span className={`${styles.imageText} ${className}`}>{t(text)}</span>
       </div>
-    </div>
+    </motion.div>
   );
 };
