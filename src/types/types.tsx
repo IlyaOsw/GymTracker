@@ -1,5 +1,5 @@
 import { GetProp, MenuProps, ConfigProviderProps } from "antd";
-import { ReactNode, RefObject } from "react";
+import { MouseEventHandler, ReactNode, RefObject } from "react";
 
 export enum SocialLinks {
   LINKEDIN = "Linkedin",
@@ -17,7 +17,7 @@ export type SocialLinksType = {
 export interface MenuItem {
   key: string;
   label: string;
-  icon?: React.ReactNode;
+  icon: React.ReactNode;
 }
 
 export type HeaderPropsType = {
@@ -101,11 +101,11 @@ export interface CustomButtonProps {
   children?: React.ReactNode;
   icon?: React.ReactNode;
   className?: string;
-  onClick?: (e: any) => void;
+  onClick?: MouseEventHandler<HTMLElement>;
 }
 
 export interface IDescriptionTitleAndText {
-  text?: string | any;
+  text: string;
   textAlign?: "start" | "center" | "end";
   className?: string;
 }
@@ -114,7 +114,7 @@ export interface CustomInputProps {
   name?: string;
   text: string;
   type?: string;
-  placeholder?: string;
+  placeholder: string;
   isRequired?: boolean;
   className?: string;
   onChange?: (value: string) => void;
@@ -149,7 +149,7 @@ export interface PasswordInputProps {
 }
 
 export interface ResetBtnType {
-  onClick?: (e: any) => void;
+  onClick?: MouseEventHandler<HTMLElement> | undefined;
   children?: string;
   icon?: ReactNode;
 }
@@ -273,7 +273,7 @@ export type CloseIconType = {
 
 export interface CustomModalProps {
   open?: boolean;
-  onCancel?: (e: any) => void;
+  onCancel?: (e: { stopPropagation: () => void }) => void;
   footer?: React.ReactNode;
   children?: React.ReactNode;
   className?: string;
@@ -329,7 +329,7 @@ export type DeleteIconPropsType = {
   category: string;
   setData: (value: Exercise[]) => void;
   isModalOpen: boolean;
-  handleCancel: (e: any) => void;
+  handleCancel: (e: { stopPropagation: () => void }) => void;
   item: Exercise;
   index: number;
   setSelectedExercise: (value: Exercise | null) => void;
@@ -341,7 +341,7 @@ export type ModalDeletePropsType = {
   category: string;
   setData: (value: Exercise[]) => void;
   isModalOpen: boolean;
-  handleCancel: (e: any) => void;
+  handleCancel: (e: { stopPropagation: () => void }) => void;
   item: Exercise;
   setConfirm: (value: boolean) => void;
   setSelectedExercise: (value: Exercise | null) => void;
@@ -389,7 +389,7 @@ export type TableFooterPropsType = {
   setData: (value: ExerciseTableType[]) => void;
   setEditWeight: (value: string | null) => void;
   saveExerciseData: () => void;
-  onWorkoutDateChange: any;
+  onWorkoutDateChange: (date: string) => void;
   setCurrentWorkout: (currentWorkout: boolean) => void;
   addRowBtn: boolean;
   setAddRowBtn: (addRowBtn: boolean) => void;
@@ -431,7 +431,6 @@ export type ClosableMessagePropsType = {
 
 export type TrainingHistoryPropsType = {
   showHistory: boolean;
-  setShowHistory: (showHistory: boolean | any) => void;
   workouts: ExerciseTableType[][];
   workoutDates: string[];
 };

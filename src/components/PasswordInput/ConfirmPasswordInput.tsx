@@ -3,13 +3,17 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 
+import { motion } from "framer-motion";
+
 import { CustomPassInputProps } from "../../types/types";
+import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./PasswordInput.module.scss";
 
 export const ConfirmPasswordInput: React.FC<CustomPassInputProps> = ({
   onChange,
 }) => {
+  const { ref, controls } = useAnimatedInView();
   const { t } = useTranslation();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,7 +24,13 @@ export const ConfirmPasswordInput: React.FC<CustomPassInputProps> = ({
   };
 
   return (
-    <div className={styles.confirmInputWrapper}>
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={animation}
+      className={styles.confirmInputWrapper}
+    >
       <Form.Item
         label={
           <span className={styles.inputLabel}>
@@ -81,6 +91,6 @@ export const ConfirmPasswordInput: React.FC<CustomPassInputProps> = ({
           onChange={handleChange}
         />
       </Form.Item>
-    </div>
+    </motion.div>
   );
 };

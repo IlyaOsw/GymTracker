@@ -177,7 +177,7 @@ export const TableFooter: React.FC<TableFooterPropsType> = ({
       </div>
       <TrainingHistory
         showHistory={showHistory}
-        setShowHistory={setShowHistory}
+        // setShowHistory={setShowHistory}
         workouts={workouts}
         workoutDates={workoutDates}
       />

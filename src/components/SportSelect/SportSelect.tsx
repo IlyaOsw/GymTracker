@@ -1,8 +1,10 @@
 import { ConfigProvider, Form, Select } from "antd";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 import { FieldType, SportSelectPropsType } from "../../types/types";
+import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./SportSelect.module.scss";
 
@@ -10,10 +12,17 @@ export const SportSelect: React.FC<SportSelectPropsType> = ({
   value,
   onChange,
 }) => {
+  const { ref, controls } = useAnimatedInView();
   const { t } = useTranslation();
 
   return (
-    <div className={styles.selectWrapper}>
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={animation}
+      className={styles.selectWrapper}
+    >
       <Form.Item<FieldType>
         label={<span className={styles.selectLabel}>{t("sport")}</span>}
       >
@@ -52,6 +61,6 @@ export const SportSelect: React.FC<SportSelectPropsType> = ({
           />
         </ConfigProvider>
       </Form.Item>
-    </div>
+    </motion.div>
   );
 };

@@ -1,8 +1,10 @@
 import { Form, Input } from "antd";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 import { CustomInputProps, FieldType } from "../../types/types";
+import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./CustomInput.module.scss";
 
@@ -16,6 +18,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
   onChange,
   value,
 }) => {
+  const { ref, controls } = useAnimatedInView();
   const { t } = useTranslation();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +29,13 @@ export const CustomInput: React.FC<CustomInputProps> = ({
   };
 
   return (
-    <div className={styles.inputWrapper}>
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={animation}
+      className={styles.inputWrapper}
+    >
       <Form.Item<FieldType>
         label={<span className={styles.inputLabel}>{t(text)}</span>}
         name={name}
@@ -42,6 +51,6 @@ export const CustomInput: React.FC<CustomInputProps> = ({
           autoComplete="off"
         />
       </Form.Item>
-    </div>
+    </motion.div>
   );
 };

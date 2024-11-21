@@ -1,8 +1,10 @@
 import { Form, Input } from "antd";
 import React from "react";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
+import { motion } from "framer-motion";
 
 import { FieldType, PasswordInputProps } from "../../types/types";
+import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./PasswordInput.module.scss";
 
@@ -12,6 +14,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
   placeholder,
   onChange,
 }) => {
+  const { ref, controls } = useAnimatedInView();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     if (onChange) {
@@ -20,7 +23,13 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
   };
 
   return (
-    <div className={styles.inputWrapper}>
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={animation}
+      className={styles.inputWrapper}
+    >
       <Form.Item<FieldType>
         label={<span className={styles.inputLabel}>{text}</span>}
         name={name}
@@ -40,6 +49,6 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
           }
         />
       </Form.Item>
-    </div>
+    </motion.div>
   );
 };

@@ -4,12 +4,17 @@ import { CheckOutlined } from "@ant-design/icons";
 import { Collapse } from "antd";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { motion } from "framer-motion";
 
 import { SettingButton } from "../../../../components/SettingButton/SettingButton";
 import NumericInput from "../../../../components/NumericInput/NumericInput";
 import { BestResultProps, Exercise } from "../../../../types/types";
 import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
 import { Hexagon } from "../../../../components/Hexagon/Hexagon";
+import {
+  animation,
+  useAnimatedInView,
+} from "../../../../hooks/useAnimatedInView ";
 
 import styles from "./BestResult.module.scss";
 
@@ -20,6 +25,7 @@ export const BestResult: React.FC<BestResultProps> = ({
 }) => {
   const { t } = useTranslation();
   const user = getAuth().currentUser;
+  const { ref, controls } = useAnimatedInView();
   const [editMode, setEditMode] = useState<boolean>(false);
   const [weight, setWeight] = useState<string>(bestResult?.weight || "0");
   const [reps, setReps] = useState<string>(bestResult?.reps || "0");
@@ -151,13 +157,29 @@ export const BestResult: React.FC<BestResultProps> = ({
           ) : (
             <div className={styles.wrapper}>
               <div>
-                <div className={styles.hexagonTitle}>{t("weight")}</div>
+                <motion.div
+                  ref={ref}
+                  initial="hidden"
+                  animate={controls}
+                  variants={animation}
+                  className={styles.hexagonTitle}
+                >
+                  {t("weight")}
+                </motion.div>
                 <div className={styles.hexagonContainer}>
                   <Hexagon text={weight} onClick={handleEditMode} />
                 </div>
               </div>
               <div>
-                <div className={styles.hexagonTitle}>{t("reps")}</div>
+                <motion.div
+                  ref={ref}
+                  initial="hidden"
+                  animate={controls}
+                  variants={animation}
+                  className={styles.hexagonTitle}
+                >
+                  {t("reps")}
+                </motion.div>
                 <div className={styles.hexagonContainer}>
                   <Hexagon text={reps} onClick={handleEditMode} />
                 </div>

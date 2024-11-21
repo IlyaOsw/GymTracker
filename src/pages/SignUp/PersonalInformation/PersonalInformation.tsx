@@ -1,12 +1,17 @@
 import React from "react";
 import { Form, ConfigProvider, Select } from "antd";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import styles from "../SignUp.module.scss";
 import { Calendar } from "../../../components/Calendar/Calendar";
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import { PersonalInformationType } from "../../../types/types";
+import {
+  animation,
+  useAnimatedInView,
+} from "../../../hooks/useAnimatedInView ";
 
 const { Option } = Select;
 
@@ -16,6 +21,7 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
   onGenderChange,
   onDateOfBithChange,
 }) => {
+  const { ref, controls } = useAnimatedInView();
   const { t } = useTranslation();
   const handleFirstNameChange = (value: string) => onFirstNameChange(value);
   const handleLastNameChange = (value: string) => onLastNameChange(value);
@@ -44,35 +50,42 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
           />
         </div>
         <div>
-          <Form.Item
-            name="gender"
-            label={<span className={styles.inputLabel}>{t("gender")}</span>}
-            rules={[{ required: true }]}
+          <motion.div
+            ref={ref}
+            initial="hidden"
+            animate={controls}
+            variants={animation}
           >
-            <ConfigProvider
-              theme={{
-                components: {
-                  Select: {
-                    colorTextPlaceholder: "#818181",
-                    colorText: "#ffffff",
-                    optionSelectedBg: "#404040",
-                    optionActiveBg: "#404040",
-                    colorBgElevated: "#282828",
-                  },
-                },
-              }}
+            <Form.Item
+              name="gender"
+              label={<span className={styles.inputLabel}>{t("gender")}</span>}
+              rules={[{ required: true }]}
             >
-              <Select
-                placeholder={t("chooseGender")}
-                onChange={handleGenderChange}
-                className={styles.selectField}
-                variant="borderless"
+              <ConfigProvider
+                theme={{
+                  components: {
+                    Select: {
+                      colorTextPlaceholder: "#818181",
+                      colorText: "#ffffff",
+                      optionSelectedBg: "#404040",
+                      optionActiveBg: "#404040",
+                      colorBgElevated: "#282828",
+                    },
+                  },
+                }}
               >
-                <Option value="male">{t("male")}</Option>
-                <Option value="female">{t("female")}</Option>
-              </Select>
-            </ConfigProvider>
-          </Form.Item>
+                <Select
+                  placeholder={t("chooseGender")}
+                  onChange={handleGenderChange}
+                  className={styles.selectField}
+                  variant="borderless"
+                >
+                  <Option value="male">{t("male")}</Option>
+                  <Option value="female">{t("female")}</Option>
+                </Select>
+              </ConfigProvider>
+            </Form.Item>
+          </motion.div>
           <Form.Item
             name="dateOfBirth"
             rules={[{ required: true }]}

@@ -4,8 +4,10 @@ import React from "react";
 import dayjs, { Dayjs } from "dayjs";
 import { useTranslation } from "react-i18next";
 import { RangePickerProps } from "antd/es/date-picker";
+import { motion } from "framer-motion";
 
 import { ICalendar } from "../../types/types";
+import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./Calendar.module.scss";
 
@@ -14,6 +16,7 @@ export const Calendar: React.FC<ICalendar> = ({
   value,
   onChange,
 }) => {
+  const { ref, controls } = useAnimatedInView();
   const { t } = useTranslation();
 
   const disabledDate: RangePickerProps["disabledDate"] = (current) => {
@@ -27,36 +30,43 @@ export const Calendar: React.FC<ICalendar> = ({
   };
 
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          DatePicker: {
-            colorBgContainer: "#141414",
-            colorFillSecondary: "#141414",
-            colorTextPlaceholder: "#818181",
-            colorBgElevated: "#141414",
-            colorTextHeading: "#ffffff",
-            colorText: "#ffffff",
-            colorIcon: "#ffffff",
-            colorIconHover: "#0097b2",
-            colorPrimary: "#0097b2",
-          },
-        },
-      }}
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={animation}
     >
-      <DatePicker
-        format={{
-          format: "YYYY-MM-DD",
-          type: "mask",
+      <ConfigProvider
+        theme={{
+          components: {
+            DatePicker: {
+              colorBgContainer: "#141414",
+              colorFillSecondary: "#141414",
+              colorTextPlaceholder: "#818181",
+              colorBgElevated: "#141414",
+              colorTextHeading: "#ffffff",
+              colorText: "#ffffff",
+              colorIcon: "#ffffff",
+              colorIconHover: "#0097b2",
+              colorPrimary: "#0097b2",
+            },
+          },
         }}
-        showNow={false}
-        className={`${styles.dateField} ${className}`}
-        value={value ? dayjs(value) : null}
-        placeholder={t("selectDate")}
-        suffixIcon={<CalendarOutlined />}
-        disabledDate={disabledDate}
-        onChange={handleChange}
-      />
-    </ConfigProvider>
+      >
+        <DatePicker
+          format={{
+            format: "YYYY-MM-DD",
+            type: "mask",
+          }}
+          showNow={false}
+          className={`${styles.dateField} ${className}`}
+          value={value ? dayjs(value) : null}
+          placeholder={t("selectDate")}
+          suffixIcon={<CalendarOutlined />}
+          disabledDate={disabledDate}
+          onChange={handleChange}
+        />
+      </ConfigProvider>{" "}
+    </motion.div>
   );
 };
