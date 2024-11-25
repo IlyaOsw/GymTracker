@@ -13,10 +13,7 @@ import { CustomModal } from "../../../../components/CustomModal/CustomModal";
 import styles from "./EditProfile.module.scss";
 import { EditForm } from "./EditForm/EditForm";
 
-export const EditProfile: React.FC<EditProfilePropsType> = ({
-  onClose,
-  userData,
-}) => {
+export const EditProfile: React.FC<EditProfilePropsType> = ({ onClose }) => {
   const { t } = useTranslation();
   const { ref, controls } = useAnimatedInView();
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -42,11 +39,7 @@ export const EditProfile: React.FC<EditProfilePropsType> = ({
       >
         {t("editInfo")}
       </motion.div>
-      <EditForm
-        setIsModalOpen={setIsModalOpen}
-        onClose={onClose}
-        userData={userData}
-      />
+      <EditForm setIsModalOpen={setIsModalOpen} onClose={onClose} />
     </CustomModal>
   );
 };

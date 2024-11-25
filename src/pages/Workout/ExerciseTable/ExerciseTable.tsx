@@ -14,8 +14,8 @@ import { v4 as uuidv4 } from "uuid";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import {
-  Approach,
-  Exercise,
+  IApproach,
+  IExercise,
   ExerciseTablePropsType,
   ExerciseTableType,
 } from "../../../types/types";
@@ -85,7 +85,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
             setWorkoutDate(workoutDate);
             const approaches = latestWorkout.approaches || [];
             const loadedData: ExerciseTableType[] = approaches.map(
-              (approach: Approach) => ({
+              (approach: IApproach) => ({
                 key: approach.id,
                 set: approach.set,
                 weight: approach.weight,
@@ -176,7 +176,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = ({
         if (exercisesDoc.exists()) {
           const exercisesData = exercisesDoc.data();
           const updatedExercises = exercisesData.exercises.map(
-            (exercise: Exercise) => {
+            (exercise: IExercise) => {
               if (exercise.id === selectedExercise.id) {
                 return {
                   ...exercise,

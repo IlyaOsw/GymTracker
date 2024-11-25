@@ -14,7 +14,7 @@ export type SocialLinksType = {
   label: SocialLinks;
 };
 
-export interface MenuItem {
+export interface IMenuItem {
   key: string;
   label: string;
   icon: React.ReactNode;
@@ -23,20 +23,14 @@ export interface MenuItem {
 export type HeaderPropsType = {
   open?: boolean;
   setOpen?: (open: boolean) => void;
-  theme?: string;
-  handleThemeClick?: ({ key }: { key: string }) => void;
-  themeItems?: MenuItem[];
-  language?: string;
-  handleLanguageClick?: ({ key }: { key: string }) => void;
-  languageItems?: MenuItem[];
+  theme: string;
+  handleThemeClick: ({ key }: { key: string }) => void;
+  themeItems: IMenuItem[];
+  language: string;
+  handleLanguageClick: ({ key }: { key: string }) => void;
+  languageItems: IMenuItem[];
   changeLanguage: (language: string) => void;
 };
-
-export interface ImageData {
-  src: string;
-  alt: string;
-  text: string;
-}
 
 export type ExerciseTableType = {
   key: string;
@@ -64,21 +58,21 @@ export type AddressType = {
   onCityChange: (city: string) => void;
 };
 
-export interface ErrorModalProps {
+export interface IErrorModalProps {
   open: boolean;
   onClose: () => void;
   message: string;
 }
 
 export type ThemeDropdownPropsType = {
-  handleThemeClick?: ({ key }: { key: string }) => void;
-  themeItems?: MenuItem[];
+  handleThemeClick: ({ key }: { key: string }) => void;
+  themeItems: IMenuItem[];
   theme: string | undefined;
 };
 
 export type LanguageDropdownPropsType = {
-  handleLanguageClick?: ({ key }: { key: string }) => void;
-  languageItems?: MenuItem[];
+  handleLanguageClick: ({ key }: { key: string }) => void;
+  languageItems: IMenuItem[];
   language: string | undefined;
   changeLanguage: (language: string) => void;
 };
@@ -91,14 +85,14 @@ export interface IAboutCardProps {
 
 export interface ICalendar {
   className?: string;
-  onChange?: (value: Date) => void;
+  onChange: (value: Date) => void;
   value?: Date | null;
 }
 
 export type SizeType = ConfigProviderProps["componentSize"];
 
-export interface CustomButtonProps {
-  children?: React.ReactNode;
+export interface ICustomButtonProps {
+  children: React.ReactNode;
   icon?: React.ReactNode;
   className?: string;
   onClick?: MouseEventHandler<HTMLElement>;
@@ -106,73 +100,71 @@ export interface CustomButtonProps {
 
 export interface IDescriptionTitleAndText {
   text: string;
-  textAlign?: "start" | "center" | "end";
+  textAlign: "start" | "center" | "end";
   className?: string;
 }
 
-export interface CustomInputProps {
+export interface ICustomInputProps {
   name?: string;
   text: string;
-  type?: string;
   placeholder: string;
   isRequired?: boolean;
   className?: string;
-  onChange?: (value: string) => void;
+  onChange: (value: string) => void;
   value?: string;
 }
 
 export type FieldType = {
   [key: string]: string | undefined;
-  username?: string;
-  password?: string;
+  username: string;
+  password: string;
 };
 
-export interface HexagonProps {
+export interface IHexagonProps {
   text: string;
   className?: string;
   onClick?: () => void;
 }
 
-export interface PageWrapperProps {
+export interface IPageWrapperProps {
   children: React.ReactNode;
 }
 
-export interface CustomPassInputProps {
-  onChange?: (value: string) => void;
+export interface ICustomPasswrodInputProps {
+  onChange: (value: string) => void;
 }
 
-export interface PasswordInputProps {
-  name?: string;
-  text?: string;
-  placeholder?: string;
-  onChange?: (value: string) => void;
+export interface IPasswordInputProps {
+  name: string;
+  text: string;
+  placeholder: string;
+  onChange: (value: string) => void;
 }
 
-export interface ResetBtnType {
-  onClick?: MouseEventHandler<HTMLElement> | undefined;
-  children?: string;
-  icon?: ReactNode;
+export interface IResetButtonType {
+  onClick: MouseEventHandler<HTMLElement> | undefined;
+  children: string;
+  icon: ReactNode;
 }
 
-export interface SubTitleType {
+export interface ISubTitleType {
   children: string;
   className?: string;
 }
 
 export type BurgerMenuItem = GetProp<MenuProps, "items">[number];
 
-export interface AuthContextType {
+export interface IAuthContextType {
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
 }
 
-export interface AuthProviderProps {
+export interface IAuthProviderProps {
   children: ReactNode;
 }
 
-export interface UserData {
-  toJSON(): unknown;
+export interface IUserData {
   id: string;
   email: string;
   firstName: string;
@@ -185,50 +177,31 @@ export interface UserData {
   height: string;
   weight: string;
   location: {
-    country: string;
+    country: string | undefined;
     city: string;
   };
 }
 
 export type AddExercisePropsType = {
-  setFavoriteExercisesArray: React.Dispatch<React.SetStateAction<Exercise[]>>;
+  setFavoriteExercisesArray: React.Dispatch<React.SetStateAction<IExercise[]>>;
   setShowAddModal: (value: boolean) => void;
   showAddModal: boolean;
 };
 
 export type EditProfilePropsType = {
   onClose: () => void;
-  userData: UserData | null;
 };
 
 export type EditFormPropsType = {
   onClose: () => void;
   setIsModalOpen: (value: boolean) => void;
-  userData: UserData | null;
 };
 
-export interface UpdateUserData {
-  firstName: string;
-  lastName: string;
-  status: string;
-  location: {
-    country: string | undefined;
-    city: string;
-  };
-  dateOfBirth: Date;
-  age: number;
-  sport: string;
-}
-
-export interface UserContextType {
-  updateUserData: (userData: UpdateUserData) => Promise<void>;
-}
-
-export interface LocationState {
+export interface ILocationState {
   title: string;
 }
 
-export interface HexagonLinkProps {
+export interface IHexagonLinkProps {
   text: string;
 }
 
@@ -237,61 +210,57 @@ export interface IAddExercise {
   onAddExercise: () => void;
 }
 
-export interface ProtectedRouteProps {
+export interface IProtectedRouteProps {
   isAuthenticated: boolean;
   children: React.ReactNode;
 }
 
-export interface ExercisesProps {
+export interface IExercisesProps {
   category: string;
   updateTrigger: number;
-  onSelectExercise: (exercise: Exercise) => void;
+  onSelectExercise: (exercise: IExercise) => void;
   exercisesRef: RefObject<HTMLDivElement>;
   activeCardId: string | null;
   setActiveCardId: (value: string | null) => void;
-  setSelectedExercise: (value: Exercise | null) => void;
-  data: Exercise[];
-  setData: (value: Exercise[]) => void;
+  setSelectedExercise: (value: IExercise | null) => void;
+  data: IExercise[];
+  setData: (value: IExercise[]) => void;
 }
 
-export interface BestResult {
+export interface IBestResult {
   weight: string;
   reps: string;
 }
 
-export interface Exercise {
+export interface IExercise {
   id: string;
   category: string;
   name: string;
-  bestResult: BestResult;
+  bestResult: IBestResult;
   isFavorite: boolean;
 }
 
-export type CloseIconType = {
-  onClick?: () => void;
-};
-
-export interface CustomModalProps {
-  open?: boolean;
-  onCancel?: (e: { stopPropagation: () => void }) => void;
+export interface ICustomModalProps {
+  open: boolean;
+  onCancel: (e: { stopPropagation: () => void }) => void;
   footer?: React.ReactNode;
-  children?: React.ReactNode;
+  children: React.ReactNode;
   className?: string;
 }
 
-export interface NumericInputProps {
+export interface INumericInputProps {
   value: string | undefined;
   onChange: (value: string) => void;
   onBlur?: () => void;
 }
 
 export type ExerciseTablePropsType = {
-  selectedExercise: Exercise | null;
-  setSelectedExercise: (value: Exercise | null) => void;
+  selectedExercise: IExercise | null;
+  setSelectedExercise: (value: IExercise | null) => void;
   setActiveCardId: (value: string | null) => void;
 };
 
-export interface Approach {
+export interface IApproach {
   key: number;
   reps: number;
   set: number;
@@ -301,22 +270,22 @@ export interface Approach {
 }
 
 export type ExerciseCardPropsType = {
-  item: Exercise;
-  onSelectExercise: (item: Exercise) => void;
+  item: IExercise;
+  onSelectExercise: (item: IExercise) => void;
   category: string;
-  setData: (value: Exercise[]) => void;
+  setData: (value: IExercise[]) => void;
   setLoading: (value: boolean) => void;
   activeCardId: string | null;
   setActiveCardId: (value: string | null) => void;
   index: number;
   exercisesRef: RefObject<HTMLDivElement>;
-  setSelectedExercise: (value: Exercise | null) => void;
+  setSelectedExercise: (value: IExercise | null) => void;
 };
 
 export type CardOptionsPropsType = {
-  item: Exercise;
+  item: IExercise;
   category: string;
-  setData: (value: Exercise[]) => void;
+  setData: (value: IExercise[]) => void;
   setCurrentEditingId: (value: string | null) => void;
   setNewName: (value: string) => void;
   editMode: boolean;
@@ -327,24 +296,24 @@ export type DeleteIconPropsType = {
   setLoading: (value: boolean) => void;
   setIsModalOpen: (value: boolean) => void;
   category: string;
-  setData: (value: Exercise[]) => void;
+  setData: (value: IExercise[]) => void;
   isModalOpen: boolean;
   handleCancel: (e: { stopPropagation: () => void }) => void;
-  item: Exercise;
+  item: IExercise;
   index: number;
-  setSelectedExercise: (value: Exercise | null) => void;
+  setSelectedExercise: (value: IExercise | null) => void;
 };
 
 export type ModalDeletePropsType = {
   setLoading: (value: boolean) => void;
   setIsModalOpen: (value: boolean) => void;
   category: string;
-  setData: (value: Exercise[]) => void;
+  setData: (value: IExercise[]) => void;
   isModalOpen: boolean;
   handleCancel: (e: { stopPropagation: () => void }) => void;
-  item: Exercise;
+  item: IExercise;
   setConfirm: (value: boolean) => void;
-  setSelectedExercise: (value: Exercise | null) => void;
+  setSelectedExercise: (value: IExercise | null) => void;
 };
 
 export type EditInputPropsType = {
@@ -353,7 +322,7 @@ export type EditInputPropsType = {
   currentEditingId: string | null;
   setCurrentEditingId: (value: string | null) => void;
   category: string;
-  setData: (value: Exercise[]) => void;
+  setData: (value: IExercise[]) => void;
   setEditMode: (value: boolean) => void;
   setNewName: (value: string) => void;
 };
@@ -371,20 +340,20 @@ export type ConfirmDeleteAccountPropsType = {
   setConfirm: (value: boolean) => void;
 };
 
-export interface CountrySelectProps {
-  country?: string | undefined;
+export interface ICountrySelectProps {
+  country?: string;
   handleCountryChange: (value: string) => void;
   filterOptions: (value: string) => void;
   filteredCountries: { value: string; label: string }[];
   isRequired: boolean;
 }
 
-export interface ExerciseItemProps {
-  item: Exercise;
+export interface IExerciseItemProps {
+  item: IExercise;
 }
 
 export type TableFooterPropsType = {
-  selectedExercise: Exercise | null;
+  selectedExercise: IExercise | null;
   data: ExerciseTableType[];
   setData: (value: ExerciseTableType[]) => void;
   setEditWeight: (value: string | null) => void;
@@ -401,26 +370,26 @@ export type TableFooterPropsType = {
 };
 
 export type DeleteRowPropsType = {
-  selectedExercise: Exercise | null;
+  selectedExercise: IExercise | null;
   loadExerciseData: () => void;
   index: number;
 };
 
-export interface BestResultProps {
+export interface IBestResultProps {
   bestResult: {
     weight: string;
     reps: string;
   } | null;
-  selectedExercise: Exercise | null;
-  setBestResult: (value: BestResult) => void;
+  selectedExercise: IExercise | null;
+  setBestResult: (value: IBestResult) => void;
 }
 
-export interface DeleteWorkoutProps {
+export interface IDeleteWorkoutProps {
   workoutDate: string | null;
-  selectedExercise: Exercise | null;
+  selectedExercise: IExercise | null;
   setData: (value: ExerciseTableType[]) => void;
   setWorkoutDate: (workoutDate: string | null) => void;
-  setSelectedExercise: (value: Exercise | null) => void;
+  setSelectedExercise: (value: IExercise | null) => void;
   setActiveCardId: (value: string | null) => void;
 }
 
@@ -441,13 +410,18 @@ export type SportSelectPropsType = {
 };
 
 export type UserInfoPropsType = {
-  userData: UserData | null;
+  userData: IUserData | null;
 };
 
 export type ProfileAsidePropsType = {
-  userData: UserData | null;
+  userData: IUserData | null;
 };
 
 export type PhysiquePropsType = {
-  userData: UserData | null;
+  userData: IUserData | null;
 };
+
+export interface UserContextProps {
+  userData: IUserData | null;
+  updateUserData: (newData: Partial<IUserData>) => void;
+}

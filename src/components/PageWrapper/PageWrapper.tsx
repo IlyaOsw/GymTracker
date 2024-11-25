@@ -1,12 +1,12 @@
 import React from "react";
 
-import { PageWrapperProps } from "../../types/types";
+import { IPageWrapperProps } from "../../types/types";
 
 const container: React.CSSProperties = {
   maxWidth: "1200px",
   margin: "0 auto",
 };
 
-export const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => {
+export const PageWrapper: React.FC<IPageWrapperProps> = ({ children }) => {
   return <div style={container}>{children}</div>;
 };

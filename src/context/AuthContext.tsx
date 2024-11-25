@@ -6,9 +6,9 @@ import {
   signOut,
 } from "firebase/auth";
 
-import { AuthContextType, AuthProviderProps } from "../types/types";
+import { IAuthContextType, IAuthProviderProps } from "../types/types";
 
-const AuthContext = createContext<AuthContextType>({
+const AuthContext = createContext<IAuthContextType>({
   isAuthenticated: false,
   login: async () => {},
   logout: async () => {},
@@ -16,7 +16,7 @@ const AuthContext = createContext<AuthContextType>({
 
 export const useAuth = () => useContext(AuthContext);
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const auth = getAuth();
 

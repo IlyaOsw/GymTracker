@@ -3,14 +3,14 @@ import { Select, ConfigProvider, Form } from "antd";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
-import { CountrySelectProps } from "../../types/types";
+import { ICountrySelectProps } from "../../types/types";
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./CountrySelect.module.scss";
 
 const { Option } = Select;
 
-export const CountrySelect: React.FC<CountrySelectProps> = ({
+export const CountrySelect: React.FC<ICountrySelectProps> = ({
   country,
   handleCountryChange,
   filterOptions,

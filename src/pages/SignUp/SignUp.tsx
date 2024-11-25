@@ -14,7 +14,7 @@ import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 import { ResetButton } from "../../components/ResetButton/ResetButton";
 import { storage } from "../..";
-import { Exercise } from "../../types/types";
+import { IExercise } from "../../types/types";
 import { calculateAge } from "../../utils/calculateAge";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { ClosableMessage } from "../../components/ClosableMessage/ClosableMessage";
@@ -40,7 +40,7 @@ const SignUp: React.FC = () => {
   const [image, setImage] = useState<File | null>(null);
 
   const exercises = useSelector(
-    (state: { exercises: Exercise[] }) => state.exercises
+    (state: { exercises: IExercise[] }) => state.exercises
   );
 
   useEffect(() => {

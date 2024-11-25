@@ -1,10 +1,26 @@
-import React, { createContext, useContext, ReactNode } from "react";
-import { getAuth } from "firebase/auth";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
+import React, { createContext, useContext, useState } from "react";
 
-import { UpdateUserData, UserContextType } from "../types/types";
+import { UserContextProps, IUserData } from "../types/types";
 
-const UserContext = createContext<UserContextType | undefined>(undefined);
+const UserContext = createContext<UserContextProps | undefined>(undefined);
+
+export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [userData, setUserData] = useState<IUserData | null>(null);
+
+  const updateUserData = (newData: Partial<IUserData>) => {
+    setUserData((prev) =>
+      prev ? { ...prev, ...newData } : (newData as IUserData)
+    );
+  };
+
+  return (
+    <UserContext.Provider value={{ userData, updateUserData }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
 
 export const useUserContext = () => {
   const context = useContext(UserContext);
@@ -12,27 +28,4 @@ export const useUserContext = () => {
     throw new Error("useUserContext must be used within a UserProvider");
   }
   return context;
-};
-
-export const UserProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
-  const updateUserData = async (userData: UpdateUserData) => {
-    try {
-      const user = getAuth().currentUser;
-      if (user) {
-        await setDoc(doc(getFirestore(), "users", user.uid), userData, {
-          merge: true,
-        });
-      }
-    } catch (error) {
-      throw new Error("Failed to update user data");
-    }
-  };
-
-  return (
-    <UserContext.Provider value={{ updateUserData }}>
-      {children}
-    </UserContext.Provider>
-  );
 };

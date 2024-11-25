@@ -12,7 +12,7 @@ import { getAuth } from "firebase/auth";
 
 import { CustomModal } from "../../../../../../components/CustomModal/CustomModal";
 import { ResetButton } from "../../../../../../components/ResetButton/ResetButton";
-import { ModalDeletePropsType, Exercise } from "../../../../../../types/types";
+import { ModalDeletePropsType, IExercise } from "../../../../../../types/types";
 import { scrollToTop } from "../../../../../../utils/scrollToTop";
 
 import styles from "../DeleteIcon.module.scss";
@@ -44,18 +44,18 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = ({
         await deleteDoc(setsCollectionRef);
         if (exercisesDoc.exists()) {
           const exercisesData = exercisesDoc.data();
-          let updatedExercises: Exercise[] = [];
+          let updatedExercises: IExercise[] = [];
 
           if (exercisesData && exercisesData.exercises) {
             updatedExercises = exercisesData.exercises.filter(
-              (exercise: Exercise) => exercise.id !== exerciseId
+              (exercise: IExercise) => exercise.id !== exerciseId
             );
 
             await updateDoc(exercisesDocRef, {
               exercises: updatedExercises,
             });
             const filteredData = updatedExercises.filter(
-              (exercise: Exercise) => t(exercise.category) === t(category)
+              (exercise: IExercise) => t(exercise.category) === t(category)
             );
             setData(filteredData);
             localStorage.setItem("exercisesData", JSON.stringify(filteredData));

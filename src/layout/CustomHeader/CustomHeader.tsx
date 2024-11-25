@@ -3,7 +3,7 @@ import { Layout, Button } from "antd";
 import { MenuOutlined, MoonFilled, SunOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
-import { MenuItem } from "../../types/types";
+import { IMenuItem } from "../../types/types";
 import i18n from "../../i18n";
 import { useResponsive } from "../../hooks/useResponsive";
 
@@ -70,7 +70,7 @@ export const CustomHeader: React.FC = React.memo(() => {
   );
 });
 
-const themeItems: MenuItem[] = [
+const themeItems: IMenuItem[] = [
   {
     key: "1",
     label: "Dark",
@@ -83,7 +83,7 @@ const themeItems: MenuItem[] = [
   },
 ];
 
-const languageItems: MenuItem[] = [
+const languageItems: IMenuItem[] = [
   {
     key: "1",
     label: "EN",

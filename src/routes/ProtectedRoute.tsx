@@ -1,10 +1,10 @@
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { ProtectedRouteProps } from "../types/types";
+import { IProtectedRouteProps } from "../types/types";
 import { Loader } from "../components/Loader/Loader";
 
-export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
+export const ProtectedRoute: React.FC<IProtectedRouteProps> = ({
   isAuthenticated,
   children,
 }) => {

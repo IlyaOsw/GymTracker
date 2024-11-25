@@ -1,11 +1,11 @@
 import React from "react";
 import { Button } from "antd";
 
-import { ResetBtnType } from "../../types/types";
+import { IResetButtonType } from "../../types/types";
 
 import styles from "./ResetButton.module.scss";
 
-export const ResetButton: React.FC<ResetBtnType> = ({
+export const ResetButton: React.FC<IResetButtonType> = ({
   onClick,
   children,
   icon,

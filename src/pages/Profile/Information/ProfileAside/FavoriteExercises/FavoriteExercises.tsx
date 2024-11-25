@@ -5,7 +5,7 @@ import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { StarFilled } from "@ant-design/icons";
 
-import { Exercise } from "../../../../../types/types";
+import { IExercise } from "../../../../../types/types";
 import { Loader } from "../../../../../components/Loader/Loader";
 import { SubTitle } from "../../../../../components/SubTitle/SubTitle";
 import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
@@ -16,7 +16,7 @@ import { ExerciseItem } from "./ExerciseItem/ExerciseItem";
 export const FavoriteExercises: React.FC = () => {
   const { t } = useTranslation();
   const [favoriteExercisesArray, setFavoriteExercisesArray] = useState<
-    Exercise[]
+    IExercise[]
   >([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -29,8 +29,8 @@ export const FavoriteExercises: React.FC = () => {
         if (exercisesDoc.exists()) {
           const exercisesData = exercisesDoc.data();
           const favoriteExercises = exercisesData.exercises
-            .filter((exercise: Exercise) => exercise.isFavorite)
-            .map((exercise: Exercise) => ({
+            .filter((exercise: IExercise) => exercise.isFavorite)
+            .map((exercise: IExercise) => ({
               id: exercise.id,
               name: t(exercise.name),
               bestResult: exercise.bestResult,

@@ -2,8 +2,9 @@ import { Form } from "antd";
 import React, { useState, useEffect } from "react";
 import countries from "react-select-country-list";
 import { useTranslation } from "react-i18next";
-import { doc, setDoc, getFirestore } from "firebase/firestore";
+import { doc, setDoc, getFirestore, getDoc } from "firebase/firestore";
 import { SyncOutlined } from "@ant-design/icons";
+import { getAuth } from "firebase/auth";
 
 import { CustomButton } from "../../../../../components/CustomButton/CustomButton";
 import { CustomInput } from "../../../../../components/CustomInput/CustomInput";
@@ -13,16 +14,19 @@ import { EditFormPropsType } from "../../../../../types/types";
 import { CountrySelect } from "../../../../../components/CountrySelect/CountrySelect";
 import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
 import { SportSelect } from "../../../../../components/SportSelect/SportSelect";
+import { calculateAge } from "../../../../../utils/calculateAge";
+import { useUserContext } from "../../../../../context/UserContext";
 
 const countryOptions = countries().getData();
 
 export const EditForm: React.FC<EditFormPropsType> = ({
   onClose,
   setIsModalOpen,
-  userData,
 }) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
+  const { updateUserData } = useUserContext();
+  const user = getAuth().currentUser;
   const [filteredCountries, setFilteredCountries] = useState(countryOptions);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -33,37 +37,67 @@ export const EditForm: React.FC<EditFormPropsType> = ({
   const [sport, setSport] = useState("");
 
   useEffect(() => {
-    if (userData) {
-      form.setFieldsValue({
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        status: userData.status,
-        height: userData.height,
-        weight: userData.weight,
-        country: userData.location?.country,
-        city: userData.location?.city,
-        dateOfBirth: userData.dateOfBirth
-          ? new Date(userData.dateOfBirth)
-          : null,
-        sport: userData.sport,
-      });
-    }
-  }, [userData, form]);
+    const fetchUserData = async () => {
+      if (user) {
+        const userDoc = await getDoc(doc(getFirestore(), "users", user.uid));
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          setFirstName(userData.firstName);
+          setLastName(userData.lastName);
+          setStatus(userData.status);
+          setCountry(userData.location.country);
+          setCity(userData.location.city);
+          setDateOfBirth(userData.dateOfBirth.toDate());
+          setSport(userData.sport);
+          form.setFieldsValue({
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            status: userData.status,
+            height: userData.height,
+            weight: userData.weight,
+            country: userData.location.country,
+            city: userData.location.city,
+            dateOfBirth: userData.dateOfBirth.toDate(),
+            sport: userData.sport,
+          });
+        }
+      }
+    };
+
+    fetchUserData();
+  }, [user, form]);
 
   const handleUpdateInformation = async () => {
-    if (userData && dateOfBirth) {
+    if (user && dateOfBirth) {
       try {
-        const updatedData = {
+        const age = calculateAge(dateOfBirth);
+        await setDoc(
+          doc(getFirestore(), "users", user.uid),
+          {
+            firstName,
+            lastName,
+            status,
+            location: {
+              country,
+              city,
+            },
+            dateOfBirth: dateOfBirth,
+            age,
+          },
+          { merge: true }
+        );
+
+        updateUserData({
           firstName,
           lastName,
           status,
-          location: { country, city },
-          dateOfBirth: dateOfBirth.toISOString().split("T")[0],
+          location: {
+            country,
+            city,
+          },
+          dateOfBirth,
+          age,
           sport,
-        };
-
-        await setDoc(doc(getFirestore(), "users", userData.id), updatedData, {
-          merge: true,
         });
 
         setIsModalOpen(false);

@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { Exercise } from "../../types/types";
+import { IExercise } from "../../types/types";
 
-const initialState: Exercise[] = [
+const initialState: IExercise[] = [
   {
     bestResult: {
       weight: "0",
@@ -55,7 +55,7 @@ const initialState: Exercise[] = [
   },
 ];
 
-export const exercisesReducer = (state: Exercise[] = initialState) => {
+export const exercisesReducer = (state: IExercise[] = initialState) => {
   return state;
 };
 

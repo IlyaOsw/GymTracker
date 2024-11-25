@@ -1,12 +1,12 @@
 import React, { forwardRef, ChangeEvent } from "react";
 
-import { NumericInputProps } from "../../types/types";
+import { INumericInputProps } from "../../types/types";
 
 import styles from "./NumericInput.module.scss";
 
 const NumericInput: React.ForwardRefRenderFunction<
   HTMLInputElement,
-  NumericInputProps
+  INumericInputProps
 > = ({ value, onChange, onBlur }, ref) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;

@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 import { SettingButton } from "../../../../components/SettingButton/SettingButton";
 import NumericInput from "../../../../components/NumericInput/NumericInput";
-import { BestResultProps, Exercise } from "../../../../types/types";
+import { IBestResultProps, IExercise } from "../../../../types/types";
 import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
 import { Hexagon } from "../../../../components/Hexagon/Hexagon";
 import {
@@ -18,7 +18,7 @@ import {
 
 import styles from "./BestResult.module.scss";
 
-export const BestResult: React.FC<BestResultProps> = ({
+export const BestResult: React.FC<IBestResultProps> = ({
   bestResult,
   selectedExercise,
   setBestResult,
@@ -48,7 +48,7 @@ export const BestResult: React.FC<BestResultProps> = ({
         if (exercisesDoc.exists()) {
           const exercisesData = exercisesDoc.data();
           const exerciseToUpdate = exercisesData.exercises.find(
-            (exercise: Exercise) => exercise.id === selectedExercise.id
+            (exercise: IExercise) => exercise.id === selectedExercise.id
           );
 
           if (
@@ -74,7 +74,7 @@ export const BestResult: React.FC<BestResultProps> = ({
           }
 
           const updatedExercises = exercisesData.exercises.map(
-            (exercise: Exercise) => {
+            (exercise: IExercise) => {
               if (exercise.id === selectedExercise.id) {
                 return {
                   ...exercise,

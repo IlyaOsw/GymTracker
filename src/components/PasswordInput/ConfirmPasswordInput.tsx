@@ -5,12 +5,12 @@ import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 
 import { motion } from "framer-motion";
 
-import { CustomPassInputProps } from "../../types/types";
+import { ICustomPasswrodInputProps } from "../../types/types";
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./PasswordInput.module.scss";
 
-export const ConfirmPasswordInput: React.FC<CustomPassInputProps> = ({
+export const ConfirmPasswordInput: React.FC<ICustomPasswrodInputProps> = ({
   onChange,
 }) => {
   const { ref, controls } = useAnimatedInView();

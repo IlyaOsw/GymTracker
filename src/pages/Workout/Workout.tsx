@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
-import { Exercise, LocationState } from "../../types/types";
+import { IExercise, ILocationState } from "../../types/types";
 import { scrollToTop } from "../../utils/scrollToTop";
 
 import { Exercises } from "./Exercises/Exercises";
@@ -12,10 +12,10 @@ import { AddExercise } from "./AddExercise/AddExercise";
 
 const Workout: React.FC = () => {
   const location = useLocation();
-  const state = location.state as LocationState;
-  const [data, setData] = useState<Exercise[]>([]);
+  const state = location.state as ILocationState;
+  const [data, setData] = useState<IExercise[]>([]);
   const [updateTrigger, setUpdateTrigger] = useState(0);
-  const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(
+  const [selectedExercise, setSelectedExercise] = useState<IExercise | null>(
     null
   );
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
@@ -33,7 +33,7 @@ const Workout: React.FC = () => {
     }
   };
 
-  const handleSelectExercise = (exercise: Exercise) => {
+  const handleSelectExercise = (exercise: IExercise) => {
     const exerciseData = data.find((item) => item.id === exercise.id);
 
     if (exerciseData) {

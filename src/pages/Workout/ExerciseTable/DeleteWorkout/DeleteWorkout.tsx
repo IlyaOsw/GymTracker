@@ -12,13 +12,13 @@ import { message } from "antd";
 import { getAuth } from "firebase/auth";
 
 import { ResetButton } from "../../../../components/ResetButton/ResetButton";
-import { DeleteWorkoutProps } from "../../../../types/types";
+import { IDeleteWorkoutProps } from "../../../../types/types";
 import { CustomModal } from "../../../../components/CustomModal/CustomModal";
 import { scrollToTop } from "../../../../utils/scrollToTop";
 
 import styles from "./DeleteWorkout.module.scss";
 
-export const DeleteWorkout: React.FC<DeleteWorkoutProps> = ({
+export const DeleteWorkout: React.FC<IDeleteWorkoutProps> = ({
   workoutDate,
   selectedExercise,
   setData,

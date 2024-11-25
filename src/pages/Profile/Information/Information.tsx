@@ -8,7 +8,7 @@ import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { db } from "../../..";
 import { useUserContext } from "../../../context/UserContext";
 import { SettingButton } from "../../../components/SettingButton/SettingButton";
-import { UserData } from "../../../types/types";
+import { IUserData } from "../../../types/types";
 
 import styles from "./Information.module.scss";
 import { UserInfo } from "./UserInfo/UserInfo";
@@ -24,7 +24,7 @@ export const Information: React.FC = () => {
   const [edit, setEdit] = useState<boolean>(false);
   const [confirm, setConfirm] = useState<boolean>(false);
   const { updateUserData } = useUserContext();
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const [userData, setUserData] = useState<IUserData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -54,11 +54,11 @@ export const Information: React.FC = () => {
     return () => unsubscribe();
   }, [auth, updateUserData]);
 
-  const fetchUserData = async (userId: string): Promise<UserData | null> => {
+  const fetchUserData = async (userId: string): Promise<IUserData | null> => {
     try {
       const docSnap = await getDoc(doc(getFirestore(), "users", userId));
       if (docSnap.exists()) {
-        return docSnap.data() as UserData;
+        return docSnap.data() as IUserData;
       } else {
         return null;
       }
@@ -75,7 +75,7 @@ export const Information: React.FC = () => {
     const docSnap = await getDoc(doc(db, "users", user.uid));
 
     if (docSnap.exists()) {
-      const userData = docSnap.data() as UserData;
+      const userData = docSnap.data() as IUserData;
       setUserData(userData);
     }
   };
@@ -110,7 +110,7 @@ export const Information: React.FC = () => {
         </SettingButton>
       </div>
       <Divider style={{ backgroundColor: "gray" }} />
-      {edit && <EditProfile onClose={handleModalClose} userData={userData} />}
+      {edit && <EditProfile onClose={handleModalClose} />}
       {confirm && (
         <ConfirmDeleteAccount confirm={confirm} setConfirm={setConfirm} />
       )}

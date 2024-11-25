@@ -5,7 +5,7 @@ import { getAuth } from "firebase/auth";
 import { motion } from "framer-motion";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
-import { Exercise, ExercisesProps } from "../../../types/types";
+import { IExercise, IExercisesProps } from "../../../types/types";
 import { Loader } from "../../../components/Loader/Loader";
 import { EmptyBox } from "../../../components/EmptyBox/EmptyBox";
 import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMessage";
@@ -17,7 +17,7 @@ import {
 import { ExerciseCard } from "./ExerciseCard/ExerciseCard";
 import styles from "./Exercises.module.scss";
 
-export const Exercises: React.FC<ExercisesProps> = ({
+export const Exercises: React.FC<IExercisesProps> = ({
   category,
   updateTrigger,
   onSelectExercise,
@@ -55,7 +55,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
           if (exercisesDoc.exists()) {
             const exercisesData = exercisesDoc.data();
             const filteredData = exercisesData.exercises.filter(
-              (exercise: Exercise) => {
+              (exercise: IExercise) => {
                 const exerciseCategoryTranslated = t(exercise.category);
                 return exerciseCategoryTranslated === t(category);
               }
@@ -101,7 +101,7 @@ export const Exercises: React.FC<ExercisesProps> = ({
             className={styles.cards}
           >
             {data.length ? (
-              data.map((item: Exercise, index) => (
+              data.map((item: IExercise, index) => (
                 <ExerciseCard
                   key={item.id}
                   item={item}

@@ -3,7 +3,7 @@ import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { useTranslation } from "react-i18next";
 
-import { EditInputPropsType, Exercise } from "../../../../../types/types";
+import { EditInputPropsType, IExercise } from "../../../../../types/types";
 import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./EditInput.module.scss";
@@ -88,7 +88,7 @@ export const EditInput: React.FC<EditInputPropsType> = ({
                 t(`categories.${exercise.category}`) ===
                 t(`categories.${category}`)
             )
-            .map((exercise: Exercise) => ({
+            .map((exercise: IExercise) => ({
               id: exercise.id,
               name: t(exercise.name),
               category: exercise.category,

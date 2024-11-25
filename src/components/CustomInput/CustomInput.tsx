@@ -3,15 +3,14 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
-import { CustomInputProps, FieldType } from "../../types/types";
+import { ICustomInputProps, FieldType } from "../../types/types";
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./CustomInput.module.scss";
 
-export const CustomInput: React.FC<CustomInputProps> = ({
+export const CustomInput: React.FC<ICustomInputProps> = ({
   name,
   text,
-  type,
   placeholder,
   isRequired = true,
   className,
@@ -42,7 +41,6 @@ export const CustomInput: React.FC<CustomInputProps> = ({
         rules={[{ required: isRequired }]}
       >
         <Input
-          type={type}
           placeholder={placeholder}
           className={`${styles.inputField} ${className}`}
           allowClear

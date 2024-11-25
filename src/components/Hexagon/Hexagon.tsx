@@ -2,12 +2,12 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
-import { HexagonProps } from "../../types/types";
+import { IHexagonProps } from "../../types/types";
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./Hexagon.module.scss";
 
-export const Hexagon: React.FC<HexagonProps> = ({
+export const Hexagon: React.FC<IHexagonProps> = ({
   text,
   className,
   onClick,

@@ -2,11 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
-import { SubTitleType } from "../../types/types";
+import { ISubTitleType } from "../../types/types";
 
 import styles from "./SubTitle.module.scss";
 
-export const SubTitle: React.FC<SubTitleType> = ({ children, className }) => {
+export const SubTitle: React.FC<ISubTitleType> = ({ children, className }) => {
   const { ref, controls } = useAnimatedInView();
 
   return (

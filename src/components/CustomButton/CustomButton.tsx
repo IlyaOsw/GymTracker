@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "antd";
 
-import { CustomButtonProps, SizeType } from "../../types/types";
+import { ICustomButtonProps, SizeType } from "../../types/types";
 
 import styles from "./CustomButton.module.scss";
 
@@ -10,7 +10,7 @@ export const CustomButton = ({
   icon,
   className,
   onClick,
-}: CustomButtonProps) => {
+}: ICustomButtonProps) => {
   const [size] = useState<SizeType>("large");
 
   return (

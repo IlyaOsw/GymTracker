@@ -2,10 +2,10 @@ import React from "react";
 import { Result, ConfigProvider } from "antd";
 import { useTranslation } from "react-i18next";
 
-import { ErrorModalProps } from "../../../types/types";
+import { IErrorModalProps } from "../../../types/types";
 import { CustomModal } from "../../../components/CustomModal/CustomModal";
 
-export const ErrorModal: React.FC<ErrorModalProps> = ({
+export const ErrorModal: React.FC<IErrorModalProps> = ({
   open,
   onClose,
   message,

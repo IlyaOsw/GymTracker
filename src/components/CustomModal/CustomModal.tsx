@@ -1,9 +1,9 @@
 import { ConfigProvider, Modal } from "antd";
 import React, { useEffect } from "react";
 
-import { CustomModalProps } from "../../types/types";
+import { ICustomModalProps } from "../../types/types";
 
-export const CustomModal: React.FC<CustomModalProps> = ({
+export const CustomModal: React.FC<ICustomModalProps> = ({
   open,
   onCancel,
   footer = null,

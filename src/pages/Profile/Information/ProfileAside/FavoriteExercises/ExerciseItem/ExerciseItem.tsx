@@ -4,7 +4,7 @@ import { RightOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
-import { ExerciseItemProps } from "../../../../../../types/types";
+import { IExerciseItemProps } from "../../../../../../types/types";
 import { Hexagon } from "../../../../../../components/Hexagon/Hexagon";
 import {
   animation,
@@ -13,7 +13,7 @@ import {
 
 import styles from "./ExerciseItem.module.scss";
 
-export const ExerciseItem: React.FC<ExerciseItemProps> = ({ item }) => {
+export const ExerciseItem: React.FC<IExerciseItemProps> = ({ item }) => {
   const { t } = useTranslation();
   const { ref, controls } = useAnimatedInView();
 

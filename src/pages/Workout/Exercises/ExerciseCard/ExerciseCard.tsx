@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Exercise, ExerciseCardPropsType } from "../../../../types/types";
+import { IExercise, ExerciseCardPropsType } from "../../../../types/types";
 
 import { CardOptions } from "./CardOptions/CardOptions";
 import { DeleteIcon } from "./DeleteIcon/DeleteIcon";
@@ -29,7 +29,7 @@ export const ExerciseCard: React.FC<ExerciseCardPropsType> = ({
     setIsModalOpen(false);
   };
 
-  const handleCardClick = (item: Exercise) => {
+  const handleCardClick = (item: IExercise) => {
     setActiveCardId(item.id);
     onSelectExercise(item);
   };
