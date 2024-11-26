@@ -34,20 +34,6 @@
   top: calc(50% + 75px);
   left: 50%;
   transform: translateX(-50%);
-
-  .downloadImage {
-    height: 50px;
-    width: 150px;
-    margin: 35px auto;
-
-    div {
-      font-size: 1rem;
-    }
-
-    img {
-      margin-top: 5px;
-    }
-  }
 }
 
 @media (max-width: 992px) {
@@ -59,11 +45,6 @@
 
   .buttons {
     top: 57%;
-
-    .downloadImage {
-      height: 40px;
-      width: 140px;
-    }
   }
 }
 
@@ -76,10 +57,5 @@
 
   .buttons {
     top: 60%;
-
-    .downloadImage {
-      height: 40px;
-      width: 140px;
-    }
   }
 }

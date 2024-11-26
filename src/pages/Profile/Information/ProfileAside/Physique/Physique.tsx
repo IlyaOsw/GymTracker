@@ -3,7 +3,6 @@ import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { doc, getFirestore, updateDoc } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { CheckOutlined } from "@ant-design/icons";
-import { motion } from "framer-motion";
 
 import { SubTitle } from "../../../../../components/SubTitle/SubTitle";
 import { Hexagon } from "../../../../../components/Hexagon/Hexagon";
@@ -12,16 +11,11 @@ import NumericInput from "../../../../../components/NumericInput/NumericInput";
 import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
 import { PhysiquePropsType } from "../../../../../types/types";
 import { Loader } from "../../../../../components/Loader/Loader";
-import {
-  animation,
-  useAnimatedInView,
-} from "../../../../../hooks/useAnimatedInView ";
 
 import styles from "./Physique.module.scss";
 
 export const Physique: React.FC<PhysiquePropsType> = ({ userData }) => {
   const { t } = useTranslation();
-  const { ref, controls } = useAnimatedInView();
   const auth = getAuth();
   const [height, setHeight] = useState<string | undefined>(undefined);
   const [weight, setWeight] = useState<string | undefined>(undefined);
@@ -127,27 +121,11 @@ export const Physique: React.FC<PhysiquePropsType> = ({ userData }) => {
       ) : (
         <div className={styles.wrapper}>
           <div>
-            <motion.div
-              ref={ref}
-              initial="hidden"
-              animate={controls}
-              variants={animation}
-              className={styles.hexagonTitle}
-            >
-              {t("userHeight")}
-            </motion.div>
+            <div className={styles.hexagonTitle}>{t("userHeight")}</div>
             <Hexagon text={`${height} ${t("cm")}`} onClick={handleEditMode} />
           </div>
           <div>
-            <motion.div
-              ref={ref}
-              initial="hidden"
-              animate={controls}
-              variants={animation}
-              className={styles.hexagonTitle}
-            >
-              {t("userWeight")}
-            </motion.div>
+            <div className={styles.hexagonTitle}>{t("userWeight")}</div>
             <Hexagon text={`${weight} ${t("kg")}`} onClick={handleEditMode} />
           </div>
         </div>

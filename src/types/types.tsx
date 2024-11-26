@@ -23,9 +23,6 @@ export interface IMenuItem {
 export type HeaderPropsType = {
   open?: boolean;
   setOpen?: (open: boolean) => void;
-  theme: string;
-  handleThemeClick: ({ key }: { key: string }) => void;
-  themeItems: IMenuItem[];
   language: string;
   handleLanguageClick: ({ key }: { key: string }) => void;
   languageItems: IMenuItem[];
@@ -63,12 +60,6 @@ export interface IErrorModalProps {
   onClose: () => void;
   message: string;
 }
-
-export type ThemeDropdownPropsType = {
-  handleThemeClick: ({ key }: { key: string }) => void;
-  themeItems: IMenuItem[];
-  theme: string | undefined;
-};
 
 export type LanguageDropdownPropsType = {
   handleLanguageClick: ({ key }: { key: string }) => void;

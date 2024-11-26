@@ -79,48 +79,40 @@ export const Exercises: React.FC<IExercisesProps> = ({
 
   return (
     <>
+      <SubTitle children={t("exercises")} className={styles.title} />
+      <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={controls}
+        variants={animation}
+        className={styles.description}
+      >
+        {t("chooseExercise")}
+      </motion.div>
       {loading ? (
         <Loader />
       ) : (
-        <>
-          <SubTitle children={t("exercises")} className={styles.title} />
-          <motion.div
-            ref={ref}
-            initial="hidden"
-            animate={controls}
-            variants={animation}
-            className={styles.description}
-          >
-            {t("chooseExercise")}
-          </motion.div>
-          <motion.div
-            ref={ref}
-            initial="hidden"
-            animate={controls}
-            variants={animation}
-            className={styles.cards}
-          >
-            {data.length ? (
-              data.map((item: IExercise, index) => (
-                <ExerciseCard
-                  key={item.id}
-                  item={item}
-                  onSelectExercise={onSelectExercise}
-                  category={category}
-                  setData={setData}
-                  setLoading={setLoading}
-                  activeCardId={activeCardId}
-                  setActiveCardId={setActiveCardId}
-                  index={index}
-                  exercisesRef={exercisesRef}
-                  setSelectedExercise={setSelectedExercise}
-                />
-              ))
-            ) : (
-              <EmptyBox />
-            )}
-          </motion.div>
-        </>
+        <div className={styles.cards}>
+          {data.length ? (
+            data.map((item: IExercise, index) => (
+              <ExerciseCard
+                key={item.id}
+                item={item}
+                onSelectExercise={onSelectExercise}
+                category={category}
+                setData={setData}
+                setLoading={setLoading}
+                activeCardId={activeCardId}
+                setActiveCardId={setActiveCardId}
+                index={index}
+                exercisesRef={exercisesRef}
+                setSelectedExercise={setSelectedExercise}
+              />
+            ))
+          ) : (
+            <EmptyBox />
+          )}
+        </div>
       )}
     </>
   );

@@ -49,7 +49,8 @@
   .verticalLine {
     width: 1px;
     height: 50%;
-    background-color: #b2b2b2;
+    background-color: gray;
+    margin: 0px 5px;
   }
 }
 
@@ -66,12 +67,8 @@
   }
 }
 
-.themeIcon {
-  margin-right: 10px;
-}
-
 .burgerColor {
-  background-color: #e8e8e8 !important;
+  background-color: #f4f4f4 !important;
 }
 
 .burgerBtn {
@@ -85,7 +82,7 @@
   }
 }
 
-.theme,
+.language,
 .dropdownItem {
   font-size: 1.2rem;
 }

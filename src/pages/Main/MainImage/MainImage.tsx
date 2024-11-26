@@ -32,15 +32,6 @@ export const MainImage: React.FC = () => {
         <Link to={"/signup"}>
           <CustomButton>{t("joinToday")}</CustomButton>
         </Link>
-        <div className={styles.downloadImage}>
-          <div>{t("comingSoon")}</div>
-          <Link to="https://www.apple.com/app-store/" target="_blank">
-            <img
-              src={process.env.PUBLIC_URL + "/assets/Images/DownloadOnApp.png"}
-              alt="Download"
-            />
-          </Link>
-        </div>
       </div>
     </div>
   );

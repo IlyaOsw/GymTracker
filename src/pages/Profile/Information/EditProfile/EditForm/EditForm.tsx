@@ -83,6 +83,7 @@ export const EditForm: React.FC<EditFormPropsType> = ({
             },
             dateOfBirth: dateOfBirth,
             age,
+            sport,
           },
           { merge: true }
         );

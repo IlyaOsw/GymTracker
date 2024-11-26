@@ -7,15 +7,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { BurgerMenuItem, HeaderPropsType } from "../../../types/types";
 import styles from "../CustomHeader.module.scss";
 import { useAuth } from "../../../context/AuthContext";
-import { ThemeDropdown } from "../ThemeDropdown/ThemeDropdown";
 import { LanguageDropdown } from "../LanguageDropdown/LanguageDropdown";
 
 export const BurgerMenu: React.FC<HeaderPropsType> = ({
   open,
   setOpen,
-  theme,
-  handleThemeClick,
-  themeItems,
   language,
   handleLanguageClick,
   languageItems,
@@ -118,19 +114,6 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     },
     {
       key: "6",
-      label: (
-        <>
-          <span className={styles.burgerSettings}>{t("theme")}</span>
-          <ThemeDropdown
-            handleThemeClick={handleThemeClick}
-            themeItems={themeItems}
-            theme={theme}
-          />
-        </>
-      ),
-    },
-    {
-      key: "7",
       label: (
         <>
           <span className={styles.burgerSettings}>{t("language")}</span>

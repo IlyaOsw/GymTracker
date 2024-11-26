@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Layout, Button } from "antd";
-import { MenuOutlined, MoonFilled, SunOutlined } from "@ant-design/icons";
+import { MenuOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 import { IMenuItem } from "../../types/types";
@@ -15,16 +15,12 @@ const { Header } = Layout;
 
 export const CustomHeader: React.FC = React.memo(() => {
   const { isMobile, logoSrc } = useResponsive(992);
-  const [theme, setTheme] = useState("Dark");
-  const [language, setLanguage] = useState("Eng");
+  const [language, setLanguage] = useState("EN");
   const [open, setOpen] = useState(false);
 
-  const handleThemeClick = ({ key }: { key: string }) => {
-    const selectedTheme = themeItems.find((item) => item.key === key);
-    if (selectedTheme) {
-      setTheme(selectedTheme.label);
-    }
-  };
+  useEffect(() => {
+    i18n.changeLanguage("EN");
+  }, []);
 
   const handleLanguageClick = ({ key }: { key: string }) => {
     const selectedLanguage = languageItems.find((item) => item.key === key);
@@ -46,9 +42,6 @@ export const CustomHeader: React.FC = React.memo(() => {
         </Button>
       ) : (
         <Navbar
-          handleThemeClick={handleThemeClick}
-          themeItems={themeItems}
-          theme={theme}
           handleLanguageClick={handleLanguageClick}
           languageItems={languageItems}
           language={language}
@@ -58,9 +51,6 @@ export const CustomHeader: React.FC = React.memo(() => {
       <BurgerMenu
         open={open}
         setOpen={setOpen}
-        theme={theme}
-        handleThemeClick={handleThemeClick}
-        themeItems={themeItems}
         language={language}
         handleLanguageClick={handleLanguageClick}
         languageItems={languageItems}
@@ -69,19 +59,6 @@ export const CustomHeader: React.FC = React.memo(() => {
     </Header>
   );
 });
-
-const themeItems: IMenuItem[] = [
-  {
-    key: "1",
-    label: "Dark",
-    icon: <MoonFilled />,
-  },
-  {
-    key: "2",
-    label: "Light",
-    icon: <SunOutlined />,
-  },
-];
 
 const languageItems: IMenuItem[] = [
   {

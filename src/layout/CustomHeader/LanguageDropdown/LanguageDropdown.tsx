@@ -44,7 +44,7 @@ export const LanguageDropdown: React.FC<LanguageDropdownPropsType> = ({
         arrow
       >
         <Typography.Link className={styles.settingsBtn}>
-          <Space className={styles.theme}>
+          <Space className={styles.language}>
             {language}
             <DownOutlined />
           </Space>

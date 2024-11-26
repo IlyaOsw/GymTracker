@@ -50,6 +50,14 @@ export const AddExercise: React.FC<IAddExercise> = ({
               existingExercise.category === category
           );
 
+          if (exerciseName.length <= 2) {
+            ClosableMessage({
+              type: "error",
+              content: t("nameMin3Symbols"),
+            });
+            return;
+          }
+
           if (exercisesInCategory.length >= 10) {
             ClosableMessage({
               type: "error",
