@@ -49,11 +49,11 @@ export const ProfileAvatar: React.FC = () => {
       getDownloadURL(avatarRef)
         .then((url) => {
           setAvatarURL(url);
-          setLoading(false);
         })
         .catch(() => {
           setAvatarURL(null);
         });
+      setLoading(false);
     }
   }, [user, storage]);
 

@@ -24,11 +24,11 @@ export const CoverImage: React.FC = () => {
       getDownloadURL(coverRef)
         .then((url) => {
           setCoverURL(url);
-          setLoading(false);
         })
         .catch(() => {
           setCoverURL("");
         });
+      setLoading(false);
     }
   }, [user]);
 

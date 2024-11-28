@@ -63,21 +63,25 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     {
       key: "1",
       label: (
-        <Link
-          to={"/main"}
-          onClick={handleSignInClick}
-          className={styles.menuButton}
-        >
+        <Link to={"/main"} className={styles.menuButton}>
           {t("main")}
         </Link>
       ),
     },
     {
       key: "2",
-      label: <Divider />,
+      label: (
+        <Link to={"/contact"} className={styles.menuButton}>
+          {t("contact")}
+        </Link>
+      ),
     },
     {
       key: "3",
+      label: <Divider />,
+    },
+    {
+      key: "4",
       label: isAuthenticated ? (
         <Link to="/profile" onClick={onClose} className={styles.menuButton}>
           {t("profile")}
@@ -93,7 +97,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
       ),
     },
     {
-      key: "4",
+      key: "5",
       label: isAuthenticated ? (
         <Link to="/" onClick={handleLogout} className={styles.menuButton}>
           {t("signOut")}
@@ -109,11 +113,11 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
       ),
     },
     {
-      key: "5",
+      key: "6",
       label: <Divider />,
     },
     {
-      key: "6",
+      key: "7",
       label: (
         <>
           <span className={styles.burgerSettings}>{t("language")}</span>

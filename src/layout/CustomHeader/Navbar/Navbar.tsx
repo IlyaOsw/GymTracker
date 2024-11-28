@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -21,12 +20,14 @@ export const Navbar: React.FC<HeaderPropsType> = ({
   return (
     <div className={styles.navbar}>
       <Link to="/main">
-        <Button
-          type="link"
-          className={styles.backToMainBtn}
-          icon={<HomeOutlined />}
-        >
+        <Button type="link" className={styles.backToMainBtn}>
           {t("main")}
+        </Button>
+      </Link>
+      <div className={styles.verticalLine}></div>
+      <Link to="/contact">
+        <Button type="link" className={styles.backToMainBtn}>
+          {t("contact")}
         </Button>
       </Link>
       <div className={styles.settings}>

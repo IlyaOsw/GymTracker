@@ -245,5 +245,16 @@
 "Powerlifting": "Jõutõstmine",
 "Crossfit": "Crossfit",
 "FTraining": "Funktsionaalne treening",
-"Weightlifting": "Tõstmine"
+"Weightlifting": "Tõstmine",
+"contact": "Kontakt",
+"sendMessage": "Saada sõnum",
+"questionsComments": "Küsimused / Kommentaarid",
+"phone": "Telefon",
+"enterPhone": "Sisestage oma telefoninumber",
+"fullName": "Täisnimi",
+"contactInformation": "Kontaktandmed",
+"enterMessage": "Sisestage oma sõnum",
+"getInTouch": "Võtke meiega ühendust",
+"contactUsDescription": "Oleme rõõmsad vastama teie küsimustele. Palun täitke vorm ja me võtame teiega ühendust 24 tunni jooksul",
+"weAreHereToHelp": "Oleme siin, et aidata teid mis tahes probleemide korral"
 }
