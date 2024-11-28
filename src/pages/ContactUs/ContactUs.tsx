@@ -23,7 +23,7 @@ const ContactUs: React.FC = () => {
             <SubTitle>{t("getInTouch")}</SubTitle>
             <p>{t("weAreHereToHelp")}</p>
             <img
-              src={process.env.PUBLIC_URL + `/assets/Images/contact.jpg`}
+              src={process.env.PUBLIC_URL + "/assets/Images/contact.jpg"}
               alt="Contact"
             />
             <p>{t("contactUsDescription")}</p>
