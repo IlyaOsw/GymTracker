@@ -17,13 +17,13 @@ const ContactUs: React.FC = () => {
   return (
     <>
       <PageWrapper>
-        <DescriptionTitle text={t("contact Us")} textAlign="center" />
+        <DescriptionTitle text={t("contactUs")} textAlign="center" />
         <div className={styles.wrapper}>
           <div className={styles.description}>
             <SubTitle>{t("getInTouch")}</SubTitle>
             <p>{t("weAreHereToHelp")}</p>
             <img
-              src={process.env.PUBLIC_URL + "/assets/Images/contact.jpg"}
+              src={process.env.PUBLIC_URL + "/assets/Images/Contact.jpg"}
               alt="Contact"
             />
             <p>{t("contactUsDescription")}</p>

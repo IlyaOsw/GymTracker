@@ -63,7 +63,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     {
       key: "1",
       label: (
-        <Link to={"/main"} className={styles.menuButton}>
+        <Link to={"/main"} onClick={onClose} className={styles.menuButton}>
           {t("main")}
         </Link>
       ),
@@ -71,7 +71,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     {
       key: "2",
       label: (
-        <Link to={"/contact"} className={styles.menuButton}>
+        <Link to={"/contact"} onClick={onClose} className={styles.menuButton}>
           {t("contact")}
         </Link>
       ),

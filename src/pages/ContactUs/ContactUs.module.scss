@@ -5,15 +5,19 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  margin: 50px 0px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1200px) {
     flex-direction: row;
+  }
+
+  @media (max-width: 768px) {
+    margin: 0px;
   }
 
   .description {
     margin: 0 auto;
     padding: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     text-align: center;
     flex: 1;
     max-width: 600px;
@@ -28,8 +32,6 @@
     max-width: 500px;
     height: auto;
     margin: 20px 0;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
   }
 
@@ -40,10 +42,11 @@
   .container {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 40px;
 
     @media (max-width: 768px) {
       flex-direction: column;
+      gap: 0px;
     }
   }
 
@@ -59,19 +62,19 @@
   .from {
     flex: 1;
     padding: 30px;
-    background-image: linear-gradient(to bottom, #141414, #202020);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
     color: white;
-    transition: background 0.3s ease-in-out;
-
-    &:hover {
-      background: linear-gradient(135deg, #181818, #232323);
-    }
+    background-image: linear-gradient(to right, #141414, #181818);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 
     @media (max-width: 768px) {
       width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
     }
+
     .inputLabel {
       text-align: left;
       font-size: 1.2rem;
@@ -81,7 +84,8 @@
 
     textarea {
       background-color: #1e1e1e;
-      height: 150px;
+      min-height: 150px;
+      min-width: 320px;
       border: 1px solid #0097b2;
       border-radius: 12px;
       resize: none;
