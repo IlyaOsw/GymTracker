@@ -192,7 +192,7 @@
 "notAuthorized": "Vabandame, teil pole sellele lehele juurdepääsu",
 "notFound": "Vabandame, lehte ei leitud",
 "404error": "Lehte ei leitud",
-"401error": "Keelatud",
+"403error": "Keelatud",
 "logout": "Olete edukalt välja logitud",
 "edit": "Muuda",
 "bestResultReps": "kordust",
@@ -253,9 +253,11 @@
 "enterPhone": "Sisestage oma telefoninumber",
 "fullName": "Täisnimi",
 "contactInformation": "Kontaktandmed",
-"enterMessage": "Sisestage oma sõnum",
+"enterMessage": "Sisestage oma sõnum...",
 "getInTouch": "Võtke meiega ühendust",
 "contactUsDescription": "Oleme rõõmsad vastama teie küsimustele. Palun täitke vorm ja me võtame teiega ühendust 24 tunni jooksul.",
 "weAreHereToHelp": "Oleme siin, et aidata teid mis tahes probleemide korral.",
-"contactUs": "Kontakt"
+"contactUs": "Kontakt",
+"messageValidation": "Eduka saatmise jaoks sisestage oma sõnum!",
+"messageSended": "Teie sõnum on edukalt saadetud!"
 }

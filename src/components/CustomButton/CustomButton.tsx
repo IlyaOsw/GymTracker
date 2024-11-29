@@ -10,6 +10,8 @@ export const CustomButton = ({
   icon,
   className,
   onClick,
+  disabled,
+  htmlType,
 }: ICustomButtonProps) => {
   const [size] = useState<SizeType>("large");
 
@@ -19,6 +21,8 @@ export const CustomButton = ({
       size={size}
       className={`${styles.button} ${className}`}
       onClick={onClick}
+      disabled={disabled}
+      htmlType={htmlType}
     >
       {children}
     </Button>

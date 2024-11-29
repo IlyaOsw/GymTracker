@@ -192,7 +192,7 @@
   "notAuthorized": "Sorry, you are not authorized to access this page",
   "notFound": "Sorry, the page you visited does not exist",
   "404error": "Not Found",
-  "401error": "Forbidden",
+  "403error": "Forbidden",
   "logout": "You have successfully logged out",
   "edit": "Edit",
   "bestResultReps": "reps",
@@ -252,9 +252,11 @@
   "enterPhone": "Enter your phone number",
   "fullName": "Full name",
   "contactInformation": "Contact information",
-  "enterMessage": "Enter your message",
+  "enterMessage": "Enter your message...",
   "getInTouch": "Get in Touch",
   "contactUsDescription": "We are happy to answer any questions you may have. Please fill out the form, and we will get back to you within 24 hours.",
   "weAreHereToHelp": "We are here to help you with any issues.",
-  "contactUs": "Contact us"
+  "contactUs": "Contact us",
+  "messageValidation": "To send successfully, enter your message!",
+  "messageSended": "Your message has been successfully sent!"
 }

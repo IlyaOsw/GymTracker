@@ -36,13 +36,13 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
       <div className={styles.personalInfoOptions}>
         <div>
           <CustomInput
-            name={t("firstName")}
+            name="firstName"
             text={t("firstName")}
             placeholder={t("enterFirstName")}
             onChange={handleFirstNameChange}
           />
           <CustomInput
-            name={t("lastName")}
+            name="lastName"
             text={t("lastName")}
             placeholder={t("enterLastName")}
             isRequired={false}

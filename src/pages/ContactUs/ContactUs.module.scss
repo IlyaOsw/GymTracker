@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px;
   margin: 50px 0px;
 
   @media (min-width: 1200px) {
@@ -31,7 +31,7 @@
     width: 100%;
     max-width: 500px;
     height: auto;
-    margin: 20px 0;
+    margin: 15px 0px;
     transition: transform 0.3s ease-in-out;
   }
 
@@ -61,14 +61,13 @@
 
   .from {
     flex: 1;
-    padding: 30px;
+    padding: 20px;
     color: white;
-    background-image: linear-gradient(to right, #141414, #181818);
+    background-image: linear-gradient(to right, #141414, #202020);
     border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 
     @media (max-width: 768px) {
-      width: 100%;
+      width: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -83,7 +82,7 @@
     }
 
     textarea {
-      background-color: #1e1e1e;
+      background-color: #1e1e1e !important;
       min-height: 150px;
       min-width: 320px;
       border: 1px solid #0097b2;

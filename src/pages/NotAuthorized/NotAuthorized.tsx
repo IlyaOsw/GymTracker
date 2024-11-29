@@ -20,8 +20,8 @@ const NotFound: React.FC = () => {
   return (
     <>
       <Result
-        status="404"
-        title={<span className={styles.title}>401 {t("401error")}</span>}
+        status="403"
+        title={<span className={styles.title}>403 {t("403error")}</span>}
         subTitle={<span className={styles.subTitle}>{t("notAuthorized")}</span>}
         extra={
           <CustomButton
