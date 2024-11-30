@@ -77,28 +77,23 @@
 .selectField {
   margin: 3px 0px;
   height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: start;
-  border-radius: 15px;
-  border: 1px solid #0097b2;
+  border-bottom: 1px solid #0097b2;
   width: 260px !important;
 
-  &:hover {
-    box-shadow: 0px 0px 5px #0097b2;
-    background-color: #1e1e1e;
-  }
-
   svg {
-    color: #ffffff;
+    color: #5f5f5f;
   }
 }
 
-.address {
-  .addressOptions {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
+.addressOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .reset {

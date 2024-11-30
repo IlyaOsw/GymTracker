@@ -1,5 +1,5 @@
 .selectWrapper {
-  width: 275px;
+  width: 260px;
 
   .selectLabel {
     text-align: start;
@@ -9,26 +9,19 @@
   }
 
   .selectField {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #0097b2;
+    color: #ffffff;
     height: 40px;
-    border: 1px solid #0097b2;
-    border-radius: 15px !important;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: start;
-
-    &:hover {
-      box-shadow: 0px 0px 5px #0097b2;
-      border: 1px solid #0097b2;
-      background-color: #1e1e1e !important;
-    }
-
-    &:focus-within {
-      box-shadow: 0 0 5px #0097b2;
-    }
+    width: 260px !important;
 
     svg {
-      color: #ffffff;
+      color: #5f5f5f;
     }
   }
 

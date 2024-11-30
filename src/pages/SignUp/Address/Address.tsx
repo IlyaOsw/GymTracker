@@ -28,7 +28,7 @@ export const Address: React.FC<AddressType> = ({
   const handleCityChange = (value: string) => onCityChange(value);
 
   return (
-    <div className={styles.address}>
+    <div>
       <SubTitle>{t("address")}</SubTitle>
       <div className={styles.addressOptions}>
         <CountrySelect
