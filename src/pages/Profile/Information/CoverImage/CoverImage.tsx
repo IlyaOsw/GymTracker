@@ -24,10 +24,14 @@ export const CoverImage: React.FC = () => {
       getDownloadURL(coverRef)
         .then((url) => {
           setCoverURL(url);
+          setLoading(false);
         })
         .catch(() => {
           setCoverURL("");
+          setLoading(false);
         });
+    } else {
+      setCoverURL("");
       setLoading(false);
     }
   }, [user]);
@@ -49,25 +53,30 @@ export const CoverImage: React.FC = () => {
 
   return (
     <div className={styles.paper}>
-      {loading && <Loader />}
-      {coverURL ? (
-        <img src={coverURL} alt="CoverImg" />
+      {loading ? (
+        <Loader />
       ) : (
-        <div className={styles.paperPlaceholder} />
+        <>
+          {coverURL ? (
+            <img src={coverURL} alt="CoverImg" />
+          ) : (
+            <div className={styles.paperPlaceholder} />
+          )}
+          <Upload
+            showUploadList={false}
+            beforeUpload={(file) => {
+              handleUploadCoverImage(file);
+              return false;
+            }}
+            accept="image/*"
+            className={styles.uploadCoverImage}
+          >
+            <SettingButton icon={<CameraOutlined />} className={styles.editBtn}>
+              <span className={styles.buttonText}>{t("uploadCoverImage")}</span>
+            </SettingButton>
+          </Upload>
+        </>
       )}
-      <Upload
-        showUploadList={false}
-        beforeUpload={(file) => {
-          handleUploadCoverImage(file);
-          return false;
-        }}
-        accept="image/*"
-        className={styles.uploadCoverImage}
-      >
-        <SettingButton icon={<CameraOutlined />} className={styles.editBtn}>
-          <span className={styles.buttonText}>{t("uploadCoverImage")}</span>
-        </SettingButton>
-      </Upload>
     </div>
   );
 };

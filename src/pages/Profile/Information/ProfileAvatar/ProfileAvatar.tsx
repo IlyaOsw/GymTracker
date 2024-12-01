@@ -52,7 +52,12 @@ export const ProfileAvatar: React.FC = () => {
         })
         .catch(() => {
           setAvatarURL(null);
+        })
+        .finally(() => {
+          setLoading(false);
         });
+    } else {
+      setAvatarURL(null);
       setLoading(false);
     }
   }, [user, storage]);
@@ -115,29 +120,28 @@ export const ProfileAvatar: React.FC = () => {
 
   return (
     <>
-      {loading && <Loader />}
-      <div className={styles.avatar}>
-        {avatarURL ? (
-          <img
-            src={avatarURL}
-            alt="Profile"
-            style={{
-              width: avatarSize,
-              height: avatarSize,
-              borderRadius: "50%",
-            }}
-          />
-        ) : (
-          <Avatar size={avatarSize} icon={<UserOutlined />} />
-        )}
-        <Dropdown menu={{ items }} arrow>
-          <Button
-            icon={<SettingOutlined />}
-            className={styles.settingIcon}
-            size="middle"
-          />
-        </Dropdown>
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className={styles.avatar}>
+          {avatarURL ? (
+            <img
+              src={avatarURL}
+              alt="Profile"
+              style={{
+                width: avatarSize,
+                height: avatarSize,
+                borderRadius: "50%",
+              }}
+            />
+          ) : (
+            <Avatar size={avatarSize} icon={<UserOutlined />} />
+          )}
+          <Dropdown menu={{ items }} arrow>
+            <Button icon={<SettingOutlined />} className={styles.settingIcon} />
+          </Dropdown>
+        </div>
+      )}
     </>
   );
 };

@@ -43,7 +43,15 @@ export const Physique: React.FC<PhysiquePropsType> = ({ userData }) => {
       setLoading(false);
     };
 
-    const unsubscribe = onAuthStateChanged(auth, setHeightAndWeight);
+    if (!auth.currentUser) {
+      setLoading(false);
+      return;
+    }
+
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      await setHeightAndWeight(user);
+    });
+
     setHeightAndWeight(auth.currentUser);
 
     return () => unsubscribe();
@@ -70,17 +78,15 @@ export const Physique: React.FC<PhysiquePropsType> = ({ userData }) => {
 
         setInitialHeight(height);
         setInitialWeight(weight);
-
         ClosableMessage({
           type: "success",
           content: t("heightAndWeightSaved"),
         });
-        setInitialHeight(height);
-        setInitialWeight(weight);
       } catch (error) {
         ClosableMessage({ type: "error", content: t("heightAndWeightError") });
+      } finally {
+        setEditMode(false); // Переносим сюда
       }
-      setEditMode(false);
     }
   };
 

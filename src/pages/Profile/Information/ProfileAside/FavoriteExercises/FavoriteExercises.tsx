@@ -26,6 +26,7 @@ export const FavoriteExercises: React.FC = () => {
       try {
         const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
         const exercisesDoc = await getDoc(exercisesDocRef);
+
         if (exercisesDoc.exists()) {
           const exercisesData = exercisesDoc.data();
           const favoriteExercises = exercisesData.exercises
@@ -37,13 +38,16 @@ export const FavoriteExercises: React.FC = () => {
             }));
 
           setFavoriteExercisesArray(favoriteExercises);
-          setLoading(false);
+        } else {
+          setFavoriteExercisesArray([]);
         }
       } catch (error) {
         ClosableMessage({
           type: "error",
           content: t("errorFetchingFavoriteExercises"),
         });
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -54,6 +58,7 @@ export const FavoriteExercises: React.FC = () => {
         setLoading(false);
       }
     });
+
     return () => unsubscribe();
   }, [t]);
 
