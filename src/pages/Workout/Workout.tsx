@@ -51,6 +51,7 @@ const Workout: React.FC = () => {
         <AddExercise
           category={state?.title}
           onAddExercise={handleUpdateExercises}
+          setData={setData}
         />
         <Exercises
           category={state?.title}

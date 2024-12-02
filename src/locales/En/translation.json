@@ -258,5 +258,6 @@
   "weAreHereToHelp": "We are here to help you with any issues.",
   "contactUs": "Contact us",
   "messageValidation": "To send successfully, enter your message!",
-  "messageSended": "Your message has been successfully sent!"
+  "messageSended": "Your message has been successfully sent!",
+  "noFavoriteExercises": "Your list is currently empty."
 }

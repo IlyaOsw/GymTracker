@@ -39,8 +39,8 @@ export const Diary: React.FC = () => {
   };
 
   return (
-    <div className={styles.diaryWrapper}>
-      <SubTitle children={t("trainingDiary")} />
+    <>
+      <SubTitle children={t("trainingDiary")} className={styles.header} />
       <motion.div
         ref={ref}
         className={styles.info}
@@ -57,6 +57,6 @@ export const Diary: React.FC = () => {
         <HexagonLink text={categories.Back} />
         <HexagonLink text={categories.Legs} />
       </div>
-    </div>
+    </>
   );
 };

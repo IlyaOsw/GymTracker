@@ -85,7 +85,7 @@ export const Physique: React.FC<PhysiquePropsType> = ({ userData }) => {
       } catch (error) {
         ClosableMessage({ type: "error", content: t("heightAndWeightError") });
       } finally {
-        setEditMode(false); // Переносим сюда
+        setEditMode(false);
       }
     }
   };

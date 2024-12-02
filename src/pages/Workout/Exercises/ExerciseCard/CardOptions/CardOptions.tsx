@@ -63,18 +63,18 @@ export const CardOptions: React.FC<CardOptionsPropsType> = ({
               t(`categories.${exercise.category}`) === translatedCategory
           );
           setData(filteredData);
-        }
 
-        if (!currentStatus) {
-          ClosableMessage({ type: "success", content: t("addedToFavorite") });
-          return;
-        } else {
-          ClosableMessage({
-            type: "success",
-            content: t("removedFromFavorite"),
-          });
+          if (!currentStatus) {
+            ClosableMessage({ type: "success", content: t("addedToFavorite") });
+          } else {
+            ClosableMessage({
+              type: "success",
+              content: t("removedFromFavorite"),
+            });
+          }
+
+          setIsActive(!isActive);
         }
-        setIsActive(!isActive);
       }
     } catch (error) {
       ClosableMessage({ type: "error", content: t("errorUpdatingFavorite") });

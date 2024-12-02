@@ -201,6 +201,7 @@ export interface IHexagonLinkProps {
 export interface IAddExercise {
   category: string;
   onAddExercise: () => void;
+  setData: (value: IExercise[]) => void;
 }
 
 export interface IProtectedRouteProps {

@@ -1,34 +1,36 @@
-.diaryWrapper {
-  margin-top: 50px;
+.header {
+  margin: 50px 0px 0px 0px;
+  padding: 10px;
+}
 
-  .info {
-    font-size: 1.2rem;
+.info {
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+.hexagonWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  letter-spacing: 1px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
   }
 
-  .hexagonWrapper {
+  .link {
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-top: 50px;
-    letter-spacing: 1px;
+    justify-content: center;
+    height: 100px;
+    transition: 0.3s all;
+    margin: 10px;
 
-    @media (max-width: 768px) {
-      justify-content: center;
-    }
-
-    .link {
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100px;
-      transition: 0.3s all;
-      margin: 10px;
-
-      &:hover {
-        transform: scale(1.04);
-      }
+    &:hover {
+      transform: scale(1.04);
     }
   }
 }

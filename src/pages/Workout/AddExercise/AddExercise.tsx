@@ -16,6 +16,7 @@ import styles from "./AddExercise.module.scss";
 export const AddExercise: React.FC<IAddExercise> = ({
   onAddExercise,
   category,
+  setData,
 }) => {
   const user = getAuth().currentUser;
   const { t } = useTranslation();
@@ -77,15 +78,31 @@ export const AddExercise: React.FC<IAddExercise> = ({
             return;
           }
 
+          // Добавляем упражнение в Firebase
           await updateDoc(exercisesDocRef, {
             exercises: [...existingExercises, exercise],
           });
+
+          // Обновляем локальное состояние (например, обновляем с помощью setData)
+          const updatedExercises = [...existingExercises, exercise];
+          const filteredData = updatedExercises.filter(
+            (exercise: { category: string }) =>
+              t(`categories.${exercise.category}`) ===
+              t(`categories.${category}`)
+          );
+
+          // Обновляем состояние упражнений
+          setData(filteredData);
         } else {
+          // Если документа нет, создаем новый
           await updateDoc(exercisesDocRef, {
             exercises: [exercise],
           });
+
+          setData([exercise]); // Обновляем состояние с новым упражнением
         }
 
+        // Сброс поля ввода
         setExerciseName("");
         onAddExercise();
         ClosableMessage({ type: "success", content: t("exerciseAdded") });

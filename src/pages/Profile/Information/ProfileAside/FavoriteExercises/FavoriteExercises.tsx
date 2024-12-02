@@ -91,7 +91,9 @@ export const FavoriteExercises: React.FC = () => {
           <Empty
             image={Empty.PRESENTED_IMAGE_SIMPLE}
             description={
-              <span style={{ color: "#ffffff" }}>{t("noData")}</span>
+              <span style={{ color: "#ffffff" }}>
+                {t("noFavoriteExercises")}
+              </span>
             }
           />
         </div>

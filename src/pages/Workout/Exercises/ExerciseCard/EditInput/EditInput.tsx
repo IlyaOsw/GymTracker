@@ -56,6 +56,7 @@ export const EditInput: React.FC<EditInputPropsType> = ({
             });
             return;
           }
+
           const nameExists = exercisesData.exercises.some(
             (exercise: { id: string; name: string }) =>
               exercise.id !== exerciseId && exercise.name === newName
@@ -82,22 +83,7 @@ export const EditInput: React.FC<EditInputPropsType> = ({
             exercises: updatedExercises,
           });
 
-          const filteredData = updatedExercises
-            .filter(
-              (exercise: { category: string }) =>
-                t(`categories.${exercise.category}`) ===
-                t(`categories.${category}`)
-            )
-            .map((exercise: IExercise) => ({
-              id: exercise.id,
-              name: t(exercise.name),
-              category: exercise.category,
-              bestResult: exercise.bestResult,
-              isFavorite: exercise.isFavorite,
-            }));
-
-          localStorage.setItem("exercisesData", JSON.stringify(filteredData));
-          setData(filteredData);
+          reloadData(updatedExercises);
 
           ClosableMessage({
             type: "success",
@@ -107,6 +93,31 @@ export const EditInput: React.FC<EditInputPropsType> = ({
       }
     } catch (error) {
       ClosableMessage({ type: "error", content: t("nameChangeFailed") });
+    }
+  };
+
+  const reloadData = async (updatedExercises: any) => {
+    const exercisesDocRef = doc(getFirestore(), "exercises", user!.uid);
+    const exercisesDoc = await getDoc(exercisesDocRef);
+
+    if (exercisesDoc.exists()) {
+      const exercisesData = exercisesDoc.data();
+
+      // Фильтрация упражнений по категории
+      const filteredData = exercisesData.exercises
+        .filter(
+          (exercise: { category: string }) =>
+            t(`categories.${exercise.category}`) === t(`categories.${category}`)
+        )
+        .map((exercise: IExercise) => ({
+          id: exercise.id,
+          name: t(exercise.name),
+          category: exercise.category,
+          bestResult: exercise.bestResult,
+          isFavorite: exercise.isFavorite,
+        }));
+
+      setData(filteredData); // Обновляем состояние с новыми данными
     }
   };
 
