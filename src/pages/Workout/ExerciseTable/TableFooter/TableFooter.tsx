@@ -19,168 +19,169 @@ import { SettingButton } from "../../../../components/SettingButton/SettingButto
 import styles from "./TableFooter.module.scss";
 import { TrainingHistory } from "./TrainingHistory/TrainingHistory";
 
-export const TableFooter: React.FC<TableFooterPropsType> = ({
-  selectedExercise,
-  data,
-  setData,
-  setEditWeight,
-  saveExerciseData,
-  onWorkoutDateChange,
-  setCurrentWorkout,
-  addRowBtn,
-  setAddRowBtn,
-  saveBtn,
-  setSaveBtn,
-  setDeleteBtn,
-  showHistory,
-  setShowHistory,
-}) => {
-  const { t } = useTranslation();
-  const [workouts, setWorkouts] = useState<ExerciseTableType[][]>([]);
-  const [workoutDates, setWorkoutDates] = useState<string[]>([]);
-  const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState<number>(-1);
-  const [hideButtons, setHideButtons] = useState(false);
+export const TableFooter: React.FC<TableFooterPropsType> = React.memo(
+  ({
+    selectedExercise,
+    data,
+    setData,
+    setEditWeight,
+    saveExerciseData,
+    onWorkoutDateChange,
+    setCurrentWorkout,
+    addRowBtn,
+    setAddRowBtn,
+    saveBtn,
+    setSaveBtn,
+    setDeleteBtn,
+    showHistory,
+    setShowHistory,
+  }) => {
+    const { t } = useTranslation();
+    const [workouts, setWorkouts] = useState<ExerciseTableType[][]>([]);
+    const [workoutDates, setWorkoutDates] = useState<string[]>([]);
+    const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState<number>(-1);
+    const [hideButtons, setHideButtons] = useState(false);
 
-  useEffect(() => {
-    const loadWorkouts = async () => {
-      setHideButtons(true);
-      setCurrentWorkoutIndex(-1);
-      setAddRowBtn(false);
-      setSaveBtn(false);
-      setDeleteBtn(false);
-      setCurrentWorkout(false);
-      setData([]);
+    useEffect(() => {
+      const loadWorkouts = async () => {
+        setHideButtons(true);
+        setCurrentWorkoutIndex(-1);
+        setAddRowBtn(false);
+        setSaveBtn(false);
+        setDeleteBtn(false);
+        setCurrentWorkout(false);
+        setData([]);
 
-      if (selectedExercise) {
-        const setsCollectionRef = collection(getFirestore(), "sets");
-        const setDocRef = doc(setsCollectionRef, selectedExercise.id);
-        try {
-          const docSnapshot = await getDoc(setDocRef);
-          if (docSnapshot.exists()) {
-            const workoutsData = docSnapshot.data()?.workouts || [];
+        if (selectedExercise) {
+          const setsCollectionRef = collection(getFirestore(), "sets");
+          const setDocRef = doc(setsCollectionRef, selectedExercise.id);
+          try {
+            const docSnapshot = await getDoc(setDocRef);
+            if (docSnapshot.exists()) {
+              const workoutsData = docSnapshot.data()?.workouts || [];
 
-            if (Array.isArray(workoutsData) && workoutsData.length > 0) {
-              setWorkouts(
-                workoutsData.map((workout) => workout.approaches || [])
-              );
-              setWorkoutDates(workoutsData.map((workout) => workout.date));
-              const lastIndex = workoutsData.length - 1;
-              setCurrentWorkoutIndex(lastIndex);
-              setHideButtons(false);
-              onWorkoutDateChange(workoutsData[lastIndex].date);
-            } else {
-              setData([]);
-              setWorkoutDates([]);
-              setCurrentWorkoutIndex(-1);
-              setHideButtons(true);
+              if (Array.isArray(workoutsData) && workoutsData.length > 0) {
+                setWorkouts(
+                  workoutsData.map((workout) => workout.approaches || [])
+                );
+                setWorkoutDates(workoutsData.map((workout) => workout.date));
+                const lastIndex = workoutsData.length - 1;
+                setCurrentWorkoutIndex(lastIndex);
+                setHideButtons(false);
+                onWorkoutDateChange(workoutsData[lastIndex].date);
+              } else {
+                setData([]);
+                setWorkoutDates([]);
+                setCurrentWorkoutIndex(-1);
+                setHideButtons(true);
+              }
             }
+          } catch (error) {
+            console.error("Error loading workouts:", error);
           }
-        } catch (error) {
-          console.error("Error loading workouts:", error);
         }
+      };
+
+      loadWorkouts();
+    }, [
+      selectedExercise,
+      onWorkoutDateChange,
+      setAddRowBtn,
+      setCurrentWorkout,
+      setData,
+      setDeleteBtn,
+      setSaveBtn,
+    ]);
+
+    const addRow = () => {
+      if (!selectedExercise) return;
+      const newData = [...data];
+      const nextSet =
+        newData.length > 0 ? newData[newData.length - 1].set + 1 : 1;
+
+      const newRow: ExerciseTableType = {
+        key: nextSet.toString(),
+        weight: "",
+        set: nextSet,
+        reps: "",
+        icon: <CloseOutlined />,
+      };
+
+      newData.push(newRow);
+      setData(newData);
+      setEditWeight(newRow.key);
+    };
+
+    const startNewTraining = () => {
+      setData([]);
+      setAddRowBtn(true);
+      setSaveBtn(true);
+      setHideButtons(true);
+      setCurrentWorkout(true);
+      setDeleteBtn(false);
+      setShowHistory(true);
+    };
+
+    const showPreviousWorkout = () => {
+      if (currentWorkoutIndex > 0) {
+        const newIndex = currentWorkoutIndex - 1;
+        setCurrentWorkoutIndex(newIndex);
+        setData(workouts[newIndex] || []);
+        onWorkoutDateChange(workoutDates[newIndex]);
       }
     };
 
-    loadWorkouts();
-  }, [
-    selectedExercise,
-    onWorkoutDateChange,
-    setAddRowBtn,
-    setCurrentWorkout,
-    setData,
-    setDeleteBtn,
-    setSaveBtn,
-  ]);
-
-  const addRow = () => {
-    if (!selectedExercise) return;
-    const newData = [...data];
-    const nextSet =
-      newData.length > 0 ? newData[newData.length - 1].set + 1 : 1;
-
-    const newRow: ExerciseTableType = {
-      key: nextSet.toString(),
-      weight: "",
-      set: nextSet,
-      reps: "",
-      icon: <CloseOutlined />,
+    const showNextWorkout = () => {
+      if (currentWorkoutIndex < workouts.length - 1) {
+        const newIndex = currentWorkoutIndex + 1;
+        setCurrentWorkoutIndex(newIndex);
+        setData(workouts[newIndex] || []);
+        onWorkoutDateChange(workoutDates[newIndex]);
+      }
     };
 
-    newData.push(newRow);
-    setData(newData);
-    setEditWeight(newRow.key);
-  };
+    const isLastWorkout = currentWorkoutIndex === workouts.length - 1;
 
-  const startNewTraining = () => {
-    setData([]);
-    setAddRowBtn(true);
-    setSaveBtn(true);
-    setHideButtons(true);
-    setCurrentWorkout(true);
-    setDeleteBtn(false);
-    setShowHistory(true);
-  };
-
-  const showPreviousWorkout = () => {
-    if (currentWorkoutIndex > 0) {
-      const newIndex = currentWorkoutIndex - 1;
-      setCurrentWorkoutIndex(newIndex);
-      setData(workouts[newIndex] || []);
-      onWorkoutDateChange(workoutDates[newIndex]);
-    }
-  };
-
-  const showNextWorkout = () => {
-    if (currentWorkoutIndex < workouts.length - 1) {
-      const newIndex = currentWorkoutIndex + 1;
-      setCurrentWorkoutIndex(newIndex);
-      setData(workouts[newIndex] || []);
-      onWorkoutDateChange(workoutDates[newIndex]);
-    }
-  };
-
-  const isLastWorkout = currentWorkoutIndex === workouts.length - 1;
-
-  return (
-    <>
-      {addRowBtn && (
-        <SettingButton onClick={addRow} icon={<PlusOutlined />}>
-          {t("addRow")}
-        </SettingButton>
-      )}
-      {saveBtn && (
-        <div className={styles.saveBtn}>
-          <CustomButton onClick={saveExerciseData} icon={<CheckOutlined />}>
-            {t("saveTraining")}
-          </CustomButton>
+    return (
+      <>
+        {addRowBtn && (
+          <SettingButton onClick={addRow} icon={<PlusOutlined />}>
+            {t("addRow")}
+          </SettingButton>
+        )}
+        {saveBtn && (
+          <div className={styles.saveBtn}>
+            <CustomButton onClick={saveExerciseData} icon={<CheckOutlined />}>
+              {t("saveTraining")}
+            </CustomButton>
+          </div>
+        )}
+        <div className={styles.tableFooter}>
+          {!hideButtons && currentWorkoutIndex > 0 ? (
+            <CustomButton onClick={showPreviousWorkout} icon={<LeftOutlined />}>
+              {t("previous")}
+            </CustomButton>
+          ) : (
+            <div></div>
+          )}
+          {!hideButtons && !isLastWorkout && (
+            <CustomButton onClick={showNextWorkout} icon={<RightOutlined />}>
+              {t("next")}
+            </CustomButton>
+          )}
+          {(isLastWorkout || hideButtons) && !saveBtn && (
+            <CustomButton onClick={startNewTraining}>
+              {t("newEntry")}
+              <RightOutlined />
+            </CustomButton>
+          )}
         </div>
-      )}
-      <div className={styles.tableFooter}>
-        {!hideButtons && currentWorkoutIndex > 0 ? (
-          <CustomButton onClick={showPreviousWorkout} icon={<LeftOutlined />}>
-            {t("previous")}
-          </CustomButton>
-        ) : (
-          <div></div>
-        )}
-        {!hideButtons && !isLastWorkout && (
-          <CustomButton onClick={showNextWorkout} icon={<RightOutlined />}>
-            {t("next")}
-          </CustomButton>
-        )}
-        {(isLastWorkout || hideButtons) && !saveBtn && (
-          <CustomButton onClick={startNewTraining}>
-            {t("newEntry")}
-            <RightOutlined />
-          </CustomButton>
-        )}
-      </div>
-      <TrainingHistory
-        showHistory={showHistory}
-        // setShowHistory={setShowHistory}
-        workouts={workouts}
-        workoutDates={workoutDates}
-      />
-    </>
-  );
-};
+        <TrainingHistory
+          showHistory={showHistory}
+          workouts={workouts}
+          workoutDates={workoutDates}
+        />
+      </>
+    );
+  }
+);

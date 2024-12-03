@@ -18,81 +18,81 @@ import { scrollToTop } from "../../../../../../utils/scrollToTop";
 import styles from "../DeleteIcon.module.scss";
 import { ClosableMessage } from "../../../../../../components/ClosableMessage/ClosableMessage";
 
-export const ModalDelete: React.FC<ModalDeletePropsType> = ({
-  setLoading,
-  setIsModalOpen,
-  category,
-  setData,
-  isModalOpen,
-  handleCancel,
-  item,
-  setConfirm,
-  setSelectedExercise,
-}) => {
-  const { t } = useTranslation();
+export const ModalDelete: React.FC<ModalDeletePropsType> = React.memo(
+  ({
+    setLoading,
+    setIsModalOpen,
+    category,
+    setData,
+    isModalOpen,
+    handleCancel,
+    item,
+    setConfirm,
+    setSelectedExercise,
+  }) => {
+    const { t } = useTranslation();
 
-  const handleDeleteCard = async (exerciseId: string) => {
-    setLoading(true);
-    try {
-      const user = getAuth().currentUser;
-      if (user) {
-        const userId = user.uid;
-        const exercisesDocRef = doc(getFirestore(), "exercises", userId);
-        const setsCollectionRef = doc(getFirestore(), "sets", exerciseId);
-        const exercisesDoc = await getDoc(exercisesDocRef);
+    const handleDeleteCard = async (exerciseId: string) => {
+      setLoading(true);
+      try {
+        const user = getAuth().currentUser;
+        if (user) {
+          const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
+          const setsCollectionRef = doc(getFirestore(), "sets", exerciseId);
+          const exercisesDoc = await getDoc(exercisesDocRef);
 
-        await deleteDoc(setsCollectionRef);
-        if (exercisesDoc.exists()) {
-          const exercisesData = exercisesDoc.data();
-          let updatedExercises: IExercise[] = [];
+          await deleteDoc(setsCollectionRef);
+          if (exercisesDoc.exists()) {
+            const exercisesData = exercisesDoc.data();
+            let updatedExercises: IExercise[] = [];
 
-          if (exercisesData && exercisesData.exercises) {
-            updatedExercises = exercisesData.exercises.filter(
-              (exercise: IExercise) => exercise.id !== exerciseId
-            );
+            if (exercisesData && exercisesData.exercises) {
+              updatedExercises = exercisesData.exercises.filter(
+                (exercise: IExercise) => exercise.id !== exerciseId
+              );
 
-            await updateDoc(exercisesDocRef, {
-              exercises: updatedExercises,
-            });
-            const filteredData = updatedExercises.filter(
-              (exercise: IExercise) => t(exercise.category) === t(category)
-            );
-            setData(filteredData);
-            localStorage.setItem("exercisesData", JSON.stringify(filteredData));
+              await updateDoc(exercisesDocRef, {
+                exercises: updatedExercises,
+              });
+              const filteredData = updatedExercises.filter(
+                (exercise: IExercise) => t(exercise.category) === t(category)
+              );
+              setData(filteredData);
+            }
           }
+          setConfirm(false);
+          setIsModalOpen(false);
+          setLoading(false);
+          setSelectedExercise(null);
+          scrollToTop();
+          ClosableMessage({ type: "success", content: t("exerciseDeleted") });
         }
-        setConfirm(false);
-        setIsModalOpen(false);
-        setLoading(false);
-        setSelectedExercise(null);
-        scrollToTop();
-        ClosableMessage({ type: "success", content: t("exerciseDeleted") });
+      } catch (error) {
+        ClosableMessage({ type: "error", content: t("errorDeletingExercise") });
       }
-    } catch (error) {
-      ClosableMessage({ type: "error", content: t("errorDeletingExercise") });
-    }
-  };
+    };
 
-  return (
-    <CustomModal
-      open={isModalOpen}
-      onCancel={(e) => {
-        handleCancel(e);
-        setIsModalOpen(false);
-      }}
-      footer={false}
-    >
-      <p className={styles.confirm}>{t("confirmDeletingExercise")}</p>
-      <div className={styles.deleteSave}>
-        <ResetButton
-          children={t("delete")}
-          onClick={(e) => {
-            e.stopPropagation();
-            handleDeleteCard(item.id);
-          }}
-          icon={<DeleteOutlined />}
-        />
-      </div>
-    </CustomModal>
-  );
-};
+    return (
+      <CustomModal
+        open={isModalOpen}
+        onCancel={(e) => {
+          handleCancel(e);
+          setIsModalOpen(false);
+        }}
+        footer={false}
+      >
+        <p className={styles.confirm}>{t("confirmDeletingExercise")}</p>
+        <div className={styles.deleteSave}>
+          <ResetButton
+            children={t("delete")}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDeleteCard(item.id);
+            }}
+            icon={<DeleteOutlined />}
+          />
+        </div>
+      </CustomModal>
+    );
+  }
+);

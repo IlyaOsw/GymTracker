@@ -18,97 +18,99 @@ import { scrollToTop } from "../../../../utils/scrollToTop";
 
 import styles from "./DeleteWorkout.module.scss";
 
-export const DeleteWorkout: React.FC<IDeleteWorkoutProps> = ({
-  workoutDate,
-  selectedExercise,
-  setData,
-  setWorkoutDate,
-  setSelectedExercise,
-  setActiveCardId,
-}) => {
-  const { t } = useTranslation();
-  const user = getAuth().currentUser;
-  const [, contextHolder] = message.useMessage();
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+export const DeleteWorkout: React.FC<IDeleteWorkoutProps> = React.memo(
+  ({
+    workoutDate,
+    selectedExercise,
+    setData,
+    setWorkoutDate,
+    setSelectedExercise,
+    setActiveCardId,
+  }) => {
+    const { t } = useTranslation();
+    const user = getAuth().currentUser;
+    const [, contextHolder] = message.useMessage();
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const deleteWorkoutByDate = async () => {
-    if (!workoutDate || !selectedExercise || !user) return;
+    const deleteWorkoutByDate = async () => {
+      if (!workoutDate || !selectedExercise || !user) return;
 
-    const setsCollectionRef = collection(getFirestore(), "sets");
-    const setDocRef = doc(setsCollectionRef, selectedExercise.id);
+      const setsCollectionRef = collection(getFirestore(), "sets");
+      const setDocRef = doc(setsCollectionRef, selectedExercise.id);
 
-    try {
-      const docSnapshot = await getDoc(setDocRef);
-      if (docSnapshot.exists()) {
-        const documentData = docSnapshot.data();
-        const workouts = documentData.workouts || [];
-        const filteredWorkouts = workouts.filter(
-          (workout: { date: string | number | Date }) =>
-            new Date(workout.date).toLocaleString() !== workoutDate
-        );
+      try {
+        const docSnapshot = await getDoc(setDocRef);
+        if (docSnapshot.exists()) {
+          const documentData = docSnapshot.data();
+          const workouts = documentData.workouts || [];
+          const filteredWorkouts = workouts.filter(
+            (workout: { date: string | number | Date }) =>
+              new Date(workout.date).toLocaleString() !== workoutDate
+          );
 
-        await updateDoc(setDocRef, { workouts: filteredWorkouts });
+          await updateDoc(setDocRef, { workouts: filteredWorkouts });
 
-        setData([]);
-        setWorkoutDate(null);
-        setSelectedExercise(null);
-        setActiveCardId(null);
-        scrollToTop();
-        setIsModalOpen(false);
+          setData([]);
+          setWorkoutDate(null);
+          setSelectedExercise(null);
+          setActiveCardId(null);
+          scrollToTop();
+          setIsModalOpen(false);
 
-        message.success({
-          key: "limit-success",
-          content: t("workoutDeleted"),
+          message.success({
+            key: "limit-success",
+            content: t("workoutDeleted"),
+          });
+        }
+      } catch (error) {
+        message.error({
+          key: "limit-error",
+          content: t("errorDeletingWorkout"),
         });
       }
-    } catch (error) {
-      message.error({
-        key: "limit-error",
-        content: t("errorDeletingWorkout"),
-      });
-    }
-  };
+    };
 
-  const confirmDelete = () => {
-    if (!workoutDate || !selectedExercise) {
-      message.error({
-        key: "limit-error",
-        content: t("noDataToDelete"),
-      });
-      return;
-    }
-    setIsModalOpen(true);
-  };
+    const confirmDelete = () => {
+      if (!workoutDate || !selectedExercise) {
+        message.error({
+          key: "limit-error",
+          content: t("noDataToDelete"),
+        });
+        return;
+      }
+      setIsModalOpen(true);
+    };
 
-  const deleteWorkout = (e: { stopPropagation: () => void }) => {
-    e.stopPropagation();
-    deleteWorkoutByDate();
-  };
+    const deleteWorkout = (e: { stopPropagation: () => void }) => {
+      e.stopPropagation();
+      deleteWorkoutByDate();
+    };
 
-  return (
-    <>
-      {contextHolder}
-      <div className={styles.deleteWorkout}>
-        <ResetButton icon={<DeleteOutlined />} onClick={confirmDelete}>
-          {t("deleteWorkout")}
-        </ResetButton>
-      </div>
-      <CustomModal
-        open={isModalOpen}
-        onCancel={(e) => {
-          setIsModalOpen(false);
-        }}
-        footer={false}
-      >
-        <p className={styles.confirm}>{t("confirmDeletingWorkout")}</p>
-        <div className={styles.deleteBtn}>
-          <ResetButton
-            children={t("delete")}
-            onClick={deleteWorkout}
-            icon={<DeleteOutlined />}
-          />
+    return (
+      <>
+        {contextHolder}
+        <div className={styles.deleteWorkout}>
+          <ResetButton icon={<DeleteOutlined />} onClick={confirmDelete}>
+            {t("deleteWorkout")}
+          </ResetButton>
         </div>
-      </CustomModal>
-    </>
-  );
-};
+        <CustomModal
+          open={isModalOpen}
+          onCancel={(e) => {
+            setIsModalOpen(false);
+          }}
+          footer={false}
+        >
+          <p className={styles.confirm}>{t("confirmDeletingWorkout")}</p>
+          <div className={styles.deleteBtn}>
+            <ResetButton
+              children={t("delete")}
+              onClick={deleteWorkout}
+              icon={<DeleteOutlined />}
+            />
+          </div>
+        </CustomModal>
+      </>
+    );
+  }
+);

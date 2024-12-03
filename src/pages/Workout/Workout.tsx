@@ -10,7 +10,7 @@ import { Exercises } from "./Exercises/Exercises";
 import { ExerciseTable } from "./ExerciseTable/ExerciseTable";
 import { AddExercise } from "./AddExercise/AddExercise";
 
-const Workout: React.FC = () => {
+const Workout: React.FC = React.memo(() => {
   const location = useLocation();
   const state = location.state as ILocationState;
   const [data, setData] = useState<IExercise[]>([]);
@@ -46,32 +46,30 @@ const Workout: React.FC = () => {
 
   return (
     <PageWrapper>
-      <div style={{ minHeight: "100vh" }}>
-        <DescriptionTitle text={state.title} textAlign="center" />
-        <AddExercise
-          category={state?.title}
-          onAddExercise={handleUpdateExercises}
-          setData={setData}
-        />
-        <Exercises
-          category={state?.title}
-          updateTrigger={updateTrigger}
-          onSelectExercise={handleSelectExercise}
-          exercisesRef={exercisesRef}
-          activeCardId={activeCardId}
-          setActiveCardId={setActiveCardId}
-          setSelectedExercise={setSelectedExercise}
-          data={data}
-          setData={setData}
-        />
-        <ExerciseTable
-          selectedExercise={selectedExercise}
-          setSelectedExercise={setSelectedExercise}
-          setActiveCardId={setActiveCardId}
-        />
-      </div>
+      <DescriptionTitle text={state.title} textAlign="center" />
+      <AddExercise
+        category={state?.title}
+        onAddExercise={handleUpdateExercises}
+        setData={setData}
+      />
+      <Exercises
+        category={state?.title}
+        updateTrigger={updateTrigger}
+        onSelectExercise={handleSelectExercise}
+        exercisesRef={exercisesRef}
+        activeCardId={activeCardId}
+        setActiveCardId={setActiveCardId}
+        setSelectedExercise={setSelectedExercise}
+        data={data}
+        setData={setData}
+      />
+      <ExerciseTable
+        selectedExercise={selectedExercise}
+        setSelectedExercise={setSelectedExercise}
+        setActiveCardId={setActiveCardId}
+      />
     </PageWrapper>
   );
-};
+});
 
 export default Workout;

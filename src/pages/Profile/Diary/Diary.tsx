@@ -30,13 +30,13 @@ export const Diary: React.FC = () => {
   const { t } = useTranslation();
   const { ref, controls } = useAnimatedInView();
 
-  const categories = {
-    Hands: t("Hands"),
-    Shoulders: t("Shoulders"),
-    Chest: t("Chest"),
-    Back: t("Back"),
-    Legs: t("Legs"),
-  };
+  // const categories = {
+  //   Hands: t("Hands"),
+  //   Shoulders: t("Shoulders"),
+  //   Chest: t("Chest"),
+  //   Back: t("Back"),
+  //   Legs: t("Legs"),
+  // };
 
   return (
     <>
@@ -51,11 +51,16 @@ export const Diary: React.FC = () => {
         {t("diaryChoose")}
       </motion.div>
       <div className={styles.hexagonWrapper}>
-        <HexagonLink text={categories.Hands} />
+        {/* <HexagonLink text={categories.Hands} />
         <HexagonLink text={categories.Shoulders} />
         <HexagonLink text={categories.Chest} />
         <HexagonLink text={categories.Back} />
-        <HexagonLink text={categories.Legs} />
+        <HexagonLink text={categories.Legs} /> */}
+        <HexagonLink text={t("Hands")} />
+        <HexagonLink text={t("Shoulders")} />
+        <HexagonLink text={t("Chest")} />
+        <HexagonLink text={t("Back")} />
+        <HexagonLink text={t("Legs")} />
       </div>
     </>
   );

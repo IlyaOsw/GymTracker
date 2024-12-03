@@ -8,73 +8,73 @@ import { scrollToBottom } from "../../../../../utils/scrollToBottom";
 
 import styles from "./TrainingHistory.module.scss";
 
-export const TrainingHistory: React.FC<TrainingHistoryPropsType> = ({
-  showHistory,
-  workouts,
-  workoutDates,
-}) => {
-  const { t } = useTranslation();
+export const TrainingHistory: React.FC<TrainingHistoryPropsType> = React.memo(
+  ({ showHistory, workouts, workoutDates }) => {
+    const { t } = useTranslation();
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("ru-RU");
-  };
+    const formatDate = (dateString: string) => {
+      const date = new Date(dateString);
+      return date.toLocaleDateString("ru-RU");
+    };
 
-  const sortedData = workoutDates
-    .map((date, index) => ({ date, workout: workouts[index] }))
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    const sortedData = workoutDates
+      .map((date, index) => ({ date, workout: workouts[index] }))
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  const genExtra = () => (
-    <img
-      src={process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/history.png"}
-      alt="History"
-    />
-  );
+    const genExtra = () => (
+      <img
+        src={
+          process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/history.png"
+        }
+        alt="History"
+      />
+    );
 
-  const items = sortedData.map((item, index) => ({
-    key: index.toString(),
-    label: (
-      <p onClick={scrollToBottom}>
-        {t("workoutFor")} <span> {formatDate(item.date)} </span>
-      </p>
-    ),
-    children: (
-      <div className={styles.historyWorkout}>
-        <table>
-          <thead>
-            <tr>
-              <th>{t("set")}</th>
-              <th>{t("weight")}</th>
-              <th>{t("reps")}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {item.workout.map((w, i) => (
-              <tr key={i}>
-                <td>{w.set}.</td>
-                <td>{w.weight}</td>
-                <td>{w.reps}</td>
+    const items = sortedData.map((item, index) => ({
+      key: index.toString(),
+      label: (
+        <p onClick={scrollToBottom}>
+          {t("workoutFor")} <span> {formatDate(item.date)} </span>
+        </p>
+      ),
+      children: (
+        <div className={styles.historyWorkout}>
+          <table>
+            <thead>
+              <tr>
+                <th>{t("set")}</th>
+                <th>{t("weight")}</th>
+                <th>{t("reps")}</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    ),
-    extra: genExtra(),
-  }));
+            </thead>
+            <tbody>
+              {item.workout.map((w, i) => (
+                <tr key={i}>
+                  <td>{w.set}.</td>
+                  <td>{w.weight}</td>
+                  <td>{w.reps}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ),
+      extra: genExtra(),
+    }));
 
-  return (
-    <div className={styles.container}>
-      {showHistory && workouts.length > 0 && (
-        <Collapse
-          bordered={false}
-          expandIcon={({ isActive }) => (
-            <RightOutlined rotate={isActive ? 90 : 0} />
-          )}
-          items={items}
-          className={styles.collapse}
-        />
-      )}
-    </div>
-  );
-};
+    return (
+      <div className={styles.container}>
+        {showHistory && workouts.length > 0 && (
+          <Collapse
+            bordered={false}
+            expandIcon={({ isActive }) => (
+              <RightOutlined rotate={isActive ? 90 : 0} />
+            )}
+            items={items}
+            className={styles.collapse}
+          />
+        )}
+      </div>
+    );
+  }
+);
