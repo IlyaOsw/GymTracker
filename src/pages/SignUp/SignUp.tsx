@@ -65,6 +65,8 @@ const SignUp: React.FC = () => {
 
   const handleRegister = async () => {
     try {
+      await form.validateFields();
+
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -99,7 +101,7 @@ const SignUp: React.FC = () => {
       });
       navigate("/registrationsuccess");
     } catch (error) {
-      navigate("/registrationerror");
+      ClosableMessage({ type: "error", content: t("pleaseModify") });
     }
   };
 
@@ -137,6 +139,7 @@ const SignUp: React.FC = () => {
         className={styles.signUpBtn}
         onClick={handleRegister}
         icon={<CheckCircleOutlined />}
+        htmlType="submit"
       >
         {t("signUp")}
       </CustomButton>

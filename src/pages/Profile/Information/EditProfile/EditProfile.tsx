@@ -13,33 +13,35 @@ import { CustomModal } from "../../../../components/CustomModal/CustomModal";
 import styles from "./EditProfile.module.scss";
 import { EditForm } from "./EditForm/EditForm";
 
-export const EditProfile: React.FC<EditProfilePropsType> = ({ onClose }) => {
-  const { t } = useTranslation();
-  const { ref, controls } = useAnimatedInView();
-  const [isModalOpen, setIsModalOpen] = useState(true);
+export const EditProfile: React.FC<EditProfilePropsType> = React.memo(
+  ({ onClose }) => {
+    const { t } = useTranslation();
+    const { ref, controls } = useAnimatedInView();
+    const [isModalOpen, setIsModalOpen] = useState(true);
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-    onClose();
-  };
+    const handleCancel = () => {
+      setIsModalOpen(false);
+      onClose();
+    };
 
-  return (
-    <CustomModal
-      open={isModalOpen}
-      onCancel={handleCancel}
-      footer={null}
-      className={styles.wrapper}
-    >
-      <motion.div
-        ref={ref}
-        className={styles.info}
-        initial="hidden"
-        animate={controls}
-        variants={animation}
+    return (
+      <CustomModal
+        open={isModalOpen}
+        onCancel={handleCancel}
+        footer={null}
+        className={styles.wrapper}
       >
-        {t("editInfo")}
-      </motion.div>
-      <EditForm setIsModalOpen={setIsModalOpen} onClose={onClose} />
-    </CustomModal>
-  );
-};
+        <motion.div
+          ref={ref}
+          className={styles.info}
+          initial="hidden"
+          animate={controls}
+          variants={animation}
+        >
+          {t("editInfo")}
+        </motion.div>
+        <EditForm setIsModalOpen={setIsModalOpen} onClose={onClose} />
+      </CustomModal>
+    );
+  }
+);

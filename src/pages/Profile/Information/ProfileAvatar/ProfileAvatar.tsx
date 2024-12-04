@@ -21,7 +21,7 @@ import { Loader } from "../../../../components/Loader/Loader";
 
 import styles from "./ProfileAvatar.module.scss";
 
-export const ProfileAvatar: React.FC = () => {
+export const ProfileAvatar: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [avatarURL, setAvatarURL] = useState<string | null>(null);
@@ -144,4 +144,4 @@ export const ProfileAvatar: React.FC = () => {
       )}
     </>
   );
-};
+});

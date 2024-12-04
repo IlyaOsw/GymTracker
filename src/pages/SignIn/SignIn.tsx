@@ -13,6 +13,7 @@ import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 import { useAuth } from "../../context/AuthContext";
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
+import { ClosableMessage } from "../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./SignIn.module.scss";
 import { ErrorModal } from "./ErrorModal/ErrorModal";
@@ -25,8 +26,6 @@ const SignIn: React.FC = () => {
   const { login } = useAuth();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [errorModalOpen, setErrorModalOpen] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -37,11 +36,11 @@ const SignIn: React.FC = () => {
 
   const handleSignIn = async () => {
     try {
+      await form.validateFields();
       await login(email, password);
       navigate("/profile");
     } catch (error) {
-      setErrorMessage(t("invalidEmailOrPass"));
-      setErrorModalOpen(true);
+      ClosableMessage({ type: "error", content: t("invalidEmailOrPass") });
     }
   };
 
@@ -86,6 +85,7 @@ const SignIn: React.FC = () => {
             className={styles.signInBtn}
             onClick={handleSignIn}
             icon={<LoginOutlined />}
+            htmlType="submit"
           >
             {t("signIn")}
           </CustomButton>
@@ -102,11 +102,6 @@ const SignIn: React.FC = () => {
             </Link>
           </motion.div>
         </Form>
-        <ErrorModal
-          open={errorModalOpen}
-          onClose={() => setErrorModalOpen(false)}
-          message={errorMessage}
-        />
       </PageWrapper>
       <CustomFooter />
     </>

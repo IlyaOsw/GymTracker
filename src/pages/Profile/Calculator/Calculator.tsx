@@ -14,7 +14,7 @@ import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMes
 import { InputContainer } from "./InputContainer/InputContainer";
 import styles from "./Calculator.module.scss";
 
-export const Calculator: React.FC = () => {
+export const Calculator: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const { ref, controls } = useAnimatedInView();
   const [reps, setReps] = useState<number>(2);
@@ -60,4 +60,4 @@ export const Calculator: React.FC = () => {
       </div>
     </>
   );
-};
+});

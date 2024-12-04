@@ -13,7 +13,7 @@ import { ClosableMessage } from "../../../../../components/ClosableMessage/Closa
 import styles from "./FavoriteExercises.module.scss";
 import { ExerciseItem } from "./ExerciseItem/ExerciseItem";
 
-export const FavoriteExercises: React.FC = () => {
+export const FavoriteExercises: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const [favoriteExercisesArray, setFavoriteExercisesArray] = useState<
     IExercise[]
@@ -100,4 +100,4 @@ export const FavoriteExercises: React.FC = () => {
       )}
     </>
   );
-};
+});

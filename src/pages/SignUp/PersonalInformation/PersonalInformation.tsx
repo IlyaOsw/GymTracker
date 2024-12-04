@@ -7,7 +7,7 @@ import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import styles from "../SignUp.module.scss";
 import { Calendar } from "../../../components/Calendar/Calendar";
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
-import { PersonalInformationType } from "../../../types/types";
+import { FieldType, PersonalInformationType } from "../../../types/types";
 import {
   animation,
   useAnimatedInView,
@@ -56,23 +56,23 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
             animate={controls}
             variants={animation}
           >
-            <Form.Item
-              name="gender"
-              label={<span className={styles.inputLabel}>{t("gender")}</span>}
-              rules={[{ required: true }]}
-            >
-              <ConfigProvider
-                theme={{
-                  components: {
-                    Select: {
-                      colorTextPlaceholder: "#818181",
-                      colorText: "#ffffff",
-                      optionSelectedBg: "#404040",
-                      optionActiveBg: "#404040",
-                      colorBgElevated: "#282828",
-                    },
+            <ConfigProvider
+              theme={{
+                components: {
+                  Select: {
+                    colorTextPlaceholder: "#818181",
+                    colorText: "#ffffff",
+                    optionSelectedBg: "#404040",
+                    optionActiveBg: "#404040",
+                    colorBgElevated: "#282828",
                   },
-                }}
+                },
+              }}
+            >
+              <Form.Item<FieldType>
+                name="gender"
+                label={<span className={styles.inputLabel}>{t("gender")}</span>}
+                rules={[{ required: true }]}
               >
                 <Select
                   placeholder={t("chooseGender")}
@@ -83,10 +83,10 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
                   <Option value="male">{t("male")}</Option>
                   <Option value="female">{t("female")}</Option>
                 </Select>
-              </ConfigProvider>
-            </Form.Item>
+              </Form.Item>
+            </ConfigProvider>
           </motion.div>
-          <Form.Item
+          <Form.Item<FieldType>
             name="dateOfBirth"
             rules={[{ required: true }]}
             label={

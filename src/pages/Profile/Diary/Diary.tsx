@@ -13,20 +13,19 @@ import { IHexagonLinkProps } from "../../../types/types";
 
 import styles from "./Diary.module.scss";
 
-const HexagonLink: React.FC<IHexagonLinkProps> = ({ text }) => {
+const HexagonLink: React.FC<IHexagonLinkProps> = React.memo(({ text }) => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate("/workout", { state: { title: text } });
-  };
+  const handleClick = () => navigate("/workout", { state: { title: text } });
+
   return (
     <div className={styles.link}>
       <Hexagon text={text} onClick={handleClick} />
     </div>
   );
-};
+});
 
-export const Diary: React.FC = () => {
+export const Diary: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const { ref, controls } = useAnimatedInView();
 
@@ -64,4 +63,4 @@ export const Diary: React.FC = () => {
       </div>
     </>
   );
-};
+});

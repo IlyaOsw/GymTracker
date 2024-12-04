@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import styles from "./LastWorkout.module.scss";
 
-export const LastWorkout: React.FC = () => {
+export const LastWorkout: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const [lastWorkoutDate, setLastWorkoutDate] = useState<string | null>(null);
   const user = getAuth().currentUser;
@@ -64,4 +64,4 @@ export const LastWorkout: React.FC = () => {
       </div>
     </div>
   );
-};
+});

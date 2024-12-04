@@ -18,7 +18,7 @@ import { EditProfile } from "./EditProfile/EditProfile";
 import { ConfirmDeleteAccount } from "./ConfirmDeleteAccount/ConfirmDeleteAccount";
 import { ProfileAside } from "./ProfileAside/ProfileAside";
 
-export const Information: React.FC = () => {
+export const Information: React.FC = React.memo(() => {
   const auth = getAuth();
   const { t } = useTranslation();
   const [edit, setEdit] = useState<boolean>(false);
@@ -116,4 +116,4 @@ export const Information: React.FC = () => {
       )}
     </>
   );
-};
+});

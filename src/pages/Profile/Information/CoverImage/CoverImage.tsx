@@ -11,7 +11,7 @@ import { Loader } from "../../../../components/Loader/Loader";
 
 import styles from "./CoverImage.module.scss";
 
-export const CoverImage: React.FC = () => {
+export const CoverImage: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const user = auth.currentUser;
   const [coverURL, setCoverURL] = useState("");
@@ -79,4 +79,4 @@ export const CoverImage: React.FC = () => {
       )}
     </div>
   );
-};
+});

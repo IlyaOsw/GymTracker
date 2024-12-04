@@ -3,7 +3,7 @@ import { Select, ConfigProvider, Form } from "antd";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
-import { ICountrySelectProps } from "../../types/types";
+import { FieldType, ICountrySelectProps } from "../../types/types";
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./CountrySelect.module.scss";
@@ -27,22 +27,23 @@ export const CountrySelect: React.FC<ICountrySelectProps> = ({
       animate={controls}
       variants={animation}
     >
-      <Form.Item
-        name="country"
-        label={<span className={styles.inputLabel}>{t("country")}</span>}
-        rules={[{ required: isRequired }]}
-      >
-        <ConfigProvider
-          theme={{
-            components: {
-              Select: {
-                colorTextPlaceholder: "#818181",
-                colorText: "#ffffff",
-                optionSelectedBg: "#404040",
-                optionActiveBg: "#404040",
-              },
+      <ConfigProvider
+        theme={{
+          components: {
+            Select: {
+              colorTextPlaceholder: "#818181",
+              colorText: "#ffffff",
+              optionSelectedBg: "#404040",
+              optionActiveBg: "#404040",
             },
-          }}
+          },
+        }}
+      >
+        <Form.Item<FieldType>
+          name="country"
+          label={<span className={styles.inputLabel}>{t("country")}</span>}
+          rules={[{ required: isRequired }]}
+          validateStatus=""
         >
           <Select
             placeholder={t("enterCountry")}
@@ -64,8 +65,8 @@ export const CountrySelect: React.FC<ICountrySelectProps> = ({
               )
             )}
           </Select>
-        </ConfigProvider>
-      </Form.Item>
+        </Form.Item>
+      </ConfigProvider>
     </motion.div>
   );
 };

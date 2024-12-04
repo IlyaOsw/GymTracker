@@ -6,9 +6,6 @@
 
 .selectField {
   width: 260px !important;
-  background-color: transparent !important;
-  border: none;
-  border-radius: 0px;
   border-bottom: 1px solid #0097b2;
   color: #ffffff;
   height: 41px;
@@ -20,4 +17,8 @@
   svg {
     color: #5f5f5f;
   }
+}
+
+.errorField {
+  border: 1px solid #ff4d4f !important;
 }

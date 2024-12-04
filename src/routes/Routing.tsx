@@ -13,9 +13,7 @@ const ResetPassword = React.lazy(
   () => import("../pages/ResetPassword/ResetPassword")
 );
 const SignUp = React.lazy(() => import("../pages/SignUp/SignUp"));
-const RegistrationError = React.lazy(
-  () => import("../pages/RegistrationError/RegistrationError")
-);
+
 const RegistrationSuccess = React.lazy(
   () => import("../pages/RegistrationSuccess/RegistrationSuccess")
 );
@@ -37,7 +35,6 @@ export const Routing: React.FC = () => {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/registrationerror" element={<RegistrationError />} />
         <Route path="/registrationsuccess" element={<RegistrationSuccess />} />
         <Route
           path="/profile"
