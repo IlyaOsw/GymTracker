@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Select, ConfigProvider, Form } from "antd";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
