@@ -111,6 +111,7 @@ const SignUp: React.FC = () => {
       name="signUpForm"
       initialValues={{ remember: true }}
       layout="vertical"
+      onFinish={handleRegister}
     >
       <PageWrapper>
         <DescriptionTitle text={t("signUp")} textAlign="center" />
@@ -137,7 +138,6 @@ const SignUp: React.FC = () => {
       </PageWrapper>
       <CustomButton
         className={styles.signUpBtn}
-        onClick={handleRegister}
         icon={<CheckCircleOutlined />}
         htmlType="submit"
       >

@@ -113,7 +113,11 @@ const ContactUs: React.FC = () => {
                 field="Message"
                 errors={state.errors}
               />
-              <CustomButton icon={<SendOutlined />} htmlType="submit">
+              <CustomButton
+                icon={<SendOutlined />}
+                htmlType="submit"
+                className={styles.button}
+              >
                 {t("sendMessage")}
               </CustomButton>
             </div>

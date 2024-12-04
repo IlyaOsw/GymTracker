@@ -1,8 +1,8 @@
 .dateField {
   background-color: transparent !important;
-  border: none;
+  border: none !important;
   border-radius: 0px;
-  border-bottom: 1px solid #0097b2;
+  border-bottom: 1px solid #0097b2 !important;
   color: #ffffff;
   height: 40px;
   display: flex;
@@ -10,6 +10,7 @@
   justify-content: center;
   text-align: start;
   width: 260px;
+  margin-bottom: 5px;
 
   &:hover {
     border-bottom: 1px solid #0097b2;

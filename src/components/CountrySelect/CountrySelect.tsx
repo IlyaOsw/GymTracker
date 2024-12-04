@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Select, ConfigProvider, Form } from "antd";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
@@ -43,7 +43,6 @@ export const CountrySelect: React.FC<ICountrySelectProps> = ({
           name="country"
           label={<span className={styles.inputLabel}>{t("country")}</span>}
           rules={[{ required: isRequired }]}
-          validateStatus=""
         >
           <Select
             placeholder={t("enterCountry")}
