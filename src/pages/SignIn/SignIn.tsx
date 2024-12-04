@@ -16,7 +16,6 @@ import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 import { ClosableMessage } from "../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./SignIn.module.scss";
-import { ErrorModal } from "./ErrorModal/ErrorModal";
 
 const SignIn: React.FC = () => {
   const { t } = useTranslation();
