@@ -12,7 +12,7 @@ export const LastWorkout: React.FC = React.memo(() => {
   const user = getAuth().currentUser;
 
   useEffect(() => {
-    const fetchLastWorkoutDate = async () => {
+    const fetchSetsData = async () => {
       if (user) {
         try {
           const firestore = getFirestore();
@@ -28,14 +28,13 @@ export const LastWorkout: React.FC = React.memo(() => {
           );
           console.log("Current User ID:", userID);
 
-          const exerciseIds: any = [];
+          const exerciseIds: string[] = [];
 
           if (exercisesDoc.exists()) {
             const exercisesData = exercisesDoc.data();
             console.log("Exercises Data:", exercisesData);
 
             const exercises = exercisesData.exercises;
-
             if (Array.isArray(exercises)) {
               exercises.forEach((exercise: any) => {
                 if (exercise.id) {
@@ -43,72 +42,86 @@ export const LastWorkout: React.FC = React.memo(() => {
                 }
               });
             }
-
             console.log("Exercise IDs:", exerciseIds);
+          } else {
+            console.log("No exercises data found for this user.");
           }
 
           //------------------------------------------------
+
           const setsCollectionRef = collection(firestore, "sets");
           const querySnapshot = await getDocs(setsCollectionRef);
 
-          let latestWorkoutDate: string | null = null;
+          const allWorkoutDates: string[] = [];
 
-          querySnapshot.forEach((docSnapshot) => {
-            const setData = docSnapshot.data();
+          for (const docSnapshot of querySnapshot.docs) {
+            const docId = docSnapshot.id;
 
-            if (exerciseIds.includes(docSnapshot.id)) {
-              console.log("Matched Set ID:", docSnapshot.id, setData);
+            if (exerciseIds.includes(docId)) {
+              console.log("Matched Set Document ID:", docId);
+
+              const setData = docSnapshot.data();
+              console.log("Set Data:", setData);
+
+              if (setData.workouts && Array.isArray(setData.workouts)) {
+                setData.workouts.forEach((workout: any) => {
+                  if (workout.date) {
+                    allWorkoutDates.push(workout.date);
+                  }
+                });
+              } else {
+                console.log("No workouts found for this set.");
+              }
             }
+          }
 
-            if (Array.isArray(setData.workouts)) {
-              setData.workouts.forEach((workout: any) => {
-                const workoutDate = workout.date;
-
-                if (
-                  !latestWorkoutDate ||
-                  new Date(workoutDate) > new Date(latestWorkoutDate)
-                ) {
-                  latestWorkoutDate = workoutDate;
-                }
-              });
-            }
-          });
-
-          if (latestWorkoutDate) {
-            // Преобразуем строку в объект Date и форматируем в вид "DD.MM.YYYY HH:mm"
-            const dateObj = new Date(latestWorkoutDate);
-            const formattedDate = dateObj.toLocaleString("ru-RU", {
-              day: "2-digit",
-              month: "2-digit",
-              year: "numeric",
-            });
-
+          if (allWorkoutDates.length > 0) {
+            allWorkoutDates.sort(
+              (a, b) => new Date(b).getTime() - new Date(a).getTime()
+            );
+            const latestWorkoutDate = allWorkoutDates[0];
+            const formattedDate = new Date(latestWorkoutDate).toLocaleString(
+              "ru-RU",
+              {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              }
+            );
             setLastWorkoutDate(formattedDate);
+            console.log("Latest Workout Date:", formattedDate);
           } else {
-            setLastWorkoutDate("No workouts found");
+            console.log("No workouts dates found.");
+            setLastWorkoutDate(null);
           }
         } catch (error) {
-          console.error("Error fetching workout data:", error);
-          setLastWorkoutDate(null);
+          console.error("Error fetching sets data:", error);
         }
       }
     };
-    fetchLastWorkoutDate();
+
+    fetchSetsData();
   }, [user]);
 
   return (
-    <div className={styles.wrapper}>
-      <img
-        src={
-          process.env.PUBLIC_URL +
-          "/assets/Icons/AdditionalIcons/lastWorkout.png"
-        }
-        alt="LastWorkout"
-      />
-      <div className={styles.title}>
-        {t("lastWorkout")}:{" "}
-        <span>{lastWorkoutDate ? lastWorkoutDate : "No workouts found"}</span>
-      </div>
-    </div>
+    <>
+      {lastWorkoutDate && (
+        <div className={styles.wrapper}>
+          <img
+            src={
+              process.env.PUBLIC_URL +
+              "/assets/Icons/AdditionalIcons/lastWorkout.png"
+            }
+            alt="LastWorkout"
+          />
+          <div className={styles.title}>
+            {t("lastWorkout")}: <br />
+            <span>{lastWorkoutDate}</span>
+          </div>
+        </div>
+      )}
+    </>
   );
 });
