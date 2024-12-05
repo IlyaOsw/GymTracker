@@ -57,7 +57,7 @@ export const LastWorkout: React.FC = React.memo(() => {
             const setData = docSnapshot.data();
 
             if (exerciseIds.includes(docSnapshot.id)) {
-              console.log(`Matched Set ID:`, docSnapshot.id, setData);
+              console.log("Matched Set ID:", docSnapshot.id, setData);
             }
 
             if (Array.isArray(setData.workouts)) {
