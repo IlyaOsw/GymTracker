@@ -60,11 +60,6 @@ export const CardOptions: React.FC<CardOptionsPropsType> = React.memo(
               exercises: updatedExercises,
             });
 
-            // const translatedCategory = t(`categories.${category}`);
-            // const filteredData = updatedExercises.filter(
-            //   (exercise: { category: string }) =>
-            //     t(`categories.${exercise.category}`) === translatedCategory
-            // );
             const translatedCategory = t(category);
             const filteredData = updatedExercises.filter(
               (exercise: { category: string }) =>
@@ -111,11 +106,8 @@ export const CardOptions: React.FC<CardOptionsPropsType> = React.memo(
           <span>{t("favorite")}</span>
         </SettingButton>
         {editMode ? (
-          <div className={styles.editBtn}>
-            <SettingButton
-              icon={<CheckOutlined />}
-              className={styles.saveRecord}
-            >
+          <div>
+            <SettingButton icon={<CheckOutlined />}>
               <span>{t("save")}</span>
             </SettingButton>
           </div>

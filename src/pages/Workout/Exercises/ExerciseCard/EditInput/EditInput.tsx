@@ -105,10 +105,6 @@ export const EditInput: React.FC<EditInputPropsType> = React.memo(
         const exercisesData = exercisesDoc.data();
 
         const filteredData = exercisesData.exercises
-          // .filter(
-          //   (exercise: { category: string }) =>
-          //     t(`categories.${exercise.category}`) === t(`categories.${category}`)
-          // )
           .filter(
             (exercise: { category: string }) =>
               t(exercise.category) === t(category)

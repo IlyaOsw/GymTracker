@@ -84,11 +84,6 @@ export const AddExercise: React.FC<IAddExercise> = React.memo(
             });
 
             const updatedExercises = [...existingExercises, exercise];
-            // const filteredData = updatedExercises.filter(
-            //   (exercise: { category: string }) =>
-            //     t(`categories.${exercise.category}`) ===
-            //     t(`categories.${category}`)
-            // );
             const filteredData = updatedExercises.filter(
               (exercise: { category: string }) =>
                 t(exercise.category) === t(category)
