@@ -253,5 +253,7 @@
 "contactUs": "Kontakt",
 "messageValidation": "Eduka saatmise jaoks sisestage oma sõnum!",
 "messageSended": "Teie sõnum on edukalt saadetud!",
-"noFavoriteExercises": "Teie nimekiri on praegu tühi."
+"noFavoriteExercises": "Teie nimekiri on praegu tühi.",
+"maxReps100": "Maksimaalne korduste arv on 100",
+"maxWeight1000": "Maksimaalne kaal on 1000 kg"
 }

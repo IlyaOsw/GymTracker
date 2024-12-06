@@ -73,7 +73,7 @@
   "enterDate": "Выбериту дату",
   "addExerciseBtn": "Добавить",
   "date": "Дата: ",
-  "addRow": "Добавить строку",
+  "addRow": "Добавить ряд",
   "previous": "Назад",
   "save": "Сохранить",
   "set": "Подход",
@@ -179,7 +179,7 @@
   "exerciseDataSaved": "Данные упражнения сохранены",
   "errorSavingExerciseData": "Ошибка при сохранении данных упражнения",
   "enterWorkingWeight": "Пожалуйста введите свой рабочий вес",
-  "editName": "Изменить название",
+  "editName": "Изменить",
   "nameChangeFailed": "Изменение названия не удалось",
   "backHome": "На главную",
   "notAuthorized": "Извините, у вас нет доступа к этой странице",
@@ -197,7 +197,7 @@
   "saveWorkout": "Сохранить тренировку",
   "noDataToSave": "Нет данных для сохранения",
   "noDataToDelete": "Нет данных для удаления",
-  "saveTraining": "Сохранить тренировку",
+  "saveTraining": "Сохранить",
   "deleteWorkout": "Удалить тренировку",
   "workoutDeleted": "Тренировка удалена",
   "workoutNotFound": "Тренировка не найдена",
@@ -253,5 +253,7 @@
   "contactUs": "Напишите нам",
   "messageValidation": "Для успешной отправки введите сообщение!",
   "messageSended": "Ваше сообщение успешно отправлено!",
-  "noFavoriteExercises": "Ваш список пока пуст."
+  "noFavoriteExercises": "Ваш список пока пуст.",
+  "maxReps100": "Максимальное число повторений 100",
+  "maxWeight1000": "Максимальный вес 1000 кг"
 }

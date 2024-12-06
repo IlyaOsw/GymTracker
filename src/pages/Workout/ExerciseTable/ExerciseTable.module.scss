@@ -9,16 +9,28 @@
   }
 }
 
-.dateAndDelete {
+.dateWorkout {
   font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 10px 10px;
+
+  span {
+    font-size: 1.2rem;
+    color: #0097b2;
+    font-weight: 600;
+    margin-left: 5px;
+  }
 }
 
 .table {
   margin: 0px 10px 20px 10px;
+
+  td {
+    color: #ffffff;
+    font-size: 1rem !important;
+  }
 
   .editableDiv {
     width: 75px;

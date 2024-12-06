@@ -208,6 +208,14 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
     };
 
     const updateWeight = (key: string, value: string) => {
+      if (Number(value) > 1000) {
+        ClosableMessage({
+          type: "error",
+          content: t("maxWeight1000"),
+        });
+        return;
+      }
+
       const newData = data.map((row) => {
         if (row.key === key) {
           return { ...row, weight: value };
@@ -218,6 +226,14 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
     };
 
     const updateReps = (key: string, value: string) => {
+      if (Number(value) > 100) {
+        ClosableMessage({
+          type: "error",
+          content: t("maxReps100"),
+        });
+        return;
+      }
+
       const newData = data.map((row) => {
         if (row.key === key) {
           return { ...row, reps: value };
@@ -317,9 +333,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
               Table: {
                 headerBg: "#1A1A1A",
                 headerColor: "#ffffff",
-                cellFontSize: 17,
                 colorBgContainer: "#282828",
-                colorText: "#ffffff",
                 borderColor: "#535353",
                 cellPaddingBlock: 11,
               },
@@ -334,12 +348,13 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
                 setBestResult={setBestResult}
               />
               {currentWorkout ? (
-                <div className={styles.dateAndDelete}>
+                <div className={styles.dateWorkout}>
                   {t("workoutDate")}: {new Date().toLocaleDateString()}
                 </div>
               ) : (
-                <div className={styles.dateAndDelete}>
-                  {t("workoutDate")}: {workoutDate ? workoutDate : ". . ."}
+                <div className={styles.dateWorkout}>
+                  {t("workoutDate")}:
+                  <span>{workoutDate ? workoutDate : ". . ."}</span>
                 </div>
               )}
               <Table

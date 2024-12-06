@@ -77,7 +77,7 @@ export const TableFooter: React.FC<TableFooterPropsType> = React.memo(
               }
             }
           } catch (error) {
-            console.error("Error loading workouts:", error);
+            console.error(error);
           }
         }
       };

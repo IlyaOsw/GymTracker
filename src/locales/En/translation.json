@@ -204,7 +204,7 @@
   "errorDeletingWorkout": "Error deleting workout",
   "confirmDeletingWorkout": "Please confirm deleting workout",
   "maxFavoritesReached": "Maximum of 3 favorite exercises allowed",
-  "lastWorkout": "Was in the gym",
+  "lastWorkout": "Last workout",
   "noMoreThan15reps": "The number of repetitions must not exceed 15",
   "noLessThan2reps": "The minimum number of repetitions is 2",
   "noMoreThan1000kg": "It must not exceed 1000kg",
@@ -252,5 +252,7 @@
   "contactUs": "Contact us",
   "messageValidation": "To send successfully, enter your message!",
   "messageSended": "Your message has been successfully sent!",
-  "noFavoriteExercises": "Your list is currently empty."
+  "noFavoriteExercises": "Your list is currently empty.",
+  "maxReps100": "Maximum number of repetitions is 100",
+  "maxWeight1000": "Maximum weight is 1000 kg"
 }

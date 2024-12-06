@@ -100,10 +100,16 @@ export const BestResult: React.FC<IBestResultProps> = React.memo(
     };
 
     const handleSave = async () => {
-      if (Number(reps) > 100 || Number(weight) > 1000) {
+      if (Number(reps) > 100) {
         ClosableMessage({
           type: "error",
-          content: t("notValidData"),
+          content: t("maxReps100"),
+        });
+        return;
+      } else if (Number(weight) > 1000) {
+        ClosableMessage({
+          type: "error",
+          content: t("maxWeight1000"),
         });
         return;
       }
