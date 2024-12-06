@@ -100,10 +100,16 @@ export const BestResult: React.FC<IBestResultProps> = React.memo(
     };
 
     const handleSave = async () => {
-      if (!isSaving) {
-        await saveBestResult({ weight, reps });
-        setEditMode(false);
+      if (Number(reps) > 100 || Number(weight) > 1000) {
+        ClosableMessage({
+          type: "error",
+          content: t("notValidData"),
+        });
+        return;
       }
+
+      await saveBestResult({ weight, reps });
+      setEditMode(false);
     };
 
     const handleEditMode = () => setEditMode(true);
