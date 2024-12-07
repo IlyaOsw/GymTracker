@@ -22,7 +22,7 @@ export const Greeting: React.FC = () => {
       <Images />
       <motion.div
         ref={ref}
-        className={`${styles.hexagonWrapper}`}
+        className={styles.hexagonWrapper}
         initial="hidden"
         animate={controls}
         variants={animation}

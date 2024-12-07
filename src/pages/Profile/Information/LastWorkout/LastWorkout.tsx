@@ -17,9 +17,7 @@ export const LastWorkout: React.FC = React.memo(() => {
         try {
           const userID = user ? user.uid : null;
 
-          if (!userID) {
-            return;
-          }
+          if (!userID) return;
 
           const exercisesDoc = await getDoc(
             doc(getFirestore(), "exercises", userID)

@@ -88,13 +88,13 @@ export const InputContainer: React.FC<InputContainerPropsType> = React.memo(
         <div className={styles.block}>
           <div className={styles.subtitle}>{t("repsNumber")}</div>
           <div className={styles.reps}>
-            <button className={styles.plusMinus} onClick={decrement}>
+            <CustomButton className={styles.plusMinus} onClick={decrement}>
               <MinusOutlined />
-            </button>
+            </CustomButton>
             <div className={styles.repsNumber}>{reps}</div>
-            <button className={styles.plusMinus} onClick={increment}>
+            <CustomButton className={styles.plusMinus} onClick={increment}>
               <PlusOutlined />
-            </button>
+            </CustomButton>
           </div>
         </div>
         <div className={styles.calculateWrapper}>

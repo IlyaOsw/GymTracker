@@ -28,7 +28,7 @@ export const MainImage: React.FC = () => {
           {t("title1")} <br /> {t("title2")}
         </motion.p>
       </div>
-      <div className={styles.buttons}>
+      <div className={styles.button}>
         <Link to={"/signup"}>
           <CustomButton>{t("joinToday")}</CustomButton>
         </Link>

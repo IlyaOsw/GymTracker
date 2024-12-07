@@ -33,9 +33,6 @@ export const Physique: React.FC<PhysiquePropsType> = React.memo(
           setWeight(userData?.weight);
           setInitialHeight(userData?.height);
           setInitialWeight(userData?.weight);
-        } else {
-          setHeight(undefined);
-          setWeight(undefined);
         }
         setLoading(false);
       };
