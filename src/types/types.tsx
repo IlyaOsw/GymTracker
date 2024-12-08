@@ -1,5 +1,5 @@
 import { GetProp, MenuProps, ConfigProviderProps } from "antd";
-import { MouseEventHandler, ReactNode, RefObject } from "react";
+import { LegacyRef, MouseEventHandler, ReactNode, RefObject } from "react";
 
 export enum SocialLinks {
   LINKEDIN = "Linkedin",
@@ -430,4 +430,16 @@ export type EditPhysiquePropsType = {
   setInitialWeight: (initialWeight: string | undefined) => void;
   setHeight: (height: string | undefined) => void;
   setWeight: (weight: string | undefined) => void;
+};
+
+export type DataTablePropsType = {
+  data: ExerciseTableType[];
+  setData: (value: ExerciseTableType[]) => void;
+  currentWorkout: boolean;
+  editWeight: string | null;
+  weightInputRef: LegacyRef<HTMLInputElement> | undefined;
+  setEditWeight: (editWeight: string | null) => void;
+  editReps: string | null;
+  repsInputRef: LegacyRef<HTMLInputElement> | undefined;
+  setEditReps: (editReps: string | null) => void;
 };

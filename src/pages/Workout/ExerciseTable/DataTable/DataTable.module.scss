@@ -1,0 +1,24 @@
+.table {
+  margin: 0px 10px 20px 10px;
+
+  td {
+    color: #ffffff;
+    font-size: 1rem !important;
+    padding: 12px !important;
+  }
+
+  .editableDiv {
+    width: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 75px;
+    height: 26px;
+  }
+}

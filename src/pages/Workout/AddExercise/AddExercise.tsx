@@ -83,8 +83,7 @@ export const AddExercise: React.FC<IAddExercise> = React.memo(
               exercises: [...existingExercises, exercise],
             });
 
-            const updatedExercises = [...existingExercises, exercise];
-            const filteredData = updatedExercises.filter(
+            const filteredData = [...existingExercises, exercise].filter(
               (exercise: { category: string }) =>
                 t(exercise.category) === t(category)
             );
@@ -93,7 +92,6 @@ export const AddExercise: React.FC<IAddExercise> = React.memo(
             await updateDoc(exercisesDocRef, {
               exercises: [exercise],
             });
-
             setData([exercise]);
           }
 
@@ -116,11 +114,7 @@ export const AddExercise: React.FC<IAddExercise> = React.memo(
             text={t("exerciseName")}
             placeholder={t("typeExercise")}
           />
-          <CustomButton
-            className={styles.button}
-            icon={<PlusOutlined />}
-            onClick={handleAddExercise}
-          >
+          <CustomButton icon={<PlusOutlined />} onClick={handleAddExercise}>
             {t("addExerciseBtn")}
           </CustomButton>
         </div>

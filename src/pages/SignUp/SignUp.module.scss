@@ -14,10 +14,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
-    .subTitle {
-      width: 275px;
-    }
   }
 }
 
@@ -45,20 +41,16 @@
   .avatarFormat {
     color: #ffffff;
     font-size: 0.8rem;
-    letter-spacing: 0.2px;
     margin-top: 10px;
   }
 }
 
 .upload {
   margin-top: 25px;
-
-  &:hover {
-    filter: brightness(110%);
-  }
 }
+
 .personalInfo {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .personalInfoOptions {
@@ -82,7 +74,6 @@
   justify-content: center;
   text-align: start;
   border-bottom: 1px solid #0097b2;
-  width: 260px !important;
 
   svg {
     color: #5f5f5f;
@@ -94,20 +85,6 @@
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-}
-
-.reset {
-  color: #ffffff;
-  font-size: 1.2rem;
-  color: rgb(255, 62, 62);
-
-  &:hover {
-    color: rgb(255, 6, 6) !important;
-  }
-
-  &:active {
-    color: rgb(188, 31, 31) !important;
-  }
 }
 
 .signUpBtn {

@@ -1,12 +1,9 @@
-.tableTitle {
+.subtitle {
+  font-size: 1.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
-
-  .subtitle {
-    font-size: 1.2rem;
-  }
+  margin: 30px 10px;
 }
 
 .dateWorkout {
@@ -24,26 +21,6 @@
   }
 }
 
-.table {
-  margin: 0px 10px 20px 10px;
-
-  td {
-    color: #ffffff;
-    font-size: 1rem !important;
-  }
-
-  .editableDiv {
-    width: 75px;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-  }
-
-  .inputContainer {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    width: 75px;
-    height: 26px;
-  }
+.emptyBox {
+  min-height: 30vh;
 }

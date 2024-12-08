@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { motion } from "framer-motion";
-import { Empty } from "antd";
+import { Divider, Empty } from "antd";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
 import { IExercise, IExercisesProps } from "../../../types/types";
@@ -44,14 +44,12 @@ export const Exercises: React.FC<IExercisesProps> = React.memo(
             );
 
             if (exercisesDoc.exists()) {
-              const exercisesData = exercisesDoc.data();
-              const filteredData = exercisesData.exercises.filter(
-                (exercise: IExercise) => {
+              const filteredData = exercisesDoc
+                .data()
+                .exercises.filter((exercise: IExercise) => {
                   const exerciseCategoryTranslated = t(exercise.category);
                   return exerciseCategoryTranslated === t(category);
-                }
-              );
-
+                });
               setData(filteredData);
             }
           }
@@ -112,6 +110,7 @@ export const Exercises: React.FC<IExercisesProps> = React.memo(
             )}
           </div>
         )}
+        <Divider style={{ backgroundColor: "gray" }} />
       </>
     );
   }

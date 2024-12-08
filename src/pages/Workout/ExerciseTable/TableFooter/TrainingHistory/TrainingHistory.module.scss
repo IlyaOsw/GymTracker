@@ -1,5 +1,5 @@
 .container {
-  margin: 0px 10px 50px 0px;
+  margin: -10px 10px 50px 0px;
 }
 
 .collapse {
@@ -37,7 +37,6 @@
   font-size: 1rem;
   letter-spacing: 1px;
   color: #ffffff;
-  width: 100%;
 
   table {
     width: 100%;
@@ -49,9 +48,8 @@
     }
 
     td {
-      width: 75px;
       text-align: center;
-      padding: 5px;
+      padding: 4px;
     }
     tr:not(:last-child) {
       border-bottom: 1px solid #353535;

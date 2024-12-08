@@ -31,11 +31,11 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = React.memo(
     setSelectedExercise,
   }) => {
     const { t } = useTranslation();
+    const user = getAuth().currentUser;
 
     const handleDeleteCard = async (exerciseId: string) => {
       setLoading(true);
       try {
-        const user = getAuth().currentUser;
         if (user) {
           const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
           const setsCollectionRef = doc(getFirestore(), "sets", exerciseId);

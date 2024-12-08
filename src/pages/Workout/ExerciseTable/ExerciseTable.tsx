@@ -1,6 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { ConfigProvider, Divider, Table } from "antd";
-import { CloseOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { getAuth } from "firebase/auth";
 import {
@@ -20,7 +18,6 @@ import {
   ExerciseTableType,
 } from "../../../types/types";
 import { EmptyBox } from "../../../components/EmptyBox/EmptyBox";
-import NumericInput from "../../../components/NumericInput/NumericInput";
 import { scrollToBottom } from "../../../utils/scrollToBottom";
 import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMessage";
 
@@ -28,6 +25,7 @@ import styles from "./ExerciseTable.module.scss";
 import { TableFooter } from "./TableFooter/TableFooter";
 import { BestResult } from "./BestResult/BestResult";
 import { DeleteWorkout } from "./DeleteWorkout/DeleteWorkout";
+import { DataTable } from "./DataTable/DataTable";
 
 export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
   ({ selectedExercise, setSelectedExercise, setActiveCardId }) => {
@@ -72,8 +70,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
           ]);
           setShowHistory(false);
           if (docSnapshot.exists()) {
-            const documentData = docSnapshot.data();
-            const workouts = documentData?.workouts || [];
+            const workouts = docSnapshot.data()?.workouts || [];
 
             if (workouts.length > 0) {
               const latestWorkout = workouts[workouts.length - 1];
@@ -87,7 +84,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
                   set: approach.set,
                   weight: approach.weight,
                   reps: approach.reps,
-                  icon: <CloseOutlined />,
                 })
               );
 
@@ -140,10 +136,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
         );
 
         if (validData.length === 0) {
-          ClosableMessage({
-            type: "error",
-            content: t("noDataToSave"),
-          });
+          ClosableMessage({ type: "error", content: t("noDataToSave") });
           return;
         }
         const setsCollectionRef = collection(getFirestore(), "sets");
@@ -182,22 +175,15 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
                 return exercise;
               }
             );
-
             batch.update(exercisesDocRef, { exercises: updatedExercises });
           }
-
           await batch.commit();
 
           setCurrentWorkout(false);
           setAddRowBtn(false);
           setSaveBtn(false);
-
           setShowHistory(false);
-
-          ClosableMessage({
-            type: "success",
-            content: t("exerciseDataSaved"),
-          });
+          ClosableMessage({ type: "success", content: t("exerciseDataSaved") });
         } catch (error) {
           ClosableMessage({
             type: "error",
@@ -206,105 +192,6 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
         }
       }
     };
-
-    const updateWeight = (key: string, value: string) => {
-      if (Number(value) > 1000) {
-        ClosableMessage({
-          type: "error",
-          content: t("maxWeight1000"),
-        });
-        return;
-      }
-
-      const newData = data.map((row) => {
-        if (row.key === key) {
-          return { ...row, weight: value };
-        }
-        return row;
-      });
-      setData(newData);
-    };
-
-    const updateReps = (key: string, value: string) => {
-      if (Number(value) > 100) {
-        ClosableMessage({
-          type: "error",
-          content: t("maxReps100"),
-        });
-        return;
-      }
-
-      const newData = data.map((row) => {
-        if (row.key === key) {
-          return { ...row, reps: value };
-        }
-        return row;
-      });
-      setData(newData);
-    };
-
-    const columns = [
-      {
-        title: `${t("set")}`,
-        dataIndex: "set",
-        width: "20%",
-        render: (set: string) => <span>{set}.</span>,
-      },
-      {
-        title: `${t("weight")}`,
-        dataIndex: "weight",
-        width: "30%",
-        render: (text: string, record: ExerciseTableType) =>
-          currentWorkout ? (
-            editWeight === record.key ? (
-              <div className={styles.inputContainer}>
-                <NumericInput
-                  ref={weightInputRef}
-                  value={record.weight}
-                  onChange={(value) => updateWeight(record.key, value)}
-                  onBlur={() => setEditWeight(null)}
-                />
-              </div>
-            ) : (
-              <div
-                onClick={() => setEditWeight(record.key)}
-                className={styles.editableDiv}
-              >
-                {record.weight || t("clickToEdit")}
-              </div>
-            )
-          ) : (
-            <div className={styles.editableDiv}>{record.weight}</div>
-          ),
-      },
-      {
-        title: `${t("reps")}`,
-        dataIndex: "reps",
-        width: "25%",
-        render: (text: string, record: ExerciseTableType) =>
-          currentWorkout ? (
-            editReps === record.key ? (
-              <div className={styles.inputContainer}>
-                <NumericInput
-                  ref={repsInputRef}
-                  value={record.reps}
-                  onChange={(value) => updateReps(record.key, value)}
-                  onBlur={() => setEditReps(null)}
-                />
-              </div>
-            ) : (
-              <div
-                onClick={() => setEditReps(record.key)}
-                className={styles.editableDiv}
-              >
-                {record.reps || t("clickToEdit")}
-              </div>
-            )
-          ) : (
-            <div className={styles.editableDiv}>{record.reps}</div>
-          ),
-      },
-    ];
 
     const handleWorkoutDateChange = useCallback(
       (date: string) => {
@@ -320,86 +207,70 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
 
     return (
       <>
-        <Divider style={{ backgroundColor: "gray" }} />
-        <div className={styles.tableTitle}>
-          <SubTitle
-            children={selectedExercise?.name || t("noExerciseSelected")}
-            className={styles.subtitle}
-          />
-        </div>
-        <ConfigProvider
-          theme={{
-            components: {
-              Table: {
-                headerBg: "#1A1A1A",
-                headerColor: "#ffffff",
-                colorBgContainer: "#282828",
-                borderColor: "#535353",
-                cellPaddingBlock: 11,
-              },
-            },
-          }}
-        >
-          {selectedExercise ? (
-            <>
-              <BestResult
-                bestResult={bestResult}
-                selectedExercise={selectedExercise}
-                setBestResult={setBestResult}
-              />
-              {currentWorkout ? (
-                <div className={styles.dateWorkout}>
-                  {t("workoutDate")}: {new Date().toLocaleDateString()}
-                </div>
-              ) : (
-                <div className={styles.dateWorkout}>
-                  {t("workoutDate")}:
-                  <span>{workoutDate ? workoutDate : ". . ."}</span>
-                </div>
-              )}
-              <Table
-                rowKey={(record) => record.key}
-                columns={columns}
-                dataSource={data}
-                pagination={false}
-                className={styles.table}
-                locale={{ emptyText: <EmptyBox /> }}
-              />
-              <TableFooter
-                selectedExercise={selectedExercise}
-                data={data}
-                setData={setData}
-                setEditWeight={setEditWeight}
-                saveExerciseData={saveExerciseData}
-                onWorkoutDateChange={handleWorkoutDateChange}
-                setCurrentWorkout={setCurrentWorkout}
-                addRowBtn={addRowBtn}
-                setAddRowBtn={setAddRowBtn}
-                saveBtn={saveBtn}
-                setSaveBtn={setSaveBtn}
-                setDeleteBtn={setDeleteBtn}
-                showHistory={showHistory}
-                setShowHistory={setShowHistory}
-              />
-              {deleteBtn && (
-                <DeleteWorkout
-                  workoutDate={workoutDate}
-                  selectedExercise={selectedExercise}
-                  setData={setData}
-                  setWorkoutDate={setWorkoutDate}
-                  setSelectedExercise={setSelectedExercise}
-                  setActiveCardId={setActiveCardId}
-                />
-              )}
-            </>
-          ) : (
-            <Table
-              columns={columns}
-              className={styles.table}
-              locale={{ emptyText: <EmptyBox /> }}
+        <SubTitle
+          children={selectedExercise?.name || t("noExerciseSelected")}
+          className={styles.subtitle}
+        />
+        {selectedExercise ? (
+          <>
+            <BestResult
+              bestResult={bestResult}
+              selectedExercise={selectedExercise}
+              setBestResult={setBestResult}
             />
-          )}
-        </ConfigProvider>
+            {currentWorkout ? (
+              <div className={styles.dateWorkout}>
+                {t("workoutDate")}: {new Date().toLocaleDateString()}
+              </div>
+            ) : (
+              <div className={styles.dateWorkout}>
+                {t("workoutDate")}:
+                <span>{workoutDate ? workoutDate : ". . ."}</span>
+              </div>
+            )}
+            <DataTable
+              data={data}
+              setData={setData}
+              currentWorkout={currentWorkout}
+              editWeight={editWeight}
+              weightInputRef={weightInputRef}
+              setEditWeight={setEditWeight}
+              editReps={editReps}
+              repsInputRef={repsInputRef}
+              setEditReps={setEditReps}
+            />
+            <TableFooter
+              selectedExercise={selectedExercise}
+              data={data}
+              setData={setData}
+              setEditWeight={setEditWeight}
+              saveExerciseData={saveExerciseData}
+              onWorkoutDateChange={handleWorkoutDateChange}
+              setCurrentWorkout={setCurrentWorkout}
+              addRowBtn={addRowBtn}
+              setAddRowBtn={setAddRowBtn}
+              saveBtn={saveBtn}
+              setSaveBtn={setSaveBtn}
+              setDeleteBtn={setDeleteBtn}
+              showHistory={showHistory}
+              setShowHistory={setShowHistory}
+            />
+            {deleteBtn && (
+              <DeleteWorkout
+                workoutDate={workoutDate}
+                selectedExercise={selectedExercise}
+                setData={setData}
+                setWorkoutDate={setWorkoutDate}
+                setSelectedExercise={setSelectedExercise}
+                setActiveCardId={setActiveCardId}
+              />
+            )}
+          </>
+        ) : (
+          <div className={styles.emptyBox}>
+            <EmptyBox />
+          </div>
+        )}
       </>
     );
   }

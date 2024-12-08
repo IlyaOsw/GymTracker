@@ -4,7 +4,7 @@
 
 .description {
   font-size: 1.2rem;
-  padding: 10px;
+  margin: 15px;
 }
 
 .cards {
@@ -12,7 +12,5 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
-  height: auto;
-  margin-top: 10px;
+  gap: 15px;
 }

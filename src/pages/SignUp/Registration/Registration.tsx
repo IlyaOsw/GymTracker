@@ -52,7 +52,7 @@ export const Registration: React.FC<RegistrationType> = ({
         <span className={styles.avatarFormat}>{t("avatarFormat")}</span>
       </div>
       <div className={styles.info}>
-        <SubTitle className={styles.subTitle}>{t("registration")}</SubTitle>
+        <SubTitle>{t("registration")}</SubTitle>
         <CustomInput
           name="email"
           text={t("email")}

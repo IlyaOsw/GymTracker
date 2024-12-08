@@ -15,6 +15,7 @@ import { ResetButton } from "../../../../components/ResetButton/ResetButton";
 import { IDeleteWorkoutProps } from "../../../../types/types";
 import { CustomModal } from "../../../../components/CustomModal/CustomModal";
 import { scrollToTop } from "../../../../utils/scrollToTop";
+import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./DeleteWorkout.module.scss";
 
@@ -29,7 +30,6 @@ export const DeleteWorkout: React.FC<IDeleteWorkoutProps> = React.memo(
   }) => {
     const { t } = useTranslation();
     const user = getAuth().currentUser;
-    const [, contextHolder] = message.useMessage();
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     const deleteWorkoutByDate = async () => {
@@ -47,7 +47,6 @@ export const DeleteWorkout: React.FC<IDeleteWorkoutProps> = React.memo(
             (workout: { date: string | number | Date }) =>
               new Date(workout.date).toLocaleString() !== workoutDate
           );
-
           await updateDoc(setDocRef, { workouts: filteredWorkouts });
 
           setData([]);
@@ -63,19 +62,13 @@ export const DeleteWorkout: React.FC<IDeleteWorkoutProps> = React.memo(
           });
         }
       } catch (error) {
-        message.error({
-          key: "limit-error",
-          content: t("errorDeletingWorkout"),
-        });
+        ClosableMessage({ type: "error", content: t("errorDeletingWorkout") });
       }
     };
 
     const confirmDelete = () => {
       if (!workoutDate || !selectedExercise) {
-        message.error({
-          key: "limit-error",
-          content: t("noDataToDelete"),
-        });
+        ClosableMessage({ type: "error", content: t("noDataToDelete") });
         return;
       }
       setIsModalOpen(true);
@@ -88,7 +81,6 @@ export const DeleteWorkout: React.FC<IDeleteWorkoutProps> = React.memo(
 
     return (
       <>
-        {contextHolder}
         <div className={styles.deleteWorkout}>
           <ResetButton icon={<DeleteOutlined />} onClick={confirmDelete}>
             {t("deleteWorkout")}
