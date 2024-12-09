@@ -29,7 +29,7 @@ export const Calculator: React.FC = React.memo(() => {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <SubTitle children={t("weightCalculator")} className={styles.header} />
       <motion.div
         ref={ref}
@@ -40,7 +40,7 @@ export const Calculator: React.FC = React.memo(() => {
       >
         {t("indicateWeightAndReps")}
       </motion.div>
-      <div className={styles.container}>
+      <div>
         <InputContainer
           reps={reps}
           setReps={setReps}
@@ -58,6 +58,6 @@ export const Calculator: React.FC = React.memo(() => {
           icon={<SyncOutlined />}
         />
       </div>
-    </>
+    </div>
   );
 });

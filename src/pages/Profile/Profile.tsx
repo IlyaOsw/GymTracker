@@ -6,6 +6,7 @@ import { UserProvider } from "../../context/UserContext";
 import { Diary } from "./Diary/Diary";
 import { Calculator } from "./Calculator/Calculator";
 import { Information } from "./Information/Information";
+import { Goal } from "./Goal/Goal";
 
 const Profile: React.FC = () => {
   useEffect(() => {
@@ -16,6 +17,7 @@ const Profile: React.FC = () => {
     <UserProvider>
       <PageWrapper>
         <Information />
+        {/* <Goal /> */}
         <Diary />
         <Calculator />
       </PageWrapper>

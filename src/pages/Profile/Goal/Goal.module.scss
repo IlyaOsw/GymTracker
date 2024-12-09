@@ -1,0 +1,71 @@
+.header {
+  margin: 50px 0px 0px 0px;
+  padding: 10px;
+}
+
+.info {
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+.container {
+  background-image: linear-gradient(to top, #141414, #202020);
+  margin: 40px 0px;
+  box-shadow:
+    inset 8px 0 8px -6px rgba(0, 0, 0, 0.2),
+    inset -8px 0 8px -6px rgba(0, 0, 0, 0.2);
+}
+
+.goalHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.weightInfo,
+.dateInfo {
+  flex: 1;
+}
+
+.infoBox {
+  margin-bottom: 25px;
+}
+
+.label {
+  font-weight: 600;
+  color: #0097b2;
+  display: block;
+  font-size: 1.2rem;
+}
+
+.value {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.progressText {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.actionButtons {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.progressBar span {
+  color: #ffffff !important;
+}
+
+.progressBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

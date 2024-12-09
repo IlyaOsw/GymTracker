@@ -254,5 +254,13 @@
   "messageSended": "Your message has been successfully sent!",
   "noFavoriteExercises": "Your list is currently empty.",
   "maxReps100": "Maximum number of repetitions is 100",
-  "maxWeight1000": "Maximum weight is 1000 kg"
+  "maxWeight1000": "Maximum weight is 1000 kg",
+  "goalTracker": "Goal tracker",
+  "trackProgress": "Track your progress",
+  "startWeight": "Start Weight",
+  "startDate": "Start Date",
+  "goalWeight": "Goal weight",
+  "endDate": "End date",
+  "progress": "Progress",
+  "current": "Current"
 }
