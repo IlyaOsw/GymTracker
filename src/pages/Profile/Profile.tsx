@@ -17,7 +17,7 @@ const Profile: React.FC = () => {
     <UserProvider>
       <PageWrapper>
         <Information />
-        {/* <Goal /> */}
+        <Goal />
         <Diary />
         <Calculator />
       </PageWrapper>

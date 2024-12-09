@@ -443,3 +443,13 @@ export type DataTablePropsType = {
   repsInputRef: LegacyRef<HTMLInputElement> | undefined;
   setEditReps: (editReps: string | null) => void;
 };
+
+export interface IGoalData {
+  id: string;
+  goal: string;
+  startWeight: number;
+  startDate: string;
+  goalWeight: number;
+  endDate: string;
+  currentValue: number;
+}

@@ -257,11 +257,11 @@
 "maxReps100": "Maksimaalne korduste arv on 100",
 "maxWeight1000": "Maksimaalne kaal on 1000 kg",
 "goalTracker": "Eesmärgi jälgija",
-"trackProgress": "Jälgi oma edusamme",
 "startWeight": "Algkaal",
 "startDate": "Alguskuupäev",
 "goalWeight": "Eesmärgi kaal",
 "endDate": "Lõppkuupäev",
-"progress": "Edukad sammud",
-"current": "Praegune"
+"current": "Praegune tulemus",
+"trackProgress": "Liikuge edasi, üks eesmärk korraga",
+"Describe your goal": "Kirjeldage oma eesmärki"
 }
