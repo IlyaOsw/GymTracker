@@ -74,7 +74,9 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
 
             if (workouts.length > 0) {
               const latestWorkout = workouts[workouts.length - 1];
-              const workoutDate = new Date(latestWorkout.date).toLocaleString();
+              const workoutDate = new Date(
+                latestWorkout.date
+              ).toLocaleDateString();
 
               setWorkoutDate(workoutDate);
               const approaches = latestWorkout.approaches || [];
@@ -196,7 +198,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
     const handleWorkoutDateChange = useCallback(
       (date: string) => {
         const workoutDate = new Date(date);
-        const formattedDate = workoutDate.toLocaleString();
+        const formattedDate = workoutDate.toLocaleDateString();
         if (!isNaN(workoutDate.getTime())) {
           setWorkoutDate(formattedDate);
           setCurrentWorkout(false);
@@ -220,7 +222,8 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
             />
             {currentWorkout ? (
               <div className={styles.dateWorkout}>
-                {t("workoutDate")}: {new Date().toLocaleDateString()}
+                {t("workoutDate")}:
+                <span>{new Date().toLocaleDateString()}</span>
               </div>
             ) : (
               <div className={styles.dateWorkout}>

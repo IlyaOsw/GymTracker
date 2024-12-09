@@ -8,7 +8,6 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
-import { message } from "antd";
 import { getAuth } from "firebase/auth";
 
 import { ResetButton } from "../../../../components/ResetButton/ResetButton";
@@ -45,7 +44,7 @@ export const DeleteWorkout: React.FC<IDeleteWorkoutProps> = React.memo(
           const workouts = documentData.workouts || [];
           const filteredWorkouts = workouts.filter(
             (workout: { date: string | number | Date }) =>
-              new Date(workout.date).toLocaleString() !== workoutDate
+              new Date(workout.date).toLocaleDateString() !== workoutDate
           );
           await updateDoc(setDocRef, { workouts: filteredWorkouts });
 
@@ -55,11 +54,7 @@ export const DeleteWorkout: React.FC<IDeleteWorkoutProps> = React.memo(
           setActiveCardId(null);
           scrollToTop();
           setIsModalOpen(false);
-
-          message.success({
-            key: "limit-success",
-            content: t("workoutDeleted"),
-          });
+          ClosableMessage({ type: "success", content: t("workoutDeleted") });
         }
       } catch (error) {
         ClosableMessage({ type: "error", content: t("errorDeletingWorkout") });

@@ -64,14 +64,9 @@ export const LastWorkout: React.FC = React.memo(() => {
               (a, b) => new Date(b).getTime() - new Date(a).getTime()
             );
             const latestWorkoutDate = allWorkoutDates[0];
-            const formattedDate = new Date(latestWorkoutDate).toLocaleString(
-              "ru-RU",
-              {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-              }
-            );
+            const formattedDate = new Date(
+              latestWorkoutDate
+            ).toLocaleDateString();
             setLastWorkoutDate(formattedDate);
           } else {
             setLastWorkoutDate(null);
