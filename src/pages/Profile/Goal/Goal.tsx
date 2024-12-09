@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ConfigProvider, Progress } from "antd";
 import { Flex } from "antd";
 import { useTranslation } from "react-i18next";
@@ -20,7 +20,7 @@ export const Goal: React.FC = React.memo(() => {
 
   const startWeight = 420;
   const goalWeight = 430;
-  const [currentWeight, setCurrentWeight] = useState(startWeight);
+  const [currentWeight] = useState(startWeight);
   const [stepsCount] = useState(8);
 
   const progress = Math.min(
