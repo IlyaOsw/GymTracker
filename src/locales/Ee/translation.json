@@ -263,5 +263,9 @@
 "endDate": "Lõppkuupäev",
 "current": "Praegune tulemus",
 "trackProgress": "Liikuge edasi, üks eesmärk korraga",
-"Describe your goal": "Kirjeldage oma eesmärki"
+"Describe your goal": "Kirjeldage oma eesmärki",
+"setGoalDescription": "Seadke endale eesmärk",
+"startWeightPh": "Sisestage algkaal",
+"goalWeightPh": "Sisestage sihtkaal",
+"goalTitle": "Eesmärk"
 }

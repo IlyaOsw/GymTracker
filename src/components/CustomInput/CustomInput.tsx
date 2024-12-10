@@ -8,7 +8,7 @@ import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./CustomInput.module.scss";
 
-export const CustomInput: React.FC<ICustomInputProps> = ({
+export const CustomInput = <T extends string | number = string>({
   name,
   text,
   placeholder,
@@ -16,14 +16,19 @@ export const CustomInput: React.FC<ICustomInputProps> = ({
   className,
   onChange,
   value,
-}) => {
+}: ICustomInputProps<T>) => {
   const { ref, controls } = useAnimatedInView();
   const { t } = useTranslation();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
+    let inputValue: T = e.target.value as T;
+
+    if (typeof value === "number" && !isNaN(Number(e.target.value))) {
+      inputValue = Number(e.target.value) as T;
+    }
+
     if (onChange) {
-      onChange(value);
+      onChange(inputValue);
     }
   };
 
@@ -45,7 +50,7 @@ export const CustomInput: React.FC<ICustomInputProps> = ({
           className={`${styles.inputField} ${className}`}
           allowClear
           onChange={handleChange}
-          value={value}
+          value={value?.toString()} // Преобразование числа в строку, если нужно
           autoComplete="off"
         />
       </Form.Item>

@@ -262,5 +262,9 @@
   "endDate": "End date",
   "current": "Current result",
   "trackProgress": "Keep moving forward, one goal at a time",
-  "Describe your goal": "Describe your goal"
+  "Describe your goal": "Describe your goal",
+  "setGoalDescription": "Set yourself a goal",
+  "startWeightPh": "Enter starting weight",
+  "goalWeightPh": "Enter target weight",
+  "goalTitle": "Goal"
 }

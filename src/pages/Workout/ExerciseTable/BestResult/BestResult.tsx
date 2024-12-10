@@ -137,18 +137,19 @@ export const BestResult: React.FC<IBestResultProps> = React.memo(
           <>
             {editMode ? (
               <>
-                <div className={styles.wrapper}>
+                <div className={styles.editWrapper}>
                   <div className={styles.container}>
+                    <span>{t("userWeight")}</span>
                     <NumericInput value={weight} onChange={setWeight} />
                     <span>{t("kg")}</span>
                   </div>
                   <div className={styles.container}>
+                    <span>{t("reps")}</span>
                     <NumericInput
                       value={reps}
                       onChange={setReps}
                       onBlur={handleSave}
                     />
-                    <span>{t("bestResultReps")}</span>
                   </div>
                 </div>
                 <SettingButton

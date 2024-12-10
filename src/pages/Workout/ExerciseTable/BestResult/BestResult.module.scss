@@ -68,3 +68,23 @@
     }
   }
 }
+
+.editWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-top: 1px solid #535353;
+  height: 150px;
+  // border: 1px solid red;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  span {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin: 0px 10px;
+  }
+}
