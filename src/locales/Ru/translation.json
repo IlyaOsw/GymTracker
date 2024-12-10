@@ -267,5 +267,7 @@
   "setGoalDescription": "Поставьте себе цель",
   "startWeightPh": "Укажите начальный вес",
   "goalWeightPh": "Укажите целевой вес",
-  "goalTitle": "Цель"
+  "goalTitle": "Цель",
+  "currentPh": "Укажите текующий результат",
+  "setGoal": "Поставить цель"
 }

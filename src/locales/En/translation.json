@@ -256,15 +256,17 @@
   "maxReps100": "Maximum number of repetitions is 100",
   "maxWeight1000": "Maximum weight is 1000 kg",
   "goalTracker": "Goal tracker",
-  "startWeight": "Start Weight",
-  "startDate": "Start Date",
+  "startWeight": "Start weight",
+  "startDate": "Start date",
   "goalWeight": "Goal weight",
   "endDate": "End date",
   "current": "Current result",
   "trackProgress": "Keep moving forward, one goal at a time",
   "Describe your goal": "Describe your goal",
   "setGoalDescription": "Set yourself a goal",
+  "setGoal": "Set goal",
   "startWeightPh": "Enter starting weight",
   "goalWeightPh": "Enter target weight",
-  "goalTitle": "Goal"
+  "goalTitle": "Goal",
+  "currentPh": "Enter current result"
 }

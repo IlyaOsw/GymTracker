@@ -1,13 +1,10 @@
 .container {
   background-image: linear-gradient(to top, #141414, #202020);
   padding: 10px;
+  margin-top: 50px;
   box-shadow:
     inset 8px 0 8px -6px rgba(0, 0, 0, 0.2),
     inset -8px 0 8px -6px rgba(0, 0, 0, 0.2);
-  letter-spacing: 1px;
-}
-
-.info {
   font-size: 1.2rem;
 }
 
@@ -28,7 +25,7 @@
 
 .label {
   font-weight: 600;
-  color: #0097b2;
+
   display: block;
   font-size: 1.1rem;
 }
@@ -36,15 +33,19 @@
 .value {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #0097b2;
 }
 
 .progressText {
   font-size: 1.1rem;
   margin-top: 10px;
   font-weight: 600;
-  color: #0097b2;
   border-top: 1px solid gray;
+
+  .progressValue {
+    color: #0097b2;
+    font-weight: 600;
+  }
 }
 
 .actionButtons {
@@ -61,6 +62,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  @media (max-width: 480px) {
+    max-width: 130px;
+  }
 }
 
 .editTitle {
@@ -89,9 +94,5 @@
 }
 
 .startBlock {
-  margin-bottom: 50px;
-}
-
-.goaltitle {
   margin-bottom: 20px;
 }

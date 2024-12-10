@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Divider } from "antd";
 
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { UserProvider } from "../../context/UserContext";
@@ -17,8 +18,9 @@ const Profile: React.FC = () => {
     <UserProvider>
       <PageWrapper>
         <Information />
-        <Goal />
         <Diary />
+        <Goal />
+        <Divider style={{ backgroundColor: "gray" }} />
         <Calculator />
       </PageWrapper>
     </UserProvider>

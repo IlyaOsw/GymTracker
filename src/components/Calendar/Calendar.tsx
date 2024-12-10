@@ -3,7 +3,7 @@ import { ConfigProvider, DatePicker } from "antd";
 import React from "react";
 import dayjs, { Dayjs } from "dayjs";
 import { useTranslation } from "react-i18next";
-import { RangePickerProps } from "antd/es/date-picker";
+
 import { motion } from "framer-motion";
 
 import { ICalendar } from "../../types/types";
@@ -15,13 +15,10 @@ export const Calendar: React.FC<ICalendar> = ({
   className,
   value,
   onChange,
+  disabledDate,
 }) => {
   const { ref, controls } = useAnimatedInView();
   const { t } = useTranslation();
-
-  const disabledDate: RangePickerProps["disabledDate"] = (current) => {
-    return current && current >= dayjs().endOf("day");
-  };
 
   const handleChange = (date: Dayjs | null) => {
     if (onChange && date) {
@@ -55,7 +52,7 @@ export const Calendar: React.FC<ICalendar> = ({
       >
         <DatePicker
           format={{
-            format: "YYYY-MM-DD",
+            format: "DD.MM.YYYY",
             type: "mask",
           }}
           showNow={false}
@@ -63,8 +60,8 @@ export const Calendar: React.FC<ICalendar> = ({
           value={value ? dayjs(value) : null}
           placeholder={t("selectDate")}
           suffixIcon={<CalendarOutlined />}
-          disabledDate={disabledDate}
           onChange={handleChange}
+          disabledDate={disabledDate}
         />
       </ConfigProvider>{" "}
     </motion.div>

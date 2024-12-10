@@ -12,6 +12,7 @@ import {
   animation,
   useAnimatedInView,
 } from "../../../hooks/useAnimatedInView ";
+import { disabledDate } from "../../../utils/disabledDate";
 
 const { Option } = Select;
 
@@ -93,7 +94,10 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
               <span className={styles.inputLabel}>{t("dateOfBirth")}</span>
             }
           >
-            <Calendar onChange={handleDateOfBirthChange} />
+            <Calendar
+              onChange={handleDateOfBirthChange}
+              disabledDate={disabledDate}
+            />
           </Form.Item>
         </div>
       </div>

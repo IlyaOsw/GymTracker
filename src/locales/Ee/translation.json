@@ -267,5 +267,7 @@
 "setGoalDescription": "Seadke endale eesmärk",
 "startWeightPh": "Sisestage algkaal",
 "goalWeightPh": "Sisestage sihtkaal",
-"goalTitle": "Eesmärk"
+"goalTitle": "Eesmärk",
+"currentPh": "Sisetage praegune tulemus",
+"setGoal": "Sea eesmärk"
 }

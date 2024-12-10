@@ -16,6 +16,7 @@ import { ClosableMessage } from "../../../../../components/ClosableMessage/Closa
 import { SportSelect } from "../../../../../components/SportSelect/SportSelect";
 import { calculateAge } from "../../../../../utils/calculateAge";
 import { useUserContext } from "../../../../../context/UserContext";
+import { disabledDate } from "../../../../../utils/disabledDate";
 
 const countryOptions = countries().getData();
 
@@ -188,6 +189,7 @@ export const EditForm: React.FC<EditFormPropsType> = React.memo(
             <Calendar
               value={dateOfBirth || null}
               onChange={handleDateOfBirthChange}
+              disabledDate={disabledDate}
             />
           </Form.Item>
           <CustomButton

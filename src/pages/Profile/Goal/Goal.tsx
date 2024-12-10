@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { ConfigProvider, Divider, Progress } from "antd";
+import { ConfigProvider, Progress } from "antd";
 import { Flex } from "antd";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
 import { FormOutlined, RiseOutlined, SyncOutlined } from "@ant-design/icons";
 import { getAuth } from "firebase/auth";
 import {
@@ -15,10 +14,6 @@ import {
 import { v4 as uuidv4 } from "uuid";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
-import {
-  animation,
-  useAnimatedInView,
-} from "../../../hooks/useAnimatedInView ";
 import { CustomButton } from "../../../components/CustomButton/CustomButton";
 import { IGoalData } from "../../../types/types";
 import { CustomModal } from "../../../components/CustomModal/CustomModal";
@@ -30,12 +25,12 @@ import styles from "./Goal.module.scss";
 export const Goal: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const user = getAuth().currentUser;
-  const { ref, controls } = useAnimatedInView();
   const [goalData, setGoalData] = useState<IGoalData>();
   const [editMode, setEditMode] = useState<boolean>(false);
   const [stepsCount] = useState(8);
 
   const [goal, setGoal] = useState<string>();
+  const [currentValue, setCurrentValue] = useState<number>();
   const [startWeight, setStartWeight] = useState<number | undefined>();
   const [startDate, setStartDate] = useState<string | undefined>();
   const [goalWeight, setGoalWeight] = useState<number | undefined>();
@@ -63,7 +58,7 @@ export const Goal: React.FC = React.memo(() => {
     };
 
     fetchGoal();
-  }, []);
+  }, [user]);
 
   const handleSetGoal = async () => {
     try {
@@ -79,8 +74,6 @@ export const Goal: React.FC = React.memo(() => {
 
       const goalRef = doc(collection(getFirestore(), "goals"), user?.uid);
       await setDoc(goalRef, newGoalData);
-
-      console.log("Goal successfully created:", newGoalData);
 
       setGoalData(newGoalData);
     } catch (error) {
@@ -99,6 +92,8 @@ export const Goal: React.FC = React.memo(() => {
 
   const handleEditMode = () => {
     if (goalData) {
+      setGoal(goalData.goal);
+      setCurrentValue(goalData.currentValue);
       setStartWeight(goalData.startWeight);
       setStartDate(goalData.startDate);
       setGoalWeight(goalData.goalWeight);
@@ -118,7 +113,7 @@ export const Goal: React.FC = React.memo(() => {
         startDate: startDate || "",
         goalWeight: goalWeight || 0,
         endDate: endDate || "",
-        currentValue: 0,
+        currentValue: currentValue || 0,
       };
 
       if (!user?.uid) {
@@ -131,19 +126,22 @@ export const Goal: React.FC = React.memo(() => {
 
       setGoalData(updatedGoalData);
       setEditMode(false);
-      console.log(updatedGoalData);
     } catch (error) {
       console.error(error);
     }
   };
-
+  const parseDate = (dateString: string): Date | undefined => {
+    const [day, month, year] = dateString.split(".").map(Number);
+    if (!day || !month || !year) return undefined;
+    return new Date(year, month - 1, day);
+  };
   return (
     <>
       <div className={styles.container}>
         <SubTitle>{t("goalTracker")}</SubTitle>
         {goalData ? (
           <>
-            <div className={styles.info}>{t(goalData?.goal)}</div>
+            <div>{t(goalData?.goal)}</div>
             <div className={styles.details}>
               <div className={styles.weightInfo}>
                 <div className={styles.infoBox}>
@@ -177,9 +175,12 @@ export const Goal: React.FC = React.memo(() => {
                     />
                   </ConfigProvider>
                 </Flex>
-                <p className={styles.progressText}>
-                  {t("current")} {goalData?.currentValue} {t("kg")}
-                </p>
+                <div className={styles.progressText}>
+                  {t("current")}
+                  <p className={styles.progressValue}>
+                    {goalData?.currentValue} {t("kg")}
+                  </p>
+                </div>
               </div>
               <div className={styles.dateInfo}>
                 <div className={styles.infoBox}>
@@ -214,17 +215,19 @@ export const Goal: React.FC = React.memo(() => {
       {editMode && (
         <CustomModal open={editMode} footer={null} onCancel={handleCancel}>
           <div className={styles.editTitle}>{t("setGoalDescription")}</div>
-
           <div className={styles.modal}>
-            <div className={styles.goaltitle}>
-              <CustomInput
-                text={t("goalTitle")}
-                placeholder={t("Describe your goal")}
-                value={goal}
-                onChange={(value) => setGoal(value)}
-              />
-            </div>
-
+            <CustomInput
+              text={t("goalTitle")}
+              placeholder={t("Describe your goal")}
+              value={goal}
+              onChange={(value) => setGoal(value)}
+            />
+            <CustomInput
+              text={t("current")}
+              placeholder={t("currentPh")}
+              value={currentValue}
+              onChange={(value) => setCurrentValue(value)}
+            />
             <CustomInput
               text={t("startWeight")}
               placeholder={t("startWeightPh")}
@@ -234,10 +237,16 @@ export const Goal: React.FC = React.memo(() => {
             <div className={styles.startBlock}>
               <span className={styles.inputLabel}>{t("startDate")}</span>
               <Calendar
-                value={new Date(startDate || "")}
-                onChange={(value: Date) =>
-                  setStartDate(value.toISOString().split("T")[0])
-                }
+                value={startDate ? parseDate(startDate) : undefined}
+                onChange={(value: Date) => {
+                  setStartDate(
+                    value.toLocaleDateString("ru-RU", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    })
+                  );
+                }}
               />
             </div>
             <CustomInput<number>
@@ -249,10 +258,16 @@ export const Goal: React.FC = React.memo(() => {
             <div>
               <span className={styles.inputLabel}>{t("endDate")}</span>
               <Calendar
-                value={new Date(endDate || "")}
-                onChange={(value: Date) =>
-                  setEndDate(value.toISOString().split("T")[0])
-                }
+                value={endDate ? parseDate(endDate) : undefined}
+                onChange={(value: Date) => {
+                  setEndDate(
+                    value.toLocaleDateString("ru-RU", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    })
+                  );
+                }}
               />
             </div>
             <CustomButton
