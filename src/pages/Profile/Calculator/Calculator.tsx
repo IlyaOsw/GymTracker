@@ -52,11 +52,13 @@ export const Calculator: React.FC = React.memo(() => {
         <div className={styles.resultWeight}>
           {result} {t("kg")}
         </div>
-        <ResetButton
-          children={t("reset")}
-          onClick={handleReset}
-          icon={<SyncOutlined />}
-        />
+        <div className={styles.resetBtn}>
+          <ResetButton
+            children={t("reset")}
+            onClick={handleReset}
+            icon={<SyncOutlined />}
+          />
+        </div>
       </div>
     </div>
   );

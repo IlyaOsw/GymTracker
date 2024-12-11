@@ -7,8 +7,9 @@ import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 
 import { db } from "../../..";
 import { useUserContext } from "../../../context/UserContext";
-import { SettingButton } from "../../../components/SettingButton/SettingButton";
+import { CustomButton } from "../../../components/CustomButton/CustomButton";
 import { IUserData } from "../../../types/types";
+import { ResetButton } from "../../../components/ResetButton/ResetButton";
 
 import styles from "./Information.module.scss";
 import { UserInfo } from "./UserInfo/UserInfo";
@@ -99,15 +100,15 @@ export const Information: React.FC = React.memo(() => {
         <ProfileAside userData={userData} />
       </div>
       <div className={styles.buttons}>
-        <SettingButton icon={<EditOutlined />} onClick={handleEditProfile}>
-          <span>{t("editProfile")}</span>
-        </SettingButton>
-        <SettingButton
+        <ResetButton
           icon={<UserDeleteOutlined />}
           onClick={handleConfirmDelete}
         >
-          <span>{t("deleteAccount")}</span>
-        </SettingButton>
+          {t("delete")}
+        </ResetButton>
+        <CustomButton icon={<EditOutlined />} onClick={handleEditProfile}>
+          <span>{t("editProfile")}</span>
+        </CustomButton>
       </div>
       <Divider style={{ backgroundColor: "gray" }} />
       {edit && <EditProfile onClose={handleModalClose} />}

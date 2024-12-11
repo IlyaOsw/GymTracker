@@ -49,8 +49,10 @@
 }
 
 .actionButtons {
-  text-align: center;
-  margin: 30px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 25px;
 }
 
 .progressBar span {
@@ -95,4 +97,23 @@
 
 .startBlock {
   margin-bottom: 20px;
+}
+
+.numericInputBlock {
+  color: #ffffff;
+  font-size: 1.2rem;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.numericInput {
+  border-bottom: 1px solid #0097b2 !important;
+  height: 40px;
+  margin-bottom: 5px;
+  width: 260px;
+  padding: 4px 11px;
+  font-size: 1rem;
 }

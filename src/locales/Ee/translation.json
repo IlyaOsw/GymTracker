@@ -198,7 +198,7 @@
 "noDataToSave": "Salvestamiseks andmed puuduvad",
 "noDataToDelete": "Kustutamiseks andmed puuduvad",
 "saveTraining": "Salvesta treening",
-"deleteWorkout": "Kustuta treening",
+"deleteWorkout": "Kustuta",
 "workoutDeleted": "Treening kustutatud",
 "workoutNotFound": "Treeningut ei leitud",
 "errorDeletingWorkout": "Viga treeningu kustutamisel",

@@ -130,11 +130,13 @@ const SignUp: React.FC = () => {
           onCountryChange={handleCountryChange}
           onCityChange={handleCityChange}
         />
-        <ResetButton
-          children={t("resetForm")}
-          onClick={onReset}
-          icon={<SyncOutlined />}
-        />
+        <div className={styles.resetBtn}>
+          <ResetButton
+            children={t("resetForm")}
+            onClick={onReset}
+            icon={<SyncOutlined />}
+          />
+        </div>
       </PageWrapper>
       <CustomButton
         className={styles.signUpBtn}

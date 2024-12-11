@@ -50,7 +50,7 @@ export const CustomInput = <T extends string | number = string>({
           className={`${styles.inputField} ${className}`}
           allowClear
           onChange={handleChange}
-          value={value?.toString()} // Преобразование числа в строку, если нужно
+          value={value?.toString()}
           autoComplete="off"
         />
       </Form.Item>

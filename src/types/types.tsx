@@ -247,6 +247,8 @@ export interface INumericInputProps {
   value: string | undefined;
   onChange: (value: string) => void;
   onBlur?: () => void;
+  className?: string;
+  placeholder?: string;
 }
 
 export type ExerciseTablePropsType = {
@@ -448,9 +450,9 @@ export type DataTablePropsType = {
 export interface IGoalData {
   id: string;
   goal: string;
-  startWeight: number;
+  startWeight: string;
   startDate: string;
-  goalWeight: number;
+  goalWeight: string;
   endDate: string;
-  currentValue: number;
+  currentValue: string;
 }
