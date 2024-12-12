@@ -166,11 +166,11 @@
   "removedFromFavorite": "Успешно удалено из избранного",
   "errorFetchingFavoriteExercises": "Ошибка при загрузке избранных упражнений",
   "deleteAccount": "Удалить аккаунт",
-  "confirmDeletingFromFavorite": "Пожалуйста, подтвердите удаление из избранных упражнений",
+  "confirmDeletingFromFavorite": "Пожалуйста, подтвердите удаление из избранных упражнений.",
   "delete": "Удалить",
   "accountDeleted": "Аккаунт успешно удален",
   "confirmDeletingAccount": "Вы уверены, что хотите удалить свой аккаут безвозвратно?",
-  "confirmDeletingExercise": "Пожалуйста, подтвердите удаление упражнения",
+  "confirmDeletingExercise": "Пожалуйста, подтвердите удаление упражнения.",
   "clickToEdit": "Изменить",
   "noExerciseSelected": "Упражнение не выбрано",
   "errorLoadingExerciseData": "Ошибка загрузки данных упражнения",
@@ -202,7 +202,7 @@
   "workoutDeleted": "Тренировка удалена",
   "workoutNotFound": "Тренировка не найдена",
   "errorDeletingWorkout": "Ошибка при удалении тренировки",
-  "confirmDeletingWorkout": "Пожалуйста, подтвердите удаление тренировки",
+  "confirmDeletingWorkout": "Пожалуйста, подтвердите удаление тренировки.",
   "maxFavoritesReached": "Максимум 3 упражнения в избранном",
   "lastWorkout": "Был в зале",
   "noMoreThan15reps": "Максимальное число повторений 15",
@@ -269,5 +269,7 @@
   "goalWeightPh": "Укажите целевой вес",
   "goalTitle": "Цель",
   "currentPh": "Укажите текующий результат",
-  "setGoal": "Поставить цель"
+  "setGoal": "Поставить цель",
+  "close": "Закрыть",
+  "confrimDeleteGoal": "Пожалуйста, подтвердите удаление цели."
 }

@@ -166,11 +166,11 @@
 "removedFromFavorite": "Edukalt eemaldatud lemmikutest",
 "errorFetchingFavoriteExercises": "Viga lemmikharjutuste laadimisel",
 "deleteAccount": "Kustuta konto",
-"confirmDeletingFromFavorite": "Kinnitage harjutuse eemaldamine lemmikutest",
+"confirmDeletingFromFavorite": "Kinnitage harjutuse eemaldamine lemmikutest.",
 "delete": "Kustuta",
 "accountDeleted": "Konto edukalt kustutatud",
 "confirmDeletingAccount": "Kas olete kindel, et soovite oma konto jäädavalt kustutada?",
-"confirmDeletingExercise": "Kinnitage harjutuse kustutamine",
+"confirmDeletingExercise": "Kinnitage harjutuse kustutamine.",
 "clickToEdit": "Muuda",
 "noExerciseSelected": "Harjutust pole valitud",
 "errorLoadingExerciseData": "Viga harjutuse andmete laadimisel",
@@ -202,7 +202,7 @@
 "workoutDeleted": "Treening kustutatud",
 "workoutNotFound": "Treeningut ei leitud",
 "errorDeletingWorkout": "Viga treeningu kustutamisel",
-"confirmDeletingWorkout": "Kinnitage treeningu kustutamine",
+"confirmDeletingWorkout": "Kinnitage treeningu kustutamine.",
 "maxFavoritesReached": "Lemmikutes võib olla maksimaalselt 3 harjutust",
 "lastWorkout": "Viimane treening",
 "noMoreThan15reps": "Maksimaalselt 15 kordust",
@@ -269,5 +269,7 @@
 "goalWeightPh": "Sisestage sihtkaal",
 "goalTitle": "Eesmärk",
 "currentPh": "Sisetage praegune tulemus",
-"setGoal": "Sea eesmärk"
+"setGoal": "Sea eesmärk",
+"close": "Sulge",
+"confrimDeleteGoal": "Palun kinnitage eesmärgi kustutamine."
 }

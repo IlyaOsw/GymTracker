@@ -12,11 +12,9 @@ import { getAuth } from "firebase/auth";
 
 import { ResetButton } from "../../../../components/ResetButton/ResetButton";
 import { IDeleteWorkoutProps } from "../../../../types/types";
-import { CustomModal } from "../../../../components/CustomModal/CustomModal";
 import { scrollToTop } from "../../../../utils/scrollToTop";
 import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
-
-import styles from "./DeleteWorkout.module.scss";
+import { ConfirmDeleteModal } from "../../../../components/ConfirmDeleteModal/ConfirmDeleteModal";
 
 export const DeleteWorkout: React.FC<IDeleteWorkoutProps> = React.memo(
   ({
@@ -76,27 +74,17 @@ export const DeleteWorkout: React.FC<IDeleteWorkoutProps> = React.memo(
 
     return (
       <>
-        <div className={styles.deleteWorkout}>
+        <div style={{ margin: "50px" }}>
           <ResetButton icon={<DeleteOutlined />} onClick={confirmDelete}>
             {t("deleteWorkout")}
           </ResetButton>
         </div>
-        <CustomModal
-          open={isModalOpen}
-          onCancel={(e) => {
-            setIsModalOpen(false);
-          }}
-          footer={false}
-        >
-          <p className={styles.confirm}>{t("confirmDeletingWorkout")}</p>
-          <div className={styles.deleteBtn}>
-            <ResetButton
-              children={t("delete")}
-              onClick={deleteWorkout}
-              icon={<DeleteOutlined />}
-            />
-          </div>
-        </CustomModal>
+        <ConfirmDeleteModal
+          isModalOpen={isModalOpen}
+          text={t("confirmDeletingWorkout")}
+          onClick={deleteWorkout}
+          handleCancel={() => setIsModalOpen(false)}
+        />
       </>
     );
   }

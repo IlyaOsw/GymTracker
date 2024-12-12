@@ -239,8 +239,16 @@ export interface ICustomModalProps {
   open: boolean;
   onCancel: (e: { stopPropagation: () => void }) => void;
   footer?: React.ReactNode;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
+  isModalOpen?: boolean;
+}
+
+export interface IConfirmDeleteModal {
+  text: string;
+  onClick: (e: { stopPropagation: () => void }) => void;
+  isModalOpen: boolean;
+  handleCancel: (e: { stopPropagation: () => void }) => void;
 }
 
 export interface INumericInputProps {

@@ -166,11 +166,11 @@
   "removedFromFavorite": "Successfully removed from favorite",
   "errorFetchingFavoriteExercises": "Error fetching favorite exercises",
   "deleteAccount": "Delete account",
-  "confirmDeletingFromFavorite": "Please confirm deleting from favorite exercises",
+  "confirmDeletingFromFavorite": "Please confirm deleting from favorite exercises.",
   "delete": "Delete",
   "accountDeleted": "Account successfully deleted",
   "confirmDeletingAccount": "Are you sure you want to delete your account permanently?",
-  "confirmDeletingExercise": "Please confirm deleting exercise",
+  "confirmDeletingExercise": "Please confirm deleting exercise.",
   "clickToEdit": "Edit",
   "noExerciseSelected": "No exercise selected",
   "errorLoadingExerciseData": "Error loading exercise data",
@@ -202,7 +202,7 @@
   "workoutDeleted": "Workout deleted",
   "workoutNotFound": "Workout not found",
   "errorDeletingWorkout": "Error deleting workout",
-  "confirmDeletingWorkout": "Please confirm deleting workout",
+  "confirmDeletingWorkout": "Please confirm deleting workout.",
   "maxFavoritesReached": "Maximum of 3 favorite exercises allowed",
   "lastWorkout": "Last workout",
   "noMoreThan15reps": "The number of repetitions must not exceed 15",
@@ -268,5 +268,7 @@
   "startWeightPh": "Enter starting weight",
   "goalWeightPh": "Enter target weight",
   "goalTitle": "Goal",
-  "currentPh": "Enter current result"
+  "currentPh": "Enter current result",
+  "close": "Close",
+  "confrimDeleteGoal": "Please confirm deleting goal."
 }

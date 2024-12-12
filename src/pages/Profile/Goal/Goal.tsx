@@ -27,6 +27,7 @@ import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { Calendar } from "../../../components/Calendar/Calendar";
 import NumericInput from "../../../components/NumericInput/NumericInput";
 import { ResetButton } from "../../../components/ResetButton/ResetButton";
+import { ConfirmDeleteModal } from "../../../components/ConfirmDeleteModal/ConfirmDeleteModal";
 
 import styles from "./Goal.module.scss";
 
@@ -36,7 +37,7 @@ export const Goal: React.FC = React.memo(() => {
   const [goalData, setGoalData] = useState<IGoalData>();
   const [editMode, setEditMode] = useState<boolean>(false);
   const [stepsCount] = useState(10);
-
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [goal, setGoal] = useState<string>();
   const [currentValue, setCurrentValue] = useState<string>();
   const [startWeight, setStartWeight] = useState<string | undefined>();
@@ -148,7 +149,7 @@ export const Goal: React.FC = React.memo(() => {
 
     try {
       await deleteDoc(goalRef);
-
+      setIsModalOpen(false);
       setGoalData(undefined);
     } catch (error) {
       console.error(error);
@@ -158,6 +159,11 @@ export const Goal: React.FC = React.memo(() => {
     const [day, month, year] = dateString.split(".").map(Number);
     if (!day || !month || !year) return undefined;
     return new Date(year, month - 1, day);
+  };
+
+  const handleCloseModal = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    setIsModalOpen(false);
   };
 
   return (
@@ -220,14 +226,25 @@ export const Goal: React.FC = React.memo(() => {
                 </div>
               </div>
             </div>
-            <div className={styles.actionButtons}>
-              <ResetButton icon={<DeleteOutlined />} onClick={handleDeleteGoal}>
+            <div className={styles.trackerBtns}>
+              <ResetButton
+                icon={<DeleteOutlined />}
+                onClick={() => setIsModalOpen(true)}
+              >
                 {t("delete")}
               </ResetButton>
               <CustomButton icon={<FormOutlined />} onClick={handleEditMode}>
                 {t("edit")}
               </CustomButton>
             </div>
+            {isModalOpen && (
+              <ConfirmDeleteModal
+                isModalOpen={isModalOpen}
+                text={t("confrimDeleteGoal")}
+                onClick={handleDeleteGoal}
+                handleCancel={handleCloseModal}
+              />
+            )}
           </>
         ) : (
           <>

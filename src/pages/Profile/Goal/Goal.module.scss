@@ -48,7 +48,7 @@
   }
 }
 
-.actionButtons {
+.trackerBtns {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -116,4 +116,11 @@
   width: 260px;
   padding: 4px 11px;
   font-size: 1rem;
+}
+
+.actionButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px;
 }

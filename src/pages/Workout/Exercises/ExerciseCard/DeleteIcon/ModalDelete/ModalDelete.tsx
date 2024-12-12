@@ -1,5 +1,4 @@
 import React from "react";
-import { DeleteOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import {
   deleteDoc,
@@ -10,13 +9,11 @@ import {
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
-import { CustomModal } from "../../../../../../components/CustomModal/CustomModal";
-import { ResetButton } from "../../../../../../components/ResetButton/ResetButton";
 import { ModalDeletePropsType, IExercise } from "../../../../../../types/types";
 import { scrollToTop } from "../../../../../../utils/scrollToTop";
 
-import styles from "../DeleteIcon.module.scss";
 import { ClosableMessage } from "../../../../../../components/ClosableMessage/ClosableMessage";
+import { ConfirmDeleteModal } from "../../../../../../components/ConfirmDeleteModal/ConfirmDeleteModal";
 
 export const ModalDelete: React.FC<ModalDeletePropsType> = React.memo(
   ({
@@ -73,26 +70,15 @@ export const ModalDelete: React.FC<ModalDeletePropsType> = React.memo(
     };
 
     return (
-      <CustomModal
-        open={isModalOpen}
-        onCancel={(e) => {
-          handleCancel(e);
-          setIsModalOpen(false);
+      <ConfirmDeleteModal
+        text={t("confirmDeletingExercise")}
+        onClick={(e: { stopPropagation: () => void }) => {
+          e.stopPropagation();
+          handleDeleteCard(item.id);
         }}
-        footer={false}
-      >
-        <p className={styles.confirm}>{t("confirmDeletingExercise")}</p>
-        <div className={styles.deleteSave}>
-          <ResetButton
-            children={t("delete")}
-            onClick={(e) => {
-              e.stopPropagation();
-              handleDeleteCard(item.id);
-            }}
-            icon={<DeleteOutlined />}
-          />
-        </div>
-      </CustomModal>
+        isModalOpen={isModalOpen}
+        handleCancel={handleCancel}
+      />
     );
   }
 );

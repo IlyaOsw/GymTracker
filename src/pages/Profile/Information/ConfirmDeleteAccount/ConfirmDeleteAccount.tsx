@@ -1,5 +1,4 @@
 import React from "react";
-import { DeleteOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import { deleteUser, getAuth } from "firebase/auth";
@@ -8,12 +7,10 @@ import { deleteObject, getStorage, ref } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 
-import { CustomModal } from "../../../../components/CustomModal/CustomModal";
-import { ResetButton } from "../../../../components/ResetButton/ResetButton";
 import { ConfirmDeleteAccountPropsType } from "../../../../types/types";
 import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
 
-import styles from "./ConfirmDeleteAccount.module.scss";
+import { ConfirmDeleteModal } from "../../../../components/ConfirmDeleteModal/ConfirmDeleteModal";
 
 export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
   confirm,
@@ -69,15 +66,11 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
   };
 
   return (
-    <CustomModal open={confirm} onCancel={() => setConfirm(false)}>
-      <p className={styles.confirm}>{t("confirmDeletingAccount")}</p>
-      <div className={styles.delete}>
-        <ResetButton
-          children={t("delete")}
-          onClick={handleDeleteAccount}
-          icon={<DeleteOutlined />}
-        />
-      </div>
-    </CustomModal>
+    <ConfirmDeleteModal
+      isModalOpen={confirm}
+      text={t("confirmDeletingAccount")}
+      onClick={handleDeleteAccount}
+      handleCancel={() => setConfirm(false)}
+    />
   );
 };
