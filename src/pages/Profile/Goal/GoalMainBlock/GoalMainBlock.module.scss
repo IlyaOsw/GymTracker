@@ -1,0 +1,61 @@
+.details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.weightInfo,
+.dateInfo {
+  flex: 1;
+}
+
+.infoBox {
+  margin-bottom: 25px;
+}
+
+.label {
+  font-weight: 500;
+  display: block;
+  font-size: 1rem;
+}
+
+.value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0097b2;
+}
+
+.progressText {
+  font-size: 1.1rem;
+  margin-top: 10px;
+  font-weight: 500;
+  border-top: 1px solid gray;
+  min-width: 175px;
+
+  .progressValue {
+    color: #0097b2;
+    font-weight: 600;
+  }
+}
+
+.trackerBtns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 25px;
+}
+
+.progressBar span {
+  color: #ffffff !important;
+}
+
+.progressBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @media (max-width: 480px) {
+    max-width: 130px;
+  }
+}

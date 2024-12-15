@@ -1,5 +1,11 @@
 import { GetProp, MenuProps, ConfigProviderProps } from "antd";
-import { LegacyRef, MouseEventHandler, ReactNode, RefObject } from "react";
+import {
+  CSSProperties,
+  LegacyRef,
+  MouseEventHandler,
+  ReactNode,
+  RefObject,
+} from "react";
 
 export enum SocialLinks {
   LINKEDIN = "Linkedin",
@@ -90,6 +96,7 @@ export interface ICustomButtonProps {
   onClick?: MouseEventHandler<HTMLElement>;
   disabled?: boolean;
   htmlType?: "button" | "submit" | "reset" | undefined;
+  style?: CSSProperties | undefined;
 }
 
 export interface IDescriptionTitleAndText {
@@ -464,3 +471,38 @@ export interface IGoalData {
   endDate: string;
   currentValue: string;
 }
+
+export type EditGoalPropsType = {
+  editMode: boolean;
+  goal: string | undefined;
+  setGoal: (value: string) => void;
+  currentValue: string | undefined;
+  setCurrentValue: (value: string) => void;
+  startWeight: string | undefined;
+  setStartWeight: (value: string) => void;
+  startDate: string | undefined;
+  setStartDate: (value: string) => void;
+  goalWeight: string | undefined;
+  setGoalWeight: (value: string) => void;
+  endDate: string | undefined;
+  setEndDate: (value: string) => void;
+  setEditMode: (value: boolean) => void;
+  goalData: IGoalData | undefined;
+  setGoalData: (value: IGoalData | undefined) => void;
+};
+
+export type GoalInitialBlockPropsType = {
+  setGoalData: (value: IGoalData | undefined) => void;
+};
+
+export type MainBlockPropsType = {
+  goalData: IGoalData | undefined;
+  setGoalData: (value: IGoalData | undefined) => void;
+  setGoal: (value: string) => void;
+  setCurrentValue: (value: string) => void;
+  setStartWeight: (value: string) => void;
+  setStartDate: (value: string) => void;
+  setGoalWeight: (value: string) => void;
+  setEndDate: (value: string) => void;
+  setEditMode: (value: boolean) => void;
+};
