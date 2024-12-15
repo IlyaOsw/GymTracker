@@ -24,10 +24,9 @@
 }
 
 .label {
-  font-weight: 600;
-
+  font-weight: 500;
   display: block;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .value {
@@ -39,8 +38,9 @@
 .progressText {
   font-size: 1.1rem;
   margin-top: 10px;
-  font-weight: 600;
+  font-weight: 500;
   border-top: 1px solid gray;
+  min-width: 175px;
 
   .progressValue {
     color: #0097b2;
