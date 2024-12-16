@@ -30,9 +30,7 @@ export const Information: React.FC = React.memo(() => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        loadUserPhotos(user);
-      }
+      if (user) loadUserPhotos(user);
     });
     return () => unsubscribe();
   }, [auth]);
@@ -48,10 +46,8 @@ export const Information: React.FC = React.memo(() => {
       }
       setLoading(false);
     };
-
     const unsubscribe = onAuthStateChanged(auth, fetchData);
     fetchData(auth.currentUser);
-
     return () => unsubscribe();
   }, [auth, updateUserData]);
 
@@ -68,13 +64,8 @@ export const Information: React.FC = React.memo(() => {
     }
   };
 
-  const handleEditProfile = () => setEdit(true);
-  const handleModalClose = () => setEdit(false);
-  const handleConfirmDelete = () => setConfirm(true);
-
   const loadUserPhotos = async (user: User) => {
     const docSnap = await getDoc(doc(db, "users", user.uid));
-
     if (docSnap.exists()) {
       const userData = docSnap.data() as IUserData;
       setUserData(userData);
@@ -102,16 +93,16 @@ export const Information: React.FC = React.memo(() => {
       <div className={styles.buttons}>
         <ResetButton
           icon={<UserDeleteOutlined />}
-          onClick={handleConfirmDelete}
+          onClick={() => setConfirm(true)}
         >
           {t("delete")}
         </ResetButton>
-        <CustomButton icon={<EditOutlined />} onClick={handleEditProfile}>
-          <span>{t("editProfile")}</span>
+        <CustomButton icon={<EditOutlined />} onClick={() => setEdit(true)}>
+          <span>{t("edit")}</span>
         </CustomButton>
       </div>
       <Divider style={{ backgroundColor: "gray" }} />
-      {edit && <EditProfile onClose={handleModalClose} />}
+      {edit && <EditProfile onClose={() => setEdit(false)} />}
       {confirm && (
         <ConfirmDeleteAccount confirm={confirm} setConfirm={setConfirm} />
       )}

@@ -24,6 +24,12 @@
     flex-direction: column;
   }
 
+  .weight {
+    svg {
+      color: #ffffff;
+    }
+  }
+
   .weight,
   .reps {
     height: 46px;
