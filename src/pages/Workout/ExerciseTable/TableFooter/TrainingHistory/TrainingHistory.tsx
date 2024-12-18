@@ -13,8 +13,7 @@ export const TrainingHistory: React.FC<TrainingHistoryPropsType> = React.memo(
     const { t } = useTranslation();
 
     const formatDate = (dateString: string) => {
-      const date = new Date(dateString);
-      return date.toLocaleDateString();
+      return new Date(dateString).toLocaleDateString();
     };
 
     const sortedData = workoutDates

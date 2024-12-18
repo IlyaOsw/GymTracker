@@ -197,7 +197,7 @@
   "noDataToSave": "No data to save",
   "noDataToDelete": "No data to delete",
   "saveTraining": "Save training",
-  "deleteWorkout": "Delete workout",
+  "deleteWorkout": "Delete",
   "workoutDeleted": "Workout deleted",
   "workoutNotFound": "Workout not found",
   "errorDeletingWorkout": "Error deleting workout",

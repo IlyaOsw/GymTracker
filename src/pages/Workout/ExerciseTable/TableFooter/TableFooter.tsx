@@ -7,7 +7,13 @@ import {
   CheckOutlined,
 } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getFirestore,
+  writeBatch,
+} from "firebase/firestore";
 
 import { CustomButton } from "../../../../components/CustomButton/CustomButton";
 import {
@@ -54,9 +60,10 @@ export const TableFooter: React.FC<TableFooterPropsType> = React.memo(
 
         if (selectedExercise) {
           const setsCollectionRef = collection(getFirestore(), "sets");
-          const setDocRef = doc(setsCollectionRef, selectedExercise.id);
           try {
-            const docSnapshot = await getDoc(setDocRef);
+            const docSnapshot = await getDoc(
+              doc(setsCollectionRef, selectedExercise.id)
+            );
             if (docSnapshot.exists()) {
               const workoutsData = docSnapshot.data()?.workouts || [];
 
@@ -112,7 +119,37 @@ export const TableFooter: React.FC<TableFooterPropsType> = React.memo(
       setEditWeight(newRow.key);
     };
 
-    const startNewTraining = () => {
+    const removeOldestWorkout = async () => {
+      if (!selectedExercise) return;
+
+      const setDocRef = doc(
+        collection(getFirestore(), "sets"),
+        selectedExercise.id
+      );
+
+      try {
+        const docSnapshot = await getDoc(setDocRef);
+
+        if (docSnapshot.exists()) {
+          const workouts = docSnapshot.data()?.workouts || [];
+
+          if (workouts.length >= 5) {
+            const updatedWorkouts = workouts.slice(1);
+
+            const batch = writeBatch(getFirestore());
+            batch.update(setDocRef, { workouts: updatedWorkouts });
+            await batch.commit();
+            setData(updatedWorkouts);
+          }
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const startNewTraining = async () => {
+      await removeOldestWorkout();
+
       setData([]);
       setAddRowBtn(true);
       setSaveBtn(true);

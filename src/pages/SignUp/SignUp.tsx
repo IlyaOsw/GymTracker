@@ -39,13 +39,13 @@ const SignUp: React.FC = () => {
   const [city, setCity] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
 
-  const exercises = useSelector(
-    (state: { exercises: IExercise[] }) => state.exercises
-  );
-
   useEffect(() => {
     scrollToTop();
   }, []);
+
+  const exercises = useSelector(
+    (state: { exercises: IExercise[] }) => state.exercises
+  );
 
   const onReset = () => {
     form.resetFields();
