@@ -1,58 +1,75 @@
 .container {
-  margin: -10px 10px 50px 0px;
-}
+  margin: -10px 10px 50px 10px;
 
-.collapse {
-  width: 100%;
-  background-image: linear-gradient(to bottom, #303030, #181818);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: start;
-
-  p {
-    font-size: 1rem;
-    color: #ffffff;
-    font-weight: 600;
-
-    span {
-      font-size: 1.2rem;
-      color: #0097b2;
-      font-weight: 600;
-    }
+  .numberWrapper {
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, #303030, #181818);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 26px;
+    height: 26px;
+    margin: 0px 10px 0px 5px;
   }
 
-  svg {
-    color: #ffffff;
-    font-size: 1rem;
-    margin-top: 10px;
-    transition: color 0.3s ease;
-  }
-
-  img {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-.historyWorkout {
-  font-size: 1rem;
-  letter-spacing: 1px;
-  color: #ffffff;
-
-  table {
+  .collapse {
     width: 100%;
-    border-collapse: collapse;
+    background-image: linear-gradient(to bottom, #303030, #181818);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: start;
 
-    th {
-      border-bottom: 1px solid #535353;
+    p {
+      font-size: 1rem;
+      color: #ffffff;
       font-weight: 600;
+
+      span {
+        font-size: 1.1rem;
+        color: #0097b2;
+        font-weight: 600;
+      }
     }
 
-    td {
-      text-align: center;
-      padding: 4px;
+    svg {
+      color: #ffffff;
+      font-size: 1rem;
+      margin-top: 10px;
+      transition: color 0.3s ease;
     }
-    tr:not(:last-child) {
-      border-bottom: 1px solid #353535;
+
+    img {
+      width: 24px;
+      height: 24px;
     }
+  }
+
+  .historyWorkout {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: #ffffff;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th {
+        border-bottom: 1px solid #535353;
+        font-weight: 600;
+      }
+
+      td {
+        text-align: center;
+        padding: 4px;
+      }
+      tr:not(:last-child) {
+        border-bottom: 1px solid #353535;
+      }
+    }
+  }
+
+  .trainingHistory {
+    padding: 10px;
+    font-size: 1rem;
   }
 }

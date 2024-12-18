@@ -270,5 +270,6 @@
 "currentPh": "Sisetage praegune tulemus",
 "setGoal": "Sea eesmärk",
 "close": "Sulge",
-"confrimDeleteGoal": "Palun kinnitage eesmärgi kustutamine."
+"confrimDeleteGoal": "Palun kinnitage eesmärgi kustutamine.",
+"limitTrainingHistory": "Ajalugu kuvab maksimaalselt 5 viimast treeningut."
 }

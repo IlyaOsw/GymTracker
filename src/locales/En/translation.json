@@ -225,6 +225,7 @@
   "cm": "cm",
   "notValidData": "Not valid data",
   "workoutFor": "Workout for",
+  "next": "Next",
   "passwordNotMatch": "The new password that you entered do not match!",
   "sport": "Sport",
   "selectSport": "Select sport",
@@ -269,5 +270,6 @@
   "goalTitle": "Goal",
   "currentPh": "Enter current result",
   "close": "Close",
-  "confrimDeleteGoal": "Please confirm deleting goal."
+  "confrimDeleteGoal": "Please confirm deleting goal.",
+  "limitTrainingHistory": "The history displays a maximum of the 5 most recent workouts."
 }

@@ -33,6 +33,7 @@ export const TrainingHistory: React.FC<TrainingHistoryPropsType> = React.memo(
       key: index.toString(),
       label: (
         <p onClick={scrollToBottom}>
+          <span className={styles.numberWrapper}>{index + 1}</span>
           {t("workoutFor")} <span> {formatDate(item.date)} </span>
         </p>
       ),
@@ -64,14 +65,19 @@ export const TrainingHistory: React.FC<TrainingHistoryPropsType> = React.memo(
     return (
       <div className={styles.container}>
         {showHistory && workouts.length > 0 && (
-          <Collapse
-            bordered={false}
-            expandIcon={({ isActive }) => (
-              <RightOutlined rotate={isActive ? 90 : 0} />
-            )}
-            items={items}
-            className={styles.collapse}
-          />
+          <>
+            <Collapse
+              bordered={false}
+              expandIcon={({ isActive }) => (
+                <RightOutlined rotate={isActive ? 90 : 0} />
+              )}
+              items={items}
+              className={styles.collapse}
+            />
+            <div className={styles.trainingHistory}>
+              {t("limitTrainingHistory")}
+            </div>
+          </>
         )}
       </div>
     );
