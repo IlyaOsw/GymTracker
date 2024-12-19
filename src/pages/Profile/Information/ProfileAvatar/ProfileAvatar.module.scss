@@ -2,7 +2,6 @@
   position: absolute;
   left: 15%;
   top: 75%;
-  background: rgb(103, 103, 103);
   border-radius: 50%;
 
   @media (max-width: 992px) {
@@ -40,6 +39,18 @@
       color: #0097b2 !important;
       border: 1px solid #0097b2 !important;
     }
+  }
+
+  .mask {
+    font-size: 1rem;
+    > span {
+      margin: 0px 3px;
+    }
+  }
+
+  div {
+    border-radius: 50% !important;
+    overflow: hidden;
   }
 }
 

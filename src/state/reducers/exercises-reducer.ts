@@ -48,7 +48,7 @@ const initialState: IExercise[] = [
       weight: "0",
       reps: "0",
     },
-    category: "Shoulders",
+    category: "Delts",
     id: uuidv4(),
     isFavorite: false,
     name: "Seated dumbbell press",

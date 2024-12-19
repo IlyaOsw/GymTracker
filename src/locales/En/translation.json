@@ -82,7 +82,7 @@
   "trainingDiary": "Training diary",
   "diaryChoose": "Choose to start recording workouts",
   "Hands": "Hands",
-  "Shoulders": "Delts",
+  "Delts": "Delts",
   "Chest": "Chest",
   "Back": "Back",
   "Legs": "Legs",
@@ -271,5 +271,6 @@
   "currentPh": "Enter current result",
   "close": "Close",
   "confrimDeleteGoal": "Please confirm deleting goal.",
-  "limitTrainingHistory": "The history displays a maximum of the 5 most recent workouts."
+  "limitTrainingHistory": "The history displays a maximum of the 5 most recent workouts.",
+  "showAvatar": "View"
 }

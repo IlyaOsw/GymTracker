@@ -82,7 +82,7 @@
 "trainingDiary": "Treeningpäevik",
 "diaryChoose": "Valige, et alustada treeningute salvestamist",
 "Hands": "Käed",
-"Shoulders": "Õlad",
+"Delts": "Õlad",
 "Chest": "Rind",
 "Back": "Selg",
 "Legs": "Jalad",
@@ -271,5 +271,6 @@
 "setGoal": "Sea eesmärk",
 "close": "Sulge",
 "confrimDeleteGoal": "Palun kinnitage eesmärgi kustutamine.",
-"limitTrainingHistory": "Ajalugu kuvab maksimaalselt 5 viimast treeningut."
+"limitTrainingHistory": "Ajalugu kuvab maksimaalselt 5 viimast treeningut.",
+"showAvatar": "Vaata"
 }

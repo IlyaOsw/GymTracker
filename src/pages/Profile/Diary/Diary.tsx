@@ -43,7 +43,7 @@ export const Diary: React.FC = React.memo(() => {
       </motion.div>
       <div className={styles.hexagonWrapper}>
         <HexagonLink text={t("Hands")} />
-        <HexagonLink text={t("Shoulders")} />
+        <HexagonLink text={t("Delts")} />
         <HexagonLink text={t("Chest")} />
         <HexagonLink text={t("Back")} />
         <HexagonLink text={t("Legs")} />

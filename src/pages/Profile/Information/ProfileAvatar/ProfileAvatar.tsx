@@ -4,8 +4,9 @@ import {
   SettingOutlined,
   CloseOutlined,
   RedoOutlined,
+  EyeOutlined,
 } from "@ant-design/icons";
-import { Avatar, Dropdown, Button, Upload } from "antd";
+import { Avatar, Dropdown, Button, Upload, Image } from "antd";
 import {
   deleteObject,
   getDownloadURL,
@@ -125,13 +126,20 @@ export const ProfileAvatar: React.FC = React.memo(() => {
       ) : (
         <div className={styles.avatar}>
           {avatarURL ? (
-            <img
+            <Image
               src={avatarURL}
-              alt="Profile"
               style={{
                 width: avatarSize,
                 height: avatarSize,
                 borderRadius: "50%",
+              }}
+              preview={{
+                mask: (
+                  <div className={styles.mask}>
+                    <EyeOutlined />
+                    <span>{t("showAvatar")} </span>
+                  </div>
+                ),
               }}
             />
           ) : (
