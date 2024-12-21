@@ -6,6 +6,7 @@ import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 import { Greeting } from "./Greeting/Greeting";
 import { MainImage } from "./MainImage/MainImage";
 import { Offer } from "./Offer/Offer";
+import { InsideLook } from "./InsideLook/InsideLook";
 
 const Main: React.FC = () => {
   useEffect(() => {
@@ -18,6 +19,7 @@ const Main: React.FC = () => {
       <PageWrapper>
         <Greeting />
         <Offer />
+        {/* <InsideLook /> */}
       </PageWrapper>
       <CustomFooter />
     </>

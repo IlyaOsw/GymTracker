@@ -35,7 +35,6 @@ export const ProfileAvatar: React.FC = React.memo(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-
     window.addEventListener("resize", handleResize);
 
     return () => {

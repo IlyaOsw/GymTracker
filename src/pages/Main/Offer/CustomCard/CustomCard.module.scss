@@ -7,17 +7,13 @@
   position: relative;
 }
 
-.upperBlock,
-.bottomBlock {
+.block {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
-.firstCard,
-.secondCard,
-.thirdCard,
-.fourthCard {
+.card {
   width: 50%;
   display: flex;
   align-items: flex-start;
@@ -30,8 +26,7 @@
 }
 
 @media (max-width: 992px) {
-  .upperBlock,
-  .bottomBlock {
+  .block {
     width: 100%;
     display: flex;
     align-items: center;

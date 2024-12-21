@@ -9,8 +9,8 @@ export const CustomCard: React.FC = () => {
   const { t } = useTranslation();
   return (
     <div className={styles.wrapper}>
-      <div className={styles.upperBlock}>
-        <div className={`${styles.firstCard}`}>
+      <div className={styles.block}>
+        <div className={`${styles.card}`}>
           <AboutCard
             title={t("cardTitle1")}
             text={t("cardText1")}
@@ -19,7 +19,7 @@ export const CustomCard: React.FC = () => {
             }
           />
         </div>
-        <div className={`${styles.secondCard}`}>
+        <div className={`${styles.secondCard} ${styles.card}`}>
           <AboutCard
             title={t("cardTitle2")}
             text={t("cardText2")}
@@ -29,8 +29,8 @@ export const CustomCard: React.FC = () => {
           />
         </div>
       </div>
-      <div className={styles.bottomBlock}>
-        <div className={`${styles.thirdCard}`}>
+      <div className={styles.block}>
+        <div className={`${styles.card}`}>
           <AboutCard
             title={t("cardTitle3")}
             text={t("cardText3")}
@@ -39,7 +39,7 @@ export const CustomCard: React.FC = () => {
             }
           />
         </div>
-        <div className={`${styles.fourthCard}`}>
+        <div className={`${styles.fourthCard} ${styles.card}`}>
           <AboutCard
             title={t("cardTitle4")}
             text={t("cardText4")}
