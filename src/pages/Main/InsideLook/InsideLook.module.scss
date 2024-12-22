@@ -8,11 +8,12 @@
 
   img {
     border-radius: 10px;
-    width: 100%;
+    margin: 0 auto;
     height: auto;
     max-height: 400px;
     object-fit: contain;
     max-width: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 151, 178, 0.3);
   }
 
   &:last-child {
