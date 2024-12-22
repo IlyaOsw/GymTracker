@@ -19,7 +19,7 @@ const Main: React.FC = () => {
       <PageWrapper>
         <Greeting />
         <Offer />
-        {/* <InsideLook /> */}
+        <InsideLook />
       </PageWrapper>
       <CustomFooter />
     </>

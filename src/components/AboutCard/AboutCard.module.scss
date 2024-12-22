@@ -5,6 +5,10 @@
   background-color: #141414;
   aspect-ratio: 4 / 3;
 
+  @media (max-width: 992px) {
+    margin: 15px;
+  }
+
   img {
     max-width: 100%;
     height: auto;

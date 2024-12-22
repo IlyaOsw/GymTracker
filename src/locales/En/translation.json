@@ -272,5 +272,11 @@
   "close": "Close",
   "confrimDeleteGoal": "Please confirm deleting goal.",
   "limitTrainingHistory": "The history displays a maximum of the 5 most recent workouts.",
-  "showAvatar": "View"
+  "showAvatar": "View",
+  "insideLook": "Inside look",
+  "insideLookDescription": "We offer a behind-the-scenes look at the app, revealing its functionality and interface through visual and textual descriptions.",
+  "inside1row": "User profile with information about sports activity: personal data, sport type, height, weight, photo, last session date, favorite exercises, and best results.",
+  "inside2row": "The workout diary allows you to log your sessions. The goals block lets you set targets and track progress, while the calculator estimates your one-rep max based on working weight and repetitions.",
+  "inside3row": "A page for training a specific muscle group. You can add exercises here, and below is a table for logging sets, repetitions, and working weights, simplifying tracking and planning.",
+  "inside4row": "An exercise block showing the best result, a table for recording current workouts, and a history table for tracking progress in this exercise."
 }
