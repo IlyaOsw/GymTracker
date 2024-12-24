@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Image } from "antd";
+import { EyeOutlined } from "@ant-design/icons";
 
 import { DescriptionTitle } from "../../../components/DescriptionTitle/DescriptionTitle";
 import { DescriptionText } from "../../../components/DescriptionText/DescriptionText";
@@ -12,19 +13,23 @@ export const InsideLook: React.FC = () => {
 
   const content = [
     {
-      description: t("inside1row"),
+      title: t("inside1title"),
+      description: t("inside1desc"),
       image: process.env.PUBLIC_URL + "/assets/Images/InsideLook/Profile.png",
     },
     {
-      description: t("inside2row"),
+      title: t("inside2title"),
+      description: t("inside2desc"),
       image: process.env.PUBLIC_URL + "/assets/Images/InsideLook/DGC.png",
     },
     {
-      description: t("inside3row"),
+      title: t("inside3title"),
+      description: t("inside3desc"),
       image: process.env.PUBLIC_URL + "/assets/Images/InsideLook/Workout1.png",
     },
     {
-      description: t("inside4row"),
+      title: t("inside4title"),
+      description: t("inside4desc"),
       image: process.env.PUBLIC_URL + "/assets/Images/InsideLook/Workout2.png",
     },
   ];
@@ -38,13 +43,19 @@ export const InsideLook: React.FC = () => {
           key={index}
           className={`${styles.row} ${index % 2 !== 0 ? styles.reverse : ""}`}
         >
-          <div className={styles.description}>
-            <p>{item.description}</p>
+          <div className={styles.info}>
+            <h2 className={styles.title}>{item.title}</h2>
+            <h4 className={styles.description}>{item.description}</h4>
           </div>
           <Image
             src={item.image}
             preview={{
-              mask: t("clickToPreview"),
+              mask: (
+                <div className={styles.mask}>
+                  <EyeOutlined />
+                  <span>{t("show")} </span>
+                </div>
+              ),
             }}
           />
         </div>

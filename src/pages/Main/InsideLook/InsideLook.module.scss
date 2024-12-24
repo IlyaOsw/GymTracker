@@ -8,9 +8,17 @@
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 15px 10px;
   width: 100%;
   margin-bottom: 15px;
+
+  .mask {
+    font-size: 1rem;
+
+    > span {
+      margin: 0px 3px;
+    }
+  }
 
   img {
     width: 400px !important;
@@ -23,13 +31,28 @@
   }
 }
 
-.description {
+.info {
   max-width: 500px;
-  font-size: 1.2rem;
-  letter-spacing: 0.5px;
-  line-height: 1.6;
+  font-size: 1rem;
+  letter-spacing: 1px;
   padding: 10px;
   text-align: right;
+
+  .title {
+    font-size: 1.8rem;
+    color: #0097b2;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px;
+
+    @media (max-width: 768px) {
+      font-size: 1.4rem;
+    }
+  }
+
+  .description {
+    padding: 10px;
+  }
 
   @media (max-width: 992px) {
     text-align: center;
@@ -39,7 +62,7 @@
 .reverse {
   flex-direction: row-reverse;
 
-  .description {
+  .info {
     text-align: left;
     @media (max-width: 992px) {
       text-align: center;

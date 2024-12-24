@@ -136,7 +136,7 @@ export const ProfileAvatar: React.FC = React.memo(() => {
                 mask: (
                   <div className={styles.mask}>
                     <EyeOutlined />
-                    <span>{t("showAvatar")} </span>
+                    <span>{t("show")} </span>
                   </div>
                 ),
               }}

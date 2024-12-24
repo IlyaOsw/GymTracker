@@ -272,11 +272,16 @@
 "close": "Sulge",
 "confrimDeleteGoal": "Palun kinnitage eesmärgi kustutamine.",
 "limitTrainingHistory": "Ajalugu kuvab maksimaalselt 5 viimast treeningut.",
-"showAvatar": "Vaata",
+"show": "Vaata",
 "insideLook": "Sisemine pilk",
 "insideLookDescription": "Pakume rakenduse kulissidetagust vaadet, paljastades selle funktsionaalsust ja liidest visuaalsete ja tekstiliste kirjelduste kaudu.",
-"inside1row": "Kasutajaprofiil sporditegevuse teabega: isikuandmed, spordiala, pikkus, kaal, foto, viimase treeningu kuupäev, lemmikharjutused ja parimad tulemused.",
-"inside2row": "Treeningupäevik võimaldab salvestada treeninguid. Eesmärkide plokk võimaldab seada sihte ja jälgida edusamme, samal ajal kui kalkulaator arvutab ühe korduse maksimumi töökaalu ja korduste põhjal.",
-"inside3row": "Leht konkreetse lihasgrupi treeningu jaoks. Siia saab lisada harjutusi, allpool on tabel seeriate, korduste ja töökaalude salvestamiseks, mis lihtsustab jälgimist ja planeerimist.",
-"inside4row": "Harjutuse plokk, mis näitab parimat tulemust, tabel praeguste treeningute salvestamiseks ja ajalugu edusammude jälgimiseks selles harjutuses."
+"inside1desc": "Kasutajaprofiil sporditegevuse teabega: isikuandmed, spordiala, pikkus, kaal, foto, viimase treeningu kuupäev, lemmikharjutused ja parimad tulemused.",
+"inside2desc": "Treeningupäevik võimaldab salvestada treeninguid. Eesmärkide plokk võimaldab seada sihte ja jälgida edusamme, samal ajal kui kalkulaator arvutab ühe korduse maksimumi töökaalu ja korduste põhjal.",
+"inside3desc": "Leht konkreetse lihasgrupi treeningu jaoks. Siia saab lisada harjutusi, allpool on tabel seeriate, korduste ja töökaalude salvestamiseks, mis lihtsustab jälgimist ja planeerimist.",
+"inside4desc": "Harjutuse plokk, mis näitab parimat tulemust, tabel praeguste treeningute salvestamiseks ja ajalugu edusammude jälgimiseks selles harjutuses.",
+"inside1title": "Kasutaja spordiprofiil: andmed ja saavutused",
+"inside2title": "Treeningpäevik, eesmärgid ja kalkulaator",
+"inside3title": "Lihasgrupi treeningu leht",
+"inside4title": "Harjutuste jälgija ja edusammude ajalugu"
+
 }
