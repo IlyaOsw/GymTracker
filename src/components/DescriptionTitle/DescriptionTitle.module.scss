@@ -1,13 +1,9 @@
 .descriptionTitle {
-  font-size: 2.7rem;
+  font-size: 2.6rem;
   color: #0097b2;
   font-weight: 600;
   text-transform: uppercase;
   padding: 15px;
-
-  @media (max-width: 1200px) {
-    font-size: 2.6rem;
-  }
 
   @media (max-width: 768px) {
     font-size: 2rem;
