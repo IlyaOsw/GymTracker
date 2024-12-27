@@ -20,6 +20,13 @@ export type SocialLinksType = {
   label: SocialLinks;
 };
 
+export type InsideLookType = {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+};
+
 export interface IMenuItem {
   key: string;
   label: string;

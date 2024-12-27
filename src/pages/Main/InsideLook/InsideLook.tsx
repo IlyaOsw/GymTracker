@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Image } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 import { DescriptionTitle } from "../../../components/DescriptionTitle/DescriptionTitle";
 import { DescriptionText } from "../../../components/DescriptionText/DescriptionText";
@@ -10,35 +11,16 @@ import {
   animation,
   useAnimatedInView,
 } from "../../../hooks/useAnimatedInView ";
+import { InsideLookType } from "../../../types/types";
 
 import styles from "./InsideLook.module.scss";
 
 export const InsideLook: React.FC = () => {
   const { t } = useTranslation();
   const { ref, controls } = useAnimatedInView();
-
-  const content = [
-    {
-      title: t("inside1title"),
-      description: t("inside1desc"),
-      image: process.env.PUBLIC_URL + "/assets/Images/InsideLook/Profile.png",
-    },
-    {
-      title: t("inside2title"),
-      description: t("inside2desc"),
-      image: process.env.PUBLIC_URL + "/assets/Images/InsideLook/DGC.png",
-    },
-    {
-      title: t("inside3title"),
-      description: t("inside3desc"),
-      image: process.env.PUBLIC_URL + "/assets/Images/InsideLook/Workout1.png",
-    },
-    {
-      title: t("inside4title"),
-      description: t("inside4desc"),
-      image: process.env.PUBLIC_URL + "/assets/Images/InsideLook/Workout2.png",
-    },
-  ];
+  const insideLook = useSelector(
+    (state: { insideLook: InsideLookType[] }) => state.insideLook
+  );
 
   return (
     <div className={styles.container}>
@@ -50,14 +32,14 @@ export const InsideLook: React.FC = () => {
         animate={controls}
         variants={animation}
       >
-        {content.map((item, index) => (
+        {insideLook.map((item, index) => (
           <div
             key={index}
             className={`${styles.row} ${index % 2 !== 0 ? styles.reverse : ""}`}
           >
             <div className={styles.info}>
-              <h2 className={styles.title}>{item.title}</h2>
-              <h4 className={styles.description}>{item.description}</h4>
+              <h2 className={styles.title}>{t(item.title)}</h2>
+              <h4 className={styles.description}>{t(item.description)}</h4>
             </div>
             <Image.PreviewGroup
               items={[
