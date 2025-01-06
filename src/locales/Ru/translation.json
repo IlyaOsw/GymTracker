@@ -137,7 +137,7 @@
   "reseted": "Успешно сброшено",
   "passwordResetSuccess": "Отправка письма была успешна",
   "passwordResetError": "Отправка письма не удалась",
-  "passwordRule": "Мин. 6 символов",
+  "passwordRule": " Мин. 6 символов",
   "avatarFormat": "Предпочтительный формат - Jpeg/jpg",
   "yourBestResult": "Ваш лучший результат (kg)",
   "addExerciseError": "Поля введены не корректно!",

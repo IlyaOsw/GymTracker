@@ -6,6 +6,12 @@
   flex-direction: column;
 }
 
+.text {
+  letter-spacing: 1px;
+  font-size: 1rem;
+  font-style: italic;
+}
+
 .loader {
   transform: rotateZ(45deg);
   perspective: 1000px;
@@ -84,10 +90,4 @@
   87% {
     box-shadow: 0.2em -0.2em 0 0 currentcolor;
   }
-}
-
-.text {
-  letter-spacing: 1px;
-  font-size: 1rem;
-  font-style: italic;
 }

@@ -137,7 +137,7 @@
 "reseted": "Lähtestatud edukalt",
 "passwordResetSuccess": "Parooli lähtestamise e-kiri saadetud",
 "passwordResetError": "Parooli lähtestamise e-kiri ei õnnestunud",
-"passwordRule": "Min. 6 sümbolit",
+"passwordRule": " Min. 6 sümbolit",
 "avatarFormat": "Soovitatav formaat - Jpeg/jpg",
 "yourBestResult": "Sinu parim tulemus (kg)",
 "addExerciseError": "Väljad on ebaõigesti täidetud!",

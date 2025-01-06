@@ -133,9 +133,7 @@ export const ExerciseTable: React.FC<ExerciseTablePropsType> = React.memo(
 
     const saveExerciseData = async () => {
       if (user && selectedExercise) {
-        const validData = data.filter(
-          (row) => Number(row.reps) > 0 && Number(row.weight) > 0
-        );
+        const validData = data.filter((row) => Number(row.reps) > 0);
 
         if (validData.length === 0) {
           ClosableMessage({ type: "error", content: t("noDataToSave") });

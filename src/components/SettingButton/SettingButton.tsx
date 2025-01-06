@@ -1,14 +1,9 @@
 import { Button } from "antd";
 import React from "react";
 
-import styles from "./SettingButton.module.scss";
+import { SettingButtonPropsType } from "../../types/types";
 
-export type SettingButtonPropsType = {
-  onClick?: (e: any) => void;
-  icon?: React.ReactNode;
-  children?: React.ReactNode;
-  className?: string;
-};
+import styles from "./SettingButton.module.scss";
 
 export const SettingButton: React.FC<SettingButtonPropsType> = ({
   onClick,

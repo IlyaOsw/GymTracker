@@ -27,12 +27,10 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
         const storage = getStorage();
         await deleteDoc(doc(getFirestore(), "users", user.uid));
         await deleteDoc(doc(getFirestore(), "exercises", user.uid));
-
-        const avatarRef = ref(storage, `avatar/${user.uid}`);
-        const coverRef = ref(storage, `cover/${user.uid}`);
+        await deleteDoc(doc(getFirestore(), "goals", user.uid));
 
         try {
-          await deleteObject(avatarRef);
+          await deleteObject(ref(storage, `avatar/${user.uid}`));
         } catch (error) {
           if (
             error instanceof FirebaseError &&
@@ -44,7 +42,7 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
         }
 
         try {
-          await deleteObject(coverRef);
+          await deleteObject(ref(storage, `cover/${user.uid}`));
         } catch (error) {
           if (
             error instanceof FirebaseError &&

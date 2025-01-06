@@ -26,6 +26,7 @@ const NotAuthorized = React.lazy(
 
 export const Routing: React.FC = () => {
   const { isAuthenticated } = useAuth();
+
   return (
     <Suspense fallback={<Loader />}>
       <Routes>

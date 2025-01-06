@@ -16,13 +16,11 @@ export const LastWorkout: React.FC = React.memo(() => {
       if (user) {
         try {
           const userID = user ? user.uid : null;
-
           if (!userID) return;
 
           const exercisesDoc = await getDoc(
             doc(getFirestore(), "exercises", userID)
           );
-
           const exerciseIds: string[] = [];
 
           if (exercisesDoc.exists()) {
@@ -30,17 +28,16 @@ export const LastWorkout: React.FC = React.memo(() => {
 
             const exercises = exercisesData.exercises;
             if (Array.isArray(exercises)) {
-              exercises.forEach((exercise: any) => {
+              exercises.forEach((exercise) => {
                 if (exercise.id) {
                   exerciseIds.push(exercise.id);
                 }
               });
             }
           }
-
-          const setsCollectionRef = collection(getFirestore(), "sets");
-          const querySnapshot = await getDocs(setsCollectionRef);
-
+          const querySnapshot = await getDocs(
+            collection(getFirestore(), "sets")
+          );
           const allWorkoutDates: string[] = [];
 
           for (const docSnapshot of querySnapshot.docs) {
@@ -63,9 +60,8 @@ export const LastWorkout: React.FC = React.memo(() => {
             allWorkoutDates.sort(
               (a, b) => new Date(b).getTime() - new Date(a).getTime()
             );
-            const latestWorkoutDate = allWorkoutDates[0];
             const formattedDate = new Date(
-              latestWorkoutDate
+              allWorkoutDates[0]
             ).toLocaleDateString();
             setLastWorkoutDate(formattedDate);
           } else {
@@ -76,7 +72,6 @@ export const LastWorkout: React.FC = React.memo(() => {
         }
       }
     };
-
     fetchSetsData();
   }, [user]);
 

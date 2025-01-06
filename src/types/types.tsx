@@ -513,3 +513,10 @@ export type MainBlockPropsType = {
   setEndDate: (value: string) => void;
   setEditMode: (value: boolean) => void;
 };
+
+export type SettingButtonPropsType = {
+  onClick?: MouseEventHandler<HTMLElement> | undefined;
+  icon?: React.ReactNode;
+  children?: React.ReactNode;
+  className?: string;
+};

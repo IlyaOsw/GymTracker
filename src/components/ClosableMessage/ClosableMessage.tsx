@@ -11,15 +11,16 @@ export const ClosableMessage = ({
 }: ClosableMessagePropsType) => {
   const key = "closable-message";
 
-  const closeMessage = () => message.destroy(key);
-
   message[type]({
     key,
     content: (
-      <div>
+      <>
         {content}
-        <CloseOutlined onClick={closeMessage} className={styles.closeIcon} />
-      </div>
+        <CloseOutlined
+          onClick={() => message.destroy(key)}
+          className={styles.closeIcon}
+        />
+      </>
     ),
     className: styles.customMessage,
   });

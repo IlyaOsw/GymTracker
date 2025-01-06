@@ -137,7 +137,7 @@
   "reseted": "Successfully reseted",
   "passwordResetSuccess": "Password reset email sent successfully",
   "passwordResetError": "Failed to send password reset email",
-  "passwordRule": "Min. 6 characters long",
+  "passwordRule": " Min. 6 characters long",
   "avatarFormat": "Jpeg/jpg format is preferred",
   "yourBestResult": "Your best result (kg)",
   "addExerciseError": "Fields entered incorrectly!",
