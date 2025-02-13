@@ -14,10 +14,11 @@ import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
 import { ResetButton } from "../../components/ResetButton/ResetButton";
 import { storage } from "../..";
-import { IExercise } from "../../types/types";
+
 import { calculateAge } from "../../utils/calculateAge";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { ClosableMessage } from "../../components/ClosableMessage/ClosableMessage";
+import { IExercise } from "../../types/exercise";
 
 import { Registration } from "./Registration/Registration";
 import { PersonalInformation } from "./PersonalInformation/PersonalInformation";

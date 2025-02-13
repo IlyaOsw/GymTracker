@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import { motion } from "framer-motion";
 
-import { ICalendar } from "../../types/types";
+import { ICalendar } from "../../types/components/calendar";
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
 
 import styles from "./Calendar.module.scss";

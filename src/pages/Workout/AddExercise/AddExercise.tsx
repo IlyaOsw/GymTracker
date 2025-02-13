@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import { CustomButton } from "../../../components/CustomButton/CustomButton";
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
-import { IAddExercise } from "../../../types/types";
+import { IAddExercise } from "../../../types/add-exercise";
 import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMessage";
 
 import styles from "./AddExercise.module.scss";

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { IExercise } from "../../types/types";
+import { IExercise } from "../../types/exercise";
 
 const initialState: IExercise[] = [
   {

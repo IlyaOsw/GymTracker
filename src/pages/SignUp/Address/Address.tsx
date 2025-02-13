@@ -5,7 +5,7 @@ import countries from "react-select-country-list";
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import styles from "../SignUp.module.scss";
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
-import { AddressType } from "../../../types/types";
+import { AddressType } from "../../../types/address";
 import { CountrySelect } from "../../../components/CountrySelect/CountrySelect";
 
 const countryOptions = countries().getData();

@@ -6,7 +6,8 @@ import {
   signOut,
 } from "firebase/auth";
 
-import { IAuthContextType, IAuthProviderProps } from "../types/types";
+import { IAuthContextType } from "../types/auth-context";
+import { IAuthProviderProps } from "../types/auth-provider";
 
 const AuthContext = createContext<IAuthContextType>({
   isAuthenticated: false,

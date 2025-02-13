@@ -6,10 +6,10 @@ import { useTranslation } from "react-i18next";
 import { CustomButton } from "../../../components/CustomButton/CustomButton";
 import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import { ConfirmPasswordInput } from "../../../components/PasswordInput/ConfirmPasswordInput";
+import { RegistrationType } from "../../../types/registration";
 
 import styles from "../SignUp.module.scss";
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
-import { RegistrationType } from "../../../types/types";
 
 export const Registration: React.FC<RegistrationType> = ({
   onEmailChange,

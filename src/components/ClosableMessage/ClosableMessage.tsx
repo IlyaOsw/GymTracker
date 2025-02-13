@@ -1,7 +1,7 @@
 import { message } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 
-import { ClosableMessagePropsType } from "../../types/types";
+import { ClosableMessagePropsType } from "../../types/components/closable-message";
 
 import styles from "./ClosableMessage.module.scss";
 

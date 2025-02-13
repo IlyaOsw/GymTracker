@@ -3,7 +3,7 @@ import { Card, Typography } from "antd";
 import { motion } from "framer-motion";
 
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
-import { IAboutCardProps } from "../../types/types";
+import { IAboutCardProps } from "../../types/components/about-card";
 
 import styles from "./AboutCard.module.scss";
 

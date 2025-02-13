@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { IProtectedRouteProps } from "../types/types";
+import { IProtectedRouteProps } from "../types/protected-route";
 import { Loader } from "../components/Loader/Loader";
 
 export const ProtectedRoute: React.FC<IProtectedRouteProps> = ({

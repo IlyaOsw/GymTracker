@@ -10,9 +10,10 @@ import { CustomInput } from "../../../../components/CustomInput/CustomInput";
 import { Calendar } from "../../../../components/Calendar/Calendar";
 import NumericInput from "../../../../components/NumericInput/NumericInput";
 import { CustomButton } from "../../../../components/CustomButton/CustomButton";
-import { EditGoalPropsType, IGoalData } from "../../../../types/types";
+import { IGoalData } from "../../../../types/goal-data";
 import { parseDate } from "../../../../utils/parseDate";
 import { handleDateChange } from "../../../../utils/handleDateChange";
+import { EditGoalPropsType } from "../../../../types/edit-goal";
 
 import styles from "./EditGoal.module.scss";
 

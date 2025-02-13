@@ -11,7 +11,7 @@ import {
   animation,
   useAnimatedInView,
 } from "../../../hooks/useAnimatedInView ";
-import { InsideLookType } from "../../../types/types";
+import { InsideLookType } from "../../../types/store/inside-look";
 
 import styles from "./InsideLook.module.scss";
 

@@ -3,8 +3,9 @@ import { Select, ConfigProvider, Form } from "antd";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
-import { FieldType, ICountrySelectProps } from "../../types/types";
+import { ICountrySelectProps } from "../../types/components/country-select";
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
+import { FieldType } from "../../types/field";
 
 import styles from "./CountrySelect.module.scss";
 

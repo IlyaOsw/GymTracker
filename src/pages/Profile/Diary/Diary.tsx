@@ -9,7 +9,7 @@ import {
   animation,
   useAnimatedInView,
 } from "../../../hooks/useAnimatedInView ";
-import { IHexagonLinkProps } from "../../../types/types";
+import { IHexagonLinkProps } from "../../../types/components/hexagon";
 
 import styles from "./Diary.module.scss";
 

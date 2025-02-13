@@ -5,13 +5,13 @@ import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { StarFilled } from "@ant-design/icons";
 
-import { IExercise } from "../../../../../types/types";
+import { IExercise } from "../../../../../types/exercise";
 import { Loader } from "../../../../../components/Loader/Loader";
 import { SubTitle } from "../../../../../components/SubTitle/SubTitle";
 import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
 
-import styles from "./FavoriteExercises.module.scss";
 import { ExerciseItem } from "./ExerciseItem/ExerciseItem";
+import styles from "./FavoriteExercises.module.scss";
 
 export const FavoriteExercises: React.FC = React.memo(() => {
   const { t } = useTranslation();

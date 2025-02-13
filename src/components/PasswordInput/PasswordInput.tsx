@@ -3,8 +3,9 @@ import React from "react";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 
-import { FieldType, IPasswordInputProps } from "../../types/types";
+import { IPasswordInputProps } from "../../types/components/password-input";
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
+import { FieldType } from "../../types/field";
 
 import styles from "./PasswordInput.module.scss";
 

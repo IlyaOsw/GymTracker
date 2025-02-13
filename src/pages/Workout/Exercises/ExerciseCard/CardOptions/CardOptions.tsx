@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
-import { CardOptionsPropsType } from "../../../../../types/types";
+import { CardOptionsPropsType } from "../../../../../types/card-options";
 import { SettingButton } from "../../../../../components/SettingButton/SettingButton";
 import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
 

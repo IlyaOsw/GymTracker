@@ -1,7 +1,7 @@
 import { Button } from "antd";
 import React from "react";
 
-import { SettingButtonPropsType } from "../../types/types";
+import { SettingButtonPropsType } from "../../types/components/setting-button";
 
 import styles from "./SettingButton.module.scss";
 

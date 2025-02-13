@@ -3,7 +3,7 @@ import { Collapse } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
-import { TrainingHistoryPropsType } from "../../../../../types/types";
+import { TrainingHistoryPropsType } from "../../../../../types/training-history";
 import { scrollToBottom } from "../../../../../utils/scrollToBottom";
 
 import styles from "./TrainingHistory.module.scss";

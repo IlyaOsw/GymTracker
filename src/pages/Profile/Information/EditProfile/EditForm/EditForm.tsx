@@ -10,7 +10,7 @@ import { CustomButton } from "../../../../../components/CustomButton/CustomButto
 import { CustomInput } from "../../../../../components/CustomInput/CustomInput";
 import { Calendar } from "../../../../../components/Calendar/Calendar";
 import styles from "../EditProfile.module.scss";
-import { EditFormPropsType } from "../../../../../types/types";
+import { EditFormPropsType } from "../../../../../types/edit-form";
 import { CountrySelect } from "../../../../../components/CountrySelect/CountrySelect";
 import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
 import { SportSelect } from "../../../../../components/SportSelect/SportSelect";

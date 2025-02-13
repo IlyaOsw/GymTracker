@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
-import { IDescriptionTitleAndText } from "../../types/types";
+import { IDescriptionTitleAndText } from "../../types/components/description-title-text";
 
 import styles from "./DescriptionText.module.scss";
 

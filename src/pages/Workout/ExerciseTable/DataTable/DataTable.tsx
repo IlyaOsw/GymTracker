@@ -5,7 +5,8 @@ import { useTranslation } from "react-i18next";
 import { EmptyBox } from "../../../../components/EmptyBox/EmptyBox";
 import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
 import NumericInput from "../../../../components/NumericInput/NumericInput";
-import { DataTablePropsType, ExerciseTableType } from "../../../../types/types";
+import { DataTablePropsType } from "../../../../types/data-table";
+import { ExerciseTableType } from "../../../../types/exercise-table";
 
 import styles from "./DataTable.module.scss";
 

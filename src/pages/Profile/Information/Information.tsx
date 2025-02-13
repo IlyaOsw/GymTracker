@@ -8,8 +8,8 @@ import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { db } from "../../..";
 import { useUserContext } from "../../../context/UserContext";
 import { CustomButton } from "../../../components/CustomButton/CustomButton";
-import { IUserData } from "../../../types/types";
 import { ResetButton } from "../../../components/ResetButton/ResetButton";
+import { IUserData } from "../../../types/user-data";
 
 import styles from "./Information.module.scss";
 import { UserInfo } from "./UserInfo/UserInfo";

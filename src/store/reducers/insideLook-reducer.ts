@@ -1,6 +1,6 @@
-import { InsideLookType } from "../../types/types";
+import { InsideLookType } from "../../types/store/inside-look";
 
-const initialState = [
+const initialState: InsideLookType[] = [
   {
     id: 1,
     title: "inside1title",

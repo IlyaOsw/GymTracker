@@ -7,12 +7,14 @@ import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import styles from "../SignUp.module.scss";
 import { Calendar } from "../../../components/Calendar/Calendar";
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
-import { FieldType, PersonalInformationType } from "../../../types/types";
+import { FieldType } from "../../../types/field";
+
 import {
   animation,
   useAnimatedInView,
 } from "../../../hooks/useAnimatedInView ";
 import { disabledDate } from "../../../utils/disabledDate";
+import { PersonalInformationType } from "../../../types/personal-information";
 
 const { Option } = Select;
 

@@ -3,8 +3,9 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
-import { FieldType, SportSelectPropsType } from "../../types/types";
+import { SportSelectPropsType } from "../../types/components/sport-select";
 import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
+import { FieldType } from "../../types/field";
 
 import styles from "./SportSelect.module.scss";
 

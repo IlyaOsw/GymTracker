@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import styles from "../CustomHeader.module.scss";
-import { HeaderPropsType } from "../../../types/types";
+import { HeaderPropsType } from "../../../types/header";
 import { LanguageDropdown } from "../LanguageDropdown/LanguageDropdown";
 
 import { Login } from "./Login/Login";

@@ -6,16 +6,17 @@ import { motion } from "framer-motion";
 import { Divider, Empty } from "antd";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
-import { IExercise, IExercisesProps } from "../../../types/types";
+
 import { Loader } from "../../../components/Loader/Loader";
 import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMessage";
 import {
   animation,
   useAnimatedInView,
 } from "../../../hooks/useAnimatedInView ";
+import { IExercise, IExercisesProps } from "../../../types/exercise";
 
-import { ExerciseCard } from "./ExerciseCard/ExerciseCard";
 import styles from "./Exercises.module.scss";
+import { ExerciseCard } from "./ExerciseCard/ExerciseCard";
 
 export const Exercises: React.FC<IExercisesProps> = React.memo(
   ({

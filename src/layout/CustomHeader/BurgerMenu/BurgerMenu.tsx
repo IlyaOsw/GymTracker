@@ -4,7 +4,8 @@ import { Divider } from "antd";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 
-import { BurgerMenuItem, HeaderPropsType } from "../../../types/types";
+import { BurgerMenuItem } from "../../../types/burger-menu";
+import { HeaderPropsType } from "../../../types/header";
 import styles from "../CustomHeader.module.scss";
 import { useAuth } from "../../../context/AuthContext";
 import { LanguageDropdown } from "../LanguageDropdown/LanguageDropdown";

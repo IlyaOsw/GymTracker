@@ -9,7 +9,7 @@ import { getAuth } from "firebase/auth";
 import { Provider } from "react-redux";
 
 import App from "./App";
-import { store } from "./state/store";
+import { store } from "./store/store";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBg1LS3f644UZ6uYC6KTnakEaEJFTwPEhc",

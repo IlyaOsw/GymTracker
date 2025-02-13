@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { CustomModal } from "../CustomModal/CustomModal";
 import { ResetButton } from "../ResetButton/ResetButton";
-import { IConfirmDeleteModal } from "../../types/types";
+import { IConfirmDeleteModal } from "../../types/components/confirm-modal";
 import { CustomButton } from "../CustomButton/CustomButton";
 
 import styles from "./ConfirmDeleteModal.module.scss";

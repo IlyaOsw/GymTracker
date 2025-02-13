@@ -7,7 +7,7 @@ import {
   animation,
   useAnimatedInView,
 } from "../../../../hooks/useAnimatedInView ";
-import { EditProfilePropsType } from "../../../../types/types";
+import { EditProfilePropsType } from "../../../../types/edit-profile";
 import { CustomModal } from "../../../../components/CustomModal/CustomModal";
 
 import styles from "./EditProfile.module.scss";

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import { LastWorkout } from "../LastWorkout/LastWorkout";
 import { formatDateOfBirth } from "../../../../utils/formatDateOfBirth";
-import { UserInfoPropsType } from "../../../../types/types";
+import { UserInfoPropsType } from "../../../../types/user-info";
 import {
   animation,
   useAnimatedInView,

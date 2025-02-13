@@ -6,7 +6,7 @@ import { getAuth } from "firebase/auth";
 import NumericInput from "../../../../../../components/NumericInput/NumericInput";
 import { SettingButton } from "../../../../../../components/SettingButton/SettingButton";
 import { ClosableMessage } from "../../../../../../components/ClosableMessage/ClosableMessage";
-import { EditPhysiquePropsType } from "../../../../../../types/types";
+import { EditPhysiquePropsType } from "../../../../../../types/edit-physique";
 
 import styles from "../Physique.module.scss";
 

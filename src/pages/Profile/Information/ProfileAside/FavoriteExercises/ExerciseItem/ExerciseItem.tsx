@@ -4,7 +4,7 @@ import { RightOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
-import { IExerciseItemProps } from "../../../../../../types/types";
+import { IExerciseItemProps } from "../../../../../../types/exercise-item";
 import { Hexagon } from "../../../../../../components/Hexagon/Hexagon";
 import {
   animation,

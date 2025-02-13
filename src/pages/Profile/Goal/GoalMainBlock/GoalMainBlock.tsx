@@ -8,12 +8,12 @@ import { useTranslation } from "react-i18next";
 import { ConfirmDeleteModal } from "../../../../components/ConfirmDeleteModal/ConfirmDeleteModal";
 import { CustomButton } from "../../../../components/CustomButton/CustomButton";
 import { ResetButton } from "../../../../components/ResetButton/ResetButton";
-import { MainBlockPropsType } from "../../../../types/types";
+import { GoalMainBlockPropsType } from "../../../../types/goal-main-block";
 import { calculateProgress } from "../../../../utils/calculateProgress";
 
 import styles from "./GoalMainBlock.module.scss";
 
-export const GoalMainBlock: React.FC<MainBlockPropsType> = React.memo(
+export const GoalMainBlock: React.FC<GoalMainBlockPropsType> = React.memo(
   ({
     goalData,
     setGoalData,

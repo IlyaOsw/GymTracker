@@ -3,9 +3,9 @@ import { Layout, Button } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
-import { IMenuItem } from "../../types/types";
 import i18n from "../../i18n";
 import { useResponsive } from "../../hooks/useResponsive";
+import { IMenuItem } from "../../types/menu-item";
 
 import styles from "./CustomHeader.module.scss";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";

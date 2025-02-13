@@ -6,7 +6,10 @@ import { collection, doc, getFirestore, setDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 import { CustomButton } from "../../../../components/CustomButton/CustomButton";
-import { IGoalData, GoalInitialBlockPropsType } from "../../../../types/types";
+import {
+  GoalInitialBlockPropsType,
+  IGoalData,
+} from "../../../../types/goal-data";
 
 export const GoalInitialBlock: React.FC<GoalInitialBlockPropsType> = React.memo(
   ({ setGoalData }) => {

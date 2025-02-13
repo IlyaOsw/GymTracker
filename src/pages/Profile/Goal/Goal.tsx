@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 import { SubTitle } from "../../../components/SubTitle/SubTitle";
-import { IGoalData } from "../../../types/types";
+import { IGoalData } from "../../../types/goal-data";
 
 import { EditGoal } from "./EditGoal/EditGoal";
 import styles from "./Goal.module.scss";

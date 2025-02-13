@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-import { IExercise, ExerciseCardPropsType } from "../../../../types/types";
+import { IExercise } from "../../../../types/exercise";
+import { ExerciseCardPropsType } from "../../../../types/exercise-card";
 
 import { CardOptions } from "./CardOptions/CardOptions";
 import { DeleteIcon } from "./DeleteIcon/DeleteIcon";

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { SubTitle } from "../../../../../components/SubTitle/SubTitle";
 import { Hexagon } from "../../../../../components/Hexagon/Hexagon";
-import { PhysiquePropsType } from "../../../../../types/types";
+import { PhysiquePropsType } from "../../../../../types/physique";
 import { Loader } from "../../../../../components/Loader/Loader";
 
 import styles from "./Physique.module.scss";

@@ -9,9 +9,9 @@ import {
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
-import { ModalDeletePropsType, IExercise } from "../../../../../../types/types";
+import { IExercise } from "../../../../../../types/exercise";
 import { scrollToTop } from "../../../../../../utils/scrollToTop";
-
+import { ModalDeletePropsType } from "../../../../../../types/modal-delete";
 import { ClosableMessage } from "../../../../../../components/ClosableMessage/ClosableMessage";
 import { ConfirmDeleteModal } from "../../../../../../components/ConfirmDeleteModal/ConfirmDeleteModal";
 
