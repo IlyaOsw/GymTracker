@@ -6,11 +6,9 @@ import { deleteDoc, doc, getFirestore } from "firebase/firestore";
 import { deleteObject, getStorage, ref } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
-
-import { ConfirmDeleteAccountPropsType } from "../../../../types/confirm-delete-account";
-import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
-
-import { ConfirmDeleteModal } from "../../../../components/ConfirmDeleteModal/ConfirmDeleteModal";
+import { ConfirmDeleteAccountPropsType } from "types/confirm-delete-account";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
+import { ConfirmDeleteModal } from "components/ConfirmDeleteModal/ConfirmDeleteModal";
 
 export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
   confirm,

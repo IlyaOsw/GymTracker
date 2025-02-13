@@ -2,11 +2,10 @@ import { useTranslation } from "react-i18next";
 import { CheckOutlined } from "@ant-design/icons";
 import { doc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-
-import NumericInput from "../../../../../../components/NumericInput/NumericInput";
-import { SettingButton } from "../../../../../../components/SettingButton/SettingButton";
-import { ClosableMessage } from "../../../../../../components/ClosableMessage/ClosableMessage";
-import { EditPhysiquePropsType } from "../../../../../../types/edit-physique";
+import NumericInput from "components/NumericInput/NumericInput";
+import { SettingButton } from "components/SettingButton/SettingButton";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
+import { EditPhysiquePropsType } from "types/edit-physique";
 
 import styles from "../Physique.module.scss";
 

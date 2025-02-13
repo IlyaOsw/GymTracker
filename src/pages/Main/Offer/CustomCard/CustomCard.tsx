@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-
-import { AboutCard } from "../../../../components/AboutCard/AboutCard";
+import { AboutCard } from "components/AboutCard/AboutCard";
 
 import styles from "./CustomCard.module.scss";
 

@@ -1,8 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
-import { ISubTitleType } from "../../types/components/subtitle";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
+import { ISubTitleType } from "types/components/subtitle";
 
 import styles from "./SubTitle.module.scss";
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "antd";
-
-import { IResetButtonType } from "../../types/components/reset-button";
+import { IResetButtonType } from "types/components/reset-button";
 
 import styles from "./ResetButton.module.scss";
 

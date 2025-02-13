@@ -1,8 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { HomeOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
-
-import { SubTitle } from "../../../../components/SubTitle/SubTitle";
+import { SubTitle } from "components/SubTitle/SubTitle";
 
 import styles from "./Contacts.module.scss";
 

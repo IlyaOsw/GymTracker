@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import countries from "react-select-country-list";
+import { CustomInput } from "components/CustomInput/CustomInput";
+import { SubTitle } from "components/SubTitle/SubTitle";
+import { AddressType } from "types/address";
+import { CountrySelect } from "components/CountrySelect/CountrySelect";
 
-import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import styles from "../SignUp.module.scss";
-import { SubTitle } from "../../../components/SubTitle/SubTitle";
-import { AddressType } from "../../../types/address";
-import { CountrySelect } from "../../../components/CountrySelect/CountrySelect";
 
 const countryOptions = countries().getData();
 

@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-
-import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
-import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
-import { IExercise } from "../../types/exercise";
-import { scrollToTop } from "../../utils/scrollToTop";
-import { ILocationState } from "../../types/location-state";
+import { DescriptionTitle } from "components/DescriptionTitle/DescriptionTitle";
+import { PageWrapper } from "components/PageWrapper/PageWrapper";
+import { IExercise } from "types/exercise";
+import { scrollToTop } from "utils/scrollToTop";
+import { ILocationState } from "types/location-state";
 
 import { Exercises } from "./Exercises/Exercises";
 import { ExerciseTable } from "./ExerciseTable/ExerciseTable";

@@ -16,9 +16,8 @@ import {
 } from "firebase/storage";
 import { useTranslation } from "react-i18next";
 import { getAuth } from "firebase/auth";
-
-import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
-import { Loader } from "../../../../components/Loader/Loader";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
+import { Loader } from "components/Loader/Loader";
 
 import styles from "./ProfileAvatar.module.scss";
 

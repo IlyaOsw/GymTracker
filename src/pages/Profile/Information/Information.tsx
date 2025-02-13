@@ -4,12 +4,12 @@ import { EditOutlined, UserDeleteOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { useUserContext } from "context/UserContext";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { ResetButton } from "components/ResetButton/ResetButton";
+import { IUserData } from "types/user-data";
 
 import { db } from "../../..";
-import { useUserContext } from "../../../context/UserContext";
-import { CustomButton } from "../../../components/CustomButton/CustomButton";
-import { ResetButton } from "../../../components/ResetButton/ResetButton";
-import { IUserData } from "../../../types/user-data";
 
 import styles from "./Information.module.scss";
 import { UserInfo } from "./UserInfo/UserInfo";

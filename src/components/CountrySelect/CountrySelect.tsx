@@ -2,10 +2,9 @@ import React from "react";
 import { Select, ConfigProvider, Form } from "antd";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-
-import { ICountrySelectProps } from "../../types/components/country-select";
-import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
-import { FieldType } from "../../types/field";
+import { useAnimatedInView, animation } from "hooks/useAnimatedInView ";
+import { ICountrySelectProps } from "types/components/country-select";
+import { FieldType } from "types/field";
 
 import styles from "./CountrySelect.module.scss";
 

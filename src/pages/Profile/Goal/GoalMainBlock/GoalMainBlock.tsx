@@ -4,12 +4,11 @@ import { getAuth } from "firebase/auth";
 import { deleteDoc, doc, getFirestore } from "firebase/firestore";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-
-import { ConfirmDeleteModal } from "../../../../components/ConfirmDeleteModal/ConfirmDeleteModal";
-import { CustomButton } from "../../../../components/CustomButton/CustomButton";
-import { ResetButton } from "../../../../components/ResetButton/ResetButton";
-import { GoalMainBlockPropsType } from "../../../../types/goal-main-block";
-import { calculateProgress } from "../../../../utils/calculateProgress";
+import { ConfirmDeleteModal } from "components/ConfirmDeleteModal/ConfirmDeleteModal";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { ResetButton } from "components/ResetButton/ResetButton";
+import { GoalMainBlockPropsType } from "types/goal-main-block";
+import { calculateProgress } from "utils/calculateProgress";
 
 import styles from "./GoalMainBlock.module.scss";
 

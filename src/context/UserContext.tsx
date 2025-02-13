@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
-
-import { UserContextProps } from "../types/user-context";
-import { IUserData } from "../types/user-data";
+import { UserContextProps } from "types/user-context";
+import { IUserData } from "types/user-data";
 
 const UserContext = createContext<UserContextProps | undefined>(undefined);
 

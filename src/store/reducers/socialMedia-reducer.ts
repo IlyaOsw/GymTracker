@@ -1,4 +1,4 @@
-import { SocialLinksType, SocialLinks } from "../../types/store/social-links";
+import { SocialLinksType, SocialLinks } from "types/store/social-links";
 
 const initialState: SocialLinksType[] = [
   {

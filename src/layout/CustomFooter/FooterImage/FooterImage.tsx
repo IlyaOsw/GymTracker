@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-
-import { DescriptionTitle } from "../../../components/DescriptionTitle/DescriptionTitle";
+import { DescriptionTitle } from "components/DescriptionTitle/DescriptionTitle";
 
 import styles from "./FooterImage.module.scss";
 

@@ -2,10 +2,9 @@ import { ConfigProvider, Form, Select } from "antd";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-
-import { SportSelectPropsType } from "../../types/components/sport-select";
-import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
-import { FieldType } from "../../types/field";
+import { SportSelectPropsType } from "types/components/sport-select";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
+import { FieldType } from "types/field";
 
 import styles from "./SportSelect.module.scss";
 

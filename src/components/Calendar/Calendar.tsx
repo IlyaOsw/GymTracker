@@ -3,11 +3,9 @@ import { ConfigProvider, DatePicker } from "antd";
 import React from "react";
 import dayjs, { Dayjs } from "dayjs";
 import { useTranslation } from "react-i18next";
-
+import { ICalendar } from "types/components/calendar";
 import { motion } from "framer-motion";
-
-import { ICalendar } from "../../types/components/calendar";
-import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
 
 import styles from "./Calendar.module.scss";
 

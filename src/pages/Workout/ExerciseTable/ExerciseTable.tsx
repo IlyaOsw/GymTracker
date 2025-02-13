@@ -9,17 +9,16 @@ import {
   writeBatch,
 } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
-
-import { SubTitle } from "../../../components/SubTitle/SubTitle";
-import { IExercise } from "../../../types/exercise";
-import { EmptyBox } from "../../../components/EmptyBox/EmptyBox";
-import { scrollToBottom } from "../../../utils/scrollToBottom";
-import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMessage";
+import { SubTitle } from "components/SubTitle/SubTitle";
+import { IExercise } from "types/exercise";
+import { EmptyBox } from "components/EmptyBox/EmptyBox";
+import { scrollToBottom } from "utils/scrollToBottom";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 import {
   ExerciseTablePropsType,
   ExerciseTableType,
-} from "../../../types/exercise-table";
-import { IApproach } from "../../../types/approach";
+} from "types/exercise-table";
+import { IApproach } from "types/approach";
 
 import styles from "./ExerciseTable.module.scss";
 import { TableFooter } from "./TableFooter/TableFooter";

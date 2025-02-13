@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "antd";
 import { VerticalAlignTopOutlined } from "@ant-design/icons";
-
-import { scrollToTop } from "../../utils/scrollToTop";
+import { scrollToTop } from "utils/scrollToTop";
 
 import styles from "./BackToTop.module.scss";
 

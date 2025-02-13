@@ -7,18 +7,17 @@ import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { CheckCircleOutlined, SyncOutlined } from "@ant-design/icons";
 import { ref, uploadBytes } from "firebase/storage";
 import { useSelector } from "react-redux";
+import { DescriptionTitle } from "components/DescriptionTitle/DescriptionTitle";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { PageWrapper } from "components/PageWrapper/PageWrapper";
+import { CustomFooter } from "layout/CustomFooter/CustomFooter";
+import { ResetButton } from "components/ResetButton/ResetButton";
+import { calculateAge } from "utils/calculateAge";
+import { scrollToTop } from "utils/scrollToTop";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
+import { IExercise } from "types/exercise";
 
-import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
-import { CustomButton } from "../../components/CustomButton/CustomButton";
-import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
-import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
-import { ResetButton } from "../../components/ResetButton/ResetButton";
 import { storage } from "../..";
-
-import { calculateAge } from "../../utils/calculateAge";
-import { scrollToTop } from "../../utils/scrollToTop";
-import { ClosableMessage } from "../../components/ClosableMessage/ClosableMessage";
-import { IExercise } from "../../types/exercise";
 
 import { Registration } from "./Registration/Registration";
 import { PersonalInformation } from "./PersonalInformation/PersonalInformation";

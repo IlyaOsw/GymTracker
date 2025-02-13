@@ -1,4 +1,4 @@
-import { InsideLookType } from "../../types/store/inside-look";
+import { InsideLookType } from "types/store/inside-look";
 
 const initialState: InsideLookType[] = [
   {

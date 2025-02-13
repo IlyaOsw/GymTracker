@@ -4,13 +4,12 @@ import { CheckOutlined } from "@ant-design/icons";
 import { Collapse } from "antd";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-
-import { SettingButton } from "../../../../components/SettingButton/SettingButton";
-import NumericInput from "../../../../components/NumericInput/NumericInput";
-import { IExercise } from "../../../../types/exercise";
-import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
-import { Hexagon } from "../../../../components/Hexagon/Hexagon";
-import { IBestResultProps } from "../../../../types/best-result";
+import { SettingButton } from "components/SettingButton/SettingButton";
+import NumericInput from "components/NumericInput/NumericInput";
+import { IExercise } from "types/exercise";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
+import { Hexagon } from "components/Hexagon/Hexagon";
+import { IBestResultProps } from "types/best-result";
 
 import styles from "./BestResult.module.scss";
 

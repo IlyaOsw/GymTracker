@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-
 import { motion } from "framer-motion";
-
-import {
-  animation,
-  useAnimatedInView,
-} from "../../../../hooks/useAnimatedInView ";
-import { EditProfilePropsType } from "../../../../types/edit-profile";
-import { CustomModal } from "../../../../components/CustomModal/CustomModal";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
+import { EditProfilePropsType } from "types/edit-profile";
+import { CustomModal } from "components/CustomModal/CustomModal";
 
 import styles from "./EditProfile.module.scss";
 import { EditForm } from "./EditForm/EditForm";

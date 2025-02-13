@@ -1,9 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-
-import { IHexagonProps } from "../../types/components/hexagon";
-import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
+import { IHexagonProps } from "types/components/hexagon";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
 
 import styles from "./Hexagon.module.scss";
 

@@ -1,14 +1,11 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import { formatDateOfBirth } from "utils/formatDateOfBirth";
+import { UserInfoPropsType } from "types/user-info";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
 
 import { LastWorkout } from "../LastWorkout/LastWorkout";
-import { formatDateOfBirth } from "../../../../utils/formatDateOfBirth";
-import { UserInfoPropsType } from "../../../../types/user-info";
-import {
-  animation,
-  useAnimatedInView,
-} from "../../../../hooks/useAnimatedInView ";
 
 import styles from "./UserInfo.module.scss";
 

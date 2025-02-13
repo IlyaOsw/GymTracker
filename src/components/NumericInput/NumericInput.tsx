@@ -1,6 +1,5 @@
 import React, { forwardRef, ChangeEvent } from "react";
-
-import { INumericInputProps } from "../../types/components/numeric-input";
+import { INumericInputProps } from "types/components/numeric-input";
 
 import styles from "./NumericInput.module.scss";
 

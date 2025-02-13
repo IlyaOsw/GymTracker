@@ -2,14 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-
-import { Hexagon } from "../../../components/Hexagon/Hexagon";
-import { SubTitle } from "../../../components/SubTitle/SubTitle";
-import {
-  animation,
-  useAnimatedInView,
-} from "../../../hooks/useAnimatedInView ";
-import { IHexagonLinkProps } from "../../../types/components/hexagon";
+import { Hexagon } from "components/Hexagon/Hexagon";
+import { SubTitle } from "components/SubTitle/SubTitle";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
+import { IHexagonLinkProps } from "types/components/hexagon";
 
 import styles from "./Diary.module.scss";
 

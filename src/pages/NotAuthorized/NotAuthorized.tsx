@@ -3,9 +3,8 @@ import { Result } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-
-import { CustomButton } from "../../components/CustomButton/CustomButton";
-import { FooterImage } from "../../layout/CustomFooter/FooterImage/FooterImage";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { FooterImage } from "layout/CustomFooter/FooterImage/FooterImage";
 
 import styles from "./NotAuthorized.module.scss";
 

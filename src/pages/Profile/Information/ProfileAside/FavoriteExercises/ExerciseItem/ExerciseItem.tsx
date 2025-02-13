@@ -3,13 +3,9 @@ import { Collapse, CollapseProps } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-
-import { IExerciseItemProps } from "../../../../../../types/exercise-item";
-import { Hexagon } from "../../../../../../components/Hexagon/Hexagon";
-import {
-  animation,
-  useAnimatedInView,
-} from "../../../../../../hooks/useAnimatedInView ";
+import { IExerciseItemProps } from "types/exercise-item";
+import { Hexagon } from "components/Hexagon/Hexagon";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
 
 import styles from "./ExerciseItem.module.scss";
 

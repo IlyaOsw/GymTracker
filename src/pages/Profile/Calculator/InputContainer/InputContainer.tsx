@@ -6,10 +6,9 @@ import {
   PlusOutlined,
   RightCircleOutlined,
 } from "@ant-design/icons";
-
-import { CustomButton } from "../../../../components/CustomButton/CustomButton";
-import { InputContainerPropsType } from "../../../../types/input-container";
-import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { InputContainerPropsType } from "types/input-container";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
 import styles from "./InputContainer.module.scss";
 

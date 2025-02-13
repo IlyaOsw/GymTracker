@@ -2,10 +2,9 @@ import { Form, Input } from "antd";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-
-import { FieldType } from "../../types/field";
-import { ICustomInputProps } from "../../types/components/custom-input";
-import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
+import { useAnimatedInView, animation } from "hooks/useAnimatedInView ";
+import { ICustomInputProps } from "types/components/custom-input";
+import { FieldType } from "types/field";
 
 import styles from "./CustomInput.module.scss";
 

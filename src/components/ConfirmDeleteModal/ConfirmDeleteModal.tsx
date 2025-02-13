@@ -1,11 +1,10 @@
 import React from "react";
 import { CloseOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-
-import { CustomModal } from "../CustomModal/CustomModal";
-import { ResetButton } from "../ResetButton/ResetButton";
-import { IConfirmDeleteModal } from "../../types/components/confirm-modal";
-import { CustomButton } from "../CustomButton/CustomButton";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { CustomModal } from "components/CustomModal/CustomModal";
+import { ResetButton } from "components/ResetButton/ResetButton";
+import { IConfirmDeleteModal } from "types/components/confirm-modal";
 
 import styles from "./ConfirmDeleteModal.module.scss";
 

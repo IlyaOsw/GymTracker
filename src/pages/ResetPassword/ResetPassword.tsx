@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { SendOutlined } from "@ant-design/icons";
-
-import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
-import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
-import { DescriptionText } from "../../components/DescriptionText/DescriptionText";
-import { CustomInput } from "../../components/CustomInput/CustomInput";
-import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
-import { CustomButton } from "../../components/CustomButton/CustomButton";
-import { ClosableMessage } from "../../components/ClosableMessage/ClosableMessage";
+import { CustomFooter } from "layout/CustomFooter/CustomFooter";
+import { DescriptionTitle } from "components/DescriptionTitle/DescriptionTitle";
+import { DescriptionText } from "components/DescriptionText/DescriptionText";
+import { CustomInput } from "components/CustomInput/CustomInput";
+import { PageWrapper } from "components/PageWrapper/PageWrapper";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
 import styles from "./ResetPassword.module.scss";
 

@@ -4,14 +4,10 @@ import { Image } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-
-import { DescriptionTitle } from "../../../components/DescriptionTitle/DescriptionTitle";
-import { DescriptionText } from "../../../components/DescriptionText/DescriptionText";
-import {
-  animation,
-  useAnimatedInView,
-} from "../../../hooks/useAnimatedInView ";
-import { InsideLookType } from "../../../types/store/inside-look";
+import { DescriptionTitle } from "components/DescriptionTitle/DescriptionTitle";
+import { DescriptionText } from "components/DescriptionText/DescriptionText";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
+import { InsideLookType } from "types/store/inside-look";
 
 import styles from "./InsideLook.module.scss";
 

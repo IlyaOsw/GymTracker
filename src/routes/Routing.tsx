@@ -1,8 +1,7 @@
 import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-
-import { Loader } from "../components/Loader/Loader";
-import { useAuth } from "../context/AuthContext";
+import { Loader } from "components/Loader/Loader";
+import { useAuth } from "context/AuthContext";
 
 import { ProtectedRoute } from "./ProtectedRoute";
 

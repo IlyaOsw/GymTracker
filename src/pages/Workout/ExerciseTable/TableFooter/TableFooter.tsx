@@ -14,11 +14,10 @@ import {
   getFirestore,
   writeBatch,
 } from "firebase/firestore";
-
-import { CustomButton } from "../../../../components/CustomButton/CustomButton";
-import { TableFooterPropsType } from "../../../../types/table-footer";
-import { SettingButton } from "../../../../components/SettingButton/SettingButton";
-import { ExerciseTableType } from "../../../../types/exercise-table";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { TableFooterPropsType } from "types/table-footer";
+import { SettingButton } from "components/SettingButton/SettingButton";
+import { ExerciseTableType } from "types/exercise-table";
 
 import styles from "./TableFooter.module.scss";
 import { TrainingHistory } from "./TrainingHistory/TrainingHistory";

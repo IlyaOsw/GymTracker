@@ -1,11 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-import { Hexagon } from "../../../components/Hexagon/Hexagon";
-import {
-  animation,
-  useAnimatedInView,
-} from "../../../hooks/useAnimatedInView ";
+import { Hexagon } from "components/Hexagon/Hexagon";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
 
 import styles from "./Greeting.module.scss";
 import { Images } from "./Images/Images";

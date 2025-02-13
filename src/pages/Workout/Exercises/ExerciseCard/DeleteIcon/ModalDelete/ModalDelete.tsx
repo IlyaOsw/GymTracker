@@ -8,12 +8,11 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-
-import { IExercise } from "../../../../../../types/exercise";
-import { scrollToTop } from "../../../../../../utils/scrollToTop";
-import { ModalDeletePropsType } from "../../../../../../types/modal-delete";
-import { ClosableMessage } from "../../../../../../components/ClosableMessage/ClosableMessage";
-import { ConfirmDeleteModal } from "../../../../../../components/ConfirmDeleteModal/ConfirmDeleteModal";
+import { IExercise } from "types/exercise";
+import { scrollToTop } from "utils/scrollToTop";
+import { ModalDeletePropsType } from "types/modal-delete";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
+import { ConfirmDeleteModal } from "components/ConfirmDeleteModal/ConfirmDeleteModal";
 
 export const ModalDelete: React.FC<ModalDeletePropsType> = React.memo(
   ({

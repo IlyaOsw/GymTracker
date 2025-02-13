@@ -4,11 +4,10 @@ import { Empty } from "antd";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { StarFilled } from "@ant-design/icons";
-
-import { IExercise } from "../../../../../types/exercise";
-import { Loader } from "../../../../../components/Loader/Loader";
-import { SubTitle } from "../../../../../components/SubTitle/SubTitle";
-import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
+import { IExercise } from "types/exercise";
+import { Loader } from "components/Loader/Loader";
+import { SubTitle } from "components/SubTitle/SubTitle";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
 import { ExerciseItem } from "./ExerciseItem/ExerciseItem";
 import styles from "./FavoriteExercises.module.scss";

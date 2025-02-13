@@ -5,18 +5,18 @@ import { useTranslation } from "react-i18next";
 import { doc, setDoc, getFirestore, getDoc } from "firebase/firestore";
 import { SyncOutlined } from "@ant-design/icons";
 import { getAuth } from "firebase/auth";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { CustomInput } from "components/CustomInput/CustomInput";
+import { Calendar } from "components/Calendar/Calendar";
+import { EditFormPropsType } from "types/edit-form";
+import { CountrySelect } from "components/CountrySelect/CountrySelect";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
+import { SportSelect } from "components/SportSelect/SportSelect";
+import { calculateAge } from "utils/calculateAge";
+import { useUserContext } from "context/UserContext";
+import { disabledDate } from "utils/disabledDate";
 
-import { CustomButton } from "../../../../../components/CustomButton/CustomButton";
-import { CustomInput } from "../../../../../components/CustomInput/CustomInput";
-import { Calendar } from "../../../../../components/Calendar/Calendar";
 import styles from "../EditProfile.module.scss";
-import { EditFormPropsType } from "../../../../../types/edit-form";
-import { CountrySelect } from "../../../../../components/CountrySelect/CountrySelect";
-import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
-import { SportSelect } from "../../../../../components/SportSelect/SportSelect";
-import { calculateAge } from "../../../../../utils/calculateAge";
-import { useUserContext } from "../../../../../context/UserContext";
-import { disabledDate } from "../../../../../utils/disabledDate";
 
 const countryOptions = countries().getData();
 

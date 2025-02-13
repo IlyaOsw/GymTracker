@@ -2,14 +2,13 @@ import { UserOutlined, UploadOutlined } from "@ant-design/icons";
 import { Avatar, Upload } from "antd";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-
-import { CustomButton } from "../../../components/CustomButton/CustomButton";
-import { CustomInput } from "../../../components/CustomInput/CustomInput";
-import { ConfirmPasswordInput } from "../../../components/PasswordInput/ConfirmPasswordInput";
-import { RegistrationType } from "../../../types/registration";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { CustomInput } from "components/CustomInput/CustomInput";
+import { ConfirmPasswordInput } from "components/PasswordInput/ConfirmPasswordInput";
+import { RegistrationType } from "types/registration";
+import { SubTitle } from "components/SubTitle/SubTitle";
 
 import styles from "../SignUp.module.scss";
-import { SubTitle } from "../../../components/SubTitle/SubTitle";
 
 export const Registration: React.FC<RegistrationType> = ({
   onEmailChange,

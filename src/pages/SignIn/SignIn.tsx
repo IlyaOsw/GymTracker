@@ -4,16 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { LoginOutlined } from "@ant-design/icons";
-
-import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
-import { CustomInput } from "../../components/CustomInput/CustomInput";
-import { CustomButton } from "../../components/CustomButton/CustomButton";
-import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
-import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
-import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
-import { useAuth } from "../../context/AuthContext";
-import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
-import { ClosableMessage } from "../../components/ClosableMessage/ClosableMessage";
+import { DescriptionTitle } from "components/DescriptionTitle/DescriptionTitle";
+import { CustomInput } from "components/CustomInput/CustomInput";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { PasswordInput } from "components/PasswordInput/PasswordInput";
+import { PageWrapper } from "components/PageWrapper/PageWrapper";
+import { CustomFooter } from "layout/CustomFooter/CustomFooter";
+import { useAuth } from "context/AuthContext";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
 import styles from "./SignIn.module.scss";
 

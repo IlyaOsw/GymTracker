@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-
-import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
-import { IDescriptionTitleAndText } from "../../types/components/description-title-text";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
+import { IDescriptionTitleAndText } from "types/components/description-title-text";
 
 import styles from "./DescriptionTitle.module.scss";
 

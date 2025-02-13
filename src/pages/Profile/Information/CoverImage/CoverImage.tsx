@@ -3,11 +3,11 @@ import { Upload } from "antd";
 import React, { useEffect, useState } from "react";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useTranslation } from "react-i18next";
+import { SettingButton } from "components/SettingButton/SettingButton";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
+import { Loader } from "components/Loader/Loader";
 
 import { auth, storage } from "../../../..";
-import { SettingButton } from "../../../../components/SettingButton/SettingButton";
-import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
-import { Loader } from "../../../../components/Loader/Loader";
 
 import styles from "./CoverImage.module.scss";
 

@@ -2,11 +2,9 @@ import { Form, Input } from "antd";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
-
 import { motion } from "framer-motion";
-
-import { ICustomPasswrodInputProps } from "../../types/components/custom-password";
-import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
+import { ICustomPasswrodInputProps } from "types/components/custom-password";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
 
 import styles from "./PasswordInput.module.scss";
 

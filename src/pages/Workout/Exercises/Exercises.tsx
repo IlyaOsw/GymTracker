@@ -4,16 +4,11 @@ import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { motion } from "framer-motion";
 import { Divider, Empty } from "antd";
-
-import { SubTitle } from "../../../components/SubTitle/SubTitle";
-
-import { Loader } from "../../../components/Loader/Loader";
-import { ClosableMessage } from "../../../components/ClosableMessage/ClosableMessage";
-import {
-  animation,
-  useAnimatedInView,
-} from "../../../hooks/useAnimatedInView ";
-import { IExercise, IExercisesProps } from "../../../types/exercise";
+import { SubTitle } from "components/SubTitle/SubTitle";
+import { Loader } from "components/Loader/Loader";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
+import { IExercise, IExercisesProps } from "types/exercise";
 
 import styles from "./Exercises.module.scss";
 import { ExerciseCard } from "./ExerciseCard/ExerciseCard";

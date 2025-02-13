@@ -2,10 +2,9 @@ import { Form, Input } from "antd";
 import React from "react";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
-
-import { IPasswordInputProps } from "../../types/components/password-input";
-import { animation, useAnimatedInView } from "../../hooks/useAnimatedInView ";
-import { FieldType } from "../../types/field";
+import { IPasswordInputProps } from "types/components/password-input";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
+import { FieldType } from "types/field";
 
 import styles from "./PasswordInput.module.scss";
 

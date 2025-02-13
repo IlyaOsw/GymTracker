@@ -3,10 +3,9 @@ import { CheckOutlined, EditOutlined, StarFilled } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-
-import { CardOptionsPropsType } from "../../../../../types/card-options";
-import { SettingButton } from "../../../../../components/SettingButton/SettingButton";
-import { ClosableMessage } from "../../../../../components/ClosableMessage/ClosableMessage";
+import { CardOptionsPropsType } from "types/card-options";
+import { SettingButton } from "components/SettingButton/SettingButton";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
 import styles from "./CardOptions.module.scss";
 

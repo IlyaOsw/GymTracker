@@ -1,9 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-
-import { SocialLinksType } from "../../../../types/store/social-links";
-import { SubTitle } from "../../../../components/SubTitle/SubTitle";
+import { SocialLinksType } from "types/store/social-links";
+import { SubTitle } from "components/SubTitle/SubTitle";
 
 import styles from "./SocialMedia.module.scss";
 

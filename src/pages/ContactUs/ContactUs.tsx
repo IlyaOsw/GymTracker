@@ -3,15 +3,14 @@ import { useTranslation } from "react-i18next";
 import { Divider, Form, Input } from "antd";
 import { SendOutlined } from "@ant-design/icons";
 import { useForm, ValidationError } from "@formspree/react";
-
-import { CustomFooter } from "../../layout/CustomFooter/CustomFooter";
-import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
-import { DescriptionTitle } from "../../components/DescriptionTitle/DescriptionTitle";
-import { CustomInput } from "../../components/CustomInput/CustomInput";
-import { SubTitle } from "../../components/SubTitle/SubTitle";
-import { CustomButton } from "../../components/CustomButton/CustomButton";
-import { scrollToTop } from "../../utils/scrollToTop";
-import { ClosableMessage } from "../../components/ClosableMessage/ClosableMessage";
+import { CustomFooter } from "layout/CustomFooter/CustomFooter";
+import { PageWrapper } from "components/PageWrapper/PageWrapper";
+import { DescriptionTitle } from "components/DescriptionTitle/DescriptionTitle";
+import { CustomInput } from "components/CustomInput/CustomInput";
+import { SubTitle } from "components/SubTitle/SubTitle";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { scrollToTop } from "utils/scrollToTop";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
 import styles from "./ContactUs.module.scss";
 

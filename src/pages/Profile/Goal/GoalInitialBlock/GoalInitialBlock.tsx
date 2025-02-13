@@ -4,12 +4,8 @@ import { RiseOutlined } from "@ant-design/icons";
 import { v4 as uuidv4 } from "uuid";
 import { collection, doc, getFirestore, setDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-
-import { CustomButton } from "../../../../components/CustomButton/CustomButton";
-import {
-  GoalInitialBlockPropsType,
-  IGoalData,
-} from "../../../../types/goal-data";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { GoalInitialBlockPropsType, IGoalData } from "types/goal-data";
 
 export const GoalInitialBlock: React.FC<GoalInitialBlockPropsType> = React.memo(
   ({ setGoalData }) => {

@@ -1,8 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
-
-import { Routing } from "../../routes/Routing";
-import { BackToTop } from "../../components/BackToTop/BackToTop";
+import { Routing } from "routes/Routing";
+import { BackToTop } from "components/BackToTop/BackToTop";
 
 const { Content } = Layout;
 

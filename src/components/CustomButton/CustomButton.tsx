@@ -1,6 +1,5 @@
 import { Button } from "antd";
-
-import { ICustomButtonProps } from "../../types/components/custom-button";
+import { ICustomButtonProps } from "types/components/custom-button";
 
 import styles from "./CustomButton.module.scss";
 

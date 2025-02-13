@@ -3,11 +3,12 @@ import React, { useEffect } from "react";
 import { Divider } from "antd";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
+import { BurgerMenuItem } from "types/burger-menu";
+import { HeaderPropsType } from "types/header";
+import { useAuth } from "context/AuthContext";
 
-import { BurgerMenuItem } from "../../../types/burger-menu";
-import { HeaderPropsType } from "../../../types/header";
 import styles from "../CustomHeader.module.scss";
-import { useAuth } from "../../../context/AuthContext";
+
 import { LanguageDropdown } from "../LanguageDropdown/LanguageDropdown";
 
 export const BurgerMenu: React.FC<HeaderPropsType> = ({

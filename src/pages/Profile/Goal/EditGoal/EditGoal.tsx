@@ -4,16 +4,15 @@ import { useTranslation } from "react-i18next";
 import { v4 as uuidv4 } from "uuid";
 import { getAuth } from "firebase/auth";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
-
-import { CustomModal } from "../../../../components/CustomModal/CustomModal";
-import { CustomInput } from "../../../../components/CustomInput/CustomInput";
-import { Calendar } from "../../../../components/Calendar/Calendar";
-import NumericInput from "../../../../components/NumericInput/NumericInput";
-import { CustomButton } from "../../../../components/CustomButton/CustomButton";
-import { IGoalData } from "../../../../types/goal-data";
-import { parseDate } from "../../../../utils/parseDate";
-import { handleDateChange } from "../../../../utils/handleDateChange";
-import { EditGoalPropsType } from "../../../../types/edit-goal";
+import { CustomModal } from "components/CustomModal/CustomModal";
+import { CustomInput } from "components/CustomInput/CustomInput";
+import { Calendar } from "components/Calendar/Calendar";
+import NumericInput from "components/NumericInput/NumericInput";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { IGoalData } from "types/goal-data";
+import { parseDate } from "utils/parseDate";
+import { handleDateChange } from "utils/handleDateChange";
+import { EditGoalPropsType } from "types/edit-goal";
 
 import styles from "./EditGoal.module.scss";
 

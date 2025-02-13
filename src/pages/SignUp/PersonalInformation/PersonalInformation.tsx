@@ -2,19 +2,15 @@ import React from "react";
 import { Form, ConfigProvider, Select } from "antd";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import { CustomInput } from "components/CustomInput/CustomInput";
+import { Calendar } from "components/Calendar/Calendar";
+import { SubTitle } from "components/SubTitle/SubTitle";
+import { FieldType } from "types/field";
+import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
+import { disabledDate } from "utils/disabledDate";
+import { PersonalInformationType } from "types/personal-information";
 
-import { CustomInput } from "../../../components/CustomInput/CustomInput";
 import styles from "../SignUp.module.scss";
-import { Calendar } from "../../../components/Calendar/Calendar";
-import { SubTitle } from "../../../components/SubTitle/SubTitle";
-import { FieldType } from "../../../types/field";
-
-import {
-  animation,
-  useAnimatedInView,
-} from "../../../hooks/useAnimatedInView ";
-import { disabledDate } from "../../../utils/disabledDate";
-import { PersonalInformationType } from "../../../types/personal-information";
 
 const { Option } = Select;
 

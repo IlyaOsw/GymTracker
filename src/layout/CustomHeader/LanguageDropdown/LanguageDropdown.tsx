@@ -1,9 +1,9 @@
 import { DownOutlined } from "@ant-design/icons";
 import { ConfigProvider, Dropdown, Typography, Space, MenuProps } from "antd";
 import React from "react";
+import { LanguageDropdownPropsType } from "types/language-dropdown";
 
 import styles from "../CustomHeader.module.scss";
-import { LanguageDropdownPropsType } from "../../../types/language-dropdown";
 
 export const LanguageDropdown: React.FC<LanguageDropdownPropsType> = ({
   handleLanguageClick,

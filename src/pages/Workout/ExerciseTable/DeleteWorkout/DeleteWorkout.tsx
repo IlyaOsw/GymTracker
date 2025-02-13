@@ -9,12 +9,11 @@ import {
   doc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-
-import { ResetButton } from "../../../../components/ResetButton/ResetButton";
-import { IDeleteWorkoutProps } from "../../../../types/delete-workout";
-import { scrollToTop } from "../../../../utils/scrollToTop";
-import { ClosableMessage } from "../../../../components/ClosableMessage/ClosableMessage";
-import { ConfirmDeleteModal } from "../../../../components/ConfirmDeleteModal/ConfirmDeleteModal";
+import { ResetButton } from "components/ResetButton/ResetButton";
+import { IDeleteWorkoutProps } from "types/delete-workout";
+import { scrollToTop } from "utils/scrollToTop";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
+import { ConfirmDeleteModal } from "components/ConfirmDeleteModal/ConfirmDeleteModal";
 
 export const DeleteWorkout: React.FC<IDeleteWorkoutProps> = React.memo(
   ({

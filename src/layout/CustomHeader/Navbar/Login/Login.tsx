@@ -8,9 +8,8 @@ import { Button, message } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
-import { CustomButton } from "../../../../components/CustomButton/CustomButton";
-import { useAuth } from "../../../../context/AuthContext";
+import { CustomButton } from "components/CustomButton/CustomButton";
+import { useAuth } from "context/AuthContext";
 
 import styles from "./Login.module.scss";
 

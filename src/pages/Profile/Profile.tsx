@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { Divider } from "antd";
-
-import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
-import { UserProvider } from "../../context/UserContext";
+import { PageWrapper } from "components/PageWrapper/PageWrapper";
+import { UserProvider } from "context/UserContext";
 
 import { Diary } from "./Diary/Diary";
 import { Calculator } from "./Calculator/Calculator";
