@@ -92,6 +92,7 @@ export const CoverImage: React.FC = React.memo(() => {
                 process.env.PUBLIC_URL +
                 "/assets/Images/CoverPhoto/wallpaper.jpg"
               }
+              alt="CoverImg"
             />
           )}
           <Upload
