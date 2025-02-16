@@ -1,7 +1,12 @@
-import { CameraOutlined } from "@ant-design/icons";
+import { CameraOutlined, CloseOutlined } from "@ant-design/icons";
 import { Upload } from "antd";
 import React, { useEffect, useState } from "react";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytes,
+} from "firebase/storage";
 import { useTranslation } from "react-i18next";
 import { SettingButton } from "components/SettingButton/SettingButton";
 import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
@@ -51,6 +56,19 @@ export const CoverImage: React.FC = React.memo(() => {
     }
   };
 
+  const deleteCoverImage = async () => {
+    setCoverURL("");
+    if (user) {
+      const coverImageRef = ref(storage, `cover/${user.uid}`);
+      try {
+        await deleteObject(coverImageRef);
+        ClosableMessage({ type: "success", content: t("coverImageDeleted") });
+      } catch (error) {
+        ClosableMessage({ type: "error", content: t("deleteFailed") });
+      }
+    }
+  };
+
   return (
     <div className={styles.paper}>
       {loading ? (
@@ -58,9 +76,23 @@ export const CoverImage: React.FC = React.memo(() => {
       ) : (
         <>
           {coverURL ? (
-            <img src={coverURL} alt="CoverImg" />
+            <>
+              <img src={coverURL} alt="CoverImg" />
+              <SettingButton
+                icon={<CloseOutlined />}
+                className={styles.deleteBtn}
+                onClick={deleteCoverImage}
+              >
+                <span className={styles.buttonText}>{t("delete")}</span>
+              </SettingButton>
+            </>
           ) : (
-            <div className={styles.paperPlaceholder} />
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                "/assets/Images/CoverPhoto/wallpaper.jpg"
+              }
+            />
           )}
           <Upload
             showUploadList={false}
