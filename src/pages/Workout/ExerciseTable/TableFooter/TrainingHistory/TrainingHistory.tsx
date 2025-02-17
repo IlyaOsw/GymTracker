@@ -4,16 +4,13 @@ import { RightOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { TrainingHistoryPropsType } from "types/training-history";
 import { scrollToBottom } from "utils/scrollToBottom";
+import { formatDate } from "utils/formatDateHistory";
 
 import styles from "./TrainingHistory.module.scss";
 
 export const TrainingHistory: React.FC<TrainingHistoryPropsType> = React.memo(
   ({ showHistory, workouts, workoutDates }) => {
     const { t } = useTranslation();
-
-    const formatDate = (dateString: string) => {
-      return new Date(dateString).toLocaleDateString();
-    };
 
     const sortedData = workoutDates
       .map((date, index) => ({ date, workout: workouts[index] }))

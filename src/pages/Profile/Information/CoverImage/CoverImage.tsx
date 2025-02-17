@@ -59,9 +59,8 @@ export const CoverImage: React.FC = React.memo(() => {
   const deleteCoverImage = async () => {
     setCoverURL("");
     if (user) {
-      const coverImageRef = ref(storage, `cover/${user.uid}`);
       try {
-        await deleteObject(coverImageRef);
+        await deleteObject(ref(storage, `cover/${user.uid}`));
         ClosableMessage({ type: "success", content: t("coverImageDeleted") });
       } catch (error) {
         ClosableMessage({ type: "error", content: t("deleteFailed") });

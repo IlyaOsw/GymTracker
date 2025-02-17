@@ -18,6 +18,7 @@ import { CustomButton } from "components/CustomButton/CustomButton";
 import { TableFooterPropsType } from "types/table-footer";
 import { SettingButton } from "components/SettingButton/SettingButton";
 import { ExerciseTableType } from "types/exercise-table";
+import { auth } from "index";
 
 import styles from "./TableFooter.module.scss";
 import { TrainingHistory } from "./TrainingHistory/TrainingHistory";
@@ -57,6 +58,7 @@ export const TableFooter: React.FC<TableFooterPropsType> = React.memo(
 
         if (selectedExercise) {
           const setsCollectionRef = collection(getFirestore(), "sets");
+
           try {
             const docSnapshot = await getDoc(
               doc(setsCollectionRef, selectedExercise.id)
@@ -115,10 +117,8 @@ export const TableFooter: React.FC<TableFooterPropsType> = React.memo(
       setData(newData);
       setEditWeight(newRow.key);
     };
-
     const removeOldestWorkout = async () => {
       if (!selectedExercise) return;
-
       const setDocRef = doc(
         collection(getFirestore(), "sets"),
         selectedExercise.id
@@ -130,13 +130,22 @@ export const TableFooter: React.FC<TableFooterPropsType> = React.memo(
         if (docSnapshot.exists()) {
           const workouts = docSnapshot.data()?.workouts || [];
 
-          if (workouts.length >= 5) {
-            const updatedWorkouts = workouts.slice(1);
+          // FOR 1 USER ONLY
+          const maxWorkouts =
+            auth.currentUser?.uid === "LoZ6EOvGVaOUBC2z5CSa1V37f6e2" &&
+            selectedExercise?.id === "327e3e1f-9078-451c-8b39-36b46f61eec6"
+              ? 20
+              : 5;
+          // ---------------
 
+          if (workouts.length >= maxWorkouts) {
+            const updatedWorkouts = workouts.slice(1);
             const batch = writeBatch(getFirestore());
             batch.update(setDocRef, { workouts: updatedWorkouts });
             await batch.commit();
             setData(updatedWorkouts);
+          } else {
+            console.log("NOT DELETED");
           }
         }
       } catch (error) {
