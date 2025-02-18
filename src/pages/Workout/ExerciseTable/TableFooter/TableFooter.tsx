@@ -44,7 +44,7 @@ export const TableFooter: React.FC<TableFooterPropsType> = React.memo(
     const [workouts, setWorkouts] = useState<ExerciseTableType[][]>([]);
     const [workoutDates, setWorkoutDates] = useState<string[]>([]);
     const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState<number>(-1);
-    const [hideButtons, setHideButtons] = useState(false);
+    const [hideButtons, setHideButtons] = useState<boolean>(false);
 
     useEffect(() => {
       const loadWorkouts = async () => {
@@ -87,7 +87,6 @@ export const TableFooter: React.FC<TableFooterPropsType> = React.memo(
           }
         }
       };
-
       loadWorkouts();
     }, [
       selectedExercise,
@@ -126,7 +125,6 @@ export const TableFooter: React.FC<TableFooterPropsType> = React.memo(
 
       try {
         const docSnapshot = await getDoc(setDocRef);
-
         if (docSnapshot.exists()) {
           const workouts = docSnapshot.data()?.workouts || [];
 
@@ -144,8 +142,6 @@ export const TableFooter: React.FC<TableFooterPropsType> = React.memo(
             batch.update(setDocRef, { workouts: updatedWorkouts });
             await batch.commit();
             setData(updatedWorkouts);
-          } else {
-            console.log("NOT DELETED");
           }
         }
       } catch (error) {
