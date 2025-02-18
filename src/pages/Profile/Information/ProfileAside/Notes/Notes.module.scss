@@ -5,11 +5,6 @@
   justify-content: center;
   flex-direction: column;
   padding: 0px 20px;
-  order: 3;
-
-  @media (max-width: 768px) {
-    order: 1;
-  }
 
   .btns {
     display: flex;

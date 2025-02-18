@@ -25,9 +25,8 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
   const handleFirstNameChange = (value: string) => onFirstNameChange(value);
   const handleLastNameChange = (value: string) => onLastNameChange(value);
   const handleGenderChange = (value: string) => onGenderChange(value);
-  const handleDateOfBirthChange = (date: Date | null) => {
+  const handleDateOfBirthChange = (date: Date | null) =>
     onDateOfBithChange(date);
-  };
 
   return (
     <div className={styles.personalInfo}>

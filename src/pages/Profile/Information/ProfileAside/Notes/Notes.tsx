@@ -66,15 +66,9 @@ export const Notes: React.FC<NotesPropsType> = ({ userData }) => {
       setNoteText("");
       setSavedNote("");
 
-      ClosableMessage({
-        type: "success",
-        content: t("deletedNote"),
-      });
+      ClosableMessage({ type: "success", content: t("deletedNote") });
     } catch (error) {
-      ClosableMessage({
-        type: "error",
-        content: t("noteDeleteError"),
-      });
+      ClosableMessage({ type: "error", content: t("noteDeleteError") });
     }
   };
 
@@ -97,7 +91,7 @@ export const Notes: React.FC<NotesPropsType> = ({ userData }) => {
             value={noteText}
             variant="borderless"
             showCount
-            maxLength={100}
+            maxLength={200}
             onBlur={handleSaveOnBlur}
             onChange={(e) => setNoteText(e.target.value)}
             placeholder={t("notePlaceholder")}
