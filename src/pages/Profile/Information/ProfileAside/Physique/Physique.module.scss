@@ -1,5 +1,10 @@
 .physique {
   width: 100%;
+  order: 1;
+
+  @media (max-width: 768px) {
+    order: 2;
+  }
 
   .wrapper {
     display: flex;

@@ -90,6 +90,7 @@ const SignUp: React.FC = () => {
         sport: "",
         height: "0",
         weight: "0",
+        noteText: "",
         location: {
           country: country,
           city: city || "",

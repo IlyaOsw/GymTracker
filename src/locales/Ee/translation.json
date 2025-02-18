@@ -283,5 +283,14 @@
 "inside2title": "Treeningpäevik, eesmärgid ja kalkulaator",
 "inside3title": "Lihasgrupi treeningu leht",
 "inside4title": "Harjutuste jälgija ja edusammude ajalugu",
-"coverImageDeleted": "Kaanepilt kustutatud"
+"coverImageDeleted": "Kaanepilt kustutatud",
+"noteSaved": "Märkus salvestatud",
+"noteSaveError": "Viga märkuse salvestamisel",
+"deletedNote": "Märkus kustutatud",
+"noteDeleteError": "Viga märkuse kustutamisel",
+"createNote": "Loo märkus",
+"notes": "Märkmed",
+"notePlaceholder": "Sisesta oma märkus",
+"deleteNote": "Kustuta märkus",
+"noChanges": "Muudatusi pole"
 }

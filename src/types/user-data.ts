@@ -10,6 +10,7 @@ export interface IUserData {
   sport: string;
   height: string;
   weight: string;
+  noteText: string;
   location: {
     country: string | undefined;
     city: string;

@@ -283,5 +283,14 @@
   "inside2title": "Workout Diary, Goals, and Calculator",
   "inside3title": "Muscle Group Training Page",
   "inside4title": "Exercise Tracker and Progress History",
-  "coverImageDeleted": "Cover image deleted"
+  "coverImageDeleted": "Cover image deleted",
+  "noteSaved": "Note saved",
+  "noteSaveError": "Error saving note",
+  "deletedNote": "Note deleted",
+  "noteDeleteError": "Error deleting note",
+  "createNote": "Create note",
+  "notes": "Notes",
+  "notePlaceholder": "Enter your note",
+  "deleteNote": "Delete note",
+  "noChanges": "No changes detected"
 }

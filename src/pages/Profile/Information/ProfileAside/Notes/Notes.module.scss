@@ -1,0 +1,44 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0px 20px;
+  order: 3;
+
+  @media (max-width: 768px) {
+    order: 1;
+  }
+
+  .btns {
+    display: flex;
+    gap: 100px;
+  }
+
+  .textarea {
+    background-image: linear-gradient(to bottom, #303030, #181818);
+    border-radius: 12px !important;
+    color: #fff;
+    transition: border 0.3s ease-in-out;
+    margin: 15px 0px;
+    font-size: 1.1rem;
+
+    span {
+      color: #818181 !important;
+    }
+
+    ::placeholder {
+      color: #818181 !important;
+    }
+
+    &:focus {
+      border-color: #00c4cc;
+      outline: none;
+    }
+  }
+}
+
+.createBtn {
+  margin-top: 15px;
+}
