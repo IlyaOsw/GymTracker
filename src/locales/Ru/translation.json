@@ -292,5 +292,7 @@
   "notes": "Заметки",
   "notePlaceholder": "Введите заметку",
   "deleteNote": "Удалить заметку",
-  "noChanges": "Изменений не было"
+  "noChanges": "Изменений не было",
+  "deleteAcccount": "Удалить аккаунт",
+  "deleteImage": "Удалить фото"
 }

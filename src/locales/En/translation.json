@@ -292,5 +292,7 @@
   "notes": "Notes",
   "notePlaceholder": "Enter your note",
   "deleteNote": "Delete note",
-  "noChanges": "No changes detected"
+  "noChanges": "No changes detected",
+  "deleteAcccount": "Delete account",
+  "deleteImage": "Delete image"
 }

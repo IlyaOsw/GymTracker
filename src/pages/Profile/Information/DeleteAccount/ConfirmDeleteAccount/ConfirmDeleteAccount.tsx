@@ -14,12 +14,11 @@ export const ConfirmDeleteAccount: React.FC<ConfirmDeleteAccountPropsType> = ({
   confirm,
   setConfirm,
 }) => {
+  const user = getAuth().currentUser;
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleDeleteAccount = async () => {
-    const user = getAuth().currentUser;
-
     if (user) {
       try {
         const storage = getStorage();

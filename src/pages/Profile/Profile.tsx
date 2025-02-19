@@ -7,6 +7,7 @@ import { Diary } from "./Diary/Diary";
 import { Calculator } from "./Calculator/Calculator";
 import { Information } from "./Information/Information";
 import { Goal } from "./Goal/Goal";
+import { DeleteAccount } from "./Information/DeleteAccount/DeleteAccount";
 
 const Profile: React.FC = () => {
   useEffect(() => {
@@ -21,6 +22,7 @@ const Profile: React.FC = () => {
         <Goal />
         <Divider style={{ backgroundColor: "gray" }} />
         <Calculator />
+        <DeleteAccount />
       </PageWrapper>
     </UserProvider>
   );

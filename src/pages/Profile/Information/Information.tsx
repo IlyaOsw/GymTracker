@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Divider, Skeleton } from "antd";
-import { EditOutlined, UserDeleteOutlined } from "@ant-design/icons";
-import { useTranslation } from "react-i18next";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { useUserContext } from "context/UserContext";
-import { CustomButton } from "components/CustomButton/CustomButton";
-import { ResetButton } from "components/ResetButton/ResetButton";
 import { IUserData } from "types/user-data";
 
 import { db } from "../../..";
@@ -15,15 +11,10 @@ import styles from "./Information.module.scss";
 import { UserInfo } from "./UserInfo/UserInfo";
 import { ProfileAvatar } from "./ProfileAvatar/ProfileAvatar";
 import { CoverImage } from "./CoverImage/CoverImage";
-import { EditProfile } from "./EditProfile/EditProfile";
-import { ConfirmDeleteAccount } from "./ConfirmDeleteAccount/ConfirmDeleteAccount";
 import { ProfileAside } from "./ProfileAside/ProfileAside";
 
 export const Information: React.FC = React.memo(() => {
   const auth = getAuth();
-  const { t } = useTranslation();
-  const [edit, setEdit] = useState<boolean>(false);
-  const [confirm, setConfirm] = useState<boolean>(false);
   const { updateUserData } = useUserContext();
   const [userData, setUserData] = useState<IUserData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -90,22 +81,7 @@ export const Information: React.FC = React.memo(() => {
         )}
         <ProfileAside userData={userData} />
       </div>
-      <div className={styles.buttons}>
-        <ResetButton
-          icon={<UserDeleteOutlined />}
-          onClick={() => setConfirm(true)}
-        >
-          {t("delete")}
-        </ResetButton>
-        <CustomButton icon={<EditOutlined />} onClick={() => setEdit(true)}>
-          <span>{t("edit")}</span>
-        </CustomButton>
-      </div>
       <Divider style={{ backgroundColor: "gray" }} />
-      {edit && <EditProfile onClose={() => setEdit(false)} />}
-      {confirm && (
-        <ConfirmDeleteAccount confirm={confirm} setConfirm={setConfirm} />
-      )}
     </>
   );
 });

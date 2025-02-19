@@ -18,6 +18,7 @@
   width: 400px;
   padding: 25px;
   margin: 15px 0px;
+  position: relative;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -27,6 +28,12 @@
   @media (max-width: 400зч) {
     width: 320px;
     padding: 15px;
+  }
+
+  .editBtn {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
   }
 }
 

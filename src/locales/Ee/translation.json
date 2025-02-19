@@ -292,5 +292,7 @@
 "notes": "Märkmed",
 "notePlaceholder": "Sisesta oma märkus",
 "deleteNote": "Kustuta märkus",
-"noChanges": "Muudatusi pole"
+"noChanges": "Muudatusi pole",
+"deleteAcccount": "Kustuta konto",
+"deleteImage": "Kustuta pilt"
 }

@@ -16,18 +16,6 @@
   }
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  align-self: center;
-  flex-wrap: wrap;
-  margin: 20px 25px;
-
-  @media (max-width: 576px) {
-    justify-content: space-around;
-  }
-}
-
 .sceleton {
   display: flex;
   justify-content: center;

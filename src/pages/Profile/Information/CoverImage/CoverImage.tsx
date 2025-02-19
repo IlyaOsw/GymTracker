@@ -19,7 +19,7 @@ import styles from "./CoverImage.module.scss";
 export const CoverImage: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const user = auth.currentUser;
-  const [coverURL, setCoverURL] = useState("");
+  const [coverURL, setCoverURL] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -47,7 +47,6 @@ export const CoverImage: React.FC = React.memo(() => {
       try {
         await uploadBytes(coverImageRef, file);
         const newCoverURL = await getDownloadURL(coverImageRef);
-
         setCoverURL(newCoverURL);
         ClosableMessage({ type: "success", content: t("coverImageUploaded") });
       } catch (error) {
@@ -82,7 +81,7 @@ export const CoverImage: React.FC = React.memo(() => {
                 className={styles.deleteBtn}
                 onClick={deleteCoverImage}
               >
-                <span className={styles.buttonText}>{t("delete")}</span>
+                <span className={styles.buttonText}>{t("deleteImage")}</span>
               </SettingButton>
             </>
           ) : (

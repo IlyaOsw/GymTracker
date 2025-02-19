@@ -23,6 +23,9 @@ export const Notes: React.FC<NotesPropsType> = ({ userData }) => {
   useEffect(() => {
     setNoteText(userData?.noteText || "");
     setSavedNote(userData?.noteText || "");
+    if (userData?.noteText) {
+      setNotesVisible(true);
+    }
   }, [userData?.noteText]);
 
   const handleCreateNote = () => setNotesVisible(true);
@@ -95,7 +98,7 @@ export const Notes: React.FC<NotesPropsType> = ({ userData }) => {
             onBlur={handleSaveOnBlur}
             onChange={(e) => setNoteText(e.target.value)}
             placeholder={t("notePlaceholder")}
-            style={{ height: 120, resize: "none" }}
+            style={{ resize: "none" }}
           />
           <div className={styles.btns}>
             <ResetButton onClick={handleDeleteNote} icon={<DeleteOutlined />}>
