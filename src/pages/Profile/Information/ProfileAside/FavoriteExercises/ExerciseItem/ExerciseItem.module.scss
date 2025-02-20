@@ -7,6 +7,8 @@
   transition:
     box-shadow 0.3s ease,
     transform 0.3s ease;
+  letter-spacing: 1px;
+  font-size: 1rem;
 
   img {
     height: 26px;
@@ -18,8 +20,7 @@
   }
 
   p {
-    font-size: 1.2rem;
-    letter-spacing: 1px;
+    font-size: 1.1rem;
     text-align: start;
     color: #0097b2;
     font-weight: 600;
@@ -37,18 +38,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  margin: -5px 0px 15px -15px;
+  gap: 10px;
+  margin: -5px 0px 10px -15px;
   font-size: 1.2rem;
 
   span {
-    letter-spacing: 1px;
     color: rgb(209, 148, 35);
   }
 
   img {
-    height: 40px;
-    width: 40px;
+    height: 38px;
+    width: 38px;
   }
 }
 
@@ -62,14 +62,13 @@
   gap: 50px;
 
   .hexagonWrapper {
-    font-size: 1rem;
     span {
       font-size: 1rem;
     }
 
     img {
-      height: 75px;
-      width: 75px;
+      height: 70px;
+      width: 70px;
     }
   }
 }

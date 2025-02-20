@@ -7,9 +7,9 @@ import { useTranslation } from "react-i18next";
 import styles from "./LastWorkout.module.scss";
 
 export const LastWorkout: React.FC = React.memo(() => {
+  const user = getAuth().currentUser;
   const { t } = useTranslation();
   const [lastWorkoutDate, setLastWorkoutDate] = useState<string | null>(null);
-  const user = getAuth().currentUser;
 
   useEffect(() => {
     const fetchSetsData = async () => {
@@ -41,13 +41,11 @@ export const LastWorkout: React.FC = React.memo(() => {
           const allWorkoutDates: string[] = [];
 
           for (const docSnapshot of querySnapshot.docs) {
-            const docId = docSnapshot.id;
-
-            if (exerciseIds.includes(docId)) {
+            if (exerciseIds.includes(docSnapshot.id)) {
               const setData = docSnapshot.data();
 
               if (setData.workouts && Array.isArray(setData.workouts)) {
-                setData.workouts.forEach((workout: any) => {
+                setData.workouts.forEach((workout) => {
                   if (workout.date) {
                     allWorkoutDates.push(workout.date);
                   }
