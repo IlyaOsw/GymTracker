@@ -57,7 +57,6 @@ export const FavoriteExercises: React.FC = React.memo(() => {
         setLoading(false);
       }
     });
-
     return () => unsubscribe();
   }, [t]);
 

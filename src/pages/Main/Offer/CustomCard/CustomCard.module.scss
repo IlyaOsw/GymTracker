@@ -2,16 +2,22 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  min-height: 1050px;
-  margin-bottom: 75px;
-
-  position: relative;
+  min-height: 1100px;
+  margin-bottom: 25px;
 }
 
 .block {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+
+  @media (max-width: 992px) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 }
 
 .card {
@@ -24,14 +30,4 @@
 .secondCard,
 .fourthCard {
   align-items: flex-end;
-}
-
-@media (max-width: 992px) {
-  .block {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
 }

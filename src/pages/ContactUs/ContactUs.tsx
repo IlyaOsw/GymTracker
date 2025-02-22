@@ -44,7 +44,7 @@ const ContactUs: React.FC = () => {
               onSubmit();
             }}
           >
-            <div className={styles.from}>
+            <div className={styles.form}>
               <SubTitle>{t("fullName")}</SubTitle>
               <div className={styles.container}>
                 <CustomInput

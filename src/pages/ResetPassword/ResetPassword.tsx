@@ -13,9 +13,8 @@ import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 import styles from "./ResetPassword.module.scss";
 
 const ResetPassword: React.FC = () => {
-  const { t } = useTranslation();
-
   const auth = getAuth();
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
 
   const handleResetPassword = async () => {

@@ -1,7 +1,5 @@
 .container {
-  text-align: center;
-  padding: 10px;
-  margin-bottom: 50px;
+  padding: 0px 10px;
 }
 
 .row {
@@ -9,12 +7,11 @@
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: 15px 10px;
+  padding: 5px 0px;
   width: 100%;
 
   .mask {
     font-size: 1rem;
-
     > span {
       margin: 0px 3px;
     }
@@ -68,6 +65,7 @@
 
   .info {
     text-align: left;
+
     @media (max-width: 992px) {
       text-align: center;
     }

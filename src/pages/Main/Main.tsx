@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { PageWrapper } from "components/PageWrapper/PageWrapper";
 import { CustomFooter } from "layout/CustomFooter/CustomFooter";
+import { scrollToTop } from "utils/scrollToTop";
 
 import { Greeting } from "./Greeting/Greeting";
 import { MainImage } from "./MainImage/MainImage";
@@ -9,7 +10,7 @@ import { InsideLook } from "./InsideLook/InsideLook";
 
 const Main: React.FC = () => {
   useEffect(() => {
-    window.scroll(0, 0);
+    scrollToTop();
   }, []);
 
   return (

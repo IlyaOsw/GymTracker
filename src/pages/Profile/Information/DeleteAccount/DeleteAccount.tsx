@@ -5,15 +5,13 @@ import { ResetButton } from "components/ResetButton/ResetButton";
 
 import { ConfirmDeleteAccount } from "./ConfirmDeleteAccount/ConfirmDeleteAccount";
 
-import styles from "./DeleteAccount.module.scss";
-
 export const DeleteAccount: React.FC = () => {
   const { t } = useTranslation();
   const [confirm, setConfirm] = useState<boolean>(false);
 
   return (
     <>
-      <div className={styles.deleteBtn}>
+      <div style={{ margin: "25px 0px" }}>
         <ResetButton
           icon={<UserDeleteOutlined />}
           onClick={() => setConfirm(true)}
