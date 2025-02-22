@@ -1,4 +1,4 @@
-import { Drawer, Menu, message } from "antd";
+import { Drawer, Menu } from "antd";
 import React, { useEffect } from "react";
 import { Divider } from "antd";
 import { useTranslation } from "react-i18next";
@@ -6,9 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { BurgerMenuItem } from "types/burger-menu";
 import { HeaderPropsType } from "types/header";
 import { useAuth } from "context/AuthContext";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
 import styles from "../CustomHeader.module.scss";
-
 import { LanguageDropdown } from "../LanguageDropdown/LanguageDropdown";
 
 export const BurgerMenu: React.FC<HeaderPropsType> = ({
@@ -20,7 +20,6 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   changeLanguage,
 }) => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -30,7 +29,6 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     } else {
       document.body.style.overflow = "auto";
     }
-
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -55,10 +53,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   const handleLogout = async () => {
     await logout();
     onClose();
-    messageApi.open({
-      type: "success",
-      content: t("logout"),
-    });
+    ClosableMessage({ type: "success", content: t("logout") });
   };
 
   const itemsMenu: BurgerMenuItem[] = [
@@ -80,10 +75,22 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     },
     {
       key: "3",
-      label: <Divider />,
+      label: (
+        <Link
+          to={"/calculators"}
+          onClick={onClose}
+          className={styles.menuButton}
+        >
+          {t("calculators")}
+        </Link>
+      ),
     },
     {
       key: "4",
+      label: <Divider />,
+    },
+    {
+      key: "5",
       label: isAuthenticated ? (
         <Link to="/profile" onClick={onClose} className={styles.menuButton}>
           {t("profile")}
@@ -99,7 +106,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
       ),
     },
     {
-      key: "5",
+      key: "6",
       label: isAuthenticated ? (
         <Link to="/" onClick={handleLogout} className={styles.menuButton}>
           {t("signOut")}
@@ -115,11 +122,11 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
       ),
     },
     {
-      key: "6",
+      key: "7",
       label: <Divider />,
     },
     {
-      key: "7",
+      key: "8",
       label: (
         <>
           <span className={styles.burgerSettings}>{t("language")}</span>
@@ -135,20 +142,17 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   ];
 
   return (
-    <>
-      {contextHolder}
-      <Drawer
-        title={t("menu")}
-        placement="right"
-        closable={true}
-        onClose={onClose}
-        open={open}
-        width={270}
-        className={styles.burgerColor}
-        destroyOnClose={true}
-      >
-        <Menu className={styles.burgerColor} items={itemsMenu} />
-      </Drawer>
-    </>
+    <Drawer
+      title={t("menu")}
+      placement="right"
+      closable={true}
+      onClose={onClose}
+      open={open}
+      width={270}
+      className={styles.burgerColor}
+      destroyOnClose={true}
+    >
+      <Menu className={styles.burgerColor} items={itemsMenu} />
+    </Drawer>
   );
 };

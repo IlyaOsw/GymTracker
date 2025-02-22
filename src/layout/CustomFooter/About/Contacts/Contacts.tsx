@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { HomeOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
+import { HomeOutlined, MailOutlined } from "@ant-design/icons";
 import { SubTitle } from "components/SubTitle/SubTitle";
 
 import styles from "./Contacts.module.scss";
@@ -13,11 +13,6 @@ export const Contacts: React.FC = () => {
       <span className={styles.contactsItem}>
         <a href="mailto:ossipov96@gmail.com">
           <MailOutlined /> gymtracker@info.com
-        </a>
-      </span>
-      <span className={styles.contactsItem}>
-        <a href="tel:+37253494177">
-          <PhoneOutlined /> +372 5349 4177
         </a>
       </span>
       <span className={styles.contactsItem}>

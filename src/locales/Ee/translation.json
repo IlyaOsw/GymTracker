@@ -295,5 +295,14 @@
 "noChanges": "Muudatusi pole",
 "deleteAcccount": "Kustuta konto",
 "deleteImage": "Kustuta pilt",
-"confirmDeletingNote": "Palun kinnitage märkuse kustutamine."
+"confirmDeletingNote": "Palun kinnitage märkuse kustutamine.",
+"calculators": "Kalkulaatorid",
+"calculatorDescription": "Sellel lehel leiate kasulikke tööriistu oma keha peamiste näitajate arvutamiseks. Valige vajalik kalkulaator ja saate täpsed andmed, mis aitavad teil oma vormi jälgida ja tulemusi parandada!",
+"calculatorDescription2": "Jälgige oma näitajaid ja liikuge uute eesmärkide poole!",
+"1RMcalc": "1RM Kalkulaator",
+"1RMcalcDesc": "Saage teada, kui palju raskust suudate ühe kordusega tõsta.",
+"waterCalc": "Vee Kalkulaator",
+"waterCalcDesc": "Arvutage oma päevane veevajadus optimaalse tervise jaoks.",
+"BMIcalc": "KMI Kalkulaator",
+"BMIcalcDesc": "Määrake oma kehamassiindeks ja kategooria."
 }

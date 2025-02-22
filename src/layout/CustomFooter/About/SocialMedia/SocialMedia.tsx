@@ -14,25 +14,22 @@ export const SocialMedia: React.FC = () => {
 
   return (
     <div className={styles.socialMedia}>
-      <SubTitle children={t("socialMedia")}></SubTitle>
-      <span className={styles.socialMediaItems}>
-        {socialMedia.map((link) => (
-          <a
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            key={link.id}
-          >
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                `/assets/Icons/Footer/${link.label}.svg`
-              }
-              alt={`${link.label} icon`}
-            />
-          </a>
-        ))}
-      </span>
+      <SubTitle children={t("socialMedia")} />
+      {socialMedia.map((link) => (
+        <a
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          key={link.id}
+        >
+          <img
+            src={
+              process.env.PUBLIC_URL + `/assets/Icons/Footer/${link.label}.svg`
+            }
+            alt={`${link.label} icon`}
+          />
+        </a>
+      ))}
     </div>
   );
 };

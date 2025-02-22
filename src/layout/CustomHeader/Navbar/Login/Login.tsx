@@ -4,30 +4,26 @@ import {
   UserAddOutlined,
   LoginOutlined,
 } from "@ant-design/icons";
-import { Button, message } from "antd";
+import { Button } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { CustomButton } from "components/CustomButton/CustomButton";
 import { useAuth } from "context/AuthContext";
+import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
 import styles from "./Login.module.scss";
 
 export const Login: React.FC = () => {
   const { t } = useTranslation();
-  const [messageApi, contextHolder] = message.useMessage();
   const { isAuthenticated, logout } = useAuth();
 
   const handleLogout = async () => {
     await logout();
-    messageApi.open({
-      type: "success",
-      content: t("logout"),
-    });
+    ClosableMessage({ type: "success", content: t("logout") });
   };
   return (
     <>
-      {contextHolder}
       {isAuthenticated ? (
         <>
           <Link to="/profile">
