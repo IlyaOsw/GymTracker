@@ -294,5 +294,6 @@
 "deleteNote": "Kustuta märkus",
 "noChanges": "Muudatusi pole",
 "deleteAcccount": "Kustuta konto",
-"deleteImage": "Kustuta pilt"
+"deleteImage": "Kustuta pilt",
+"confirmDeletingNote": "Palun kinnitage märkuse kustutamine."
 }

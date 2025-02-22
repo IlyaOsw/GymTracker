@@ -1,40 +1,33 @@
 import { DeleteOutlined } from "@ant-design/icons";
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ResetButton } from "components/ResetButton/ResetButton";
-import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
-import { doc, getFirestore, updateDoc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-
 import { DeleteNotePropsType } from "types/delete-note";
+
+import { ConfirmDeleteNote } from "./ConfirmDeleteNote/ConfirmDeleteNote";
 
 export const DeleteNote: React.FC<DeleteNotePropsType> = ({
   setNotesVisible,
   setNoteText,
   setSavedNote,
 }) => {
-  const auth = getAuth();
   const { t } = useTranslation();
-
-  const handleDeleteNote = async () => {
-    try {
-      if (auth.currentUser) {
-        await updateDoc(doc(getFirestore(), "users", auth.currentUser.uid), {
-          noteText: "",
-        });
-      }
-      setNotesVisible(false);
-      setNoteText("");
-      setSavedNote("");
-      ClosableMessage({ type: "success", content: t("deletedNote") });
-    } catch (error) {
-      ClosableMessage({ type: "error", content: t("noteDeleteError") });
-    }
-  };
+  const [confirm, setConfirm] = useState<boolean>(false);
 
   return (
-    <ResetButton onClick={handleDeleteNote} icon={<DeleteOutlined />}>
-      {t("deleteNote")}
-    </ResetButton>
+    <>
+      <ResetButton onClick={() => setConfirm(true)} icon={<DeleteOutlined />}>
+        {t("deleteNote")}
+      </ResetButton>
+      {confirm && (
+        <ConfirmDeleteNote
+          confirm={confirm}
+          setConfirm={setConfirm}
+          setSavedNote={setSavedNote}
+          setNoteText={setNoteText}
+          setNotesVisible={setNotesVisible}
+        />
+      )}
+    </>
   );
 };

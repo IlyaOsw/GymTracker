@@ -294,5 +294,6 @@
   "deleteNote": "Удалить заметку",
   "noChanges": "Изменений не было",
   "deleteAcccount": "Удалить аккаунт",
-  "deleteImage": "Удалить фото"
+  "deleteImage": "Удалить фото",
+  "confirmDeletingNote": "Пожалуйста подтвердите удаление заметки."
 }

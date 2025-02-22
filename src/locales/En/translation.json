@@ -294,5 +294,6 @@
   "deleteNote": "Delete note",
   "noChanges": "No changes detected",
   "deleteAcccount": "Delete account",
-  "deleteImage": "Delete image"
+  "deleteImage": "Delete image",
+  "confirmDeletingNote": "Please confirm deleting note."
 }
