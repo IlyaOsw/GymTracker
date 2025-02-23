@@ -10,7 +10,7 @@
     box-shadow 0.3s ease;
 
   &.active {
-    border: 1px solid rgba(255, 255, 255, 0.377);
+    border: 1px solid #0097b2;
     box-shadow:
       0 8px 16px rgba(0, 0, 0, 0.5),
       0 2px 5px rgba(255, 255, 255, 0.1);
@@ -53,7 +53,7 @@
 
   .exerciseContainer {
     border-bottom: 1px solid #646464;
-    margin: 0px 35px;
+    margin: 0px 30px;
     padding-bottom: 5px;
 
     .exerciseName {

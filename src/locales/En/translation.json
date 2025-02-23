@@ -295,5 +295,14 @@
   "noChanges": "No changes detected",
   "deleteAcccount": "Delete account",
   "deleteImage": "Delete image",
-  "confirmDeletingNote": "Please confirm deleting note."
+  "confirmDeletingNote": "Please confirm deleting note.",
+  "calculators": "Calculators",
+  "calculatorDescription": "On this page, you will find useful tools to calculate key parameters of your body. Choose the necessary calculator and get accurate data to help you track your fitness and improve your results!",
+  "calculatorDescription2": "Track your metrics and move towards new goals!",
+  "1RMcalc": "1RM Calculator",
+  "1RMcalcDesc": "Find out how much weight you can lift in a single repetition.",
+  "waterCalc": "Water Calculator",
+  "waterCalcDesc": "Calculate your daily water intake for optimal health.",
+  "BMIcalc": "BMI Calculator",
+  "BMIcalcDesc": "Determine your body mass index and your category."
 }

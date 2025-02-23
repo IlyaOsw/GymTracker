@@ -1,0 +1,52 @@
+.cardContainer {
+  margin: 25px 0px;
+}
+
+.card {
+  text-align: center;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  background-image: linear-gradient(to bottom, #303030, #181818);
+  letter-spacing: 1px;
+  height: 100%;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.active {
+  border: 1px solid #0097b2;
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon {
+  font-size: 40px;
+  color: #0097b2;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0097b2;
+}
+
+.description {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.calculatorContainer {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  min-height: 100px;
+}

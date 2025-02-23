@@ -5,13 +5,9 @@
   justify-content: center;
   align-self: flex-start;
 
-  .socialMediaItems {
-    display: flex;
-
-    > a img:hover {
-      transition: 0.3s all;
-      filter: brightness(110%);
-      transform: scale(1.05);
-    }
+  > a img:hover {
+    transition: 0.3s all;
+    filter: brightness(110%);
+    transform: scale(1.05);
   }
 }

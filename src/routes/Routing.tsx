@@ -7,6 +7,9 @@ import { ProtectedRoute } from "./ProtectedRoute";
 
 const Main = React.lazy(() => import("../pages/Main/Main"));
 const ContactUs = React.lazy(() => import("../pages/ContactUs/ContactUs"));
+const Calculators = React.lazy(
+  () => import("../pages/Calculators/Calculators")
+);
 const SignIn = React.lazy(() => import("../pages/SignIn/SignIn"));
 const ResetPassword = React.lazy(
   () => import("../pages/ResetPassword/ResetPassword")
@@ -32,6 +35,7 @@ export const Routing: React.FC = () => {
         <Route path="/" element={<Main />} />
         <Route path="/main" element={<Main />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/calculators" element={<Calculators />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/signup" element={<SignUp />} />
