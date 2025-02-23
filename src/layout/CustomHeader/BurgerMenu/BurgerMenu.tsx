@@ -73,18 +73,18 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
         </Link>
       ),
     },
-    {
-      key: "3",
-      label: (
-        <Link
-          to={"/calculators"}
-          onClick={onClose}
-          className={styles.menuButton}
-        >
-          {t("calculators")}
-        </Link>
-      ),
-    },
+    // {
+    //   key: "3",
+    //   label: (
+    //     <Link
+    //       to={"/calculators"}
+    //       onClick={onClose}
+    //       className={styles.menuButton}
+    //     >
+    //       {t("calculators")}
+    //     </Link>
+    //   ),
+    // },
     {
       key: "4",
       label: <Divider />,

@@ -30,12 +30,12 @@ export const Navbar: React.FC<HeaderPropsType> = ({
           {t("contact")}
         </Button>
       </Link>
-      <div className={styles.verticalLine}></div>
+      {/* <div className={styles.verticalLine}></div>
       <Link to="/calculators">
         <Button type="link" className={styles.linkBtn}>
           {t("calculators")}
         </Button>
-      </Link>
+      </Link> */}
       <div className={styles.settings}>
         <div className={styles.verticalLine}></div>
         <p>{t("language")}</p>
