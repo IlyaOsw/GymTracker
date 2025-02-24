@@ -1,5 +1,5 @@
 .calculator {
-  min-height: 175px;
+  min-height: 125px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -9,8 +9,9 @@
   }
 
   .subtitle {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin: 10px 0px;
+    letter-spacing: 1px;
   }
 
   input {
@@ -32,7 +33,7 @@
 
   .weight,
   .reps {
-    height: 46px;
+    height: 50px;
     width: 200px;
     border-radius: 20px;
     background-color: #282828;
@@ -63,17 +64,14 @@
   }
 
   .plusMinus {
-    width: 28px;
-    height: 28px;
-    border-radius: 10px;
-  }
-
-  .calculateWrapper {
-    width: 190px;
+    width: 36px;
+    height: 36px;
+    border-radius: 15px;
   }
 
   .calculate {
     margin-top: 50px;
+    padding: 25px;
 
     @media (max-width: 576px) {
       margin-bottom: 15px;

@@ -4,4 +4,5 @@ export interface IResetButtonType {
   onClick: MouseEventHandler<HTMLElement> | undefined;
   children: string;
   icon: ReactNode;
+  className?: string;
 }

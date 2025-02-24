@@ -8,9 +8,14 @@ export const ResetButton: React.FC<IResetButtonType> = ({
   onClick,
   children,
   icon,
+  className,
 }) => {
   return (
-    <Button className={styles.reset} onClick={onClick} icon={icon}>
+    <Button
+      className={`${styles.reset} ${className}`}
+      onClick={onClick}
+      icon={icon}
+    >
       {children}
     </Button>
   );

@@ -11,7 +11,7 @@ export const DeleteAccount: React.FC = () => {
 
   return (
     <>
-      <div style={{ margin: "25px 0px" }}>
+      <div style={{ margin: "50px 0px 25px 0px" }}>
         <ResetButton
           icon={<UserDeleteOutlined />}
           onClick={() => setConfirm(true)}

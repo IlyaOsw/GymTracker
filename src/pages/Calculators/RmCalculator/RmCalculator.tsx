@@ -8,9 +8,9 @@ import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
 import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
 import { InputContainer } from "./InputContainer/InputContainer";
-import styles from "./Calculator.module.scss";
+import styles from "./RmCalculator.module.scss";
 
-export const Calculator: React.FC = React.memo(() => {
+export const RmCalculator: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const { ref, controls } = useAnimatedInView();
   const [reps, setReps] = useState<number>(2);
@@ -25,17 +25,15 @@ export const Calculator: React.FC = React.memo(() => {
   };
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={animation}
+    >
       <SubTitle children={t("weightCalculator")} className={styles.header} />
-      <motion.div
-        ref={ref}
-        className={styles.info}
-        initial="hidden"
-        animate={controls}
-        variants={animation}
-      >
-        {t("indicateWeightAndReps")}
-      </motion.div>
+      <div className={styles.info}>{t("indicateWeightAndReps")}</div>
       <div>
         <InputContainer
           reps={reps}
@@ -48,14 +46,13 @@ export const Calculator: React.FC = React.memo(() => {
         <div className={styles.resultWeight}>
           {result} {t("kg")}
         </div>
-        <div className={styles.resetBtn}>
-          <ResetButton
-            children={t("reset")}
-            onClick={handleReset}
-            icon={<SyncOutlined />}
-          />
-        </div>
+        <ResetButton
+          className={styles.resetBtn}
+          children={t("reset")}
+          onClick={handleReset}
+          icon={<SyncOutlined />}
+        />
       </div>
-    </div>
+    </motion.div>
   );
 });

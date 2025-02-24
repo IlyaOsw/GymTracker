@@ -4,7 +4,6 @@ import { PageWrapper } from "components/PageWrapper/PageWrapper";
 import { UserProvider } from "context/UserContext";
 
 import { Diary } from "./Diary/Diary";
-import { Calculator } from "./Calculator/Calculator";
 import { Information } from "./Information/Information";
 import { Goal } from "./Goal/Goal";
 import { DeleteAccount } from "./Information/DeleteAccount/DeleteAccount";
@@ -21,7 +20,6 @@ const Profile: React.FC = () => {
         <Diary />
         <Goal />
         <Divider style={{ backgroundColor: "gray" }} />
-        <Calculator />
         <DeleteAccount />
       </PageWrapper>
     </UserProvider>

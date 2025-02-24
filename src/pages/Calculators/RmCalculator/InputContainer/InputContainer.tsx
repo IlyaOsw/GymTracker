@@ -96,14 +96,12 @@ export const InputContainer: React.FC<InputContainerPropsType> = React.memo(
             </CustomButton>
           </div>
         </div>
-        <div className={styles.calculateWrapper}>
-          <CustomButton
-            children={t("calculate")}
-            className={styles.calculate}
-            onClick={calculate1RM}
-            icon={<RightCircleOutlined />}
-          />
-        </div>
+        <CustomButton
+          children={t("calculate")}
+          className={styles.calculate}
+          onClick={calculate1RM}
+          icon={<RightCircleOutlined />}
+        />
       </div>
     );
   }
