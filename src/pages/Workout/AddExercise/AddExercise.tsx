@@ -41,7 +41,6 @@ export const AddExercise: React.FC<IAddExercise> = React.memo(
 
           if (docSnapshot.exists()) {
             const existingExercises = docSnapshot.data().exercises || [];
-
             const exercisesInCategory = existingExercises.filter(
               (existingExercise: { category: string }) =>
                 existingExercise.category === category
