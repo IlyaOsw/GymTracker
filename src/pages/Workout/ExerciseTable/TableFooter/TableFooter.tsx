@@ -204,8 +204,9 @@ export const TableFooter: React.FC<TableFooterPropsType> = React.memo(
             <div></div>
           )}
           {!hideButtons && !isLastWorkout && (
-            <CustomButton onClick={showNextWorkout} icon={<RightOutlined />}>
+            <CustomButton onClick={showNextWorkout}>
               {t("next")}
+              <RightOutlined />
             </CustomButton>
           )}
           {(isLastWorkout || hideButtons) && !saveBtn && (

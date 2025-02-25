@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Card, Row, Col } from "antd";
+import { Card, Row, Col, Divider } from "antd";
 import { DescriptionText } from "components/DescriptionText/DescriptionText";
 import { DescriptionTitle } from "components/DescriptionTitle/DescriptionTitle";
 import { PageWrapper } from "components/PageWrapper/PageWrapper";
@@ -61,7 +61,6 @@ const Calculators: React.FC = () => {
           {calculators.map((calc) => (
             <Col key={calc.id} xs={24} sm={12} md={8} lg={6}>
               <Card
-                hoverable
                 className={`${styles.card} ${
                   activeCalculator === calc.id ? styles.active : ""
                 }`}
@@ -74,11 +73,10 @@ const Calculators: React.FC = () => {
             </Col>
           ))}
         </Row>
-
+        <Divider style={{ backgroundColor: "gray" }} />
         {activeCalculator === "1rm" && <RmCalculator />}
         {activeCalculator === "water" && <div>Water</div>}
         {activeCalculator === "bmi" && <div>BMI</div>}
-
         <DescriptionText
           text={t("calculatorDescription2")}
           textAlign={"center"}

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import {
   MinusOutlined,
   PlusOutlined,
-  RightCircleOutlined,
+  DoubleRightOutlined,
 } from "@ant-design/icons";
 import { CustomButton } from "components/CustomButton/CustomButton";
 import { InputContainerPropsType } from "types/input-container";
@@ -100,7 +100,7 @@ export const InputContainer: React.FC<InputContainerPropsType> = React.memo(
           children={t("calculate")}
           className={styles.calculate}
           onClick={calculate1RM}
-          icon={<RightCircleOutlined />}
+          icon={<DoubleRightOutlined />}
         />
       </div>
     );
