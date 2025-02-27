@@ -16,7 +16,7 @@ export const WaterCalculator: React.FC = () => {
   const { ref, controls } = useAnimatedInView();
   const [weight, setWeight] = useState<string>("");
   const [gender, setGender] = useState<string>("male");
-  const [result, setResult] = useState<number>(0);
+  const [result] = useState<number>(0);
 
   // male - 37.5ml / 1kg
   // female - 32.5ml / 1kg
