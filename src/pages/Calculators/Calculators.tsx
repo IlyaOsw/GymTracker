@@ -21,7 +21,7 @@ const Calculators: React.FC = () => {
       icon: (
         <img
           src={process.env.PUBLIC_URL + "/assets/Icons/Calculators/1rm.svg"}
-          alt="1rm icon"
+          alt="1rm"
         />
       ),
     },
@@ -32,7 +32,7 @@ const Calculators: React.FC = () => {
       icon: (
         <img
           src={process.env.PUBLIC_URL + "/assets/Icons/Calculators/water.svg"}
-          alt="Water icon"
+          alt="Water"
         />
       ),
     },
@@ -43,7 +43,7 @@ const Calculators: React.FC = () => {
       icon: (
         <img
           src={process.env.PUBLIC_URL + "/assets/Icons/Calculators/bmi.svg"}
-          alt="BMI icon"
+          alt="BM"
         />
       ),
     },

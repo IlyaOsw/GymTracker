@@ -1,58 +1,59 @@
-.header {
-  padding: 10px;
-  text-align: center;
-  font-size: 1.6rem;
-  font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  border-bottom: 2px solid #333;
-}
-
-.info {
-  font-size: 1.2rem;
-  padding: 15px;
-  margin: 20px auto;
-  max-width: 800px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  letter-spacing: 1px;
-}
-
 .container {
   background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
   margin: 40px auto;
   padding: 20px;
   max-width: 960px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 
-.result {
-  font-size: 1.4rem;
-  margin: 25px 0;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-inline: 10px solid rgb(255, 166, 0);
-}
+  .header {
+    padding: 10px;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid #333;
+  }
 
-.resultWeight {
-  font-size: 1.6rem;
-  background-color: #282828;
-  display: flex;
-  font-weight: 600;
-  justify-content: center;
-  align-items: center;
-  color: rgb(209, 148, 35);
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-  margin: 15px 0px;
-  letter-spacing: 1px;
-}
-
-.resetBtn {
-  margin: 5px;
-  padding: 20px;
-  svg {
+  .info {
     font-size: 1.2rem;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    letter-spacing: 1px;
+  }
+
+  .result {
+    font-size: 1.4rem;
+    margin: 25px 0;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-inline: 10px solid rgb(255, 166, 0);
+  }
+
+  .resultWeight {
+    font-size: 1.6rem;
+    background-color: #282828;
+    display: flex;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+    color: rgb(209, 148, 35);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 15px 0px;
+    letter-spacing: 1px;
+  }
+
+  .resetBtn {
+    margin: 5px;
+    padding: 20px;
+
+    svg {
+      font-size: 1.2rem;
+    }
   }
 }
