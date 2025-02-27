@@ -9,37 +9,32 @@
   transition: all 0.3s ease-in-out;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 
+  &.active {
+    border: 1px solid #0097b2;
+  }
+
   &:hover {
     background-image: linear-gradient(to bottom, #353535, #303030);
   }
-}
 
-.active {
-  border: 1px solid #0097b2;
-}
+  .iconWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -10px auto 0px auto;
+    height: 60px;
+    width: 60px;
+  }
 
-.iconWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: -10px auto 0px auto;
-  height: 60px;
-  width: 60px;
-}
+  .title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #0097b2;
+    padding-top: 5px;
+  }
 
-.icon {
-  font-size: 40px;
-  color: #0097b2;
-}
-
-.title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #0097b2;
-  padding-top: 5px;
-}
-
-.description {
-  font-size: 1rem;
-  color: #fff;
+  .description {
+    font-size: 1rem;
+    color: #fff;
+  }
 }

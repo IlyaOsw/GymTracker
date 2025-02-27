@@ -13,9 +13,9 @@ import styles from "./RmCalculator.module.scss";
 export const RmCalculator: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const { ref, controls } = useAnimatedInView();
+  const [weight, setWeight] = useState<string>("");
   const [reps, setReps] = useState<number>(2);
   const [result, setResult] = useState<number>(0);
-  const [weight, setWeight] = useState<string>("");
 
   const handleReset = () => {
     setReps(2);
@@ -33,7 +33,7 @@ export const RmCalculator: React.FC = React.memo(() => {
       variants={animation}
     >
       <SubTitle children={t("weightCalculator")} className={styles.header} />
-      <div className={styles.info}>{t("indicateWeightAndReps")}</div>
+      <h3 className={styles.info}>{t("indicateWeightAndReps")}</h3>
       <div>
         <InputContainer
           reps={reps}
@@ -42,9 +42,11 @@ export const RmCalculator: React.FC = React.memo(() => {
           weight={weight}
           setWeight={setWeight}
         />
-        <div className={styles.result}>{t("calcResult")}</div>
-        <div className={styles.resultWeight}>
-          {result} {t("kg")}
+        <div className={styles.result}>
+          {t("calcResult")}
+          <div className={styles.resultWeight}>
+            {result} {t("kg")}
+          </div>
         </div>
         <ResetButton
           className={styles.resetBtn}

@@ -85,7 +85,7 @@ export const InputContainer: React.FC<InputContainerPropsType> = React.memo(
           />
         </div>
         <div className={styles.block}>
-          <div className={styles.subtitle}>{t("repsNumber")}</div>
+          <h4 className={styles.subtitle}>{t("repsNumber")}</h4>
           <div className={styles.reps}>
             <CustomButton className={styles.operators} onClick={decrement}>
               <MinusOutlined />

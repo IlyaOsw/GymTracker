@@ -6,6 +6,7 @@ import { DescriptionTitle } from "components/DescriptionTitle/DescriptionTitle";
 import { PageWrapper } from "components/PageWrapper/PageWrapper";
 import { CustomFooter } from "layout/CustomFooter/CustomFooter";
 
+import { WaterCalculator } from "./WaterCalculator/WaterCalculator";
 import { RmCalculator } from "./RmCalculator/RmCalculator";
 import styles from "./Calculators.module.scss";
 
@@ -75,7 +76,7 @@ const Calculators: React.FC = () => {
         </Row>
         <Divider style={{ backgroundColor: "gray" }} />
         {activeCalculator === "1rm" && <RmCalculator />}
-        {activeCalculator === "water" && <div>Water</div>}
+        {activeCalculator === "water" && <WaterCalculator />}
         {activeCalculator === "bmi" && <div>BMI</div>}
         <DescriptionText
           text={t("calculatorDescription2")}
