@@ -12,7 +12,6 @@ const Profile: React.FC = () => {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
-
   return (
     <UserProvider>
       <PageWrapper>
