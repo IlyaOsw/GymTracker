@@ -12,7 +12,7 @@ import styles from "./Calculators.module.scss";
 
 const Calculators: React.FC = () => {
   const { t } = useTranslation();
-  const [activeCalculator, setActiveCalculator] = useState("1rm");
+  const [activeCalculator, setActiveCalculator] = useState<string>("1rm");
 
   const calculators = [
     {
