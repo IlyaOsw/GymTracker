@@ -33,9 +33,9 @@ export const UserInfo: React.FC<UserInfoPropsType> = React.memo(
             className={styles.editBtn}
           />
           <div className={styles.userInfo}>
-            <h2 className={styles.name}>
+            <h3 className={styles.name}>
               {userData?.firstName} {userData?.lastName}
-            </h2>
+            </h3>
             <p className={styles.status}>{userData?.status}</p>
             {userData?.sport && (
               <div className={styles.sport}>
@@ -58,8 +58,10 @@ export const UserInfo: React.FC<UserInfoPropsType> = React.memo(
                   }
                   alt="Location"
                 />
-                {userData?.location.country}
-                {userData?.location.city && `, ${userData.location.city}`}
+                <p>
+                  {userData?.location.country}
+                  {userData?.location.city && `, ${userData.location.city}`}
+                </p>
               </div>
               <div className={styles.detailItem}>
                 <img
@@ -69,7 +71,9 @@ export const UserInfo: React.FC<UserInfoPropsType> = React.memo(
                   }
                   alt="Gender"
                 />
-                {t("gender")}: {userData?.gender ? t(userData.gender) : ""}
+                <p>
+                  {t("gender")}: {userData?.gender ? t(userData.gender) : ""}
+                </p>
               </div>
               <div className={styles.detailItem}>
                 <img
@@ -89,7 +93,9 @@ export const UserInfo: React.FC<UserInfoPropsType> = React.memo(
                   }
                   alt="DateOfBirth"
                 />
-                {t("dateOfBirth")}: {formatDateOfBirth(userData?.dateOfBirth)}
+                <p>
+                  {t("dateOfBirth")}: {formatDateOfBirth(userData?.dateOfBirth)}
+                </p>
               </div>
               <div className={styles.detailItem}>
                 <img
@@ -99,7 +105,7 @@ export const UserInfo: React.FC<UserInfoPropsType> = React.memo(
                   }
                   alt="Mail"
                 />
-                {userData?.email}
+                <p>{userData?.email}</p>
               </div>
             </div>
           </div>

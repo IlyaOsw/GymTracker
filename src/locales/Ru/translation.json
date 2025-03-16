@@ -310,5 +310,6 @@
   "yourWeight": "Ваш вес",
   "yourGender": "Ваш пол",
   "waterCalcResult": "Ваше Суточное Потребление Воды",
-  "l": "Л"
+  "l": "Л",
+  "enterValidWeight": "Введите корректный вес"
 }

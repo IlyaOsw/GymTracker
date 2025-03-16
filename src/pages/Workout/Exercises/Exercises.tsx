@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { useAuth } from "context/AuthContext";
 import { motion } from "framer-motion";
 import { Divider, Empty } from "antd";
 import { SubTitle } from "components/SubTitle/SubTitle";
@@ -25,7 +25,7 @@ export const Exercises: React.FC<IExercisesProps> = React.memo(
     data,
     setData,
   }) => {
-    const user = getAuth().currentUser;
+    const { user } = useAuth();
     const { ref, controls } = useAnimatedInView();
     const { t } = useTranslation();
     const [loading, setLoading] = useState<boolean>(true);

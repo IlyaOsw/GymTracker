@@ -11,8 +11,7 @@ import { ExerciseTable } from "./ExerciseTable/ExerciseTable";
 import { AddExercise } from "./AddExercise/AddExercise";
 
 const Workout: React.FC = React.memo(() => {
-  const location = useLocation();
-  const state = location.state as ILocationState;
+  const state = useLocation().state as ILocationState;
   const [data, setData] = useState<IExercise[]>([]);
   const [updateTrigger, setUpdateTrigger] = useState(0);
   const [selectedExercise, setSelectedExercise] = useState<IExercise | null>(

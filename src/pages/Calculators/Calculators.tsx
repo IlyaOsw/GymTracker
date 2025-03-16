@@ -37,17 +37,17 @@ const Calculators: React.FC = () => {
         />
       ),
     },
-    {
-      id: "bmi",
-      title: t("BMIcalc"),
-      description: t("BMIcalcDesc"),
-      icon: (
-        <img
-          src={process.env.PUBLIC_URL + "/assets/Icons/Calculators/bmi.svg"}
-          alt="BM"
-        />
-      ),
-    },
+    // {
+    //   id: "bmi",
+    //   title: t("BMIcalc"),
+    //   description: t("BMIcalcDesc"),
+    //   icon: (
+    //     <img
+    //       src={process.env.PUBLIC_URL + "/assets/Icons/Calculators/bmi.svg"}
+    //       alt="BM"
+    //     />
+    //   ),
+    // },
   ];
 
   return (

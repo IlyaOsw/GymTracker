@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { useAuth } from "context/AuthContext";
 import { useTranslation } from "react-i18next";
 import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 import { EditInputPropsType } from "types/edit-input";
@@ -19,7 +19,7 @@ export const EditInput: React.FC<EditInputPropsType> = React.memo(
     setEditMode,
     setNewName,
   }) => {
-    const user = getAuth().currentUser;
+    const { user } = useAuth();
     const { t } = useTranslation();
     const inputRef = useRef<HTMLInputElement>(null);
 

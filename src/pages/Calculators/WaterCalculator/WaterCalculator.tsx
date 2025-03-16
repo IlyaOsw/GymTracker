@@ -16,14 +16,23 @@ export const WaterCalculator: React.FC = () => {
   const { ref, controls } = useAnimatedInView();
   const [weight, setWeight] = useState<string>("");
   const [gender, setGender] = useState<string>("male");
-  const [result] = useState<number>(0);
+  const [result, setResult] = useState<number>(0);
 
-  // male - 37.5ml / 1kg
-  // female - 32.5ml / 1kg
+  const calculateWater = (): void => {
+    if (!weight || Number(weight) === 0) {
+      ClosableMessage({ type: "warning", content: t("enterValidWeight") });
+      return;
+    }
+    const mlPerKg = gender === "male" ? 37.5 : 32.5;
+    const totalMl = mlPerKg * Number(weight);
+    const liters = totalMl / 1000;
+    setResult(Number(liters.toFixed(2)));
+  };
 
   const handleReset = () => {
     setWeight("");
     setGender("male");
+    setResult(0);
     ClosableMessage({ type: "success", content: t("reseted") });
   };
 
@@ -93,6 +102,7 @@ export const WaterCalculator: React.FC = () => {
           children={t("calculate")}
           className={styles.calculate}
           icon={<DoubleRightOutlined />}
+          onClick={calculateWater}
         />
       </div>
       <div className={styles.result}>

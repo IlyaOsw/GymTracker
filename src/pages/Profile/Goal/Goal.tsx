@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getAuth } from "firebase/auth";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { SubTitle } from "components/SubTitle/SubTitle";
 import { IGoalData } from "types/goal-data";
+import { useAuth } from "context/AuthContext";
 
 import { EditGoal } from "./EditGoal/EditGoal";
 import styles from "./Goal.module.scss";
@@ -12,7 +12,7 @@ import { GoalMainBlock } from "./GoalMainBlock/GoalMainBlock";
 
 export const Goal: React.FC = React.memo(() => {
   const { t } = useTranslation();
-  const user = getAuth().currentUser;
+  const { user } = useAuth();
   const [goalData, setGoalData] = useState<IGoalData>();
   const [editMode, setEditMode] = useState<boolean>(false);
   const [goal, setGoal] = useState<string>();

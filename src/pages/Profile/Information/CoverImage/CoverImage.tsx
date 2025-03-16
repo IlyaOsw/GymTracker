@@ -11,14 +11,15 @@ import { useTranslation } from "react-i18next";
 import { SettingButton } from "components/SettingButton/SettingButton";
 import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 import { Loader } from "components/Loader/Loader";
+import { useAuth } from "context/AuthContext";
 
-import { auth, storage } from "../../../..";
+import { storage } from "../../../..";
 
 import styles from "./CoverImage.module.scss";
 
 export const CoverImage: React.FC = React.memo(() => {
   const { t } = useTranslation();
-  const user = auth.currentUser;
+  const { user } = useAuth();
   const [coverURL, setCoverURL] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
 

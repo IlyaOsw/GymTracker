@@ -16,17 +16,18 @@ import styles from "./Login.module.scss";
 
 export const Login: React.FC = () => {
   const { t } = useTranslation();
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
 
   const handleLogout = async () => {
     await logout();
     ClosableMessage({ type: "success", content: t("logout") });
   };
+
   return (
     <>
       {isAuthenticated ? (
         <>
-          <Link to="/profile">
+          <Link to={`/profile/${user!.uid}`}>
             <Button
               type="link"
               icon={<UserOutlined />}

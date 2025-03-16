@@ -2,7 +2,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { useAuth } from "context/AuthContext";
 import { v4 as uuidv4 } from "uuid";
 import { CustomButton } from "components/CustomButton/CustomButton";
 import { CustomInput } from "components/CustomInput/CustomInput";
@@ -14,7 +14,7 @@ import styles from "./AddExercise.module.scss";
 
 export const AddExercise: React.FC<IAddExercise> = React.memo(
   ({ onAddExercise, category, setData }) => {
-    const user = getAuth().currentUser;
+    const { user } = useAuth();
     const { t } = useTranslation();
     const [exerciseName, setExerciseName] = useState("");
 

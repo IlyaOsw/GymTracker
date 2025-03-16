@@ -12,6 +12,7 @@ const AuthContext = createContext<IAuthContextType>({
   isAuthenticated: false,
   login: async () => {},
   logout: async () => {},
+  user: null,
 });
 
 export const useAuth = () => useContext(AuthContext);
@@ -19,6 +20,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const auth = getAuth();
+  const user = getAuth().currentUser;
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -44,7 +46,7 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, user }}>
       {children}
     </AuthContext.Provider>
   );

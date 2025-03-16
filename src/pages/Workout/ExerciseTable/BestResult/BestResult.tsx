@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { CheckOutlined } from "@ant-design/icons";
 import { Collapse } from "antd";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { useAuth } from "context/AuthContext";
 import { SettingButton } from "components/SettingButton/SettingButton";
 import NumericInput from "components/NumericInput/NumericInput";
 import { IExercise } from "types/exercise";
@@ -16,7 +16,7 @@ import styles from "./BestResult.module.scss";
 export const BestResult: React.FC<IBestResultProps> = React.memo(
   ({ bestResult, selectedExercise, setBestResult }) => {
     const { t } = useTranslation();
-    const user = getAuth().currentUser;
+    const { user } = useAuth();
     const [editMode, setEditMode] = useState<boolean>(false);
     const [weight, setWeight] = useState<string>(bestResult?.weight || "0");
     const [reps, setReps] = useState<string>(bestResult?.reps || "0");

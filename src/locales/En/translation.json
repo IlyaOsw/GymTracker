@@ -310,5 +310,6 @@
   "yourWeight": "Your weight",
   "yourGender": "Your gender",
   "waterCalcResult": "Your Daily Water Intake",
-  "l": "L"
+  "l": "L",
+  "enterValidWeight": "Enter valid weight"
 }

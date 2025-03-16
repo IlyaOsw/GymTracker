@@ -8,7 +8,7 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { useAuth } from "context/AuthContext";
 import { ResetButton } from "components/ResetButton/ResetButton";
 import { IDeleteWorkoutProps } from "types/delete-workout";
 import { scrollToTop } from "utils/scrollToTop";
@@ -25,7 +25,7 @@ export const DeleteWorkout: React.FC<IDeleteWorkoutProps> = React.memo(
     setActiveCardId,
   }) => {
     const { t } = useTranslation();
-    const user = getAuth().currentUser;
+    const { user } = useAuth();
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     const deleteWorkoutByDate = async () => {

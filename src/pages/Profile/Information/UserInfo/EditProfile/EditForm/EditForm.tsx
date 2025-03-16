@@ -4,7 +4,7 @@ import countries from "react-select-country-list";
 import { useTranslation } from "react-i18next";
 import { doc, setDoc, getFirestore, getDoc } from "firebase/firestore";
 import { SyncOutlined } from "@ant-design/icons";
-import { getAuth } from "firebase/auth";
+import { useAuth } from "context/AuthContext";
 import { CustomButton } from "components/CustomButton/CustomButton";
 import { CustomInput } from "components/CustomInput/CustomInput";
 import { Calendar } from "components/Calendar/Calendar";
@@ -25,7 +25,7 @@ export const EditForm: React.FC<EditFormPropsType> = React.memo(
     const { t } = useTranslation();
     const [form] = Form.useForm();
     const { updateUserData } = useUserContext();
-    const user = getAuth().currentUser;
+    const { user } = useAuth();
     const [filteredCountries, setFilteredCountries] = useState(countryOptions);
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");

@@ -2,7 +2,6 @@ import React from "react";
 import { SyncOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { v4 as uuidv4 } from "uuid";
-import { getAuth } from "firebase/auth";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { CustomModal } from "components/CustomModal/CustomModal";
 import { CustomInput } from "components/CustomInput/CustomInput";
@@ -13,6 +12,7 @@ import { IGoalData } from "types/goal-data";
 import { parseDate } from "utils/parseDate";
 import { handleDateChange } from "utils/handleDateChange";
 import { EditGoalPropsType } from "types/edit-goal";
+import { useAuth } from "context/AuthContext";
 
 import styles from "./EditGoal.module.scss";
 
@@ -36,7 +36,7 @@ export const EditGoal: React.FC<EditGoalPropsType> = React.memo(
     setGoalData,
   }) => {
     const { t } = useTranslation();
-    const user = getAuth().currentUser;
+    const { user } = useAuth();
 
     const handleSave = async () => {
       try {

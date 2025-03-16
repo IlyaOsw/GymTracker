@@ -20,7 +20,8 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   changeLanguage,
 }) => {
   const { t } = useTranslation();
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -73,18 +74,18 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
         </Link>
       ),
     },
-    // {
-    //   key: "3",
-    //   label: (
-    //     <Link
-    //       to={"/calculators"}
-    //       onClick={onClose}
-    //       className={styles.menuButton}
-    //     >
-    //       {t("calculators")}
-    //     </Link>
-    //   ),
-    // },
+    {
+      key: "3",
+      label: (
+        <Link
+          to={"/calculators"}
+          onClick={onClose}
+          className={styles.menuButton}
+        >
+          {t("calculators")}
+        </Link>
+      ),
+    },
     {
       key: "4",
       label: <Divider />,
@@ -92,7 +93,11 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
     {
       key: "5",
       label: isAuthenticated ? (
-        <Link to="/profile" onClick={onClose} className={styles.menuButton}>
+        <Link
+          to={`/profile/${user!.uid}`}
+          onClick={onClose}
+          className={styles.menuButton}
+        >
           {t("profile")}
         </Link>
       ) : (

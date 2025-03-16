@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAuth } from "firebase/auth";
+import { useAuth } from "context/AuthContext";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import styles from "./LastWorkout.module.scss";
 
 export const LastWorkout: React.FC = React.memo(() => {
-  const user = getAuth().currentUser;
+  const { user } = useAuth();
   const { t } = useTranslation();
   const [lastWorkoutDate, setLastWorkoutDate] = useState<string | null>(null);
 
@@ -84,9 +84,9 @@ export const LastWorkout: React.FC = React.memo(() => {
             }
             alt="LastWorkout"
           />
-          <div className={styles.title}>
+          <h3 className={styles.title}>
             {t("lastWorkout")}:<span>{lastWorkoutDate}</span>
-          </div>
+          </h3>
         </div>
       )}
     </>

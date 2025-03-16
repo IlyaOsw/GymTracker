@@ -39,11 +39,11 @@ export const ExerciseItem: React.FC<IExerciseItemProps> = React.memo(
             </div>
             <div className={styles.result}>
               <div className={styles.hexagonWrapper}>
-                <div className={styles.hexagonTitle}>{t("weight")}</div>
+                <h4 className={styles.hexagonTitle}>{t("weight")}</h4>
                 <Hexagon text={item.bestResult.weight} />
               </div>
               <div className={styles.hexagonWrapper}>
-                <div className={styles.hexagonTitle}>{t("reps")}</div>
+                <h4 className={styles.hexagonTitle}>{t("reps")}</h4>
                 <Hexagon text={item.bestResult.reps} />
               </div>
             </div>

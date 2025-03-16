@@ -6,23 +6,13 @@ import { Hexagon } from "components/Hexagon/Hexagon";
 import { SubTitle } from "components/SubTitle/SubTitle";
 import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
 import { IHexagonLinkProps } from "types/components/hexagon";
+import { useAuth } from "context/AuthContext";
 
 import styles from "./Diary.module.scss";
 
-const HexagonLink: React.FC<IHexagonLinkProps> = React.memo(({ text }) => {
-  const navigate = useNavigate();
-
-  const handleClick = () => navigate("/workout", { state: { title: text } });
-
-  return (
-    <div className={styles.link}>
-      <Hexagon text={text} onClick={handleClick} />
-    </div>
-  );
-});
-
 export const Diary: React.FC = React.memo(() => {
   const { t } = useTranslation();
+
   const { ref, controls } = useAnimatedInView();
 
   return (
@@ -45,5 +35,19 @@ export const Diary: React.FC = React.memo(() => {
         <HexagonLink text={t("Legs")} />
       </div>
     </>
+  );
+});
+
+const HexagonLink: React.FC<IHexagonLinkProps> = React.memo(({ text }) => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleClick = () =>
+    navigate(`/workout/${user!.uid}`, { state: { title: text } });
+
+  return (
+    <div className={styles.link}>
+      <Hexagon text={text} onClick={handleClick} />
+    </div>
   );
 });

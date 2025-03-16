@@ -35,7 +35,7 @@ export const InsideLook: React.FC = () => {
           >
             <div className={styles.info}>
               <h2 className={styles.title}>{t(item.title)}</h2>
-              <h4 className={styles.description}>{t(item.description)}</h4>
+              <h3 className={styles.description}>{t(item.description)}</h3>
             </div>
             <Image.PreviewGroup
               items={[

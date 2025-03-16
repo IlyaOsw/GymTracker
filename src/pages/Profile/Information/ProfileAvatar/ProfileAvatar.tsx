@@ -15,20 +15,20 @@ import {
   uploadBytes,
 } from "firebase/storage";
 import { useTranslation } from "react-i18next";
-import { getAuth } from "firebase/auth";
 import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 import { Loader } from "components/Loader/Loader";
+import { useAuth } from "context/AuthContext";
 
 import styles from "./ProfileAvatar.module.scss";
 
 export const ProfileAvatar: React.FC = React.memo(() => {
   const { t } = useTranslation();
+  const { user } = useAuth();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [avatarURL, setAvatarURL] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const avatarSize = windowWidth <= 768 ? 150 : 250;
   const storage = getStorage();
-  const user = getAuth().currentUser;
 
   useEffect(() => {
     const handleResize = () => {

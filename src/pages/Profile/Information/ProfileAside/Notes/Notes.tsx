@@ -2,20 +2,20 @@ import React, { useEffect, useState } from "react";
 import TextArea from "antd/es/input/TextArea";
 import { PlusOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { getAuth } from "firebase/auth";
 import { doc, getFirestore, updateDoc } from "firebase/firestore";
 
 import { CustomButton } from "components/CustomButton/CustomButton";
 import { SubTitle } from "components/SubTitle/SubTitle";
 import { NotesPropsType } from "types/notes";
 import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
+import { useAuth } from "context/AuthContext";
 
-import styles from "./Notes.module.scss";
 import { DeleteNote } from "./DeleteNote/DeleteNote";
+import styles from "./Notes.module.scss";
 
 export const Notes: React.FC<NotesPropsType> = ({ userData }) => {
-  const auth = getAuth();
   const { t } = useTranslation();
+  const { user } = useAuth();
   const [notesVisible, setNotesVisible] = useState<boolean>(false);
   const [noteText, setNoteText] = useState<string>(userData?.noteText || "");
   const [savedNote, setSavedNote] = useState<string>(userData?.noteText || "");
@@ -32,12 +32,12 @@ export const Notes: React.FC<NotesPropsType> = ({ userData }) => {
 
   const handleSaveOnBlur = async () => {
     try {
-      if (auth.currentUser) {
+      if (user) {
         if (noteText === savedNote) {
           ClosableMessage({ type: "warning", content: t("noChanges") });
           return;
         }
-        await updateDoc(doc(getFirestore(), "users", auth.currentUser.uid), {
+        await updateDoc(doc(getFirestore(), "users", user.uid), {
           noteText: noteText,
         });
         setSavedNote(noteText);

@@ -41,7 +41,7 @@ export const Routing: React.FC = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/registrationsuccess" element={<RegistrationSuccess />} />
         <Route
-          path="/profile"
+          path="/profile/:id"
           element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
               <Profile />
@@ -49,7 +49,7 @@ export const Routing: React.FC = () => {
           }
         />
         <Route
-          path="/workout"
+          path="/workout/:id"
           element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
               <Workout />

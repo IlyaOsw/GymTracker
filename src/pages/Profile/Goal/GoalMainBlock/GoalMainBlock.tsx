@@ -1,6 +1,5 @@
 import { DeleteOutlined, FormOutlined } from "@ant-design/icons";
 import { Progress } from "antd";
-import { getAuth } from "firebase/auth";
 import { deleteDoc, doc, getFirestore } from "firebase/firestore";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -9,6 +8,7 @@ import { CustomButton } from "components/CustomButton/CustomButton";
 import { ResetButton } from "components/ResetButton/ResetButton";
 import { GoalMainBlockPropsType } from "types/goal-main-block";
 import { calculateProgress } from "utils/calculateProgress";
+import { useAuth } from "context/AuthContext";
 
 import styles from "./GoalMainBlock.module.scss";
 
@@ -25,7 +25,7 @@ export const GoalMainBlock: React.FC<GoalMainBlockPropsType> = React.memo(
     setEditMode,
   }) => {
     const { t } = useTranslation();
-    const user = getAuth().currentUser;
+    const { user } = useAuth();
     const [stepsCount] = useState(10);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
