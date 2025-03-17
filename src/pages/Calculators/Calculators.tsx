@@ -8,7 +8,7 @@ import { CustomFooter } from "layout/CustomFooter/CustomFooter";
 
 import { RMCalculator } from "./RMCalculator/RMCalculator";
 import { WaterCalculator } from "./WaterCalculator/WaterCalculator";
-import { BMICalculator } from "./BMICalculator/BmiCalculator";
+import { BMICalculator } from "./BMICalculator/BMICalculator";
 
 import styles from "./Calculators.module.scss";
 
