@@ -2,7 +2,7 @@
   "name": "gymtracker",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "/",
   "dependencies": {
     "@ant-design/icons": "^5.3.6",
     "@formspree/react": "^2.5.1",
