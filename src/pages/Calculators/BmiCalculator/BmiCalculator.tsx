@@ -67,6 +67,7 @@ export const BMICalculator: React.FC = () => {
     >
       <SubTitle children={t("weightCalculator")} className={styles.header} />
       <h3 className={styles.info}>{t("indicateWeightAndReps")}</h3>
+
       <div>
         <div className={styles.calculator}>
           <div className={styles.block}>
