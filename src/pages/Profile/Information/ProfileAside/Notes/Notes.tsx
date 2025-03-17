@@ -63,7 +63,7 @@ export const Notes: React.FC<NotesPropsType> = ({ userData }) => {
             value={noteText}
             variant="borderless"
             showCount
-            maxLength={200}
+            maxLength={150}
             onBlur={handleSaveOnBlur}
             onChange={(e) => setNoteText(e.target.value)}
             placeholder={t("notePlaceholder")}

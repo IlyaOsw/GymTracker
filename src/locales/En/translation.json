@@ -311,5 +311,12 @@
   "yourGender": "Your gender",
   "waterCalcResult": "Your Daily Water Intake",
   "l": "L",
-  "enterValidWeight": "Enter valid weight"
+  "enterValidWeight": "Enter valid weight",
+  "activity": "Daily Activity Level",
+  "low": "Low",
+  "medium": "Medium",
+  "high": "High",
+  "lowActivity": "Sedentary lifestyle, desk job, minimal physical activity.",
+  "mediumActivity": "Light workouts 2-3 times a week, walking, moderately active lifestyle.",
+  "highActivity": "Frequent workouts, fitness, running, strength training, athletic lifestyle."
 }

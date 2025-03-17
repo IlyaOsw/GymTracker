@@ -3,9 +3,9 @@ import { Layout, Button } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
-import i18n from "../../i18n";
-import { useResponsive } from "../../hooks/useResponsive";
-import { IMenuItem } from "../../types/menu-item";
+import i18n from "i18n";
+import { useResponsive } from "hooks/useResponsive";
+import { IMenuItem } from "types/menu-item";
 
 import styles from "./CustomHeader.module.scss";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
@@ -15,8 +15,8 @@ const { Header } = Layout;
 
 export const CustomHeader: React.FC = React.memo(() => {
   const { isMobile, logoSrc } = useResponsive(992);
-  const [language, setLanguage] = useState("EN");
-  const [open, setOpen] = useState(false);
+  const [language, setLanguage] = useState<string>("EN");
+  const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
     i18n.changeLanguage("EN");

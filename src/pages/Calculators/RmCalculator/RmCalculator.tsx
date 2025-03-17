@@ -8,9 +8,9 @@ import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
 import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
 import { InputContainer } from "./InputContainer/InputContainer";
-import styles from "./RmCalculator.module.scss";
+import styles from "./RMCalculator.module.scss";
 
-export const RmCalculator: React.FC = React.memo(() => {
+export const RMCalculator: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const { ref, controls } = useAnimatedInView();
   const [weight, setWeight] = useState<string>("");

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Input } from "antd";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
 import { SubTitle } from "components/SubTitle/SubTitle";
@@ -11,19 +11,41 @@ import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
 import styles from "./WaterCalculator.module.scss";
 
+const waterIntakeRates: {
+  [gender: string]: { [activity: string]: number };
+} = {
+  male: {
+    low: 35,
+    medium: 40,
+    high: 45,
+  },
+  female: {
+    low: 30,
+    medium: 35,
+    high: 40,
+  },
+};
+
 export const WaterCalculator: React.FC = () => {
   const { t } = useTranslation();
   const { ref, controls } = useAnimatedInView();
   const [weight, setWeight] = useState<string>("");
   const [gender, setGender] = useState<string>("male");
   const [result, setResult] = useState<number>(0);
+  const [activity, setActivity] = useState<"low" | "medium" | "high">("medium");
+
+  const activityTexts: { [key: string]: string } = {
+    low: t("lowActivity"),
+    medium: t("mediumActivity"),
+    high: t("highActivity"),
+  };
 
   const calculateWater = (): void => {
     if (!weight || Number(weight) === 0) {
       ClosableMessage({ type: "warning", content: t("enterValidWeight") });
       return;
     }
-    const mlPerKg = gender === "male" ? 37.5 : 32.5;
+    const mlPerKg = waterIntakeRates[gender][activity];
     const totalMl = mlPerKg * Number(weight);
     const liters = totalMl / 1000;
     setResult(Number(liters.toFixed(2)));
@@ -31,6 +53,7 @@ export const WaterCalculator: React.FC = () => {
 
   const handleReset = () => {
     setWeight("");
+    setActivity("medium");
     setGender("male");
     setResult(0);
     ClosableMessage({ type: "success", content: t("reseted") });
@@ -77,11 +100,56 @@ export const WaterCalculator: React.FC = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <h4 className={styles.subtitle}>{t("yourGender")}</h4>
-          <div className={styles.gender}>
+        <div className={styles.activityBlock}>
+          <h4 className={styles.subtitle}>{t("activity")}</h4>
+          <div className={styles.select}>
             <div
-              className={`${styles.male} ${
+              className={`${styles.option} ${
+                activity === "low" ? styles.active : ""
+              }`}
+              onClick={() => setActivity("low")}
+            >
+              {t("low")}
+            </div>
+            <div
+              className={`${styles.option} ${
+                activity === "medium" ? styles.active : ""
+              }`}
+              onClick={() => setActivity("medium")}
+            >
+              {t("medium")}
+            </div>
+            <div
+              className={`${styles.option} ${
+                activity === "high" ? styles.active : ""
+              }`}
+              onClick={() => setActivity("high")}
+            >
+              {t("high")}
+            </div>
+          </div>
+          <div>
+            <AnimatePresence mode="wait">
+              {activity && (
+                <motion.p
+                  key={activity}
+                  className={styles.activityInfo}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {activityTexts[activity]}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+        <div className={styles.genderBlock}>
+          <h4 className={styles.subtitle}>{t("yourGender")}</h4>
+          <div className={styles.select}>
+            <div
+              className={`${styles.option} ${
                 gender === "male" ? styles.active : ""
               }`}
               onClick={() => setGender("male")}
@@ -89,7 +157,7 @@ export const WaterCalculator: React.FC = () => {
               {t("male")}
             </div>
             <div
-              className={`${styles.female} ${
+              className={`${styles.option} ${
                 gender === "female" ? styles.active : ""
               }`}
               onClick={() => setGender("female")}
@@ -98,13 +166,13 @@ export const WaterCalculator: React.FC = () => {
             </div>
           </div>
         </div>
-        <CustomButton
-          children={t("calculate")}
-          className={styles.calculate}
-          icon={<DoubleRightOutlined />}
-          onClick={calculateWater}
-        />
       </div>
+      <CustomButton
+        children={t("calculate")}
+        className={styles.calculate}
+        icon={<DoubleRightOutlined />}
+        onClick={calculateWater}
+      />
       <div className={styles.result}>
         <h4>{t("waterCalcResult")}</h4>
         <h4 className={styles.resultCount}>

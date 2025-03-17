@@ -27,17 +27,38 @@
 
   .form {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 20px 0px;
 
     @media (max-width: 576px) {
       flex-direction: column;
     }
+
+    .activityBlock {
+      order: 1;
+
+      @media (max-width: 576px) {
+        order: 2;
+      }
+    }
+
+    .genderBlock {
+      order: 2;
+
+      @media (max-width: 576px) {
+        order: 1;
+      }
+    }
+
+    .activityInfo {
+      width: 360px;
+      margin: 10px auto 0px auto;
+      font-size: 1rem;
+    }
   }
 
   .calculate {
-    margin-top: 45px;
+    margin: 10px;
     padding: 20px;
   }
 
@@ -58,6 +79,7 @@
     transition: all 0.3s ease-in-out;
     border: none;
     height: 50px;
+
     input {
       text-align: center;
     }
@@ -77,23 +99,25 @@
     }
   }
 
-  .gender {
+  .select {
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 20px;
     background-color: #282828;
     padding: 10px;
-    width: 320px;
     height: 50px;
     margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     gap: 10px;
 
-    .male,
-    .female {
+    @media (max-width: 576px) {
+      height: auto;
+    }
+
+    .option {
       height: 40px;
-      width: 200px;
+      min-width: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -101,11 +125,19 @@
       font-size: 1.2rem;
       transition: 0.3s all ease-in-out;
       border: 1px solid transparent;
+      padding: 10px;
+      position: relative;
+      overflow: hidden;
 
       &.active {
-        background-color: #424245;
+        background-color: #4a4a4a;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         border: 1px solid #424245;
+      }
+
+      @media (max-width: 576px) {
+        width: 100%;
+        min-width: unset;
       }
     }
   }

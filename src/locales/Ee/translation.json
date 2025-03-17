@@ -311,5 +311,12 @@
 "yourGender": "Teie sugu",
 "waterCalcResult": "Teie Päevane Veetarbimine",
 "l": "L",
-"enterValidWeight": "Sisestage kehtiv kaal"
+"enterValidWeight": "Sisestage kehtiv kaal",
+"activity": "Päevane aktiivsuse tase",
+"low": "Madal",
+"medium": "Keskmine",
+"high": "Kõrge",
+"lowActivity": "Väheaktiivne eluviis, istuv töö, minimaalne füüsiline koormus.",
+"mediumActivity": "Kerged treeningud 2-3 korda nädalas, jalutuskäigud, mõõdukalt aktiivne eluviis.",
+"highActivity": "Sagedased treeningud, fitness, jooksmine, jõutreeningud, sportlik eluviis."
 }
