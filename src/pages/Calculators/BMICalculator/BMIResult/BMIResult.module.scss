@@ -1,0 +1,37 @@
+.result {
+  font-size: 1.4rem;
+  margin: 25px 0;
+  padding: 5px 10px;
+  color: #4caf50;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-inline: 6px solid #4caf50;
+
+  .BMIResult {
+    font-size: 1.6rem;
+    background-color: #282828;
+    display: flex;
+    height: 77px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #4caf50;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 15px 0px;
+    letter-spacing: 1px;
+  }
+
+  .resultDescription {
+    font-size: 1.2rem;
+  }
+}
+
+.resetBtn {
+  margin: 5px;
+  padding: 20px;
+
+  svg {
+    font-size: 1.2rem;
+  }
+}

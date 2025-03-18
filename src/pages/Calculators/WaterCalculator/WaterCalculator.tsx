@@ -176,7 +176,25 @@ export const WaterCalculator: React.FC = () => {
       <div className={styles.result}>
         <h4>{t("waterCalcResult")}</h4>
         <h4 className={styles.resultCount}>
-          {result} {t("l")}
+          {result === 0 && (
+            <p>
+              {result} {t("l")}
+            </p>
+          )}
+          {result > 0 && (
+            <motion.div
+              key={result}
+              className={styles.activityInfo}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.5 }}
+            >
+              <p className={styles.resultValue}>
+                {result} {t("l")}
+              </p>
+            </motion.div>
+          )}
         </h4>
       </div>
       <ResetButton

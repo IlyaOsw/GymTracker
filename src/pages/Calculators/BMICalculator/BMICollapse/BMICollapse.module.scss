@@ -1,0 +1,43 @@
+.collapse {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-align: start;
+
+  .collapseTitle {
+    color: #fff;
+    font-size: 1.2rem;
+  }
+
+  .collapseInfo {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 12px;
+    gap: 8px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #ffffff;
+      margin: 0;
+      background-color: rgba(227, 227, 227, 0.05);
+      padding: 8px 12px;
+      border-radius: 12px;
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  svg {
+    color: #fff;
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+}

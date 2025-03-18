@@ -7,12 +7,12 @@ import {
   DoubleRightOutlined,
 } from "@ant-design/icons";
 import { CustomButton } from "components/CustomButton/CustomButton";
-import { InputContainerPropsType } from "types/input-container";
+import { RMMainPropsType } from "types/input-container";
 import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
-import styles from "./InputContainer.module.scss";
+import styles from "./RMMain.module.scss";
 
-export const InputContainer: React.FC<InputContainerPropsType> = React.memo(
+export const RMMain: React.FC<RMMainPropsType> = React.memo(
   ({ reps, setReps, setResult, weight, setWeight }) => {
     const { t } = useTranslation();
 
@@ -34,7 +34,7 @@ export const InputContainer: React.FC<InputContainerPropsType> = React.memo(
 
     const calculate1RM = () => {
       if (!weight.trim()) {
-        ClosableMessage({ type: "error", content: t("enterWorkingWeight") });
+        ClosableMessage({ type: "warning", content: t("enterWorkingWeight") });
         return;
       } else if (Number(weight) < 10) {
         ClosableMessage({ type: "warning", content: t("noLessThan10kg") });
@@ -55,14 +55,13 @@ export const InputContainer: React.FC<InputContainerPropsType> = React.memo(
     const handleChange = (e: { target: { value: string } }) => {
       let value = e.target.value;
       value = value.replace(",", ".");
-      const numericValue = parseFloat(value);
 
-      if (numericValue > 1000) {
+      if (parseFloat(value) > 1000) {
         ClosableMessage({
           type: "warning",
           content: t("noMoreThan1000kg"),
         });
-      } else if (!isNaN(numericValue) && /^\d*\.?\d*$/.test(value)) {
+      } else if (!isNaN(parseFloat(value)) && /^\d*\.?\d*$/.test(value)) {
         setWeight(value);
       } else {
         setWeight("");

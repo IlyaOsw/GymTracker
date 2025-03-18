@@ -298,7 +298,6 @@
   "confirmDeletingNote": "Please confirm deleting note.",
   "calculators": "Calculators",
   "calculatorDescription": "On this page, you will find useful tools to calculate key parameters of your body. Choose the necessary calculator and get accurate data to help you track your fitness and improve your results!",
-  "calculatorDescription2": "Track your metrics and move towards new goals!",
   "1RMcalc": "1 RM Calculator",
   "1RMcalcDesc": "Find out how much weight you can lift in a single repetition.",
   "waterCalc": "Water Calculator",
@@ -318,5 +317,19 @@
   "high": "High",
   "lowActivity": "Sedentary lifestyle, desk job, minimal physical activity.",
   "mediumActivity": "Light workouts 2-3 times a week, walking, moderately active lifestyle.",
-  "highActivity": "Frequent workouts, fitness, running, strength training, athletic lifestyle."
+  "highActivity": "Frequent workouts, fitness, running, strength training, athletic lifestyle.",
+  "BMICalcualtor": "Calculate Your Body Mass Index",
+  "BMICalcSubTitle": "Calculate your BMI to understand your weight category based on your height and weight.",
+  "heightPlaceholder": "Height, cm",
+  "BMIResult": "Your Body Mass Index",
+  "enterValidWeightHeight": "Enter valid values for weight and height",
+  "severeUnderweight": "Severe underweight",
+  "underweight": "Underweight",
+  "mildUnderweight": "Mild underweight",
+  "normalWeight": "Normal weight",
+  "overweight": "Overweight",
+  "obesity1": "Obesity Class I",
+  "obesity2": "Obesity Class II",
+  "obesity3": "Obesity Class III",
+  "BMIOverview": "BMI Categories Overview"
 }

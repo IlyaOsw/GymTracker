@@ -1,4 +1,4 @@
-export type InputContainerPropsType = {
+export type RMMainPropsType = {
   reps: number;
   setReps: (reps: number) => void;
   setResult: (result: number) => void;

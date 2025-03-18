@@ -39,17 +39,17 @@ const Calculators: React.FC = () => {
         />
       ),
     },
-    // {
-    //   id: "bmi",
-    //   title: t("BMIcalc"),
-    //   description: t("BMIcalcDesc"),
-    //   icon: (
-    //     <img
-    //       src={process.env.PUBLIC_URL + "/assets/Icons/Calculators/bmi.svg"}
-    //       alt="BM"
-    //     />
-    //   ),
-    // },
+    {
+      id: "bmi",
+      title: t("BMIcalc"),
+      description: t("BMIcalcDesc"),
+      icon: (
+        <img
+          src={process.env.PUBLIC_URL + "/assets/Icons/Calculators/bmi.svg"}
+          alt="BM"
+        />
+      ),
+    },
   ];
 
   return (
@@ -80,10 +80,6 @@ const Calculators: React.FC = () => {
         {activeCalculator === "1rm" && <RMCalculator />}
         {activeCalculator === "water" && <WaterCalculator />}
         {activeCalculator === "bmi" && <BMICalculator />}
-        <DescriptionText
-          text={t("calculatorDescription2")}
-          textAlign={"center"}
-        />
       </PageWrapper>
       <CustomFooter />
     </>

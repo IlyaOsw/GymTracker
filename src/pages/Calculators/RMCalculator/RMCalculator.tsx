@@ -7,7 +7,7 @@ import { ResetButton } from "components/ResetButton/ResetButton";
 import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
 import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
-import { InputContainer } from "./InputContainer/InputContainer";
+import { RMMain } from "./RMMain/RMMain";
 import styles from "./RMCalculator.module.scss";
 
 export const RMCalculator: React.FC = React.memo(() => {
@@ -35,7 +35,7 @@ export const RMCalculator: React.FC = React.memo(() => {
       <SubTitle children={t("weightCalculator")} className={styles.header} />
       <h3 className={styles.info}>{t("indicateWeightAndReps")}</h3>
       <div>
-        <InputContainer
+        <RMMain
           reps={reps}
           setReps={setReps}
           setResult={setResult}
@@ -43,9 +43,26 @@ export const RMCalculator: React.FC = React.memo(() => {
           setWeight={setWeight}
         />
         <div className={styles.result}>
-          {t("calcResult")}
+          <h4> {t("calcResult")}</h4>
           <div className={styles.resultWeight}>
-            {result} {t("kg")}
+            {result === 0 && (
+              <p>
+                {result} {t("kg")}
+              </p>
+            )}
+            {result > 0 && (
+              <motion.div
+                key={result}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.5 }}
+              >
+                <p>
+                  {result} {t("kg")}
+                </p>
+              </motion.div>
+            )}
           </div>
         </div>
         <ResetButton

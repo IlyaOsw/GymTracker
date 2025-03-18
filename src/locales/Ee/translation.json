@@ -298,7 +298,6 @@
 "confirmDeletingNote": "Palun kinnitage märkuse kustutamine.",
 "calculators": "Kalkulaatorid",
 "calculatorDescription": "Sellel lehel leiate kasulikke tööriistu oma keha peamiste näitajate arvutamiseks. Valige vajalik kalkulaator ja saate täpsed andmed, mis aitavad teil oma vormi jälgida ja tulemusi parandada!",
-"calculatorDescription2": "Jälgige oma näitajaid ja liikuge uute eesmärkide poole!",
 "1RMcalc": "1 RM Kalkulaator",
 "1RMcalcDesc": "Saage teada, kui palju raskust suudate ühe kordusega tõsta.",
 "waterCalc": "Vee Kalkulaator",
@@ -318,5 +317,19 @@
 "high": "Kõrge",
 "lowActivity": "Väheaktiivne eluviis, istuv töö, minimaalne füüsiline koormus.",
 "mediumActivity": "Kerged treeningud 2-3 korda nädalas, jalutuskäigud, mõõdukalt aktiivne eluviis.",
-"highActivity": "Sagedased treeningud, fitness, jooksmine, jõutreeningud, sportlik eluviis."
+"highActivity": "Sagedased treeningud, fitness, jooksmine, jõutreeningud, sportlik eluviis.",
+"BMICalcualtor": "Arvutage oma kehamassiindeks",
+"BMICalcSubTitle": "Arvutage oma KMI, et mõista oma kaalukategooriat pikkuse ja kaalu põhjal.",
+"heightPlaceholder": "Pikkus, cm",
+"BMIResult": "Teie kehamassiindeks",
+"enterValidWeightHeight": "Sisestage kehtivad kaalu ja pikkuse väärtused",
+"severeUnderweight": "Tõsine alakaal",
+"underweight": "Alakaal",
+"mildUnderweight": "Kerge alakaal",
+"normalWeight": "Normaalkaal",
+"overweight": "Ülekaal",
+"obesity1": "Rasvumine I klass",
+"obesity2": "Rasvumine II klass",
+"obesity3": "Rasvumine III klass",
+"BMIOverview": "KMI kategooriate ülevaade"
 }
