@@ -16,7 +16,7 @@ export const AddExercise: React.FC<IAddExercise> = React.memo(
   ({ onAddExercise, category, setData }) => {
     const { user } = useAuth();
     const { t } = useTranslation();
-    const [exerciseName, setExerciseName] = useState("");
+    const [exerciseName, setExerciseName] = useState<string>("");
 
     const handleAddExercise = async () => {
       if (!exerciseName) {
@@ -25,7 +25,6 @@ export const AddExercise: React.FC<IAddExercise> = React.memo(
       }
       try {
         if (user) {
-          const userId = user.uid;
           const exercise = {
             id: uuidv4(),
             name: exerciseName,
@@ -36,7 +35,7 @@ export const AddExercise: React.FC<IAddExercise> = React.memo(
             },
             isFavorite: false,
           };
-          const exercisesDocRef = doc(getFirestore(), "exercises", userId);
+          const exercisesDocRef = doc(getFirestore(), "exercises", user.uid);
           const docSnapshot = await getDoc(exercisesDocRef);
 
           if (docSnapshot.exists()) {
