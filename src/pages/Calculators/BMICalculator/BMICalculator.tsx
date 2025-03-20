@@ -7,10 +7,10 @@ import { SubTitle } from "components/SubTitle/SubTitle";
 import { ResetButton } from "components/ResetButton/ResetButton";
 import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
+import { BMIMain } from "./BMIMain/BMIMain";
 import { BMIResult } from "./BMIResult/BMIResult";
 import { BMICollapse } from "./BMICollapse/BMICollapse";
 import styles from "./BMICalculator.module.scss";
-import { BMIMain } from "./BMIMain/BMIMain";
 
 export const BMICalculator: React.FC = () => {
   const { t } = useTranslation();

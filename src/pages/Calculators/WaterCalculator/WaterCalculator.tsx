@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Input } from "antd";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { animation, useAnimatedInView } from "hooks/useAnimatedInView ";
 import { SubTitle } from "components/SubTitle/SubTitle";
@@ -9,6 +9,9 @@ import { DoubleRightOutlined, SyncOutlined } from "@ant-design/icons";
 import { ResetButton } from "components/ResetButton/ResetButton";
 import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
+import { WaterActivity } from "./WaterActivity/WaterActivity";
+import { WaterGender } from "./WaterGender/WaterGender";
+import { WaterResult } from "./WaterResult/WaterResult";
 import styles from "./WaterCalculator.module.scss";
 
 const waterIntakeRates: {
@@ -33,12 +36,6 @@ export const WaterCalculator: React.FC = () => {
   const [gender, setGender] = useState<string>("male");
   const [result, setResult] = useState<number>(0);
   const [activity, setActivity] = useState<"low" | "medium" | "high">("medium");
-
-  const activityTexts: { [key: string]: string } = {
-    low: t("lowActivity"),
-    medium: t("mediumActivity"),
-    high: t("highActivity"),
-  };
 
   const calculateWater = (): void => {
     if (!weight || Number(weight) === 0) {
@@ -100,72 +97,8 @@ export const WaterCalculator: React.FC = () => {
             onChange={handleChange}
           />
         </div>
-        <div className={styles.activityBlock}>
-          <h4 className={styles.subtitle}>{t("activity")}</h4>
-          <div className={styles.select}>
-            <div
-              className={`${styles.option} ${
-                activity === "low" ? styles.active : ""
-              }`}
-              onClick={() => setActivity("low")}
-            >
-              {t("low")}
-            </div>
-            <div
-              className={`${styles.option} ${
-                activity === "medium" ? styles.active : ""
-              }`}
-              onClick={() => setActivity("medium")}
-            >
-              {t("medium")}
-            </div>
-            <div
-              className={`${styles.option} ${
-                activity === "high" ? styles.active : ""
-              }`}
-              onClick={() => setActivity("high")}
-            >
-              {t("high")}
-            </div>
-          </div>
-          <div>
-            <AnimatePresence mode="wait">
-              {activity && (
-                <motion.p
-                  key={activity}
-                  className={styles.activityInfo}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  {activityTexts[activity]}
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-        <div className={styles.genderBlock}>
-          <h4 className={styles.subtitle}>{t("yourGender")}</h4>
-          <div className={styles.select}>
-            <div
-              className={`${styles.option} ${
-                gender === "male" ? styles.active : ""
-              }`}
-              onClick={() => setGender("male")}
-            >
-              {t("male")}
-            </div>
-            <div
-              className={`${styles.option} ${
-                gender === "female" ? styles.active : ""
-              }`}
-              onClick={() => setGender("female")}
-            >
-              {t("female")}
-            </div>
-          </div>
-        </div>
+        <WaterActivity activity={activity} setActivity={setActivity} />
+        <WaterGender gender={gender} setGender={setGender} />
       </div>
       <CustomButton
         children={t("calculate")}
@@ -173,30 +106,7 @@ export const WaterCalculator: React.FC = () => {
         icon={<DoubleRightOutlined />}
         onClick={calculateWater}
       />
-      <div className={styles.result}>
-        <h4>{t("waterCalcResult")}</h4>
-        <h4 className={styles.resultCount}>
-          {result === 0 && (
-            <p>
-              {result} {t("l")}
-            </p>
-          )}
-          {result > 0 && (
-            <motion.div
-              key={result}
-              className={styles.activityInfo}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.5 }}
-            >
-              <p className={styles.resultValue}>
-                {result} {t("l")}
-              </p>
-            </motion.div>
-          )}
-        </h4>
-      </div>
+      <WaterResult result={result} />
       <ResetButton
         className={styles.resetBtn}
         children={t("reset")}

@@ -8,6 +8,7 @@ import styles from "./BMIResult.module.scss";
 
 export const BMIResult: React.FC<BMIResultPropsType> = ({ result }) => {
   const { t } = useTranslation();
+
   return (
     <div className={styles.result}>
       <h4>{t("BMIResult")}</h4>
