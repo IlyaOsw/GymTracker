@@ -12,7 +12,6 @@ import styles from "./Diary.module.scss";
 
 export const Diary: React.FC = React.memo(() => {
   const { t } = useTranslation();
-
   const { ref, controls } = useAnimatedInView();
 
   return (
