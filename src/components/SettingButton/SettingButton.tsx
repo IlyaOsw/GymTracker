@@ -14,7 +14,7 @@ export const SettingButton: React.FC<SettingButtonPropsType> = ({
     <Button
       onClick={onClick}
       icon={icon}
-      className={`${styles.btn} ${className}`}
+      className={`${styles.button} ${className}`}
     >
       {children}
     </Button>
