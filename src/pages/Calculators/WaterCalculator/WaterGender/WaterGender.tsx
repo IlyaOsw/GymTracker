@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { WaterGenderPropsType } from "types/water-gender";
+import { WaterGenderPropsType } from "types/calculators/water-gender";
 
 import styles from "../WaterCalculator.module.scss";
 

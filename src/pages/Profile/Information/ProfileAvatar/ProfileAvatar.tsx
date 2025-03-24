@@ -24,41 +24,31 @@ import styles from "./ProfileAvatar.module.scss";
 export const ProfileAvatar: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [avatarURL, setAvatarURL] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const avatarSize = windowWidth <= 768 ? 150 : 250;
   const storage = getStorage();
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (user) {
-      setLoading(true);
-      const avatarRef = ref(storage, `avatar/${user.uid}`);
-      getDownloadURL(avatarRef)
-        .then((url) => {
-          setAvatarURL(url);
-        })
-        .catch(() => {
-          setAvatarURL(null);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    } else {
+    if (!user) {
       setAvatarURL(null);
       setLoading(false);
+      return;
     }
+
+    const fetchAvatar = async () => {
+      setLoading(true);
+      try {
+        const avatarRef = ref(storage, `avatar/${user.uid}`);
+        const url = await getDownloadURL(avatarRef);
+        setAvatarURL(url);
+      } catch (error) {
+        setAvatarURL(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAvatar();
   }, [user, storage]);
 
   const handleDeleteAvatar = async () => {
@@ -126,11 +116,7 @@ export const ProfileAvatar: React.FC = React.memo(() => {
           {avatarURL ? (
             <Image
               src={avatarURL}
-              style={{
-                width: avatarSize,
-                height: avatarSize,
-                borderRadius: "50%",
-              }}
+              className={styles.avatarSize}
               preview={{
                 mask: (
                   <div className={styles.mask}>
@@ -141,7 +127,7 @@ export const ProfileAvatar: React.FC = React.memo(() => {
               }}
             />
           ) : (
-            <Avatar size={avatarSize} icon={<UserOutlined />} />
+            <Avatar className={styles.avatarSize} icon={<UserOutlined />} />
           )}
           <Dropdown menu={{ items }} arrow>
             <Button icon={<SettingOutlined />} className={styles.settingIcon} />

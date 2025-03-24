@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { WaterActivityPropsType } from "types/water-activity";
+import { WaterActivityPropsType } from "types/calculators/water-activity";
 
 import styles from "../WaterCalculator.module.scss";
 

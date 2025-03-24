@@ -18,6 +18,43 @@ export const UserInfo: React.FC<UserInfoPropsType> = React.memo(
     const { ref, controls } = useAnimatedInView();
     const [edit, setEdit] = useState<boolean>(false);
 
+    const userProfile = [
+      {
+        icon:
+          process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/location.png",
+        alt: "Location",
+        content: `${userData?.location.country || ""}${
+          userData?.location.city ? `, ${userData.location.city}` : ""
+        }`,
+      },
+      {
+        icon:
+          process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/gender.png",
+        alt: "Gender",
+        content: `${t("gender")}: ${
+          userData?.gender ? t(userData.gender) : ""
+        }`,
+      },
+      {
+        icon: process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/age.png",
+        alt: "Age",
+        content: `${t("age")}: ${userData?.age}`,
+      },
+      {
+        icon:
+          process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/birthday.png",
+        alt: "DateOfBirth",
+        content: `${t("dateOfBirth")}: ${formatDateOfBirth(
+          userData?.dateOfBirth
+        )}`,
+      },
+      {
+        icon: process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/mail.png",
+        alt: "Mail",
+        content: `${userData?.email || ""}`,
+      },
+    ];
+
     return (
       <div className={styles.profileContainer}>
         <motion.div
@@ -50,63 +87,12 @@ export const UserInfo: React.FC<UserInfoPropsType> = React.memo(
               </div>
             )}
             <div className={styles.userDetails}>
-              <div className={styles.detailItem}>
-                <img
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/assets/Icons/AdditionalIcons/location.png"
-                  }
-                  alt="Location"
-                />
-                <p>
-                  {userData?.location.country}
-                  {userData?.location.city && `, ${userData.location.city}`}
-                </p>
-              </div>
-              <div className={styles.detailItem}>
-                <img
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/assets/Icons/AdditionalIcons/gender.png"
-                  }
-                  alt="Gender"
-                />
-                <p>
-                  {t("gender")}: {userData?.gender ? t(userData.gender) : ""}
-                </p>
-              </div>
-              <div className={styles.detailItem}>
-                <img
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/assets/Icons/AdditionalIcons/age.png"
-                  }
-                  alt="Age"
-                />
-                {t("age")}: {userData?.age}
-              </div>
-              <div className={styles.detailItem}>
-                <img
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/assets/Icons/AdditionalIcons/birthday.png"
-                  }
-                  alt="DateOfBirth"
-                />
-                <p>
-                  {t("dateOfBirth")}: {formatDateOfBirth(userData?.dateOfBirth)}
-                </p>
-              </div>
-              <div className={styles.detailItem}>
-                <img
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/assets/Icons/AdditionalIcons/mail.png"
-                  }
-                  alt="Mail"
-                />
-                <p>{userData?.email}</p>
-              </div>
+              {userProfile.map((item, index) => (
+                <div key={index} className={styles.detailItem}>
+                  <img src={item.icon} alt={item.alt} />
+                  <p>{item.content}</p>
+                </div>
+              ))}
             </div>
           </div>
           <LastWorkout />

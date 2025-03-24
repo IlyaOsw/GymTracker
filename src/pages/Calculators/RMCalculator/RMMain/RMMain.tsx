@@ -7,7 +7,7 @@ import {
   DoubleRightOutlined,
 } from "@ant-design/icons";
 import { CustomButton } from "components/CustomButton/CustomButton";
-import { RMMainPropsType } from "types/input-container";
+import { RMMainPropsType } from "types/calculators/rm-main";
 import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
 import styles from "./RMMain.module.scss";

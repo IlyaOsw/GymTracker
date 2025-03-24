@@ -5,6 +5,8 @@ import { DescriptionText } from "components/DescriptionText/DescriptionText";
 import { DescriptionTitle } from "components/DescriptionTitle/DescriptionTitle";
 import { PageWrapper } from "components/PageWrapper/PageWrapper";
 import { CustomFooter } from "layout/CustomFooter/CustomFooter";
+import { useSelector } from "react-redux";
+import { CalculatorReducerType } from "types/calculators/calculator-reducer";
 
 import { RMCalculator } from "./RMCalculator/RMCalculator";
 import { WaterCalculator } from "./WaterCalculator/WaterCalculator";
@@ -14,43 +16,10 @@ import styles from "./Calculators.module.scss";
 
 const Calculators: React.FC = () => {
   const { t } = useTranslation();
+  const calculators = useSelector(
+    (state: { calculators: CalculatorReducerType[] }) => state.calculators
+  );
   const [activeCalculator, setActiveCalculator] = useState<string>("1rm");
-
-  const calculators = [
-    {
-      id: "1rm",
-      title: t("1RMcalc"),
-      description: t("1RMcalcDesc"),
-      icon: (
-        <img
-          src={process.env.PUBLIC_URL + "/assets/Icons/Calculators/1rm.svg"}
-          alt="1rm"
-        />
-      ),
-    },
-    {
-      id: "water",
-      title: t("waterCalc"),
-      description: t("waterCalcDesc"),
-      icon: (
-        <img
-          src={process.env.PUBLIC_URL + "/assets/Icons/Calculators/water.svg"}
-          alt="Water"
-        />
-      ),
-    },
-    {
-      id: "bmi",
-      title: t("BMIcalc"),
-      description: t("BMIcalcDesc"),
-      icon: (
-        <img
-          src={process.env.PUBLIC_URL + "/assets/Icons/Calculators/bmi.svg"}
-          alt="BM"
-        />
-      ),
-    },
-  ];
 
   return (
     <>
@@ -69,9 +38,13 @@ const Calculators: React.FC = () => {
                 }`}
                 onClick={() => setActiveCalculator(calc.id)}
               >
-                <div className={styles.iconWrapper}>{calc.icon}</div>
-                <h3 className={styles.title}>{calc.title}</h3>
-                <p className={styles.description}>{calc.description}</p>
+                <img
+                  src={t(calc.icon)}
+                  alt={t(calc.icon)}
+                  className={styles.icon}
+                />
+                <h3 className={styles.title}>{t(calc.title)}</h3>
+                <p className={styles.description}>{t(calc.description)}</p>
               </Card>
             </Col>
           ))}

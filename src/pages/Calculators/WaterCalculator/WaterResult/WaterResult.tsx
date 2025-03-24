@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { WaterResultPropsType } from "types/water-result";
+import { WaterResultPropsType } from "types/calculators/water-result";
 
 import styles from "../WaterCalculator.module.scss";
 

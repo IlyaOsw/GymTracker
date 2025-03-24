@@ -21,7 +21,7 @@ const SignIn: React.FC = () => {
   const { ref, controls } = useAnimatedInView();
   const [form] = Form.useForm();
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -36,7 +36,7 @@ const SignIn: React.FC = () => {
     try {
       await form.validateFields();
       await login(email, password);
-      navigate("/profile");
+      navigate(`/profile/${user!.uid}`);
     } catch (error) {
       ClosableMessage({ type: "error", content: t("invalidEmailOrPass") });
     }

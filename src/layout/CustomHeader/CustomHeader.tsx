@@ -38,7 +38,7 @@ export const CustomHeader: React.FC = React.memo(() => {
       </Link>
       {isMobile ? (
         <Button className={styles.burgerBtn} onClick={() => setOpen(true)}>
-          <MenuOutlined style={{ color: "white" }} />
+          <MenuOutlined style={{ color: "#fff" }} />
         </Button>
       ) : (
         <Navbar

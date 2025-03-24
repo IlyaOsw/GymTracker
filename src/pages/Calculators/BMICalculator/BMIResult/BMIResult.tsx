@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { BMIResultPropsType } from "types/BMI-result";
+import { BMIResultPropsType } from "types/calculators/bmi-result";
 import { getBMIDescription } from "utils/bmiDescription";
 
 import styles from "./BMIResult.module.scss";

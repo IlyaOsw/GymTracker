@@ -4,7 +4,7 @@ import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 import { CustomButton } from "components/CustomButton/CustomButton";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { BMIMainPropsType } from "types/bmi-main";
+import { BMIMainPropsType } from "types/calculators/bmi-main";
 
 import styles from "./BMIMain.module.scss";
 

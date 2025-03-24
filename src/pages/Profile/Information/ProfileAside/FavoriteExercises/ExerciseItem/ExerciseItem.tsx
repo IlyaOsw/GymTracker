@@ -14,13 +14,6 @@ export const ExerciseItem: React.FC<IExerciseItemProps> = React.memo(
     const { t } = useTranslation();
     const { ref, controls } = useAnimatedInView();
 
-    const genExtra = () => (
-      <img
-        src={process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/star.png"}
-        alt="Star"
-      />
-    );
-
     const items: CollapseProps["items"] = [
       {
         key: "1",
@@ -49,7 +42,14 @@ export const ExerciseItem: React.FC<IExerciseItemProps> = React.memo(
             </div>
           </>
         ),
-        extra: genExtra(),
+        extra: (
+          <img
+            src={
+              process.env.PUBLIC_URL + "/assets/Icons/AdditionalIcons/star.png"
+            }
+            alt="Star"
+          />
+        ),
       },
     ];
 
