@@ -39,8 +39,8 @@ const Calculators: React.FC = () => {
                 onClick={() => setActiveCalculator(calc.id)}
               >
                 <img
-                  src={t(calc.icon)}
-                  alt={t(calc.icon)}
+                  src={calc.icon}
+                  alt={t(calc.title)}
                   className={styles.icon}
                 />
                 <h3 className={styles.title}>{t(calc.title)}</h3>

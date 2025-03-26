@@ -27,7 +27,7 @@ const initialState: InsideLookType[] = [
   },
 ];
 
-export const insideLookReducer = (state: InsideLookType[] = initialState) => {
+export const insideLook = (state: InsideLookType[] = initialState) => {
   return state;
 };
 

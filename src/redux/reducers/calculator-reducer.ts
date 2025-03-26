@@ -21,9 +21,7 @@ const initialState: CalculatorReducerType[] = [
   },
 ];
 
-export const calculatorReducer = (
-  state: CalculatorReducerType[] = initialState
-) => {
+export const calculators = (state: CalculatorReducerType[] = initialState) => {
   return state;
 };
 

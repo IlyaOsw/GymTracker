@@ -8,8 +8,8 @@ import { BrowserRouter } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { Provider } from "react-redux";
 
-import App from "./App";
-import { store } from "./store/store";
+import { App } from "./App";
+import { store } from "./redux/store";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBg1LS3f644UZ6uYC6KTnakEaEJFTwPEhc",

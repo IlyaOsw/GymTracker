@@ -5,6 +5,6 @@ export type HeaderPropsType = {
   setOpen?: (open: boolean) => void;
   language: string;
   handleLanguageClick: ({ key }: { key: string }) => void;
-  languageItems: IMenuItem[];
+  languageState: IMenuItem[];
   changeLanguage: (language: string) => void;
 };

@@ -12,10 +12,6 @@ const NotFound: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const handleBackHome = () => {
-    navigate("/");
-  };
-
   return (
     <>
       <Result
@@ -25,7 +21,7 @@ const NotFound: React.FC = () => {
         extra={
           <CustomButton
             className={styles.backHome}
-            onClick={handleBackHome}
+            onClick={() => navigate("/")}
             icon={<ArrowLeftOutlined />}
           >
             {t("backHome")}

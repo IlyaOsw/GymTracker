@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import i18n from "i18n";
 import { useResponsive } from "hooks/useResponsive";
 import { IMenuItem } from "types/menu-item";
+import { useSelector } from "react-redux";
 
 import styles from "./CustomHeader.module.scss";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
@@ -14,6 +15,9 @@ const { Header } = Layout;
 
 export const CustomHeader: React.FC = React.memo(() => {
   const { isMobile, logoSrc } = useResponsive(992);
+  const languageState = useSelector(
+    (state: { language: IMenuItem[] }) => state.language
+  );
   const [language, setLanguage] = useState<string>("EN");
   const [open, setOpen] = useState<boolean>(false);
 
@@ -22,7 +26,7 @@ export const CustomHeader: React.FC = React.memo(() => {
   }, []);
 
   const handleLanguageClick = ({ key }: { key: string }) => {
-    const selectedLanguage = languageItems.find((item) => item.key === key);
+    const selectedLanguage = languageState.find((item) => item.key === key);
     if (selectedLanguage) {
       setLanguage(selectedLanguage.label);
     }
@@ -42,7 +46,7 @@ export const CustomHeader: React.FC = React.memo(() => {
       ) : (
         <Navbar
           handleLanguageClick={handleLanguageClick}
-          languageItems={languageItems}
+          languageState={languageState}
           language={language}
           changeLanguage={changeLanguage}
         />
@@ -52,51 +56,9 @@ export const CustomHeader: React.FC = React.memo(() => {
         setOpen={setOpen}
         language={language}
         handleLanguageClick={handleLanguageClick}
-        languageItems={languageItems}
+        languageState={languageState}
         changeLanguage={changeLanguage}
       />
     </Header>
   );
 });
-
-const languageItems: IMenuItem[] = [
-  {
-    key: "1",
-    label: "EN",
-    icon: (
-      <img
-        src={
-          process.env.PUBLIC_URL + "/assets/Icons/Header/LanguageIcons/En.png"
-        }
-        alt="Eng"
-        style={{ width: "25px", height: "25px", marginRight: "10px" }}
-      />
-    ),
-  },
-  {
-    key: "2",
-    label: "RU",
-    icon: (
-      <img
-        src={
-          process.env.PUBLIC_URL + "/assets/Icons/Header/LanguageIcons/Ru.png"
-        }
-        alt="Rus"
-        style={{ width: "25px", height: "25px", marginRight: "10px" }}
-      />
-    ),
-  },
-  {
-    key: "3",
-    label: "EE",
-    icon: (
-      <img
-        src={
-          process.env.PUBLIC_URL + "/assets/Icons/Header/LanguageIcons/Ee.png"
-        }
-        alt="Ee"
-        style={{ width: "25px", height: "25px", marginRight: "10px" }}
-      />
-    ),
-  },
-];

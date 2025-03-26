@@ -21,8 +21,6 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const auth = getAuth();
   const user = getAuth().currentUser;
-  console.log(user);
-  console.log(auth.currentUser);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {

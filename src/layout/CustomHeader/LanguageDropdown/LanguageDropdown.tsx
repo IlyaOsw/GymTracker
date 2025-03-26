@@ -7,16 +7,20 @@ import styles from "../CustomHeader.module.scss";
 
 export const LanguageDropdown: React.FC<LanguageDropdownPropsType> = ({
   handleLanguageClick,
-  languageItems,
+  languageState,
   language,
   changeLanguage,
 }) => {
   const items: MenuProps["items"] =
-    languageItems?.map((item) => ({
+    languageState?.map((item) => ({
       key: item.key,
       label: (
         <div className={styles.lngIcons}>
-          <span>{item.icon}</span>
+          <img
+            src={item.icon as string}
+            alt="Rus"
+            style={{ width: "25px", height: "25px", marginRight: "10px" }}
+          />
           <span className={styles.dropdownItem}>{item.label}</span>
         </div>
       ),

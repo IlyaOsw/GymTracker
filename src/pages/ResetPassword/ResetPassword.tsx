@@ -13,20 +13,17 @@ import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 import styles from "./ResetPassword.module.scss";
 
 const ResetPassword: React.FC = () => {
-  const auth = getAuth();
   const { t } = useTranslation();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("");
 
   const handleResetPassword = async () => {
     try {
-      await sendPasswordResetEmail(auth, email);
+      await sendPasswordResetEmail(getAuth(), email);
       ClosableMessage({ type: "success", content: t("passwordResetSuccess") });
     } catch (error) {
       ClosableMessage({ type: "error", content: t("passwordResetError") });
     }
   };
-
-  const handleEmailChange = (email: string) => setEmail(email);
 
   return (
     <>
@@ -43,7 +40,7 @@ const ResetPassword: React.FC = () => {
             text={t("email")}
             placeholder={t("enterMail")}
             value={email}
-            onChange={handleEmailChange}
+            onChange={(email: string) => setEmail(email)}
           />
         </div>
         <CustomButton

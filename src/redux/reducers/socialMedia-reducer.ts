@@ -8,7 +8,7 @@ const initialState: SocialLinksType[] = [
   },
 ];
 
-export const socialMediaReducer = (state: SocialLinksType[] = initialState) => {
+export const socialMedia = (state: SocialLinksType[] = initialState) => {
   return state;
 };
 

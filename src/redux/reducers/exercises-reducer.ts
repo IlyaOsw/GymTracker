@@ -54,7 +54,7 @@ const initialState: IExercise[] = [
   },
 ];
 
-export const exercisesReducer = (state: IExercise[] = initialState) => {
+export const exercises = (state: IExercise[] = initialState) => {
   return state;
 };
 

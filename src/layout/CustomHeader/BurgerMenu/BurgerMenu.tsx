@@ -16,7 +16,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
   setOpen,
   language,
   handleLanguageClick,
-  languageItems,
+  languageState,
   changeLanguage,
 }) => {
   const { t } = useTranslation();
@@ -137,7 +137,7 @@ export const BurgerMenu: React.FC<HeaderPropsType> = ({
           <span className={styles.burgerSettings}>{t("language")}</span>
           <LanguageDropdown
             handleLanguageClick={handleLanguageClick}
-            languageItems={languageItems}
+            languageState={languageState}
             language={language}
             changeLanguage={changeLanguage}
           />

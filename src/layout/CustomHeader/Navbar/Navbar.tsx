@@ -11,7 +11,7 @@ import { Login } from "./Login/Login";
 
 export const Navbar: React.FC<HeaderPropsType> = ({
   handleLanguageClick,
-  languageItems,
+  languageState,
   language,
   changeLanguage,
 }) => {
@@ -41,7 +41,7 @@ export const Navbar: React.FC<HeaderPropsType> = ({
         <p>{t("language")}</p>
         <LanguageDropdown
           handleLanguageClick={handleLanguageClick}
-          languageItems={languageItems}
+          languageState={languageState}
           language={language}
           changeLanguage={changeLanguage}
         />
