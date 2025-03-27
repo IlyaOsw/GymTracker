@@ -29,16 +29,10 @@ export const ProfileAvatar: React.FC = React.memo(() => {
   const storage = getStorage();
 
   useEffect(() => {
-    if (!user) {
-      setAvatarURL(null);
-      setLoading(false);
-      return;
-    }
-
     const fetchAvatar = async () => {
       setLoading(true);
       try {
-        const avatarRef = ref(storage, `avatar/${user.uid}`);
+        const avatarRef = ref(storage, `avatar/${user!.uid}`);
         const url = await getDownloadURL(avatarRef);
         setAvatarURL(url);
       } catch (error) {

@@ -7,12 +7,12 @@ export const ProtectedRoute: React.FC<IProtectedRouteProps> = ({
   isAuthenticated,
   children,
 }) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 950);
+    }, 900);
 
     return () => clearTimeout(timer);
   }, []);

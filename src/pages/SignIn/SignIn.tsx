@@ -29,9 +29,6 @@ const SignIn: React.FC = () => {
     window.scroll(0, 0);
   }, []);
 
-  const handleEmailChange = (value: string) => setEmail(value);
-  const handlePasswordChange = (value: string) => setPassword(value);
-
   const handleSignIn = async () => {
     try {
       await form.validateFields();
@@ -57,13 +54,13 @@ const SignIn: React.FC = () => {
             name="email"
             text={t("email")}
             placeholder={t("enterMail")}
-            onChange={handleEmailChange}
+            onChange={(value: string) => setEmail(value)}
           />
           <PasswordInput
             name="password"
             text={t("password")}
             placeholder={t("enterPassword")}
-            onChange={handlePasswordChange}
+            onChange={(value: string) => setPassword(value)}
           />
           <motion.div
             className={styles.options}

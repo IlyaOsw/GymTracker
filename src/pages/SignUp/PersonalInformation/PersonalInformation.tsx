@@ -18,15 +18,16 @@ export const PersonalInformation: React.FC<PersonalInformationType> = ({
   onFirstNameChange,
   onLastNameChange,
   onGenderChange,
-  onDateOfBithChange,
+  onDateOfBirthChange,
 }) => {
   const { ref, controls } = useAnimatedInView();
   const { t } = useTranslation();
+
   const handleFirstNameChange = (value: string) => onFirstNameChange(value);
   const handleLastNameChange = (value: string) => onLastNameChange(value);
   const handleGenderChange = (value: string) => onGenderChange(value);
   const handleDateOfBirthChange = (date: Date | null) =>
-    onDateOfBithChange(date);
+    onDateOfBirthChange(date);
 
   return (
     <div className={styles.personalInfo}>

@@ -18,7 +18,7 @@ export const LanguageDropdown: React.FC<LanguageDropdownPropsType> = ({
         <div className={styles.lngIcons}>
           <img
             src={item.icon as string}
-            alt="Rus"
+            alt={item.label}
             style={{ width: "25px", height: "25px", marginRight: "10px" }}
           />
           <span className={styles.dropdownItem}>{item.label}</span>
@@ -34,7 +34,6 @@ export const LanguageDropdown: React.FC<LanguageDropdownPropsType> = ({
           controlItemBgActiveHover: "#EFEFEF",
           controlItemBgActive: "#EFEFEF",
           colorPrimary: "#0097b2",
-          controlPaddingHorizontal: 8,
         },
       }}
     >
@@ -45,7 +44,6 @@ export const LanguageDropdown: React.FC<LanguageDropdownPropsType> = ({
           defaultSelectedKeys: ["1"],
           onClick: handleLanguageClick,
         }}
-        arrow
       >
         <Typography.Link className={styles.settingsBtn}>
           <Space className={styles.language}>

@@ -12,7 +12,7 @@ import { CustomButton } from "components/CustomButton/CustomButton";
 import { useAuth } from "context/AuthContext";
 import { ClosableMessage } from "components/ClosableMessage/ClosableMessage";
 
-import styles from "./Login.module.scss";
+import styles from "../../CustomHeader.module.scss";
 
 export const Login: React.FC = () => {
   const { t } = useTranslation();
@@ -28,11 +28,7 @@ export const Login: React.FC = () => {
       {isAuthenticated ? (
         <>
           <Link to={`/profile/${user!.uid}`}>
-            <Button
-              type="link"
-              icon={<UserOutlined />}
-              className={styles.signInAndProfile}
-            >
+            <Button type="link" icon={<UserOutlined />} className={styles.link}>
               {t("profile")}
             </Button>
           </Link>
@@ -48,7 +44,7 @@ export const Login: React.FC = () => {
             <Button
               type="link"
               icon={<UserAddOutlined />}
-              className={styles.signInAndProfile}
+              className={styles.link}
             >
               {t("signUp")}
             </Button>

@@ -20,19 +20,19 @@ export const Navbar: React.FC<HeaderPropsType> = ({
   return (
     <div className={styles.navbar}>
       <Link to="/main">
-        <Button type="link" className={styles.linkBtn}>
+        <Button type="link" className={styles.link}>
           {t("main")}
         </Button>
       </Link>
       <div className={styles.verticalLine}></div>
       <Link to="/contact">
-        <Button type="link" className={styles.linkBtn}>
+        <Button type="link" className={styles.link}>
           {t("contact")}
         </Button>
       </Link>
       <div className={styles.verticalLine}></div>
       <Link to="/calculators">
-        <Button type="link" className={styles.linkBtn}>
+        <Button type="link" className={styles.link}>
           {t("calculators")}
         </Button>
       </Link>

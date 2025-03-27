@@ -8,13 +8,13 @@ export const Images: React.FC = () => {
       <div className={`${styles.topImg}`}>
         <img
           src={process.env.PUBLIC_URL + "/assets/Images/Main1.jpg"}
-          alt="Fitness boy"
+          alt="Fitness"
         />
       </div>
       <div className={`${styles.bottomImg}`}>
         <img
           src={process.env.PUBLIC_URL + "/assets/Images/Main2.jpg"}
-          alt="Fitness girl"
+          alt="Fitness"
         />
       </div>
     </div>

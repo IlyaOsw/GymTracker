@@ -125,7 +125,7 @@ const SignUp: React.FC = () => {
           onFirstNameChange={handleFirstNameChange}
           onLastNameChange={handleLastNameChange}
           onGenderChange={handleGenderChange}
-          onDateOfBithChange={handleDateOfBirthChange}
+          onDateOfBirthChange={handleDateOfBirthChange}
         />
         <Address
           onCountryChange={handleCountryChange}
