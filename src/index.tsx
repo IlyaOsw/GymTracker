@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -7,6 +7,9 @@ import { getFirestore } from "firebase/firestore";
 import { BrowserRouter } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { Provider } from "react-redux";
+import { useTranslation } from "react-i18next";
+
+import i18n from "./i18n";
 
 import { App } from "./App";
 import { store } from "./redux/store";
@@ -27,16 +30,60 @@ export const auth = getAuth(app);
 export const storage = getStorage(app);
 export const db = getFirestore(app);
 
+const MetaUpdater = () => {
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    const updateMetaDescription = () => {
+      const description = t("metaDescription");
+      document
+        .querySelector("meta[name='description']")
+        ?.setAttribute("content", description);
+    };
+
+    updateMetaDescription();
+    i18n.on("languageChanged", updateMetaDescription);
+
+    return () => {
+      i18n.off("languageChanged", updateMetaDescription);
+    };
+  }, [t]);
+
+  return null;
+};
+
+const Root = () => {
+  useEffect(() => {
+    document.documentElement.classList.remove("no-js");
+    document.documentElement.lang = i18n.language;
+
+    const changeHtmlLang = (lng: string) => {
+      document.documentElement.lang = lng;
+    };
+
+    i18n.on("languageChanged", changeHtmlLang);
+
+    return () => {
+      i18n.off("languageChanged", changeHtmlLang);
+    };
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+        <MetaUpdater />
+      </Provider>
+    </BrowserRouter>
+  );
+};
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
+    <Root />
   </React.StrictMode>
 );

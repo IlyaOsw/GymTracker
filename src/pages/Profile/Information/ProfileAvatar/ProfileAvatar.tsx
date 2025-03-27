@@ -110,6 +110,7 @@ export const ProfileAvatar: React.FC = React.memo(() => {
           {avatarURL ? (
             <Image
               src={avatarURL}
+              alt="Avatar"
               className={styles.avatarSize}
               preview={{
                 mask: (

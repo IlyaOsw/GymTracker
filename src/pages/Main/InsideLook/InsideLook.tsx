@@ -50,6 +50,7 @@ export const InsideLook: React.FC = () => {
             >
               <Image
                 src={item.image}
+                alt="Inside look image"
                 preview={{
                   mask: (
                     <div className={styles.mask}>
