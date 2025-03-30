@@ -26,15 +26,13 @@ export const GoalMainBlock: React.FC<GoalMainBlockPropsType> = React.memo(
   }) => {
     const { t } = useTranslation();
     const { user } = useAuth();
-    const [stepsCount] = useState(10);
+    const [stepsCount] = useState<number>(10);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     const handleDeleteGoal = async () => {
       if (!user) return;
-      const goalRef = doc(getFirestore(), "goals", user.uid);
-
       try {
-        await deleteDoc(goalRef);
+        await deleteDoc(doc(getFirestore(), "goals", user.uid));
         setIsModalOpen(false);
         setGoalData(undefined);
       } catch (error) {
